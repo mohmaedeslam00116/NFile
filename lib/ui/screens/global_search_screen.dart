@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart' as p;
-import 'package:share_plus/share_plus.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../providers/media_provider.dart';
 import '../../models/file_item_model.dart';
@@ -321,7 +320,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     final provider = context.read<FileManagerProvider>();
     await showDialog<void>(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.55),
+      barrierColor: Colors.black.withValues(alpha: 0.55),
       builder: (context) => BatchRenameDialog(
         provider: provider,
         selectedPaths: _selectedPaths.toList(),
@@ -381,7 +380,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         if (isMulti && _selectedPaths.length > 1) {
           await showDialog<void>(
             context: context,
-            barrierColor: Colors.black.withOpacity(0.55),
+            barrierColor: Colors.black.withValues(alpha: 0.55),
             builder: (context) => BatchRenameDialog(
               provider: provider,
               selectedPaths: _selectedPaths.toList(),

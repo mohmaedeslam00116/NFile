@@ -7,7 +7,6 @@ import '../../core/icon_fonts/broken_icons.dart';
 import 'selection_action_bar.dart'; // To access PropertiesModalDialog
 import 'file_action_dialogs.dart';
 import 'create_archive_dialog.dart';
-import 'package:share_plus/share_plus.dart';
 import 'batch_rename_dialog.dart';
 import '../../services/folder_share_service.dart';
 
@@ -44,7 +43,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
     final isSingle = selectedCount == 1;
     final displayTitle = isSingle ? p.basename(targetPath) : '$selectedCount items selected';
     final isFolder = Directory(targetPath).existsSync() || 
-        provider.currentFiles.firstWhere((e) => e.path == targetPath, orElse: () => provider.currentFiles.first).isDirectory;
+        provider.activeListing.entries.firstWhere((e) => e.path == targetPath, orElse: () => provider.activeListing.entries.first).isDirectory;
 
     return Container(
       decoration: BoxDecoration(
@@ -52,7 +51,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: Colors.black.withValues(alpha: 0.15),
             blurRadius: 24,
             offset: const Offset(0, -4),
           ),
@@ -69,7 +68,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
                 height: 4,
                 margin: const EdgeInsets.only(top: 12, bottom: 8),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.onSurface.withOpacity(0.15),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -92,7 +91,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primary.withOpacity(0.08),
+                        color: theme.colorScheme.primary.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Icon(
@@ -124,7 +123,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
                               isFolder ? 'Folder' : 'File (Long press to Open with)',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: theme.colorScheme.onSurface.withOpacity(0.5),
+                                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -299,7 +298,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         child: Row(
           children: [
-            Icon(icon, color: displayColor.withOpacity(0.8), size: 22),
+            Icon(icon, color: displayColor.withValues(alpha: 0.8), size: 22),
             const SizedBox(width: 16),
             Text(
               label,

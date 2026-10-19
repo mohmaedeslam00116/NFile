@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PinService {
@@ -11,8 +13,21 @@ class PinService {
     _pinnedPaths = list.toSet();
   }
 
+  /// The paths the user pinned. The view is read-only: pin and unpin are the only
+  /// ways to change it.
+  static Set<String> get pinnedPaths => UnmodifiableSetView(_pinnedPaths);
+
   static bool isPinned(String path) {
     return _pinnedPaths.contains(path);
+  }
+
+  /// Replace the pinned paths with [paths].
+  ///
+  /// The pins follow the paths they name: a renamed or moved folder keeps its
+  /// pin, and a deleted folder leaves none behind.
+  static Future<void> replacePinnedPaths(Set<String> paths) async {
+    _pinnedPaths = Set.of(paths);
+    await _prefs?.setStringList(_keyPinnedPaths, _pinnedPaths.toList());
   }
 
   static Future<void> pin(String path) async {

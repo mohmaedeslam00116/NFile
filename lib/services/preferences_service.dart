@@ -177,29 +177,29 @@ class PreferencesService {
     await _prefs?.setDouble(_keyItemPaddingMultiplier, val);
   }
 
-  static FileSortType getSortType() {
+  static SortRule getSortType() {
     final index = _prefs?.getInt(_keySortType) ?? 0;
-    if (index >= 0 && index < FileSortType.values.length) {
-      return FileSortType.values[index];
+    if (index >= 0 && index < SortRule.values.length) {
+      return SortRule.values[index];
     }
-    return FileSortType.nameAsc;
+    return SortRule.nameAsc;
   }
 
-  static Future<void> saveSortType(FileSortType type) async {
+  static Future<void> saveSortType(SortRule type) async {
     await _prefs?.setInt(_keySortType, type.index);
   }
 
-  static Map<String, FileSortType> getFolderSortTypes() {
+  static Map<String, SortRule> getFolderSortTypes() {
     final str = _prefs?.getString(_keyFolderSortTypes);
     if (str == null) return {};
     try {
       final map = jsonDecode(str) as Map<String, dynamic>;
       return map.map((key, value) {
         final idx = value as int;
-        if (idx >= 0 && idx < FileSortType.values.length) {
-          return MapEntry(key, FileSortType.values[idx]);
+        if (idx >= 0 && idx < SortRule.values.length) {
+          return MapEntry(key, SortRule.values[idx]);
         }
-        return MapEntry(key, FileSortType.nameAsc);
+        return MapEntry(key, SortRule.nameAsc);
       });
     } catch (e) {
       debugPrint('Error loading folder sort types: $e');
@@ -207,7 +207,7 @@ class PreferencesService {
     }
   }
 
-  static Future<void> saveFolderSortTypes(Map<String, FileSortType> map) async {
+  static Future<void> saveFolderSortTypes(Map<String, SortRule> map) async {
     final jsonMap = map.map((key, value) => MapEntry(key, value.index));
     await _prefs?.setString(_keyFolderSortTypes, jsonEncode(jsonMap));
   }

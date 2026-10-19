@@ -222,7 +222,7 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
     }
     if (shareFiles.isNotEmpty) {
       try {
-        await Share.shareXFiles(shareFiles);
+        await SharePlus.instance.share(ShareParams(files: shareFiles));
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error sharing: $e')));
@@ -267,7 +267,7 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
       case 'share':
         if (FileSystemEntity.isFileSync(path)) {
           try {
-            await Share.shareXFiles([XFile(path)]);
+            await SharePlus.instance.share(ShareParams(files: [XFile(path)]));
           } catch (e) {
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error sharing: $e')));
