@@ -3,6 +3,7 @@ import 'package:path/path.dart' as p;
 import '../../models/file_item_model.dart';
 import '../utils.dart';
 import 'listing.dart';
+import 'listing_scope.dart';
 import 'sort_rule.dart';
 
 /// Derives the visible Listing from the Entries of a Listing Source and the rules
@@ -17,20 +18,43 @@ class ListingBuilder {
   /// hoisted to the top of its own group — never above the other group.
   Listing build({
     required List<FileItemModel> entries,
+    required ListingScope scope,
     required FileSortType sortRule,
+    required Map<String, FileSortType> folderOverrides,
     required Set<String> pinnedPaths,
   }) {
     final folders = entries.where((e) => e.isDirectory).toList();
     final files = entries.where((e) => !e.isDirectory).toList();
 
-    _sort(folders, sortRule, pinnedPaths);
-    _sort(files, sortRule, pinnedPaths);
+    final effectiveRule = _effectiveSortRule(
+      scope: scope,
+      globalRule: sortRule,
+      folderOverrides: folderOverrides,
+    );
+
+    _sort(folders, effectiveRule, pinnedPaths);
+    _sort(files, effectiveRule, pinnedPaths);
 
     return Listing(
       entries: [...folders, ...files],
       folderCount: folders.length,
       fileCount: files.length,
     );
+  }
+
+  /// The rule that orders this Listing.
+  ///
+  /// A Folder Sort Override applies to the Listing of the folder it names. A
+  /// Listing produced by a search spans folders, so it uses the global rule.
+  FileSortType _effectiveSortRule({
+    required ListingScope scope,
+    required FileSortType globalRule,
+    required Map<String, FileSortType> folderOverrides,
+  }) {
+    return switch (scope) {
+      DirectoryScope(:final location) => folderOverrides[location] ?? globalRule,
+      SearchScope() => globalRule,
+    };
   }
 
   void _sort(

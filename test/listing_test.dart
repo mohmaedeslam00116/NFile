@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nfile/core/listing/listing_builder.dart';
+import 'package:nfile/core/listing/listing_scope.dart';
 import 'package:nfile/core/listing/sort_rule.dart';
 import 'package:nfile/models/file_item_model.dart';
 import 'package:path/path.dart' as p;
@@ -33,7 +34,9 @@ void main() {
           entry('/d/a', isDirectory: true),
           entry('/d/c.txt'),
         ],
+        scope: const DirectoryScope('/d'),
         sortRule: FileSortType.nameAsc,
+        folderOverrides: const {},
         pinnedPaths: const {},
       );
 
@@ -51,7 +54,9 @@ void main() {
           entry('/d/x', isDirectory: true),
           entry('/d/y', isDirectory: true),
         ],
+        scope: const DirectoryScope('/d'),
         sortRule: FileSortType.nameAsc,
+        folderOverrides: const {},
         pinnedPaths: const {'/d/y'},
       );
 
@@ -59,6 +64,48 @@ void main() {
         listing.entries.map((e) => e.name).toList(),
         ['y', 'x', 'a.txt', 'b.txt'],
       );
+    });
+  });
+
+  group('Folder Sort Override', () {
+    // The two entries are ordered differently by name and by size, so each test
+    // fails if the wrong Sort Rule is used.
+    final entries = [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)];
+
+    test('orders that directory Listing by the override', () {
+      final listing = ListingBuilder().build(
+        entries: entries,
+        scope: const DirectoryScope('/d'),
+        sortRule: FileSortType.nameAsc,
+        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        pinnedPaths: const {},
+      );
+
+      expect(listing.entries.map((e) => e.name).toList(), ['b.txt', 'a.txt']);
+    });
+
+    test('leaves a directory Listing on the global rule when it has no override', () {
+      final listing = ListingBuilder().build(
+        entries: entries,
+        scope: const DirectoryScope('/other'),
+        sortRule: FileSortType.nameAsc,
+        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        pinnedPaths: const {},
+      );
+
+      expect(listing.entries.map((e) => e.name).toList(), ['a.txt', 'b.txt']);
+    });
+
+    test('a search Listing uses the global Sort Rule, not a folder override', () {
+      final listing = ListingBuilder().build(
+        entries: entries,
+        scope: const SearchScope('/d'),
+        sortRule: FileSortType.nameAsc,
+        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        pinnedPaths: const {},
+      );
+
+      expect(listing.entries.map((e) => e.name).toList(), ['a.txt', 'b.txt']);
     });
   });
 }

@@ -249,36 +249,57 @@ sorted by it, and a search across many folders is sorted by the global Sort Rule
 
 ### Steps
 
-- [ ] **2.1** Write the failing test:
+- [x] **2.1** Write the failing test:
 
 ```dart
-test('a Folder Sort Override orders that directory Listing', () {
-  final listing = ListingBuilder().build(
-    entries: [entry('/d/b.txt', size: 1), entry('/d/a.txt', size: 99)],
-    scope: const DirectoryScope('/d'),
-    sortRule: FileSortType.nameAsc,
-    folderOverrides: const {'/d': FileSortType.sizeLargest},
-    pinnedPaths: const {},
-  );
+group('Folder Sort Override', () {
+  // The two entries are ordered differently by name and by size, so each test
+  // fails if the wrong Sort Rule is used.
+  final entries = [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)];
 
-  expect(listing.entries.map((e) => e.name).toList(), ['a.txt', 'b.txt']);
-});
+  test('orders that directory Listing by the override', () {
+    final listing = ListingBuilder().build(
+      entries: entries,
+      scope: const DirectoryScope('/d'),
+      sortRule: FileSortType.nameAsc,
+      folderOverrides: const {'/d': FileSortType.sizeLargest},
+      pinnedPaths: const {},
+    );
 
-test('a search Listing uses the global Sort Rule, not a folder override', () {
-  final listing = ListingBuilder().build(
-    entries: [entry('/d/b.txt', size: 1), entry('/d/a.txt', size: 99)],
-    scope: const SearchScope('/d'),
-    sortRule: FileSortType.nameAsc,
-    folderOverrides: const {'/d': FileSortType.sizeLargest},
-    pinnedPaths: const {},
-  );
+    expect(listing.entries.map((e) => e.name).toList(), ['b.txt', 'a.txt']);
+  });
 
-  expect(listing.entries.map((e) => e.name).toList(), ['b.txt', 'a.txt']);
+  test('leaves a directory Listing on the global rule when it has no override', () {
+    final listing = ListingBuilder().build(
+      entries: entries,
+      scope: const DirectoryScope('/other'),
+      sortRule: FileSortType.nameAsc,
+      folderOverrides: const {'/d': FileSortType.sizeLargest},
+      pinnedPaths: const {},
+    );
+
+    expect(listing.entries.map((e) => e.name).toList(), ['a.txt', 'b.txt']);
+  });
+
+  test('a search Listing uses the global Sort Rule, not a folder override', () {
+    final listing = ListingBuilder().build(
+      entries: entries,
+      scope: const SearchScope('/d'),
+      sortRule: FileSortType.nameAsc,
+      folderOverrides: const {'/d': FileSortType.sizeLargest},
+      pinnedPaths: const {},
+    );
+
+    expect(listing.entries.map((e) => e.name).toList(), ['a.txt', 'b.txt']);
+  });
 });
 ```
 
-- [ ] **2.2** Run the test and watch it fail — the missing `ListingScope` is the reason.
-- [ ] **2.3** Create `lib/core/listing/listing_scope.dart`:
+- [x] **2.2** Run the test and watch it fail. The first run fails to compile — the
+      `ListingScope` vocabulary and the `scope` / `folderOverrides` parameters do not
+      exist. Add them as a skeleton, leaving the resolution unimplemented, then watch
+      the override test fail on the assertion — the rule is still the global one.
+- [x] **2.3** Create `lib/core/listing/listing_scope.dart`:
 
 ```dart
 /// What a Listing covers — one directory, or a search across a subtree.
@@ -287,28 +308,62 @@ sealed class ListingScope {
   const ListingScope();
 }
 
+/// The Listing of one directory on disk.
 class DirectoryScope extends ListingScope {
+  /// The location the Listing shows.
   final String location;
+
   const DirectoryScope(this.location);
 }
 
+/// A Listing produced by a search across a subtree.
+///
+/// A search spans folders, so it never inherits a Folder Sort Override.
 class SearchScope extends ListingScope {
+  /// The location the search started from.
   final String root;
+
   const SearchScope(this.root);
 }
 ```
 
-- [ ] **2.4** Extend `ListingBuilder.build` with `scope` and `folderOverrides`, resolving
+- [x] **2.4** Extend `ListingBuilder.build` with `scope` and `folderOverrides`, resolving
       the effective Sort Rule inside the builder: a `DirectoryScope` uses the override
       for its location when one exists; a `SearchScope` always uses the global rule.
-- [ ] **2.5** Run `flutter test test/listing_test.dart` — all pass.
-- [ ] **2.6** Run `flutter analyze`; commit: `feat(listing): resolve the Folder Sort Override inside the builder`.
+
+```dart
+  FileSortType _effectiveSortRule({
+    required ListingScope scope,
+    required FileSortType globalRule,
+    required Map<String, FileSortType> folderOverrides,
+  }) {
+    return switch (scope) {
+      DirectoryScope(:final location) => folderOverrides[location] ?? globalRule,
+      SearchScope() => globalRule,
+    };
+  }
+```
+
+- [x] **2.5** Run `flutter test` — all pass.
+- [x] **2.6** Run `flutter analyze`; commit: `feat(listing): resolve the Folder Sort Override inside the builder`.
 
 **Acceptance criteria**
 
-- [ ] A directory Listing honours its override; a search Listing does not.
-- [ ] The override map is injected — the builder reads no global state.
-- [ ] `flutter analyze` is clean.
+- [x] A directory Listing honours its override; a search Listing does not.
+- [x] The override map is injected — the builder reads no global state.
+- [x] `flutter analyze` is clean.
+
+**Notes recorded while executing this task**
+
+- The expectations written in this plan before execution were wrong. With the entries
+  `b.txt` (1 byte) and `a.txt` (99 bytes), the global `nameAsc` rule and the
+  `sizeLargest` override both produce `['a.txt', 'b.txt']` — the directory test could
+  not tell "the override was applied" from "the override was ignored", and the search
+  test expected an order that `nameAsc` never produces. The entries above are ordered
+  differently by name and by size, so each test fails if the wrong rule is used.
+- The two tests from task 01 now pass the new `scope` and `folderOverrides`
+  parameters. Their assertions are unchanged.
+
 
 ---
 
