@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:crypto/crypto.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;
 import '../core/vault/vault_file.dart';
+import '../core/vault/vault_password.dart';
 import 'package:archive/archive.dart';
 
 class VaultFileRecord {
@@ -61,20 +61,37 @@ class VaultService {
 
   static Future<void> setPassword(String password) async {
     final prefs = await SharedPreferences.getInstance();
-    final salt = DateTime.now().microsecondsSinceEpoch.toString();
-    final saltedPassword = password + salt;
-    final hash = sha256.convert(utf8.encode(saltedPassword)).toString();
-    await prefs.setString('vault_salt', salt);
-    await prefs.setString('vault_password_hash', hash);
+    final derived = await VaultPassword.derive(password);
+    await prefs.setString('vault_salt', derived.salt);
+    await prefs.setString('vault_password_hash', derived.verifier);
   }
 
   static Future<bool> verifyPassword(String password) async {
     final prefs = await SharedPreferences.getInstance();
     final salt = prefs.getString('vault_salt');
-    final hash = prefs.getString('vault_password_hash');
-    if (salt == null || hash == null) return false;
-    final checkHash = sha256.convert(utf8.encode(password + salt)).toString();
-    return hash == checkHash;
+    final verifier = prefs.getString('vault_password_hash');
+    if (salt == null || verifier == null) return false;
+
+    if (VaultPassword.isLegacy(verifier)) {
+      // The old verifier: one SHA-256 over the password and the salt. When the
+      // password turns out to be right, the verifier is replaced with one that
+      // is hard to break.
+      if (!VaultPassword.verifyLegacy(
+        password: password,
+        verifier: verifier,
+        salt: salt,
+      )) {
+        return false;
+      }
+      await setPassword(password);
+      return true;
+    }
+
+    return VaultPassword.verify(
+      password: password,
+      verifier: verifier,
+      salt: salt,
+    );
   }
 
   // Get Vault Directory
