@@ -109,6 +109,26 @@ jobs:
         if: steps.check_release.outputs.exists == 'false'
         run: flutter build apk --release --split-per-abi --obfuscate --split-debug-info=build/app/outputs/symbols --no-tree-shake-icons
 
+      - name: Check the permissions of the merged manifest
+        # The manifest that ships is the merged one: a library can bring a
+        # permission in that the application never asked for. The check runs even
+        # when the build failed, because the merged manifest is written before
+        # the packaging.
+        if: always() && steps.check_release.outputs.exists == 'false'
+        run: |
+          MERGED=$(ls -t $(find build/app/intermediates -path "*merged_manifest*release*" -name "AndroidManifest.xml") 2>/dev/null | head -1)
+          if [ -z "$MERGED" ]; then
+            echo "::error::the build produced no merged manifest to check"
+            exit 1
+          fi
+          echo "Checking $MERGED"
+          if grep -q "READ_MEDIA_IMAGES\|READ_MEDIA_VIDEO" "$MERGED"; then
+            echo "::error::$MERGED asks for a media permission the application does not use"
+            grep -n "READ_MEDIA" "$MERGED"
+            exit 1
+          fi
+          echo "The merged manifest asks for no media image or video permission."
+
       - name: Rename APKs
         if: steps.check_release.outputs.exists == 'false'
         run: |

@@ -7,9 +7,13 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <!-- READ_MEDIA_IMAGES and READ_MEDIA_VIDEO removed: MANAGE_EXTERNAL_STORAGE covers all
+    <!-- READ_MEDIA_IMAGES and READ_MEDIA_VIDEO are not used: MANAGE_EXTERNAL_STORAGE covers all
          media access for this file manager app. photo_manager uses setIgnorePermissionCheck(true)
-         under MANAGE_EXTERNAL_STORAGE so these granular permissions are not needed. -->
+         under MANAGE_EXTERNAL_STORAGE so these granular permissions are not needed.
+         A library brings them in (open_filex), and the application has the last word:
+         tools:node="remove" takes them out of the merged manifest that ships. -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" tools:node="remove" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" tools:node="remove" />
     <!-- Audio permission still required for on_audio_query on Android 13+ -->
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
     <!-- Required for image/video metadata (EXIF) on Android 10+ (API 29+) -->
