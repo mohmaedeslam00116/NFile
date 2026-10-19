@@ -45,7 +45,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
   Future<void> _loadVaultData() async {
     setState(() => _isLoading = true);
     try {
-      final data = await VaultService.loadRecords();
+      final data = await VaultService.loadRecords(widget.password);
       // Verify files actually exist, otherwise we clean up records that are missing
       final validRecords = <VaultFileRecord>[];
       for (final rec in data) {
@@ -54,7 +54,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
         }
       }
       if (validRecords.length != data.length) {
-        await VaultService.saveRecords(validRecords);
+        await VaultService.saveRecords(validRecords, widget.password);
       }
       if (mounted) {
         setState(() {
@@ -329,9 +329,9 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       if (await file.exists()) {
         await file.delete();
       }
-      final records = await VaultService.loadRecords();
+      final records = await VaultService.loadRecords(widget.password);
       records.removeWhere((e) => e.id == record.id);
-      await VaultService.saveRecords(records);
+      await VaultService.saveRecords(records, widget.password);
       await _loadVaultData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

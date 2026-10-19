@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
-import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;
+import '../core/vault/vault_file.dart';
 import 'package:archive/archive.dart';
 
 class VaultFileRecord {
@@ -53,8 +52,6 @@ class VaultFileRecord {
 }
 
 class VaultService {
-  static const String _magicTag = 'NFILE_VAULT_V1';
-  static const int _scrambleSize = 8192; // 8 KB
 
   // Hashing and Password Management
   static Future<bool> isPasswordSet() async {
@@ -97,42 +94,48 @@ class VaultService {
   }
 
   // Load locked file records
-  static Future<List<VaultFileRecord>> loadRecords() async {
+  //
+  // The records say what the locked files were: their names, where they came
+  // from. That is what the vault hides, so the records are sealed with the
+  // password as well. The old version kept them in cleartext, and they are
+  // still read.
+  static Future<List<VaultFileRecord>> loadRecords(String password) async {
     final file = await getMetadataFile();
     if (!await file.exists()) return [];
     try {
-      final str = await file.readAsString();
-      final list = jsonDecode(str) as List;
-      return list.map((e) => VaultFileRecord.fromJson(e as Map<String, dynamic>)).toList();
+      final bytes = await file.readAsBytes();
+
+      final opened = await VaultFile.open(bytes, password);
+      if (opened != null) {
+        return _recordsFrom(utf8.decode(opened.content));
+      }
+
+      // The old version kept the records in cleartext.
+      return _recordsFrom(utf8.decode(bytes));
     } catch (_) {
       return [];
     }
   }
 
+  static List<VaultFileRecord> _recordsFrom(String json) {
+    final list = jsonDecode(json) as List;
+    return list
+        .map((e) => VaultFileRecord.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   // Save locked file records
-  static Future<void> saveRecords(List<VaultFileRecord> records) async {
+  static Future<void> saveRecords(
+    List<VaultFileRecord> records,
+    String password,
+  ) async {
     final file = await getMetadataFile();
-    final str = jsonEncode(records.map((e) => e.toJson()).toList());
-    await file.writeAsString(str);
-  }
-
-  // Derives the repeating XOR key from the password
-  static List<int> _deriveKey(String password, int length) {
-    final hash = sha256.convert(utf8.encode(password)).bytes;
-    final key = List<int>.filled(length, 0);
-    for (int i = 0; i < length; i++) {
-      key[i] = hash[i % hash.length] ^ (i & 0xFF);
-    }
-    return key;
-  }
-
-  // Obfuscates/Deobfuscates a list of bytes using XOR
-  static List<int> _xorBytes(List<int> bytes, List<int> key) {
-    final result = List<int>.from(bytes);
-    for (int i = 0; i < bytes.length; i++) {
-      result[i] = bytes[i] ^ key[i % key.length];
-    }
-    return result;
+    final sealed = await VaultFile.seal(
+      metadata: const {'kind': 'records'},
+      content: utf8.encode(jsonEncode(records.map((e) => e.toJson()).toList())),
+      password: password,
+    );
+    await file.writeAsBytes(sealed);
   }
 
   // Locks and obfuscates a file
@@ -168,15 +171,6 @@ class VaultService {
     // Read file bytes
     final fileBytes = await file.readAsBytes();
 
-    // Partition bytes
-    final scrambleLen = min(_scrambleSize, fileBytes.length);
-    final scrambleBytes = fileBytes.sublist(0, scrambleLen);
-    final restBytes = fileBytes.sublist(scrambleLen);
-
-    // Encrypt the signature part
-    final key = _deriveKey(password, scrambleLen);
-    final obfuscatedBytes = _xorBytes(scrambleBytes, key);
-
     // Build metadata payload
     final metadata = {
       'name': originalName,
@@ -185,38 +179,18 @@ class VaultService {
       'timestamp': timestamp,
       'isFolder': isFolder,
     };
-    final metadataStr = jsonEncode(metadata);
-    final metadataBytes = utf8.encode(metadataStr);
 
-    // Obfuscate metadata payload too so it's fully private
-    final metaKey = _deriveKey(password, metadataBytes.length);
-    final obfuscatedMetadata = _xorBytes(metadataBytes, metaKey);
-
-    // Create the scrambled file format:
-    // [MAGIC_TAG] (14 bytes)
-    // [METADATA_LENGTH] (4 bytes int)
-    // [OBFUSCATED_METADATA]
-    // [OBFUSCATED_SIGNATURE]
-    // [REST_OF_FILE]
-    final headerBytes = BytesBuilder();
-    headerBytes.add(utf8.encode(_magicTag)); // 14 bytes
-    
-    // Add metadata length as 4-byte big endian int
-    final metaLen = obfuscatedMetadata.length;
-    headerBytes.add([
-      (metaLen >> 24) & 0xFF,
-      (metaLen >> 16) & 0xFF,
-      (metaLen >> 8) & 0xFF,
-      metaLen & 0xFF,
-    ]);
-    
-    headerBytes.add(obfuscatedMetadata);
-    headerBytes.add(obfuscatedBytes);
-    headerBytes.add(restBytes);
+    // Seal the metadata and the content together: nothing of the file is
+    // readable, not the content and not the name of the file.
+    final sealedBytes = await VaultFile.seal(
+      metadata: metadata,
+      content: fileBytes,
+      password: password,
+    );
 
     // Write to the scrambled target path
     final targetFile = File(scrambledPath);
-    await targetFile.writeAsBytes(headerBytes.toBytes());
+    await targetFile.writeAsBytes(sealedBytes);
 
     // Clean up original file
     await file.delete();
@@ -234,9 +208,9 @@ class VaultService {
     );
 
     // Save record to metadata.json
-    final records = await loadRecords();
+    final records = await loadRecords(password);
     records.add(record);
-    await saveRecords(records);
+    await saveRecords(records, password);
 
     return record;
   }
@@ -252,66 +226,20 @@ class VaultService {
     }
 
     final bytes = await scrambledFile.readAsBytes();
-    
-    // Verify magic tag
-    if (bytes.length < _magicTag.length + 4) {
-      throw Exception('Invalid vault file format (Too short)');
-    }
-    final magicBytes = bytes.sublist(0, _magicTag.length);
-    final magic = utf8.decode(magicBytes);
-    if (magic != _magicTag) {
-      throw Exception('Invalid vault file format (Magic tag mismatch)');
-    }
 
-    // Read metadata length
-    final lenBytes = bytes.sublist(_magicTag.length, _magicTag.length + 4);
-    final metaLen = (lenBytes[0] << 24) | (lenBytes[1] << 16) | (lenBytes[2] << 8) | lenBytes[3];
-
-    // Extract obfuscated metadata
-    final metaStart = _magicTag.length + 4;
-    final metaEnd = metaStart + metaLen;
-    if (bytes.length < metaEnd) {
-      throw Exception('Invalid vault file format (Corrupted header)');
-    }
-    final obfuscatedMetadata = bytes.sublist(metaStart, metaEnd);
-
-    // Decrypt metadata
-    final metaKey = _deriveKey(password, obfuscatedMetadata.length);
-    final decryptedMetadataBytes = _xorBytes(obfuscatedMetadata, metaKey);
-    
-    Map<String, dynamic> metadata;
-    try {
-      final decryptedMetadataStr = utf8.decode(decryptedMetadataBytes);
-      metadata = jsonDecode(decryptedMetadataStr) as Map<String, dynamic>;
-    } catch (_) {
+    // Open the file. A file the old version wrote is read as well, so that a
+    // vault is not lost.
+    final opened = await VaultFile.open(bytes, password);
+    if (opened == null) {
       throw Exception('Incorrect password or corrupted file');
     }
-
-    // Extract scrambled signature bytes
-    final fileDataStart = metaEnd;
-    final originalSize = metadata['size'] as int;
-    final scrambleLen = min(_scrambleSize, originalSize);
-    
-    if (bytes.length < fileDataStart + scrambleLen) {
-      throw Exception('Invalid vault file format (Corrupted payload)');
-    }
-    final obfuscatedSignature = bytes.sublist(fileDataStart, fileDataStart + scrambleLen);
-    final restBytes = bytes.sublist(fileDataStart + scrambleLen);
-
-    // Decrypt signature bytes
-    final key = _deriveKey(password, scrambleLen);
-    final decryptedSignature = _xorBytes(obfuscatedSignature, key);
-
-    // Reconstruct original file bytes
-    final originalBytes = BytesBuilder();
-    originalBytes.add(decryptedSignature);
-    originalBytes.add(restBytes);
+    final originalBytes = opened.content;
 
     final originalFile = File(record.originalPath);
 
     if (record.isFolder) {
       // Reconstruct folder structure recursively
-      final archive = ZipDecoder().decodeBytes(originalBytes.toBytes());
+      final archive = ZipDecoder().decodeBytes(originalBytes);
       final destinationDir = p.dirname(record.originalPath);
 
       for (final file in archive) {
@@ -334,16 +262,16 @@ class VaultService {
       }
 
       // Write original bytes back to original path
-      await originalFile.writeAsBytes(originalBytes.toBytes());
+      await originalFile.writeAsBytes(originalBytes);
     }
 
     // Clean up scrambled nfv file
     await scrambledFile.delete();
 
     // Remove record from metadata
-    final records = await loadRecords();
+    final records = await loadRecords(password);
     records.removeWhere((e) => e.id == record.id);
-    await saveRecords(records);
+    await saveRecords(records, password);
 
     return originalFile;
   }
@@ -430,32 +358,14 @@ class VaultService {
     }
 
     final bytes = await scrambledFile.readAsBytes();
-    
-    // Read metadata
-    final lenBytes = bytes.sublist(_magicTag.length, _magicTag.length + 4);
-    final metaLen = (lenBytes[0] << 24) | (lenBytes[1] << 16) | (lenBytes[2] << 8) | lenBytes[3];
-    
-    final metaStart = _magicTag.length + 4;
-    final metaEnd = metaStart + metaLen;
-    final obfuscatedMetadata = bytes.sublist(metaStart, metaEnd);
-    final metaKey = _deriveKey(password, obfuscatedMetadata.length);
-    final decryptedMetadataBytes = _xorBytes(obfuscatedMetadata, metaKey);
-    final decryptedMetadataStr = utf8.decode(decryptedMetadataBytes);
-    final metadata = jsonDecode(decryptedMetadataStr) as Map<String, dynamic>;
 
-    final originalSize = metadata['size'] as int;
-    final scrambleLen = min(_scrambleSize, originalSize);
-    
-    final fileDataStart = metaEnd;
-    final obfuscatedSignature = bytes.sublist(fileDataStart, fileDataStart + scrambleLen);
-    final restBytes = bytes.sublist(fileDataStart + scrambleLen);
-
-    final key = _deriveKey(password, scrambleLen);
-    final decryptedSignature = _xorBytes(obfuscatedSignature, key);
-
-    final originalBytes = BytesBuilder();
-    originalBytes.add(decryptedSignature);
-    originalBytes.add(restBytes);
+    // Open the file. A file the old version wrote is read as well, so that a
+    // vault is not lost.
+    final opened = await VaultFile.open(bytes, password);
+    if (opened == null) {
+      throw Exception('Incorrect password or corrupted file');
+    }
+    final originalBytes = opened.content;
 
     // Write to a temporary file in cache directory
     final cacheDir = await getTemporaryDirectory();
@@ -463,7 +373,7 @@ class VaultService {
     final tempFilePath = p.join(cacheDir.path, 'temp_vault_${record.id}_${record.originalName}$extension');
     final tempFile = File(tempFilePath);
     
-    await tempFile.writeAsBytes(originalBytes.toBytes());
+    await tempFile.writeAsBytes(originalBytes);
     return tempFile;
   }
 }
