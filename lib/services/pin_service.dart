@@ -21,6 +21,15 @@ class PinService {
     return _pinnedPaths.contains(path);
   }
 
+  /// Replace the pinned paths with [paths].
+  ///
+  /// The pins follow the paths they name: a renamed or moved folder keeps its
+  /// pin, and a deleted folder leaves none behind.
+  static Future<void> replacePinnedPaths(Set<String> paths) async {
+    _pinnedPaths = Set.of(paths);
+    await _prefs?.setStringList(_keyPinnedPaths, _pinnedPaths.toList());
+  }
+
   static Future<void> pin(String path) async {
     _pinnedPaths.add(path);
     await _prefs?.setStringList(_keyPinnedPaths, _pinnedPaths.toList());

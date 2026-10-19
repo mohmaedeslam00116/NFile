@@ -26,6 +26,7 @@ import '../core/listing/filter_rule.dart';
 import '../core/listing/listing.dart';
 import '../core/listing/listing_cache.dart';
 import '../core/listing/listing_inputs.dart';
+import '../core/listing/path_facts.dart';
 import '../services/preferences_service.dart';
 import '../services/app_manager_service.dart';
 import '../models/custom_shortcut_model.dart';
@@ -1798,6 +1799,8 @@ class FileManagerProvider extends ChangeNotifier {
               await File(path).delete();
             }
           }
+          // The per-path facts end with the path.
+          await _deletePathFacts(path);
         }
       }
     } catch (e) {
@@ -2479,10 +2482,48 @@ class FileManagerProvider extends ChangeNotifier {
           }
         }
       }
+      // The per-path facts end with the path: a deleted folder leaves neither an
+      // override nor a pin behind.
+      await _deletePathFacts(path);
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
     } catch (e) {
       debugPrint('Error deleting file: $e');
     }
+  }
+
+  /// The per-path facts move with the path they name.
+  ///
+  /// A renamed or moved folder keeps its Folder Sort Override and its Pinned Path,
+  /// and everything inside it moves with it.
+  Future<void> _movePathFacts(String oldPath, String newPath) async {
+    final moved = PathFacts(
+      folderOverrides: _folderSortTypes,
+      pinnedPaths: PinService.pinnedPaths,
+    ).moved(oldPath, newPath);
+
+    _folderSortTypes
+      ..clear()
+      ..addAll(moved.folderOverrides);
+    PreferencesService.saveFolderSortTypes(_folderSortTypes);
+    await PinService.replacePinnedPaths(moved.pinnedPaths);
+    notifyListeners();
+  }
+
+  /// The per-path facts end with the path they name.
+  ///
+  /// A deleted folder leaves neither an override nor a pin behind.
+  Future<void> _deletePathFacts(String path) async {
+    final remaining = PathFacts(
+      folderOverrides: _folderSortTypes,
+      pinnedPaths: PinService.pinnedPaths,
+    ).deleted(path);
+
+    _folderSortTypes
+      ..clear()
+      ..addAll(remaining.folderOverrides);
+    PreferencesService.saveFolderSortTypes(_folderSortTypes);
+    await PinService.replacePinnedPaths(remaining.pinnedPaths);
+    notifyListeners();
   }
 
   Future<void> renameFile(String oldPath, String newName) async {
@@ -2497,6 +2538,7 @@ class FileManagerProvider extends ChangeNotifier {
         } else {
           await File(oldPath).rename(newPath);
         }
+        await _movePathFacts(oldPath, newPath);
       }
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
     } catch (e) {
@@ -2935,7 +2977,11 @@ class FileManagerProvider extends ChangeNotifier {
           }
         }
       }
-      
+
+      // The per-path facts follow the path: a moved folder keeps its override
+      // and its pin.
+      await _movePathFacts(sourcePath, destPath);
+
       if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Moved $name successfully')),

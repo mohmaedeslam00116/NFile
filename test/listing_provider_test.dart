@@ -159,6 +159,32 @@ void main() {
     });
   });
 
+  group('the per-path facts', () {
+    test('follow a renamed folder', () async {
+      final dir = await Directory.systemTemp.createTemp('nfile-facts');
+      addTearDown(() => dir.delete(recursive: true));
+      final oldPath = p.join(dir.path, 'old');
+      final newPath = p.join(dir.path, 'new');
+      Directory(oldPath).createSync();
+
+      SharedPreferences.setMockInitialValues({'cached_total_storage': 1024});
+      await PreferencesService.init();
+      await PinService.init();
+
+      final provider = FileManagerProvider();
+      await provider.loadDirectory(dir.path, showLoading: false);
+      provider.setFolderOverrideEnabled(oldPath, true);
+      await PinService.pin(oldPath);
+
+      await provider.renameFile(oldPath, 'new');
+
+      expect(provider.folderSortTypes.containsKey(oldPath), isFalse);
+      expect(provider.folderSortTypes.containsKey(newPath), isTrue);
+      expect(PinService.isPinned(oldPath), isFalse);
+      expect(PinService.isPinned(newPath), isTrue);
+    });
+  });
+
   group('the visible order is derived, not stored', () {
     test('pinning a path during a search leaves the directory Entries untouched', () async {
       final tab = FolderTab(
@@ -188,8 +214,7 @@ void main() {
       expect(namesOf(provider.currentFiles), ['a.txt', 'b.txt']);
     });
 
-    test('the visible list is narrowed by the Filter, not by the load', () async {
-      final dir = await Directory.systemTemp.createTemp('nfile-listing');
+    test('the visible list is narrowed by the Filter, not by the load', () async {      final dir = await Directory.systemTemp.createTemp('nfile-listing');
       addTearDown(() => dir.delete(recursive: true));
       await File('${dir.path}/a.png').writeAsBytes([1, 2, 3]);
       await File('${dir.path}/b.txt').writeAsString('bb');

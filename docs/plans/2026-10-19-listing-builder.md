@@ -567,19 +567,34 @@ moved folder, and end with a deleted one.
 
 ### Steps
 
-- [ ] **7.1** Write the failing test: after a rename, the override and the pin are
+- [x] **7.1** Write the failing test: after a rename, the override and the pin are
       still attached to the new path; after a delete, they are gone.
-- [ ] **7.2** Run the test and watch it fail.
-- [ ] **7.3** Update the override map and the pinned set in `renameFile`, `moveItem`,
+- [x] **7.2** Run the test and watch it fail.
+- [x] **7.3** Update the override map and the pinned set in `renameFile`, `moveItem`,
       `copyItem` and `deleteFile`.
-- [ ] **7.4** Run the test — it passes; run `flutter analyze`; commit:
+- [x] **7.4** Run the test — it passes; run `flutter analyze`; commit:
       `fix(listing): move per-path facts with their path`.
 
 **Acceptance criteria**
 
-- [ ] A renamed or moved folder keeps its override and its pin.
-- [ ] A deleted folder leaves neither behind.
-- [ ] `flutter analyze` is clean.
+- [x] A renamed or moved folder keeps its override and its pin.
+- [x] A deleted folder leaves neither behind.
+- [x] `flutter analyze` is clean.
+
+**Notes recorded while executing this task**
+
+- The rule lives in a pure module, `PathFacts`: it takes the overrides and the pins
+  and returns the ones that remain, or the ones that moved. The provider wires it to
+  the rename, the move and the delete, and stores the result.
+- A folder that moves takes its own facts with it, and the facts of everything
+  inside it move as well. A path that merely starts with the same characters is not
+  inside it: `/d/oldish` is not inside `/d/old`.
+- The paths are compared with the path package, so the module works with the
+  separator of the platform it runs on. The tests build their expectations the same
+  way, and are therefore not tied to one platform.
+- The copy leaves the facts alone: the source keeps its override and its pin, and
+  the copy starts with none.
+
 
 ---
 
