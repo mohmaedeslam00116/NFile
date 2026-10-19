@@ -12,6 +12,16 @@ class DirectoryScope extends ListingScope {
   final String location;
 
   const DirectoryScope(this.location);
+
+  @override
+  bool operator ==(Object other) =>
+      other is DirectoryScope && other.location == location;
+
+  @override
+  int get hashCode => location.hashCode;
+
+  @override
+  String toString() => 'DirectoryScope($location)';
 }
 
 /// A Listing produced by a search across a subtree.
@@ -22,4 +32,14 @@ class SearchScope extends ListingScope {
   final String root;
 
   const SearchScope(this.root);
+
+  @override
+  bool operator ==(Object other) =>
+      other is SearchScope && other.root == root;
+
+  @override
+  int get hashCode => root.hashCode;
+
+  @override
+  String toString() => 'SearchScope($root)';
 }

@@ -26,10 +26,13 @@ This plan argues from those two; executors read both.
 | `lib/core/listing/listing_builder.dart` | The seam. Derives a Listing from Entries + rules. |
 | `lib/core/listing/sort_rule.dart` | The Sort Rule vocabulary (`FileSortType`), moved out of the provider. |
 | `lib/core/listing/listing_scope.dart` | The Listing Scope vocabulary (added in task 2). |
+| `lib/core/listing/listing_inputs.dart` | The inputs a Listing is derived from — the key of the cache (added in task 4). |
+| `lib/core/listing/listing_cache.dart` | Remembers the Listing built from a set of inputs (added in task 4). |
 | `lib/core/kind.dart` | The Kind vocabulary: the one classification of the whole application (added in task 3). |
 | `lib/core/listing/filter_rule.dart` | The bridge from the Filter vocabulary to the Kind vocabulary (added in task 3). |
 | `test/listing_test.dart` | The Listing seam tests. |
 | `test/filter_rule_test.dart` | The Kind vocabulary tests (added in task 3). |
+| `test/listing_provider_test.dart` | The provider derives Listings (added in task 4). |
 
 The provider re-exports `FileSortType` so every existing import path keeps working:
 
@@ -428,21 +431,42 @@ both answer from one derived Listing.
 
 ### Steps
 
-- [ ] **4.1** Write the failing test: with a folder override set, `listingFor(tab)`
+- [x] **4.1** Write the failing test: with a folder override set, `listingFor(tab)`
       returns a Listing ordered by the override; with a search active, the same call
       returns the search Listing.
-- [ ] **4.2** Run the test and watch it fail.
-- [ ] **4.3** Add `activeListing` and `listingFor(tab)` to the provider, backed by a
+- [x] **4.2** Run the test and watch it fail.
+- [x] **4.3** Add `activeListing` and `listingFor(tab)` to the provider, backed by a
       cache keyed by (entries identity, sort rule, filter, pinned paths, scope,
       hidden-files preference). Invalidate when any key part changes.
-- [ ] **4.4** Run the tests; run `flutter analyze`; commit:
+- [x] **4.4** Run the tests; run `flutter analyze`; commit:
       `feat(listing): derive Listings in the provider`.
 
 **Acceptance criteria**
 
-- [ ] `activeListing` and `listingFor(tab)` exist and return a `Listing`.
-- [ ] The cache is keyed by its inputs; changing the Sort Rule changes the result.
-- [ ] `flutter analyze` is clean.
+- [x] `activeListing` and `listingFor(tab)` exist and return a `Listing`.
+- [x] The cache is keyed by its inputs; changing the Sort Rule changes the result.
+- [x] `flutter analyze` is clean.
+
+**Notes recorded while executing this task**
+
+- The cache is keyed by a value, `ListingInputs`, not by the order of the calls. The
+  Entries are compared by identity — the application replaces the list when it
+  reloads and never sorts it in place — while the Folder Sort Overrides and the
+  Pinned Paths are compared by content, because the application mutates both in
+  place. A change the provider forgot to announce still shows up.
+- The Listing Scope needed value equality (`==` and `hashCode`) for the cache to
+  compare it. Two scopes of the same location are the same scope.
+- A new rule, with a test: a Listing produced by a search is not narrowed by the
+  Filter of a directory. The search narrowed its own results with its own
+  vocabulary, and the application has never applied the directory Filter to search
+  results. The rule lives in the builder, so the provider cannot apply it by
+  accident.
+- The provider test needs `SharedPreferences.setMockInitialValues({})` and the two
+  preference stores initialised before the provider is built; the provider reads
+  every setting it knows in its constructor.
+- The user still sees the old list. The application reads `currentFiles` and
+  `displayFiles`; the derived Listing is what it will read in tasks 05 and 06.
+
 
 ---
 

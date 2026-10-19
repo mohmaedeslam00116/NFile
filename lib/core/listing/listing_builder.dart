@@ -31,7 +31,7 @@ class ListingBuilder {
   }) {
     final visible = _narrow(
       entries,
-      filter: filter,
+      filter: _effectiveFilter(scope, filter),
       showHiddenFiles: showHiddenFiles,
       showFoldersInFilter: showFoldersInFilter,
     );
@@ -83,6 +83,17 @@ class ListingBuilder {
       kept.add(entry);
     }
     return kept;
+  }
+
+  /// The Filter that narrows this Listing.
+  ///
+  /// A Listing produced by a search is not narrowed by the Filter of a directory:
+  /// the search narrowed its own results with its own vocabulary.
+  FileFilterType _effectiveFilter(ListingScope scope, FileFilterType filter) {
+    return switch (scope) {
+      DirectoryScope() => filter,
+      SearchScope() => FileFilterType.all,
+    };
   }
 
   /// The rule that orders this Listing.

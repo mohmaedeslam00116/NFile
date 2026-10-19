@@ -23,6 +23,10 @@ import '../ui/widgets/extract_archive_dialog.dart';
 import '../core/utils.dart';
 import '../core/kind.dart';
 import '../core/listing/filter_rule.dart';
+import '../core/listing/listing.dart';
+import '../core/listing/listing_cache.dart';
+import '../core/listing/listing_inputs.dart';
+import '../core/listing/listing_scope.dart';
 import '../services/preferences_service.dart';
 import '../services/app_manager_service.dart';
 import '../models/custom_shortcut_model.dart';
@@ -917,6 +921,40 @@ class FileManagerProvider extends ChangeNotifier {
       await loadDirectory(path, showLoading: showLoading, clearCache: clearCache);
       _activeTabIndex = oldIndex;
     }
+  }
+
+  // --- Derived Listings ---
+
+  final ListingCache _listingCache = ListingCache();
+
+  /// The Listing the user sees in the active Tab.
+  Listing get activeListing => listingFor(activeTab);
+
+  /// The Listing of a Tab: its Entries, ordered and narrowed by the rules.
+  ///
+  /// The Listing is derived, never stored: the Tab holds the Entries of its
+  /// Listing Source, and the rules decide what the user sees.
+  Listing listingFor(FolderTab tab) {
+    return _listingCache.listingFor(
+      tab.id,
+      ListingInputs(
+        entries: tab.displayFiles,
+        scope: _scopeFor(tab),
+        sortRule: _sortType,
+        folderOverrides: _folderSortTypes,
+        filter: _filterType,
+        showHiddenFiles: _showHiddenFiles,
+        showFoldersInFilter: !_hideFoldersInFilter,
+        pinnedPaths: PinService.pinnedPaths,
+      ),
+    );
+  }
+
+  /// The scope of a Tab: one directory, or the search it is running.
+  ListingScope _scopeFor(FolderTab tab) {
+    return tab.isSearchActive
+        ? SearchScope(tab.currentPath)
+        : DirectoryScope(tab.currentPath);
   }
 
   // --- Tab Management ---

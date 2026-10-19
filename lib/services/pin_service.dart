@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PinService {
@@ -10,6 +12,10 @@ class PinService {
     final list = _prefs?.getStringList(_keyPinnedPaths) ?? [];
     _pinnedPaths = list.toSet();
   }
+
+  /// The paths the user pinned. The view is read-only: pin and unpin are the only
+  /// ways to change it.
+  static Set<String> get pinnedPaths => UnmodifiableSetView(_pinnedPaths);
 
   static bool isPinned(String path) {
     return _pinnedPaths.contains(path);

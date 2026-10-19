@@ -153,6 +153,18 @@ void main() {
 
       expect(namesOf(result.entries), ['sub', 'a.png', 'b.txt', 'c.mp3']);
     });
+
+    test('a search Listing is not narrowed by the directory Filter', () {
+      // The search narrowed its own results with its own vocabulary; the Filter of
+      // the directory does not narrow them again.
+      final result = listing(
+        [entry('/d/a.png'), entry('/d/b.txt')],
+        scope: const SearchScope('/d'),
+        filter: FileFilterType.images,
+      );
+
+      expect(namesOf(result.entries), ['a.png', 'b.txt']);
+    });
   });
 
   group('Hidden entries', () {
