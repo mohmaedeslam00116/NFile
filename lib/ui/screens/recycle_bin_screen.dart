@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../models/file_item_model.dart';
 import '../../services/recycle_bin_service.dart';
 import '../../core/utils.dart';
 import '../../core/icon_fonts/broken_icons.dart';
-import 'package:path/path.dart' as p;
 
 class RecycleBinScreen extends StatefulWidget {
   const RecycleBinScreen({super.key});
@@ -223,7 +221,6 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -311,7 +308,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                         return Card(
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           color: isSelected
-                              ? theme.colorScheme.primaryContainer.withOpacity(0.4)
+                              ? theme.colorScheme.primaryContainer.withValues(alpha: 0.4)
                               : theme.colorScheme.surface,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
@@ -319,7 +316,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                             side: BorderSide(
                               color: isSelected
                                   ? theme.colorScheme.primary
-                                  : theme.dividerColor.withOpacity(0.08),
+                                  : theme.dividerColor.withValues(alpha: 0.08),
                               width: isSelected ? 1.5 : 1.0,
                             ),
                           ),
@@ -344,7 +341,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                     decoration: BoxDecoration(
                                       color: isSelected
                                           ? theme.colorScheme.primary
-                                          : theme.colorScheme.primary.withOpacity(0.08),
+                                          : theme.colorScheme.primary.withValues(alpha: 0.08),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: isSelected
@@ -371,7 +368,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                         Text(
                                           'Original Path: ${item.originalPath}',
                                           style: theme.textTheme.bodySmall?.copyWith(
-                                            color: theme.colorScheme.onSurface.withOpacity(0.4),
+                                            color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                                             fontSize: 11,
                                           ),
                                           maxLines: 1,
@@ -381,7 +378,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                         Text(
                                           'Deleted: ${FileUtils.formatDate(item.deletedAt)} • ${FileUtils.formatBytes(item.size, 1)}',
                                           style: theme.textTheme.bodySmall?.copyWith(
-                                            color: theme.colorScheme.onSurface.withOpacity(0.6),
+                                            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                                             fontSize: 11,
                                           ),
                                         ),
@@ -450,7 +447,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                         color: theme.colorScheme.surface,
                         border: Border(
                           top: BorderSide(
-                            color: theme.dividerColor.withOpacity(0.12),
+                            color: theme.dividerColor.withValues(alpha: 0.12),
                             width: 1,
                           ),
                         ),
@@ -504,13 +501,13 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.colorScheme.primary.withOpacity(0.08),
+                color: theme.colorScheme.primary.withValues(alpha: 0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Broken.trash,
                 size: 84,
-                color: theme.colorScheme.primary.withOpacity(0.7),
+                color: theme.colorScheme.primary.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 24),
@@ -525,7 +522,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             Text(
               'Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.',
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.5),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
               textAlign: TextAlign.center,
             ),
@@ -613,7 +610,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: 2),

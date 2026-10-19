@@ -187,9 +187,7 @@ class MediaProvider extends ChangeNotifier {
   Map<String, AssetEntity>? _videoNameMap;
 
   Map<String, SongModel> get audioPathMap {
-    if (_audioPathMap == null) {
-      _audioPathMap = {for (final s in _audios) s.data: s};
-    }
+    _audioPathMap ??= {for (final s in _audios) s.data: s};
     return _audioPathMap!;
   }
 

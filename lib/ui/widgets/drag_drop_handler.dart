@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -120,12 +119,12 @@ class _DragDropHandlerState extends State<DragDropHandler> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface.withOpacity(0.92),
+          color: theme.colorScheme.surface.withValues(alpha: 0.92),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: theme.colorScheme.primary.withOpacity(0.35), width: 1.5),
+          border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.35), width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: theme.colorScheme.shadow.withOpacity(0.18),
+              color: theme.colorScheme.shadow.withValues(alpha: 0.18),
               blurRadius: 16,
               offset: const Offset(0, 8),
             ),
@@ -198,10 +197,10 @@ class _DragDropHandlerState extends State<DragDropHandler> {
     // If it's a directory, wrap in a DragTarget to allow dropping items onto it
     if (widget.isDirectory) {
       return DragTarget<DragPayload>(
-        onWillAccept: (data) {
-          if (data == null || data.paths.isEmpty) return false;
-          if (data.paths.contains(widget.path)) return false;
-          if (data.paths.any((x) => widget.path.startsWith(x + p.separator))) return false;
+        onWillAcceptWithDetails: (data) {
+          if (data.data.paths.isEmpty) return false;
+          if (data.data.paths.contains(widget.path)) return false;
+          if (data.data.paths.any((x) => widget.path.startsWith(x + p.separator))) return false;
           
           setState(() {
             _isDragOver = true;
@@ -222,7 +221,7 @@ class _DragDropHandlerState extends State<DragDropHandler> {
           });
           _hoverTimer?.cancel();
         },
-        onAccept: (data) async {
+        onAcceptWithDetails: (data) async {
           setState(() {
             _isDragOver = false;
           });
@@ -230,11 +229,11 @@ class _DragDropHandlerState extends State<DragDropHandler> {
           if (provider.showDragDropDialog) {
             DragDropActionDialog.show(
               context: Navigator.of(context).context,
-              sourcePaths: data.paths,
+              sourcePaths: data.data.paths,
               initialTargetPath: widget.path,
             );
           } else {
-            await Future.wait(data.paths.map((p) => provider.moveItem(context, p, widget.path, showToast: false)));
+            await Future.wait(data.data.paths.map((p) => provider.moveItem(context, p, widget.path, showToast: false)));
             provider.clearSelection();
           }
         },
@@ -244,7 +243,7 @@ class _DragDropHandlerState extends State<DragDropHandler> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: _isDragOver
-                  ? theme.colorScheme.primary.withOpacity(0.12)
+                  ? theme.colorScheme.primary.withValues(alpha: 0.12)
                   : Colors.transparent,
               border: _isDragOver
                   ? Border.all(color: theme.colorScheme.primary, width: 2.0)

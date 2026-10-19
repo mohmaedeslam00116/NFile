@@ -397,7 +397,7 @@ class _IntentLoadingScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.colorScheme.primary.withOpacity(0.08),
+                color: theme.colorScheme.primary.withValues(alpha: 0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -411,7 +411,7 @@ class _IntentLoadingScreen extends StatelessWidget {
               width: 48,
               child: LinearProgressIndicator(
                 minHeight: 3,
-                backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+                backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
                 color: theme.colorScheme.primary,
                 borderRadius: const BorderRadius.all(Radius.circular(2)),
               ),
@@ -421,14 +421,14 @@ class _IntentLoadingScreen extends StatelessWidget {
               'Opening shared document...',
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: theme.colorScheme.onSurface.withOpacity(0.8),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
               ),
             ),
             const SizedBox(height: 6),
             Text(
               'Resolving secure content stream',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.5),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
             ),
           ],
@@ -456,7 +456,7 @@ class _StoragePermissionShield extends StatelessWidget {
                 Icon(
                   Broken.folder_cross,
                   size: 72,
-                  color: Theme.of(context).colorScheme.error.withOpacity(0.8),
+                  color: Theme.of(context).colorScheme.error.withValues(alpha: 0.8),
                 ),
                 const SizedBox(height: 24),
                 Text(

@@ -1105,25 +1105,25 @@ class FileManagerProvider extends ChangeNotifier {
       return;
     }
 
-    final isImage = (String name) {
+    bool isImage(String name) {
       final ext = p.extension(name).toLowerCase();
       return ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.heic', '.avif'].contains(ext);
-    };
+    }
 
-    final isVideo = (String name) {
+    bool isVideo(String name) {
       final ext = p.extension(name).toLowerCase();
       return ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.ts'].contains(ext);
-    };
+    }
 
-    final isAudio = (String name) {
+    bool isAudio(String name) {
       final ext = p.extension(name).toLowerCase();
       return ['.mp3', '.m4a', '.wav', '.flac', '.aac', '.ogg', '.opus', '.amr'].contains(ext);
-    };
+    }
 
-    final isDoc = (String name) {
+    bool isDoc(String name) {
       final ext = p.extension(name).toLowerCase();
       return ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.txt', '.csv'].contains(ext);
-    };
+    }
 
     final subscription = rootDir.list(recursive: true, followLinks: false).listen(
       (entity) {
@@ -1742,6 +1742,14 @@ class FileManagerProvider extends ChangeNotifier {
 
   void refreshDirectoryView() {
     // The Listing is derived on every read, so there is nothing to refresh.
+    notifyListeners();
+  }
+
+  /// Tell the application that the state changed.
+  ///
+  /// The state belongs to the provider; a screen that changed it asks the provider
+  /// to say so, instead of reaching into the notifier.
+  void refreshUi() {
     notifyListeners();
   }
 
@@ -2606,7 +2614,7 @@ class FileManagerProvider extends ChangeNotifier {
     activeTab.isLoading = true;
     notifyListeners();
 
-    if (context != null) {
+    if (context != null && context.mounted) {
       selectedPaths.clear();
       final destinationPath = p.join(currentPath, '$archiveName.$format');
       await BackgroundArchiveService.instance.startCompression(
@@ -2825,6 +2833,7 @@ class FileManagerProvider extends ChangeNotifier {
     if (hasNativeViewer(targetPath)) {
       final defaultAction = PreferencesService.getDefaultOpenAction(ext);
       if (defaultAction == 'native') {
+        if (!context.mounted) return;
         await openFileNatively(context, targetPath);
         return;
       } else if (defaultAction == 'external') {
@@ -2854,6 +2863,7 @@ class FileManagerProvider extends ChangeNotifier {
         final selectedType = result.substring('always_'.length);
         await PreferencesService.saveDefaultOpenAction(ext, selectedType);
         if (selectedType == 'native') {
+          if (!context.mounted) return;
           await openFileNatively(context, targetPath);
         } else {
           await OpenFilex.open(targetPath);
@@ -2861,6 +2871,7 @@ class FileManagerProvider extends ChangeNotifier {
       } else if (result.startsWith('just_once_')) {
         final selectedType = result.substring('just_once_'.length);
         if (selectedType == 'native') {
+          if (!context.mounted) return;
           await openFileNatively(context, targetPath);
         } else {
           await OpenFilex.open(targetPath);
@@ -2869,6 +2880,7 @@ class FileManagerProvider extends ChangeNotifier {
       return;
     }
 
+    if (!context.mounted) return;
     await openFileNatively(context, targetPath);
   }
 
@@ -2924,14 +2936,14 @@ class FileManagerProvider extends ChangeNotifier {
         }
       }
       
-      if (showToast) {
+      if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Moved $name successfully')),
         );
       }
     } catch (e) {
       debugPrint('Error moving item: $e');
-      if (showToast) {
+      if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to move item: $e')),
         );
@@ -2995,14 +3007,14 @@ class FileManagerProvider extends ChangeNotifier {
         }
       }
       
-      if (showToast) {
+      if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Copied $name successfully')),
         );
       }
     } catch (e) {
       debugPrint('Error copying item: $e');
-      if (showToast) {
+      if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to copy item: $e')),
         );

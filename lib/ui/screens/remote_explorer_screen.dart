@@ -15,14 +15,6 @@ import '../../services/remote/webdav_client.dart';
 import '../../services/remote/lan_client.dart';
 import '../../services/remote/saf_client.dart';
 
-// Clipboard for remote→local operations
-class _RemoteClipboard {
-  final List<RemoteFileItem> items;
-  final bool isCut;
-
-  const _RemoteClipboard({required this.items, required this.isCut});
-}
-
 class RemoteExplorerScreen extends StatefulWidget {
   final NetworkConnectionModel connection;
 
@@ -404,7 +396,6 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) {
-        final theme = Theme.of(ctx);
         return AlertDialog(
           title: const Text(
             'Delete Item',
@@ -474,7 +465,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
             decoration: InputDecoration(
               hintText: 'Folder name',
               hintStyle: TextStyle(
-                color: theme.colorScheme.onSurface.withOpacity(0.35),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.35),
               ),
               prefixIcon: Icon(
                 Broken.folder_open,
@@ -482,7 +473,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                 color: theme.colorScheme.primary,
               ),
               filled: true,
-              fillColor: theme.colorScheme.primary.withOpacity(0.04),
+              fillColor: theme.colorScheme.primary.withValues(alpha: 0.04),
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 14,
                 horizontal: 16,
@@ -540,7 +531,6 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
   void _showItemActions(RemoteFileItem item) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final provider = context.read<FileManagerProvider>();
 
     showModalBottomSheet(
       context: context,
@@ -562,7 +552,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   width: 36,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.onSurface.withOpacity(0.15),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -575,7 +565,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.primary.withOpacity(0.1),
+                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Icon(
@@ -604,7 +594,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                               : item.formattedSize,
                           style: TextStyle(
                             fontSize: 11.5,
-                            color: theme.colorScheme.onSurface.withOpacity(0.5),
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                           ),
                         ),
                       ],
@@ -706,7 +696,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, size: 18, color: color),
@@ -728,7 +718,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                       subtitle,
                       style: TextStyle(
                         fontSize: 11,
-                        color: theme.colorScheme.onSurface.withOpacity(0.45),
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.45),
                       ),
                     ),
                 ],
@@ -817,7 +807,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
 
     return PopScope(
       canPop: _currentPath == widget.connection.rootPath,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (didPop) return;
         _navigateUp();
       },
@@ -826,10 +816,11 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
             onPressed: () {
-              if (_currentPath != widget.connection.rootPath)
+              if (_currentPath != widget.connection.rootPath) {
                 _navigateUp();
-              else
+              } else {
                 Navigator.pop(context);
+              }
             },
           ),
           title: Column(
@@ -951,7 +942,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                         _errorMsg,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: theme.colorScheme.onSurface.withOpacity(0.5),
+                          color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -997,7 +988,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   Container(
                     height: 44,
                     width: double.infinity,
-                    color: theme.colorScheme.onSurface.withOpacity(0.03),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.03),
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: ScrollConfiguration(
                       behavior: const ScrollBehavior().copyWith(
@@ -1038,7 +1029,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                           : FontWeight.w500,
                                       color: isLast
                                           ? theme.colorScheme.onSurface
-                                                .withOpacity(0.9)
+                                                .withValues(alpha: 0.9)
                                           : theme.colorScheme.primary,
                                     ),
                                   ),
@@ -1049,7 +1040,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                   Icons.chevron_right_rounded,
                                   size: 14,
                                   color: theme.colorScheme.onSurface
-                                      .withOpacity(0.3),
+                                      .withValues(alpha: 0.3),
                                 ),
                             ],
                           );
@@ -1069,7 +1060,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                   Broken.folder_open,
                                   size: 56,
                                   color: theme.colorScheme.onSurface
-                                      .withOpacity(0.2),
+                                      .withValues(alpha: 0.2),
                                 ),
                                 const SizedBox(height: 14),
                                 Text(
@@ -1078,7 +1069,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: theme.colorScheme.onSurface
-                                        .withOpacity(0.4),
+                                        .withValues(alpha: 0.4),
                                   ),
                                 ),
                                 if (hasLocalClipboard) ...[
@@ -1130,7 +1121,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       color: theme.colorScheme.primary
-                                          .withOpacity(
+                                          .withValues(alpha: 
                                             item.isDirectory ? 0.1 : 0.04,
                                           ),
                                       borderRadius: BorderRadius.circular(12),
@@ -1141,7 +1132,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                           : Broken.document,
                                       size: 20,
                                       color: theme.colorScheme.primary
-                                          .withOpacity(
+                                          .withValues(alpha: 
                                             item.isDirectory ? 0.9 : 0.6,
                                           ),
                                     ),
@@ -1153,7 +1144,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                       fontWeight: FontWeight.w600,
                                       color: isInRemoteClip
                                           ? theme.colorScheme.primary
-                                                .withOpacity(0.6)
+                                                .withValues(alpha: 0.6)
                                           : null,
                                       decoration:
                                           (isInRemoteClip && provider.isCut)
@@ -1169,7 +1160,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                     style: TextStyle(
                                       fontSize: 11.5,
                                       color: theme.colorScheme.onSurface
-                                          .withOpacity(0.4),
+                                          .withValues(alpha: 0.4),
                                     ),
                                   ),
                                   trailing: PopupMenuButton<String>(
@@ -1177,7 +1168,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                       Icons.more_vert_rounded,
                                       size: 18,
                                       color: theme.colorScheme.onSurface
-                                          .withOpacity(0.4),
+                                          .withValues(alpha: 0.4),
                                     ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(16),
@@ -1302,7 +1293,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
   ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: theme.colorScheme.primary.withOpacity(0.08),
+      color: theme.colorScheme.primary.withValues(alpha: 0.08),
       child: Row(
         children: [
           Icon(
@@ -1365,7 +1356,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
             child: Icon(
               Icons.close_rounded,
               size: 18,
-              color: theme.colorScheme.onSurface.withOpacity(0.4),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
             ),
           ),
         ],
@@ -1375,7 +1366,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
 
   Widget _buildTransferOverlay(ThemeData theme, bool isDark) {
     return Container(
-      color: Colors.black.withOpacity(0.45),
+      color: Colors.black.withValues(alpha: 0.45),
       width: double.infinity,
       height: double.infinity,
       child: Center(
@@ -1402,7 +1393,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                     valueColor: AlwaysStoppedAnimation<Color>(
                       theme.colorScheme.primary,
                     ),
-                    backgroundColor: theme.colorScheme.primary.withOpacity(
+                    backgroundColor: theme.colorScheme.primary.withValues(alpha: 
                       0.15,
                     ),
                   ),
@@ -1413,7 +1404,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.onSurface.withOpacity(0.9),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.9),
                     fontFamily: 'LexendDeca',
                   ),
                 ),
@@ -1424,7 +1415,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                     _transferFileName,
                     style: TextStyle(
                       fontSize: 12,
-                      color: theme.colorScheme.onSurface.withOpacity(0.5),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 1,

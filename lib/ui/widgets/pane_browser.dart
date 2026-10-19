@@ -16,8 +16,6 @@ import 'drag_drop_action_dialog.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import '../../services/app_manager_service.dart';
 import '../../core/utils.dart';
-import 'file_item.dart';
-import 'folder_item.dart';
 import 'file_grid_item.dart';
 import 'folder_grid_item.dart';
 import 'drag_drop_handler.dart';
@@ -39,7 +37,6 @@ class _PaneBrowserState extends State<PaneBrowser> {
   final ScrollController _scrollController = ScrollController();
   late final TextEditingController _searchController;
   late final FocusNode _searchFocusNode;
-  String _lastSearchQuery = '';
 
   final List<String> _filters = [
     'All',
@@ -189,7 +186,6 @@ class _PaneBrowserState extends State<PaneBrowser> {
 
     if (_searchController.text != tab.searchQuery && !_searchFocusNode.hasFocus) {
       _searchController.text = tab.searchQuery;
-      _lastSearchQuery = tab.searchQuery;
     }
 
     return GestureDetector(
@@ -200,17 +196,17 @@ class _PaneBrowserState extends State<PaneBrowser> {
         curve: Curves.easeInOut,
         margin: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface.withOpacity(isActive ? 1.0 : 0.85),
+          color: theme.colorScheme.surface.withValues(alpha: isActive ? 1.0 : 0.85),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isActive 
-                ? theme.colorScheme.primary.withOpacity(0.8) 
-                : theme.colorScheme.outline.withOpacity(0.15),
+                ? theme.colorScheme.primary.withValues(alpha: 0.8) 
+                : theme.colorScheme.outline.withValues(alpha: 0.15),
             width: isActive ? 2.0 : 1.0,
           ),
           boxShadow: isActive ? [
             BoxShadow(
-              color: theme.colorScheme.primary.withOpacity(0.08),
+              color: theme.colorScheme.primary.withValues(alpha: 0.08),
               blurRadius: 8,
               spreadRadius: 1,
             )
@@ -227,11 +223,11 @@ class _PaneBrowserState extends State<PaneBrowser> {
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       color: isActive 
-                          ? theme.colorScheme.primary.withOpacity(0.06) 
-                          : theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                          ? theme.colorScheme.primary.withValues(alpha: 0.06) 
+                          : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                       border: Border(
                         bottom: BorderSide(
-                          color: theme.colorScheme.outline.withOpacity(0.1),
+                          color: theme.colorScheme.outline.withValues(alpha: 0.1),
                         ),
                       ),
                     ),
@@ -243,10 +239,10 @@ class _PaneBrowserState extends State<PaneBrowser> {
                           height: 8,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: isActive ? const Color(0xFF00C853) : Colors.grey.withOpacity(0.6),
+                            color: isActive ? const Color(0xFF00C853) : Colors.grey.withValues(alpha: 0.6),
                             boxShadow: isActive ? [
                               BoxShadow(
-                                color: const Color(0xFF00C853).withOpacity(0.4),
+                                color: const Color(0xFF00C853).withValues(alpha: 0.4),
                                 blurRadius: 4,
                                 spreadRadius: 1,
                               )
@@ -276,7 +272,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                   if (tab.displayLoading && visibleEntries.isNotEmpty)
                     LinearProgressIndicator(
                       minHeight: 2.0,
-                      backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+                      backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
                       valueColor: AlwaysStoppedAnimation<Color>(theme.colorScheme.primary),
                     ),
                   
@@ -284,13 +280,13 @@ class _PaneBrowserState extends State<PaneBrowser> {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    color: theme.colorScheme.surfaceVariant.withOpacity(0.15),
+                    color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.15),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       child: Row(
                         children: [
-                          Icon(Broken.folder, size: 14, color: theme.colorScheme.primary.withOpacity(0.7)),
+                          Icon(Broken.folder, size: 14, color: theme.colorScheme.primary.withValues(alpha: 0.7)),
                           const SizedBox(width: 4),
                           Text(
                             tab.currentPath,
@@ -298,7 +294,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'monospace',
-                              color: theme.colorScheme.onSurface.withOpacity(0.7),
+                              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                             ),
                           ),
                         ],
@@ -311,7 +307,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                     // Search Input Row
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                      color: theme.colorScheme.surfaceVariant.withOpacity(0.08),
+                      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.08),
                       child: Row(
                         children: [
                           Expanded(
@@ -358,7 +354,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                     Container(
                       height: 40,
                       padding: const EdgeInsets.symmetric(vertical: 4),
-                      color: theme.colorScheme.surfaceVariant.withOpacity(0.04),
+                      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.04),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -423,23 +419,23 @@ class _PaneBrowserState extends State<PaneBrowser> {
                   // --- Pane Body ---
                   Expanded(
                     child: DragTarget<DragPayload>(
-                      onWillAccept: (data) {
-                        if (data == null || data.paths.isEmpty) return false;
-                        final sourceParent = p.dirname(data.paths.first);
+                      onWillAcceptWithDetails: (data) {
+                        if (data.data.paths.isEmpty) return false;
+                        final sourceParent = p.dirname(data.data.paths.first);
                         if (sourceParent == tab.currentPath) return false;
-                        if (data.paths.any((x) => tab.currentPath == x || tab.currentPath.startsWith(x + p.separator))) return false;
+                        if (data.data.paths.any((x) => tab.currentPath == x || tab.currentPath.startsWith(x + p.separator))) return false;
                         return true;
                       },
-                      onAccept: (data) {
+                      onAcceptWithDetails: (data) {
                         _activatePane(provider);
                         if (provider.showDragDropDialog) {
                           DragDropActionDialog.show(
                             context: context,
-                            sourcePaths: data.paths,
+                            sourcePaths: data.data.paths,
                             initialTargetPath: tab.currentPath,
                           );
                         } else {
-                          for (final path in data.paths) {
+                          for (final path in data.data.paths) {
                             provider.moveItem(context, path, tab.currentPath);
                           }
                         }
@@ -480,13 +476,13 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                             Container(
                                                               padding: const EdgeInsets.all(16),
                                                               decoration: BoxDecoration(
-                                                                color: theme.colorScheme.primary.withOpacity(0.08),
+                                                                color: theme.colorScheme.primary.withValues(alpha: 0.08),
                                                                 shape: BoxShape.circle,
                                                               ),
                                                               child: Icon(
                                                                 Broken.search_normal_1,
                                                                 size: 48,
-                                                                color: theme.colorScheme.primary.withOpacity(0.6),
+                                                                color: theme.colorScheme.primary.withValues(alpha: 0.6),
                                                               ),
                                                             ),
                                                             const SizedBox(height: 16),
@@ -505,13 +501,13 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                             Container(
                                                               padding: const EdgeInsets.all(16),
                                                               decoration: BoxDecoration(
-                                                                color: theme.colorScheme.primary.withOpacity(0.08),
+                                                                color: theme.colorScheme.primary.withValues(alpha: 0.08),
                                                                 shape: BoxShape.circle,
                                                               ),
                                                               child: Icon(
                                                                 Broken.document_filter,
                                                                 size: 48,
-                                                                color: theme.colorScheme.primary.withOpacity(0.6),
+                                                                color: theme.colorScheme.primary.withValues(alpha: 0.6),
                                                               ),
                                                             ),
                                                             const SizedBox(height: 16),
@@ -530,13 +526,13 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                         Container(
                                                           padding: const EdgeInsets.all(16),
                                                           decoration: BoxDecoration(
-                                                            color: theme.colorScheme.primary.withOpacity(0.08),
+                                                            color: theme.colorScheme.primary.withValues(alpha: 0.08),
                                                             shape: BoxShape.circle,
                                                           ),
                                                           child: Icon(
                                                             Broken.folder_open,
                                                             size: 48,
-                                                            color: theme.colorScheme.primary.withOpacity(0.6),
+                                                            color: theme.colorScheme.primary.withValues(alpha: 0.6),
                                                           ),
                                                         ),
                                                         const SizedBox(height: 16),
@@ -573,14 +569,14 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                       final item = visibleEntries[index];
                                                       final isSelected = tab.selectedPaths.contains(item.path);
                                                       if (item.isDirectory) {
-                                                        final itemLongPress = () {
+                                                        void itemLongPress() {
                                                           _activatePane(provider);
                                                           if (isSelectionMode && isSelected) {
                                                             SelectionContextBottomSheet.show(context, provider, item.path);
                                                           } else {
                                                             provider.toggleSelection(item.path);
                                                           }
-                                                        };
+                                                        }
                                                         return DragDropHandler(
                                                           path: item.path,
                                                           isDirectory: true,
@@ -604,14 +600,14 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                           ),
                                                         );
                                                       } else {
-                                                        final itemLongPress = () {
+                                                        void itemLongPress() {
                                                           _activatePane(provider);
                                                           if (isSelectionMode && isSelected) {
                                                             SelectionContextBottomSheet.show(context, provider, item.path);
                                                           } else {
                                                             provider.toggleSelection(item.path);
                                                           }
-                                                        };
+                                                        }
                                                         return DragDropHandler(
                                                           path: item.path,
                                                           isDirectory: false,
@@ -691,14 +687,14 @@ class _PaneBrowserState extends State<PaneBrowser> {
     final theme = Theme.of(context);
     final isHighlighted = provider.forceHighlightedPaths.contains(folder.path) || (provider.enableFolderHighlight && provider.highlightedPaths.contains(folder.path));
 
-    final itemLongPress = () {
+    void itemLongPress() {
       _activatePane(provider);
       if (isSelectionMode && isSelected) {
         SelectionContextBottomSheet.show(context, provider, folder.path);
       } else {
         provider.toggleSelection(folder.path);
       }
-    };
+    }
 
     return DragDropHandler(
       path: folder.path,
@@ -718,9 +714,9 @@ class _PaneBrowserState extends State<PaneBrowser> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           decoration: BoxDecoration(
             color: isSelected
-                ? theme.colorScheme.primaryContainer.withOpacity(0.4)
+                ? theme.colorScheme.primaryContainer.withValues(alpha: 0.4)
                 : isHighlighted
-                    ? theme.colorScheme.primary.withOpacity(0.05)
+                    ? theme.colorScheme.primary.withValues(alpha: 0.05)
                     : Colors.transparent,
             border: isHighlighted
                 ? Border(
@@ -738,7 +734,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? theme.colorScheme.primary
-                        : theme.colorScheme.primary.withOpacity(0.1),
+                        : theme.colorScheme.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Icon(
@@ -803,7 +799,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                   return Text(
                                     countStr,
                                     style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.textTheme.bodySmall?.color?.withOpacity(0.55),
+                                      color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                                       fontSize: 10.5,
                                     ),
                                     maxLines: 1,
@@ -813,7 +809,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                   return Text(
                                     '$countStr • ${FileUtils.formatDate(folder.modified, use24Hour: provider.use24HourFormat)}',
                                     style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.textTheme.bodySmall?.color?.withOpacity(0.55),
+                                      color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                                       fontSize: 10.5,
                                     ),
                                     maxLines: 1,
@@ -826,7 +822,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                             return Text(
                               FileUtils.formatDate(folder.modified, use24Hour: provider.use24HourFormat),
                               style: theme.textTheme.bodySmall?.copyWith(
-                                color: theme.textTheme.bodySmall?.color?.withOpacity(0.55),
+                                color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                                 fontSize: 10.5,
                               ),
                               maxLines: 1,
@@ -856,16 +852,15 @@ class _PaneBrowserState extends State<PaneBrowser> {
     final theme = Theme.of(context);
     final isHighlighted = provider.forceHighlightedPaths.contains(file.path) || (provider.enableFolderHighlight && provider.highlightedPaths.contains(file.path));
     final iconColor = FileUtils.getColorForFile(file.path, context);
-    final isArchive = FileUtils.isArchive(file.path);
 
-    final itemLongPress = () {
+    void itemLongPress() {
       _activatePane(provider);
       if (isSelectionMode && isSelected) {
         SelectionContextBottomSheet.show(context, provider, file.path);
       } else {
         provider.toggleSelection(file.path);
       }
-    };
+    }
 
     return DragDropHandler(
       path: file.path,
@@ -885,9 +880,9 @@ class _PaneBrowserState extends State<PaneBrowser> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           decoration: BoxDecoration(
             color: isSelected
-                ? theme.colorScheme.primaryContainer.withOpacity(0.4)
+                ? theme.colorScheme.primaryContainer.withValues(alpha: 0.4)
                 : isHighlighted
-                    ? theme.colorScheme.primary.withOpacity(0.05)
+                    ? theme.colorScheme.primary.withValues(alpha: 0.05)
                     : Colors.transparent,
             border: isHighlighted
                 ? Border(
@@ -905,7 +900,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? theme.colorScheme.primary
-                        : iconColor.withOpacity(0.1),
+                        : iconColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: ClipRRect(
@@ -939,7 +934,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                           ? FileUtils.formatBytes(file.size, 1)
                           : "${FileUtils.formatDate(file.modified, use24Hour: provider.use24HourFormat)}   ${FileUtils.formatBytes(file.size, 1)}",
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.textTheme.bodySmall?.color?.withOpacity(0.55),
+                        color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                         fontSize: 10.5,
                       ),
                       maxLines: 1,
@@ -997,9 +992,9 @@ class _PaneBrowserState extends State<PaneBrowser> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.12),
+          color: color.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: color.withOpacity(0.25), width: 1.2),
+          border: Border.all(color: color.withValues(alpha: 0.25), width: 1.2),
         ),
         child: Row(
           children: [
@@ -1011,7 +1006,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
-                  color: theme.colorScheme.onSurface.withOpacity(0.9),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.9),
                 ),
               ),
             ),
@@ -1021,7 +1016,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
               child: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.15),
+                  color: color.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -1038,7 +1033,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
               child: Container(
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.2),
+                  color: color.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(Broken.close_square, color: color, size: 13),
@@ -1144,14 +1139,14 @@ class _CompactMediaThumbnailState extends State<_CompactMediaThumbnail> {
         final ext = extIndex != -1 ? nameLower.substring(extIndex) : '';
         if (ext.isNotEmpty) {
           final baseName = nameLower.substring(0, extIndex);
-          if (titleLower == baseName || '${titleLower}${ext}' == nameLower) {
+          if (titleLower == baseName || '$titleLower$ext' == nameLower) {
             return true;
           }
         }
         
         // Case 3: Match via mimeType
         final mimeExt = v.mimeType?.split("/").last.toLowerCase();
-        if (mimeExt != null && '${titleLower}.$mimeExt' == nameLower) {
+        if (mimeExt != null && '$titleLower.$mimeExt' == nameLower) {
           return true;
         }
         
@@ -1234,7 +1229,7 @@ class _CompactMediaThumbnailState extends State<_CompactMediaThumbnail> {
           Center(
             child: Container(
               padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(color: Colors.black.withOpacity(0.6), shape: BoxShape.circle),
+              decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.6), shape: BoxShape.circle),
               child: Icon(Broken.video, color: Colors.white, size: 10),
             ),
           ),
@@ -1256,7 +1251,7 @@ class _CompactMediaThumbnailState extends State<_CompactMediaThumbnail> {
           Center(
             child: Container(
               padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(color: Colors.black.withOpacity(0.6), shape: BoxShape.circle),
+              decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.6), shape: BoxShape.circle),
               child: Icon(Broken.music, color: Colors.white, size: 10),
             ),
           ),

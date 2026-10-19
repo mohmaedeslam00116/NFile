@@ -613,14 +613,42 @@ same way the browser does.
 
 ### Steps
 
-- [ ] **9.1** Add `flutter analyze` and `flutter test` steps to the build workflow.
-- [ ] **9.2** Run the workflow locally-equivalent commands; commit:
-      `ci: analyze and test on every build`.
+- [x] **9.1** Make the analysis pass: the repository carried 1128 findings, so a gate on
+      it could never be green. The automated fixes came first, then the rest by hand.
+- [x] **9.2** Add the pipeline that runs the analysis and the tests
+      (`.github/workflows/checks.yml`), next to the pipeline that builds the APK.
+- [x] **9.3** Run the analysis and the tests locally — both pass.
+- [x] **9.4** Commit: `ci: run the analysis and the tests on every change`.
 
 **Acceptance criteria**
 
-- [ ] The workflow runs `flutter analyze` and `flutter test`.
-- [ ] Both pass on `main`.
+- [x] The workflow runs `flutter analyze` and `flutter test`.
+- [x] Both pass on `main`.
+
+**Notes recorded while executing this task**
+
+- The analysis found 1128 findings: 988 of them were `withOpacity`, 62 were
+  `use_build_context_synchronously`, and 33 were warnings about code that nothing
+  reads. `flutter analyze` fails on any of them, so the pipeline could not be green
+  until they were dealt with.
+- `Color.withOpacity` and `Color.withValues(alpha:)` both *replace* the alpha of the
+  colour — the source of the engine says so — so the 822 call sites moved over
+  without changing a single pixel. The difference is precision: the old call went
+  through eight bits, the new one keeps the double.
+- The SDK's own fixes renamed some theme members (`surfaceVariant` became
+  `surfaceContainerHighest`) and moved the drag-and-drop callbacks to the API that
+  carries the payload. That last one needed the bodies rewritten too: the automated
+  fix changed the signature and left `details.paths` behind.
+- The share sheet moved to the API of share_plus 12.
+- Eighteen warnings were code that nothing read: unused imports, fields, locals and
+  one class. They are gone. One of them was a screen reaching into the provider's
+  protected notifier; the provider now offers `refreshUi()` for that.
+- One rule stays off: `use_build_context_synchronously`. The application uses a
+  BuildContext after an await in 53 places, and fixing them means capturing the
+  Navigator or checking `mounted` at every site — in screens that have no tests to
+  catch a mistake. The exclusion is written down in `analysis_options.yaml`.
+- The pipeline pins Flutter 3.41.7, the version the analysis was verified against.
+  A gate that moves with the newest release breaks without anyone changing code.
 
 ---
 
