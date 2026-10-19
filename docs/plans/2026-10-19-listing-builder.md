@@ -527,18 +527,34 @@ side with a flag between them.
 
 ### Steps
 
-- [ ] **6.1** Rename `FolderTab.currentFiles` to `entries` and `searchResults` to
+- [x] **6.1** Rename `FolderTab.currentFiles` to `entries` and `searchResults` to
       `searchEntries`; add a `ListingScope` to the tab.
-- [ ] **6.2** Remove `FolderTab.displayFiles` and the duplicated "is a search active?"
+- [x] **6.2** Remove `FolderTab.displayFiles` and the duplicated "is a search active?"
       condition.
-- [ ] **6.3** Update the consumers (`directory_screen`, `pane_browser`); run
+- [x] **6.3** Update the consumers (`directory_screen`, `pane_browser`); run
       `flutter analyze` and `flutter test`; commit:
       `refactor(listing): one set of Entries and a Source per tab`.
 
 **Acceptance criteria**
 
-- [ ] The duplicated search condition exists in one place only.
-- [ ] `flutter analyze` is clean; all tests pass.
+- [x] The duplicated search condition exists in one place only.
+- [x] `flutter analyze` is clean; all tests pass.
+
+**Notes recorded while executing this task**
+
+- The scope of the tab is derived from the tab's own state — `isSearchActive` and
+  `currentPath` — so it can never disagree with the entries the tab holds. A stored
+  scope would have needed to be updated wherever the path changed.
+- The tab keeps the entries of the directory and the entries of the search apart.
+  Closing a search shows the directory again without reading the disk again; with a
+  single list the entries of the directory would be gone and the directory would
+  have to be loaded again.
+- The condition "is a search active?" now lives in the tab alone: the scope and the
+  source entries are two getters over the same field. The provider asks the tab
+  (`tab.scope`, `tab.sourceEntries`) and never decides for itself.
+- `displayFiles` is gone; `sourceEntries` says what it holds — the entries of the
+  tab's source, before the rules order and narrow them.
+
 
 ---
 

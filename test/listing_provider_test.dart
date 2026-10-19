@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:nfile/core/listing/listing_scope.dart';
 import 'package:nfile/models/file_filter_type.dart';
 import 'package:nfile/models/file_item_model.dart';
 import 'package:nfile/models/folder_tab_model.dart';
@@ -43,7 +44,7 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
+        entries: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
       );
       final provider = providerWith(tab);
 
@@ -58,7 +59,7 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
+        entries: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
       );
       final provider = providerWith(tab);
 
@@ -71,8 +72,8 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/directory-entry.txt')],
-        searchResults: [entry('/d/found.txt')],
+        entries: [entry('/d/directory-entry.txt')],
+        searchEntries: [entry('/d/found.txt')],
         isSearchActive: true,
       );
       final provider = providerWith(tab);
@@ -84,8 +85,8 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt', size: 1)],
-        searchResults: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
+        entries: [entry('/d/a.txt', size: 1)],
+        searchEntries: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
         isSearchActive: true,
       );
       final provider = providerWith(tab);
@@ -101,7 +102,7 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt')],
+        entries: [entry('/d/a.txt')],
       );
       final provider = providerWith(tab);
 
@@ -114,7 +115,7 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt')],
+        entries: [entry('/d/a.txt')],
       );
       final provider = providerWith(tab);
 
@@ -126,7 +127,7 @@ void main() {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
+        entries: [entry('/d/a.txt', size: 1), entry('/d/b.txt', size: 99)],
       );
       final provider = providerWith(tab);
 
@@ -139,31 +140,50 @@ void main() {
     });
   });
 
+  group('the tab', () {
+    test('knows the source of its entries', () {
+      final tab = FolderTab(
+        id: 'tab-1',
+        currentPath: '/d',
+        entries: [entry('/d/a.txt')],
+        searchEntries: [entry('/d/found.txt')],
+      );
+
+      expect(tab.scope, isA<DirectoryScope>());
+      expect(tab.sourceEntries, tab.entries);
+
+      tab.isSearchActive = true;
+
+      expect(tab.scope, isA<SearchScope>());
+      expect(tab.sourceEntries, tab.searchEntries);
+    });
+  });
+
   group('the visible order is derived, not stored', () {
     test('pinning a path during a search leaves the directory Entries untouched', () async {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/directory.txt')],
+        entries: [entry('/d/directory.txt')],
       );
       final provider = providerWith(tab);
       tab.isSearchActive = true;
-      tab.searchResults = [entry('/d/found.txt')];
+      tab.searchEntries = [entry('/d/found.txt')];
 
       await provider.togglePinPath('/d/found.txt');
 
-      expect(namesOf(tab.currentFiles), ['directory.txt']);
+      expect(namesOf(tab.entries), ['directory.txt']);
     });
 
     test('the visible list of a search is ordered by the Sort Rule', () {
       final tab = FolderTab(
         id: 'tab-1',
         currentPath: '/d',
-        currentFiles: [entry('/d/directory.txt')],
+        entries: [entry('/d/directory.txt')],
       );
       final provider = providerWith(tab);
       tab.isSearchActive = true;
-      tab.searchResults = [entry('/d/b.txt'), entry('/d/a.txt')];
+      tab.searchEntries = [entry('/d/b.txt'), entry('/d/a.txt')];
 
       expect(namesOf(provider.currentFiles), ['a.txt', 'b.txt']);
     });

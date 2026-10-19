@@ -26,7 +26,6 @@ import '../core/listing/filter_rule.dart';
 import '../core/listing/listing.dart';
 import '../core/listing/listing_cache.dart';
 import '../core/listing/listing_inputs.dart';
-import '../core/listing/listing_scope.dart';
 import '../services/preferences_service.dart';
 import '../services/app_manager_service.dart';
 import '../models/custom_shortcut_model.dart';
@@ -875,8 +874,8 @@ class FileManagerProvider extends ChangeNotifier {
     return _listingCache.listingFor(
       tab.id,
       ListingInputs(
-        entries: tab.displayFiles,
-        scope: _scopeFor(tab),
+        entries: tab.sourceEntries,
+        scope: tab.scope,
         sortRule: _sortType,
         folderOverrides: _folderSortTypes,
         filter: _filterType,
@@ -885,13 +884,6 @@ class FileManagerProvider extends ChangeNotifier {
         pinnedPaths: PinService.pinnedPaths,
       ),
     );
-  }
-
-  /// The scope of a Tab: one directory, or the search it is running.
-  ListingScope _scopeFor(FolderTab tab) {
-    return tab.isSearchActive
-        ? SearchScope(tab.currentPath)
-        : DirectoryScope(tab.currentPath);
   }
 
   // --- Tab Management ---
@@ -959,7 +951,7 @@ class FileManagerProvider extends ChangeNotifier {
     final dup = FolderTab(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       currentPath: active.currentPath,
-      currentFiles: List.from(active.currentFiles),
+      entries: List.from(active.entries),
       isRestrictedMode: active.isRestrictedMode,
       needsPermission: active.needsPermission,
       useRootMode: active.useRootMode,
@@ -988,7 +980,7 @@ class FileManagerProvider extends ChangeNotifier {
       final dup = FolderTab(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         currentPath: tab.currentPath,
-        currentFiles: List.from(tab.currentFiles),
+        entries: List.from(tab.entries),
         isRestrictedMode: tab.isRestrictedMode,
         needsPermission: tab.needsPermission,
         useRootMode: tab.useRootMode,
@@ -1036,7 +1028,7 @@ class FileManagerProvider extends ChangeNotifier {
 
     tab.searchQuery = query.trim();
     tab.searchFilter = filter;
-    tab.searchResults = [];
+    tab.searchEntries = [];
 
     if (tab.searchQuery.isEmpty) {
       tab.isSearching = false;
@@ -1074,7 +1066,7 @@ class FileManagerProvider extends ChangeNotifier {
       if (matchingDocs.isNotEmpty) {
         Future.wait(matchingDocs.map((doc) => FileItemModel.fromEntityAsync(doc))).then((resolvedDocs) {
           if (tabIndex < _tabs.length && _tabs[tabIndex].id == tab.id) {
-            _tabs[tabIndex].searchResults = [..._tabs[tabIndex].searchResults, ...resolvedDocs];
+            _tabs[tabIndex].searchEntries = [..._tabs[tabIndex].searchEntries, ...resolvedDocs];
             notifyListeners();
           }
         });
@@ -1101,7 +1093,7 @@ class FileManagerProvider extends ChangeNotifier {
     }
 
     if (currentBatch.isNotEmpty) {
-      tab.searchResults = List.from(currentBatch);
+      tab.searchEntries = List.from(currentBatch);
       notifyListeners();
     }
 
@@ -1158,7 +1150,7 @@ class FileManagerProvider extends ChangeNotifier {
             seenPaths.add(entity.path);
             FileItemModel.fromEntityAsync(entity).then((item) {
               if (tabIndex < _tabs.length && _tabs[tabIndex].id == tab.id) {
-                _tabs[tabIndex].searchResults = [..._tabs[tabIndex].searchResults, item];
+                _tabs[tabIndex].searchEntries = [..._tabs[tabIndex].searchEntries, item];
                 notifyListeners();
               }
             });
@@ -1196,7 +1188,7 @@ class FileManagerProvider extends ChangeNotifier {
     cancelSearchForTab(tab.id);
     tab.isSearchActive = false;
     tab.searchQuery = '';
-    tab.searchResults = [];
+    tab.searchEntries = [];
     tab.isSearching = false;
   }
 
@@ -1625,7 +1617,7 @@ class FileManagerProvider extends ChangeNotifier {
       } else {
         activeTab.needsPermission = true;
         activeTab.currentPath = path;
-        activeTab.currentFiles = [];
+        activeTab.entries = [];
         activeTab.isLoading = false;
         notifyListeners();
         return;
@@ -1636,10 +1628,10 @@ class FileManagerProvider extends ChangeNotifier {
         final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
 
         // The source produces the Entries; the Listing decides what the user sees.
-        activeTab.currentFiles = items;
+        activeTab.entries = items;
       } catch (e) {
         debugPrint('Error loading restricted directory: $e');
-        activeTab.currentFiles = [];
+        activeTab.entries = [];
       }
       activeTab.isLoading = false;
       notifyListeners();
@@ -1660,7 +1652,7 @@ class FileManagerProvider extends ChangeNotifier {
 
         // The source produces the Entries; the Listing decides what the user sees.
         // A hidden entry is absent unless the user asked to see them.
-        activeTab.currentFiles = items
+        activeTab.entries = items
             .where((item) => _showHiddenFiles || !item.isHidden)
             .toList();
       }
@@ -1681,7 +1673,7 @@ class FileManagerProvider extends ChangeNotifier {
       } else {
         activeTab.needsPermission = true;
         activeTab.currentPath = path;
-        activeTab.currentFiles = [];
+        activeTab.entries = [];
         activeTab.isLoading = false;
         notifyListeners();
         return;
@@ -1692,10 +1684,10 @@ class FileManagerProvider extends ChangeNotifier {
         final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
 
         // The source produces the Entries; the Listing decides what the user sees.
-        activeTab.currentFiles = items;
+        activeTab.entries = items;
       } catch (err) {
         debugPrint('Error loading restricted directory fallback: $err');
-        activeTab.currentFiles = [];
+        activeTab.entries = [];
       }
     }
 
@@ -2555,12 +2547,12 @@ class FileManagerProvider extends ChangeNotifier {
         final stat = await file.stat();
         bool updated = false;
         for (var tab in _tabs) {
-          final index = tab.currentFiles.indexWhere((item) => item.path == filePath);
+          final index = tab.entries.indexWhere((item) => item.path == filePath);
           if (index != -1) {
-            final oldItem = tab.currentFiles[index];
+            final oldItem = tab.entries[index];
             // The list is replaced, not changed in place: the cache of the Listing
             // reads a new list as new Entries.
-            tab.currentFiles = [...tab.currentFiles]
+            tab.entries = [...tab.entries]
               ..[index] = FileItemModel(
                 entity: oldItem.entity,
                 name: oldItem.name,
