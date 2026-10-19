@@ -19,16 +19,7 @@ class ListingCache {
     final cached = _cached[key];
     if (cached != null && cached.inputs == inputs) return cached.listing;
 
-    final listing = _builder.build(
-      entries: inputs.entries,
-      scope: inputs.scope,
-      sortRule: inputs.sortRule,
-      folderOverrides: inputs.folderOverrides,
-      filter: inputs.filter,
-      showHiddenFiles: inputs.showHiddenFiles,
-      showFoldersInFilter: inputs.showFoldersInFilter,
-      pinnedPaths: inputs.pinnedPaths,
-    );
+    final listing = _builder.build(inputs);
 
     _cached[key] = _CachedListing(inputs, listing);
     return listing;

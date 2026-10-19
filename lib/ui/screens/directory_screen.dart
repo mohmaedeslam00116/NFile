@@ -676,49 +676,49 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             provider,
                             setStateModal,
                             'Name (A-Z)',
-                            FileSortType.nameAsc,
+                            SortRule.nameAsc,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Name (Z-A)',
-                            FileSortType.nameDesc,
+                            SortRule.nameDesc,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Newest',
-                            FileSortType.dateNewest,
+                            SortRule.dateNewest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Oldest',
-                            FileSortType.dateOldest,
+                            SortRule.dateOldest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Size (Large)',
-                            FileSortType.sizeLargest,
+                            SortRule.sizeLargest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Size (Small)',
-                            FileSortType.sizeSmallest,
+                            SortRule.sizeSmallest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
                             'Type',
-                            FileSortType.type,
+                            SortRule.type,
                           ),
                         ],
                       ),
@@ -882,7 +882,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
     FileManagerProvider provider,
     StateSetter setStateModal,
     String label,
-    FileSortType sortType,
+    SortRule sortType,
   ) {
     final theme = Theme.of(context);
     final activeSort = provider.getSortTypeForPath(provider.currentPath);
@@ -902,7 +902,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           : theme.colorScheme.surfaceContainerHighest,
       onPressed: () {
         provider.setSortType(sortType);
-        if (sortType == FileSortType.type) {
+        if (sortType == SortRule.type) {
           Navigator.pop(context); // Close the sort sheet
           FileFilterBottomSheet.show(context); // Open filter sheet
         } else {
@@ -1310,7 +1310,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (_scrollController.hasClients) {
               provider.resetScrollToHighlight();
-              final firstHighlightedIndex = provider.currentFiles.indexWhere(
+              final firstHighlightedIndex = provider.activeListing.entries.indexWhere(
                 (f) => provider.highlightedPaths.contains(f.path),
               );
               if (firstHighlightedIndex != -1) {
@@ -1364,7 +1364,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
               centerTitle: false,
               title: isSelectionMode
                   ? Text(
-                      '${provider.selectedPaths.length}/${provider.currentFiles.length}',
+                      '${provider.selectedPaths.length}/${provider.activeListing.entries.length}',
                     )
                   : provider.activeTab.isSearchActive
                   ? TextField(
@@ -1545,7 +1545,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       await PinService.pin(path);
                                     }
                                   }
-                                  provider.refreshDirectoryView();
+                                  provider.refreshUi();
                                   provider.clearSelection();
                                   if (context.mounted) {
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -1787,7 +1787,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                   _buildActiveFilterBanner(context, provider),
                 if (provider.activeTab.isSearchActive)
                   _buildSearchFilterChips(context, provider),
-                if (provider.isLoading && provider.currentFiles.isNotEmpty)
+                if (provider.isLoading && provider.activeListing.entries.isNotEmpty)
                   LinearProgressIndicator(
                     minHeight: 2.5,
                     backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
@@ -1866,7 +1866,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                 ],
                               )
                             : (provider.isLoading &&
-                                  provider.currentFiles.isEmpty)
+                                  provider.activeListing.entries.isEmpty)
                             ? const Center(child: CircularProgressIndicator())
                             : provider.needsPermission
                             ? RestrictedFolderBanner(
@@ -1922,7 +1922,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                             ),
                                             const SizedBox(width: 6),
                                             Text(
-                                              'folders: ${provider.currentFiles.where((e) => e.isDirectory).length}',
+                                              'folders: ${provider.activeListing.folderCount}',
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w600,
@@ -1943,7 +1943,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                             ),
                                             const SizedBox(width: 6),
                                             Text(
-                                              'files: ${provider.currentFiles.where((e) => !e.isDirectory).length}',
+                                              'files: ${provider.activeListing.fileCount}',
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w600,
@@ -1957,7 +1957,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                         ),
                                       ),
                                     ),
-                                  if (provider.currentFiles.isEmpty)
+                                  if (provider.activeListing.entries.isEmpty)
                                     SliverFillRemaining(
                                       hasScrollBody: false,
                                       child: Center(
@@ -2243,8 +2243,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                               ),
                                               delegate: SliverChildBuilderDelegate(
                                                 (context, index) {
-                                                  final item = provider
-                                                      .currentFiles[index];
+                                                  final item = provider.activeListing
+                                                      .entries[index];
                                                   final isSelected = provider
                                                       .selectedPaths
                                                       .contains(item.path);
@@ -2364,16 +2364,16 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                     );
                                                   }
                                                 },
-                                                childCount: provider
-                                                    .currentFiles
+                                                childCount: provider.activeListing
+                                                    .entries
                                                     .length,
                                               ),
                                             )
                                           : SliverList(
                                               delegate: SliverChildBuilderDelegate(
                                                 (context, index) {
-                                                  final item = provider
-                                                      .currentFiles[index];
+                                                  final item = provider.activeListing
+                                                      .entries[index];
                                                   final isSelected = provider
                                                       .selectedPaths
                                                       .contains(item.path);
@@ -2493,8 +2493,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                     );
                                                   }
                                                 },
-                                                childCount: provider
-                                                    .currentFiles
+                                                childCount: provider.activeListing
+                                                    .entries
                                                     .length,
                                               ),
                                             ),
@@ -2602,9 +2602,9 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                           icon: const Icon(Broken.tick_square),
                           tooltip: 'Select Mode',
                           onPressed: () {
-                            if (provider.currentFiles.isNotEmpty) {
+                            if (provider.activeListing.entries.isNotEmpty) {
                               provider.toggleSelection(
-                                provider.currentFiles.first.path,
+                                provider.activeListing.entries.first.path,
                               );
                             }
                           },

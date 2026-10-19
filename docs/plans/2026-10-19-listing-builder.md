@@ -684,6 +684,71 @@ same way the browser does.
 
 ---
 
+## Review of the whole branch
+
+The branch was reviewed along two axes, by two reviewers that never saw each other's
+findings: one against the standards of the repository, one against the spec. What
+they found, and what was done about it:
+
+**The rules of the domain that the code did not honour**
+
+- The search carried its own classification, and it disagreed with the Kind
+  vocabulary: an `.odt` was a document in a directory and nothing in a search. The
+  search now asks the Kind vocabulary. The lists it had were narrower, so a search
+  finds a few more files than it did — the same files the Filter of a directory
+  keeps.
+- The hidden-files rule was applied in three places: by the builder, by the source
+  that produced the entries, and by the service that listed them. The source now
+  produces the entries as they are, and the rule lives in the builder alone.
+- The per-path facts did not follow their path in three places: a rename in a
+  restricted directory, a cut and paste, and the recycle bin — where the item was
+  only trashed and could be restored, so its facts had to stay. Each of the three
+  now behaves like the rule says.
+
+**The language of the domain, in the names**
+
+- `FileSortType` said the thing CONTEXT.md asks not to say. It is `SortRule` now.
+- `currentFiles` returned the Listing under a name CONTEXT.md asks not to use. The
+  interface reads `activeListing.entries` now, and the getter is gone.
+- `displayFiles` was already gone; `sourceEntries` says what it holds.
+
+**The shapes**
+
+- The eight inputs of a Listing travelled in two declarations. The builder takes a
+  `ListingInputs` now, and the cache hands it straight over.
+- The Listing Scope decided the rule in one switch and the filter in another.
+  CONTEXT.md says the scope decides whether a Folder Sort Override applies, so the
+  scope now answers both, and the builder asks it.
+- The picker and the address bar each built a Listing by hand. The provider offers
+  `listingForDirectory` now, and both use it.
+- The two methods that moved the per-path facts were the same shape twice. They
+  share `_applyPathFacts` now.
+- `refreshDirectoryView` and `refreshUi` did the same thing. There is one now.
+
+**A defect in the cache's key**
+
+- `ListingInputs.hashCode` hashed the overrides and the pins in the order they
+  happened to be in, while `==` compared them without an order. Two inputs that
+  compare equal could hash differently, which breaks the contract of a hash. The
+  order does not matter now.
+
+**A test that was weaker than it looked**
+
+- The regression test of the search overwrite asserted that the directory entries
+  were untouched, and nothing else: it would have passed if pinning did nothing at
+  all. It now asserts that the pin was applied and that the search listing hoists
+  it.
+
+**What was left alone, and why**
+
+- The `use_build_context_synchronously` rule stays off. The reason is written down
+  in `analysis_options.yaml`.
+- `Listing.folderCount` and `Listing.fileCount` stay: the plan asked for them, and
+  the interface now reads them instead of counting again.
+
+
+---
+
 ## Review Focus
 
 The five failure modes most likely to bite, each with the test that covers it:

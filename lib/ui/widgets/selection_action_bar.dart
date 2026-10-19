@@ -165,7 +165,7 @@ class SelectionActionBar extends StatelessWidget {
                       await PinService.pin(path);
                     }
                   }
-                  provider.refreshDirectoryView();
+                  provider.refreshUi();
                   provider.clearSelection();
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -286,7 +286,7 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
     int folders = 0;
     int files = 0;
 
-    final currentFilesMap = {for (var f in widget.provider.currentFiles) f.path: f};
+    final currentFilesMap = {for (var f in widget.provider.activeListing.entries) f.path: f};
 
     for (final path in widget.selectedPaths) {
       try {

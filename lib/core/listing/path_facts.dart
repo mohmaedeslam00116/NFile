@@ -8,7 +8,7 @@ import 'sort_rule.dart';
 /// end with a deleted one. See `CONTEXT.md`.
 class PathFacts {
   /// The Sort Rule of each folder that overrides the global one.
-  final Map<String, FileSortType> folderOverrides;
+  final Map<String, SortRule> folderOverrides;
 
   /// The paths the user pinned.
   final Set<String> pinnedPaths;
@@ -23,7 +23,7 @@ class PathFacts {
   /// A folder that moved takes its own facts with it, and the facts of everything
   /// inside it move as well.
   PathFacts moved(String oldPath, String newPath) {
-    final overrides = <String, FileSortType>{
+    final overrides = <String, SortRule>{
       for (final entry in folderOverrides.entries)
         _moved(entry.key, oldPath, newPath): entry.value,
     };
@@ -39,7 +39,7 @@ class PathFacts {
   /// A deleted folder takes its own facts with it, and the facts of everything
   /// inside it end with it.
   PathFacts deleted(String path) {
-    final overrides = <String, FileSortType>{
+    final overrides = <String, SortRule>{
       for (final entry in folderOverrides.entries)
         if (!_isWithin(path, entry.key)) entry.key: entry.value,
     };

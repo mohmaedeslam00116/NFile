@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nfile/core/listing/listing.dart';
 import 'package:nfile/core/listing/listing_builder.dart';
+import 'package:nfile/core/listing/listing_inputs.dart';
 import 'package:nfile/core/listing/listing_scope.dart';
 import 'package:nfile/core/listing/sort_rule.dart';
 import 'package:nfile/models/file_filter_type.dart';
@@ -31,22 +32,24 @@ FileItemModel entry(
 Listing listing(
   List<FileItemModel> entries, {
   ListingScope scope = const DirectoryScope('/d'),
-  FileSortType sortRule = FileSortType.nameAsc,
-  Map<String, FileSortType> folderOverrides = const {},
+  SortRule sortRule = SortRule.nameAsc,
+  Map<String, SortRule> folderOverrides = const {},
   FileFilterType filter = FileFilterType.all,
   bool showHiddenFiles = false,
   bool showFoldersInFilter = true,
   Set<String> pinnedPaths = const {},
 }) =>
     ListingBuilder().build(
-      entries: entries,
-      scope: scope,
-      sortRule: sortRule,
-      folderOverrides: folderOverrides,
-      filter: filter,
-      showHiddenFiles: showHiddenFiles,
-      showFoldersInFilter: showFoldersInFilter,
-      pinnedPaths: pinnedPaths,
+      ListingInputs(
+        entries: entries,
+        scope: scope,
+        sortRule: sortRule,
+        folderOverrides: folderOverrides,
+        filter: filter,
+        showHiddenFiles: showHiddenFiles,
+        showFoldersInFilter: showFoldersInFilter,
+        pinnedPaths: pinnedPaths,
+      ),
     );
 
 List<String> namesOf(List<FileItemModel> entries) =>
@@ -88,7 +91,7 @@ void main() {
     test('orders that directory Listing by the override', () {
       final result = listing(
         entries,
-        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        folderOverrides: const {'/d': SortRule.sizeLargest},
       );
 
       expect(namesOf(result.entries), ['b.txt', 'a.txt']);
@@ -98,7 +101,7 @@ void main() {
       final result = listing(
         entries,
         scope: const DirectoryScope('/other'),
-        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        folderOverrides: const {'/d': SortRule.sizeLargest},
       );
 
       expect(namesOf(result.entries), ['a.txt', 'b.txt']);
@@ -108,7 +111,7 @@ void main() {
       final result = listing(
         entries,
         scope: const SearchScope('/d'),
-        folderOverrides: const {'/d': FileSortType.sizeLargest},
+        folderOverrides: const {'/d': SortRule.sizeLargest},
       );
 
       expect(namesOf(result.entries), ['a.txt', 'b.txt']);

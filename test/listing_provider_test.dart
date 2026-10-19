@@ -50,7 +50,7 @@ void main() {
 
       // The global rule sorts by name; the override of this folder sorts by size.
       provider.setFolderOverrideEnabled('/d', true);
-      provider.setSortType(FileSortType.sizeLargest);
+      provider.setSortType(SortRule.sizeLargest);
 
       expect(namesOf(provider.listingFor(tab).entries), ['b.txt', 'a.txt']);
     });
@@ -63,7 +63,7 @@ void main() {
       );
       final provider = providerWith(tab);
 
-      provider.setSortType(FileSortType.nameAsc);
+      provider.setSortType(SortRule.nameAsc);
 
       expect(namesOf(provider.listingFor(tab).entries), ['a.txt', 'b.txt']);
     });
@@ -92,7 +92,7 @@ void main() {
       final provider = providerWith(tab);
 
       provider.setFolderOverrideEnabled('/d', true);
-      provider.setSortType(FileSortType.sizeLargest);
+      provider.setSortType(SortRule.sizeLargest);
 
       // The search spans folders, so it keeps the global rule: by name.
       expect(namesOf(provider.listingFor(tab).entries), ['a.txt', 'b.txt']);
@@ -132,7 +132,7 @@ void main() {
       final provider = providerWith(tab);
 
       final before = provider.listingFor(tab);
-      provider.setSortType(FileSortType.sizeLargest);
+      provider.setSortType(SortRule.sizeLargest);
       final after = provider.listingFor(tab);
 
       expect(after, isNot(same(before)));
@@ -199,6 +199,10 @@ void main() {
       await provider.togglePinPath('/d/found.txt');
 
       expect(namesOf(tab.entries), ['directory.txt']);
+      // The pin was applied: the found entry is hoisted to the top of the search
+      // Listing, and the directory Entries are still the directory's.
+      expect(PinService.isPinned('/d/found.txt'), isTrue);
+      expect(namesOf(provider.listingFor(tab).entries), ['found.txt']);
     });
 
     test('the visible list of a search is ordered by the Sort Rule', () {
@@ -211,7 +215,7 @@ void main() {
       tab.isSearchActive = true;
       tab.searchEntries = [entry('/d/b.txt'), entry('/d/a.txt')];
 
-      expect(namesOf(provider.currentFiles), ['a.txt', 'b.txt']);
+      expect(namesOf(provider.activeListing.entries), ['a.txt', 'b.txt']);
     });
 
     test('the visible list is narrowed by the Filter, not by the load', () async {      final dir = await Directory.systemTemp.createTemp('nfile-listing');
@@ -229,7 +233,7 @@ void main() {
 
       provider.setFilterType(FileFilterType.images);
 
-      expect(namesOf(provider.currentFiles), ['a.png']);
+      expect(namesOf(provider.activeListing.entries), ['a.png']);
     });
   });
 }

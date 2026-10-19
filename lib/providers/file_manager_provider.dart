@@ -26,6 +26,7 @@ import '../core/listing/filter_rule.dart';
 import '../core/listing/listing.dart';
 import '../core/listing/listing_cache.dart';
 import '../core/listing/listing_inputs.dart';
+import '../core/listing/listing_scope.dart';
 import '../core/listing/path_facts.dart';
 import '../services/preferences_service.dart';
 import '../services/app_manager_service.dart';
@@ -50,7 +51,7 @@ import 'media_provider.dart';
 // The Sort Rule vocabulary lives with the rules that order a Listing, not with the
 // state layer. Re-exported so every existing import path keeps resolving.
 import '../core/listing/sort_rule.dart';
-export '../core/listing/sort_rule.dart' show FileSortType;
+export '../core/listing/sort_rule.dart' show SortRule;
 
 class StorageVolume {
   final String name;
@@ -340,11 +341,11 @@ class FileManagerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  FileSortType _sortType = FileSortType.nameAsc;
-  FileSortType get sortType => _sortType;
+  SortRule _sortType = SortRule.nameAsc;
+  SortRule get sortType => _sortType;
 
-  Map<String, FileSortType> _folderSortTypes = {};
-  Map<String, FileSortType> get folderSortTypes => _folderSortTypes;
+  Map<String, SortRule> _folderSortTypes = {};
+  Map<String, SortRule> get folderSortTypes => _folderSortTypes;
 
   bool isFolderOverrideEnabled(String path) {
     return _folderSortTypes.containsKey(path);
@@ -362,11 +363,11 @@ class FileManagerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  FileSortType getSortTypeForPath(String path) {
+  SortRule getSortTypeForPath(String path) {
     return _folderSortTypes[path] ?? _sortType;
   }
 
-  void setSortType(FileSortType type) {
+  void setSortType(SortRule type) {
     final path = currentPath;
     final hasOverride = isFolderOverrideEnabled(path);
     
@@ -872,11 +873,20 @@ class FileManagerProvider extends ChangeNotifier {
   /// The Listing is derived, never stored: the Tab holds the Entries of its
   /// Listing Source, and the rules decide what the user sees.
   Listing listingFor(FolderTab tab) {
+    return _listingCache.listingFor(tab.id, _inputsFor(tab));
+  }
+
+  /// The Listing of the entries of one directory, with the rules of the
+  /// application.
+  ///
+  /// The picker and the address bar show a directory, and they show it the way
+  /// the browser does.
+  Listing listingForDirectory(String path, List<FileItemModel> entries) {
     return _listingCache.listingFor(
-      tab.id,
+      'directory:$path',
       ListingInputs(
-        entries: tab.sourceEntries,
-        scope: tab.scope,
+        entries: entries,
+        scope: DirectoryScope(path),
         sortRule: _sortType,
         folderOverrides: _folderSortTypes,
         filter: _filterType,
@@ -884,6 +894,19 @@ class FileManagerProvider extends ChangeNotifier {
         showFoldersInFilter: !_hideFoldersInFilter,
         pinnedPaths: PinService.pinnedPaths,
       ),
+    );
+  }
+
+  ListingInputs _inputsFor(FolderTab tab) {
+    return ListingInputs(
+      entries: tab.sourceEntries,
+      scope: tab.scope,
+      sortRule: _sortType,
+      folderOverrides: _folderSortTypes,
+      filter: _filterType,
+      showHiddenFiles: _showHiddenFiles,
+      showFoldersInFilter: !_hideFoldersInFilter,
+      pinnedPaths: PinService.pinnedPaths,
     );
   }
 
@@ -1106,44 +1129,31 @@ class FileManagerProvider extends ChangeNotifier {
       return;
     }
 
-    bool isImage(String name) {
-      final ext = p.extension(name).toLowerCase();
-      return ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.heic', '.avif'].contains(ext);
-    }
-
-    bool isVideo(String name) {
-      final ext = p.extension(name).toLowerCase();
-      return ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.ts'].contains(ext);
-    }
-
-    bool isAudio(String name) {
-      final ext = p.extension(name).toLowerCase();
-      return ['.mp3', '.m4a', '.wav', '.flac', '.aac', '.ogg', '.opus', '.amr'].contains(ext);
-    }
-
-    bool isDoc(String name) {
-      final ext = p.extension(name).toLowerCase();
-      return ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.txt', '.csv'].contains(ext);
-    }
+    // The search narrows its results with its own vocabulary, but the Kind of a
+    // file is decided in one place: the Kind vocabulary.
+    bool isOfKind(String path, Kind kind) => kindsOf(path).contains(kind);
 
     final subscription = rootDir.list(recursive: true, followLinks: false).listen(
       (entity) {
         final name = p.basename(entity.path);
         if (name.toLowerCase().contains(qLower)) {
           final isDir = entity is Directory;
-          
+
           bool matchFilter = false;
           if (filter == 'All') {
             matchFilter = true;
           } else if (filter == 'Folders' && isDir) {
             matchFilter = true;
-          } else if (filter == 'Images' && !isDir && isImage(name)) {
+          } else if (filter == 'Images' && !isDir && isOfKind(entity.path, Kind.image)) {
             matchFilter = true;
-          } else if (filter == 'Videos' && !isDir && isVideo(name)) {
+          } else if (filter == 'Videos' && !isDir && isOfKind(entity.path, Kind.video)) {
             matchFilter = true;
-          } else if (filter == 'Audio' && !isDir && isAudio(name)) {
+          } else if (filter == 'Audio' && !isDir && isOfKind(entity.path, Kind.audio)) {
             matchFilter = true;
-          } else if (filter == 'Docs' && !isDir && isDoc(name)) {
+          } else if (filter == 'Docs' &&
+              !isDir &&
+              (isOfKind(entity.path, Kind.document) ||
+                  isOfKind(entity.path, Kind.text))) {
             matchFilter = true;
           }
 
@@ -1199,11 +1209,6 @@ class FileManagerProvider extends ChangeNotifier {
   }
 
   // --- Active Tab Delegations ---
-  /// The entries the user sees in the active Tab.
-  ///
-  /// This is the derived Listing, never a stored list: the tab holds the Entries
-  /// of its source, and the rules decide the order and the narrowing.
-  List<FileItemModel> get currentFiles => activeListing.entries;
   String get currentPath => activeTab.currentPath;
   bool get isLoading => activeTab.isSearchActive ? activeTab.isSearching : activeTab.isLoading;
   bool get isRestrictedMode => activeTab.isRestrictedMode;
@@ -1626,7 +1631,7 @@ class FileManagerProvider extends ChangeNotifier {
 
       try {
         activeTab.currentPath = path;
-        final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
+        final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: true);
 
         // The source produces the Entries; the Listing decides what the user sees.
         activeTab.entries = items;
@@ -1652,10 +1657,7 @@ class FileManagerProvider extends ChangeNotifier {
         final items = await Future.wait(entities.map((e) => FileItemModel.fromEntityAsync(e)));
 
         // The source produces the Entries; the Listing decides what the user sees.
-        // A hidden entry is absent unless the user asked to see them.
-        activeTab.entries = items
-            .where((item) => _showHiddenFiles || !item.isHidden)
-            .toList();
+        activeTab.entries = items;
       }
     } catch (e) {
       debugPrint('Error loading directory: $e. Fallback to restricted mode.');
@@ -1682,7 +1684,7 @@ class FileManagerProvider extends ChangeNotifier {
 
       try {
         activeTab.currentPath = path;
-        final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
+        final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: true);
 
         // The source produces the Entries; the Listing decides what the user sees.
         activeTab.entries = items;
@@ -1724,7 +1726,7 @@ class FileManagerProvider extends ChangeNotifier {
 
   void selectAll() {
     selectedPaths.clear();
-    selectedPaths.addAll(currentFiles.map((f) => f.path));
+    selectedPaths.addAll(activeListing.entries.map((f) => f.path));
     notifyListeners();
   }
 
@@ -1741,15 +1743,10 @@ class FileManagerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void refreshDirectoryView() {
-    // The Listing is derived on every read, so there is nothing to refresh.
-    notifyListeners();
-  }
-
   /// Tell the application that the state changed.
   ///
-  /// The state belongs to the provider; a screen that changed it asks the provider
-  /// to say so, instead of reaching into the notifier.
+  /// The state belongs to the provider; a screen that changed it asks the
+  /// provider to say so, instead of reaching into the notifier.
   void refreshUi() {
     notifyListeners();
   }
@@ -1832,6 +1829,8 @@ class FileManagerProvider extends ChangeNotifier {
           final destPath = p.join(currentPath, name);
           if (_isCut) {
             await RootShizukuService.moveItem(srcPath, destPath, useRoot: useRootMode);
+            // The per-path facts follow the path: a cut and paste is a move.
+            await _movePathFacts(srcPath, destPath);
           } else {
             await RootShizukuService.copyItem(srcPath, destPath, useRoot: useRootMode);
           }
@@ -2163,6 +2162,8 @@ class FileManagerProvider extends ChangeNotifier {
               await dir.delete(recursive: true);
             }
           }
+          // The per-path facts follow the path: a cut and paste is a move.
+          await _movePathFacts(srcPath, p.join(currentPath, p.basename(srcPath)));
         }
       }
 
@@ -2469,6 +2470,8 @@ class FileManagerProvider extends ChangeNotifier {
   Future<void> deleteFile(String path) async {
     try {
       if (RecycleBinService.isEnabled()) {
+        // The item was only trashed: the path is still there, and it can be
+        // restored, so its per-path facts stay with it.
         await RecycleBinService.moveToTrash(path, useRoot: useRootMode);
       } else {
         if (isRestrictedPath(path)) {
@@ -2481,10 +2484,10 @@ class FileManagerProvider extends ChangeNotifier {
             await File(path).delete();
           }
         }
+        // The per-path facts end with the path: a deleted folder leaves neither
+        // an override nor a pin behind.
+        await _deletePathFacts(path);
       }
-      // The per-path facts end with the path: a deleted folder leaves neither an
-      // override nor a pin behind.
-      await _deletePathFacts(path);
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
     } catch (e) {
       debugPrint('Error deleting file: $e');
@@ -2496,50 +2499,51 @@ class FileManagerProvider extends ChangeNotifier {
   /// A renamed or moved folder keeps its Folder Sort Override and its Pinned Path,
   /// and everything inside it moves with it.
   Future<void> _movePathFacts(String oldPath, String newPath) async {
-    final moved = PathFacts(
-      folderOverrides: _folderSortTypes,
-      pinnedPaths: PinService.pinnedPaths,
-    ).moved(oldPath, newPath);
-
-    _folderSortTypes
-      ..clear()
-      ..addAll(moved.folderOverrides);
-    PreferencesService.saveFolderSortTypes(_folderSortTypes);
-    await PinService.replacePinnedPaths(moved.pinnedPaths);
-    notifyListeners();
+    await _applyPathFacts(
+      PathFacts(
+        folderOverrides: _folderSortTypes,
+        pinnedPaths: PinService.pinnedPaths,
+      ).moved(oldPath, newPath),
+    );
   }
 
   /// The per-path facts end with the path they name.
   ///
   /// A deleted folder leaves neither an override nor a pin behind.
   Future<void> _deletePathFacts(String path) async {
-    final remaining = PathFacts(
-      folderOverrides: _folderSortTypes,
-      pinnedPaths: PinService.pinnedPaths,
-    ).deleted(path);
+    await _applyPathFacts(
+      PathFacts(
+        folderOverrides: _folderSortTypes,
+        pinnedPaths: PinService.pinnedPaths,
+      ).deleted(path),
+    );
+  }
 
+  /// Keep the facts the rules of the domain say should remain.
+  Future<void> _applyPathFacts(PathFacts facts) async {
     _folderSortTypes
       ..clear()
-      ..addAll(remaining.folderOverrides);
+      ..addAll(facts.folderOverrides);
     PreferencesService.saveFolderSortTypes(_folderSortTypes);
-    await PinService.replacePinnedPaths(remaining.pinnedPaths);
+    await PinService.replacePinnedPaths(facts.pinnedPaths);
     notifyListeners();
   }
 
   Future<void> renameFile(String oldPath, String newName) async {
     try {
+      final newPath = p.join(p.dirname(oldPath), newName);
       if (isRestrictedPath(oldPath)) {
         await RootShizukuService.renameItem(oldPath, newName, useRoot: useRootMode);
       } else {
-        final newPath = p.join(p.dirname(oldPath), newName);
         final type = FileSystemEntity.typeSync(oldPath);
         if (type == FileSystemEntityType.directory) {
           await Directory(oldPath).rename(newPath);
         } else {
           await File(oldPath).rename(newPath);
         }
-        await _movePathFacts(oldPath, newPath);
       }
+      // The per-path facts follow the path, however the rename happened.
+      await _movePathFacts(oldPath, newPath);
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
     } catch (e) {
       debugPrint('Error renaming file: $e');
@@ -2759,7 +2763,7 @@ class FileManagerProvider extends ChangeNotifier {
     if (mimeType.startsWith('image/')) {
       Navigator.push(context, MaterialPageRoute(builder: (_) => ImageViewerScreen(imagePath: path)));
     } else if (mimeType.startsWith('video/')) {
-      final folderVideoFiles = currentFiles
+      final folderVideoFiles = activeListing.entries
           .where((f) => !f.isDirectory && (lookupMimeType(f.path)?.startsWith('video/') == true || FileUtils.isVideo(f.path)))
           .map((f) => f.path)
           .toList();
@@ -2777,7 +2781,7 @@ class FileManagerProvider extends ChangeNotifier {
         ),
       );
     } else if (mimeType.startsWith('audio/')) {
-      final folderAudioFiles = currentFiles
+      final folderAudioFiles = activeListing.entries
           .where((f) => !f.isDirectory && (lookupMimeType(f.path)?.startsWith('audio/') == true))
           .toList();
       

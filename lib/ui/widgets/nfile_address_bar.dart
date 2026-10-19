@@ -4,12 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart' as p;
 import '../../providers/file_manager_provider.dart';
-import '../../core/listing/listing_builder.dart';
-import '../../core/listing/listing_scope.dart';
 import '../../models/drag_payload.dart';
-import '../../models/file_filter_type.dart';
 import '../../models/file_item_model.dart';
-import '../../services/pin_service.dart';
 import '../../services/root_shizuku_service.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import 'drag_drop_action_dialog.dart';
@@ -210,15 +206,9 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
 
       // The suggestions are ordered the way the browser orders its entries: the
       // same Sort Rule, the same Folder Sort Override, the same Pinned Paths.
-      final listing = const ListingBuilder().build(
-        entries: results.map((entity) => FileItemModel.fromEntity(entity)).toList(),
-        scope: DirectoryScope(parentPath),
-        sortRule: provider.sortType,
-        folderOverrides: provider.folderSortTypes,
-        filter: FileFilterType.all,
-        showHiddenFiles: provider.showHiddenFiles,
-        showFoldersInFilter: true,
-        pinnedPaths: PinService.pinnedPaths,
+      final listing = provider.listingForDirectory(
+        parentPath,
+        results.map((entity) => FileItemModel.fromEntity(entity)).toList(),
       );
       results = listing.entries.map((entry) => entry.entity).toList();
 

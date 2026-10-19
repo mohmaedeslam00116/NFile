@@ -17,10 +17,10 @@ class ListingInputs {
   final ListingScope scope;
 
   /// The rule that orders the Listing, before a Folder Sort Override replaces it.
-  final FileSortType sortRule;
+  final SortRule sortRule;
 
   /// The rules that order one folder instead of the global one.
-  final Map<String, FileSortType> folderOverrides;
+  final Map<String, SortRule> folderOverrides;
 
   /// The Filter that narrows the Listing.
   final FileFilterType filter;
@@ -64,12 +64,15 @@ class ListingInputs {
         identityHashCode(entries),
         scope,
         sortRule,
+        // The order must not matter: two inputs that compare equal have to hash
+        // the same, whatever order the map and the set happen to hold.
+        Object.hashAll(folderOverrides.keys.toList()..sort()),
         Object.hashAll(
-          folderOverrides.entries.map((e) => Object.hash(e.key, e.value)),
+          folderOverrides.values.map((rule) => rule.index).toList()..sort(),
         ),
+        Object.hashAll(pinnedPaths.toList()..sort()),
         filter,
         showHiddenFiles,
         showFoldersInFilter,
-        Object.hashAll(pinnedPaths),
       );
 }

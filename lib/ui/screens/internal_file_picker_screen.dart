@@ -3,15 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
 import '../../core/icon_fonts/broken_icons.dart';
-import '../../core/listing/listing.dart';
-import '../../core/listing/listing_builder.dart';
-import '../../core/listing/listing_scope.dart';
 import '../../core/utils.dart';
-import '../../models/file_filter_type.dart';
 import '../../models/file_item_model.dart';
 import 'package:provider/provider.dart';
 import '../../providers/file_manager_provider.dart';
-import '../../services/pin_service.dart';
 import '../../services/root_shizuku_service.dart';
 import '../widgets/file_action_dialogs.dart';
 
@@ -58,27 +53,6 @@ class _InternalFilePickerScreenState extends State<InternalFilePickerScreen> {
     super.dispose();
   }
 
-  /// The Listing of the entries the picker shows.
-  ///
-  /// The picker orders its entries the way the browser does: the same Sort Rule,
-  /// the same Folder Sort Override, the same hidden-files rule.
-  Listing _listingOf(
-    List<FileItemModel> entries,
-    String path,
-    FileManagerProvider provider,
-  ) {
-    return const ListingBuilder().build(
-      entries: entries,
-      scope: DirectoryScope(path),
-      sortRule: provider.sortType,
-      folderOverrides: provider.folderSortTypes,
-      filter: FileFilterType.all,
-      showHiddenFiles: provider.showHiddenFiles,
-      showFoldersInFilter: true,
-      pinnedPaths: PinService.pinnedPaths,
-    );
-  }
-
   Future<void> _loadDirectory(String path) async {
     setState(() => _isLoading = true);
 
@@ -107,7 +81,7 @@ class _InternalFilePickerScreenState extends State<InternalFilePickerScreen> {
         if (mounted) {
           setState(() {
             _currentPath = path;
-            _items = _listingOf([...folders, ...files], path, provider).entries;
+            _items = provider.listingForDirectory(path, [...folders, ...files]).entries;
             _isLoading = false;
           });
 
@@ -143,7 +117,7 @@ class _InternalFilePickerScreenState extends State<InternalFilePickerScreen> {
 
         if (mounted) {
           setState(() {
-            _items = _listingOf([...folders, ...files], path, provider).entries;
+            _items = provider.listingForDirectory(path, [...folders, ...files]).entries;
             _isLoading = false;
           });
 

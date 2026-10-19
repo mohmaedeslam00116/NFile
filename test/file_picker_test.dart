@@ -32,7 +32,7 @@ void main() {
       addTearDown(() => dir.delete(recursive: true));
 
       final provider = FileManagerProvider();
-      provider.setSortType(FileSortType.sizeLargest);
+      provider.setSortType(SortRule.sizeLargest);
 
       // The screen reads the disk when it starts, so it has to be built in the
       // real zone: in the fake zone the reading never finishes.

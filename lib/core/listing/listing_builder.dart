@@ -6,7 +6,7 @@ import '../kind.dart';
 import '../utils.dart';
 import 'filter_rule.dart';
 import 'listing.dart';
-import 'listing_scope.dart';
+import 'listing_inputs.dart';
 import 'sort_rule.dart';
 
 /// Derives the visible Listing from the Entries of a Listing Source and the rules
@@ -19,34 +19,27 @@ class ListingBuilder {
 
   /// Folders come before files; each group follows the Sort Rule; a Pinned Path is
   /// hoisted to the top of its own group — never above the other group.
-  Listing build({
-    required List<FileItemModel> entries,
-    required ListingScope scope,
-    required FileSortType sortRule,
-    required Map<String, FileSortType> folderOverrides,
-    required FileFilterType filter,
-    required bool showHiddenFiles,
-    required bool showFoldersInFilter,
-    required Set<String> pinnedPaths,
-  }) {
+  ///
+  /// The Listing Scope decides two things: whether a Folder Sort Override applies,
+  /// and whether the Filter of a directory applies.
+  Listing build(ListingInputs inputs) {
     final visible = _narrow(
-      entries,
-      filter: _effectiveFilter(scope, filter),
-      showHiddenFiles: showHiddenFiles,
-      showFoldersInFilter: showFoldersInFilter,
+      inputs.entries,
+      filter: inputs.scope.filterOf(inputs.filter),
+      showHiddenFiles: inputs.showHiddenFiles,
+      showFoldersInFilter: inputs.showFoldersInFilter,
     );
 
     final folders = visible.where((e) => e.isDirectory).toList();
     final files = visible.where((e) => !e.isDirectory).toList();
 
-    final effectiveRule = _effectiveSortRule(
-      scope: scope,
-      globalRule: sortRule,
-      folderOverrides: folderOverrides,
+    final effectiveRule = inputs.scope.ruleOf(
+      globalRule: inputs.sortRule,
+      folderOverrides: inputs.folderOverrides,
     );
 
-    _sort(folders, effectiveRule, pinnedPaths);
-    _sort(files, effectiveRule, pinnedPaths);
+    _sort(folders, effectiveRule, inputs.pinnedPaths);
+    _sort(files, effectiveRule, inputs.pinnedPaths);
 
     return Listing(
       entries: [...folders, ...files],
@@ -85,51 +78,25 @@ class ListingBuilder {
     return kept;
   }
 
-  /// The Filter that narrows this Listing.
-  ///
-  /// A Listing produced by a search is not narrowed by the Filter of a directory:
-  /// the search narrowed its own results with its own vocabulary.
-  FileFilterType _effectiveFilter(ListingScope scope, FileFilterType filter) {
-    return switch (scope) {
-      DirectoryScope() => filter,
-      SearchScope() => FileFilterType.all,
-    };
-  }
-
-  /// The rule that orders this Listing.
-  ///
-  /// A Folder Sort Override applies to the Listing of the folder it names. A
-  /// Listing produced by a search spans folders, so it uses the global rule.
-  FileSortType _effectiveSortRule({
-    required ListingScope scope,
-    required FileSortType globalRule,
-    required Map<String, FileSortType> folderOverrides,
-  }) {
-    return switch (scope) {
-      DirectoryScope(:final location) => folderOverrides[location] ?? globalRule,
-      SearchScope() => globalRule,
-    };
-  }
-
   void _sort(
     List<FileItemModel> items,
-    FileSortType sortRule,
+    SortRule sortRule,
     Set<String> pinnedPaths,
   ) {
     switch (sortRule) {
-      case FileSortType.nameAsc:
+      case SortRule.nameAsc:
         items.sort((a, b) => FileUtils.compareNatural(a.name, b.name));
-      case FileSortType.nameDesc:
+      case SortRule.nameDesc:
         items.sort((a, b) => FileUtils.compareNatural(b.name, a.name));
-      case FileSortType.dateNewest:
+      case SortRule.dateNewest:
         items.sort((a, b) => b.modified.compareTo(a.modified));
-      case FileSortType.dateOldest:
+      case SortRule.dateOldest:
         items.sort((a, b) => a.modified.compareTo(b.modified));
-      case FileSortType.sizeLargest:
+      case SortRule.sizeLargest:
         items.sort((a, b) => b.size.compareTo(a.size));
-      case FileSortType.sizeSmallest:
+      case SortRule.sizeSmallest:
         items.sort((a, b) => a.size.compareTo(b.size));
-      case FileSortType.type:
+      case SortRule.type:
         items.sort(
           (a, b) => p.extension(a.name).toLowerCase().compareTo(
                 p.extension(b.name).toLowerCase(),
