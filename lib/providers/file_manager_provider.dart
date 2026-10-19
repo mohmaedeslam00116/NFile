@@ -357,14 +357,8 @@ class FileManagerProvider extends ChangeNotifier {
       _folderSortTypes.remove(path);
     }
     PreferencesService.saveFolderSortTypes(_folderSortTypes);
-    
-    if (_tabs.isNotEmpty && currentPath == path) {
-      final folders = currentFiles.where((e) => e.isDirectory).toList();
-      final files = currentFiles.where((e) => !e.isDirectory).toList();
-      _sortList(folders, path);
-      _sortList(files, path);
-      activeTab.currentFiles = [...folders, ...files];
-    }
+
+    // The rule changed; the Listing is derived again on the next read.
     notifyListeners();
   }
 
@@ -386,13 +380,7 @@ class FileManagerProvider extends ChangeNotifier {
       PreferencesService.saveSortType(_sortType);
     }
     
-    if (_tabs.isNotEmpty) {
-      final folders = currentFiles.where((e) => e.isDirectory).toList();
-      final files = currentFiles.where((e) => !e.isDirectory).toList();
-      _sortList(folders, path);
-      _sortList(files, path);
-      activeTab.currentFiles = [...folders, ...files];
-    }
+    // The rule changed; the Listing is derived again on the next read.
     notifyListeners();
   }
 
@@ -423,10 +411,6 @@ class FileManagerProvider extends ChangeNotifier {
   /// method and the derived Listing agree about every file.
   static bool matchesFilterForType(String path, FileFilterType filter) {
     return matchesFilter(kindsOf(path), filter);
-  }
-
-  bool _matchesFilter(String path) {
-    return matchesFilterForType(path, _filterType);
   }
 
   final Map<String, int> _folderMatchingFileCounts = {};
@@ -511,53 +495,6 @@ class FileManagerProvider extends ChangeNotifier {
     _itemPaddingMultiplier = clamped;
     PreferencesService.saveItemPaddingMultiplier(_itemPaddingMultiplier);
     notifyListeners();
-  }
-
-  void _sortList(List<FileItemModel> items, String path) {
-    final activeSort = getSortTypeForPath(path);
-    switch (activeSort) {
-      case FileSortType.nameAsc:
-        items.sort((a, b) => FileUtils.compareNatural(a.name, b.name));
-        break;
-      case FileSortType.nameDesc:
-        items.sort((a, b) => FileUtils.compareNatural(b.name, a.name));
-        break;
-      case FileSortType.dateNewest:
-        items.sort((a, b) => b.modified.compareTo(a.modified));
-        break;
-      case FileSortType.dateOldest:
-        items.sort((a, b) => a.modified.compareTo(b.modified));
-        break;
-      case FileSortType.sizeLargest:
-        items.sort((a, b) => b.size.compareTo(a.size));
-        break;
-      case FileSortType.sizeSmallest:
-        items.sort((a, b) => a.size.compareTo(b.size));
-        break;
-      case FileSortType.type:
-        items.sort((a, b) {
-          final extA = p.extension(a.name).toLowerCase();
-          final extB = p.extension(b.name).toLowerCase();
-          return extA.compareTo(extB);
-        });
-        break;
-    }
-
-    // Stable-sort pinned files/folders to the top of the list!
-    if (items.isNotEmpty) {
-      final pinned = <FileItemModel>[];
-      final unpinned = <FileItemModel>[];
-      for (final item in items) {
-        if (PinService.isPinned(item.path)) {
-          pinned.add(item);
-        } else {
-          unpinned.add(item);
-        }
-      }
-      items.clear();
-      items.addAll(pinned);
-      items.addAll(unpinned);
-    }
   }
 
   bool _showHiddenFiles = false;
@@ -1269,7 +1206,11 @@ class FileManagerProvider extends ChangeNotifier {
   }
 
   // --- Active Tab Delegations ---
-  List<FileItemModel> get currentFiles => activeTab.isSearchActive ? activeTab.searchResults : activeTab.currentFiles;
+  /// The entries the user sees in the active Tab.
+  ///
+  /// This is the derived Listing, never a stored list: the tab holds the Entries
+  /// of its source, and the rules decide the order and the narrowing.
+  List<FileItemModel> get currentFiles => activeListing.entries;
   String get currentPath => activeTab.currentPath;
   bool get isLoading => activeTab.isSearchActive ? activeTab.isSearching : activeTab.isLoading;
   bool get isRestrictedMode => activeTab.isRestrictedMode;
@@ -1693,17 +1634,9 @@ class FileManagerProvider extends ChangeNotifier {
       try {
         activeTab.currentPath = path;
         final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
-        final folders = items.where((e) => e.isDirectory).toList();
-        final files = items.where((e) => !e.isDirectory).toList();
 
-        final filteredFiles = _filterType == FileFilterType.all
-            ? files
-            : files.where((e) => _matchesFilter(e.path)).toList();
-        final filteredFolders = (_filterType != FileFilterType.all && _hideFoldersInFilter) ? <FileItemModel>[] : folders;
-
-        _sortList(filteredFolders, path);
-        _sortList(filteredFiles, path);
-        activeTab.currentFiles = [...filteredFolders, ...filteredFiles];
+        // The source produces the Entries; the Listing decides what the user sees.
+        activeTab.currentFiles = items;
       } catch (e) {
         debugPrint('Error loading restricted directory: $e');
         activeTab.currentFiles = [];
@@ -1722,32 +1655,14 @@ class FileManagerProvider extends ChangeNotifier {
       if (await dir.exists()) {
         activeTab.currentPath = path;
         final entities = await dir.list().toList();
-        
-        final folders = <FileItemModel>[];
-        final files = <FileItemModel>[];
 
         final items = await Future.wait(entities.map((e) => FileItemModel.fromEntityAsync(e)));
 
-        for (var item in items) {
-          if (!_showHiddenFiles && item.isHidden) {
-            continue;
-          }
-          if (item.isDirectory) {
-            folders.add(item);
-          } else {
-            files.add(item);
-          }
-        }
-
-        final filteredFiles = _filterType == FileFilterType.all
-            ? files
-            : files.where((e) => _matchesFilter(e.path)).toList();
-        final filteredFolders = (_filterType != FileFilterType.all && _hideFoldersInFilter) ? <FileItemModel>[] : folders;
-
-        _sortList(filteredFolders, path);
-        _sortList(filteredFiles, path);
-
-        activeTab.currentFiles = [...filteredFolders, ...filteredFiles];
+        // The source produces the Entries; the Listing decides what the user sees.
+        // A hidden entry is absent unless the user asked to see them.
+        activeTab.currentFiles = items
+            .where((item) => _showHiddenFiles || !item.isHidden)
+            .toList();
       }
     } catch (e) {
       debugPrint('Error loading directory: $e. Fallback to restricted mode.');
@@ -1775,17 +1690,9 @@ class FileManagerProvider extends ChangeNotifier {
       try {
         activeTab.currentPath = path;
         final items = await RootShizukuService.listFiles(path, useRoot: activeTab.useRootMode, showHiddenFiles: _showHiddenFiles);
-        final folders = items.where((e) => e.isDirectory).toList();
-        final files = items.where((e) => !e.isDirectory).toList();
 
-        final filteredFiles = _filterType == FileFilterType.all
-            ? files
-            : files.where((e) => _matchesFilter(e.path)).toList();
-        final filteredFolders = (_filterType != FileFilterType.all && _hideFoldersInFilter) ? <FileItemModel>[] : folders;
-
-        _sortList(filteredFolders, path);
-        _sortList(filteredFiles, path);
-        activeTab.currentFiles = [...filteredFolders, ...filteredFiles];
+        // The source produces the Entries; the Listing decides what the user sees.
+        activeTab.currentFiles = items;
       } catch (err) {
         debugPrint('Error loading restricted directory fallback: $err');
         activeTab.currentFiles = [];
@@ -1835,20 +1742,14 @@ class FileManagerProvider extends ChangeNotifier {
 
   Future<void> togglePinPath(String path) async {
     await PinService.togglePin(path);
-    final folders = currentFiles.where((e) => e.isDirectory).toList();
-    final files = currentFiles.where((e) => !e.isDirectory).toList();
-    _sortList(folders, currentPath);
-    _sortList(files, currentPath);
-    activeTab.currentFiles = [...folders, ...files];
+
+    // The rule changed; the Listing is derived again on the next read. The Entries
+    // of the tab are not touched — a search no longer replaces them.
     notifyListeners();
   }
 
   void refreshDirectoryView() {
-    final folders = currentFiles.where((e) => e.isDirectory).toList();
-    final files = currentFiles.where((e) => !e.isDirectory).toList();
-    _sortList(folders, currentPath);
-    _sortList(files, currentPath);
-    activeTab.currentFiles = [...folders, ...files];
+    // The Listing is derived on every read, so there is nothing to refresh.
     notifyListeners();
   }
 
@@ -2657,14 +2558,17 @@ class FileManagerProvider extends ChangeNotifier {
           final index = tab.currentFiles.indexWhere((item) => item.path == filePath);
           if (index != -1) {
             final oldItem = tab.currentFiles[index];
-            tab.currentFiles[index] = FileItemModel(
-              entity: oldItem.entity,
-              name: oldItem.name,
-              path: oldItem.path,
-              isDirectory: oldItem.isDirectory,
-              size: stat.size,
-              modified: stat.modified,
-            );
+            // The list is replaced, not changed in place: the cache of the Listing
+            // reads a new list as new Entries.
+            tab.currentFiles = [...tab.currentFiles]
+              ..[index] = FileItemModel(
+                entity: oldItem.entity,
+                name: oldItem.name,
+                path: oldItem.path,
+                isDirectory: oldItem.isDirectory,
+                size: stat.size,
+                modified: stat.modified,
+              );
             updated = true;
           }
         }
@@ -2813,7 +2717,7 @@ class FileManagerProvider extends ChangeNotifier {
     if (mimeType.startsWith('image/')) {
       Navigator.push(context, MaterialPageRoute(builder: (_) => ImageViewerScreen(imagePath: path)));
     } else if (mimeType.startsWith('video/')) {
-      final folderVideoFiles = activeTab.currentFiles
+      final folderVideoFiles = currentFiles
           .where((f) => !f.isDirectory && (lookupMimeType(f.path)?.startsWith('video/') == true || FileUtils.isVideo(f.path)))
           .map((f) => f.path)
           .toList();
@@ -2831,7 +2735,7 @@ class FileManagerProvider extends ChangeNotifier {
         ),
       );
     } else if (mimeType.startsWith('audio/')) {
-      final folderAudioFiles = activeTab.currentFiles
+      final folderAudioFiles = currentFiles
           .where((f) => !f.isDirectory && (lookupMimeType(f.path)?.startsWith('audio/') == true))
           .toList();
       

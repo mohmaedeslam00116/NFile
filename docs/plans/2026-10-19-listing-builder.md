@@ -479,20 +479,42 @@ no longer replaces the directory listing with the search results.
 
 ### Steps
 
-- [ ] **5.1** Write the failing regression test at the provider seam: start a search,
+- [x] **5.1** Write the failing regression test at the provider seam: start a search,
       pin a path, and assert the tab's directory Entries are unchanged.
-- [ ] **5.2** Run the test and watch it fail — the current code overwrites the listing.
-- [ ] **5.3** Convert the seven call sites (`setFolderOverrideEnabled`, `setSortType`,
+- [x] **5.2** Run the test and watch it fail — the current code overwrites the listing.
+- [x] **5.3** Convert the seven call sites (`setFolderOverrideEnabled`, `setSortType`,
       `togglePinPath`, `refreshDirectoryView`, and the three inside `loadDirectory`) into
       thin delegations that update the rules and re-derive. None of them writes Entries.
-- [ ] **5.4** Run the test — it passes. Run `flutter analyze`; commit:
+- [x] **5.4** Run the test — it passes. Run `flutter analyze`; commit:
       `fix(listing): stop writing the visible order into the tab`.
 
 **Acceptance criteria**
 
-- [ ] The regression test passes.
-- [ ] No call site assigns a visible list to the tab.
-- [ ] `flutter analyze` is clean.
+- [x] The regression test passes.
+- [x] No call site assigns a visible list to the tab.
+- [x] `flutter analyze` is clean.
+
+**Notes recorded while executing this task**
+
+- The application reads the visible list through one getter, `currentFiles`, and that
+  getter now returns the derived Listing. Every surface — the browser, the split
+  screen, the selection bar — reads the same derived answer without touching a
+  single call site.
+- The split screen was the one place that read a tab's stored list directly
+  (`tab.displayFiles`); it now reads `provider.listingFor(tab).entries`.
+- The three loads store the Entries as the source produced them. The rule about
+  hidden entries stays at the source, because the source is what decides what it
+  produces; the Listing keeps the rule as well, and it is the rule that hides the
+  hidden entries of a search.
+- `updateFileInList` replaced one entry in the stored list in place. The cache
+  recognises the Entries by the identity of the list, so the list is now replaced
+  instead — the same rule the load already followed.
+- `_sortList` and `_matchesFilter` had no callers left and are gone. The rules they
+  carried live in the builder and in the Kind vocabulary.
+- Two things the user sees changed, both of them the rule the domain already states:
+  the results of a search are ordered by the Sort Rule like every other Listing, and
+  they hold no hidden entries unless the user asked to see them.
+
 
 ---
 

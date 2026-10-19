@@ -184,6 +184,9 @@ class _PaneBrowserState extends State<PaneBrowser> {
     final isActive = provider.activeTabIndex == widget.tabIndex;
     final isSelectionMode = tab.selectedPaths.isNotEmpty;
 
+    // The entries the user sees: the derived Listing of this tab, not its stored list.
+    final visibleEntries = provider.listingFor(tab).entries;
+
     if (_searchController.text != tab.searchQuery && !_searchFocusNode.hasFocus) {
       _searchController.text = tab.searchQuery;
       _lastSearchQuery = tab.searchQuery;
@@ -270,7 +273,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                       ],
                     ),
                   ),
-                  if (tab.displayLoading && tab.displayFiles.isNotEmpty)
+                  if (tab.displayLoading && visibleEntries.isNotEmpty)
                     LinearProgressIndicator(
                       minHeight: 2.0,
                       backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
@@ -442,7 +445,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                         }
                       },
                       builder: (context, candidateData, rejectedData) {
-                        return (tab.displayLoading && tab.displayFiles.isEmpty)
+                        return (tab.displayLoading && visibleEntries.isEmpty)
                             ? const Center(child: CircularProgressIndicator())
                             : tab.needsPermission
                                 ? RestrictedFolderBanner(
@@ -463,7 +466,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                       CupertinoSliverRefreshControl(
                                         onRefresh: () => provider.loadDirectoryForTab(widget.tabIndex, tab.currentPath, showLoading: false, clearCache: true),
                                       ),
-                                      if (tab.displayFiles.isEmpty)
+                                      if (visibleEntries.isEmpty)
                                         SliverFillRemaining(
                                           hasScrollBody: false,
                                           child: Center(
@@ -567,7 +570,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                   ),
                                                   delegate: SliverChildBuilderDelegate(
                                                     (context, index) {
-                                                      final item = tab.displayFiles[index];
+                                                      final item = visibleEntries[index];
                                                       final isSelected = tab.selectedPaths.contains(item.path);
                                                       if (item.isDirectory) {
                                                         final itemLongPress = () {
@@ -633,13 +636,13 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                         );
                                                       }
                                                     },
-                                                    childCount: tab.displayFiles.length,
+                                                    childCount: visibleEntries.length,
                                                   ),
                                                 )
                                               : SliverList(
                                                   delegate: SliverChildBuilderDelegate(
                                                     (context, index) {
-                                                      final item = tab.displayFiles[index];
+                                                      final item = visibleEntries[index];
                                                       final isSelected = tab.selectedPaths.contains(item.path);
                                                       if (item.isDirectory) {
                                                         return _buildCompactFolderItem(
@@ -659,7 +662,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                         );
                                                       }
                                                     },
-                                                    childCount: tab.displayFiles.length,
+                                                    childCount: visibleEntries.length,
                                                   ),
                                                 ),
                                         ),

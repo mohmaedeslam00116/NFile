@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:nfile/models/file_filter_type.dart';
 import 'package:nfile/models/file_item_model.dart';
 import 'package:nfile/models/folder_tab_model.dart';
 import 'package:nfile/providers/file_manager_provider.dart';
@@ -135,6 +136,55 @@ void main() {
 
       expect(after, isNot(same(before)));
       expect(namesOf(after.entries), ['b.txt', 'a.txt']);
+    });
+  });
+
+  group('the visible order is derived, not stored', () {
+    test('pinning a path during a search leaves the directory Entries untouched', () async {
+      final tab = FolderTab(
+        id: 'tab-1',
+        currentPath: '/d',
+        currentFiles: [entry('/d/directory.txt')],
+      );
+      final provider = providerWith(tab);
+      tab.isSearchActive = true;
+      tab.searchResults = [entry('/d/found.txt')];
+
+      await provider.togglePinPath('/d/found.txt');
+
+      expect(namesOf(tab.currentFiles), ['directory.txt']);
+    });
+
+    test('the visible list of a search is ordered by the Sort Rule', () {
+      final tab = FolderTab(
+        id: 'tab-1',
+        currentPath: '/d',
+        currentFiles: [entry('/d/directory.txt')],
+      );
+      final provider = providerWith(tab);
+      tab.isSearchActive = true;
+      tab.searchResults = [entry('/d/b.txt'), entry('/d/a.txt')];
+
+      expect(namesOf(provider.currentFiles), ['a.txt', 'b.txt']);
+    });
+
+    test('the visible list is narrowed by the Filter, not by the load', () async {
+      final dir = await Directory.systemTemp.createTemp('nfile-listing');
+      addTearDown(() => dir.delete(recursive: true));
+      await File('${dir.path}/a.png').writeAsBytes([1, 2, 3]);
+      await File('${dir.path}/b.txt').writeAsString('bb');
+
+      // A cached storage volume keeps the provider from asking the platform for
+      // the volumes when it loads a directory.
+      SharedPreferences.setMockInitialValues({'cached_total_storage': 1024});
+      await PreferencesService.init();
+
+      final provider = FileManagerProvider();
+      await provider.loadDirectory(dir.path, showLoading: false);
+
+      provider.setFilterType(FileFilterType.images);
+
+      expect(namesOf(provider.currentFiles), ['a.png']);
     });
   });
 }
