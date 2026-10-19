@@ -5,22 +5,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
 import 'package:dartssh2/dartssh2.dart';
+import '../core/ssh/ephemeral_ssh_key.dart';
 
 class WebSharingService extends ChangeNotifier {
   static final WebSharingService instance = WebSharingService._();
   WebSharingService._();
 
   static const _channel = MethodChannel('com.rubex.nfile/web_sharing_service');
-
-  static const String _ed25519PrivateKeyPem = '''
------BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-QyNTUxOQAAACAWN3mZdOKrXnP+VFVDS6yuPfVgGbCOa0a/B0YHt7wfpAAAAJj80blj/NG5
-YwAAAAtzc2gtZWQyNTUxOQAAACAWN3mZdOKrXnP+VFVDS6yuPfVgGbCOa0a/B0YHt7wfpA
-AAAEBbg6hQHydFb0ZGHuYq+gCui5fFtXW1X2e3Ok3UKTfXMhY3eZl04qtec/5UVUNLrK49
-9WAZsI5rRr8HRge3vB+kAAAAFWFkbWluQERFU0tUT1AtS1NIUkFVNw==
------END OPENSSH PRIVATE KEY-----
-''';
 
   SSHClient? _sshClient;
   SSHRemoteForward? _sshForward;
@@ -1966,7 +1957,10 @@ AAAEBbg6hQHydFb0ZGHuYq+gCui5fFtXW1X2e3Ok3UKTfXMhY3eZl04qtec/5UVUNLrK49
 
       // 2. Connect to localhost.run SSH server
       final socket = await SSHSocket.connect('localhost.run', 22, timeout: const Duration(seconds: 15));
-      final keys = SSHKeyPair.fromPem(_ed25519PrivateKeyPem);
+      // The identity of the client. The service does not check it: the account
+      // is the anonymous one. It is generated for this process, because a key
+      // in the source is a key that everybody who has the source has.
+      final keys = SSHKeyPair.fromPem(await EphemeralSshKey.generatePem());
       _sshClient = SSHClient(
         socket,
         username: 'nokey',
