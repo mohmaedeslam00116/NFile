@@ -46,7 +46,7 @@ each group by the Sort Rule, and hoists a Pinned Path to the top of its own grou
 
 ### Steps
 
-- [ ] **1.1** Write the failing test in `test/listing_test.dart`:
+- [x] **1.1** Write the failing test in `test/listing_test.dart`:
 
 ```dart
 import 'package:flutter_test/flutter_test.dart';
@@ -103,19 +103,19 @@ void main() {
 }
 ```
 
-- [ ] **1.2** Run `flutter test test/listing_test.dart` and watch it fail. The first run
+- [x] **1.2** Run `flutter test test/listing_test.dart` and watch it fail. The first run
       fails to compile — the seam does not exist yet. Create the skeleton (the Sort Rule
       vocabulary, the `Listing` value, and a `ListingBuilder.build` that throws
       `UnimplementedError`) so the test can run, then watch it fail with
       `UnimplementedError`. Only then implement the behaviour.
-- [ ] **1.3** Create `lib/core/listing/sort_rule.dart` with the Sort Rule vocabulary
+- [x] **1.3** Create `lib/core/listing/sort_rule.dart` with the Sort Rule vocabulary
       (moved verbatim from `file_manager_provider.dart:44-52`), add
       `import '../core/listing/sort_rule.dart';` **and**
       `export '../core/listing/sort_rule.dart' show FileSortType;` to the provider, and
       delete the enum from the provider. An `export` alone is not enough: it does not
       bring the name into the exporting library's own scope. Run `flutter analyze` — the
       whole app must still compile.
-- [ ] **1.4** Create `lib/core/listing/listing.dart`:
+- [x] **1.4** Create `lib/core/listing/listing.dart`:
 
 ```dart
 import '../../models/file_item_model.dart';
@@ -137,7 +137,7 @@ class Listing {
 }
 ```
 
-- [ ] **1.5** Create `lib/core/listing/listing_builder.dart`:
+- [x] **1.5** Create `lib/core/listing/listing_builder.dart`:
 
 ```dart
 import 'package:path/path.dart' as p;
@@ -215,9 +215,9 @@ class ListingBuilder {
 }
 ```
 
-- [ ] **1.6** Run `flutter test` — both Listing tests and the existing smoke test pass.
-- [ ] **1.7** Run `flutter analyze` — no new findings in the files this task touched.
-- [ ] **1.8** Commit: `feat(listing): derive the Listing from Entries and the Sort Rule`.
+- [x] **1.6** Run `flutter test` — both Listing tests and the existing smoke test pass.
+- [x] **1.7** Run `flutter analyze` — no new findings in the files this task touched.
+- [x] **1.8** Commit: `feat(listing): derive the Listing from Entries and the Sort Rule`.
 
 **Notes recorded while executing this task**
 
@@ -233,9 +233,9 @@ class ListingBuilder {
 
 **Acceptance criteria**
 
-- [ ] `test/listing_test.dart` passes.
-- [ ] `flutter analyze` is clean.
-- [ ] `FileSortType` no longer lives in the provider file; every existing import path
+- [x] `test/listing_test.dart` passes.
+- [x] `flutter analyze` is clean.
+- [x] `FileSortType` no longer lives in the provider file; every existing import path
       still resolves.
 
 ---
