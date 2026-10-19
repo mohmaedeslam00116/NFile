@@ -41,15 +41,10 @@ import '../services/remote/lan_client.dart';
 import '../services/remote/saf_client.dart';
 import 'media_provider.dart';
 
-enum FileSortType {
-  nameAsc,
-  nameDesc,
-  dateNewest,
-  dateOldest,
-  sizeLargest,
-  sizeSmallest,
-  type,
-}
+// The Sort Rule vocabulary lives with the rules that order a Listing, not with the
+// state layer. Re-exported so every existing import path keeps resolving.
+import '../core/listing/sort_rule.dart';
+export '../core/listing/sort_rule.dart' show FileSortType;
 
 class StorageVolume {
   final String name;
