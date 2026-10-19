@@ -26,7 +26,10 @@ This plan argues from those two; executors read both.
 | `lib/core/listing/listing_builder.dart` | The seam. Derives a Listing from Entries + rules. |
 | `lib/core/listing/sort_rule.dart` | The Sort Rule vocabulary (`FileSortType`), moved out of the provider. |
 | `lib/core/listing/listing_scope.dart` | The Listing Scope vocabulary (added in task 2). |
+| `lib/core/kind.dart` | The Kind vocabulary: the one classification of the whole application (added in task 3). |
+| `lib/core/listing/filter_rule.dart` | The bridge from the Filter vocabulary to the Kind vocabulary (added in task 3). |
 | `test/listing_test.dart` | The Listing seam tests. |
+| `test/filter_rule_test.dart` | The Kind vocabulary tests (added in task 3). |
 
 The provider re-exports `FileSortType` so every existing import path keeps working:
 
@@ -376,20 +379,43 @@ hidden entries appear only when they asked to see them.
 
 ### Steps
 
-- [ ] **3.1** Write the failing test: a Filter of `images` keeps only image entries; a
+- [x] **3.1** Write the failing test: a Filter of `images` keeps only image entries; a
       hidden entry is absent unless `showHiddenFiles` is true.
-- [ ] **3.2** Run the test and watch it fail.
-- [ ] **3.3** Extend `ListingBuilder.build` with `filter` and `showHiddenFiles`; classify
+- [x] **3.2** Run the test and watch it fail — the contract has no `filter` and no
+      `showHiddenFiles` yet.
+- [x] **3.3** Extend `ListingBuilder.build` with `filter` and `showHiddenFiles`; classify
       each entry through the Kind vocabulary (`FileUtils`) and drop entries that do not
       match, dropping hidden entries unless `showHiddenFiles` is true.
-- [ ] **3.4** Run the tests — all pass; run `flutter analyze`; commit:
+- [x] **3.4** Run the tests — all pass; run `flutter analyze`; commit:
       `feat(listing): apply the Filter and the hidden-files rule`.
 
 **Acceptance criteria**
 
-- [ ] A Filter narrows the Listing to the matching Kinds.
-- [ ] Hidden entries are absent unless requested.
-- [ ] `flutter analyze` is clean.
+- [x] A Filter narrows the Listing to the matching Kinds.
+- [x] Hidden entries are absent unless requested.
+- [x] `flutter analyze` is clean.
+
+**Notes recorded while executing this task**
+
+- The builder takes a third rule the plan did not mention: `showFoldersInFilter`. The
+  application has a "hide folders in filter" switch, and without the switch in the
+  contract the builder would either always drop folders under a Filter — changing what
+  the user sees by default — or leave the switch outside the derived Listing, which is
+  the write-back pattern this refactor removes. The switch is now an explicit input:
+  a folder has no Kind, so a Filter does not narrow it.
+- The Kind vocabulary is a set, not a single value. A `.ts` file is code
+  (`FileUtils.isTextOrCode`) *and* a transport stream (`FileUtils.isVideo` reads the
+  mime type `video/mp2t`), so today it appears under both the documents and the videos
+  filter. A single Kind would have silently dropped it from one of them. `kindsOf`
+  keeps the rules the application has always used, so no file moves between filters.
+- `FileManagerProvider.matchesFilterForType` now delegates to the Kind vocabulary
+  instead of carrying its own copy of the rules. The copy was the second vocabulary
+  the domain forbids. `test/filter_rule_test.dart` pins the behaviour and checks that
+  the provider and the Listing agree about every file.
+- The search carries a fourth copy of the classification rules (its own extension
+  lists for `Images`, `Videos`, `Audio` and `Docs`). It is left alone here: it is the
+  search's own filter vocabulary, and the search source is replaced in task 06.
+
 
 ---
 

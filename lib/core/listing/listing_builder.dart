@@ -1,7 +1,10 @@
 import 'package:path/path.dart' as p;
 
+import '../../models/file_filter_type.dart';
 import '../../models/file_item_model.dart';
+import '../kind.dart';
 import '../utils.dart';
+import 'filter_rule.dart';
 import 'listing.dart';
 import 'listing_scope.dart';
 import 'sort_rule.dart';
@@ -21,10 +24,20 @@ class ListingBuilder {
     required ListingScope scope,
     required FileSortType sortRule,
     required Map<String, FileSortType> folderOverrides,
+    required FileFilterType filter,
+    required bool showHiddenFiles,
+    required bool showFoldersInFilter,
     required Set<String> pinnedPaths,
   }) {
-    final folders = entries.where((e) => e.isDirectory).toList();
-    final files = entries.where((e) => !e.isDirectory).toList();
+    final visible = _narrow(
+      entries,
+      filter: filter,
+      showHiddenFiles: showHiddenFiles,
+      showFoldersInFilter: showFoldersInFilter,
+    );
+
+    final folders = visible.where((e) => e.isDirectory).toList();
+    final files = visible.where((e) => !e.isDirectory).toList();
 
     final effectiveRule = _effectiveSortRule(
       scope: scope,
@@ -40,6 +53,36 @@ class ListingBuilder {
       folderCount: folders.length,
       fileCount: files.length,
     );
+  }
+
+  /// The entries the Listing holds.
+  ///
+  /// A hidden entry is absent unless the user asked to see them. A Filter narrows
+  /// the files to the Kinds it keeps; a folder has no Kind, so a Filter does not
+  /// narrow it — the user may still ask for folders to be hidden.
+  List<FileItemModel> _narrow(
+    List<FileItemModel> entries, {
+    required FileFilterType filter,
+    required bool showHiddenFiles,
+    required bool showFoldersInFilter,
+  }) {
+    final kept = <FileItemModel>[];
+    for (final entry in entries) {
+      if (entry.isHidden && !showHiddenFiles) continue;
+
+      if (entry.isDirectory) {
+        if (filter != FileFilterType.all && !showFoldersInFilter) continue;
+        kept.add(entry);
+        continue;
+      }
+
+      if (filter != FileFilterType.all &&
+          !matchesFilter(kindsOf(entry.path), filter)) {
+        continue;
+      }
+      kept.add(entry);
+    }
+    return kept;
   }
 
   /// The rule that orders this Listing.

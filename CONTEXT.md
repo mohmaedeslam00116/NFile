@@ -37,6 +37,7 @@ _Avoid_: search filter, category filter, type filter
 **Kind**:
 What an Entry is, for the user's benefit — image, video, audio, document, archive, text.
 One vocabulary for the whole application: no two places may disagree about the same file.
+A file may answer to more than one Kind: `app.ts` is code and a transport stream.
 _Avoid_: type, category, format, mime type
 
 **Sort Rule**:
@@ -75,6 +76,8 @@ _Avoid_: checked items, selected files, multi-select
 - A **Listing** is derived. Nothing writes the user's visible order into storage.
 - A **Kind** is decided in one place. Two vocabularies may not disagree about the same
   file.
+- A **Filter** narrows the files of a **Listing** to the Kinds it keeps. A folder has no
+  Kind, so a Filter does not narrow it; the user may still ask for folders to be hidden.
 - A **Folder Sort Override** applies to the Listing of one folder. A Listing produced by
   a search spans folders, so it uses the global Sort Rule.
 - Per-path facts — a **Folder Sort Override**, a **Pinned Path** — follow the path they

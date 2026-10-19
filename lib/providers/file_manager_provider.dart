@@ -21,6 +21,8 @@ import '../services/archive_service.dart';
 import '../services/apk_installer_service.dart';
 import '../ui/widgets/extract_archive_dialog.dart';
 import '../core/utils.dart';
+import '../core/kind.dart';
+import '../core/listing/filter_rule.dart';
 import '../services/preferences_service.dart';
 import '../services/app_manager_service.dart';
 import '../models/custom_shortcut_model.dart';
@@ -411,23 +413,12 @@ class FileManagerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether the file at [path] belongs in a Listing filtered by [filter].
+  ///
+  /// The rules live in the Kind vocabulary — see `lib/core/kind.dart` — so this
+  /// method and the derived Listing agree about every file.
   static bool matchesFilterForType(String path, FileFilterType filter) {
-    switch (filter) {
-      case FileFilterType.all:
-        return true;
-      case FileFilterType.documents:
-        final lower = path.toLowerCase();
-        const docExts = ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.txt', '.csv', '.odt', '.ods', '.odp', '.rtf', '.epub'];
-        return docExts.any((ext) => lower.endsWith(ext)) || FileUtils.isTextOrCode(path);
-      case FileFilterType.images:
-        return FileUtils.isImage(path);
-      case FileFilterType.audio:
-        return FileUtils.isAudio(path);
-      case FileFilterType.videos:
-        return FileUtils.isVideo(path);
-      case FileFilterType.archives:
-        return FileUtils.isArchive(path);
-    }
+    return matchesFilter(kindsOf(path), filter);
   }
 
   bool _matchesFilter(String path) {
