@@ -607,16 +607,33 @@ same way the browser does.
 
 ### Steps
 
-- [ ] **8.1** Write the failing test for the file picker's ordering.
-- [ ] **8.2** Run it and watch it fail.
-- [ ] **8.3** Route the picker and the address bar through `ListingBuilder`.
-- [ ] **8.4** Run the test — it passes; run `flutter analyze`; commit:
+- [x] **8.1** Write the failing test for the file picker's ordering.
+- [x] **8.2** Run it and watch it fail.
+- [x] **8.3** Route the picker and the address bar through `ListingBuilder`.
+- [x] **8.4** Run the test — it passes; run `flutter analyze`; commit:
       `refactor(listing): share the builder with the picker and the address bar`.
 
 **Acceptance criteria**
 
-- [ ] The picker and the address bar no longer implement their own ordering.
-- [ ] `flutter analyze` is clean; all tests pass.
+- [x] The picker and the address bar no longer implement their own ordering.
+- [x] `flutter analyze` is clean; all tests pass.
+
+**Notes recorded while executing this task**
+
+- The picker and the address bar each had their own copy of the ordering. The picker
+  sorted by name whatever the user chose; the address bar sorted folders first and
+  then by name. Both now build a Listing, so they follow the Sort Rule, the Folder
+  Sort Override and the Pinned Paths of the browser.
+- The test of the picker is the first widget test of substance in this repository.
+  Two things had to be learned to write it: a widget test runs in a fake clock, so
+  the reading of the disk has to happen in the real zone, and a screen that shows a
+  spinner never settles, so the test pumps a fixed moment instead of waiting.
+- The picker now hides the hidden entries unless the user asked to see them, like
+  the browser does. The restricted path of the address bar already did.
+- The address bar turns its entries into Entries to give them to the builder, and
+  takes the entities back afterwards. The builder works with Entries; the address
+  bar works with the entities of the disk.
+
 
 ---
 
