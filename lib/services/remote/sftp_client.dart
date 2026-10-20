@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:dartssh2/dartssh2.dart';
 import 'remote_client.dart';
+import '../../core/l10n/app_translation.dart';
 
 class SftpRemoteClient implements RemoteClient {
   final String host;
@@ -40,7 +41,7 @@ class SftpRemoteClient implements RemoteClient {
 
   @override
   Future<List<RemoteFileItem>> listDirectory(String path) async {
-    if (_sftpClient == null) throw Exception('SFTP not connected');
+    if (_sftpClient == null) throw Exception(AppTranslation.label((l10n) => l10n.sftpNotConnected));
     final absolutePath = path.isEmpty || path == '/' ? '.' : path;
     final items = await _sftpClient!.listdir(absolutePath);
     
@@ -68,13 +69,13 @@ class SftpRemoteClient implements RemoteClient {
 
   @override
   Future<void> createDirectory(String path) async {
-    if (_sftpClient == null) throw Exception('SFTP not connected');
+    if (_sftpClient == null) throw Exception(AppTranslation.label((l10n) => l10n.sftpNotConnected));
     await _sftpClient!.mkdir(path);
   }
 
   @override
   Future<void> delete(String path, bool isDir) async {
-    if (_sftpClient == null) throw Exception('SFTP not connected');
+    if (_sftpClient == null) throw Exception(AppTranslation.label((l10n) => l10n.sftpNotConnected));
     if (isDir) {
       await _sftpClient!.rmdir(path);
     } else {
@@ -84,7 +85,7 @@ class SftpRemoteClient implements RemoteClient {
 
   @override
   Future<void> downloadFile(String remotePath, String localPath, Function(double progress) onProgress) async {
-    if (_sftpClient == null) throw Exception('SFTP not connected');
+    if (_sftpClient == null) throw Exception(AppTranslation.label((l10n) => l10n.sftpNotConnected));
     
     final file = await _sftpClient!.open(remotePath);
     final stat = await _sftpClient!.stat(remotePath);
@@ -119,10 +120,14 @@ class SftpRemoteClient implements RemoteClient {
     String remotePath,
     Function(double progress) onProgress,
   ) async {
-    if (_sftpClient == null) throw Exception('SFTP not connected');
+    if (_sftpClient == null) throw Exception(AppTranslation.label((l10n) => l10n.sftpNotConnected));
 
     final localFile = File(localPath);
-    if (!localFile.existsSync()) throw Exception('Local file not found: $localPath');
+    if (!localFile.existsSync()) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.localFileNotFound(localPath)),
+      );
+    }
 
     final totalSize = await localFile.length();
 

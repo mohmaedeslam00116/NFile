@@ -12,9 +12,9 @@ String volumeLabel(AppLocalizations l10n, StorageVolume volume) {
   if (named != null) return '${l10n.sdCard} (${named.group(1)})';
 
   final usb = RegExp(r'^SD Card / USB \((.*)\)$').firstMatch(volume.name);
-  if (usb != null) return '${l10n.sdCard} / USB (${usb.group(1)})';
+  if (usb != null) return l10n.sdCardWithUsbNamed(usb.group(1)!);
 
-  if (volume.name == 'SD Card / USB') return '${l10n.sdCard} / USB';
+  if (volume.name == 'SD Card / USB') return l10n.sdCardWithUsb;
 
   if (volume.name == 'Documents') return l10n.categoryDocuments;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'remote_client.dart';
+import '../../core/l10n/app_translation.dart';
 
 class SafRemoteClient implements RemoteClient {
   final String rootUri;
@@ -41,7 +42,9 @@ class SafRemoteClient implements RemoteClient {
   Future<void> createDirectory(String path) async {
     final int lastSlash = path.lastIndexOf('/');
     final String parentUri = lastSlash != -1 ? path.substring(0, lastSlash) : '';
-    final String folderName = lastSlash != -1 ? path.substring(lastSlash + 1) : 'New Folder';
+    final String folderName = lastSlash != -1
+            ? path.substring(lastSlash + 1)
+            : AppTranslation.label((l10n) => l10n.newFolder);
 
     await _channel.invokeMethod('createDirectory', {
       'rootUri': rootUri,

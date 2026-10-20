@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../core/l10n/app_translation.dart';
 import 'dart:io';
 import 'package:audio_service/audio_service.dart';
 import 'package:media_kit/media_kit.dart';
@@ -221,9 +222,9 @@ class NFileAudioHandler extends BaseAudioHandler
           MediaControl.skipToPrevious,
           playing ? MediaControl.pause : MediaControl.play,
           MediaControl.skipToNext,
-          const MediaControl(
+          MediaControl(
             androidIcon: 'drawable/ic_close',
-            label: 'Close',
+            label: AppTranslation.label((l10n) => l10n.actionClose),
             action: MediaAction.stop,
           ),
         ],

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:ftpconnect/ftpconnect.dart';
 import 'package:path/path.dart' as p;
 import 'remote_client.dart';
+import '../../core/l10n/app_translation.dart';
 
 class FtpRemoteClient implements RemoteClient {
   final String host;
@@ -29,7 +30,11 @@ class FtpRemoteClient implements RemoteClient {
     );
     final success = await _ftpConnect!.connect();
     if (!success) {
-      throw Exception('FTP connection failed: could not connect to $host:$port');
+      throw Exception(
+        AppTranslation.label(
+          (l10n) => l10n.ftpConnectionFailed(host, '$port'),
+        ),
+      );
     }
   }
 
@@ -41,13 +46,17 @@ class FtpRemoteClient implements RemoteClient {
 
   @override
   Future<List<RemoteFileItem>> listDirectory(String path) async {
-    if (_ftpConnect == null) throw Exception('FTP not connected');
+    if (_ftpConnect == null) throw Exception(AppTranslation.label((l10n) => l10n.ftpNotConnected));
 
     // Navigate to directory
     final targetPath = (path.isEmpty || path == '/') ? '/' : path;
     if (targetPath != '/') {
       final ok = await _ftpConnect!.changeDirectory(targetPath);
-      if (!ok) throw Exception('Cannot open directory: $targetPath');
+      if (!ok) {
+        throw Exception(
+        AppTranslation.label((l10n) => l10n.mediaCannotOpenDirectory(targetPath)),
+        );
+      }
     } else {
       await _ftpConnect!.changeDirectory('/');
     }
@@ -75,7 +84,7 @@ class FtpRemoteClient implements RemoteClient {
 
   @override
   Future<void> createDirectory(String path) async {
-    if (_ftpConnect == null) throw Exception('FTP not connected');
+    if (_ftpConnect == null) throw Exception(AppTranslation.label((l10n) => l10n.ftpNotConnected));
     final dirName = p.basename(path);
     final parentPath = p.dirname(path);
 
@@ -84,15 +93,23 @@ class FtpRemoteClient implements RemoteClient {
     }
 
     final ok = await _ftpConnect!.makeDirectory(dirName);
-    if (!ok) throw Exception('Failed to create directory: $path');
+    if (!ok) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.failedToCreateDirectory(path)),
+      );
+    }
   }
 
   @override
   Future<void> delete(String path, bool isDir) async {
-    if (_ftpConnect == null) throw Exception('FTP not connected');
+    if (_ftpConnect == null) throw Exception(AppTranslation.label((l10n) => l10n.ftpNotConnected));
     if (isDir) {
       final ok = await _ftpConnect!.deleteDirectory(path);
-      if (!ok) throw Exception('Failed to delete directory: $path');
+      if (!ok) {
+        throw Exception(
+        AppTranslation.label((l10n) => l10n.failedToDeleteDirectory(path)),
+        );
+      }
     } else {
       final fileName = p.basename(path);
       final parentPath = p.dirname(path);
@@ -100,7 +117,11 @@ class FtpRemoteClient implements RemoteClient {
         await _ftpConnect!.changeDirectory(parentPath);
       }
       final ok = await _ftpConnect!.deleteFile(fileName);
-      if (!ok) throw Exception('Failed to delete file: $path');
+      if (!ok) {
+        throw Exception(
+        AppTranslation.label((l10n) => l10n.failedToDeleteFile(path)),
+        );
+      }
     }
   }
 
@@ -110,7 +131,7 @@ class FtpRemoteClient implements RemoteClient {
     String localPath,
     Function(double progress) onProgress,
   ) async {
-    if (_ftpConnect == null) throw Exception('FTP not connected');
+    if (_ftpConnect == null) throw Exception(AppTranslation.label((l10n) => l10n.ftpNotConnected));
 
     final fileName = p.basename(remotePath);
     final parentPath = p.dirname(remotePath);
@@ -118,7 +139,11 @@ class FtpRemoteClient implements RemoteClient {
     // Navigate to the parent directory of the file
     if (parentPath.isNotEmpty && parentPath != '/') {
       final ok = await _ftpConnect!.changeDirectory(parentPath);
-      if (!ok) throw Exception('Cannot open directory: $parentPath');
+      if (!ok) {
+        throw Exception(
+        AppTranslation.label((l10n) => l10n.mediaCannotOpenDirectory(parentPath)),
+        );
+      }
     }
 
     final localFile = File(localPath);
@@ -137,7 +162,11 @@ class FtpRemoteClient implements RemoteClient {
       },
     );
 
-    if (!ok) throw Exception('Download failed for: $remotePath');
+    if (!ok) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.remoteDownloadFailedFor(remotePath)),
+      );
+    }
     onProgress(1.0);
   }
 
@@ -147,10 +176,14 @@ class FtpRemoteClient implements RemoteClient {
     String remotePath,
     Function(double progress) onProgress,
   ) async {
-    if (_ftpConnect == null) throw Exception('FTP not connected');
+    if (_ftpConnect == null) throw Exception(AppTranslation.label((l10n) => l10n.ftpNotConnected));
 
     final localFile = File(localPath);
-    if (!localFile.existsSync()) throw Exception('Local file not found: $localPath');
+    if (!localFile.existsSync()) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.localFileNotFound(localPath)),
+      );
+    }
 
     final remoteFileName = p.basename(remotePath);
     final remoteDir = p.dirname(remotePath);
@@ -159,7 +192,13 @@ class FtpRemoteClient implements RemoteClient {
     if (remoteDir.isNotEmpty && remoteDir != '/') {
       await _ftpConnect!.createFolderIfNotExist(remoteDir);
       final ok = await _ftpConnect!.changeDirectory(remoteDir);
-      if (!ok) throw Exception('Cannot open remote directory: $remoteDir');
+      if (!ok) {
+        throw Exception(
+        AppTranslation.label(
+          (l10n) => l10n.mediaCannotOpenRemoteDirectory(remoteDir),
+        ),
+        );
+      }
     }
 
     onProgress(0.0);
@@ -172,7 +211,11 @@ class FtpRemoteClient implements RemoteClient {
       },
     );
 
-    if (!ok) throw Exception('Upload failed for: $localPath');
+    if (!ok) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.remoteUploadFailedFor(localPath)),
+      );
+    }
     onProgress(1.0);
   }
 }

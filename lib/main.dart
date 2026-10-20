@@ -12,6 +12,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'core/theme.dart';
 import 'core/icon_fonts/broken_icons.dart';
 import 'core/l10n/app_localization.dart';
+import 'core/l10n/app_translation.dart';
 import 'l10n/app_localizations.dart';
 import 'providers/file_manager_provider.dart';
 import 'providers/media_provider.dart';
@@ -328,6 +329,10 @@ class _NFileAppState extends State<NFileApp> {
               darkTheme: AppTheme.getAppTheme(light: false, pitchBlack: fileManager.amoledMode, seed: baseSeedColor, customScheme: activeDarkScheme, fontFamily: fileManager.fontFamilyOption),
               themeMode: activeThemeMode,
               builder: (context, child) {
+                // The services hold no context: the translation of the language of
+                // the system is kept here, for the messages they show.
+                AppTranslation.set(AppLocalizations.of(context));
+
                 final isDark = activeThemeMode == ThemeMode.system
                     ? (MediaQuery.platformBrightnessOf(context) == Brightness.dark)
                     : (activeThemeMode == ThemeMode.dark);

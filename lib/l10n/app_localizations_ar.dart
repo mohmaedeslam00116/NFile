@@ -1961,6 +1961,158 @@ class AppLocalizationsAr extends AppLocalizations {
       'صيغة ملف النسخة الاحتياطية غير صالحة';
 
   @override
+  String get webBrowser => 'متصفح الويب';
+
+  @override
+  String get webBrowsingDirectories => 'تصفح المجلدات';
+
+  @override
+  String get webCloseModal => 'إغلاق النافذة';
+
+  @override
+  String get downloadFile => 'تنزيل الملف';
+
+  @override
+  String get webFailedToCopyLink => 'فشل نسخ الرابط.';
+
+  @override
+  String get webLinkCopied => 'نُسخ الرابط إلى الحافظة!';
+
+  @override
+  String get webGridView => 'عرض شبكي';
+
+  @override
+  String get webListView => 'عرض قائمة';
+
+  @override
+  String get networkError => 'خطأ في الشبكة';
+
+  @override
+  String get webSearchFiles => 'ابحث في الملفات والمجلدات...';
+
+  @override
+  String get webUploadToFolder => 'ارفع الملفات إلى هذا المجلد';
+
+  @override
+  String get webUploadCompleted => 'اكتمل الرفع بنجاح!';
+
+  @override
+  String get webUploadFailed => 'فشل الرفع';
+
+  @override
+  String get webUploadSuccessful => 'تم الرفع بنجاح';
+
+  @override
+  String mediaCannotOpenDirectory(String path) {
+    return 'لا يمكن فتح المجلد: $path';
+  }
+
+  @override
+  String mediaCannotOpenRemoteDirectory(String path) {
+    return 'لا يمكن فتح المجلد البعيد: $path';
+  }
+
+  @override
+  String mediaWebdavConnectFailed(String status) {
+    return 'فشل الاتصال بـ WebDAV: $status';
+  }
+
+  @override
+  String get vaultIncorrectPassword => 'كلمة المرور غير صحيحة أو الملف تالف';
+
+  @override
+  String vaultFileDoesNotExist(String path) {
+    return 'الملف غير موجود: $path';
+  }
+
+  @override
+  String vaultDirectoryDoesNotExist(String path) {
+    return 'المجلد غير موجود: $path';
+  }
+
+  @override
+  String get vaultFailedToZip => 'فشل ضغط محتويات المجلد';
+
+  @override
+  String rootExecutionFailed(String error) {
+    return 'فشل التنفيذ: $error';
+  }
+
+  @override
+  String get customFolder => 'مجلد مخصص';
+
+  @override
+  String get sdCardWithUsb => 'بطاقة SD / USB';
+
+  @override
+  String failedToCreateDirectory(String path) {
+    return 'فشل إنشاء المجلد: $path';
+  }
+
+  @override
+  String failedToDeleteDirectory(String path) {
+    return 'فشل حذف المجلد: $path';
+  }
+
+  @override
+  String get fileNotFound => 'الملف غير موجود';
+
+  @override
+  String get ftpNotConnected => 'لا يوجد اتصال بـ FTP';
+
+  @override
+  String get sftpNotConnected => 'لا يوجد اتصال بـ SFTP';
+
+  @override
+  String ftpConnectionFailed(String host, String port) {
+    return 'فشل اتصال FTP: تعذر الاتصال بـ $host:$port';
+  }
+
+  @override
+  String localFileNotFound(String path) {
+    return 'الملف المحلي غير موجود: $path';
+  }
+
+  @override
+  String sourceDoesNotExist(String path) {
+    return 'الملف أو المجلد المصدر غير موجود: $path';
+  }
+
+  @override
+  String get vaultFileNotFound => 'ملف الخزنة المشفّر غير موجود';
+
+  @override
+  String vaultFileNotFoundAt(String path) {
+    return 'ملف الخزنة المشفّر غير موجود: $path';
+  }
+
+  @override
+  String get sharingApksOfSelectedApps => 'مشاركة ملفات APK للتطبيقات المحددة';
+
+  @override
+  String sharingApkFor(String name) {
+    return 'مشاركة ملف APK الخاص بـ $name';
+  }
+
+  @override
+  String get establishingProxyTunnel => 'جارٍ إنشاء نفق آمن عبر البروكسي...';
+
+  @override
+  String remoteUploadFailedFor(String path) {
+    return 'فشل رفع: $path';
+  }
+
+  @override
+  String remoteDownloadFailedFor(String path) {
+    return 'فشل تنزيل: $path';
+  }
+
+  @override
+  String sdCardWithUsbNamed(String name) {
+    return 'بطاقة SD / USB ($name)';
+  }
+
+  @override
   String processingItem(int current, int total) {
     return 'يجري معالجة العنصر $current من $total';
   }

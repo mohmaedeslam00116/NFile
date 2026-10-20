@@ -1959,6 +1959,158 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsBackupInvalidFormat => 'Invalid backup file format';
 
   @override
+  String get webBrowser => 'Web Browser';
+
+  @override
+  String get webBrowsingDirectories => 'Browsing Directories';
+
+  @override
+  String get webCloseModal => 'Close Modal';
+
+  @override
+  String get downloadFile => 'Download File';
+
+  @override
+  String get webFailedToCopyLink => 'Failed to copy link.';
+
+  @override
+  String get webLinkCopied => 'Link copied to clipboard!';
+
+  @override
+  String get webGridView => 'Grid View';
+
+  @override
+  String get webListView => 'List View';
+
+  @override
+  String get networkError => 'Network error';
+
+  @override
+  String get webSearchFiles => 'Search files & folders...';
+
+  @override
+  String get webUploadToFolder => 'Upload Files to this Folder';
+
+  @override
+  String get webUploadCompleted => 'Upload completed successfully!';
+
+  @override
+  String get webUploadFailed => 'Upload failed';
+
+  @override
+  String get webUploadSuccessful => 'Upload successful';
+
+  @override
+  String mediaCannotOpenDirectory(String path) {
+    return 'Cannot open directory: $path';
+  }
+
+  @override
+  String mediaCannotOpenRemoteDirectory(String path) {
+    return 'Cannot open remote directory: $path';
+  }
+
+  @override
+  String mediaWebdavConnectFailed(String status) {
+    return 'Failed to connect to WebDAV: $status';
+  }
+
+  @override
+  String get vaultIncorrectPassword => 'Incorrect password or corrupted file';
+
+  @override
+  String vaultFileDoesNotExist(String path) {
+    return 'File does not exist: $path';
+  }
+
+  @override
+  String vaultDirectoryDoesNotExist(String path) {
+    return 'Directory does not exist: $path';
+  }
+
+  @override
+  String get vaultFailedToZip => 'Failed to zip directory contents';
+
+  @override
+  String rootExecutionFailed(String error) {
+    return 'Execution failed: $error';
+  }
+
+  @override
+  String get customFolder => 'Custom Folder';
+
+  @override
+  String get sdCardWithUsb => 'SD Card / USB';
+
+  @override
+  String failedToCreateDirectory(String path) {
+    return 'Failed to create directory: $path';
+  }
+
+  @override
+  String failedToDeleteDirectory(String path) {
+    return 'Failed to delete directory: $path';
+  }
+
+  @override
+  String get fileNotFound => 'File not found';
+
+  @override
+  String get ftpNotConnected => 'FTP not connected';
+
+  @override
+  String get sftpNotConnected => 'SFTP not connected';
+
+  @override
+  String ftpConnectionFailed(String host, String port) {
+    return 'FTP connection failed: could not connect to $host:$port';
+  }
+
+  @override
+  String localFileNotFound(String path) {
+    return 'Local file not found: $path';
+  }
+
+  @override
+  String sourceDoesNotExist(String path) {
+    return 'Source file/folder does not exist: $path';
+  }
+
+  @override
+  String get vaultFileNotFound => 'Scrambled vault file not found';
+
+  @override
+  String vaultFileNotFoundAt(String path) {
+    return 'Scrambled vault file not found: $path';
+  }
+
+  @override
+  String get sharingApksOfSelectedApps => 'Sharing APKs of selected apps';
+
+  @override
+  String sharingApkFor(String name) {
+    return 'Sharing APK for $name';
+  }
+
+  @override
+  String get establishingProxyTunnel => 'Establishing secure proxy tunnel...';
+
+  @override
+  String remoteUploadFailedFor(String path) {
+    return 'Upload failed for: $path';
+  }
+
+  @override
+  String remoteDownloadFailedFor(String path) {
+    return 'Download failed for: $path';
+  }
+
+  @override
+  String sdCardWithUsbNamed(String name) {
+    return 'SD Card / USB ($name)';
+  }
+
+  @override
   String processingItem(int current, int total) {
     return 'Processing item $current of $total';
   }

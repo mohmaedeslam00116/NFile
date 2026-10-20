@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;
 import 'root_shizuku_service.dart';
+import '../core/l10n/app_translation.dart';
 
 class RecycleBinItem {
   final String id;
@@ -98,7 +99,9 @@ class RecycleBinService {
     final isDirectory = dirExists;
 
     if (!fileExists && !dirExists) {
-      throw Exception("Source file/folder does not exist: $path");
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.sourceDoesNotExist(path)),
+      );
     }
 
     // Calculate size
