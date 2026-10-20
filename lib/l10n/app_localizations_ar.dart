@@ -969,6 +969,218 @@ class AppLocalizationsAr extends AppLocalizations {
       'تسبب صيغتا TAR.ZSTD و TAR.LZ4 استهلاكًا كبيرًا للذاكرة، وهما محسّنتان للملفات الأصغر من 600 ميغابايت. يرجى استخدام صيغة ZIP أو TAR للملفات الأكبر.';
 
   @override
+  String get actionApply => 'تطبيق';
+
+  @override
+  String get actionCreate => 'إنشاء';
+
+  @override
+  String get actionMore => 'المزيد';
+
+  @override
+  String get actionOk => 'موافق';
+
+  @override
+  String get actionPinToTop => 'تثبيت في الأعلى';
+
+  @override
+  String get actionUnpinFromTop => 'إلغاء التثبيت من الأعلى';
+
+  @override
+  String get actionPreview => 'معاينة';
+
+  @override
+  String get actionReplace => 'استبدال';
+
+  @override
+  String get actionSkip => 'تخطي';
+
+  @override
+  String get chooseAnyDestination => 'اختر أي وجهة';
+
+  @override
+  String get customLocation => 'موقع مخصص';
+
+  @override
+  String get selectCustomLocation => 'اختر موقعًا مخصصًا...';
+
+  @override
+  String get propertyContains => 'يحتوي على';
+
+  @override
+  String get propertyExtension => 'الامتداد';
+
+  @override
+  String get propertyModified => 'آخر تعديل';
+
+  @override
+  String get propertyName => 'الاسم';
+
+  @override
+  String get propertyPath => 'المسار';
+
+  @override
+  String get propertyPermissions => 'الأذونات';
+
+  @override
+  String get permissionRead => 'قراءة';
+
+  @override
+  String get permissionWrite => 'كتابة';
+
+  @override
+  String get propertySize => 'الحجم';
+
+  @override
+  String get propertyType => 'النوع';
+
+  @override
+  String get propertyFolderDirectory => 'مجلد / دليل';
+
+  @override
+  String get itemFiles => 'الملفات';
+
+  @override
+  String fileWithExtension(String extension) {
+    return 'ملف ($extension)';
+  }
+
+  @override
+  String get fileLongPressHint => 'ملف (اضغط مطولًا لفتحه بـ)';
+
+  @override
+  String get compressionFast => 'سريع';
+
+  @override
+  String get compressionMaximum => 'الأقصى';
+
+  @override
+  String get compressionNone => 'بلا (تخزين)';
+
+  @override
+  String get compressionStandard => 'عادي';
+
+  @override
+  String get batchRenamePadding => 'حشو';
+
+  @override
+  String get batchRenameReplacement => 'الاستبدال';
+
+  @override
+  String get lessOptions => 'خيارات أقل';
+
+  @override
+  String get conflictNewer => 'الأحدث';
+
+  @override
+  String get sortNameAscending => 'الاسم (أ-ي)';
+
+  @override
+  String get sortNameDescending => 'الاسم (ي-أ)';
+
+  @override
+  String get sortNewest => 'الأحدث';
+
+  @override
+  String get sortOldest => 'الأقدم';
+
+  @override
+  String get sortSizeLarge => 'الحجم (كبير)';
+
+  @override
+  String get sortSizeSmall => 'الحجم (صغير)';
+
+  @override
+  String get showFolders => 'إظهار المجلدات';
+
+  @override
+  String get hideFolders => 'إخفاء المجلدات';
+
+  @override
+  String get selectFilesAndFolders => 'اختر الملفات والمجلدات';
+
+  @override
+  String get selectAndPinFolders => 'اختر المجلدات وثبّتها';
+
+  @override
+  String get pinnedItemsToTop => 'تم تثبيت العناصر المحددة في الأعلى';
+
+  @override
+  String get unpinnedItems => 'تم إلغاء تثبيت العناصر المحددة';
+
+  @override
+  String get emptyLabel => '(فارغ)';
+
+  @override
+  String get runInBackground => 'في الخلفية';
+
+  @override
+  String get processingFiles => 'جارٍ المعالجة...';
+
+  @override
+  String get copyingFiles => 'جارٍ نسخ الملفات...';
+
+  @override
+  String get movingFiles => 'جارٍ نقل الملفات...';
+
+  @override
+  String get calculating => 'جارٍ الحساب...';
+
+  @override
+  String get searchInThisDirectory =>
+      'ابحث في الملفات والمجلدات الفرعية في هذا المجلد';
+
+  @override
+  String countItemsSelected(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count عناصر محددة',
+      one: 'عنصر واحد محدد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sizeWithBytes(String size, int bytes) {
+    return '$size ($bytes بايت)';
+  }
+
+  @override
+  String containsFoldersAndFiles(int folders, int files) {
+    String _temp0 = intl.Intl.pluralLogic(
+      folders,
+      locale: localeName,
+      other: '$folders مجلدات فرعية',
+      one: 'مجلد فرعي واحد',
+      zero: 'لا مجلدات فرعية',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      files,
+      locale: localeName,
+      other: '$files ملفات',
+      one: 'ملف واحد',
+      zero: 'لا ملفات',
+    );
+    return '$_temp0، $_temp1';
+  }
+
+  @override
+  String processedOfTotal(String processed, String total) {
+    return '$processed من $total';
+  }
+
+  @override
+  String speedMegabytesPerSecond(String speed) {
+    return '$speed م.ب/ث';
+  }
+
+  @override
+  String timeRemaining(String time) {
+    return 'يتبقى $time';
+  }
+
+  @override
   String processingItem(int current, int total) {
     return 'يجري معالجة العنصر $current من $total';
   }

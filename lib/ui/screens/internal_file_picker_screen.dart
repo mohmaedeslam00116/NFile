@@ -154,7 +154,7 @@ class _InternalFilePickerScreenState extends State<InternalFilePickerScreen> {
       context,
       title: AppLocalizations.of(context).createFolder,
       hint: AppLocalizations.of(context).enterFolderName,
-      actionText: 'Create',
+      actionText: AppLocalizations.of(context).actionCreate,
     );
     if (newFolderName != null && newFolderName.isNotEmpty) {
       setState(() => _isLoading = true);
@@ -401,7 +401,7 @@ class _InternalFilePickerScreenState extends State<InternalFilePickerScreen> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(widget.pickDirectory ? 'Select & Pin Folders' : 'Select Files & Folders', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(widget.pickDirectory ? AppLocalizations.of(context).selectAndPinFolders : AppLocalizations.of(context).selectFilesAndFolders, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               Text(_currentPath, style: TextStyle(fontSize: 12, color: theme.colorScheme.primary)),
             ],
           ),

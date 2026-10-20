@@ -100,6 +100,7 @@ void main() {
   // in the translation.
   const migrated = <String>[
     'the frame',
+    'the directory',
   ];
 
   for (final area in migrated) {

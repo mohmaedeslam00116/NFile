@@ -7,8 +7,10 @@
     "NOT NULL"
   ],
   "technical": [
+    "$tempZipName.zip",
     "/storage/emulated/0",
     "^SD Card \\((.*)\\)$",
+    "{de}",
     "All",
     "always_$_selectedType",
     "APKs",

@@ -126,7 +126,7 @@ class BackgroundOperationProgressDialog extends StatelessWidget {
                               const SizedBox(width: 10),
                               Expanded(
                                 child: Text(
-                                  operation.currentFile.isEmpty ? 'Processing...' : operation.currentFile,
+                                  operation.currentFile.isEmpty ? AppLocalizations.of(context).processingFiles : operation.currentFile,
                                   style: theme.textTheme.bodyMedium?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
@@ -201,7 +201,7 @@ class BackgroundOperationProgressDialog extends StatelessWidget {
                                   service.cancelOperation();
                                 },
                                 icon: const Icon(Broken.close_square, size: 18),
-                                label: const Text('Cancel', style: TextStyle(fontWeight: FontWeight.bold)),
+                                label: Text(AppLocalizations.of(context).actionCancel, style: TextStyle(fontWeight: FontWeight.bold)),
                                 style: OutlinedButton.styleFrom(
                                   foregroundColor: Colors.redAccent,
                                   side: BorderSide(color: Colors.redAccent.withValues(alpha: 0.4)),
@@ -222,7 +222,7 @@ class BackgroundOperationProgressDialog extends StatelessWidget {
                                   }
                                 },
                                 icon: const Icon(Broken.send, size: 18),
-                                label: const Text('Background', style: TextStyle(fontWeight: FontWeight.bold)),
+                                label: Text(AppLocalizations.of(context).runInBackground, style: TextStyle(fontWeight: FontWeight.bold)),
                                 style: FilledButton.styleFrom(
                                   backgroundColor: theme.colorScheme.primary,
                                   foregroundColor: theme.colorScheme.onPrimary,

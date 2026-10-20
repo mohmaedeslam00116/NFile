@@ -146,7 +146,8 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
 
               // Compression Level
               Text(
-                AppLocalizations.of(context).compressionLevel(_getCompressionLabel(_compressionLevel)),
+                AppLocalizations.of(context)
+                    .compressionLevel(_getCompressionLabel(context, _compressionLevel)),
                 style: theme.textTheme.titleSmall,
               ),
               Slider(
@@ -154,7 +155,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                 min: 0,
                 max: 9,
                 divisions: 3,
-                label: _getCompressionLabel(_compressionLevel),
+                label: _getCompressionLabel(context, _compressionLevel),
                 onChanged: (val) {
                   setState(() {
                     _compressionLevel = val.toInt();
@@ -227,7 +228,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel'),
+                    child: Text(AppLocalizations.of(context).actionCancel),
                   ),
                   const SizedBox(width: 12),
                   FilledButton(
@@ -262,10 +263,11 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
     );
   }
 
-  String _getCompressionLabel(int level) {
-    if (level == 0) return 'None (Store)';
-    if (level == 3) return 'Fast';
-    if (level == 6) return 'Standard';
-    return 'Maximum';
+  String _getCompressionLabel(BuildContext context, int level) {
+    final l10n = AppLocalizations.of(context);
+    if (level == 0) return l10n.compressionNone;
+    if (level == 3) return l10n.compressionFast;
+    if (level == 6) return l10n.compressionStandard;
+    return l10n.compressionMaximum;
   }
 }

@@ -961,6 +961,218 @@ class AppLocalizationsEn extends AppLocalizations {
       'TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.';
 
   @override
+  String get actionApply => 'Apply';
+
+  @override
+  String get actionCreate => 'Create';
+
+  @override
+  String get actionMore => 'More';
+
+  @override
+  String get actionOk => 'OK';
+
+  @override
+  String get actionPinToTop => 'Pin to Top';
+
+  @override
+  String get actionUnpinFromTop => 'Unpin from Top';
+
+  @override
+  String get actionPreview => 'Preview';
+
+  @override
+  String get actionReplace => 'Replace';
+
+  @override
+  String get actionSkip => 'Skip';
+
+  @override
+  String get chooseAnyDestination => 'Choose any destination';
+
+  @override
+  String get customLocation => 'Custom Location';
+
+  @override
+  String get selectCustomLocation => 'Select Custom Location...';
+
+  @override
+  String get propertyContains => 'Contains';
+
+  @override
+  String get propertyExtension => 'Extension';
+
+  @override
+  String get propertyModified => 'Modified';
+
+  @override
+  String get propertyName => 'Name';
+
+  @override
+  String get propertyPath => 'Path';
+
+  @override
+  String get propertyPermissions => 'Permissions';
+
+  @override
+  String get permissionRead => 'Read';
+
+  @override
+  String get permissionWrite => 'Write';
+
+  @override
+  String get propertySize => 'Size';
+
+  @override
+  String get propertyType => 'Type';
+
+  @override
+  String get propertyFolderDirectory => 'Folder / Directory';
+
+  @override
+  String get itemFiles => 'Files';
+
+  @override
+  String fileWithExtension(String extension) {
+    return 'File ($extension)';
+  }
+
+  @override
+  String get fileLongPressHint => 'File (Long press to Open with)';
+
+  @override
+  String get compressionFast => 'Fast';
+
+  @override
+  String get compressionMaximum => 'Maximum';
+
+  @override
+  String get compressionNone => 'None (Store)';
+
+  @override
+  String get compressionStandard => 'Standard';
+
+  @override
+  String get batchRenamePadding => 'Padding';
+
+  @override
+  String get batchRenameReplacement => 'Replacement';
+
+  @override
+  String get lessOptions => 'Less Options';
+
+  @override
+  String get conflictNewer => 'Newer';
+
+  @override
+  String get sortNameAscending => 'Name (A-Z)';
+
+  @override
+  String get sortNameDescending => 'Name (Z-A)';
+
+  @override
+  String get sortNewest => 'Newest';
+
+  @override
+  String get sortOldest => 'Oldest';
+
+  @override
+  String get sortSizeLarge => 'Size (Large)';
+
+  @override
+  String get sortSizeSmall => 'Size (Small)';
+
+  @override
+  String get showFolders => 'Show Folders';
+
+  @override
+  String get hideFolders => 'Hide Folders';
+
+  @override
+  String get selectFilesAndFolders => 'Select Files & Folders';
+
+  @override
+  String get selectAndPinFolders => 'Select & Pin Folders';
+
+  @override
+  String get pinnedItemsToTop => 'Pinned selected item(s) to top';
+
+  @override
+  String get unpinnedItems => 'Unpinned selected item(s)';
+
+  @override
+  String get emptyLabel => '(empty)';
+
+  @override
+  String get runInBackground => 'Background';
+
+  @override
+  String get processingFiles => 'Processing...';
+
+  @override
+  String get copyingFiles => 'Copying Files...';
+
+  @override
+  String get movingFiles => 'Moving Files...';
+
+  @override
+  String get calculating => 'calculating...';
+
+  @override
+  String get searchInThisDirectory =>
+      'Search files and subfolders in this directory';
+
+  @override
+  String countItemsSelected(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items selected',
+      one: '1 item selected',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sizeWithBytes(String size, int bytes) {
+    return '$size ($bytes bytes)';
+  }
+
+  @override
+  String containsFoldersAndFiles(int folders, int files) {
+    String _temp0 = intl.Intl.pluralLogic(
+      folders,
+      locale: localeName,
+      other: '$folders subfolders',
+      one: '1 subfolder',
+      zero: 'no subfolders',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      files,
+      locale: localeName,
+      other: '$files files',
+      one: '1 file',
+      zero: 'no files',
+    );
+    return '$_temp0, $_temp1';
+  }
+
+  @override
+  String processedOfTotal(String processed, String total) {
+    return '$processed of $total';
+  }
+
+  @override
+  String speedMegabytesPerSecond(String speed) {
+    return '$speed MB/s';
+  }
+
+  @override
+  String timeRemaining(String time) {
+    return '$time remaining';
+  }
+
+  @override
   String processingItem(int current, int total) {
     return 'Processing item $current of $total';
   }

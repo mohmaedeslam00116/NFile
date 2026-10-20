@@ -22,6 +22,7 @@ import '../widgets/selection_context_bottom_sheet.dart';
 import '../widgets/file_operation_progress_dialog.dart';
 import '../widgets/nfile_drawer.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../core/l10n/filter_labels.dart';
 import 'internal_file_picker_screen.dart';
 import '../widgets/restricted_folder_banner.dart';
 import '../widgets/directory_tab_bar.dart';
@@ -172,10 +173,10 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           final currentName = p.basename(path);
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
-            title: 'Rename',
+            title: AppLocalizations.of(context).actionRename,
             hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
-            actionText: 'Rename',
+            actionText: AppLocalizations.of(context).actionRename,
           );
           if (newName != null && newName.isNotEmpty) {
             await provider.renameFile(path, newName);
@@ -191,10 +192,11 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             provider.selectedPaths.contains(path);
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
-          title: isMulti ? AppLocalizations.of(context).deleteSelected : 'Delete Item',
+          title: isMulti ? AppLocalizations.of(context).deleteSelected : AppLocalizations.of(context).deleteItem,
           content: isMulti
-              ? 'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.'
-              : 'Are you sure you want to delete this item? This cannot be undone.',
+              ? AppLocalizations.of(context)
+                  .deleteItemsQuestion(provider.selectedPaths.length)
+              : AppLocalizations.of(context).deleteItemQuestion,
         );
         if (confirm) {
           if (isMulti) {
@@ -229,7 +231,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           context,
           title: AppLocalizations.of(context).newFile,
           hint: AppLocalizations.of(context).fileName,
-          actionText: 'Create',
+          actionText: AppLocalizations.of(context).actionCreate,
         );
         if (fileName != null && fileName.isNotEmpty) {
           final createdName = await provider.createFile(fileName);
@@ -252,7 +254,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           context,
           title: AppLocalizations.of(context).newFolder,
           hint: AppLocalizations.of(context).folderName,
-          actionText: 'Create',
+          actionText: AppLocalizations.of(context).actionCreate,
         );
         if (folderName != null && folderName.isNotEmpty) {
           final createdName = await provider.createFolder(folderName);
@@ -676,49 +678,49 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             context,
                             provider,
                             setStateModal,
-                            'Name (A-Z)',
+                            AppLocalizations.of(context).sortNameAscending,
                             SortRule.nameAsc,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Name (Z-A)',
+                            AppLocalizations.of(context).sortNameDescending,
                             SortRule.nameDesc,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Newest',
+                            AppLocalizations.of(context).sortNewest,
                             SortRule.dateNewest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Oldest',
+                            AppLocalizations.of(context).sortOldest,
                             SortRule.dateOldest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Size (Large)',
+                            AppLocalizations.of(context).sortSizeLarge,
                             SortRule.sizeLargest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Size (Small)',
+                            AppLocalizations.of(context).sortSizeSmall,
                             SortRule.sizeSmallest,
                           ),
                           _buildSortChip(
                             context,
                             provider,
                             setStateModal,
-                            'Type',
+                            AppLocalizations.of(context).propertyType,
                             SortRule.type,
                           ),
                         ],
@@ -1379,8 +1381,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     '/storage/emulated/0' ||
                                 provider.activeTab.currentPath == '/' ||
                                 provider.activeTab.currentPath.isEmpty
-                            ? 'Search globally...'
-                            : 'Search in this folder...',
+                            ? AppLocalizations.of(context).searchGloballyHint
+                            : AppLocalizations.of(context).searchInFolderHint,
                         hintStyle: TextStyle(
                           color: theme.colorScheme.onSurface.withAlpha(102),
                         ),
@@ -1454,7 +1456,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         : [
                             IconButton(
                               icon: const Icon(Broken.document_copy),
-                              tooltip: 'Copy',
+                              tooltip: AppLocalizations.of(context).actionCopy,
                               onPressed: () {
                                 provider.copySelected();
                                 // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Copied selected items')));
@@ -1462,7 +1464,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             ),
                             IconButton(
                               icon: const Icon(Broken.scissor),
-                              tooltip: 'Cut',
+                              tooltip: AppLocalizations.of(context).actionCut,
                               onPressed: () {
                                 provider.cutSelected();
                                 // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Cut selected items')));
@@ -1470,7 +1472,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             ),
                             IconButton(
                               icon: const Icon(Broken.edit),
-                              tooltip: 'Rename',
+                              tooltip: AppLocalizations.of(context).actionRename,
                               onPressed: () async {
                                 if (provider.selectedPaths.length == 1) {
                                   final path = provider.selectedPaths.first;
@@ -1478,10 +1480,10 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                   final newName =
                                       await FileActionDialogs.showTextInputDialog(
                                         context,
-                                        title: 'Rename',
+                                        title: AppLocalizations.of(context).actionRename,
                                         hint: AppLocalizations.of(context).enterNewName,
                                         initialValue: currentName,
-                                        actionText: 'Rename',
+                                        actionText: AppLocalizations.of(context).actionRename,
                                       );
                                   if (newName != null && newName.isNotEmpty) {
                                     await provider.renameFile(path, newName);
@@ -1506,8 +1508,10 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     await FileActionDialogs.showConfirmDialog(
                                       context,
                                       title: AppLocalizations.of(context).deleteSelected,
-                                      content:
-                                          'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.',
+                                      content: AppLocalizations.of(context)
+                                          .deleteItemsQuestion(
+                                            provider.selectedPaths.length,
+                                          ),
                                     );
                                 if (confirm) {
                                   await provider.deleteSelected();
@@ -1553,8 +1557,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       SnackBar(
                                         content: Text(
                                           allPinned
-                                              ? 'Unpinned selected item(s)'
-                                              : 'Pinned selected item(s) to top',
+                                              ? AppLocalizations.of(context).unpinnedItems
+                                              : AppLocalizations.of(context).pinnedItemsToTop,
                                         ),
                                         behavior: SnackBarBehavior.floating,
                                       ),
@@ -1599,14 +1603,14 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       ],
                                     ),
                                   ),
-                                  const PopupMenuItem<String>(
+                                  PopupMenuItem<String>(
                                     value: 'share',
                                     child: Row(
                                       children: [
                                         Icon(Icons.share_outlined, size: 20),
                                         SizedBox(width: 12),
                                         Text(
-                                          'Share',
+                                          AppLocalizations.of(context).actionShare,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1630,8 +1634,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                         const SizedBox(width: 12),
                                         Text(
                                           allPinned
-                                              ? 'Unpin from Top'
-                                              : 'Pin to Top',
+                                              ? AppLocalizations.of(context).actionUnpinFromTop
+                                              : AppLocalizations.of(context).actionPinToTop,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1639,14 +1643,14 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       ],
                                     ),
                                   ),
-                                  const PopupMenuItem<String>(
+                                  PopupMenuItem<String>(
                                     value: 'properties',
                                     child: Row(
                                       children: [
                                         Icon(Broken.info_circle, size: 20),
                                         SizedBox(width: 12),
                                         Text(
-                                          'Properties',
+                                          AppLocalizations.of(context).actionProperties,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -2025,8 +2029,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                                         .activeTab
                                                                         .currentPath
                                                                         .isEmpty
-                                                                ? 'Search your storage'
-                                                                : 'Search this folder',
+                                                                ? AppLocalizations.of(context).searchYourStorage
+                                                                : AppLocalizations.of(context).searchThisFolder,
                                                             style: Theme.of(context)
                                                                 .textTheme
                                                                 .titleLarge
@@ -2053,8 +2057,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                                         .activeTab
                                                                         .currentPath
                                                                         .isEmpty
-                                                                ? 'Find any file, folder, document or media instantly across your device'
-                                                                : 'Search files and subfolders in this directory',
+                                                                ? AppLocalizations.of(context).searchEverythingHint
+                                                                : AppLocalizations.of(context).searchInThisDirectory,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: Theme.of(context)
@@ -2721,7 +2725,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                 size: 15,
               ),
               label: Text(
-                provider.hideFoldersInFilter ? 'Show Folders' : 'Hide Folders',
+                provider.hideFoldersInFilter ? AppLocalizations.of(context).showFolders : AppLocalizations.of(context).hideFolders,
                 style: TextStyle(
                   color: color,
                   fontWeight: FontWeight.bold,
@@ -2805,7 +2809,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       const SizedBox(width: 6),
                     ],
                     Text(
-                      filter,
+                      filterLabel(AppLocalizations.of(context), filter),
                       style: TextStyle(
                         fontWeight: isSelected
                             ? FontWeight.w600
@@ -2885,8 +2889,8 @@ class _AnimatedTitleButtonState extends State<_AnimatedTitleButton>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Files',
+                  Text(
+                    AppLocalizations.of(context).itemFiles,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,

@@ -127,7 +127,7 @@ class _ExtractArchiveDialogState extends State<ExtractArchiveDialog> {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel'),
+                    child: Text(AppLocalizations.of(context).actionCancel),
                   ),
                   const SizedBox(width: 12),
                   FilledButton(
@@ -143,7 +143,7 @@ class _ExtractArchiveDialogState extends State<ExtractArchiveDialog> {
                         ),
                       );
                     },
-                    child: const Text('Extract'),
+                    child: Text(AppLocalizations.of(context).actionExtract),
                   ),
                 ],
               ),

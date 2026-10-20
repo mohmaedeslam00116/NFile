@@ -270,6 +270,65 @@
   "rootDirectory": "Root",
   "copyFileSuffix": "(copy)",
   "tarFormatsMemoryWarning": "TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.",
+  "actionApply": "Apply",
+  "actionCreate": "Create",
+  "actionMore": "More",
+  "actionOk": "OK",
+  "actionPinToTop": "Pin to Top",
+  "actionUnpinFromTop": "Unpin from Top",
+  "actionPreview": "Preview",
+  "actionReplace": "Replace",
+  "actionSkip": "Skip",
+  "chooseAnyDestination": "Choose any destination",
+  "customLocation": "Custom Location",
+  "selectCustomLocation": "Select Custom Location...",
+  "propertyContains": "Contains",
+  "propertyExtension": "Extension",
+  "propertyModified": "Modified",
+  "propertyName": "Name",
+  "propertyPath": "Path",
+  "propertyPermissions": "Permissions",
+  "permissionRead": "Read",
+  "permissionWrite": "Write",
+  "propertySize": "Size",
+  "propertyType": "Type",
+  "propertyFolderDirectory": "Folder / Directory",
+  "itemFiles": "Files",
+  "fileWithExtension": "File ({extension})",
+  "fileLongPressHint": "File (Long press to Open with)",
+  "compressionFast": "Fast",
+  "compressionMaximum": "Maximum",
+  "compressionNone": "None (Store)",
+  "compressionStandard": "Standard",
+  "batchRenamePadding": "Padding",
+  "batchRenameReplacement": "Replacement",
+  "lessOptions": "Less Options",
+  "conflictNewer": "Newer",
+  "sortNameAscending": "Name (A-Z)",
+  "sortNameDescending": "Name (Z-A)",
+  "sortNewest": "Newest",
+  "sortOldest": "Oldest",
+  "sortSizeLarge": "Size (Large)",
+  "sortSizeSmall": "Size (Small)",
+  "showFolders": "Show Folders",
+  "hideFolders": "Hide Folders",
+  "selectFilesAndFolders": "Select Files & Folders",
+  "selectAndPinFolders": "Select & Pin Folders",
+  "pinnedItemsToTop": "Pinned selected item(s) to top",
+  "unpinnedItems": "Unpinned selected item(s)",
+  "emptyLabel": "(empty)",
+  "runInBackground": "Background",
+  "processingFiles": "Processing...",
+  "copyingFiles": "Copying Files...",
+  "movingFiles": "Moving Files...",
+  "calculating": "calculating...",
+  "searchInThisDirectory": "Search files and subfolders in this directory",
+  "countItemsSelected": "{count, plural, =1{1 item selected} other{{count} items selected}}",
+  "sizeWithBytes": "{size} ({bytes} bytes)",
+  "containsFoldersAndFiles": "{folders, plural, =0{no subfolders} =1{1 subfolder} other{{folders} subfolders}}, {files, plural, =0{no files} =1{1 file} other{{files} files}}",
+  "processedOfTotal": "{processed} of {total}",
+  "speedMegabytesPerSecond": "{speed} MB/s",
+  "timeRemaining": "{time} remaining",
   "processingItem": "Processing item {current} of {total}",
   "transferSpeed": "Transfer Speed",
   "estimatedTime": "Est. Time",
@@ -1876,6 +1935,64 @@
         "type": "String"
       },
       "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileWithExtension": {
+    "placeholders": {
+      "extension": {
+        "type": "String"
+      }
+    }
+  },
+  "@countItemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@sizeWithBytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "bytes": {
+        "type": "int"
+      }
+    }
+  },
+  "@containsFoldersAndFiles": {
+    "placeholders": {
+      "folders": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      }
+    }
+  },
+  "@processedOfTotal": {
+    "placeholders": {
+      "processed": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@speedMegabytesPerSecond": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "@timeRemaining": {
+    "placeholders": {
+      "time": {
         "type": "String"
       }
     }

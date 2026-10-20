@@ -48,10 +48,13 @@ class FileOperationProgressDialog extends StatelessWidget {
             }
 
             final percent = progress.percentage.clamp(0.0, 1.0);
-            final speedText = '${progress.speedMBs.toStringAsFixed(1)} MB/s';
+            final speedText = AppLocalizations.of(context)
+                .speedMegabytesPerSecond(progress.speedMBs.toStringAsFixed(1));
             final etaText = progress.eta.inSeconds > 0
-                ? '${progress.eta.inMinutes.toString().padLeft(2, '0')}:${(progress.eta.inSeconds % 60).toString().padLeft(2, '0')} remaining'
-                : 'calculating...';
+                ? AppLocalizations.of(context).timeRemaining(
+                    '${progress.eta.inMinutes.toString().padLeft(2, '0')}:${(progress.eta.inSeconds % 60).toString().padLeft(2, '0')}',
+                  )
+                : AppLocalizations.of(context).calculating;
             final processedSize = FileUtils.formatBytes(progress.bytesProcessed, 2);
             final totalSize = FileUtils.formatBytes(progress.totalBytes, 2);
 
@@ -95,7 +98,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    provider.isCut ? 'Moving Files...' : 'Copying Files...',
+                                    provider.isCut ? AppLocalizations.of(context).movingFiles : AppLocalizations.of(context).copyingFiles,
                                     style: theme.textTheme.titleLarge?.copyWith(
                                       fontWeight: FontWeight.bold,
                                       letterSpacing: -0.5,
@@ -227,7 +230,8 @@ class FileOperationProgressDialog extends StatelessWidget {
                         _buildStatTile(
                           theme,
                           label: AppLocalizations.of(context).dataProcessed,
-                          value: '$processedSize of $totalSize',
+                          value: AppLocalizations.of(context)
+                              .processedOfTotal(processedSize, totalSize),
                           icon: Broken.folder_open,
                           isRow: true,
                         ),

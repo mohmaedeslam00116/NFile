@@ -226,7 +226,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Rename'),
+                  child: Text(AppLocalizations.of(context).actionRename),
                 ),
                 OutlinedButton(
                   onPressed: () => Navigator.pop(
@@ -236,7 +236,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Skip'),
+                  child: Text(AppLocalizations.of(context).actionSkip),
                 ),
                 OutlinedButton(
                   onPressed: () => Navigator.pop(
@@ -256,7 +256,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   style: FilledButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Replace'),
+                  child: Text(AppLocalizations.of(context).actionReplace),
                 ),
               ],
             ),
@@ -307,7 +307,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
-                    'Newer',
+                    AppLocalizations.of(context).conflictNewer,
                     style: TextStyle(
                       fontSize: 9,
                       fontWeight: FontWeight.bold,
@@ -353,11 +353,11 @@ class _ConflictDialogState extends State<ConflictDialog> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(ctx, controller.text.trim()),
-            child: const Text('Rename'),
+            child: Text(AppLocalizations.of(context).actionRename),
           ),
         ],
       ),
