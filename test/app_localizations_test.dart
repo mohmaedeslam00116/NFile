@@ -28,7 +28,7 @@ void main() {
     test('has an Arabic value that is a translation, not a copy', () {
       final copies = english.keys
           .where((key) => !_sameInBothLanguages.contains(key))
-          .where((key) => arabic[key] == english[key])
+          .where((key) => _isCopy(english[key]!, arabic[key]!))
           .toList();
 
       expect(
@@ -137,6 +137,20 @@ void main() {
       expect(source, contains('AppLocalization.resolve'));
     });
   });
+}
+
+/// Whether a value is a copy of the English one.
+///
+/// A message that holds nothing but placeholders — the count and the date of
+/// an entry — is the same in every language: there is no word to translate.
+/// A message that holds the same words as the English one was not translated.
+bool _isCopy(String english, String arabic) {
+  if (english != arabic) return false;
+
+  final text = english.replaceAll(RegExp(r'\{[^{}]*\}'), ' ').trim();
+  if (!RegExp('[A-Za-z]{2,}').hasMatch(text)) return false;
+
+  return true;
 }
 
 /// The values that are the same in both languages, because they name a thing

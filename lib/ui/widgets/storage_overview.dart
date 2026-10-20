@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/utils.dart';
 
@@ -54,8 +55,8 @@ class StorageOverviewCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Internal Storage',
+              Text(
+                AppLocalizations.of(context).internalStorage,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -69,7 +70,7 @@ class StorageOverviewCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  '$usedPercentInt% Used',
+                  AppLocalizations.of(context).storageUsedPercent(usedPercentInt),
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
@@ -93,14 +94,14 @@ class StorageOverviewCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '$usedStorageStr used',
+                AppLocalizations.of(context).storageUsed(usedStorageStr),
                 style: const TextStyle(
                   color: Colors.white70,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
-                '$totalStorageStr total',
+                AppLocalizations.of(context).storageTotal(totalStorageStr),
                 style: const TextStyle(
                   color: Colors.white70,
                   fontWeight: FontWeight.w500,

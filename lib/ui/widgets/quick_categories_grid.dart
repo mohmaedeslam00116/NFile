@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/media_provider.dart';
 import '../../providers/file_manager_provider.dart';
 import '../screens/media_category_screen.dart';
@@ -91,7 +92,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AppManagerScreen())),
       },
       'Recycle Bin': {
-        'label': 'Recycle Bin',
+        'label': AppLocalizations.of(context).recycleBin,
         'icon': Broken.trash,
         'color': isDark ? Colors.redAccent : const Color(0xFFC62828),
         'count': 'Bin',
@@ -169,7 +170,7 @@ class QuickCategoriesGrid extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Quick Categories',
+                AppLocalizations.of(context).quickCategories,
                 style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               InkWell(
@@ -198,7 +199,7 @@ class QuickCategoriesGrid extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                 child: Text(
-                  'No shortcuts pinned. Tap Customize to add.',
+                  AppLocalizations.of(context).noShortcutsPinned,
                   style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                 ),
               ),
@@ -309,7 +310,7 @@ class _CustomizeCategoriesSheet extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Customize Shortcuts', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(AppLocalizations.of(context).customizeShortcuts, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
                       TextButton(onPressed: () => Navigator.pop(context), child: const Text('Done', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                     ],
                   ),
@@ -319,7 +320,7 @@ class _CustomizeCategoriesSheet extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Drag items by the handle (=) to reorder icons on the Home Screen.',
+                      AppLocalizations.of(context).dragToReorderHint,
                       style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: 13),
                     ),
                   ),
@@ -329,7 +330,7 @@ class _CustomizeCategoriesSheet extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: OutlinedButton.icon(
                     icon: const NfileIcon(Broken.add, size: 20),
-                    label: const Text('Add Folder / File Shortcut', style: TextStyle(fontWeight: FontWeight.bold)),
+                    label: Text(AppLocalizations.of(context).addFolderFileShortcut, style: TextStyle(fontWeight: FontWeight.bold)),
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(46),
                       foregroundColor: theme.colorScheme.primary,
@@ -478,7 +479,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                     });
                   },
                   visualDensity: VisualDensity.compact,
-                  tooltip: 'Custom Paths',
+                  tooltip: AppLocalizations.of(context).customPaths,
                 ),
               ],
             ],
@@ -486,7 +487,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
           subtitle: isCustom
               ? Text(widget.cat['path'] as String, style: TextStyle(fontSize: 11, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)), maxLines: 1, overflow: TextOverflow.ellipsis)
               : (isStandardCategory && customPaths.isNotEmpty
-                  ? Text('${customPaths.length} custom path(s)', style: TextStyle(fontSize: 11, color: theme.colorScheme.primary, fontWeight: FontWeight.w500))
+                  ? Text(AppLocalizations.of(context).customPathsCount(customPaths.length), style: TextStyle(fontSize: 11, color: theme.colorScheme.primary, fontWeight: FontWeight.w500))
                   : null),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
@@ -494,7 +495,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
               if (isCustom) ...[
                 IconButton(
                   icon: const NfileIcon(Broken.trash, color: Colors.redAccent, size: 20),
-                  tooltip: 'Delete Shortcut',
+                  tooltip: AppLocalizations.of(context).deleteShortcut,
                   onPressed: () => widget.provider.removeCustomShortcut(label),
                 ),
                 const SizedBox(width: 4),
@@ -519,7 +520,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Default Scan Locations:',
+                  AppLocalizations.of(context).defaultScanLocations,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
@@ -571,7 +572,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                         if (isExcluded)
                           IconButton(
                             icon: const Icon(Icons.add_circle_outline, color: Colors.green, size: 18),
-                            tooltip: 'Restore Location',
+                            tooltip: AppLocalizations.of(context).restoreLocation,
                             onPressed: () {
                               widget.provider.includeDefaultCategoryPath(label, path);
                             },
@@ -582,7 +583,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                         else
                           IconButton(
                             icon: const NfileIcon(Broken.trash, color: Colors.redAccent, size: 18),
-                            tooltip: 'Exclude Location',
+                            tooltip: AppLocalizations.of(context).excludeLocation,
                             onPressed: () {
                               widget.provider.excludeDefaultCategoryPath(label, path);
                             },
@@ -596,7 +597,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                 }),
                 const SizedBox(height: 12),
                 Text(
-                  'Custom Scan Locations:',
+                  AppLocalizations.of(context).customScanLocations,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
@@ -609,7 +610,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
-                      'No custom paths added.',
+                      AppLocalizations.of(context).noCustomPaths,
                       style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.4), fontSize: 12, fontStyle: FontStyle.italic),
                     ),
                   )
@@ -661,7 +662,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                     }
                   },
                   icon: const NfileIcon(Broken.folder_add, size: 16),
-                  label: const Text('Add Custom Path', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                  label: Text(AppLocalizations.of(context).addCustomPath, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                   style: TextButton.styleFrom(
                     foregroundColor: theme.colorScheme.primary,
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),

@@ -1,0 +1,111 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter_test/flutter_test.dart';
+
+/// The areas of the application, and the files of each of them.
+///
+/// An area is a group of files that the user sees together. Every area speaks
+/// Arabic when its turn comes, and the test says so: a string that is written
+/// in the source of an area is a string that the area does not speak Arabic
+/// yet.
+void main() {
+  final areas = <String, List<String>>{
+    'the frame': [
+      'lib/ui/screens/home_screen.dart',
+      'lib/ui/widgets/nfile_drawer.dart',
+      'lib/ui/widgets/quick_categories_grid.dart',
+      'lib/ui/screens/global_search_screen.dart',
+      'lib/ui/screens/all_recent_files_screen.dart',
+      'lib/ui/screens/about_screen.dart',
+      'lib/ui/widgets/pane_browser.dart',
+      'lib/ui/widgets/storage_overview.dart',
+      'lib/ui/widgets/premium_storage_overview.dart',
+      'lib/ui/widgets/swipable_storage_overview.dart',
+      'lib/ui/widgets/recent_files_section.dart',
+      'lib/ui/widgets/drag_drop_handler.dart',
+      'lib/ui/widgets/directory_tab_bar.dart',
+      'lib/ui/widgets/nfile_address_bar.dart',
+      'lib/ui/widgets/tab_options_sheet.dart',
+      'lib/ui/widgets/open_with_sheet.dart',
+      'lib/ui/widgets/restricted_folder_banner.dart',
+      'lib/ui/widgets/folder_grid_item.dart',
+      'lib/ui/widgets/file_item.dart',
+      'lib/ui/widgets/folder_item.dart',
+      'lib/providers/file_manager_provider.dart',
+      'lib/ui/widgets/settings_search.dart',
+    ],
+  };
+
+  // The areas that speak Arabic. An area joins the list when its strings are
+  // in the translation.
+  const migrated = <String>['the frame'];
+
+  for (final area in migrated) {
+    test('$area speaks Arabic', () {
+      final occurrences = _stringsIn(areas[area]!);
+      final found = occurrences.keys.toSet().difference(_allowed());
+
+      expect(
+        found,
+        isEmpty,
+        reason: 'These strings are written in the source of $area. They must '
+            'be asked for by name, so that they can be translated.\n'
+            '${found.join('\n')}\n\n'
+            'They are written in:\n'
+            '${found.expand((string) => occurrences[string]!).join('\n')}',
+      );
+    });
+  }
+}
+
+/// The strings that are technical, and that are never translated.
+Set<String> _allowed() {
+  final content = json.decode(
+    File('test/fixtures/hardcoded_strings.json').readAsStringSync(),
+  ) as Map;
+  return (content['allow'] as List).cast<String>().toSet();
+}
+
+/// The strings the user reads that are written in the source of the files.
+Map<String, List<String>> _stringsIn(List<String> paths) {
+  final found = <String, List<String>>{};
+
+  for (final path in paths) {
+    final file = File(path);
+    if (!file.existsSync()) {
+      throw StateError('The file $path does not exist.');
+    }
+
+    final lines = file.readAsLinesSync();
+    final kept = lines
+        .where((line) => !line.contains('debugPrint'))
+        .map((line) => line.replaceAll(RegExp(r'(?<!:)//.*$'), ''))
+        .toList();
+    final text = kept.join('\n');
+
+    for (final match in _marker.allMatches(text)) {
+      final rest = text.substring(match.end);
+      final literal = _literal.firstMatch(rest);
+      if (literal == null) continue;
+
+      final raw = literal.group(0)!;
+      final value = raw.substring(1, raw.length - 1);
+      if (!value.contains(' ')) continue;
+      if (!RegExp('[A-Za-z]{3}').hasMatch(value)) continue;
+      final line = '\n'.allMatches(text.substring(0, match.end)).length;
+      found.putIfAbsent(value, () => <String>[]).add('$path:${line + 1}');
+    }
+  }
+
+  return found;
+}
+
+/// The places where a string is read by the user.
+final RegExp _marker = RegExp(
+  r'''\b(?:Text|title|label|tooltip|hintText|hint|subtitle|semanticLabel|contentText|labelText|helperText|placeholder|counterText|prefixText|suffixText|errorText|displayName|filterLabel|primaryLabel|secondaryLabel)\s*:\s*|\bText\s*\(\s*''',
+);
+
+/// The string literals of a line, with their quotes. The anchor matters: only
+/// the literal that follows the marker is the one the user reads.
+final RegExp _literal = RegExp(r'''^('([^'\\\n]|\\.)*'|"([^"\\\n]|\\.)*")''');

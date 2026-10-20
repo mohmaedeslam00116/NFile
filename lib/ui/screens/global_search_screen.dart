@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -295,7 +296,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     if (_selectedPaths.isEmpty) return;
     context.read<FileManagerProvider>().setClipboard(_selectedPaths.toList(), isCut: false);
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Copied ${_selectedPaths.length} items to clipboard')),
+      SnackBar(content: Text(AppLocalizations.of(context).copiedItemsToClipboard(_selectedPaths.length))),
     );
     _clearSelection();
   }
@@ -304,7 +305,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     if (_selectedPaths.isEmpty) return;
     context.read<FileManagerProvider>().setClipboard(_selectedPaths.toList(), isCut: true);
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Cut ${_selectedPaths.length} items to clipboard')),
+      SnackBar(content: Text(AppLocalizations.of(context).cutItemsToClipboard(_selectedPaths.length))),
     );
     _clearSelection();
   }
@@ -334,7 +335,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     if (_selectedPaths.isEmpty) return;
     final confirm = await FileActionDialogs.showConfirmDialog(
       context,
-      title: 'Delete Selected',
+      title: AppLocalizations.of(context).deleteSelected,
       content: 'Are you sure you want to delete ${_selectedPaths.length} selected item(s)? This cannot be undone.',
     );
 
@@ -348,7 +349,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         });
       }
       _clearSelection();
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Successfully deleted items')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).successfullyDeletedItems)));
     }
   }
 
@@ -369,11 +370,11 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         break;
       case 'copy':
         provider.copyFile(path);
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Copied to clipboard')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).copiedToClipboard)));
         break;
       case 'cut':
         provider.cutFile(path);
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Cut to clipboard')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).cutToClipboard)));
         break;
       case 'rename':
         final isMulti = _selectedPaths.isNotEmpty && _selectedPaths.contains(path);
@@ -393,7 +394,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
             title: 'Rename',
-            hint: 'Enter new name',
+            hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
             actionText: 'Rename',
           );
@@ -410,7 +411,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         final isMulti = _selectedPaths.isNotEmpty && _selectedPaths.contains(path);
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
-          title: isMulti ? 'Delete Selected' : 'Delete File',
+          title: isMulti ? AppLocalizations.of(context).deleteSelected : AppLocalizations.of(context).deleteFile,
           content: isMulti
               ? 'Are you sure you want to delete ${_selectedPaths.length} selected item(s)? This cannot be undone.'
               : 'Are you sure you want to delete this item? This cannot be undone.',
@@ -460,7 +461,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
               ),
         title: _isSelectionMode
             ? Text(
-                '${_selectedPaths.length} Selected (${FileUtils.formatBytes(_totalSelectedSize, 1)})',
+                AppLocalizations.of(context).selectedItemsWithSize(_selectedPaths.length, FileUtils.formatBytes(_totalSelectedSize, 1)),
                 style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               )
             : TextField(
@@ -510,7 +511,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 ),
                 PopupMenuButton<String>(
                   icon: const Icon(Broken.more),
-                  tooltip: 'More Actions',
+                  tooltip: AppLocalizations.of(context).moreActions,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   position: PopupMenuPosition.under,
                   elevation: 8,
@@ -530,13 +531,13 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                     }
                   },
                   itemBuilder: (context) => [
-                    const PopupMenuItem<String>(
+                    PopupMenuItem<String>(
                       value: 'select_all',
                       child: Row(
                         children: [
                           Icon(Broken.tick_square, size: 20),
                           SizedBox(width: 12),
-                          Text('Select All', style: TextStyle(fontWeight: FontWeight.w500)),
+                          Text(AppLocalizations.of(context).selectAll, style: TextStyle(fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),

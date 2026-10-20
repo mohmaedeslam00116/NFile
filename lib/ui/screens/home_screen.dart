@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../providers/media_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
@@ -73,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
           _isRefreshing = false;
         });
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Dashboard refreshed successfully'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context).dashboardRefreshed),
             behavior: SnackBarBehavior.floating,
             duration: Duration(seconds: 1),
           ),
@@ -126,13 +127,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Exit Application',
+                      AppLocalizations.of(context).exitApplication,
                       style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                content: const Text(
-                  'Are you sure you want to exit? Press back again or tap Exit to close the app.',
+                content: Text(
+                  AppLocalizations.of(context).confirmExitMessage,
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15, height: 1.4),
                 ),
@@ -191,8 +192,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
               _lastPressedAt = now;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: const Text(
-                    'Press back again to exit',
+                  content: Text(
+                    AppLocalizations.of(context).pressBackAgainToExit,
                     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
                   ),
                   backgroundColor: theme.colorScheme.primary,
@@ -275,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'My Files',
+                    AppLocalizations.of(context).myFiles,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -285,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                     children: [
                       IconButton(
                         onPressed: _handleRefresh,
-                        tooltip: 'Refresh Dashboard',
+                        tooltip: AppLocalizations.of(context).refreshDashboard,
                         icon: RotationTransition(
                           turns: _refreshIconController,
                           child: const NfileIcon(Broken.refresh),

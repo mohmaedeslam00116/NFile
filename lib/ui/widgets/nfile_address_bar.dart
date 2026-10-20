@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -271,7 +272,7 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
                           ? Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                               child: Text(
-                                'No matching directories or files found',
+                                AppLocalizations.of(context).noMatchesFound,
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                                   fontStyle: FontStyle.italic,
@@ -377,7 +378,7 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text('Path not found: $path'),
+                content: Text(AppLocalizations.of(context).pathNotFound(path)),
                 behavior: SnackBarBehavior.floating,
                 backgroundColor: Theme.of(context).colorScheme.error,
               ),
@@ -452,11 +453,11 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
                       focusNode: _focusNode,
                       controller: _controller,
                       style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         isDense: true,
                         contentPadding: EdgeInsets.symmetric(vertical: 12),
-                        hintText: 'Enter absolute path...',
+                        hintText: AppLocalizations.of(context).enterAbsolutePath,
                       ),
                       textInputAction: TextInputAction.go,
                       keyboardType: TextInputType.text,
@@ -469,7 +470,7 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
                         Clipboard.setData(ClipboardData(text: provider.currentPath));
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Copied: ${provider.currentPath}'),
+                            content: Text(AppLocalizations.of(context).copiedPath(provider.currentPath)),
                             behavior: SnackBarBehavior.floating,
                             backgroundColor: theme.colorScheme.secondary,
                             duration: const Duration(seconds: 1),

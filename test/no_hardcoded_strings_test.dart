@@ -73,6 +73,34 @@ void main() {
       reason: 'A string cannot be in both lists of the ledger.',
     );
   });
+
+  test('no key of a map is a translation', () {
+    // A label is what the user reads, an id is what the program stores. A key
+    // of a map is an id: the program looks it up, and a translation would
+    // break the lookup without translating anything the user reads.
+    final offenders = <String>[];
+
+    for (final file in Directory('lib').listSync(recursive: true)) {
+      if (file is! File || !file.path.endsWith('.dart')) continue;
+      final path = file.path.replaceAll('\\', '/');
+      if (path.contains('lib/l10n/')) continue;
+
+      final lines = file.readAsLinesSync();
+      for (var index = 0; index < lines.length; index++) {
+        if (RegExp(r'^\s*AppLocalizations\.of\(context\)\.\w+\s*:')
+            .hasMatch(lines[index])) {
+          offenders.add('$path:${index + 1}');
+        }
+      }
+    }
+
+    expect(
+      offenders,
+      isEmpty,
+      reason: 'A key of a map is an id, and an id is never translated.\n'
+          '${offenders.join('\n')}',
+    );
+  });
 }
 
 /// The strings of the source that the user reads, with the place they are

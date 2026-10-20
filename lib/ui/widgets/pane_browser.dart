@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -136,7 +137,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
             title: 'Rename',
-            hint: 'Enter new name',
+            hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
             actionText: 'Rename',
           );
@@ -152,7 +153,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
         final isMulti = provider.selectedPaths.isNotEmpty && provider.selectedPaths.contains(path);
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
-          title: isMulti ? 'Delete Selected' : 'Delete Item',
+          title: isMulti ? AppLocalizations.of(context).deleteSelected : 'Delete Item',
           content: isMulti
               ? 'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.'
               : 'Are you sure you want to delete this item? This cannot be undone.',
@@ -264,7 +265,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
                             onPressed: () => _goBack(provider),
-                            tooltip: 'Go to Parent Directory',
+                            tooltip: AppLocalizations.of(context).goToParentDirectory,
                           ),
                       ],
                     ),
@@ -487,7 +488,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                             ),
                                                             const SizedBox(height: 16),
                                                             Text(
-                                                              'Search in tab',
+                                                              AppLocalizations.of(context).searchInTab,
                                                               style: theme.textTheme.titleMedium?.copyWith(
                                                                 fontWeight: FontWeight.bold,
                                                                 color: theme.colorScheme.onSurface,
@@ -512,7 +513,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                             ),
                                                             const SizedBox(height: 16),
                                                             Text(
-                                                              'No results',
+                                                              AppLocalizations.of(context).noResults,
                                                               style: theme.textTheme.titleMedium?.copyWith(
                                                                 fontWeight: FontWeight.bold,
                                                                 color: theme.colorScheme.onSurface,
@@ -537,7 +538,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                                         ),
                                                         const SizedBox(height: 16),
                                                         Text(
-                                                          'Empty Folder',
+                                                          AppLocalizations.of(context).emptyFolder,
                                                           style: theme.textTheme.titleMedium?.copyWith(
                                                             fontWeight: FontWeight.bold,
                                                             color: theme.colorScheme.onSurface,
@@ -774,7 +775,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                               final count = snapshot.data ?? 0;
                               final name = provider.getFilterTypeName(activeFilter, count);
                               return Text(
-                                '$count $name',
+                                AppLocalizations.of(context).countAndName(count, name),
                                 style: theme.textTheme.bodySmall?.copyWith(
                                   color: theme.colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -807,7 +808,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                   );
                                 } else {
                                   return Text(
-                                    '$countStr • ${FileUtils.formatDate(folder.modified, use24Hour: provider.use24HourFormat)}',
+                                    AppLocalizations.of(context).countAndDate(countStr, FileUtils.formatDate(folder.modified, use24Hour: provider.use24HourFormat)),
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                                       fontSize: 10.5,
@@ -1002,7 +1003,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                '$label Active',
+                AppLocalizations.of(context).labelActive(label),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
