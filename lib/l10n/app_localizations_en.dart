@@ -117,7 +117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get noFilesToShare => 'No files available to share';
+  String get noFilesToShare => 'No files available to share.';
 
   @override
   String get deleteSelected => 'Delete Selected';
@@ -1680,8 +1680,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deletePermanentlyQuestion => 'Delete Permanently?';
 
   @override
-  String deletePermanentlyQuestionHint(String name) {
-    return 'Are you sure you want to permanently delete \"$name\"? This action CANNOT be undone.';
+  String deletePermanentlyQuestionHint(int count) {
+    return 'Are you sure you want to permanently delete these $count item(s)? This action cannot be undone.';
   }
 
   @override
@@ -1835,4 +1835,692 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get internetSharingInactiveHint =>
       'Activate the tunnel to establish a secure link that works beyond local Wi-Fi.';
+
+  @override
+  String get compressingFiles => 'Compressing Files';
+
+  @override
+  String get extractingArchive => 'Extracting Archive';
+
+  @override
+  String errorReadingSharedFile(String error) {
+    return 'Error reading shared file: $error';
+  }
+
+  @override
+  String extractedTo(String item, String folder) {
+    return 'Extracted $item to $folder';
+  }
+
+  @override
+  String itemsCopiedToClipboard(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items copied to clipboard ✓',
+      one: '1 item copied to clipboard ✓',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get deleteSelectedItems => 'Delete Selected Items';
+
+  @override
+  String deleteItemsFromArchiveQuestion(int count) {
+    return 'Are you sure you want to delete precisely these $count item(s) from the archive? This cannot be undone.';
+  }
+
+  @override
+  String get itemsDeletedSuccessfully => 'Items deleted successfully ✓';
+
+  @override
+  String get failedToDeleteItems => 'Failed to delete items';
+
+  @override
+  String addedToArchive(int count) {
+    return 'Successfully added $count item(s) into archive ✓';
+  }
+
+  @override
+  String pastedIntoArchive(int count) {
+    return 'Pasted $count item(s) into archive ✓';
+  }
+
+  @override
+  String selectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Selected',
+      one: '1 Selected',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get couldNotReadArchive => 'Could not read archive';
+
+  @override
+  String get extractToCurrentFolder => 'Extract to Current Folder';
+
+  @override
+  String pasteHereCount(int count) {
+    return 'Paste Here ($count)';
+  }
+
+  @override
+  String get addFile => 'Add File';
+
+  @override
+  String get losslessAudio => 'Lossless Audio';
+
+  @override
+  String get soundFx => 'Sound FX';
+
+  @override
+  String get sleepTimer => 'Sleep Timer';
+
+  @override
+  String get playingQueue => 'Playing Queue';
+
+  @override
+  String minutes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count minutes',
+      one: '1 minute',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sleepTimerSet(int count) {
+    return 'Sleep timer set for $count minutes.';
+  }
+
+  @override
+  String get soundAndSpeedFx => 'Sound & Speed FX';
+
+  @override
+  String get playbackSpeed => 'Playback Speed';
+
+  @override
+  String get pitchAdjustment => 'Pitch Adjustment';
+
+  @override
+  String get resetToDefault => 'Reset to Default';
+
+  @override
+  String get backgroundPlaybackStopped => 'Background playback stopped';
+
+  @override
+  String get backgroundPlaybackEnabled => 'Background playback enabled';
+
+  @override
+  String get viewSynchronizedLyrics => 'View Synchronized Lyrics';
+
+  @override
+  String get soundFxAndEqualizer => 'Sound FX & Equalizer';
+
+  @override
+  String get setSleepTimer => 'Set Sleep Timer';
+
+  @override
+  String get audioFileInfo => 'Audio File Info';
+
+  @override
+  String playingQueueCount(int count) {
+    return 'Playing Queue ($count)';
+  }
+
+  @override
+  String get lyricsLoaded => 'Lyrics loaded successfully';
+
+  @override
+  String get noSynchronizedLyrics => 'No Synchronized Lyrics Found';
+
+  @override
+  String get noSynchronizedLyricsHint =>
+      'Keep a .lrc file with the exact same name next to your song, or select it manually below.';
+
+  @override
+  String get loadLrcFile => 'Load LRC File';
+
+  @override
+  String get tapLineToSeek => 'Tap a line to seek playback';
+
+  @override
+  String get noDataToExport => 'No data to export.';
+
+  @override
+  String exportedTo(String file) {
+    return 'Successfully exported to $file';
+  }
+
+  @override
+  String exportFailed(String error) {
+    return 'Export failed: $error';
+  }
+
+  @override
+  String get sqliteReader => 'SQLite Database Reader';
+
+  @override
+  String get failedToOpenDatabase => 'Failed to open database';
+
+  @override
+  String get noTablesFound => 'No tables found in this database.';
+
+  @override
+  String get exportTableToCsv => 'Export Table to CSV';
+
+  @override
+  String get searchRows => 'Search rows...';
+
+  @override
+  String get noRowsFound => 'No rows found';
+
+  @override
+  String showingRange(int from, int to) {
+    return 'Showing $from - $to';
+  }
+
+  @override
+  String get noSchemaLoaded => 'No schema details loaded.';
+
+  @override
+  String schemaType(String type) {
+    return 'Type: $type';
+  }
+
+  @override
+  String schemaDefault(String value) {
+    return 'Default: $value';
+  }
+
+  @override
+  String get sqlEditor => 'SQL Editor';
+
+  @override
+  String get selectTemplate => 'SELECT template';
+
+  @override
+  String get enterSelectQuery => 'Enter SELECT query here...';
+
+  @override
+  String get exportResultsToCsv => 'Export Results to CSV';
+
+  @override
+  String get runQuery => 'Run Query';
+
+  @override
+  String queryReturnedRows(int count) {
+    return 'Query returned $count rows';
+  }
+
+  @override
+  String errorLoading(String error) {
+    return 'Error loading: $error';
+  }
+
+  @override
+  String get savedSuccessfully => 'Saved successfully ✓';
+
+  @override
+  String errorSaving(String error) {
+    return 'Error saving: $error';
+  }
+
+  @override
+  String get pdfDisplaySettings => 'PDF Display Settings';
+
+  @override
+  String get pdfDisplaySettingsHint =>
+      'Optimize rendering performance for large, design-heavy, or scanned documents.';
+
+  @override
+  String get quickPerformancePresets => 'Quick Performance Presets';
+
+  @override
+  String get standardMode => 'Standard Mode';
+
+  @override
+  String get standardModeHint => 'Best for text documents';
+
+  @override
+  String get lagFreeMode => 'Lag-Free Mode';
+
+  @override
+  String get lagFreeModeHint => 'Best for brochures & photos';
+
+  @override
+  String get detailedTuning => 'Detailed Tuning Options';
+
+  @override
+  String get pageLayout => 'Page Layout';
+
+  @override
+  String get singlePage => 'Single Page';
+
+  @override
+  String get scrollDirection => 'Scroll Direction';
+
+  @override
+  String get enableTextSelection => 'Enable Text Selection';
+
+  @override
+  String get enableTextSelectionHint =>
+      'Disable to significantly boost page rendering speed and eliminate scroll stutter.';
+
+  @override
+  String get displaySettings => 'Display Settings';
+
+  @override
+  String get openWithLabel => 'Open with';
+
+  @override
+  String get emptySheet => 'Empty Sheet';
+
+  @override
+  String slideNumber(int number) {
+    return 'SLIDE $number';
+  }
+
+  @override
+  String get openWithApp => 'Open with App';
+
+  @override
+  String get shareComingSoon => 'Share coming soon';
+
+  @override
+  String get htmlPreview => 'HTML Preview';
+
+  @override
+  String get markdownPreview => 'Markdown Preview';
+
+  @override
+  String imageIndexOfTotal(int current, int total) {
+    return '$current of $total';
+  }
+
+  @override
+  String get failedToLoadImage => 'Failed to load image';
+
+  @override
+  String get confirmDeletion => 'Confirm Deletion';
+
+  @override
+  String confirmPermanentDelete(int count) {
+    return 'Are you sure you want to permanently delete $count selected items?';
+  }
+
+  @override
+  String deletedItemsCount(int count) {
+    return 'Successfully deleted $count items';
+  }
+
+  @override
+  String pastedItemsTo(int count, String folder) {
+    return 'Pasted $count items to $folder';
+  }
+
+  @override
+  String get noFilesToRename => 'No physical files found to rename';
+
+  @override
+  String get longPressToOpenWith => 'Long press to Open with...';
+
+  @override
+  String copiedNameToClipboard(String name) {
+    return 'Copied $name to clipboard';
+  }
+
+  @override
+  String cutNameToClipboard(String name) {
+    return 'Cut $name to clipboard';
+  }
+
+  @override
+  String permanentlyDeleteName(String name) {
+    return 'Permanently delete \"$name\"?';
+  }
+
+  @override
+  String deletedName(String name) {
+    return 'Deleted $name';
+  }
+
+  @override
+  String get fileNotShareable => 'File not found or not shareable.';
+
+  @override
+  String get sortOptions => 'Sort Options';
+
+  @override
+  String get sortNewestFirst => 'Newest First';
+
+  @override
+  String get sortOldestFirst => 'Oldest First';
+
+  @override
+  String get sortDateWise => 'Date Wise';
+
+  @override
+  String get sortNewestGrouped => 'Newest First (Grouped per month)';
+
+  @override
+  String get sortOldestGrouped => 'Oldest First (Grouped per month)';
+
+  @override
+  String get sortSizeLargeFirst => 'Size (Large First)';
+
+  @override
+  String get sortSizeSmallFirst => 'Size (Small First)';
+
+  @override
+  String noItemsOfKindFound(String kind) {
+    return 'No $kind found';
+  }
+
+  @override
+  String get allItems => 'All Items';
+
+  @override
+  String countItems(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String restoredSuccessfully(int count) {
+    return 'Restored $count item(s) successfully';
+  }
+
+  @override
+  String errorRestoringItems(String error) {
+    return 'Error restoring items: $error';
+  }
+
+  @override
+  String permanentlyDeleted(int count) {
+    return 'Permanently deleted $count item(s)';
+  }
+
+  @override
+  String errorDeletingItems(String error) {
+    return 'Error deleting items: $error';
+  }
+
+  @override
+  String get emptyRecycleBinQuestion => 'Empty Recycle Bin?';
+
+  @override
+  String get emptyRecycleBinQuestionHint =>
+      'Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.';
+
+  @override
+  String get emptyBin => 'Empty Bin';
+
+  @override
+  String get binEmptied => 'Recycle Bin emptied successfully';
+
+  @override
+  String errorEmptyingBin(String error) {
+    return 'Error emptying bin: $error';
+  }
+
+  @override
+  String get searchDeletedFiles => 'Search deleted files...';
+
+  @override
+  String get emptyRecycleBinAction => 'Empty Recycle Bin';
+
+  @override
+  String originalPath(String path) {
+    return 'Original Path: $path';
+  }
+
+  @override
+  String deletedAtAndSize(String date, String size) {
+    return 'Deleted: $date • $size';
+  }
+
+  @override
+  String get recycleBinIsEmpty => 'Recycle Bin is Empty';
+
+  @override
+  String get recycleBinIsEmptyHint =>
+      'Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.';
+
+  @override
+  String errorLoadingFile(String error) {
+    return 'Error loading file: $error';
+  }
+
+  @override
+  String get fileSavedSuccessfully => 'File saved successfully';
+
+  @override
+  String errorSavingFile(String error) {
+    return 'Error saving file: $error';
+  }
+
+  @override
+  String replacedOccurrences(int count) {
+    return 'Replaced $count occurrences';
+  }
+
+  @override
+  String get selectSyntax => 'Select Syntax';
+
+  @override
+  String get findAndReplace => 'Find / Replace';
+
+  @override
+  String get saveFile => 'Save File';
+
+  @override
+  String get moreOptions => 'More Options';
+
+  @override
+  String defaultZoom(int size) {
+    return 'Default Zoom (${size}pt)';
+  }
+
+  @override
+  String syntaxOf(String language) {
+    return 'Syntax ($language)';
+  }
+
+  @override
+  String get replaceWithDots => 'Replace with...';
+
+  @override
+  String get replaceAll => 'Replace All';
+
+  @override
+  String get slideToUnlock => 'Slide / Tap to Unlock';
+
+  @override
+  String get lockControls => 'Lock Controls';
+
+  @override
+  String get repeatMode => 'Repeat Mode';
+
+  @override
+  String get mediaPathCopied => 'Media path copied to clipboard.';
+
+  @override
+  String speedValue(double speed) {
+    return 'Speed ${speed}x';
+  }
+
+  @override
+  String get continuousLayout => 'Continuous';
+
+  @override
+  String editorLanguageAndLines(String language, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count lines',
+      one: '1 line',
+    );
+    return '$language  $_temp0';
+  }
+
+  @override
+  String get editorModified => 'editorModified';
+
+  @override
+  String deleteVaultFileQuestionHint(String name) {
+    return 'Are you sure you want to permanently delete \"$name\"? This action CANNOT be undone.';
+  }
+
+  @override
+  String get appManager => 'App Manager';
+
+  @override
+  String get refreshList => 'Refresh List';
+
+  @override
+  String get sortBySize => 'Sort by Size';
+
+  @override
+  String get sortAlphabetically => 'Sort Alphabetically';
+
+  @override
+  String get exactStorageCalculation => 'Exact Storage Calculation';
+
+  @override
+  String get exactStorageCalculationHint =>
+      'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.';
+
+  @override
+  String get grantUsageAccess => 'Grant Usage Access Permission';
+
+  @override
+  String get storageAnalytics => 'Storage Analytics';
+
+  @override
+  String get rescanStorage => 'Rescan Storage';
+
+  @override
+  String get scanningDeviceStorage => 'Scanning Device Storage';
+
+  @override
+  String get analyzingStorage =>
+      'Analyzing files, categorizing assets, and reading installed apps space...';
+
+  @override
+  String get totalStorage => 'Total Storage';
+
+  @override
+  String storageUsedWithPercent(String size, String percent) {
+    return '$size used ($percent%)';
+  }
+
+  @override
+  String get systemAndOther => 'System / Other';
+
+  @override
+  String percentOfTotalStorage(String percent) {
+    return '$percent% of total storage';
+  }
+
+  @override
+  String get uninstallApps => 'Uninstall Apps';
+
+  @override
+  String uninstallAppsQuestion(int count) {
+    return 'Are you sure you want to uninstall $count selected app(s)?';
+  }
+
+  @override
+  String get backingUpApps => 'Backing up selected applications...';
+
+  @override
+  String backedUpApps(int count) {
+    return 'Successfully backed up $count app(s) to NFile/Backups/Apps/';
+  }
+
+  @override
+  String failedToBackUpApps(String error) {
+    return 'Failed to back up some apps: $error';
+  }
+
+  @override
+  String get noApplicationsFound => 'No applications found';
+
+  @override
+  String packageAndVersion(String package, String version) {
+    return '$package • v$version';
+  }
+
+  @override
+  String appSizeAndInstalled(String size, String date) {
+    return 'Size: $size • Installed: $date';
+  }
+
+  @override
+  String get launchApplication => 'Launch Application';
+
+  @override
+  String get systemSettingsDetails => 'System Settings / Details';
+
+  @override
+  String get backUpApk => 'Back Up APK';
+
+  @override
+  String get backingUpApk => 'Backing up APK...';
+
+  @override
+  String get shareApkFile => 'Share APK File';
+
+  @override
+  String get uninstallApplication => 'Uninstall Application';
+
+  @override
+  String backupKindAndVersion(String kind, String version) {
+    return '$kind • v$version';
+  }
+
+  @override
+  String backupKindAndVersionFull(String kind, String version) {
+    return '$kind • v$version';
+  }
+
+  @override
+  String backupSizeAndDate(String size, String date) {
+    return 'Size: $size • Backup Date: $date';
+  }
+
+  @override
+  String get restoreOrInstallApp => 'Restore / Install App';
+
+  @override
+  String get shareBackupFile => 'Share Backup File';
+
+  @override
+  String get deleteBackupFile => 'Delete Backup File';
+
+  @override
+  String get noBackupsFound => 'No backups found';
+
+  @override
+  String downloadingFile(String file) {
+    return 'Downloading: $file';
+  }
+
+  @override
+  String sentBytes(String amount) {
+    return 'Sent: $amount';
+  }
 }

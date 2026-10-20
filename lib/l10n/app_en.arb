@@ -27,7 +27,7 @@
   "copiedItemsToClipboard": "{count, plural, =1{Copied 1 item to clipboard} other{Copied {count} items to clipboard}}",
   "cutItemsToClipboard": "{count, plural, =1{Cut 1 item to clipboard} other{Cut {count} items to clipboard}}",
   "errorSharing": "Error sharing: {error}",
-  "noFilesToShare": "No files available to share",
+  "noFilesToShare": "No files available to share.",
   "deleteSelected": "Delete Selected",
   "successfullyDeletedItems": "Successfully deleted items",
   "copiedToClipboard": "Copied to clipboard",
@@ -481,7 +481,7 @@
   "restoredToOriginal": "Restored \"{name}\" to its original location.",
   "failedToRestoreFile": "Failed to restore file: {error}",
   "deletePermanentlyQuestion": "Delete Permanently?",
-  "deletePermanentlyQuestionHint": "Are you sure you want to permanently delete \"{name}\"? This action CANNOT be undone.",
+  "deletePermanentlyQuestionHint": "Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.",
   "fileDeletedPermanently": "File deleted permanently.",
   "failedToDeleteFile": "Failed to delete file: {error}",
   "decryptingSecurely": "Decrypting securely...",
@@ -526,7 +526,193 @@
   "waitingForDownloads": "Waiting for incoming internet downloads...",
   "internetSharingInactive": "Internet Sharing Inactive",
   "internetSharingInactiveHint": "Activate the tunnel to establish a secure link that works beyond local Wi-Fi.",
+  "compressingFiles": "Compressing Files",
+  "extractingArchive": "Extracting Archive",
+  "errorReadingSharedFile": "Error reading shared file: {error}",
+  "extractedTo": "Extracted {item} to {folder}",
+  "itemsCopiedToClipboard": "{count, plural, =1{1 item copied to clipboard ✓} other{{count} items copied to clipboard ✓}}",
+  "deleteSelectedItems": "Delete Selected Items",
+  "deleteItemsFromArchiveQuestion": "Are you sure you want to delete precisely these {count} item(s) from the archive? This cannot be undone.",
+  "itemsDeletedSuccessfully": "Items deleted successfully ✓",
+  "failedToDeleteItems": "Failed to delete items",
+  "addedToArchive": "Successfully added {count} item(s) into archive ✓",
+  "pastedIntoArchive": "Pasted {count} item(s) into archive ✓",
+  "selectedCount": "{count, plural, =1{1 Selected} other{{count} Selected}}",
+  "couldNotReadArchive": "Could not read archive",
+  "extractToCurrentFolder": "Extract to Current Folder",
+  "pasteHereCount": "Paste Here ({count})",
+  "addFile": "Add File",
+  "losslessAudio": "Lossless Audio",
+  "soundFx": "Sound FX",
+  "sleepTimer": "Sleep Timer",
+  "playingQueue": "Playing Queue",
+  "minutes": "{count, plural, =1{1 minute} other{{count} minutes}}",
+  "sleepTimerSet": "Sleep timer set for {count} minutes.",
+  "soundAndSpeedFx": "Sound & Speed FX",
+  "playbackSpeed": "Playback Speed",
+  "pitchAdjustment": "Pitch Adjustment",
+  "resetToDefault": "Reset to Default",
+  "backgroundPlaybackStopped": "Background playback stopped",
+  "backgroundPlaybackEnabled": "Background playback enabled",
+  "viewSynchronizedLyrics": "View Synchronized Lyrics",
+  "soundFxAndEqualizer": "Sound FX & Equalizer",
+  "setSleepTimer": "Set Sleep Timer",
+  "audioFileInfo": "Audio File Info",
+  "playingQueueCount": "Playing Queue ({count})",
+  "lyricsLoaded": "Lyrics loaded successfully",
+  "noSynchronizedLyrics": "No Synchronized Lyrics Found",
+  "noSynchronizedLyricsHint": "Keep a .lrc file with the exact same name next to your song, or select it manually below.",
+  "loadLrcFile": "Load LRC File",
+  "tapLineToSeek": "Tap a line to seek playback",
+  "noDataToExport": "No data to export.",
+  "exportedTo": "Successfully exported to {file}",
+  "exportFailed": "Export failed: {error}",
+  "sqliteReader": "SQLite Database Reader",
+  "failedToOpenDatabase": "Failed to open database",
+  "noTablesFound": "No tables found in this database.",
+  "exportTableToCsv": "Export Table to CSV",
+  "searchRows": "Search rows...",
+  "noRowsFound": "No rows found",
+  "showingRange": "Showing {from} - {to}",
+  "noSchemaLoaded": "No schema details loaded.",
+  "schemaType": "Type: {type}",
+  "schemaDefault": "Default: {value}",
+  "sqlEditor": "SQL Editor",
+  "selectTemplate": "SELECT template",
+  "enterSelectQuery": "Enter SELECT query here...",
+  "exportResultsToCsv": "Export Results to CSV",
+  "runQuery": "Run Query",
+  "queryReturnedRows": "Query returned {count} rows",
+  "errorLoading": "Error loading: {error}",
+  "savedSuccessfully": "Saved successfully ✓",
+  "errorSaving": "Error saving: {error}",
+  "pdfDisplaySettings": "PDF Display Settings",
+  "pdfDisplaySettingsHint": "Optimize rendering performance for large, design-heavy, or scanned documents.",
+  "quickPerformancePresets": "Quick Performance Presets",
+  "standardMode": "Standard Mode",
+  "standardModeHint": "Best for text documents",
+  "lagFreeMode": "Lag-Free Mode",
+  "lagFreeModeHint": "Best for brochures & photos",
+  "detailedTuning": "Detailed Tuning Options",
+  "pageLayout": "Page Layout",
+  "singlePage": "Single Page",
+  "scrollDirection": "Scroll Direction",
+  "enableTextSelection": "Enable Text Selection",
+  "enableTextSelectionHint": "Disable to significantly boost page rendering speed and eliminate scroll stutter.",
+  "displaySettings": "Display Settings",
+  "openWithLabel": "Open with",
+  "emptySheet": "Empty Sheet",
+  "slideNumber": "SLIDE {number}",
+  "openWithApp": "Open with App",
+  "shareComingSoon": "Share coming soon",
+  "htmlPreview": "HTML Preview",
+  "markdownPreview": "Markdown Preview",
+  "imageIndexOfTotal": "{current} of {total}",
+  "failedToLoadImage": "Failed to load image",
+  "confirmDeletion": "Confirm Deletion",
+  "confirmPermanentDelete": "Are you sure you want to permanently delete {count} selected items?",
+  "deletedItemsCount": "Successfully deleted {count} items",
+  "pastedItemsTo": "Pasted {count} items to {folder}",
+  "noFilesToRename": "No physical files found to rename",
+  "longPressToOpenWith": "Long press to Open with...",
+  "copiedNameToClipboard": "Copied {name} to clipboard",
+  "cutNameToClipboard": "Cut {name} to clipboard",
+  "permanentlyDeleteName": "Permanently delete \"{name}\"?",
+  "deletedName": "Deleted {name}",
+  "fileNotShareable": "File not found or not shareable.",
+  "sortOptions": "Sort Options",
+  "sortNewestFirst": "Newest First",
+  "sortOldestFirst": "Oldest First",
+  "sortDateWise": "Date Wise",
+  "sortNewestGrouped": "Newest First (Grouped per month)",
+  "sortOldestGrouped": "Oldest First (Grouped per month)",
+  "sortSizeLargeFirst": "Size (Large First)",
+  "sortSizeSmallFirst": "Size (Small First)",
+  "noItemsOfKindFound": "No {kind} found",
+  "allItems": "All Items",
+  "countItems": "{count, plural, =1{1 item} other{{count} items}}",
+  "restoredSuccessfully": "Restored {count} item(s) successfully",
+  "errorRestoringItems": "Error restoring items: {error}",
+  "permanentlyDeleted": "Permanently deleted {count} item(s)",
+  "errorDeletingItems": "Error deleting items: {error}",
+  "emptyRecycleBinQuestion": "Empty Recycle Bin?",
+  "emptyRecycleBinQuestionHint": "Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.",
+  "emptyBin": "Empty Bin",
+  "binEmptied": "Recycle Bin emptied successfully",
+  "errorEmptyingBin": "Error emptying bin: {error}",
+  "searchDeletedFiles": "Search deleted files...",
+  "emptyRecycleBinAction": "Empty Recycle Bin",
+  "originalPath": "Original Path: {path}",
+  "deletedAtAndSize": "Deleted: {date} • {size}",
+  "recycleBinIsEmpty": "Recycle Bin is Empty",
+  "recycleBinIsEmptyHint": "Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.",
+  "errorLoadingFile": "Error loading file: {error}",
+  "fileSavedSuccessfully": "File saved successfully",
+  "errorSavingFile": "Error saving file: {error}",
+  "replacedOccurrences": "Replaced {count} occurrences",
+  "selectSyntax": "Select Syntax",
+  "findAndReplace": "Find / Replace",
+  "saveFile": "Save File",
+  "moreOptions": "More Options",
+  "defaultZoom": "Default Zoom ({size}pt)",
+  "syntaxOf": "Syntax ({language})",
+  "replaceWithDots": "Replace with...",
+  "replaceAll": "Replace All",
+  "slideToUnlock": "Slide / Tap to Unlock",
+  "lockControls": "Lock Controls",
+  "repeatMode": "Repeat Mode",
+  "mediaPathCopied": "Media path copied to clipboard.",
+  "speedValue": "Speed {speed}x",
+  "continuousLayout": "Continuous",
+  "editorLanguageAndLines": "{language}  {count, plural, =1{1 line} other{{count} lines}}",
+  "editorModified": "editorModified",
+  "deleteVaultFileQuestionHint": "Are you sure you want to permanently delete \"{name}\"? This action CANNOT be undone.",
+  "appManager": "App Manager",
+  "refreshList": "Refresh List",
+  "sortBySize": "Sort by Size",
+  "sortAlphabetically": "Sort Alphabetically",
+  "exactStorageCalculation": "Exact Storage Calculation",
+  "exactStorageCalculationHint": "To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.",
+  "grantUsageAccess": "Grant Usage Access Permission",
+  "storageAnalytics": "Storage Analytics",
+  "rescanStorage": "Rescan Storage",
+  "scanningDeviceStorage": "Scanning Device Storage",
+  "analyzingStorage": "Analyzing files, categorizing assets, and reading installed apps space...",
+  "totalStorage": "Total Storage",
+  "storageUsedWithPercent": "{size} used ({percent}%)",
+  "systemAndOther": "System / Other",
+  "percentOfTotalStorage": "{percent}% of total storage",
+  "uninstallApps": "Uninstall Apps",
+  "uninstallAppsQuestion": "Are you sure you want to uninstall {count} selected app(s)?",
+  "backingUpApps": "Backing up selected applications...",
+  "backedUpApps": "Successfully backed up {count} app(s) to NFile/Backups/Apps/",
+  "failedToBackUpApps": "Failed to back up some apps: {error}",
+  "noApplicationsFound": "No applications found",
+  "packageAndVersion": "{package} • v{version}",
+  "appSizeAndInstalled": "Size: {size} • Installed: {date}",
+  "launchApplication": "Launch Application",
+  "systemSettingsDetails": "System Settings / Details",
+  "backUpApk": "Back Up APK",
+  "backingUpApk": "Backing up APK...",
+  "shareApkFile": "Share APK File",
+  "uninstallApplication": "Uninstall Application",
+  "backupKindAndVersion": "{kind} • v{version}",
+  "backupKindAndVersionFull": "{kind} • v{version}",
+  "backupSizeAndDate": "Size: {size} • Backup Date: {date}",
+  "restoreOrInstallApp": "Restore / Install App",
+  "shareBackupFile": "Share Backup File",
+  "deleteBackupFile": "Delete Backup File",
+  "noBackupsFound": "No backups found",
+  "downloadingFile": "Downloading: {file}",
+  "sentBytes": "Sent: {amount}",
   "@addSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@addedToArchive": {
     "placeholders": {
       "count": {
         "type": "int"
@@ -542,6 +728,16 @@
   },
   "@appName": {
     "description": "The name of the application. It is the same in every language."
+  },
+  "@appSizeAndInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "@appVersion": {
     "placeholders": {
@@ -567,6 +763,43 @@
       }
     }
   },
+  "@backedUpApps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@backupKindAndVersion": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupKindAndVersionFull": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupSizeAndDate": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "@compressionLevel": {
     "placeholders": {
       "level": {
@@ -575,6 +808,13 @@
     }
   },
   "@configuringItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@confirmPermanentDelete": {
     "placeholders": {
       "count": {
         "type": "int"
@@ -633,6 +873,13 @@
       }
     }
   },
+  "@copiedNameToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@copiedPath": {
     "placeholders": {
       "path": {
@@ -674,6 +921,13 @@
       }
     }
   },
+  "@countItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@customFontApplied": {
     "placeholders": {
       "name": {
@@ -695,10 +949,31 @@
       }
     }
   },
-  "@deletePermanentlyQuestionHint": {
+  "@cutNameToClipboard": {
     "placeholders": {
       "name": {
         "type": "String"
+      }
+    }
+  },
+  "@defaultZoom": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteItemsFromArchiveQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletePermanentlyQuestionHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
     }
   },
@@ -709,7 +984,83 @@
       }
     }
   },
+  "@deleteVaultFileQuestionHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deletedAtAndSize": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@deletedItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletedName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadingFile": {
+    "placeholders": {
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "@editorLanguageAndLines": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@errorCreatingFolder": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorDeletingItems": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorEmptyingBin": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorLoading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorLoadingFile": {
     "placeholders": {
       "error": {
         "type": "String"
@@ -724,6 +1075,34 @@
     }
   },
   "@errorPreparingShare": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorReadingSharedFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorRestoringItems": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorSaving": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorSavingFile": {
     "placeholders": {
       "error": {
         "type": "String"
@@ -754,6 +1133,37 @@
   "@establishingPathway": {
     "placeholders": {
       "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@exportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@exportedTo": {
+    "placeholders": {
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "@extractedTo": {
+    "placeholders": {
+      "item": {
+        "type": "String"
+      },
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToBackUpApps": {
+    "placeholders": {
+      "error": {
         "type": "String"
       }
     }
@@ -907,6 +1317,23 @@
       }
     }
   },
+  "@imageIndexOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@itemsCopiedToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@labelActive": {
     "placeholders": {
       "label": {
@@ -921,9 +1348,23 @@
       }
     }
   },
+  "@minutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@movedSuccessfully": {
     "placeholders": {
       "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@noItemsOfKindFound": {
+    "placeholders": {
+      "kind": {
         "type": "String"
       }
     }
@@ -941,10 +1382,72 @@
   "@openingSharedDocument": {
     "description": "Shown while a document that was shared with the application is opened."
   },
+  "@originalPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@packageAndVersion": {
+    "placeholders": {
+      "package": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@pasteHereCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pastedIntoArchive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pastedItemsTo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
   "@pathNotFound": {
     "placeholders": {
       "path": {
         "type": "String"
+      }
+    }
+  },
+  "@percentOfTotalStorage": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@permanentlyDeleteName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@permanentlyDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
     }
   },
@@ -1011,6 +1514,13 @@
       }
     }
   },
+  "@playingQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@processingItem": {
     "placeholders": {
       "current": {
@@ -1031,8 +1541,29 @@
       }
     }
   },
+  "@queryReturnedRows": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@replacedOccurrences": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@resolvingSecureContent": {
     "description": "Shown under the message of the opening of a shared document."
+  },
+  "@restoredSuccessfully": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "@restoredToOriginal": {
     "placeholders": {
@@ -1055,6 +1586,27 @@
       }
     }
   },
+  "@schemaDefault": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@schemaType": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@selectedItemsWithSize": {
     "placeholders": {
       "count": {
@@ -1072,10 +1624,48 @@
       }
     }
   },
+  "@sentBytes": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
   "@sharingDirectory": {
     "placeholders": {
       "folder": {
         "type": "String"
+      }
+    }
+  },
+  "@showingRange": {
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
+  },
+  "@sleepTimerSet": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@slideNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "@speedValue": {
+    "placeholders": {
+      "speed": {
+        "type": "double"
       }
     }
   },
@@ -1123,10 +1713,34 @@
       }
     }
   },
+  "@storageUsedWithPercent": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@syntaxOf": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
   "@transferFailed": {
     "placeholders": {
       "error": {
         "type": "String"
+      }
+    }
+  },
+  "@uninstallAppsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
     }
   }

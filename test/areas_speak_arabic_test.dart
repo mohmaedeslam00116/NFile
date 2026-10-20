@@ -78,6 +78,22 @@ void main() {
       'lib/services/intent_handler_service.dart',
       'lib/services/background_archive_service.dart',
     ],
+    'the connections and the vault': [
+      'lib/ui/screens/web_sharing_screen.dart',
+      'lib/ui/screens/ftp_server_screen.dart',
+      'lib/ui/screens/network_connection_wizard_screen.dart',
+      'lib/ui/screens/remote_explorer_screen.dart',
+      'lib/ui/screens/vault_explorer_screen.dart',
+      'lib/ui/screens/vault_lock_screen.dart',
+    ],
+    'the storage analyzer': [
+      'lib/ui/screens/storage_analyzer/storage_analyzer_screen.dart',
+      'lib/ui/screens/storage_analyzer/app_manager_screen.dart',
+      'lib/ui/screens/storage_analyzer/widgets/app_options_sheet.dart',
+      'lib/ui/screens/storage_analyzer/widgets/backup_list_tab.dart',
+      'lib/ui/screens/storage_analyzer/widgets/app_batch_action_bar.dart',
+      'lib/ui/screens/storage_analyzer/widgets/app_list_tab.dart',
+    ],
   };
 
   // The areas that speak Arabic. An area joins the list when its strings are
@@ -87,6 +103,8 @@ void main() {
     'the directory',
     'the settings',
     'the media and the viewers',
+    'the connections and the vault',
+    'the storage analyzer',
   ];
 
   for (final area in migrated) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/icon_fonts/broken_icons.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../../models/app_info_model.dart';
 import '../../../../services/app_manager_service.dart';
 
@@ -33,8 +34,8 @@ class AppBatchActionBar extends StatelessWidget {
         return AlertDialog(
           backgroundColor: theme.colorScheme.surface,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Text('Uninstall Apps', style: TextStyle(fontWeight: FontWeight.bold)),
-          content: Text('Are you sure you want to uninstall ${selectedPackages.length} selected app(s)?'),
+          title: Text(AppLocalizations.of(context).uninstallApps, style: TextStyle(fontWeight: FontWeight.bold)),
+          content: Text(AppLocalizations.of(context).uninstallAppsQuestion(selectedPackages.length)),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
@@ -75,12 +76,12 @@ class AppBatchActionBar extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const AlertDialog(
+      builder: (context) => AlertDialog(
         content: Row(
           children: [
             CircularProgressIndicator(),
             SizedBox(width: 20),
-            Expanded(child: Text("Backing up selected applications...")),
+            Expanded(child: Text(AppLocalizations.of(context).backingUpApps)),
           ],
         ),
       ),
@@ -91,7 +92,7 @@ class AppBatchActionBar extends StatelessWidget {
       if (context.mounted) {
         Navigator.pop(context); // Close loading dialog
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Successfully backed up ${appsToBackup.length} app(s) to NFile/Backups/Apps/')),
+          SnackBar(content: Text(AppLocalizations.of(context).backedUpApps(appsToBackup.length))),
         );
         onRefreshNeeded();
       }
@@ -99,7 +100,7 @@ class AppBatchActionBar extends StatelessWidget {
       if (context.mounted) {
         Navigator.pop(context); // Close loading dialog
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to back up some apps: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToBackUpApps(e.toString()))),
         );
       }
     }

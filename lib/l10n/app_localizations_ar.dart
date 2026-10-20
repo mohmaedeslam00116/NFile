@@ -125,7 +125,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get noFilesToShare => 'لا توجد ملفات للمشاركة';
+  String get noFilesToShare => 'لا توجد ملفات للمشاركة.';
 
   @override
   String get deleteSelected => 'حذف المحدَّد';
@@ -1683,8 +1683,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deletePermanentlyQuestion => 'حذف نهائي؟';
 
   @override
-  String deletePermanentlyQuestionHint(String name) {
-    return 'هل تريد بالتأكيد حذف «$name» نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  String deletePermanentlyQuestionHint(int count) {
+    return 'هل تريد بالتأكيد حذف هذه $count عناصر نهائيًا؟ لا يمكن التراجع عن ذلك.';
   }
 
   @override
@@ -1836,4 +1836,712 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get internetSharingInactiveHint =>
       'فعّل النفق لإنشاء رابط آمن يعمل خارج شبكة Wi-Fi المحلية.';
+
+  @override
+  String get compressingFiles => 'يجري ضغط الملفات';
+
+  @override
+  String get extractingArchive => 'يجري استخراج الأرشيف';
+
+  @override
+  String errorReadingSharedFile(String error) {
+    return 'خطأ في قراءة الملف 공유ًا: $error';
+  }
+
+  @override
+  String extractedTo(String item, String folder) {
+    return 'استُخرج $item إلى $folder';
+  }
+
+  @override
+  String itemsCopiedToClipboard(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'نُسخت $count عنصر إلى الحافظة ✓',
+      many: 'نُسخت $count عنصرًا إلى الحافظة ✓',
+      few: 'نُسخت $count عناصر إلى الحافظة ✓',
+      two: 'نُسخ عنصران إلى الحافظة ✓',
+      one: 'نُسخ عنصر واحد إلى الحافظة ✓',
+      zero: 'نُسخ 0 عناصر إلى الحافظة ✓',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get deleteSelectedItems => 'حذف العناصر المحدَّدة';
+
+  @override
+  String deleteItemsFromArchiveQuestion(int count) {
+    return 'هل تريد بالتأكيد حذف هذه $count عناصر من الأرشيف؟ لا يمكن التراجع عن ذلك.';
+  }
+
+  @override
+  String get itemsDeletedSuccessfully => 'حُذفت العناصر بنجاح ✓';
+
+  @override
+  String get failedToDeleteItems => 'فشل حذف العناصر';
+
+  @override
+  String addedToArchive(int count) {
+    return 'أُضيف $count عنصر إلى الأرشيف بنجاح ✓';
+  }
+
+  @override
+  String pastedIntoArchive(int count) {
+    return 'لُصق $count عنصر في الأرشيف ✓';
+  }
+
+  @override
+  String selectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'محدَّد $count',
+      many: 'محدَّد $count',
+      few: 'محدَّد $count',
+      two: 'محدَّدان',
+      one: 'محدَّد واحد',
+      zero: 'لا محدَّد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get couldNotReadArchive => 'تعذّرت قراءة الأرشيف';
+
+  @override
+  String get extractToCurrentFolder => 'استخراج إلى المجلد الحالي';
+
+  @override
+  String pasteHereCount(int count) {
+    return 'ألصق هنا ($count)';
+  }
+
+  @override
+  String get addFile => 'إضافة ملف';
+
+  @override
+  String get losslessAudio => 'صوت بلا فقد';
+
+  @override
+  String get soundFx => 'مؤثرات صوتية';
+
+  @override
+  String get sleepTimer => 'مؤقّت النوم';
+
+  @override
+  String get playingQueue => 'قائمة التشغيل';
+
+  @override
+  String minutes(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count دقيقة',
+      many: '$count دقيقة',
+      few: '$count دقائق',
+      two: 'دقيقتان',
+      one: 'دقيقة واحدة',
+      zero: '0 دقيقة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sleepTimerSet(int count) {
+    return 'ضُبط مؤقّت النوم على $count دقيقة.';
+  }
+
+  @override
+  String get soundAndSpeedFx => 'مؤثرات الصوت والسرعة';
+
+  @override
+  String get playbackSpeed => 'سرعة التشغيل';
+
+  @override
+  String get pitchAdjustment => 'ضبط النغمة';
+
+  @override
+  String get resetToDefault => 'إعادة الضبط الافتراضي';
+
+  @override
+  String get backgroundPlaybackStopped => 'أُوقف التشغيل في الخلفية';
+
+  @override
+  String get backgroundPlaybackEnabled => 'فُعّل التشغيل في الخلفية';
+
+  @override
+  String get viewSynchronizedLyrics => 'عرض الكلمات المتزامنة';
+
+  @override
+  String get soundFxAndEqualizer => 'مؤثرات الصوت والمساواة';
+
+  @override
+  String get setSleepTimer => 'ضبط مؤقّت النوم';
+
+  @override
+  String get audioFileInfo => 'معلومات الملف الصوتي';
+
+  @override
+  String playingQueueCount(int count) {
+    return 'قائمة التشغيل ($count)';
+  }
+
+  @override
+  String get lyricsLoaded => 'حُمّلت الكلمات بنجاح';
+
+  @override
+  String get noSynchronizedLyrics => 'لم يُعثر على كلمات متزامنة';
+
+  @override
+  String get noSynchronizedLyricsHint =>
+      'ضع ملف .lrc بنفس اسم الأغنية بجوارها، أو اختره يدويًا أدناه.';
+
+  @override
+  String get loadLrcFile => 'تحميل ملف LRC';
+
+  @override
+  String get tapLineToSeek => 'اضغط سطرًا للانتقال في التشغيل';
+
+  @override
+  String get noDataToExport => 'لا توجد بيانات للتصدير.';
+
+  @override
+  String exportedTo(String file) {
+    return 'صُدِّر بنجاح إلى $file';
+  }
+
+  @override
+  String exportFailed(String error) {
+    return 'فشل التصدير: $error';
+  }
+
+  @override
+  String get sqliteReader => 'قارئ قواعد بيانات SQLite';
+
+  @override
+  String get failedToOpenDatabase => 'فشل فتح قاعدة البيانات';
+
+  @override
+  String get noTablesFound => 'لم يُعثر على جداول في قاعدة البيانات هذه.';
+
+  @override
+  String get exportTableToCsv => 'تصدير الجدول إلى CSV';
+
+  @override
+  String get searchRows => 'ابحث في الصفوف...';
+
+  @override
+  String get noRowsFound => 'لم يُعثر على صفوف';
+
+  @override
+  String showingRange(int from, int to) {
+    return 'عرض $from - $to';
+  }
+
+  @override
+  String get noSchemaLoaded => 'لم تُحمَّل تفاصيل المخطط.';
+
+  @override
+  String schemaType(String type) {
+    return 'النوع: $type';
+  }
+
+  @override
+  String schemaDefault(String value) {
+    return 'القيمة الافتراضية: $value';
+  }
+
+  @override
+  String get sqlEditor => 'محرّر SQL';
+
+  @override
+  String get selectTemplate => 'قالب SELECT';
+
+  @override
+  String get enterSelectQuery => 'أدخل استعلام SELECT هنا...';
+
+  @override
+  String get exportResultsToCsv => 'تصدير النتائج إلى CSV';
+
+  @override
+  String get runQuery => 'تشغيل الاستعلام';
+
+  @override
+  String queryReturnedRows(int count) {
+    return 'أعاد الاستعلام $count صفًا';
+  }
+
+  @override
+  String errorLoading(String error) {
+    return 'خطأ في التحميل: $error';
+  }
+
+  @override
+  String get savedSuccessfully => 'حُفظ بنجاح ✓';
+
+  @override
+  String errorSaving(String error) {
+    return 'خطأ في الحفظ: $error';
+  }
+
+  @override
+  String get pdfDisplaySettings => 'إعدادات عرض PDF';
+
+  @override
+  String get pdfDisplaySettingsHint =>
+      'حسّن أداء العرض للمستندات الكبيرة أو الغنية بالتصميم أو الممسوحة ضوئيًا.';
+
+  @override
+  String get quickPerformancePresets => 'إعدادات أداء سريعة';
+
+  @override
+  String get standardMode => 'الوضع العادي';
+
+  @override
+  String get standardModeHint => 'الأفضل للمستندات النصية';
+
+  @override
+  String get lagFreeMode => 'وضع بلا تأخّر';
+
+  @override
+  String get lagFreeModeHint => 'الأفضل للمطابقات والصور';
+
+  @override
+  String get detailedTuning => 'خيارات ضبط تفصيلية';
+
+  @override
+  String get pageLayout => 'تخطيط الصفحة';
+
+  @override
+  String get singlePage => 'صفحة واحدة';
+
+  @override
+  String get scrollDirection => 'اتجاه التمرير';
+
+  @override
+  String get enableTextSelection => 'تفعيل تحديد النص';
+
+  @override
+  String get enableTextSelectionHint =>
+      'عطّله لزيادة سرعة عرض الصفحات بدرجة كبيرة وإزالة تقطّع التمرير.';
+
+  @override
+  String get displaySettings => 'إعدادات العرض';
+
+  @override
+  String get openWithLabel => 'فتح بـ';
+
+  @override
+  String get emptySheet => 'ورقة فارغة';
+
+  @override
+  String slideNumber(int number) {
+    return 'الشريحة $number';
+  }
+
+  @override
+  String get openWithApp => 'فتح بتطبيق';
+
+  @override
+  String get shareComingSoon => 'المشاركة قريبًا';
+
+  @override
+  String get htmlPreview => 'معاينة HTML';
+
+  @override
+  String get markdownPreview => 'معاينة Markdown';
+
+  @override
+  String imageIndexOfTotal(int current, int total) {
+    return '$current من $total';
+  }
+
+  @override
+  String get failedToLoadImage => 'فشل تحميل الصورة';
+
+  @override
+  String get confirmDeletion => 'تأكيد الحذف';
+
+  @override
+  String confirmPermanentDelete(int count) {
+    return 'هل تريد بالتأكيد حذف $count عنصرًا محدَّدًا نهائيًا؟';
+  }
+
+  @override
+  String deletedItemsCount(int count) {
+    return 'حُذف $count عنصرًا بنجاح';
+  }
+
+  @override
+  String pastedItemsTo(int count, String folder) {
+    return 'لُصق $count عنصر في $folder';
+  }
+
+  @override
+  String get noFilesToRename => 'لم يُعثر على ملفات فعلية لإعادة تسميتها';
+
+  @override
+  String get longPressToOpenWith => 'اضغط مطوّلًا للفتح بـ...';
+
+  @override
+  String copiedNameToClipboard(String name) {
+    return 'نُسخ $name إلى الحافظة';
+  }
+
+  @override
+  String cutNameToClipboard(String name) {
+    return 'نُقل $name إلى الحافظة';
+  }
+
+  @override
+  String permanentlyDeleteName(String name) {
+    return 'حذف «$name» نهائيًا؟';
+  }
+
+  @override
+  String deletedName(String name) {
+    return 'حُذف $name';
+  }
+
+  @override
+  String get fileNotShareable => 'الملف غير موجود أو لا يمكن مشاركته.';
+
+  @override
+  String get sortOptions => 'خيارات الترتيب';
+
+  @override
+  String get sortNewestFirst => 'الأحدث أولًا';
+
+  @override
+  String get sortOldestFirst => 'الأقدم أولًا';
+
+  @override
+  String get sortDateWise => 'حسب التاريخ';
+
+  @override
+  String get sortNewestGrouped => 'الأحدث أولًا (مجموعًا حسب الشهر)';
+
+  @override
+  String get sortOldestGrouped => 'الأقدم أولًا (مجموعًا حسب الشهر)';
+
+  @override
+  String get sortSizeLargeFirst => 'الحجم (الكبير أولًا)';
+
+  @override
+  String get sortSizeSmallFirst => 'الحجم (الصغير أولًا)';
+
+  @override
+  String noItemsOfKindFound(String kind) {
+    return 'لم يُعثر على $kind';
+  }
+
+  @override
+  String get allItems => 'كل العناصر';
+
+  @override
+  String countItems(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count عنصر',
+      many: '$count عنصرًا',
+      few: '$count عناصر',
+      two: 'عنصران',
+      one: 'عنصر واحد',
+      zero: '0 عناصر',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String restoredSuccessfully(int count) {
+    return 'استُعيد $count عنصر بنجاح';
+  }
+
+  @override
+  String errorRestoringItems(String error) {
+    return 'خطأ في استعادة العناصر: $error';
+  }
+
+  @override
+  String permanentlyDeleted(int count) {
+    return 'حُذف $count عنصرًا نهائيًا';
+  }
+
+  @override
+  String errorDeletingItems(String error) {
+    return 'خطأ في حذف العناصر: $error';
+  }
+
+  @override
+  String get emptyRecycleBinQuestion => 'إفراغ سلة المحذوفات؟';
+
+  @override
+  String get emptyRecycleBinQuestionHint =>
+      'هل تريد بالتأكيد حذف كل عناصر سلة المحذوفات نهائيًا؟ لا يمكن التراجع عن ذلك.';
+
+  @override
+  String get emptyBin => 'إفراغ السلة';
+
+  @override
+  String get binEmptied => 'أُفرغت سلة المحذوفات بنجاح';
+
+  @override
+  String errorEmptyingBin(String error) {
+    return 'خطأ في إفراغ السلة: $error';
+  }
+
+  @override
+  String get searchDeletedFiles => 'ابحث في الملفات المحذوفة...';
+
+  @override
+  String get emptyRecycleBinAction => 'إفراغ سلة المحذوفات';
+
+  @override
+  String originalPath(String path) {
+    return 'المسار الأصلي: $path';
+  }
+
+  @override
+  String deletedAtAndSize(String date, String size) {
+    return 'حُذف: $date • $size';
+  }
+
+  @override
+  String get recycleBinIsEmpty => 'سلة المحذوفات فارغة';
+
+  @override
+  String get recycleBinIsEmptyHint =>
+      'العناصر التي تحذفها عند تفعيل سلة المحذوفات تظهر هنا. يمكنك استعادتها أو حذفها نهائيًا.';
+
+  @override
+  String errorLoadingFile(String error) {
+    return 'خطأ في تحميل الملف: $error';
+  }
+
+  @override
+  String get fileSavedSuccessfully => 'حُفظ الملف بنجاح';
+
+  @override
+  String errorSavingFile(String error) {
+    return 'خطأ في حفظ الملف: $error';
+  }
+
+  @override
+  String replacedOccurrences(int count) {
+    return 'استُبدل $count موضعًا';
+  }
+
+  @override
+  String get selectSyntax => 'اختر الصياغة';
+
+  @override
+  String get findAndReplace => 'بحث / استبدال';
+
+  @override
+  String get saveFile => 'حفظ الملف';
+
+  @override
+  String get moreOptions => 'خيارات أخرى';
+
+  @override
+  String defaultZoom(int size) {
+    return 'التكبير الافتراضي ($size نقطة)';
+  }
+
+  @override
+  String syntaxOf(String language) {
+    return 'الصياغة ($language)';
+  }
+
+  @override
+  String get replaceWithDots => 'استبدل بـ...';
+
+  @override
+  String get replaceAll => 'استبدال الكل';
+
+  @override
+  String get slideToUnlock => 'اسحب / اضغط لفتح القفل';
+
+  @override
+  String get lockControls => 'قفل أدوات التحكم';
+
+  @override
+  String get repeatMode => 'وضع التكرار';
+
+  @override
+  String get mediaPathCopied => 'نُسخ مسار الوسائط إلى الحافظة.';
+
+  @override
+  String speedValue(double speed) {
+    return 'السرعة $speed×';
+  }
+
+  @override
+  String get continuousLayout => 'مستمر';
+
+  @override
+  String editorLanguageAndLines(String language, int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count سطر',
+      many: '$count سطرًا',
+      few: '$count أسطر',
+      two: 'سطران',
+      one: 'سطر واحد',
+      zero: '0 سطر',
+    );
+    return '$language  $_temp0';
+  }
+
+  @override
+  String get editorModified => ' (معدَّل)';
+
+  @override
+  String deleteVaultFileQuestionHint(String name) {
+    return 'هل تريد بالتأكيد حذف «$name» نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  }
+
+  @override
+  String get appManager => 'مدير التطبيقات';
+
+  @override
+  String get refreshList => 'تحديث القائمة';
+
+  @override
+  String get sortBySize => 'ترتيب حسب الحجم';
+
+  @override
+  String get sortAlphabetically => 'ترتيب أبجدي';
+
+  @override
+  String get exactStorageCalculation => 'حساب دقيق للحجم';
+
+  @override
+  String get exactStorageCalculationHint =>
+      'لرؤية أحجام التطبيقات الدقيقة (APK والبيانات والتخزين المؤقت) بدل حجم ملف التثبيت وحده، فعّل إذن الوصول إلى بيانات الاستخدام لتطبيق NFile في إعدادات النظام.';
+
+  @override
+  String get grantUsageAccess => 'منح إذن الوصول إلى الاستخدام';
+
+  @override
+  String get storageAnalytics => 'تحليل التخزين';
+
+  @override
+  String get rescanStorage => 'إعادة فحص التخزين';
+
+  @override
+  String get scanningDeviceStorage => 'يجري فحص تخزين الجهاز';
+
+  @override
+  String get analyzingStorage =>
+      'يجري تحليل الملفات، وتصنيف الوسائط، وقراءة مساحة التطبيقات المثبتة...';
+
+  @override
+  String get totalStorage => 'إجمالي التخزين';
+
+  @override
+  String storageUsedWithPercent(String size, String percent) {
+    return '$size مُستخدَمة ($percent%)';
+  }
+
+  @override
+  String get systemAndOther => 'النظام / أخرى';
+
+  @override
+  String percentOfTotalStorage(String percent) {
+    return '$percent% من إجمالي التخزين';
+  }
+
+  @override
+  String get uninstallApps => 'إلغاء تثبيت التطبيقات';
+
+  @override
+  String uninstallAppsQuestion(int count) {
+    return 'هل تريد بالتأكيد إلغاء تثبيت $count تطبيق محدَّد؟';
+  }
+
+  @override
+  String get backingUpApps => 'يجري نسخ التطبيقات المحدَّدة...';
+
+  @override
+  String backedUpApps(int count) {
+    return 'نُسخ $count تطبيق بنجاح إلى NFile/Backups/Apps/';
+  }
+
+  @override
+  String failedToBackUpApps(String error) {
+    return 'فشل نسخ بعض التطبيقات: $error';
+  }
+
+  @override
+  String get noApplicationsFound => 'لم يُعثر على تطبيقات';
+
+  @override
+  String packageAndVersion(String package, String version) {
+    return '$package • الإصدار $version';
+  }
+
+  @override
+  String appSizeAndInstalled(String size, String date) {
+    return 'الحجم: $size • تاريخ التثبيت: $date';
+  }
+
+  @override
+  String get launchApplication => 'تشغيل التطبيق';
+
+  @override
+  String get systemSettingsDetails => 'إعدادات النظام / التفاصيل';
+
+  @override
+  String get backUpApk => 'نسخ ملف APK';
+
+  @override
+  String get backingUpApk => 'يجري نسخ ملف APK...';
+
+  @override
+  String get shareApkFile => 'مشاركة ملف APK';
+
+  @override
+  String get uninstallApplication => 'إلغاء تثبيت التطبيق';
+
+  @override
+  String backupKindAndVersion(String kind, String version) {
+    return '$kind • الإصدار $version';
+  }
+
+  @override
+  String backupKindAndVersionFull(String kind, String version) {
+    return '$kind • الإصدار $version';
+  }
+
+  @override
+  String backupSizeAndDate(String size, String date) {
+    return 'الحجم: $size • تاريخ النسخة: $date';
+  }
+
+  @override
+  String get restoreOrInstallApp => 'استعادة التطبيق أو تثبيته';
+
+  @override
+  String get shareBackupFile => 'مشاركة ملف النسخة';
+
+  @override
+  String get deleteBackupFile => 'حذف ملف النسخة';
+
+  @override
+  String get noBackupsFound => 'لم يُعثر على نسخ';
+
+  @override
+  String downloadingFile(String file) {
+    return 'يُنزَّل: $file';
+  }
+
+  @override
+  String sentBytes(String amount) {
+    return 'أُرسل: $amount';
+  }
 }

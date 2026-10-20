@@ -308,7 +308,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(AppLocalizations.of(context).deletePermanentlyQuestion),
-        content: Text(AppLocalizations.of(context).deletePermanentlyQuestionHint(record.originalName)),
+        content: Text(AppLocalizations.of(context).deleteVaultFileQuestionHint(record.originalName)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),

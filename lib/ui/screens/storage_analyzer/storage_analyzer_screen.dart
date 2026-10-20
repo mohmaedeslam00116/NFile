@@ -1,3 +1,4 @@
+import '../../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -160,14 +161,14 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Storage Analytics',
+          AppLocalizations.of(context).storageAnalytics,
           style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
             onPressed: _startStorageScan,
-            tooltip: 'Rescan Storage',
+            tooltip: AppLocalizations.of(context).rescanStorage,
           ),
         ],
       ),
@@ -211,12 +212,12 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
             ),
             const SizedBox(height: 32),
             Text(
-              'Scanning Device Storage',
+              AppLocalizations.of(context).scanningDeviceStorage,
               style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              'Analyzing files, categorizing assets, and reading installed apps space...',
+              AppLocalizations.of(context).analyzingStorage,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.6),
@@ -316,7 +317,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Total Storage',
+                        AppLocalizations.of(context).totalStorage,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.5),
                         ),
@@ -342,7 +343,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              '${FileUtils.formatBytes(freeSize, 2)} free',
+                              AppLocalizations.of(context).storageFree(FileUtils.formatBytes(freeSize, 2)),
                               style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12.5),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -364,7 +365,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              '${FileUtils.formatBytes(_totalUsedSize, 2)} used (${usedPercent.toStringAsFixed(1)}%)',
+                              AppLocalizations.of(context).storageUsedWithPercent(FileUtils.formatBytes(_totalUsedSize, 2), usedPercent.toStringAsFixed(1)),
                               style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12.5),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -473,7 +474,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           ),
           _buildCategoryCard(
             context: context,
-            title: 'System / Other',
+            title: AppLocalizations.of(context).systemAndOther,
             size: _systemSize,
             color: const Color(0xFF64748B), // Slate
             icon: Broken.category_2,
@@ -551,7 +552,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '$percentStr% of total storage',
+                      AppLocalizations.of(context).percentOfTotalStorage(percentStr),
                       style: TextStyle(
                         color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5),
                         fontSize: 11,
@@ -560,7 +561,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
                   ],
                 ),
               ),
-              if (title != 'System / Other') ...[
+              if (title != AppLocalizations.of(context).systemAndOther) ...[
                 const SizedBox(width: 12),
                 Icon(
                   Broken.arrow_right_3,

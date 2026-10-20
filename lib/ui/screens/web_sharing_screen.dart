@@ -732,13 +732,13 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
                         children: [
                           Expanded(
                             child: Text(
-                              'Downloading: ${client['file']}',
+                              AppLocalizations.of(context).downloadingFile(client['file']),
                               style: TextStyle(fontSize: 11, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Text(
-                            'Sent: ${client['transferred']}',
+                            AppLocalizations.of(context).sentBytes(client['transferred']),
                             style: TextStyle(fontSize: 11, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                           ),
                         ],
