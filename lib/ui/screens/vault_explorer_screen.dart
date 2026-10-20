@@ -105,7 +105,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
     final bool? isSandbox = await showGeneralDialog<bool>(
       context: context,
       barrierDismissible: true,
-      barrierLabel: 'Lock Option',
+      barrierLabel: AppLocalizations.of(context).vaultLockOption,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, anim1, anim2) => const SizedBox.shrink(),
@@ -263,7 +263,12 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context).protectedItems(successCount, failCount > 0 ? ' Failed to lock $failCount items.' : ''),
+            AppLocalizations.of(context).protectedItems(
+              successCount,
+              failCount > 0
+                  ? AppLocalizations.of(context).vaultLockFailed(failCount)
+                  : '',
+            ),
           ),
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -312,12 +317,12 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Delete'),
+            child: Text(AppLocalizations.of(context).actionDelete),
           ),
         ],
       ),
@@ -444,14 +449,14 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildInfoTile('Original Name', record.originalName, theme),
-                _buildInfoTile('Original Path', record.originalPath, theme),
-                _buildInfoTile('Scrambled Path', record.scrambledPath, theme),
-                _buildInfoTile('Size', FileUtils.formatBytes(record.size, 2), theme),
-                _buildInfoTile('Locked At', record.lockedAt, theme),
+                _buildInfoTile(AppLocalizations.of(context).vaultOriginalName, record.originalName, theme),
+                _buildInfoTile(AppLocalizations.of(context).vaultOriginalPath, record.originalPath, theme),
+                _buildInfoTile(AppLocalizations.of(context).vaultScrambledPath, record.scrambledPath, theme),
+                _buildInfoTile(AppLocalizations.of(context).propertySize, FileUtils.formatBytes(record.size, 2), theme),
+                _buildInfoTile(AppLocalizations.of(context).vaultLockedAt, record.lockedAt, theme),
                 _buildInfoTile(
-                  'Protection Mode',
-                  record.isInPlace ? '⚡ In-Place Scrambling' : '🔒 Isolated Move (Sandbox)',
+                  AppLocalizations.of(context).vaultProtectionMode,
+                  record.isInPlace ? AppLocalizations.of(context).vaultInPlaceScrambling : AppLocalizations.of(context).vaultIsolatedMove,
                   theme,
                   valueColor: record.isInPlace ? Colors.orangeAccent : Colors.greenAccent,
                 ),
@@ -461,7 +466,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Close', style: TextStyle(fontWeight: FontWeight.bold)),
+              child: Text(AppLocalizations.of(context).actionClose, style: TextStyle(fontWeight: FontWeight.bold)),
             ),
           ],
         );
@@ -543,13 +548,13 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                         color: Colors.green.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(Broken.security_card, color: Colors.green, size: 16),
                           SizedBox(width: 6),
                           Text(
-                            'Active',
+                            AppLocalizations.of(context).connectionActive,
                             style: TextStyle(
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
@@ -749,14 +754,16 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
             ),
             const SizedBox(height: 24),
             Text(
-              _searchQuery.isNotEmpty ? 'No Matching Files' : 'Your Secure Vault is Empty',
+              _searchQuery.isNotEmpty ? AppLocalizations.of(context).vaultNoMatchingFiles : AppLocalizations.of(context).vaultEmpty,
               style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             Text(
               _searchQuery.isNotEmpty
-                  ? 'Try modifying your search text to locate hidden items.'
-                  : 'XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap AppLocalizations.of(context).hideFiles below to protect them.',
+                  ? AppLocalizations.of(context).vaultSearchHint
+                  : AppLocalizations.of(context).vaultScrambleDescription(
+                      AppLocalizations.of(context).hideFiles,
+                    ),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -824,7 +831,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
               child: Row(
                 children: [
                   Text(
-                    rec.isFolder ? 'Folder' : FileUtils.formatBytes(rec.size, 1),
+                    rec.isFolder ? AppLocalizations.of(context).itemFolder : FileUtils.formatBytes(rec.size, 1),
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -848,7 +855,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    rec.isInPlace ? 'In-Place' : 'Sandbox',
+                    rec.isInPlace ? AppLocalizations.of(context).vaultInPlace : AppLocalizations.of(context).vaultSandbox,
                     style: TextStyle(
                       fontSize: 11.5,
                       fontWeight: FontWeight.w600,
@@ -884,13 +891,13 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                     ],
                   ),
                 ),
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'info',
                   child: Row(
                     children: [
                       Icon(Broken.info_circle, size: 18),
                       SizedBox(width: 10),
-                      Text('Details', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+                      Text(AppLocalizations.of(context).actionDetails, style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),

@@ -72,13 +72,13 @@ class SettingsBackupService {
     try {
       final file = File(filePath);
       if (!file.existsSync()) {
-        throw Exception('Backup file does not exist');
+        throw Exception(AppLocalizations.of(context).settingsBackupFileMissing);
       }
 
       final jsonStr = await file.readAsString();
       final decoded = jsonDecode(jsonStr);
       if (decoded is! Map<String, dynamic>) {
-        throw Exception('Invalid backup file format');
+        throw Exception(AppLocalizations.of(context).settingsBackupInvalidFormat);
       }
 
       final prefs = await SharedPreferences.getInstance();

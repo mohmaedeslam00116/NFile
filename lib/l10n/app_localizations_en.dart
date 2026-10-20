@@ -1544,6 +1544,421 @@ class AppLocalizationsEn extends AppLocalizations {
   String get archiveUnsupportedFormat => 'Unsupported format';
 
   @override
+  String get actionBack => 'Back';
+
+  @override
+  String get actionBackspace => 'Backspace';
+
+  @override
+  String get actionClose => 'Close';
+
+  @override
+  String get actionDetails => 'Details';
+
+  @override
+  String get actionPaste => 'Paste';
+
+  @override
+  String get actionStart => 'Start';
+
+  @override
+  String get actionStop => 'Stop';
+
+  @override
+  String get actionUpload => 'Upload';
+
+  @override
+  String get settingsAppIconPicker => 'App Icon Picker';
+
+  @override
+  String get settingsLogo => 'Logo';
+
+  @override
+  String get settingsFileExplorer => 'File Explorer & Navigation';
+
+  @override
+  String get settingsMediaActions => 'Media & Default Actions';
+
+  @override
+  String get settingsExitConfirmation => 'Confirmation Dialog';
+
+  @override
+  String get settingsExitConfirmationHint =>
+      'Prompt for exit verification before closing';
+
+  @override
+  String get settingsDoublePressExit => 'Double-Press to Exit';
+
+  @override
+  String get settingsDoublePressExitHint =>
+      'Tap the back button twice within a short window to exit';
+
+  @override
+  String get settingsShowConfirmation => 'Show confirmation dialog';
+
+  @override
+  String get settingsDoublePressBackHint => 'Double-press back button to exit';
+
+  @override
+  String get settingsExitBehaviourHint =>
+      'Choose between exit confirmation dialog or double-pressing back button to exit';
+
+  @override
+  String get settingsTrailingInfoHint =>
+      'Choose what to show on the right side of files and folders when 3-dot is hidden';
+
+  @override
+  String get recycleBinDays7 => '7 Days';
+
+  @override
+  String get recycleBinDays15 => '15 Days';
+
+  @override
+  String get recycleBinDays30 => '30 Days (Recommended)';
+
+  @override
+  String get recycleBinNeverManual => 'Never (Manually clean bin)';
+
+  @override
+  String get recycleBinNeverAuto => 'Never (Auto-delete disabled)';
+
+  @override
+  String get recycleBinAfterOneDay => 'After 1 Day';
+
+  @override
+  String recycleBinAfterDays(int days) {
+    return 'After $days Days';
+  }
+
+  @override
+  String get trailingInfoNone => 'None / Hide Info';
+
+  @override
+  String get trailingInfoNoneHint =>
+      'Do not display additional information on the right side';
+
+  @override
+  String get trailingInfoDateHint => 'Display the last modified date and time';
+
+  @override
+  String get trailingInfoSizeHint =>
+      'Display file size for files and item count for folders';
+
+  @override
+  String get themeSignatureDefault => 'Signature Default (Lexend Deca)';
+
+  @override
+  String get themeOriginalDefault => 'Original Default (Signature Blue)';
+
+  @override
+  String get themeBrokenOutline => 'NFile Broken Outline (Default)';
+
+  @override
+  String get themeOriginalGeometric => 'Original NFile clean geometric look';
+
+  @override
+  String get themeNothingDotMatrix => 'Nothing Dot-Matrix & Sans';
+
+  @override
+  String get themeDotMatrixHint =>
+      'High-tech retro dot matrix headings + clean body';
+
+  @override
+  String get themeMonospaceHint =>
+      'Clean and futuristic developer monospaced look';
+
+  @override
+  String get themeGeometricHint =>
+      'Super sleek, minimal, and premium geometric aesthetic';
+
+  @override
+  String get themeBoldHint => 'Bold, modern, and striking typographic scale';
+
+  @override
+  String get themeCustomFontHint => 'Your custom loaded font file';
+
+  @override
+  String themeCustomFontName(String name) {
+    return 'Custom Font ($name)';
+  }
+
+  @override
+  String get themeImportCustomFont => 'Import Custom Font File (.ttf/.otf)';
+
+  @override
+  String get themeReplaceCustomFont => 'Replace Custom Font File';
+
+  @override
+  String get connectionActive => 'Active';
+
+  @override
+  String get connectionInactive => 'Inactive';
+
+  @override
+  String get connectionConnected => 'Connected';
+
+  @override
+  String get connectionConnect => 'Connect';
+
+  @override
+  String get connectionPort => 'Port';
+
+  @override
+  String get connectionProtocol => 'Protocol';
+
+  @override
+  String get connectionName => 'Connection Name';
+
+  @override
+  String get connectionServerAddress => 'Server Address / IP';
+
+  @override
+  String get connectionUsername => 'Username';
+
+  @override
+  String get connectionUsernameOptional => 'Username (Optional)';
+
+  @override
+  String get connectionRemoteDirectory => 'Remote Directory';
+
+  @override
+  String get connectionAuthenticating => 'Authenticating credentials...';
+
+  @override
+  String get connectionCheckingPort => 'Checking port status...';
+
+  @override
+  String get connectionResolvingHost => 'Resolving host address...';
+
+  @override
+  String get connectionMounting => 'Mounting storage volume...';
+
+  @override
+  String connectionTitle(String protocol) {
+    return '$protocol Connection';
+  }
+
+  @override
+  String get connectionServerAddressHint =>
+      'e.g., 192.168.1.100 or 192.168.1.100/dav';
+
+  @override
+  String get connectionServerAddressHint2 => 'e.g., 192.168.1.100 or nas.local';
+
+  @override
+  String get protocolAndroidSaf =>
+      'Android Storage Access Framework (SD Card / External)';
+
+  @override
+  String get protocolHttp => 'HTTP Web Distributed Authoring';
+
+  @override
+  String get protocolLan => 'Local Area Network & SMB NAS Share';
+
+  @override
+  String get protocolSafFolder => 'SAF Folder';
+
+  @override
+  String get protocolSsh => 'SSH Secure File Transfer Server';
+
+  @override
+  String get protocolFtp => 'Standard File Transfer Protocol';
+
+  @override
+  String get ftpAnonymous => 'Anonymous';
+
+  @override
+  String get webStartServer => 'Start Web Server';
+
+  @override
+  String get webStopServer => 'Stop Web Server';
+
+  @override
+  String get webCloudShare => 'Cloud Share';
+
+  @override
+  String get webLocalShare => 'Local Share';
+
+  @override
+  String get webActivateLink => 'Activate Internet Share Link';
+
+  @override
+  String get webDeactivateCloud => 'Deactivate Cloud Share';
+
+  @override
+  String get remoteMoveToDevice => 'Move to Device';
+
+  @override
+  String get remoteCopyToDevice => 'Copy to Device';
+
+  @override
+  String get remotePasteClipboard => 'Paste remote clipboard';
+
+  @override
+  String get remotePasteSameLocation => 'Cannot paste to the same location';
+
+  @override
+  String get remoteClipboardEmpty =>
+      'Local clipboard is empty. Copy files in the file manager first.';
+
+  @override
+  String remoteTransferFailed(String error) {
+    return 'Transfer failed: $error';
+  }
+
+  @override
+  String get remoteTransferring => 'Transferring...';
+
+  @override
+  String get remoteCopying => 'Copying...';
+
+  @override
+  String get remoteMoving => 'Moving...';
+
+  @override
+  String get remoteDownloading => 'Downloading from server...';
+
+  @override
+  String get remoteUploading => 'Uploading to server...';
+
+  @override
+  String remoteUploaded(int count) {
+    return 'Uploaded $count file(s) successfully';
+  }
+
+  @override
+  String remoteUploadFailed(String name, String error) {
+    return 'Upload failed for \"$name\": $error';
+  }
+
+  @override
+  String remoteDownloadFailed(String error) {
+    return 'Download failed: $error';
+  }
+
+  @override
+  String remoteCreateFolderFailed(String error) {
+    return 'Failed to create folder: $error';
+  }
+
+  @override
+  String remoteDeleteFailed(String error) {
+    return 'Failed to delete: $error';
+  }
+
+  @override
+  String remoteCopiedToClipboard(String name) {
+    return 'Copied \"$name\" to clipboard';
+  }
+
+  @override
+  String remoteCutToClipboard(String name) {
+    return 'Cut \"$name\" to clipboard';
+  }
+
+  @override
+  String remoteDeleted(String name) {
+    return 'Deleted \"$name\"';
+  }
+
+  @override
+  String remoteDownloadedToClipboard(String name) {
+    return '\"$name\" downloaded → local clipboard ready to paste';
+  }
+
+  @override
+  String remoteFilesReadyToUpload(int count) {
+    return '$count local file(s) ready to upload';
+  }
+
+  @override
+  String remoteItemsCut(int count) {
+    return '$count remote item(s) cut';
+  }
+
+  @override
+  String remoteItemsCopied(int count) {
+    return '$count remote item(s) copied';
+  }
+
+  @override
+  String get vaultEnterPin => 'Enter PIN to Unlock Wallet';
+
+  @override
+  String get vaultSetPin => 'Set your 4-digit Wallet PIN';
+
+  @override
+  String get vaultConfirmPin => 'Confirm your 4-digit PIN';
+
+  @override
+  String get vaultIncorrectPin => 'Incorrect PIN. Try again!';
+
+  @override
+  String get vaultPinsDoNotMatch => 'PINs do not match. Try again!';
+
+  @override
+  String get vaultPinSet => 'PIN Set Successfully!';
+
+  @override
+  String get vaultEnterPassword => 'Enter Password to Unlock';
+
+  @override
+  String get vaultLockOption => 'Lock Option';
+
+  @override
+  String vaultLockFailed(int count) {
+    return 'Failed to lock $count items.';
+  }
+
+  @override
+  String get vaultNoMatchingFiles => 'No Matching Files';
+
+  @override
+  String get vaultEmpty => 'Your Secure Vault is Empty';
+
+  @override
+  String get vaultSearchHint =>
+      'Try modifying your search text to locate hidden items.';
+
+  @override
+  String vaultScrambleDescription(String action) {
+    return 'XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap $action below to protect them.';
+  }
+
+  @override
+  String get vaultInPlace => 'In-Place';
+
+  @override
+  String get vaultSandbox => 'Sandbox';
+
+  @override
+  String get vaultProtectionMode => 'Protection Mode';
+
+  @override
+  String get vaultLockedAt => 'Locked At';
+
+  @override
+  String get vaultOriginalName => 'Original Name';
+
+  @override
+  String get vaultOriginalPath => 'Original Path';
+
+  @override
+  String get vaultScrambledPath => 'Scrambled Path';
+
+  @override
+  String get vaultInPlaceScrambling => '⚡ In-Place Scrambling';
+
+  @override
+  String get vaultIsolatedMove => '🔒 Isolated Move (Sandbox)';
+
+  @override
+  String get settingsBackupFileMissing => 'Backup file does not exist';
+
+  @override
+  String get settingsBackupInvalidFormat => 'Invalid backup file format';
+
+  @override
   String processingItem(int current, int total) {
     return 'Processing item $current of $total';
   }

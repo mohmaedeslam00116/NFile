@@ -37,11 +37,12 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
   bool _isTransferring = false;
   double _transferProgress = 0.0;
   String _transferFileName = '';
-  String _transferLabel = 'Transferring...';
+  String _transferLabel = '';
 
   @override
   void initState() {
     super.initState();
+    _transferLabel = AppLocalizations.of(context).remoteTransferring;
     _currentPath = widget.connection.rootPath;
     _initClient();
   }
@@ -194,7 +195,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       isCut: false,
       connection: widget.connection,
     );
-    _showSnack('Copied "${item.name}" to clipboard');
+    _showSnack(AppLocalizations.of(context).remoteCopiedToClipboard(item.name));
   }
 
   void _cutRemoteItem(RemoteFileItem item) {
@@ -203,7 +204,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       isCut: true,
       connection: widget.connection,
     );
-    _showSnack('Cut "${item.name}" to clipboard');
+    _showSnack(AppLocalizations.of(context).remoteCutToClipboard(item.name));
   }
 
   /// Paste remote clipboard items to current remote directory
@@ -219,7 +220,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           : '$_currentPath/${item.name}';
 
       if (destPath == item.path) {
-        _showSnack('Cannot paste to the same location');
+        _showSnack(AppLocalizations.of(context).remotePasteSameLocation);
         return;
       }
 
@@ -227,7 +228,9 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
         _isTransferring = true;
         _transferProgress = 0.0;
         _transferFileName = item.name;
-        _transferLabel = isCut ? 'Moving...' : 'Copying...';
+        _transferLabel = isCut
+            ? AppLocalizations.of(context).remoteMoving
+            : AppLocalizations.of(context).remoteCopying;
       });
 
       try {
@@ -254,7 +257,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       } catch (e) {
         if (mounted) {
           setState(() => _isTransferring = false);
-          _showSnack('Transfer failed: $e', isError: true);
+          _showSnack(AppLocalizations.of(context).remoteTransferFailed(e.toString()), isError: true);
           return;
         }
       }
@@ -265,7 +268,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
         _isTransferring = false;
       });
       if (isCut) provider.clearClipboard();
-      _showSnack('Pasted items successfully');
+      _showSnack(AppLocalizations.of(context).pastedItemsSuccessfully);
       await _loadDirectoryContents(_currentPath);
     }
   }
@@ -279,7 +282,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
     final provider = context.read<FileManagerProvider>();
     if (!provider.hasClipboard) {
       _showSnack(
-        'Local clipboard is empty. Copy files in the file manager first.',
+        AppLocalizations.of(context).remoteClipboardEmpty,
         isError: true,
       );
       return;
@@ -302,7 +305,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
         _isTransferring = true;
         _transferProgress = 0.0;
         _transferFileName = fileName;
-        _transferLabel = 'Uploading to server...';
+        _transferLabel = AppLocalizations.of(context).remoteUploading;
       });
 
       try {
@@ -318,7 +321,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       } catch (e) {
         if (mounted) {
           setState(() => _isTransferring = false);
-          _showSnack('Upload failed for "$fileName": $e', isError: true);
+          _showSnack(AppLocalizations.of(context).remoteUploadFailed(fileName, e.toString()), isError: true);
           return;
         }
       }
@@ -327,7 +330,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
     if (mounted) {
       setState(() => _isTransferring = false);
       if (isCut) provider.clearClipboard();
-      _showSnack('Uploaded ${paths.length} file(s) successfully');
+      _showSnack(AppLocalizations.of(context).remoteUploaded(paths.length));
       await _loadDirectoryContents(_currentPath);
     }
   }
@@ -347,7 +350,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       _isTransferring = true;
       _transferProgress = 0.0;
       _transferFileName = item.name;
-      _transferLabel = 'Downloading from server...';
+      _transferLabel = AppLocalizations.of(context).remoteDownloading;
     });
 
     try {
@@ -377,14 +380,14 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           localPath,
         ], isCut: false);
         _showSnack(
-          '"${item.name}" downloaded → local clipboard ready to paste',
+          AppLocalizations.of(context).remoteDownloadedToClipboard(item.name),
         );
         if (isCut) await _loadDirectoryContents(_currentPath);
       }
     } catch (e) {
       if (mounted) {
         setState(() => _isTransferring = false);
-        _showSnack('Download failed: $e', isError: true);
+        _showSnack(AppLocalizations.of(context).remoteDownloadFailed(e.toString()), isError: true);
       }
     }
   }
@@ -409,7 +412,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx, false),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).actionCancel),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -420,7 +423,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                 ),
               ),
               onPressed: () => Navigator.pop(ctx, true),
-              child: const Text('Delete'),
+              child: Text(AppLocalizations.of(context).actionDelete),
             ),
           ],
         );
@@ -432,9 +435,9 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
     try {
       await _client?.delete(item.path, item.isDirectory);
       await _loadDirectoryContents(_currentPath);
-      _showSnack('Deleted "${item.name}"');
+      _showSnack(AppLocalizations.of(context).remoteDeleted(item.name));
     } catch (e) {
-      _showSnack('Failed to delete: $e', isError: true);
+      _showSnack(AppLocalizations.of(context).remoteDeleteFailed(e.toString()), isError: true);
       setState(() => _isLoading = false);
     }
   }
@@ -488,7 +491,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).actionCancel),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -511,13 +514,13 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                     await _loadDirectoryContents(_currentPath);
                   } catch (e) {
                     if (mounted) {
-                      _showSnack('Failed to create folder: $e', isError: true);
+                      _showSnack(AppLocalizations.of(context).remoteCreateFolderFailed(e.toString()), isError: true);
                       setState(() => _isLoading = false);
                     }
                   }
                 }
               },
-              child: const Text('Create'),
+              child: Text(AppLocalizations.of(context).actionCreate),
             ),
           ],
         );
@@ -591,7 +594,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                         ),
                         Text(
                           item.isDirectory
-                              ? 'Remote Directory'
+                              ? AppLocalizations.of(context).connectionRemoteDirectory
                               : item.formattedSize,
                           style: TextStyle(
                             fontSize: 11.5,
@@ -612,7 +615,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
               _buildActionTile(
                 ctx,
                 icon: Broken.copy,
-                label: 'Copy',
+                label: AppLocalizations.of(context).actionCopy,
                 color: theme.colorScheme.primary,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -624,7 +627,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
               _buildActionTile(
                 ctx,
                 icon: Broken.scissor,
-                label: 'Cut',
+                label: AppLocalizations.of(context).actionCut,
                 color: Colors.orange,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -664,7 +667,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
               _buildActionTile(
                 ctx,
                 icon: Broken.trash,
-                label: 'Delete',
+                label: AppLocalizations.of(context).actionDelete,
                 color: Colors.redAccent,
                 onTap: () {
                   Navigator.pop(ctx);
@@ -761,7 +764,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
     List<String> pathUris = [];
 
     if (isSaf) {
-      pathNodes.add('Root');
+      pathNodes.add(AppLocalizations.of(context).rootDirectory);
       pathUris.add(rootPath);
 
       final docIndex = _currentPath.indexOf('/document/');
@@ -798,9 +801,13 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       }
       if (relativePath.isEmpty || relativePath == '/') relativePath = '';
 
+      final rootLabel = AppLocalizations.of(context).rootDirectory;
       pathNodes = relativePath.isEmpty
-          ? ['Root']
-          : ['Root', ...relativePath.split('/').where((n) => n.isNotEmpty)];
+          ? [rootLabel]
+          : [
+              rootLabel,
+              ...relativePath.split('/').where((n) => n.isNotEmpty),
+            ];
     }
 
     final hasLocalClipboard = provider.clipboardPaths.isNotEmpty;
@@ -902,8 +909,8 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                         ],
                       ),
                       tooltip: provider.isCut
-                          ? 'Move here'
-                          : 'Paste remote clipboard',
+                          ? AppLocalizations.of(context).moveHere
+                          : AppLocalizations.of(context).remotePasteClipboard,
                       onPressed: _pasteRemoteClipboard,
                     ),
                   IconButton(
@@ -1156,7 +1163,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                   ),
                                   subtitle: Text(
                                     item.isDirectory
-                                        ? 'Directory'
+                                        ? AppLocalizations.of(context).mediaDirectory
                                         : '${item.formattedSize} • ${item.modified.toLocal().toString().substring(0, 10)}',
                                     style: TextStyle(
                                       fontSize: 11.5,
@@ -1203,20 +1210,20 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                       _popItem(
                                         'copy',
                                         Broken.copy,
-                                        'Copy',
+                                        AppLocalizations.of(context).actionCopy,
                                         theme.colorScheme.primary,
                                       ),
                                       _popItem(
                                         'cut',
                                         Broken.scissor,
-                                        'Cut',
+                                        AppLocalizations.of(context).actionCut,
                                         Colors.orange,
                                       ),
                                       if (hasRemoteClipboard)
                                         _popItem(
                                           'paste',
                                           Icons.content_paste_rounded,
-                                          'Paste Here',
+                                          AppLocalizations.of(context).pasteHere,
                                           const Color(0xFF0D9488),
                                         ),
                                       if (!item.isDirectory) ...[
@@ -1224,13 +1231,13 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                         _popItem(
                                           'copy_to_local',
                                           Icons.download_for_offline_rounded,
-                                          'Copy to Device',
+                                          AppLocalizations.of(context).remoteCopyToDevice,
                                           const Color(0xFF7C3AED),
                                         ),
                                         _popItem(
                                           'move_to_local',
                                           Icons.drive_file_move_rtl_rounded,
-                                          'Move to Device',
+                                          AppLocalizations.of(context).remoteMoveToDevice,
                                           const Color(0xFF0D9488),
                                         ),
                                       ],
@@ -1238,7 +1245,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                       _popItem(
                                         'delete',
                                         Broken.trash,
-                                        'Delete',
+                                        AppLocalizations.of(context).actionDelete,
                                         Colors.redAccent,
                                       ),
                                     ],
@@ -1306,8 +1313,13 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           Expanded(
             child: Text(
               hasLocal
-                  ? '${provider.clipboardPaths.length} local file(s) ready to upload'
-                  : '${provider.remoteClipboardItems.length} remote item(s) ${provider.isCut ? "cut" : "copied"}',
+                  ? AppLocalizations.of(context)
+                      .remoteFilesReadyToUpload(provider.clipboardPaths.length)
+                  : provider.isCut
+                      ? AppLocalizations.of(context)
+                          .remoteItemsCut(provider.remoteClipboardItems.length)
+                      : AppLocalizations.of(context)
+                          .remoteItemsCopied(provider.remoteClipboardItems.length),
               style: TextStyle(
                 fontSize: 12,
                 color: theme.colorScheme.primary,
@@ -1330,7 +1342,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text('Upload', style: TextStyle(fontSize: 12)),
+              child: Text(AppLocalizations.of(context).actionUpload, style: TextStyle(fontSize: 12)),
             ),
           if (hasRemote)
             TextButton(
@@ -1347,7 +1359,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text('Paste', style: TextStyle(fontSize: 12)),
+              child: Text(AppLocalizations.of(context).actionPaste, style: TextStyle(fontSize: 12)),
             ),
           const SizedBox(width: 4),
           GestureDetector(

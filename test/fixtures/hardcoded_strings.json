@@ -44,6 +44,8 @@
     "currentFile",
     "currentPath",
     "CustomFont",
+    "dateTime",
+    "sizeAndCount",
     "Dart",
     "Decompressing archive...",
     "Decompressing gzip...",
@@ -119,7 +121,17 @@
     "writeContentUri",
     "XML",
     "ZIP",
-    "apkSize"
+    "Anonymous",
+    "apkSize",
+    "FTP",
+    "FTPES",
+    "HTTP",
+    "NFile_Remote",
+    "requestSafDirectory",
+    "SAF Folder",
+    "SFTP",
+    "WebDav",
+    "[^a-zA-Z0-9]"
   ],
   "todo": []
 }
