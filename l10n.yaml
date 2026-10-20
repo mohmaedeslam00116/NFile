@@ -1,0 +1,14 @@
+# The translation of the application.
+#
+# The English file is the template: it holds every key the application asks
+# for. The Arabic file holds the translation of every one of them. The tool of
+# Flutter writes the class AppLocalizations from them, into this folder.
+arb-dir: lib/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+
+# The strings of the application are asked for by name, and the application is
+# always inside its own tree: a getter that can be null would only spread the
+# null checks over every screen.
+nullable-getter: false

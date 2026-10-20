@@ -40,6 +40,11 @@ dependency_overrides:
 dependencies:
   flutter:
     sdk: flutter
+  # The strings of the framework itself: the months of the date picker, the
+  # menu of the text selection. The application loads them, so that they are
+  # Arabic as well.
+  flutter_localizations:
+    sdk: flutter
   flutter_avif: ^3.1.0
 
   # The following adds the Cupertino Icons font to your application.
@@ -103,6 +108,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
+  # The translation of the application is written from the ARB files of
+  # lib/l10n, by the tool of Flutter, when the project is built.
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

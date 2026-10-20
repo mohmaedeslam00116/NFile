@@ -33,6 +33,15 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
+      - name: Check that the translation is up to date
+        # The class of the translation is written by the tool of Flutter from
+        # the ARB files. It is committed, so that the analysis and the tests
+        # always have it; this step says that it still matches the files it
+        # was written from.
+        run: |
+          flutter gen-l10n
+          git diff --exit-code lib/l10n
+
       - name: Run the static analysis
         run: flutter analyze
 

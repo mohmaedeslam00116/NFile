@@ -1,0 +1,27 @@
+{
+  "@@locale": "en",
+  "appName": "NFile",
+  "@appName": {
+    "description": "The name of the application. It is the same in every language."
+  },
+  "openingSharedDocument": "Opening shared document...",
+  "@openingSharedDocument": {
+    "description": "Shown while a document that was shared with the application is opened."
+  },
+  "resolvingSecureContent": "Resolving secure content stream",
+  "@resolvingSecureContent": {
+    "description": "Shown under the message of the opening of a shared document."
+  },
+  "storageAccessRequired": "Storage Access Required",
+  "@storageAccessRequired": {
+    "description": "The title of the screen that asks for the permission of the storage."
+  },
+  "storageAccessExplanation": "NFile requires storage permission to manage, organize, and display your media files seamlessly.",
+  "@storageAccessExplanation": {
+    "description": "The explanation under the title of the screen that asks for the permission of the storage."
+  },
+  "grantPermission": "Grant Permission",
+  "@grantPermission": {
+    "description": "The button that asks for the permission of the storage."
+  }
+}
