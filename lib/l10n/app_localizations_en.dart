@@ -1449,6 +1449,394 @@ class AppLocalizationsEn extends AppLocalizations {
       'Backup your settings to a JSON file or restore them';
 
   @override
+  String get ftpServerStopped => 'FTP Server stopped successfully';
+
+  @override
+  String ftpServerStartedAt(String address) {
+    return 'FTP Server started at $address';
+  }
+
+  @override
+  String errorStartingFtpServer(String error) {
+    return 'Error starting FTP Server: $error';
+  }
+
+  @override
+  String get stopServerBeforeChanging =>
+      'Please stop the server before changing configuration';
+
+  @override
+  String get changePort => 'Change Port';
+
+  @override
+  String get portNumber => 'Port Number';
+
+  @override
+  String get invalidPortNumber => 'Invalid port number';
+
+  @override
+  String get setUsername => 'Set Username';
+
+  @override
+  String get usernameNotEmpty => 'Username cannot be empty';
+
+  @override
+  String get stopServerBeforeEditing =>
+      'Stop the server before editing settings';
+
+  @override
+  String get ftpShortcutAdded => 'FTP Server shortcut added to home screen!';
+
+  @override
+  String get changeDirectory => 'Change directory';
+
+  @override
+  String get changePortLower => 'Change port';
+
+  @override
+  String get setUser => 'Set user';
+
+  @override
+  String get anonymousAccess => 'Anonymous access';
+
+  @override
+  String get createShortcut => 'Create shortcut';
+
+  @override
+  String get networkStatus => 'Network status';
+
+  @override
+  String get serverAddress => 'Server address';
+
+  @override
+  String get homeDirectory => 'Home directory';
+
+  @override
+  String get userName => 'User name';
+
+  @override
+  String get showHiddenFilesLower => 'Show hidden files';
+
+  @override
+  String get secureFtpHint => 'Secure FTP connection over explicit TLS';
+
+  @override
+  String connectionAdded(String name) {
+    return '\"$name\" added successfully!';
+  }
+
+  @override
+  String get systemAppDisabled => 'System App Disabled';
+
+  @override
+  String get noDocumentsApp =>
+      'Your device does not have a default System Files/Documents app (DocumentsUI) enabled, which is required by Android to select and mount directories.\n\nPlease check if the \"Files\" or \"Documents\" system app is disabled in your device Settings, or enable it to use SAF directory features.';
+
+  @override
+  String failedToRequestSafFolder(String error) {
+    return 'Failed to request SAF folder: $error';
+  }
+
+  @override
+  String get enterConnectionName => 'Please enter a connection name';
+
+  @override
+  String get enterServerAddress => 'Please enter server address / hostname';
+
+  @override
+  String connectedSuccessfully(String name) {
+    return '\"$name\" connected successfully!';
+  }
+
+  @override
+  String connectionFailed(String error) {
+    return 'Connection failed: $error';
+  }
+
+  @override
+  String get remoteConnections => 'Remote Connections';
+
+  @override
+  String stepOf(int current, int total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get selectNetworkService => 'Select Network Service';
+
+  @override
+  String get selectNetworkServiceHint =>
+      'Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.';
+
+  @override
+  String selectedTypeSettings(String type) {
+    return '$type Settings';
+  }
+
+  @override
+  String get enterConnectionDetails =>
+      'Enter connection details to link this network volume.';
+
+  @override
+  String get connectionNameExample => 'e.g., Office NAS, Home Share';
+
+  @override
+  String get connectionPathExample => 'e.g., /dav or /';
+
+  @override
+  String get connectionUserExample => 'e.g., anonymous or admin';
+
+  @override
+  String get creatingMountPoint => 'Creating Mount Point...';
+
+  @override
+  String establishingPathway(String type) {
+    return 'Please wait while we establish a reliable pathway to the $type server.';
+  }
+
+  @override
+  String get httpsSecure => 'HTTPS (Secure)';
+
+  @override
+  String get deleteItem => 'Delete Item';
+
+  @override
+  String deleteRemoteItemQuestion(String name) {
+    return 'Delete \"$name\" permanently from the server?';
+  }
+
+  @override
+  String get newRemoteFolder => 'New Remote Folder';
+
+  @override
+  String get copyToLocalDevice => 'Copy to Local Device';
+
+  @override
+  String get copyToLocalDeviceHint => 'Downloads file → local clipboard';
+
+  @override
+  String get moveToLocalDevice => 'Move to Local Device';
+
+  @override
+  String get moveToLocalDeviceHint => 'Downloads and deletes from server';
+
+  @override
+  String connectionTypeServer(String type) {
+    return '$type Server';
+  }
+
+  @override
+  String get uploadClipboardToServer => 'Upload local clipboard to server';
+
+  @override
+  String get connectionLost => 'Connection Lost';
+
+  @override
+  String get retryConnection => 'Retry Connection';
+
+  @override
+  String get emptyDirectory => 'Empty Directory';
+
+  @override
+  String get uploadClipboardHere => 'Upload Clipboard Here';
+
+  @override
+  String errorLoadingVault(String error) {
+    return 'Error loading vault: $error';
+  }
+
+  @override
+  String get chooseProtectionMode => 'Choose Protection Mode';
+
+  @override
+  String get chooseProtectionModeHint =>
+      'Choose how you want to protect your selected files. Secured files are encrypted instantly.';
+
+  @override
+  String get secureImportSandbox => 'Secure Import (Sandbox)';
+
+  @override
+  String get inPlaceScramble => 'In-Place Scramble (Fast)';
+
+  @override
+  String get scramblingProtecting => 'Scrambling & Protecting...';
+
+  @override
+  String protectedItems(int count, String failed) {
+    return 'Protected $count items successfully.$failed';
+  }
+
+  @override
+  String restoredToOriginal(String name) {
+    return 'Restored \"$name\" to its original location.';
+  }
+
+  @override
+  String failedToRestoreFile(String error) {
+    return 'Failed to restore file: $error';
+  }
+
+  @override
+  String get deletePermanentlyQuestion => 'Delete Permanently?';
+
+  @override
+  String deletePermanentlyQuestionHint(int count) {
+    return 'Are you sure you want to permanently delete these $count item(s)? This action cannot be undone.';
+  }
+
+  @override
+  String get fileDeletedPermanently => 'File deleted permanently.';
+
+  @override
+  String failedToDeleteFile(String error) {
+    return 'Failed to delete file: $error';
+  }
+
+  @override
+  String get decryptingSecurely => 'Decrypting securely...';
+
+  @override
+  String failedToDecryptItem(String error) {
+    return 'Failed to decrypt and open item: $error';
+  }
+
+  @override
+  String get securityDetails => 'Security Details';
+
+  @override
+  String get searchScrambledFiles => 'Search scrambled files...';
+
+  @override
+  String get hideFiles => 'Hide Files';
+
+  @override
+  String get securityStorage => 'SECURITY STORAGE';
+
+  @override
+  String get totalSpaceSecured => 'Total Space Secured';
+
+  @override
+  String get hiddenFiles => 'Hidden Files';
+
+  @override
+  String get restoreUnhide => 'Restore (Unhide)';
+
+  @override
+  String get deletePermanently => 'Delete Permanently';
+
+  @override
+  String get clearAll => 'Clear All';
+
+  @override
+  String get httpServerStopped => 'Local HTTP Sharing Server stopped.';
+
+  @override
+  String httpServerStarted(String url) {
+    return 'Local HTTP Sharing Server started! URL: $url';
+  }
+
+  @override
+  String errorStartingHttpServer(String error) {
+    return 'Error starting HTTP Server: $error';
+  }
+
+  @override
+  String get tunnelDeactivated => 'Internet Share Tunnel deactivated.';
+
+  @override
+  String get establishingRelay => 'Establishing secure proxy relay...';
+
+  @override
+  String get tunnelOnline =>
+      'Internet cloud tunnel online! Temporary link active.';
+
+  @override
+  String failedToStartCloudShare(String error) {
+    return 'Failed to start Cloud Share: $error';
+  }
+
+  @override
+  String get linkCopied => 'Link copied to clipboard!';
+
+  @override
+  String get scanQrCode => 'Scan QR Code';
+
+  @override
+  String scanToOpen(String type) {
+    return 'Scan with another device to open $type immediately.';
+  }
+
+  @override
+  String get webSharingHub => 'Web Sharing Hub';
+
+  @override
+  String get localWebShare => 'Local Web Share';
+
+  @override
+  String get internetShareLink => 'Internet Share Link';
+
+  @override
+  String get httpLocalShareServer => 'HTTP Local Share Server';
+
+  @override
+  String get httpLocalShareServerHint =>
+      'Allows other devices on the same Wi-Fi to access, view, and stream your files in their web browser.';
+
+  @override
+  String get serverOnlineStreaming => 'Server Online & Streaming';
+
+  @override
+  String get directBrowserUrl => 'Direct Browser URL:';
+
+  @override
+  String get copyUrl => 'Copy URL';
+
+  @override
+  String get qrCode => 'QR Code';
+
+  @override
+  String sharingDirectory(String folder) {
+    return 'Sharing Directory: $folder';
+  }
+
+  @override
+  String get serverIdle => 'Server is Idle';
+
+  @override
+  String get serverIdleHint =>
+      'Make sure other devices are on the same Wi-Fi network as this device, then start the server.';
+
+  @override
+  String get internetShareTunnel => 'Internet Share Tunnel';
+
+  @override
+  String get internetShareTunnelHint =>
+      'Generates a secure temporary public tunnel link. Share this link with anyone anywhere on the internet to let them download files high-speed, no matter the file size.';
+
+  @override
+  String get cloudTunnelActive => 'Cloud Tunnel Active';
+
+  @override
+  String get temporaryShareLink => 'Temporary Share Link (Active 24h):';
+
+  @override
+  String get copyLink => 'Copy Link';
+
+  @override
+  String get connectedClients => 'Connected Browser Clients';
+
+  @override
+  String get waitingForDownloads =>
+      'Waiting for incoming internet downloads...';
+
+  @override
+  String get internetSharingInactive => 'Internet Sharing Inactive';
+
+  @override
+  String get internetSharingInactiveHint =>
+      'Activate the tunnel to establish a secure link that works beyond local Wi-Fi.';
+
+  @override
   String get compressingFiles => 'Compressing Files';
 
   @override
@@ -1861,14 +2249,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get deletePermanentlyQuestion => 'Delete Permanently?';
-
-  @override
-  String deletePermanentlyQuestionHint(int count) {
-    return 'Are you sure you want to permanently delete these $count item(s)? This action cannot be undone.';
-  }
-
-  @override
   String permanentlyDeleted(int count) {
     return 'Permanently deleted $count item(s)';
   }
@@ -1911,9 +2291,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String deletedAtAndSize(String date, String size) {
     return 'Deleted: $date • $size';
   }
-
-  @override
-  String get deletePermanently => 'Delete Permanently';
 
   @override
   String get recycleBinIsEmpty => 'Recycle Bin is Empty';
@@ -1978,9 +2355,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get repeatMode => 'Repeat Mode';
 
   @override
-  String get copyUrl => 'Copy URL';
-
-  @override
   String get mediaPathCopied => 'Media path copied to clipboard.';
 
   @override
@@ -2004,4 +2378,149 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editorModified => 'editorModified';
+
+  @override
+  String deleteVaultFileQuestionHint(String name) {
+    return 'Are you sure you want to permanently delete \"$name\"? This action CANNOT be undone.';
+  }
+
+  @override
+  String get appManager => 'App Manager';
+
+  @override
+  String get refreshList => 'Refresh List';
+
+  @override
+  String get sortBySize => 'Sort by Size';
+
+  @override
+  String get sortAlphabetically => 'Sort Alphabetically';
+
+  @override
+  String get exactStorageCalculation => 'Exact Storage Calculation';
+
+  @override
+  String get exactStorageCalculationHint =>
+      'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.';
+
+  @override
+  String get grantUsageAccess => 'Grant Usage Access Permission';
+
+  @override
+  String get storageAnalytics => 'Storage Analytics';
+
+  @override
+  String get rescanStorage => 'Rescan Storage';
+
+  @override
+  String get scanningDeviceStorage => 'Scanning Device Storage';
+
+  @override
+  String get analyzingStorage =>
+      'Analyzing files, categorizing assets, and reading installed apps space...';
+
+  @override
+  String get totalStorage => 'Total Storage';
+
+  @override
+  String storageUsedWithPercent(String size, String percent) {
+    return '$size used ($percent%)';
+  }
+
+  @override
+  String get systemAndOther => 'System / Other';
+
+  @override
+  String percentOfTotalStorage(String percent) {
+    return '$percent% of total storage';
+  }
+
+  @override
+  String get uninstallApps => 'Uninstall Apps';
+
+  @override
+  String uninstallAppsQuestion(int count) {
+    return 'Are you sure you want to uninstall $count selected app(s)?';
+  }
+
+  @override
+  String get backingUpApps => 'Backing up selected applications...';
+
+  @override
+  String backedUpApps(int count) {
+    return 'Successfully backed up $count app(s) to NFile/Backups/Apps/';
+  }
+
+  @override
+  String failedToBackUpApps(String error) {
+    return 'Failed to back up some apps: $error';
+  }
+
+  @override
+  String get noApplicationsFound => 'No applications found';
+
+  @override
+  String packageAndVersion(String package, String version) {
+    return '$package • v$version';
+  }
+
+  @override
+  String appSizeAndInstalled(String size, String date) {
+    return 'Size: $size • Installed: $date';
+  }
+
+  @override
+  String get launchApplication => 'Launch Application';
+
+  @override
+  String get systemSettingsDetails => 'System Settings / Details';
+
+  @override
+  String get backUpApk => 'Back Up APK';
+
+  @override
+  String get backingUpApk => 'Backing up APK...';
+
+  @override
+  String get shareApkFile => 'Share APK File';
+
+  @override
+  String get uninstallApplication => 'Uninstall Application';
+
+  @override
+  String backupKindAndVersion(String kind, String version) {
+    return '$kind • v$version';
+  }
+
+  @override
+  String backupKindAndVersionFull(String kind, String version) {
+    return '$kind • v$version';
+  }
+
+  @override
+  String backupSizeAndDate(String size, String date) {
+    return 'Size: $size • Backup Date: $date';
+  }
+
+  @override
+  String get restoreOrInstallApp => 'Restore / Install App';
+
+  @override
+  String get shareBackupFile => 'Share Backup File';
+
+  @override
+  String get deleteBackupFile => 'Delete Backup File';
+
+  @override
+  String get noBackupsFound => 'No backups found';
+
+  @override
+  String downloadingFile(String file) {
+    return 'Downloading: $file';
+  }
+
+  @override
+  String sentBytes(String amount) {
+    return 'Sent: $amount';
+  }
 }

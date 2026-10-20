@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -67,7 +68,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error loading vault: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).errorLoadingVault(e.toString()))),
         );
       }
     }
@@ -135,13 +136,13 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Choose Protection Mode',
+                    AppLocalizations.of(context).chooseProtectionMode,
                     style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              content: const Text(
-                'Choose how you want to protect your selected files. Secured files are XOR scrambled instantly.',
+              content: Text(
+                AppLocalizations.of(context).chooseProtectionModeHint,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14.5, height: 1.4),
               ),
@@ -160,12 +161,12 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                         elevation: 0,
                       ),
                       onPressed: () => Navigator.pop(context, true), // true = Sandbox move
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Broken.lock, size: 20),
                           SizedBox(width: 8),
-                          Text('Secure Import (Sandbox)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                          Text(AppLocalizations.of(context).secureImportSandbox, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                         ],
                       ),
                     ),
@@ -179,12 +180,12 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       ),
                       onPressed: () => Navigator.pop(context, false), // false = In-place scramble
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Broken.flash_1, size: 20),
                           SizedBox(width: 8),
-                          Text('In-Place Scramble (Fast)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                          Text(AppLocalizations.of(context).inPlaceScramble, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                         ],
                       ),
                     ),
@@ -204,7 +205,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(
+      builder: (context) => Center(
         child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
@@ -215,7 +216,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 20),
-                Text('Scrambling & Protecting...', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                Text(AppLocalizations.of(context).scramblingProtecting, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
               ],
             ),
           ),
@@ -262,7 +263,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Protected $successCount items successfully.${failCount > 0 ? " Failed to lock $failCount items." : ""}',
+            AppLocalizations.of(context).protectedItems(successCount, failCount > 0 ? ' Failed to lock $failCount items.' : ''),
           ),
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -286,7 +287,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Restored "${record.originalName}" to its original location.'),
+            content: Text(AppLocalizations.of(context).restoredToOriginal(record.originalName)),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
@@ -296,7 +297,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       Navigator.pop(context);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to restore file: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToRestoreFile(e.toString()))),
         );
       }
     }
@@ -306,8 +307,8 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Permanently?'),
-        content: Text('Are you sure you want to permanently delete "${record.originalName}"? This action CANNOT be undone.'),
+        title: Text(AppLocalizations.of(context).deletePermanentlyQuestion),
+        content: Text(AppLocalizations.of(context).deleteVaultFileQuestionHint(record.originalName)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -335,13 +336,13 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       await _loadVaultData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('File deleted permanently.')),
+          SnackBar(content: Text(AppLocalizations.of(context).fileDeletedPermanently)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to delete file: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToDeleteFile(e.toString()))),
         );
       }
     }
@@ -351,7 +352,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(
+      builder: (context) => Center(
         child: Card(
           child: Padding(
             padding: EdgeInsets.all(20),
@@ -360,7 +361,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 16),
-                Text('Decrypting securely...', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(AppLocalizations.of(context).decryptingSecurely, style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -418,7 +419,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
       Navigator.pop(context); // Dismiss loading dialog
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to decrypt and open item: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToDecryptItem(e.toString()))),
         );
       }
     }
@@ -431,11 +432,11 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
         final theme = Theme.of(context);
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Row(
+          title: Row(
             children: [
               Icon(Broken.info_circle, color: Colors.blueAccent),
               SizedBox(width: 8),
-              Text('Security Details', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(AppLocalizations.of(context).securityDetails, style: TextStyle(fontWeight: FontWeight.bold)),
             ],
           ),
           content: SingleChildScrollView(
@@ -529,7 +530,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'Private Wallet',
+                      AppLocalizations.of(context).privateWallet,
                       style: theme.textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
@@ -571,7 +572,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                 child: TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
-                    hintText: 'Search scrambled files...',
+                    hintText: AppLocalizations.of(context).searchScrambledFiles,
                     prefixIcon: const Icon(Broken.search_normal),
                     suffixIcon: _searchController.text.isNotEmpty
                         ? IconButton(
@@ -619,8 +620,8 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
         foregroundColor: Colors.white,
         elevation: 4,
         icon: const Icon(Broken.add_square),
-        label: const Text(
-          'Hide Files',
+        label: Text(
+          AppLocalizations.of(context).hideFiles,
           style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.3),
         ),
       ),
@@ -665,7 +666,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'SECURITY STORAGE',
+                AppLocalizations.of(context).securityStorage,
                 style: TextStyle(
                   fontSize: 10.5,
                   fontWeight: FontWeight.bold,
@@ -683,7 +684,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
               ),
               const SizedBox(height: 4),
               Text(
-                'Total Space Secured',
+                AppLocalizations.of(context).totalSpaceSecured,
                 style: TextStyle(
                   fontSize: 12.5,
                   fontWeight: FontWeight.w500,
@@ -710,7 +711,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Hidden Files',
+                  AppLocalizations.of(context).hiddenFiles,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
@@ -755,7 +756,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
             Text(
               _searchQuery.isNotEmpty
                   ? 'Try modifying your search text to locate hidden items.'
-                  : 'XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap "Hide Files" below to protect them.',
+                  : 'XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap AppLocalizations.of(context).hideFiles below to protect them.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -873,13 +874,13 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                 }
               },
               itemBuilder: (context) => [
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'unlock',
                   child: Row(
                     children: [
                       Icon(Broken.unlock, size: 18),
                       SizedBox(width: 10),
-                      Text('Restore (Unhide)', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+                      Text(AppLocalizations.of(context).restoreUnhide, style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),
@@ -901,7 +902,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
                       Icon(Broken.trash, size: 18, color: theme.colorScheme.error),
                       const SizedBox(width: 10),
                       Text(
-                        'Delete Permanently',
+                        AppLocalizations.of(context).deletePermanently,
                         style: TextStyle(
                           fontSize: 13.5,
                           fontWeight: FontWeight.w600,

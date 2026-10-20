@@ -1,3 +1,4 @@
+import '../../../../l10n/app_localizations.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import '../../../../core/icon_fonts/broken_icons.dart';
@@ -47,8 +48,8 @@ class AppListTab extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'No applications found',
+              Text(
+                AppLocalizations.of(context).noApplicationsFound,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ],
@@ -128,7 +129,7 @@ class AppListTab extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '${app.packageName} • v${app.version}',
+                          AppLocalizations.of(context).packageAndVersion(app.packageName, app.version),
                           style: TextStyle(
                             color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                             fontSize: 11,

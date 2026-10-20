@@ -416,6 +416,116 @@
   "trailingInfoDateTime": "Date & Time",
   "trailingInfoSizeCount": "File Size / Item Count",
   "backupAndRestoreHint": "Backup your settings to a JSON file or restore them",
+  "ftpServerStopped": "FTP Server stopped successfully",
+  "ftpServerStartedAt": "FTP Server started at {address}",
+  "errorStartingFtpServer": "Error starting FTP Server: {error}",
+  "stopServerBeforeChanging": "Please stop the server before changing configuration",
+  "changePort": "Change Port",
+  "portNumber": "Port Number",
+  "invalidPortNumber": "Invalid port number",
+  "setUsername": "Set Username",
+  "usernameNotEmpty": "Username cannot be empty",
+  "stopServerBeforeEditing": "Stop the server before editing settings",
+  "ftpShortcutAdded": "FTP Server shortcut added to home screen!",
+  "changeDirectory": "Change directory",
+  "changePortLower": "Change port",
+  "setUser": "Set user",
+  "anonymousAccess": "Anonymous access",
+  "createShortcut": "Create shortcut",
+  "networkStatus": "Network status",
+  "serverAddress": "Server address",
+  "homeDirectory": "Home directory",
+  "userName": "User name",
+  "showHiddenFilesLower": "Show hidden files",
+  "secureFtpHint": "Secure FTP connection over explicit TLS",
+  "connectionAdded": "\"{name}\" added successfully!",
+  "systemAppDisabled": "System App Disabled",
+  "noDocumentsApp": "Your device does not have a default System Files/Documents app (DocumentsUI) enabled, which is required by Android to select and mount directories.\n\nPlease check if the \"Files\" or \"Documents\" system app is disabled in your device Settings, or enable it to use SAF directory features.",
+  "failedToRequestSafFolder": "Failed to request SAF folder: {error}",
+  "enterConnectionName": "Please enter a connection name",
+  "enterServerAddress": "Please enter server address / hostname",
+  "connectedSuccessfully": "\"{name}\" connected successfully!",
+  "connectionFailed": "Connection failed: {error}",
+  "remoteConnections": "Remote Connections",
+  "stepOf": "Step {current} of {total}",
+  "selectNetworkService": "Select Network Service",
+  "selectNetworkServiceHint": "Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.",
+  "selectedTypeSettings": "{type} Settings",
+  "enterConnectionDetails": "Enter connection details to link this network volume.",
+  "connectionNameExample": "e.g., Office NAS, Home Share",
+  "connectionPathExample": "e.g., /dav or /",
+  "connectionUserExample": "e.g., anonymous or admin",
+  "creatingMountPoint": "Creating Mount Point...",
+  "establishingPathway": "Please wait while we establish a reliable pathway to the {type} server.",
+  "httpsSecure": "HTTPS (Secure)",
+  "deleteItem": "Delete Item",
+  "deleteRemoteItemQuestion": "Delete \"{name}\" permanently from the server?",
+  "newRemoteFolder": "New Remote Folder",
+  "copyToLocalDevice": "Copy to Local Device",
+  "copyToLocalDeviceHint": "Downloads file → local clipboard",
+  "moveToLocalDevice": "Move to Local Device",
+  "moveToLocalDeviceHint": "Downloads and deletes from server",
+  "connectionTypeServer": "{type} Server",
+  "uploadClipboardToServer": "Upload local clipboard to server",
+  "connectionLost": "Connection Lost",
+  "retryConnection": "Retry Connection",
+  "emptyDirectory": "Empty Directory",
+  "uploadClipboardHere": "Upload Clipboard Here",
+  "errorLoadingVault": "Error loading vault: {error}",
+  "chooseProtectionMode": "Choose Protection Mode",
+  "chooseProtectionModeHint": "Choose how you want to protect your selected files. Secured files are encrypted instantly.",
+  "secureImportSandbox": "Secure Import (Sandbox)",
+  "inPlaceScramble": "In-Place Scramble (Fast)",
+  "scramblingProtecting": "Scrambling & Protecting...",
+  "protectedItems": "Protected {count} items successfully.{failed}",
+  "restoredToOriginal": "Restored \"{name}\" to its original location.",
+  "failedToRestoreFile": "Failed to restore file: {error}",
+  "deletePermanentlyQuestion": "Delete Permanently?",
+  "deletePermanentlyQuestionHint": "Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.",
+  "fileDeletedPermanently": "File deleted permanently.",
+  "failedToDeleteFile": "Failed to delete file: {error}",
+  "decryptingSecurely": "Decrypting securely...",
+  "failedToDecryptItem": "Failed to decrypt and open item: {error}",
+  "securityDetails": "Security Details",
+  "searchScrambledFiles": "Search scrambled files...",
+  "hideFiles": "Hide Files",
+  "securityStorage": "SECURITY STORAGE",
+  "totalSpaceSecured": "Total Space Secured",
+  "hiddenFiles": "Hidden Files",
+  "restoreUnhide": "Restore (Unhide)",
+  "deletePermanently": "Delete Permanently",
+  "clearAll": "Clear All",
+  "httpServerStopped": "Local HTTP Sharing Server stopped.",
+  "httpServerStarted": "Local HTTP Sharing Server started! URL: {url}",
+  "errorStartingHttpServer": "Error starting HTTP Server: {error}",
+  "tunnelDeactivated": "Internet Share Tunnel deactivated.",
+  "establishingRelay": "Establishing secure proxy relay...",
+  "tunnelOnline": "Internet cloud tunnel online! Temporary link active.",
+  "failedToStartCloudShare": "Failed to start Cloud Share: {error}",
+  "linkCopied": "Link copied to clipboard!",
+  "scanQrCode": "Scan QR Code",
+  "scanToOpen": "Scan with another device to open {type} immediately.",
+  "webSharingHub": "Web Sharing Hub",
+  "localWebShare": "Local Web Share",
+  "internetShareLink": "Internet Share Link",
+  "httpLocalShareServer": "HTTP Local Share Server",
+  "httpLocalShareServerHint": "Allows other devices on the same Wi-Fi to access, view, and stream your files in their web browser.",
+  "serverOnlineStreaming": "Server Online & Streaming",
+  "directBrowserUrl": "Direct Browser URL:",
+  "copyUrl": "Copy URL",
+  "qrCode": "QR Code",
+  "sharingDirectory": "Sharing Directory: {folder}",
+  "serverIdle": "Server is Idle",
+  "serverIdleHint": "Make sure other devices are on the same Wi-Fi network as this device, then start the server.",
+  "internetShareTunnel": "Internet Share Tunnel",
+  "internetShareTunnelHint": "Generates a secure temporary public tunnel link. Share this link with anyone anywhere on the internet to let them download files high-speed, no matter the file size.",
+  "cloudTunnelActive": "Cloud Tunnel Active",
+  "temporaryShareLink": "Temporary Share Link (Active 24h):",
+  "copyLink": "Copy Link",
+  "connectedClients": "Connected Browser Clients",
+  "waitingForDownloads": "Waiting for incoming internet downloads...",
+  "internetSharingInactive": "Internet Sharing Inactive",
+  "internetSharingInactiveHint": "Activate the tunnel to establish a secure link that works beyond local Wi-Fi.",
   "compressingFiles": "Compressing Files",
   "extractingArchive": "Extracting Archive",
   "errorReadingSharedFile": "Error reading shared file: {error}",
@@ -523,8 +633,6 @@
   "countItems": "{count, plural, =1{1 item} other{{count} items}}",
   "restoredSuccessfully": "Restored {count} item(s) successfully",
   "errorRestoringItems": "Error restoring items: {error}",
-  "deletePermanentlyQuestion": "Delete Permanently?",
-  "deletePermanentlyQuestionHint": "Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.",
   "permanentlyDeleted": "Permanently deleted {count} item(s)",
   "errorDeletingItems": "Error deleting items: {error}",
   "emptyRecycleBinQuestion": "Empty Recycle Bin?",
@@ -536,7 +644,6 @@
   "emptyRecycleBinAction": "Empty Recycle Bin",
   "originalPath": "Original Path: {path}",
   "deletedAtAndSize": "Deleted: {date} • {size}",
-  "deletePermanently": "Delete Permanently",
   "recycleBinIsEmpty": "Recycle Bin is Empty",
   "recycleBinIsEmptyHint": "Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.",
   "errorLoadingFile": "Error loading file: {error}",
@@ -554,12 +661,50 @@
   "slideToUnlock": "Slide / Tap to Unlock",
   "lockControls": "Lock Controls",
   "repeatMode": "Repeat Mode",
-  "copyUrl": "Copy URL",
   "mediaPathCopied": "Media path copied to clipboard.",
   "speedValue": "Speed {speed}x",
   "continuousLayout": "Continuous",
   "editorLanguageAndLines": "{language}  {count, plural, =1{1 line} other{{count} lines}}",
   "editorModified": "editorModified",
+  "deleteVaultFileQuestionHint": "Are you sure you want to permanently delete \"{name}\"? This action CANNOT be undone.",
+  "appManager": "App Manager",
+  "refreshList": "Refresh List",
+  "sortBySize": "Sort by Size",
+  "sortAlphabetically": "Sort Alphabetically",
+  "exactStorageCalculation": "Exact Storage Calculation",
+  "exactStorageCalculationHint": "To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.",
+  "grantUsageAccess": "Grant Usage Access Permission",
+  "storageAnalytics": "Storage Analytics",
+  "rescanStorage": "Rescan Storage",
+  "scanningDeviceStorage": "Scanning Device Storage",
+  "analyzingStorage": "Analyzing files, categorizing assets, and reading installed apps space...",
+  "totalStorage": "Total Storage",
+  "storageUsedWithPercent": "{size} used ({percent}%)",
+  "systemAndOther": "System / Other",
+  "percentOfTotalStorage": "{percent}% of total storage",
+  "uninstallApps": "Uninstall Apps",
+  "uninstallAppsQuestion": "Are you sure you want to uninstall {count} selected app(s)?",
+  "backingUpApps": "Backing up selected applications...",
+  "backedUpApps": "Successfully backed up {count} app(s) to NFile/Backups/Apps/",
+  "failedToBackUpApps": "Failed to back up some apps: {error}",
+  "noApplicationsFound": "No applications found",
+  "packageAndVersion": "{package} • v{version}",
+  "appSizeAndInstalled": "Size: {size} • Installed: {date}",
+  "launchApplication": "Launch Application",
+  "systemSettingsDetails": "System Settings / Details",
+  "backUpApk": "Back Up APK",
+  "backingUpApk": "Backing up APK...",
+  "shareApkFile": "Share APK File",
+  "uninstallApplication": "Uninstall Application",
+  "backupKindAndVersion": "{kind} • v{version}",
+  "backupKindAndVersionFull": "{kind} • v{version}",
+  "backupSizeAndDate": "Size: {size} • Backup Date: {date}",
+  "restoreOrInstallApp": "Restore / Install App",
+  "shareBackupFile": "Share Backup File",
+  "deleteBackupFile": "Delete Backup File",
+  "noBackupsFound": "No backups found",
+  "downloadingFile": "Downloading: {file}",
+  "sentBytes": "Sent: {amount}",
   "@addSelected": {
     "placeholders": {
       "count": {
@@ -583,6 +728,16 @@
   },
   "@appName": {
     "description": "The name of the application. It is the same in every language."
+  },
+  "@appSizeAndInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "@appVersion": {
     "placeholders": {
@@ -608,6 +763,43 @@
       }
     }
   },
+  "@backedUpApps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@backupKindAndVersion": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupKindAndVersionFull": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupSizeAndDate": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "@compressionLevel": {
     "placeholders": {
       "level": {
@@ -629,12 +821,40 @@
       }
     }
   },
+  "@connectedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionAdded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@connectionTypeAndHost": {
     "placeholders": {
       "type": {
         "type": "String"
       },
       "host": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionTypeServer": {
+    "placeholders": {
+      "type": {
         "type": "String"
       }
     }
@@ -757,6 +977,20 @@
       }
     }
   },
+  "@deleteRemoteItemQuestion": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deleteVaultFileQuestionHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@deletedAtAndSize": {
     "placeholders": {
       "date": {
@@ -777,6 +1011,13 @@
   "@deletedName": {
     "placeholders": {
       "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadingFile": {
+    "placeholders": {
+      "file": {
         "type": "String"
       }
     }
@@ -826,6 +1067,13 @@
       }
     }
   },
+  "@errorLoadingVault": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@errorPreparingShare": {
     "placeholders": {
       "error": {
@@ -868,6 +1116,27 @@
       }
     }
   },
+  "@errorStartingFtpServer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorStartingHttpServer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@establishingPathway": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
   "@exportFailed": {
     "placeholders": {
       "error": {
@@ -888,6 +1157,13 @@
         "type": "String"
       },
       "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToBackUpApps": {
+    "placeholders": {
+      "error": {
         "type": "String"
       }
     }
@@ -920,6 +1196,20 @@
       }
     }
   },
+  "@failedToDecryptItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToDeleteFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@failedToExtractBundle": {
     "placeholders": {
       "error": {
@@ -934,7 +1224,28 @@
       }
     }
   },
+  "@failedToRequestSafFolder": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToRestoreFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@failedToRestoreSettings": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToStartCloudShare": {
     "placeholders": {
       "error": {
         "type": "String"
@@ -989,8 +1300,22 @@
       }
     }
   },
+  "@ftpServerStartedAt": {
+    "placeholders": {
+      "address": {
+        "type": "String"
+      }
+    }
+  },
   "@grantPermission": {
     "description": "The button that asks for the permission of the storage."
+  },
+  "@httpServerStarted": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
   },
   "@imageIndexOfTotal": {
     "placeholders": {
@@ -1064,6 +1389,16 @@
       }
     }
   },
+  "@packageAndVersion": {
+    "placeholders": {
+      "package": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "@pasteHereCount": {
     "placeholders": {
       "count": {
@@ -1091,6 +1426,13 @@
   "@pathNotFound": {
     "placeholders": {
       "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@percentOfTotalStorage": {
+    "placeholders": {
+      "percent": {
         "type": "String"
       }
     }
@@ -1189,6 +1531,16 @@
       }
     }
   },
+  "@protectedItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "String"
+      }
+    }
+  },
   "@queryReturnedRows": {
     "placeholders": {
       "count": {
@@ -1213,10 +1565,24 @@
       }
     }
   },
+  "@restoredToOriginal": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@reviewingItems": {
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "@scanToOpen": {
+    "placeholders": {
+      "type": {
+        "type": "String"
       }
     }
   },
@@ -1251,6 +1617,27 @@
       }
     }
   },
+  "@selectedTypeSettings": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@sentBytes": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@sharingDirectory": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
   "@showingRange": {
     "placeholders": {
       "from": {
@@ -1279,6 +1666,16 @@
     "placeholders": {
       "speed": {
         "type": "double"
+      }
+    }
+  },
+  "@stepOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
       }
     }
   },
@@ -1316,6 +1713,16 @@
       }
     }
   },
+  "@storageUsedWithPercent": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
   "@syntaxOf": {
     "placeholders": {
       "language": {
@@ -1327,6 +1734,13 @@
     "placeholders": {
       "error": {
         "type": "String"
+      }
+    }
+  },
+  "@uninstallAppsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
     }
   }

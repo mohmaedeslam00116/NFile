@@ -74,6 +74,16 @@ void main() {
     );
   });
 
+  test('the ledger is empty', () {
+    // The work is done: no string the user reads is written in the source.
+    expect(
+      ledger['todo'],
+      isEmpty,
+      reason: 'These strings are still written in the source:\n'
+          '${ledger['todo']!.join('\n')}',
+    );
+  });
+
   test('no key of a map is a translation', () {
     // A label is what the user reads, an id is what the program stores. A key
     // of a map is an id: the program looks it up, and a translation would

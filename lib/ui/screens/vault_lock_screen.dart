@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -218,7 +219,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'Private Wallet',
+                    AppLocalizations.of(context).privateWallet,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.5,
@@ -327,7 +328,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
               _buildActionKeyButton(
                 icon: Icons.clear_rounded,
                 onPressed: _onClear,
-                tooltip: 'Clear All',
+                tooltip: AppLocalizations.of(context).clearAll,
               ),
               _buildKeyButton('0'),
               _buildActionKeyButton(

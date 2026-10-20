@@ -1,3 +1,4 @@
+import '../../../../l10n/app_localizations.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import '../../../../core/icon_fonts/broken_icons.dart';
@@ -69,7 +70,7 @@ class AppOptionsSheet extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        '${app.packageName} • v${app.version}',
+                        AppLocalizations.of(context).packageAndVersion(app.packageName, app.version),
                         style: TextStyle(
                           color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5),
                           fontSize: 12,
@@ -79,7 +80,10 @@ class AppOptionsSheet extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Size: ${FileUtils.formatBytes(app.apkSize, 2)} • Installed: ${FileUtils.formatDate(app.installTime, use24Hour: true).split('  ').first}',
+                        AppLocalizations.of(context).appSizeAndInstalled(
+                          FileUtils.formatBytes(app.apkSize, 2),
+                          FileUtils.formatDate(app.installTime, use24Hour: true).split(' ').first,
+                        ),
                         style: TextStyle(
                           color: theme.colorScheme.primary,
                           fontWeight: FontWeight.w600,
@@ -99,7 +103,7 @@ class AppOptionsSheet extends StatelessWidget {
             _buildBottomSheetActionItem(
               theme: theme,
               icon: Broken.play,
-              label: 'Launch Application',
+              label: AppLocalizations.of(context).launchApplication,
               color: theme.colorScheme.primary,
               onTap: () {
                 Navigator.pop(context);
@@ -109,7 +113,7 @@ class AppOptionsSheet extends StatelessWidget {
             _buildBottomSheetActionItem(
               theme: theme,
               icon: Broken.setting_4,
-              label: 'System Settings / Details',
+              label: AppLocalizations.of(context).systemSettingsDetails,
               color: Colors.blueAccent,
               onTap: () {
                 Navigator.pop(context);
@@ -119,12 +123,12 @@ class AppOptionsSheet extends StatelessWidget {
             _buildBottomSheetActionItem(
               theme: theme,
               icon: Broken.document_download,
-              label: 'Back Up APK',
+              label: AppLocalizations.of(context).backUpApk,
               color: Colors.orangeAccent,
               onTap: () async {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Backing up APK...')),
+                  SnackBar(content: Text(AppLocalizations.of(context).backingUpApk)),
                 );
                 final success = await AppManagerService.backupApp(app);
                 if (context.mounted) {
@@ -144,7 +148,7 @@ class AppOptionsSheet extends StatelessWidget {
             _buildBottomSheetActionItem(
               theme: theme,
               icon: Broken.export_1,
-              label: 'Share APK File',
+              label: AppLocalizations.of(context).shareApkFile,
               color: Colors.teal,
               onTap: () {
                 Navigator.pop(context);
@@ -155,7 +159,7 @@ class AppOptionsSheet extends StatelessWidget {
               _buildBottomSheetActionItem(
                 theme: theme,
                 icon: Broken.trash,
-                label: 'Uninstall Application',
+                label: AppLocalizations.of(context).uninstallApplication,
                 color: Colors.redAccent,
                 onTap: () {
                   Navigator.pop(context);

@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -141,7 +142,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    '"$name" added successfully!',
+                    AppLocalizations.of(context).connectionAdded(name),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -160,18 +161,15 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
             context: context,
             builder: (ctx) => AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              title: const Row(
+              title: Row(
                 children: [
                   Icon(Icons.warning_amber_rounded, color: Colors.orange),
                   SizedBox(width: 8),
-                  Text('System App Disabled', style: TextStyle(fontFamily: 'LexendDeca', fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context).systemAppDisabled, style: TextStyle(fontFamily: 'LexendDeca', fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
               ),
-              content: const Text(
-                'Your device does not have a default System Files/Documents app (DocumentsUI) enabled, '
-                'which is required by Android to select and mount directories.\n\n'
-                'Please check if the "Files" or "Documents" system app is disabled in your device Settings, '
-                'or enable it to use SAF directory features.',
+              content: Text(
+                AppLocalizations.of(context).noDocumentsApp,
                 style: TextStyle(fontSize: 14),
               ),
               actions: [
@@ -185,7 +183,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Failed to request SAF folder: $e'),
+              content: Text(AppLocalizations.of(context).failedToRequestSafFolder(e.toString())),
               backgroundColor: Colors.redAccent,
               behavior: SnackBarBehavior.floating,
             ),
@@ -203,14 +201,14 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
 
     if (_nameController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a connection name')),
+        SnackBar(content: Text(AppLocalizations.of(context).enterConnectionName)),
       );
       return;
     }
 
     if (_hostController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter server address / hostname')),
+        SnackBar(content: Text(AppLocalizations.of(context).enterServerAddress)),
       );
       return;
     }
@@ -290,7 +288,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    '"${connection.name}" connected successfully!',
+                    AppLocalizations.of(context).connectedSuccessfully(connection.name),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -310,7 +308,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
         _prevStep(); // Go back to credentials input
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Connection failed: $e'),
+            content: Text(AppLocalizations.of(context).connectionFailed(e.toString())),
             backgroundColor: Colors.redAccent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -330,8 +328,8 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
           onPressed: _prevStep,
         ),
-        title: const Text(
-          'Remote Connections',
+        title: Text(
+          AppLocalizations.of(context).remoteConnections,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -339,7 +337,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Center(
               child: Text(
-                'Step ${_currentStep + 1} of 3',
+                AppLocalizations.of(context).stepOf(_currentStep + 1, 3),
                 style: TextStyle(
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
@@ -413,13 +411,13 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
       child: ListView(
         padding: const EdgeInsets.all(20.0),
         children: [
-          const Text(
-            'Select Network Service',
+          Text(
+            AppLocalizations.of(context).selectNetworkService,
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
           ),
           const SizedBox(height: 6),
           Text(
-            'Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.',
+            AppLocalizations.of(context).selectNetworkServiceHint,
             style: TextStyle(fontSize: 13, color: theme.colorScheme.onSurface.withValues(alpha: 0.6)),
           ),
           const SizedBox(height: 24),
@@ -520,7 +518,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$_selectedType Settings',
+                      AppLocalizations.of(context).selectedTypeSettings(_selectedType),
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -528,7 +526,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                       ),
                     ),
                     Text(
-                      'Enter connection details to link this network volume.',
+                      AppLocalizations.of(context).enterConnectionDetails,
                       style: TextStyle(
                         fontSize: 12.5,
                         color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
@@ -545,7 +543,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           _buildInputLabel('Connection Name'),
           _buildTextField(
             controller: _nameController,
-            hint: 'e.g., Office NAS, Home Share',
+            hint: AppLocalizations.of(context).connectionNameExample,
             icon: Broken.tag,
           ),
           const SizedBox(height: 18),
@@ -579,7 +577,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
             _buildInputLabel('Path'),
             _buildTextField(
               controller: _pathController,
-              hint: 'e.g., /dav or /',
+              hint: AppLocalizations.of(context).connectionPathExample,
               icon: Broken.folder_open,
             ),
             const SizedBox(height: 18),
@@ -588,7 +586,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           _buildInputLabel('Username (Optional)'),
           _buildTextField(
             controller: _usernameController,
-            hint: 'e.g., anonymous or admin',
+            hint: AppLocalizations.of(context).connectionUserExample,
             icon: Broken.user,
           ),
           const SizedBox(height: 18),
@@ -684,7 +682,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           const SizedBox(height: 32),
 
           Text(
-            'Creating Mount Point...',
+            AppLocalizations.of(context).creatingMountPoint,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -694,7 +692,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           ),
           const SizedBox(height: 8),
           Text(
-            'Please wait while we establish a reliable pathway to the $_selectedType server.',
+            AppLocalizations.of(context).establishingPathway(_selectedType),
             style: TextStyle(
               fontSize: 12.5,
               color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
@@ -885,7 +883,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
         Expanded(
           child: _buildProtocolButton(
             theme: theme,
-            label: 'HTTPS (Secure)',
+            label: AppLocalizations.of(context).httpsSecure,
             isSelected: _webdavProtocol == 'https',
             onTap: () {
               setState(() {

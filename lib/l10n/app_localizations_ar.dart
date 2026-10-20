@@ -1454,6 +1454,390 @@ class AppLocalizationsAr extends AppLocalizations {
   String get backupAndRestoreHint => 'احفظ إعداداتك في ملف JSON أو استعدها';
 
   @override
+  String get ftpServerStopped => 'أُوقف خادم FTP بنجاح';
+
+  @override
+  String ftpServerStartedAt(String address) {
+    return 'بدأ خادم FTP على $address';
+  }
+
+  @override
+  String errorStartingFtpServer(String error) {
+    return 'خطأ في بدء خادم FTP: $error';
+  }
+
+  @override
+  String get stopServerBeforeChanging => 'أوقف الخادم قبل تغيير الإعدادات';
+
+  @override
+  String get changePort => 'تغيير المنفذ';
+
+  @override
+  String get portNumber => 'رقم المنفذ';
+
+  @override
+  String get invalidPortNumber => 'رقم المنفذ غير صالح';
+
+  @override
+  String get setUsername => 'تعيين اسم المستخدم';
+
+  @override
+  String get usernameNotEmpty => 'لا يمكن ترك اسم المستخدم فارغًا';
+
+  @override
+  String get stopServerBeforeEditing => 'أوقف الخادم قبل تعديل الإعدادات';
+
+  @override
+  String get ftpShortcutAdded => 'أُضيف اختصار خادم FTP إلى الشاشة الرئيسية!';
+
+  @override
+  String get changeDirectory => 'تغيير المجلد';
+
+  @override
+  String get changePortLower => 'تغيير المنفذ';
+
+  @override
+  String get setUser => 'تعيين المستخدم';
+
+  @override
+  String get anonymousAccess => 'وصول مجهول';
+
+  @override
+  String get createShortcut => 'إنشاء اختصار';
+
+  @override
+  String get networkStatus => 'حالة الشبكة';
+
+  @override
+  String get serverAddress => 'عنوان الخادم';
+
+  @override
+  String get homeDirectory => 'المجلد الرئيسي';
+
+  @override
+  String get userName => 'اسم المستخدم';
+
+  @override
+  String get showHiddenFilesLower => 'إظهار الملفات المخفية';
+
+  @override
+  String get secureFtpHint => 'اتصال FTP آمن عبر TLS صريح';
+
+  @override
+  String connectionAdded(String name) {
+    return 'أُضيف «$name» بنجاح!';
+  }
+
+  @override
+  String get systemAppDisabled => 'تطبيق النظام معطّل';
+
+  @override
+  String get noDocumentsApp =>
+      'لا يوجد في جهازك تطبيق افتراضي لملفات النظام/المستندات (DocumentsUI) مفعّل، وهو مطلوب من أندرويد لاختيار المجلدات وتثبيتها.\n\nتأكّد من أن تطبيق النظام \"الملفات\" أو \"المستندات\" معطّل في إعدادات جهازك، أو فعّله لاستخدام ميزات مجلدات SAF.';
+
+  @override
+  String failedToRequestSafFolder(String error) {
+    return 'فشل طلب مجلد SAF: $error';
+  }
+
+  @override
+  String get enterConnectionName => 'الرجاء إدخال اسم الاتصال';
+
+  @override
+  String get enterServerAddress => 'الرجاء إدخال عنوان الخادم أو اسم المضيف';
+
+  @override
+  String connectedSuccessfully(String name) {
+    return 'اتصل «$name» بنجاح!';
+  }
+
+  @override
+  String connectionFailed(String error) {
+    return 'فشل الاتصال: $error';
+  }
+
+  @override
+  String get remoteConnections => 'الاتصالات البعيدة';
+
+  @override
+  String stepOf(int current, int total) {
+    return 'الخطوة $current من $total';
+  }
+
+  @override
+  String get selectNetworkService => 'اختر خدمة الشبكة';
+
+  @override
+  String get selectNetworkServiceHint =>
+      'ثبّت خادمًا بعيدًا أو مشاركة NAS كقرص ديناميكي ضمن قوائم تخزين NFile.';
+
+  @override
+  String selectedTypeSettings(String type) {
+    return 'إعدادات $type';
+  }
+
+  @override
+  String get enterConnectionDetails =>
+      'أدخل بيانات الاتصال لربط وحدة التخزين هذه.';
+
+  @override
+  String get connectionNameExample => 'مثال: NAS المكتب، مشاركة المنزل';
+
+  @override
+  String get connectionPathExample => 'مثال: /dav أو /';
+
+  @override
+  String get connectionUserExample => 'مثال: anonymous أو admin';
+
+  @override
+  String get creatingMountPoint => 'يجري إنشاء نقطة التثبيت...';
+
+  @override
+  String establishingPathway(String type) {
+    return 'انتظر من فضلك بينما نُنشئ مسارًا موثوقًا إلى خادم $type.';
+  }
+
+  @override
+  String get httpsSecure => 'HTTPS (آمن)';
+
+  @override
+  String get deleteItem => 'حذف العنصر';
+
+  @override
+  String deleteRemoteItemQuestion(String name) {
+    return 'حذف «$name» نهائيًا من الخادم؟';
+  }
+
+  @override
+  String get newRemoteFolder => 'مجلد بعيد جديد';
+
+  @override
+  String get copyToLocalDevice => 'نسخ إلى الجهاز';
+
+  @override
+  String get copyToLocalDeviceHint => 'يُنزّل الملف إلى حافظة الجهاز';
+
+  @override
+  String get moveToLocalDevice => 'نقل إلى الجهاز';
+
+  @override
+  String get moveToLocalDeviceHint => 'يُنزّل الملف ويحذفه من الخادم';
+
+  @override
+  String connectionTypeServer(String type) {
+    return 'خادم $type';
+  }
+
+  @override
+  String get uploadClipboardToServer => 'رفع حافظة الجهاز إلى الخادم';
+
+  @override
+  String get connectionLost => 'انقطع الاتصال';
+
+  @override
+  String get retryConnection => 'إعادة الاتصال';
+
+  @override
+  String get emptyDirectory => 'مجلد فارغ';
+
+  @override
+  String get uploadClipboardHere => 'ارفع الحافظة هنا';
+
+  @override
+  String errorLoadingVault(String error) {
+    return 'خطأ في تحميل الخزنة: $error';
+  }
+
+  @override
+  String get chooseProtectionMode => 'اختر نمط الحماية';
+
+  @override
+  String get chooseProtectionModeHint =>
+      'اختر كيف تريد حماية ملفاتك المحدَّدة. تُشفَّر الملفات المحمية فورًا.';
+
+  @override
+  String get secureImportSandbox => 'استيراد آمن (صندوق عزل)';
+
+  @override
+  String get inPlaceScramble => 'تشويش في المكان (سريع)';
+
+  @override
+  String get scramblingProtecting => 'يجري التشويش والحماية...';
+
+  @override
+  String protectedItems(int count, String failed) {
+    return 'حُمي $count عنصرًا بنجاح.$failed';
+  }
+
+  @override
+  String restoredToOriginal(String name) {
+    return 'استُعيد «$name» إلى مكانه الأصلي.';
+  }
+
+  @override
+  String failedToRestoreFile(String error) {
+    return 'فشل استعادة الملف: $error';
+  }
+
+  @override
+  String get deletePermanentlyQuestion => 'حذف نهائي؟';
+
+  @override
+  String deletePermanentlyQuestionHint(int count) {
+    return 'هل تريد بالتأكيد حذف هذه $count عناصر نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  }
+
+  @override
+  String get fileDeletedPermanently => 'حُذف الملف نهائيًا.';
+
+  @override
+  String failedToDeleteFile(String error) {
+    return 'فشل حذف الملف: $error';
+  }
+
+  @override
+  String get decryptingSecurely => 'يجري فك التشفير بأمان...';
+
+  @override
+  String failedToDecryptItem(String error) {
+    return 'فشل فك تشفير العنصر وفتحه: $error';
+  }
+
+  @override
+  String get securityDetails => 'تفاصيل الأمان';
+
+  @override
+  String get searchScrambledFiles => 'ابحث في الملفات المشوّشة...';
+
+  @override
+  String get hideFiles => 'إخفاء الملفات';
+
+  @override
+  String get securityStorage => 'تخزين آمن';
+
+  @override
+  String get totalSpaceSecured => 'إجمالي المساحة المؤمَّنة';
+
+  @override
+  String get hiddenFiles => 'الملفات المخفية';
+
+  @override
+  String get restoreUnhide => 'استعادة (إظهار)';
+
+  @override
+  String get deletePermanently => 'حذف نهائي';
+
+  @override
+  String get clearAll => 'مسح الكل';
+
+  @override
+  String get httpServerStopped => 'أُوقف خادم المشاركة المحلي عبر HTTP.';
+
+  @override
+  String httpServerStarted(String url) {
+    return 'بدأ خادم المشاركة المحلي عبر HTTP! الرابط: $url';
+  }
+
+  @override
+  String errorStartingHttpServer(String error) {
+    return 'خطأ في بدء خادم HTTP: $error';
+  }
+
+  @override
+  String get tunnelDeactivated => 'أُوقف نفق المشاركة عبر الإنترنت.';
+
+  @override
+  String get establishingRelay => 'يجري إنشاء وسيط آمن...';
+
+  @override
+  String get tunnelOnline => 'نفق الإنترنت السحابي متاح! الرابط المؤقت نشط.';
+
+  @override
+  String failedToStartCloudShare(String error) {
+    return 'فشل بدء المشاركة السحابية: $error';
+  }
+
+  @override
+  String get linkCopied => 'نُسخ الرابط إلى الحافظة!';
+
+  @override
+  String get scanQrCode => 'امسح رمز QR';
+
+  @override
+  String scanToOpen(String type) {
+    return 'امسح الرمز بجهاز آخر لفتح $type فورًا.';
+  }
+
+  @override
+  String get webSharingHub => 'مركز المشاركة عبر الويب';
+
+  @override
+  String get localWebShare => 'المشاركة المحلية عبر الويب';
+
+  @override
+  String get internetShareLink => 'رابط المشاركة عبر الإنترنت';
+
+  @override
+  String get httpLocalShareServer => 'خادم المشاركة المحلي عبر HTTP';
+
+  @override
+  String get httpLocalShareServerHint =>
+      'يسمح للأجهزة الأخرى على شبكة Wi-Fi نفسها بالوصول إلى ملفاتك وعرضها وبثها في متصفحها.';
+
+  @override
+  String get serverOnlineStreaming => 'الخادم متاح ويبثّ';
+
+  @override
+  String get directBrowserUrl => 'رابط المتصفح المباشر:';
+
+  @override
+  String get copyUrl => 'نسخ الرابط';
+
+  @override
+  String get qrCode => 'رمز QR';
+
+  @override
+  String sharingDirectory(String folder) {
+    return 'المجلد المُشارَك: $folder';
+  }
+
+  @override
+  String get serverIdle => 'الخادم خامل';
+
+  @override
+  String get serverIdleHint =>
+      'تأكّد أن الأجهزة الأخرى على شبكة Wi-Fi نفسها التي عليها هذا الجهاز، ثم ابدأ الخادم.';
+
+  @override
+  String get internetShareTunnel => 'نفق المشاركة عبر الإنترنت';
+
+  @override
+  String get internetShareTunnelHint =>
+      'ينشئ رابط نفق عام مؤقتًا وآمنًا. شارك هذا الرابط مع أي شخص في أي مكان على الإنترنت ليُنزّل الملفات بسرعة عالية مهما كان حجمها.';
+
+  @override
+  String get cloudTunnelActive => 'نفق السحابة نشط';
+
+  @override
+  String get temporaryShareLink => 'رابط المشاركة المؤقت (نشط ٢٤ ساعة):';
+
+  @override
+  String get copyLink => 'نسخ الرابط';
+
+  @override
+  String get connectedClients => 'المتصفحات المتصلة';
+
+  @override
+  String get waitingForDownloads => 'في انتظار التنزيلات من الإنترنت...';
+
+  @override
+  String get internetSharingInactive => 'المشاركة عبر الإنترنت معطّلة';
+
+  @override
+  String get internetSharingInactiveHint =>
+      'فعّل النفق لإنشاء رابط آمن يعمل خارج شبكة Wi-Fi المحلية.';
+
+  @override
   String get compressingFiles => 'يجري ضغط الملفات';
 
   @override
@@ -1882,14 +2266,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get deletePermanentlyQuestion => 'حذف نهائي؟';
-
-  @override
-  String deletePermanentlyQuestionHint(int count) {
-    return 'هل تريد بالتأكيد حذف هذه $count عناصر نهائيًا؟ لا يمكن التراجع عن ذلك.';
-  }
-
-  @override
   String permanentlyDeleted(int count) {
     return 'حُذف $count عنصرًا نهائيًا';
   }
@@ -1932,9 +2308,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String deletedAtAndSize(String date, String size) {
     return 'حُذف: $date • $size';
   }
-
-  @override
-  String get deletePermanently => 'حذف نهائي';
 
   @override
   String get recycleBinIsEmpty => 'سلة المحذوفات فارغة';
@@ -1999,9 +2372,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get repeatMode => 'وضع التكرار';
 
   @override
-  String get copyUrl => 'نسخ الرابط';
-
-  @override
   String get mediaPathCopied => 'نُسخ مسار الوسائط إلى الحافظة.';
 
   @override
@@ -2029,4 +2399,149 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get editorModified => ' (معدَّل)';
+
+  @override
+  String deleteVaultFileQuestionHint(String name) {
+    return 'هل تريد بالتأكيد حذف «$name» نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  }
+
+  @override
+  String get appManager => 'مدير التطبيقات';
+
+  @override
+  String get refreshList => 'تحديث القائمة';
+
+  @override
+  String get sortBySize => 'ترتيب حسب الحجم';
+
+  @override
+  String get sortAlphabetically => 'ترتيب أبجدي';
+
+  @override
+  String get exactStorageCalculation => 'حساب دقيق للحجم';
+
+  @override
+  String get exactStorageCalculationHint =>
+      'لرؤية أحجام التطبيقات الدقيقة (APK والبيانات والتخزين المؤقت) بدل حجم ملف التثبيت وحده، فعّل إذن الوصول إلى بيانات الاستخدام لتطبيق NFile في إعدادات النظام.';
+
+  @override
+  String get grantUsageAccess => 'منح إذن الوصول إلى الاستخدام';
+
+  @override
+  String get storageAnalytics => 'تحليل التخزين';
+
+  @override
+  String get rescanStorage => 'إعادة فحص التخزين';
+
+  @override
+  String get scanningDeviceStorage => 'يجري فحص تخزين الجهاز';
+
+  @override
+  String get analyzingStorage =>
+      'يجري تحليل الملفات، وتصنيف الوسائط، وقراءة مساحة التطبيقات المثبتة...';
+
+  @override
+  String get totalStorage => 'إجمالي التخزين';
+
+  @override
+  String storageUsedWithPercent(String size, String percent) {
+    return '$size مُستخدَمة ($percent%)';
+  }
+
+  @override
+  String get systemAndOther => 'النظام / أخرى';
+
+  @override
+  String percentOfTotalStorage(String percent) {
+    return '$percent% من إجمالي التخزين';
+  }
+
+  @override
+  String get uninstallApps => 'إلغاء تثبيت التطبيقات';
+
+  @override
+  String uninstallAppsQuestion(int count) {
+    return 'هل تريد بالتأكيد إلغاء تثبيت $count تطبيق محدَّد؟';
+  }
+
+  @override
+  String get backingUpApps => 'يجري نسخ التطبيقات المحدَّدة...';
+
+  @override
+  String backedUpApps(int count) {
+    return 'نُسخ $count تطبيق بنجاح إلى NFile/Backups/Apps/';
+  }
+
+  @override
+  String failedToBackUpApps(String error) {
+    return 'فشل نسخ بعض التطبيقات: $error';
+  }
+
+  @override
+  String get noApplicationsFound => 'لم يُعثر على تطبيقات';
+
+  @override
+  String packageAndVersion(String package, String version) {
+    return '$package • الإصدار $version';
+  }
+
+  @override
+  String appSizeAndInstalled(String size, String date) {
+    return 'الحجم: $size • تاريخ التثبيت: $date';
+  }
+
+  @override
+  String get launchApplication => 'تشغيل التطبيق';
+
+  @override
+  String get systemSettingsDetails => 'إعدادات النظام / التفاصيل';
+
+  @override
+  String get backUpApk => 'نسخ ملف APK';
+
+  @override
+  String get backingUpApk => 'يجري نسخ ملف APK...';
+
+  @override
+  String get shareApkFile => 'مشاركة ملف APK';
+
+  @override
+  String get uninstallApplication => 'إلغاء تثبيت التطبيق';
+
+  @override
+  String backupKindAndVersion(String kind, String version) {
+    return '$kind • الإصدار $version';
+  }
+
+  @override
+  String backupKindAndVersionFull(String kind, String version) {
+    return '$kind • الإصدار $version';
+  }
+
+  @override
+  String backupSizeAndDate(String size, String date) {
+    return 'الحجم: $size • تاريخ النسخة: $date';
+  }
+
+  @override
+  String get restoreOrInstallApp => 'استعادة التطبيق أو تثبيته';
+
+  @override
+  String get shareBackupFile => 'مشاركة ملف النسخة';
+
+  @override
+  String get deleteBackupFile => 'حذف ملف النسخة';
+
+  @override
+  String get noBackupsFound => 'لم يُعثر على نسخ';
+
+  @override
+  String downloadingFile(String file) {
+    return 'يُنزَّل: $file';
+  }
+
+  @override
+  String sentBytes(String amount) {
+    return 'أُرسل: $amount';
+  }
 }
