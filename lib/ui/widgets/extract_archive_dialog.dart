@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 
 class ExtractArchiveResult {
   final String destinationDir;
@@ -78,7 +79,7 @@ class _ExtractArchiveDialogState extends State<ExtractArchiveDialog> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Extract Archive',
+                          AppLocalizations.of(context).extractArchive,
                           style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         Text(
@@ -98,7 +99,7 @@ class _ExtractArchiveDialogState extends State<ExtractArchiveDialog> {
               TextField(
                 controller: _destController,
                 decoration: InputDecoration(
-                  labelText: 'Extract to Folder',
+                  labelText: AppLocalizations.of(context).extractToFolder,
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   prefixIcon: const Icon(Broken.folder_open),
                 ),
@@ -110,7 +111,7 @@ class _ExtractArchiveDialogState extends State<ExtractArchiveDialog> {
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  labelText: 'Password (if encrypted)',
+                  labelText: AppLocalizations.of(context).passwordIfEncrypted,
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   prefixIcon: const Icon(Broken.lock),
                   suffixIcon: IconButton(

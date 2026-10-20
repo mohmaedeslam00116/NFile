@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -141,7 +142,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Drag & Drop Options',
+                            AppLocalizations.of(context).dragAndDropOptions,
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
@@ -186,7 +187,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                 const SizedBox(height: 20),
 
                 Text(
-                  'Destination Location'.toUpperCase(),
+                  AppLocalizations.of(context).destinationLocation.toUpperCase(),
                   style: theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w900,
                     fontSize: 11,
@@ -199,14 +200,14 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                 if (showSelectedFolderOption)
                   _buildDestinationCard(
                     theme: theme,
-                    title: 'Dropped Folder',
+                    title: AppLocalizations.of(context).droppedFolder,
                     subtitle: targetDirName.isEmpty ? 'Root' : targetDirName,
                     pathValue: widget.initialTargetPath,
                     icon: Broken.folder_connection,
                   ),
                 _buildDestinationCard(
                   theme: theme,
-                  title: 'Current Folder',
+                  title: AppLocalizations.of(context).currentFolder,
                   subtitle: currentDirName.isEmpty ? 'Root' : currentDirName,
                   pathValue: provider.currentPath,
                   icon: Broken.folder,
@@ -259,7 +260,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
 
                 const SizedBox(height: 24),
                 Text(
-                  'Choose Action'.toUpperCase(),
+                  AppLocalizations.of(context).chooseAction.toUpperCase(),
                   style: theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w900,
                     fontSize: 11,
@@ -272,8 +273,8 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                 _buildActionCard(
                   theme: theme,
                   action: 'move',
-                  title: 'Move here',
-                  subtitle: 'Cut & paste item into destination folder',
+                  title: AppLocalizations.of(context).moveHere,
+                  subtitle: AppLocalizations.of(context).moveHereHint,
                   icon: Broken.scissor,
                   color: Colors.orange,
                   isDisabled: widget.sourcePaths.every((path) => p.dirname(path) == _selectedDestPath),
@@ -281,16 +282,16 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                 _buildActionCard(
                   theme: theme,
                   action: 'copy',
-                  title: 'Copy here',
-                  subtitle: 'Leaves original file intact and duplicates here',
+                  title: AppLocalizations.of(context).copyHere,
+                  subtitle: AppLocalizations.of(context).copyHereHint,
                   icon: Broken.document_copy,
                   color: Colors.blue,
                 ),
                 _buildActionCard(
                   theme: theme,
                   action: 'archive',
-                  title: 'Archive here',
-                  subtitle: 'Compress item into a zip/tar archive here',
+                  title: AppLocalizations.of(context).archiveHere,
+                  subtitle: AppLocalizations.of(context).archiveHereHint,
                   icon: Broken.box_add,
                   color: Colors.teal,
                 ),
@@ -629,7 +630,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
           if (stableContext.mounted) {
             ScaffoldMessenger.of(stableContext).showSnackBar(
               SnackBar(
-                content: Text('Archive "${res.archiveName}.${res.format}" created successfully!'),
+                content: Text(AppLocalizations.of(context).archiveCreated('${res.archiveName}.${res.format}')),
                 behavior: SnackBarBehavior.floating,
               ),
             );
@@ -639,7 +640,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
           if (stableContext.mounted) {
             ScaffoldMessenger.of(stableContext).showSnackBar(
               SnackBar(
-                content: Text('Failed to create archive: $e'),
+                content: Text(AppLocalizations.of(context).failedToCreateArchive(e.toString())),
                 backgroundColor: Colors.redAccent,
                 behavior: SnackBarBehavior.floating,
               ),

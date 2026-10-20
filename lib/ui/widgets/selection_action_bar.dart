@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -69,7 +70,7 @@ class SelectionActionBar extends StatelessWidget {
               onTap: () async {
                 final confirm = await FileActionDialogs.showConfirmDialog(
                   context,
-                  title: 'Delete Selected',
+                  title: AppLocalizations.of(context).deleteSelected,
                   content: 'Are you sure you want to delete $selectedCount item(s)? This cannot be undone.',
                 );
                 if (confirm) {
@@ -88,7 +89,7 @@ class SelectionActionBar extends StatelessWidget {
                   final newName = await FileActionDialogs.showTextInputDialog(
                     context,
                     title: 'Rename',
-                    hint: 'Enter new name',
+                    hint: AppLocalizations.of(context).enterNewName,
                     initialValue: currentName,
                     actionText: 'Rename',
                   );
@@ -147,7 +148,7 @@ class SelectionActionBar extends StatelessWidget {
                   provider.clearSelection();
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Pasted items successfully')),
+                      SnackBar(content: Text(AppLocalizations.of(context).pastedItemsSuccessfully)),
                     );
                   }
                 } else if (action == 'select_all') {
@@ -192,13 +193,13 @@ class SelectionActionBar extends StatelessWidget {
                     ),
                   ),
                   if (hasClipboard)
-                    const PopupMenuItem(
+                    PopupMenuItem(
                       value: 'paste',
                       child: Row(
                         children: [
                           Icon(Broken.clipboard, size: 20),
                           SizedBox(width: 12),
-                          Text('Paste Here', style: TextStyle(fontWeight: FontWeight.w500)),
+                          Text(AppLocalizations.of(context).pasteHere, style: TextStyle(fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -212,13 +213,13 @@ class SelectionActionBar extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'select_all',
                     child: Row(
                       children: [
                         Icon(Broken.tick_square, size: 20),
                         SizedBox(width: 12),
-                        Text('Select All', style: TextStyle(fontWeight: FontWeight.w500)),
+                        Text(AppLocalizations.of(context).selectAll, style: TextStyle(fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
@@ -384,14 +385,14 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       content: _isLoading
-          ? const Padding(
+          ? Padding(
               padding: EdgeInsets.all(32.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 16),
-                  Text('Calculating sizes...', style: TextStyle(color: Colors.grey)),
+                  Text(AppLocalizations.of(context).calculatingSizes, style: TextStyle(color: Colors.grey)),
                 ],
               ),
             )
@@ -418,15 +419,15 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
                     if (_permissions.isNotEmpty) _CopyablePropertyRow(label: 'Permissions', value: _permissions),
                   ] else ...[
                     _CopyablePropertyRow(
-                      label: 'Items Selected',
+                      label: AppLocalizations.of(context).itemsSelected,
                       value: '$count items ($_folderCount folder(s), $_fileCount file(s))',
                     ),
                     _CopyablePropertyRow(
-                      label: 'Total Size',
+                      label: AppLocalizations.of(context).totalSize,
                       value: '${FileUtils.formatBytes(_totalBytes, 2)} ($_totalBytes bytes)',
                     ),
                     const SizedBox(height: 12),
-                    const Text('Selected Paths:', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
+                    Text(AppLocalizations.of(context).selectedPaths, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
                     const SizedBox(height: 8),
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxHeight: 180),
@@ -532,7 +533,7 @@ class _CopyablePropertyRow extends StatelessWidget {
         onTap: () {
           Clipboard.setData(ClipboardData(text: value));
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Copied $label to clipboard'), duration: const Duration(seconds: 1)),
+            SnackBar(content: Text(AppLocalizations.of(context).copiedLabelToClipboard(label)), duration: const Duration(seconds: 1)),
           );
         },
         borderRadius: BorderRadius.circular(8),

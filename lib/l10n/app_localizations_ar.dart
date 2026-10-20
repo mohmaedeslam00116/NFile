@@ -454,4 +454,494 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get releaseChannel => 'مستقر';
+
+  @override
+  String get preparingShare => 'يجري تجهيز المجلدات للمشاركة...';
+
+  @override
+  String get compressingContents => 'يجري ضغط المحتويات، انتظر من فضلك';
+
+  @override
+  String get noShareableItems => 'لم يُعثر على عناصر قابلة للمشاركة.';
+
+  @override
+  String errorPreparingShare(String error) {
+    return 'خطأ في تجهيز الملفات للمشاركة: $error';
+  }
+
+  @override
+  String get newFile => 'ملف جديد';
+
+  @override
+  String get fileName => 'اسم الملف';
+
+  @override
+  String fileNameTaken(String fileName, String createdName) {
+    return 'الاسم «$fileName» موجود بالفعل. أُنشئ «$createdName» بدلًا منه.';
+  }
+
+  @override
+  String get newFolder => 'مجلد جديد';
+
+  @override
+  String get folderName => 'اسم المجلد';
+
+  @override
+  String folderNameTaken(String folderName, String createdName) {
+    return 'الاسم «$folderName» موجود بالفعل. أُنشئ «$createdName» بدلًا منه.';
+  }
+
+  @override
+  String get createNewDirectory => 'أنشئ مجلدًا جديدًا';
+
+  @override
+  String get createNewTextDocument => 'أنشئ مستندًا نصيًا فارغًا';
+
+  @override
+  String get newArchive => 'أرشيف جديد';
+
+  @override
+  String get compressFolderContents => 'ضغط محتويات المجلد الحالي';
+
+  @override
+  String get viewAndSortOptions => 'خيارات العرض والترتيب';
+
+  @override
+  String get layoutMode => 'نمط التخطيط';
+
+  @override
+  String get listView => 'عرض قائمة';
+
+  @override
+  String get gridView => 'عرض شبكي';
+
+  @override
+  String get sizeAndPaddingOptions => 'خيارات الحجم والمسافات';
+
+  @override
+  String get iconAndFolderSize => 'حجم الأيقونة والمجلد';
+
+  @override
+  String get itemPaddingAndSpacing => 'حشوة العناصر والمسافات بينها';
+
+  @override
+  String get sortBy => 'ترتيب حسب';
+
+  @override
+  String get showHiddenFiles => 'إظهار الملفات المخفية';
+
+  @override
+  String get showHiddenHint => 'إظهار ملفات ومجلدات النظام التي تبدأ بنقطة (.)';
+
+  @override
+  String get onlyThisFolder => 'هذا المجلد فقط';
+
+  @override
+  String get onlyThisFolderHint => 'تفعيل ترتيب مخصّص لهذا المجلد';
+
+  @override
+  String get storageVolumes => 'وحدات التخزين';
+
+  @override
+  String get networkConnections => 'اتصالات الشبكة';
+
+  @override
+  String get addNetworkConnection => 'إضافة اتصال شبكة';
+
+  @override
+  String connectionTypeAndHost(String type, String host) {
+    return '$type • $host';
+  }
+
+  @override
+  String get removeConnection => 'إزالة الاتصال';
+
+  @override
+  String get createNew => 'إنشاء جديد';
+
+  @override
+  String foldersCount(int count) {
+    return 'المجلدات: $count';
+  }
+
+  @override
+  String filesCount(int count) {
+    return 'الملفات: $count';
+  }
+
+  @override
+  String get noResultsFound => 'لم يُعثر على نتائج';
+
+  @override
+  String nothingMatchesSearch(String query, String filter) {
+    return 'لم نعثر على أي شيء يطابق «$query» ضمن $filter';
+  }
+
+  @override
+  String get emptyFolderHint =>
+      'لا يحتوي هذا المجلد على أي ملفات أو مجلدات فرعية.';
+
+  @override
+  String get actionCancelled => 'أُلغي الإجراء / أُفرغت الحافظة';
+
+  @override
+  String get pastedHoldingClipboard =>
+      'تم اللصق (مع الاحتفاظ بالافظة لصقٍ متكرر)';
+
+  @override
+  String get pastedSuccessfully => 'تم اللصق بنجاح';
+
+  @override
+  String get pasteHere => 'ألصق هنا';
+
+  @override
+  String get selectMode => 'وضع التحديد';
+
+  @override
+  String get storageVolumesAndSdCard => 'وحدات التخزين وبطاقة SD';
+
+  @override
+  String labelFilterActive(String label) {
+    return 'فلتر $label مُفعَّل';
+  }
+
+  @override
+  String get createFolder => 'إنشاء مجلد';
+
+  @override
+  String get enterFolderName => 'أدخل اسم المجلد';
+
+  @override
+  String errorCreatingFolder(String error) {
+    return 'خطأ في إنشاء المجلد: $error';
+  }
+
+  @override
+  String get selectStorageDrive => 'اختر وحدة التخزين';
+
+  @override
+  String get selectStorage => 'اختر التخزين';
+
+  @override
+  String get clearSelection => 'إلغاء التحديد';
+
+  @override
+  String get folderIsEmpty => 'المجلد فارغ';
+
+  @override
+  String pinSelected(int count) {
+    return 'تثبيت المحدَّد ($count)';
+  }
+
+  @override
+  String get pinThisFolder => 'ثبّت هذا المجلد';
+
+  @override
+  String addSelected(int count) {
+    return 'إضافة المحدَّد ($count)';
+  }
+
+  @override
+  String get overallProgress => 'التقدّم الإجمالي';
+
+  @override
+  String get renamingFiles => 'يجري إعادة تسمية الملفات...';
+
+  @override
+  String get updatingFolderContent => 'انتظر من فضلك، يجري تحديث محتوى المجلد';
+
+  @override
+  String get batchRename => 'إعادة تسمية جماعية';
+
+  @override
+  String configuringItems(int count) {
+    return 'يجري ضبط $count عنصرًا';
+  }
+
+  @override
+  String get placeholderName => '%% (الاسم)';
+
+  @override
+  String get placeholderNameHint => 'الاسم الأصلي (%%)';
+
+  @override
+  String get placeholderNum => '# (رقم)';
+
+  @override
+  String get placeholderNumHint => 'رقم تسلسلي (#)';
+
+  @override
+  String get placeholderTripleHint => 'رقم تسلسلي ثلاثي (###)';
+
+  @override
+  String placeholderBase(String n) {
+    return '$n (الأساس)';
+  }
+
+  @override
+  String placeholderBaseHint(String n) {
+    return 'اسم الملف دون الامتداد ($n)';
+  }
+
+  @override
+  String placeholderExtensionWithDot(String de) {
+    return '$de (.امتداد)';
+  }
+
+  @override
+  String placeholderExtensionWithDotHint(String de) {
+    return 'الامتداد مع النقطة ($de)';
+  }
+
+  @override
+  String placeholderExtension(String e) {
+    return '$e (امتداد)';
+  }
+
+  @override
+  String placeholderExtensionHint(String e) {
+    return 'الامتداد دون النقطة ($e)';
+  }
+
+  @override
+  String placeholderFull(String N) {
+    return '$N (كامل)';
+  }
+
+  @override
+  String placeholderFullHint(String N) {
+    return 'الاسم الكامل مع الامتداد ($N)';
+  }
+
+  @override
+  String get namePattern => 'نمط الاسم';
+
+  @override
+  String get namePatternExample => 'مثال: Image_#';
+
+  @override
+  String get startNumber => 'رقم البداية';
+
+  @override
+  String get findText => 'ابحث عن نص';
+
+  @override
+  String get searchTerm => 'كلمة البحث';
+
+  @override
+  String get replaceWith => 'استبدل بـ';
+
+  @override
+  String get renamePreview => 'معاينة إعادة التسمية';
+
+  @override
+  String reviewingItems(int count) {
+    return 'يجري مراجعة $count عنصرًا';
+  }
+
+  @override
+  String get backToEdit => 'العودة إلى التعديل';
+
+  @override
+  String get applyChanges => 'تطبيق التغييرات';
+
+  @override
+  String get fileAlreadyExists => 'الملف موجود بالفعل';
+
+  @override
+  String fileConflictQuestion(String fileName) {
+    return 'يوجد ملف باسم «$fileName» في مجلد الوجهة بالفعل. ماذا تريد أن تفعل؟';
+  }
+
+  @override
+  String get existingFile => 'الملف الموجود';
+
+  @override
+  String get applyToAllConflicts => 'تطبيق على بقية التعارضات';
+
+  @override
+  String get cancelPaste => 'إلغاء اللصق';
+
+  @override
+  String get keepBoth => 'الإبقاء على الاثنين';
+
+  @override
+  String get renameFile => 'إعادة تسمية الملف';
+
+  @override
+  String get newFilename => 'اسم الملف الجديد';
+
+  @override
+  String get createArchive => 'إنشاء أرشيف';
+
+  @override
+  String get archiveName => 'اسم الأرشيف';
+
+  @override
+  String get archiveFormat => 'صيغة الأرشيف';
+
+  @override
+  String compressionLevel(String level) {
+    return 'مستوى الضغط: $level';
+  }
+
+  @override
+  String get passwordOptional => 'كلمة المرور (اختياري)';
+
+  @override
+  String get splitVolumeSize => 'حجم الجزء بالميغابايت (اختياري)';
+
+  @override
+  String get splitVolumeSizeHint => 'اتركه فارغًا لأرشيف واحد';
+
+  @override
+  String get deleteSourceAfter => 'حذف الملفات الأصلية بعد الانتهاء';
+
+  @override
+  String get separateArchivePerFile => 'إنشاء أرشيف منفصل لكل ملف';
+
+  @override
+  String get dragAndDropOptions => 'خيارات السحب والإفلات';
+
+  @override
+  String get destinationLocation => 'موقع الوجهة';
+
+  @override
+  String get droppedFolder => 'المجلد المُفلَت';
+
+  @override
+  String get currentFolder => 'المجلد الحالي';
+
+  @override
+  String get chooseAction => 'اختر الإجراء';
+
+  @override
+  String get moveHere => 'انقل إلى هنا';
+
+  @override
+  String get moveHereHint => 'اقطع العنصر والصقه في مجلد الوجهة';
+
+  @override
+  String get copyHere => 'انسخ إلى هنا';
+
+  @override
+  String get copyHereHint => 'يترك الملف الأصلي كما هو وينسخه هنا';
+
+  @override
+  String get archiveHere => 'أرشِف هنا';
+
+  @override
+  String get archiveHereHint => 'اضغط العنصر في أرشيف zip/tar هنا';
+
+  @override
+  String archiveCreated(String name) {
+    return 'أُنشئ الأرشيف «$name» بنجاح!';
+  }
+
+  @override
+  String failedToCreateArchive(String error) {
+    return 'فشل إنشاء الأرشيف: $error';
+  }
+
+  @override
+  String get extractArchive => 'استخراج الأرشيف';
+
+  @override
+  String get extractToFolder => 'استخراج إلى مجلد';
+
+  @override
+  String get passwordIfEncrypted => 'كلمة المرور (إن كان مشفّرًا)';
+
+  @override
+  String get allFiles => 'كل الملفات';
+
+  @override
+  String get allFilesHint => 'إظهار كل الملفات والمجلدات في هذا المجلد';
+
+  @override
+  String get documentsOnly => 'المستندات فقط';
+
+  @override
+  String get documentsOnlyHint =>
+      'ملفات PDF وWord وجداول النصوص والنصوص والكتب الإلكترونية';
+
+  @override
+  String get imagesOnly => 'الصور فقط';
+
+  @override
+  String get imagesOnlyHint => 'صيغ JPEG وPNG وWebP وصور الكاميرا الخام';
+
+  @override
+  String get audioOnly => 'الصوتيات فقط';
+
+  @override
+  String get audioOnlyHint => 'صيغ MP3 وWAV وAAC وصوتيات عالية الدقة';
+
+  @override
+  String get videosOnly => 'الفيديوهات فقط';
+
+  @override
+  String get videosOnlyHint => 'صيغ MP4 وMKV وWebM ومقاطع فيديو عالية الدقة';
+
+  @override
+  String get archivesOnly => 'الأرشيفات فقط';
+
+  @override
+  String get archivesOnlyHint =>
+      'ملفات ZIP و7Z وRAR وغيرها من الملفات المضغوطة';
+
+  @override
+  String get filterFilesByType => 'تصفية الملفات حسب النوع';
+
+  @override
+  String get filterFilesHint => 'اختر فئة لعرض الملفات المطابقة فقط';
+
+  @override
+  String processingItem(int current, int total) {
+    return 'يجري معالجة العنصر $current من $total';
+  }
+
+  @override
+  String get transferSpeed => 'سرعة النقل';
+
+  @override
+  String get estimatedTime => 'الزمن التقديري';
+
+  @override
+  String get dataProcessed => 'البيانات المعالجة';
+
+  @override
+  String get cancelOperation => 'إلغاء العملية';
+
+  @override
+  String get pastedItemsSuccessfully => 'لُصقت العناصر بنجاح';
+
+  @override
+  String get calculatingSizes => 'يجري حساب الأحجام...';
+
+  @override
+  String get itemsSelected => 'العناصر المحدَّدة';
+
+  @override
+  String get totalSize => 'الحجم الإجمالي';
+
+  @override
+  String get selectedPaths => 'المسارات المحدَّدة:';
+
+  @override
+  String copiedLabelToClipboard(String label) {
+    return 'نُسخ $label إلى الحافظة';
+  }
+
+  @override
+  String get copySelected => 'نسخ المحدَّد';
+
+  @override
+  String get cutSelected => 'نقل المحدَّد';
+
+  @override
+  String get archiveCompress => 'أرشفة (ضغط)';
+
+  @override
+  String get propertiesAndInfo => 'الخصائص والمعلومات';
 }
