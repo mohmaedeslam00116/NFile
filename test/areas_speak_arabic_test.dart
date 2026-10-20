@@ -50,11 +50,17 @@ void main() {
       'lib/services/folder_share_service.dart',
       'lib/ui/screens/internal_file_picker_screen.dart',
     ],
+    'the settings': [
+      'lib/ui/screens/more_settings_screen.dart',
+      'lib/ui/screens/backup_settings_screen.dart',
+      'lib/services/settings_backup_service.dart',
+      'lib/services/apk_installer_service.dart',
+    ],
   };
 
   // The areas that speak Arabic. An area joins the list when its strings are
   // in the translation.
-  const migrated = <String>['the frame', 'the directory'];
+  const migrated = <String>['the frame', 'the directory', 'the settings'];
 
   for (final area in migrated) {
     test('$area speaks Arabic', () {

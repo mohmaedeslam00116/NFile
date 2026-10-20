@@ -1699,6 +1699,906 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Properties & Info'**
   String get propertiesAndInfo;
+
+  /// No description provided for @extractingBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Extracting package bundle for installation...'**
+  String get extractingBundle;
+
+  /// No description provided for @noInstallableApk.
+  ///
+  /// In en, this message translates to:
+  /// **'No installable APK found in package bundle'**
+  String get noInstallableApk;
+
+  /// No description provided for @failedToTriggerInstaller.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to trigger split APK installer'**
+  String get failedToTriggerInstaller;
+
+  /// No description provided for @failedToExtractBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to extract package bundle: {error}'**
+  String failedToExtractBundle(String error);
+
+  /// No description provided for @settingsBackedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json'**
+  String get settingsBackedUp;
+
+  /// No description provided for @failedToBackupSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to backup settings: {error}'**
+  String failedToBackupSettings(String error);
+
+  /// No description provided for @settingsRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings restored successfully!'**
+  String get settingsRestored;
+
+  /// No description provided for @failedToRestoreSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to restore settings: {error}'**
+  String failedToRestoreSettings(String error);
+
+  /// No description provided for @backupAndRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup & Restore'**
+  String get backupAndRestore;
+
+  /// No description provided for @backupSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup Settings'**
+  String get backupSettings;
+
+  /// No description provided for @backupSettingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Save all your current settings to NFile/Backups/Settings/'**
+  String get backupSettingsHint;
+
+  /// No description provided for @restoreSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore Settings'**
+  String get restoreSettings;
+
+  /// No description provided for @restoreSettingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select and restore settings from a JSON backup file'**
+  String get restoreSettingsHint;
+
+  /// No description provided for @selectValidBackupFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a valid .json settings backup file'**
+  String get selectValidBackupFile;
+
+  /// No description provided for @settingsCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings Categories'**
+  String get settingsCategories;
+
+  /// No description provided for @generalAndBehavior.
+  ///
+  /// In en, this message translates to:
+  /// **'General & Behavior'**
+  String get generalAndBehavior;
+
+  /// No description provided for @generalAndBehaviorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Default screen, navigation controls, and shortcuts'**
+  String get generalAndBehaviorHint;
+
+  /// No description provided for @appearanceAndThemes.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance & Themes'**
+  String get appearanceAndThemes;
+
+  /// No description provided for @appearanceAndThemesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Themes, app icons, folder styles, and typography'**
+  String get appearanceAndThemesHint;
+
+  /// No description provided for @fileExplorerOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'File Explorer Options'**
+  String get fileExplorerOptions;
+
+  /// No description provided for @fileExplorerOptionsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Address bar, hidden files, tabs, and drag & drop'**
+  String get fileExplorerOptionsHint;
+
+  /// No description provided for @listAndLayoutStyling.
+  ///
+  /// In en, this message translates to:
+  /// **'List & Layout Styling'**
+  String get listAndLayoutStyling;
+
+  /// No description provided for @listAndLayoutStylingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder sizes, counts, and time/date formats'**
+  String get listAndLayoutStylingHint;
+
+  /// No description provided for @mediaPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Media Preferences'**
+  String get mediaPreferences;
+
+  /// No description provided for @mediaPreferencesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Default album view and thumbnail previews'**
+  String get mediaPreferencesHint;
+
+  /// No description provided for @fileActionsAndViewers.
+  ///
+  /// In en, this message translates to:
+  /// **'File Actions & Viewers'**
+  String get fileActionsAndViewers;
+
+  /// No description provided for @fileActionsAndViewersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Open actions and default viewers configuration'**
+  String get fileActionsAndViewersHint;
+
+  /// No description provided for @recycleBinTrash.
+  ///
+  /// In en, this message translates to:
+  /// **'Recycle Bin (Trash)'**
+  String get recycleBinTrash;
+
+  /// No description provided for @recycleBinTrashHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Recycle bin toggles and auto-delete duration'**
+  String get recycleBinTrashHint;
+
+  /// No description provided for @noSettingsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No settings found'**
+  String get noSettingsFound;
+
+  /// No description provided for @tryAnotherKeyword.
+  ///
+  /// In en, this message translates to:
+  /// **'Try searching for another keyword'**
+  String get tryAnotherKeyword;
+
+  /// No description provided for @defaultToBrowseScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Default to Browse Screen'**
+  String get defaultToBrowseScreen;
+
+  /// No description provided for @defaultToBrowseScreenHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Directly launch into the Browse storage explorer on app start'**
+  String get defaultToBrowseScreenHint;
+
+  /// No description provided for @rememberLastFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember Last Opened Folder'**
+  String get rememberLastFolder;
+
+  /// No description provided for @rememberLastFolderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the last folder you browsed when launching the app'**
+  String get rememberLastFolderHint;
+
+  /// No description provided for @showHomeBrowseBottomBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Home & Browse Bottom Bar'**
+  String get showHomeBrowseBottomBar;
+
+  /// No description provided for @showHomeBrowseBottomBarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle bottom navigation bar visibility on the Home screen'**
+  String get showHomeBrowseBottomBarHint;
+
+  /// No description provided for @hideBottomNavLabels.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Bottom Navigation Labels'**
+  String get hideBottomNavLabels;
+
+  /// No description provided for @hideBottomNavLabelsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide text labels of the bottom bar (Home/Browse) for a cleaner and compact look'**
+  String get hideBottomNavLabelsHint;
+
+  /// No description provided for @hideAndroidNavBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Android Navigation Bar'**
+  String get hideAndroidNavBar;
+
+  /// No description provided for @hideAndroidNavBarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide bottom navigation bar to maximize screen real estate (swiping up displays it)'**
+  String get hideAndroidNavBarHint;
+
+  /// No description provided for @preventLeftBackGesture.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent Left Back Gesture for Drawer'**
+  String get preventLeftBackGesture;
+
+  /// No description provided for @preventLeftBackGestureHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Excludes the left edge of the screen from Android system back gestures, making it easier to swipe open the drawer. You can still swipe from the right edge to go back.'**
+  String get preventLeftBackGestureHint;
+
+  /// No description provided for @appExitBehavior.
+  ///
+  /// In en, this message translates to:
+  /// **'App Exit Behavior'**
+  String get appExitBehavior;
+
+  /// No description provided for @showBottomNavBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Bottom Navigation Bar'**
+  String get showBottomNavBar;
+
+  /// No description provided for @showBottomNavBarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable bottom action bar on Browse screen'**
+  String get showBottomNavBarHint;
+
+  /// No description provided for @hideActionBarLabels.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Action Bar Text Labels'**
+  String get hideActionBarLabels;
+
+  /// No description provided for @hideActionBarLabelsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Show only icons in selection action bar at bottom of Browse & Media screens'**
+  String get hideActionBarLabelsHint;
+
+  /// No description provided for @customizeShortcutsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder and toggle visibility of quick category items'**
+  String get customizeShortcutsHint;
+
+  /// No description provided for @showRecentFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Recent Files'**
+  String get showRecentFiles;
+
+  /// No description provided for @showRecentFilesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display the list of recently accessed files on the Home screen'**
+  String get showRecentFilesHint;
+
+  /// No description provided for @accentColorDynamicTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Accent Color / Dynamic Theme'**
+  String get accentColorDynamicTheme;
+
+  /// No description provided for @folderIconStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder Icon Style'**
+  String get folderIconStyle;
+
+  /// No description provided for @drawerButtonStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'App Drawer Button Style'**
+  String get drawerButtonStyle;
+
+  /// No description provided for @amoledBlackMode.
+  ///
+  /// In en, this message translates to:
+  /// **'AMOLED Black Mode'**
+  String get amoledBlackMode;
+
+  /// No description provided for @amoledBlackModeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Use pitch black background in Dark Mode for AMOLED screens'**
+  String get amoledBlackModeHint;
+
+  /// No description provided for @appIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'App Icon'**
+  String get appIcon;
+
+  /// No description provided for @appTypographyFontFamily.
+  ///
+  /// In en, this message translates to:
+  /// **'App Typography / Font Family'**
+  String get appTypographyFontFamily;
+
+  /// No description provided for @useExpressiveIcons.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Expressive Material Icons'**
+  String get useExpressiveIcons;
+
+  /// No description provided for @useExpressiveIconsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace custom Broken icons with standard Material Design icons'**
+  String get useExpressiveIconsHint;
+
+  /// No description provided for @showAddressBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Address Bar'**
+  String get showAddressBar;
+
+  /// No description provided for @showAddressBarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display an editable Windows-Explorer-style address bar at the top of file list'**
+  String get showAddressBarHint;
+
+  /// No description provided for @showFloatingAddButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Floating \'+\' Button'**
+  String get showFloatingAddButton;
+
+  /// No description provided for @showFloatingAddButtonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable quick creation (+) button at bottom of Browse screen'**
+  String get showFloatingAddButtonHint;
+
+  /// No description provided for @showHiddenFilesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display system files and folders starting with a dot (.)'**
+  String get showHiddenFilesHint;
+
+  /// No description provided for @highlightExitedFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlight Exited Folder'**
+  String get highlightExitedFolder;
+
+  /// No description provided for @highlightExitedFolderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Briefly flash and scroll to the folder you just exited when going back'**
+  String get highlightExitedFolderHint;
+
+  /// No description provided for @enableMultipleTabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Multiple Tabs'**
+  String get enableMultipleTabs;
+
+  /// No description provided for @enableMultipleTabsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow opening multiple folders in separate tabs for quick navigation'**
+  String get enableMultipleTabsHint;
+
+  /// No description provided for @enableSplitScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Split Screen'**
+  String get enableSplitScreen;
+
+  /// No description provided for @enableSplitScreenHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse two directories side by side and transfer files easily'**
+  String get enableSplitScreenHint;
+
+  /// No description provided for @enableDragAndDrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Drag & Drop'**
+  String get enableDragAndDrop;
+
+  /// No description provided for @enableDragAndDropHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press and drag folders or files to move them into other folders'**
+  String get enableDragAndDropHint;
+
+  /// No description provided for @confirmDragAndDrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Drag & Drop Actions'**
+  String get confirmDragAndDrop;
+
+  /// No description provided for @confirmDragAndDropHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Show options popup (Copy, Move, Archive) when dropping files'**
+  String get confirmDragAndDropHint;
+
+  /// No description provided for @showCountHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Folder & File Count Header'**
+  String get showCountHeader;
+
+  /// No description provided for @showCountHeaderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display total folders and files count under storage title bar'**
+  String get showCountHeaderHint;
+
+  /// No description provided for @showFolderContentCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Folder Content Count'**
+  String get showFolderContentCount;
+
+  /// No description provided for @showFolderContentCountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate and display total files and folders inside directory listings'**
+  String get showFolderContentCountHint;
+
+  /// No description provided for @showFolderSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Folder Size'**
+  String get showFolderSize;
+
+  /// No description provided for @showFolderSizeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate and display total size of all files inside directories (can affect listing performance)'**
+  String get showFolderSizeHint;
+
+  /// No description provided for @use24HourTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 24-Hour Time Format'**
+  String get use24HourTime;
+
+  /// No description provided for @use24HourTimeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle between 12-hour (AM/PM) and 24-hour time formatting across lists'**
+  String get use24HourTimeHint;
+
+  /// No description provided for @hideTimeAndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Time & Date from Lists'**
+  String get hideTimeAndDate;
+
+  /// No description provided for @hideTimeAndDateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Completely hide modification dates and times under files and folders'**
+  String get hideTimeAndDateHint;
+
+  /// No description provided for @adaptiveMultiLineNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Adaptive Multi-line Filenames'**
+  String get adaptiveMultiLineNames;
+
+  /// No description provided for @adaptiveMultiLineNamesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow filenames to wrap 3 lines instead of truncating'**
+  String get adaptiveMultiLineNamesHint;
+
+  /// No description provided for @hideThreeDotButtons.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide 3-Dot Action Buttons'**
+  String get hideThreeDotButtons;
+
+  /// No description provided for @hideThreeDotButtonsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide the three-dot option menu button next to folders and files'**
+  String get hideThreeDotButtonsHint;
+
+  /// No description provided for @threeDotTrailingInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'3-Dot Disabled Trailing Info'**
+  String get threeDotTrailingInfo;
+
+  /// No description provided for @defaultAlbumView.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Album Preferred View'**
+  String get defaultAlbumView;
+
+  /// No description provided for @defaultAlbumViewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Images/Videos quick categories directly in Folders (Albums) preferred view'**
+  String get defaultAlbumViewHint;
+
+  /// No description provided for @showMediaPreviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Media Previews'**
+  String get showMediaPreviews;
+
+  /// No description provided for @showMediaPreviewsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display actual image and video thumbnails instead of generic file icons'**
+  String get showMediaPreviewsHint;
+
+  /// No description provided for @skipOpenWithDialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip \"Open With\" Dialog'**
+  String get skipOpenWithDialog;
+
+  /// No description provided for @skipOpenWithDialogHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bypass the application choice dialog and immediately open files with default viewers'**
+  String get skipOpenWithDialogHint;
+
+  /// No description provided for @resetDefaultViewers.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Default File Viewers'**
+  String get resetDefaultViewers;
+
+  /// No description provided for @resetDefaultViewersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all remembered \"Open With\" associations for file viewers'**
+  String get resetDefaultViewersHint;
+
+  /// No description provided for @viewersReset.
+  ///
+  /// In en, this message translates to:
+  /// **'All default viewer choices have been reset'**
+  String get viewersReset;
+
+  /// No description provided for @enableRecycleBin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Recycle Bin'**
+  String get enableRecycleBin;
+
+  /// No description provided for @enableRecycleBinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Move deleted files and folders to a hidden Recycle Bin instead of deleting permanently'**
+  String get enableRecycleBinHint;
+
+  /// No description provided for @autoDeleteDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-Delete Trash Duration'**
+  String get autoDeleteDuration;
+
+  /// No description provided for @autoDeleteDurationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Items in the Recycle Bin will be permanently deleted after this duration.'**
+  String get autoDeleteDurationHint;
+
+  /// No description provided for @chooseTrailingInfoStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Trailing Info Style'**
+  String get chooseTrailingInfoStyle;
+
+  /// No description provided for @chooseTrailingInfoStyleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what is displayed on the right side of files and folders when the 3-dot action buttons are hidden.'**
+  String get chooseTrailingInfoStyleHint;
+
+  /// No description provided for @chooseExitBehavior.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Exit Behavior'**
+  String get chooseExitBehavior;
+
+  /// No description provided for @chooseAccentTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Accent Theme'**
+  String get chooseAccentTheme;
+
+  /// No description provided for @chooseFolderIconStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Folder Icon Style'**
+  String get chooseFolderIconStyle;
+
+  /// No description provided for @chooseDrawerButtonStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Drawer Button Style'**
+  String get chooseDrawerButtonStyle;
+
+  /// No description provided for @appLauncherIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'App Launcher Icon'**
+  String get appLauncherIcon;
+
+  /// No description provided for @appLauncherIconHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a custom logo for the application launcher icon. Note that some launchers may take a few seconds to update.'**
+  String get appLauncherIconHint;
+
+  /// No description provided for @logo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo 1'**
+  String get logo1;
+
+  /// No description provided for @logo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo 2'**
+  String get logo2;
+
+  /// No description provided for @logo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo 3'**
+  String get logo3;
+
+  /// No description provided for @logo4.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo 4'**
+  String get logo4;
+
+  /// No description provided for @appIconSwitched.
+  ///
+  /// In en, this message translates to:
+  /// **'App icon switched to {title} successfully!'**
+  String appIconSwitched(String title);
+
+  /// No description provided for @appTypography.
+  ///
+  /// In en, this message translates to:
+  /// **'App Typography'**
+  String get appTypography;
+
+  /// No description provided for @appTypographyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a beautiful typeface to customize NFile\\\'s overall visual theme'**
+  String get appTypographyHint;
+
+  /// No description provided for @customFontApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom font \"{name}\" applied successfully!'**
+  String customFontApplied(String name);
+
+  /// No description provided for @failedToLoadFont.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load the selected font file.'**
+  String get failedToLoadFont;
+
+  /// No description provided for @invalidFileType.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid File Type'**
+  String get invalidFileType;
+
+  /// No description provided for @invalidFontFileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a valid OpenType (.otf) or TrueType (.ttf) font file.'**
+  String get invalidFontFileHint;
+
+  /// No description provided for @removeCustomFont.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Custom Font'**
+  String get removeCustomFont;
+
+  /// No description provided for @customFontRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom font removed.'**
+  String get customFontRemoved;
+
+  /// No description provided for @accentMaterialYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Material You (Dynamic Wallpaper Colors)'**
+  String get accentMaterialYou;
+
+  /// No description provided for @accentVibrantOrange.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrant Orange'**
+  String get accentVibrantOrange;
+
+  /// No description provided for @accentRoyalPurple.
+  ///
+  /// In en, this message translates to:
+  /// **'Royal Purple'**
+  String get accentRoyalPurple;
+
+  /// No description provided for @accentEmeraldGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Emerald Green'**
+  String get accentEmeraldGreen;
+
+  /// No description provided for @accentCrimsonRed.
+  ///
+  /// In en, this message translates to:
+  /// **'Crimson Red'**
+  String get accentCrimsonRed;
+
+  /// No description provided for @accentAmberGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Amber Gold'**
+  String get accentAmberGold;
+
+  /// No description provided for @accentCyberpunkPink.
+  ///
+  /// In en, this message translates to:
+  /// **'Cyberpunk Pink'**
+  String get accentCyberpunkPink;
+
+  /// No description provided for @accentSapphireBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sapphire Blue'**
+  String get accentSapphireBlue;
+
+  /// No description provided for @accentForestGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Forest Green'**
+  String get accentForestGreen;
+
+  /// No description provided for @accentSunsetPeach.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunset Peach'**
+  String get accentSunsetPeach;
+
+  /// No description provided for @folderIconClassicSolid.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic Solid (Material)'**
+  String get folderIconClassicSolid;
+
+  /// No description provided for @folderIconModernRounded.
+  ///
+  /// In en, this message translates to:
+  /// **'Modern Rounded (Material)'**
+  String get folderIconModernRounded;
+
+  /// No description provided for @folderIconStarred.
+  ///
+  /// In en, this message translates to:
+  /// **'Starred Special (Material)'**
+  String get folderIconStarred;
+
+  /// No description provided for @folderIconSnippet.
+  ///
+  /// In en, this message translates to:
+  /// **'Snippet Document (Material)'**
+  String get folderIconSnippet;
+
+  /// No description provided for @folderIconMinimalOutlined.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimal Outlined (Material)'**
+  String get folderIconMinimalOutlined;
+
+  /// No description provided for @drawerStyleCategoryGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Grid / Vuesax Grid'**
+  String get drawerStyleCategoryGrid;
+
+  /// No description provided for @drawerStyleHamburger.
+  ///
+  /// In en, this message translates to:
+  /// **'Hamburger / Classic Menu'**
+  String get drawerStyleHamburger;
+
+  /// No description provided for @defaultLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Logo'**
+  String get defaultLogo;
+
+  /// No description provided for @fontDotMatrix.
+  ///
+  /// In en, this message translates to:
+  /// **'Dot-Matrix & Sans'**
+  String get fontDotMatrix;
+
+  /// No description provided for @fontOutfit.
+  ///
+  /// In en, this message translates to:
+  /// **'Outfit Modern Sans'**
+  String get fontOutfit;
+
+  /// No description provided for @fontJetBrains.
+  ///
+  /// In en, this message translates to:
+  /// **'JetBrains Tech Mono'**
+  String get fontJetBrains;
+
+  /// No description provided for @fontMontserrat.
+  ///
+  /// In en, this message translates to:
+  /// **'Montserrat Urban Sans'**
+  String get fontMontserrat;
+
+  /// No description provided for @fontCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Imported Font'**
+  String get fontCustom;
+
+  /// No description provided for @trailingInfoDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Date & Time'**
+  String get trailingInfoDateTime;
+
+  /// No description provided for @trailingInfoSizeCount.
+  ///
+  /// In en, this message translates to:
+  /// **'File Size / Item Count'**
+  String get trailingInfoSizeCount;
+
+  /// No description provided for @backupAndRestoreHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup your settings to a JSON file or restore them'**
+  String get backupAndRestoreHint;
 }
 
 class _AppLocalizationsDelegate

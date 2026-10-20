@@ -155,7 +155,7 @@ bool _isCopy(String english, String arabic) {
 
 /// The values that are the same in both languages, because they name a thing
 /// that is written the same way everywhere.
-const Set<String> _sameInBothLanguages = {'appName'};
+const Set<String> _sameInBothLanguages = {'appName', 'fontJetBrains'};
 
 /// The keys of a translation file, without the metadata.
 Map<String, String> _readArb(String path) {
