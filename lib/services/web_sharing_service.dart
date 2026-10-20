@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
 import 'package:dartssh2/dartssh2.dart';
 import '../core/ssh/ephemeral_ssh_key.dart';
+import '../core/l10n/app_translation.dart';
 
 class WebSharingService extends ChangeNotifier {
   static final WebSharingService instance = WebSharingService._();
@@ -166,12 +167,12 @@ class WebSharingService extends ChangeNotifier {
           await request.cast<List<int>>().pipe(sink);
 
           response.statusCode = HttpStatus.ok;
-          response.write('Upload successful');
+          response.write(AppTranslation.label((l10n) => l10n.webUploadSuccessful));
           await response.close();
           return;
         } catch (e) {
           response.statusCode = HttpStatus.internalServerError;
-          response.write('500 Upload failed: $e');
+          response.write('500 ${AppTranslation.label((l10n) => l10n.webUploadFailed)}: $e');
           await response.close();
           return;
         }
@@ -292,7 +293,9 @@ class WebSharingService extends ChangeNotifier {
 
   // --- Beautiful served Dark HTML Page Builder ---
   String _generateExplorerHtml(String currentPath, List<FileSystemEntity> items, String rootDir, bool isInternet) {
-    final title = currentPath == '/' ? 'Root' : p.posix.basename(currentPath);
+    final title = currentPath == '/'
+            ? AppTranslation.label((l10n) => l10n.rootDirectory)
+            : p.posix.basename(currentPath);
 
     // Build breadcrumbs list
     final parts = currentPath.split('/').where((p) => p.isNotEmpty).toList();
@@ -397,7 +400,7 @@ class WebSharingService extends ChangeNotifier {
         // Files render with clean hover download actions and explicit item metadata details
         final actionsHtml = '''
           <div class="item-actions">
-            <button class="action-btn download-btn" onclick="downloadFile('$relativeUrl', '${name.replaceAll("'", "\\'")}', event)" title="Download File">
+            <button class="action-btn download-btn" onclick="downloadFile('$relativeUrl', '${name.replaceAll("'", "\\'")}', event)" title="${AppTranslation.label((l10n) => l10n.downloadFile)}">
               $downloadSvg
             </button>
           </div>
@@ -423,7 +426,7 @@ class WebSharingService extends ChangeNotifier {
     final badgeHtml = '''
       <div class="header-actions">
         <span class="status-indicator ${isInternet ? 'cloud' : 'local'}" title="${isInternet ? 'Secure Internet Share' : 'Local High-Speed Wi-Fi Share'}"></span>
-        <button class="header-upload-btn" onclick="triggerFileInput()" title="Upload Files to this Folder">
+        <button class="header-upload-btn" onclick="triggerFileInput()" title="${AppTranslation.label((l10n) => l10n.webUploadToFolder)}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
           <span>Upload</span>
         </button>
@@ -1499,14 +1502,14 @@ class WebSharingService extends ChangeNotifier {
     <div class="toolbar">
       <div class="search-wrapper">
         <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search files & folders...">
+        <input type="text" id="searchInput" class="search-input" placeholder="${AppTranslation.label((l10n) => l10n.webSearchFiles)}">
       </div>
       
       <div class="view-toggles">
-        <button class="toggle-btn" id="viewToggleList" onclick="setViewMode('list')" title="List View">
+        <button class="toggle-btn" id="viewToggleList" onclick="setViewMode('list')" title="${AppTranslation.label((l10n) => l10n.webListView)}">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
         </button>
-        <button class="toggle-btn" id="viewToggleGrid" onclick="setViewMode('grid')" title="Grid View">
+        <button class="toggle-btn" id="viewToggleGrid" onclick="setViewMode('grid')" title="${AppTranslation.label((l10n) => l10n.webGridView)}">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         </button>
       </div>
@@ -1526,7 +1529,7 @@ class WebSharingService extends ChangeNotifier {
   <!-- Floating Preview Drawer Modal -->
   <div class="modal-overlay" id="previewModal" onclick="closeModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal(event)" title="Close Modal">
+      <button class="modal-close" onclick="closeModal(event)" title="${AppTranslation.label((l10n) => l10n.webCloseModal)}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       
@@ -1668,7 +1671,7 @@ class WebSharingService extends ChangeNotifier {
       }
       
       overlay.classList.remove('active');
-      showToast("Upload completed successfully!");
+      showToast("${AppTranslation.label((l10n) => l10n.webUploadCompleted)}");
       setTimeout(() => {
         window.location.reload();
       }, 800);
@@ -1691,11 +1694,11 @@ class WebSharingService extends ChangeNotifier {
           if (xhr.status >= 200 && xhr.status < 300) {
             resolve();
           } else {
-            reject(new Error(xhr.responseText || 'Upload failed'));
+            reject(new Error(xhr.responseText || '${AppTranslation.label((l10n) => l10n.webUploadFailed)}'));
           }
         };
         
-        xhr.onerror = () => reject(new Error('Network error'));
+        xhr.onerror = () => reject(new Error(AppTranslation.label((l10n) => l10n.networkError)));
         xhr.send(file);
       });
     }
@@ -1854,12 +1857,12 @@ class WebSharingService extends ChangeNotifier {
     function copyFileLink(url, event) {
       if (event) event.stopPropagation();
       const absoluteUrl = new URL(url, window.location.href).href;
-      copyToClipboard(absoluteUrl, "Link copied to clipboard!");
+      copyToClipboard(absoluteUrl, "${AppTranslation.label((l10n) => l10n.webLinkCopied)}");
     }
 
     function copyModalLink() {
       const absoluteUrl = new URL(currentModalUrl, window.location.href).href;
-      copyToClipboard(absoluteUrl, "Link copied to clipboard!");
+      copyToClipboard(absoluteUrl, "${AppTranslation.label((l10n) => l10n.webLinkCopied)}");
     }
 
     function copyToClipboard(text, successMsg) {
@@ -1876,7 +1879,7 @@ class WebSharingService extends ChangeNotifier {
           document.execCommand('copy');
           showToast(successMsg);
         } catch (e) {
-          showToast("Failed to copy link.");
+          showToast("${AppTranslation.label((l10n) => l10n.webFailedToCopyLink)}");
         }
         document.body.removeChild(textarea);
       });
@@ -1942,13 +1945,14 @@ class WebSharingService extends ChangeNotifier {
       }
 
       _isInternetActive = true;
-      _internetShareLink = 'Establishing secure proxy tunnel...';
+      _internetShareLink =
+        AppTranslation.label((l10n) => l10n.establishingProxyTunnel);
       notifyListeners();
 
       // Update Foreground Service with tunnel starting text
       try {
         await _channel.invokeMethod('startWebSharingService', {
-          'url': 'Establishing secure proxy tunnel...',
+          'url': AppTranslation.label((l10n) => l10n.establishingProxyTunnel),
           'isInternet': true,
         });
       } catch (e) {
@@ -2101,7 +2105,9 @@ class WebSharingService extends ChangeNotifier {
     final clientKey = '${ip}_$userAgent';
 
     final device = _parseUserAgent(userAgent);
-    final fileName = FileSystemEntity.isDirectorySync(targetPath) ? 'Browsing Directories' : p.basename(targetPath);
+    final fileName = FileSystemEntity.isDirectorySync(targetPath)
+        ? AppTranslation.label((l10n) => l10n.webBrowsingDirectories)
+        : p.basename(targetPath);
 
     final client = _clientsMap.putIfAbsent(clientKey, () => ActiveClient(
       ip: ip,
@@ -2121,7 +2127,7 @@ class WebSharingService extends ChangeNotifier {
   }
 
   String _parseUserAgent(String ua) {
-    if (ua.isEmpty) return 'Web Browser';
+    if (ua.isEmpty) return AppTranslation.label((l10n) => l10n.webBrowser);
 
     final uaLower = ua.toLowerCase();
     String browser = 'Browser';

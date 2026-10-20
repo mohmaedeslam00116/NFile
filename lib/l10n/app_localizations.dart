@@ -3500,6 +3500,246 @@ abstract class AppLocalizations {
   /// **'Invalid backup file format'**
   String get settingsBackupInvalidFormat;
 
+  /// No description provided for @webBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Web Browser'**
+  String get webBrowser;
+
+  /// No description provided for @webBrowsingDirectories.
+  ///
+  /// In en, this message translates to:
+  /// **'Browsing Directories'**
+  String get webBrowsingDirectories;
+
+  /// No description provided for @webCloseModal.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Modal'**
+  String get webCloseModal;
+
+  /// No description provided for @downloadFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Download File'**
+  String get downloadFile;
+
+  /// No description provided for @webFailedToCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to copy link.'**
+  String get webFailedToCopyLink;
+
+  /// No description provided for @webLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied to clipboard!'**
+  String get webLinkCopied;
+
+  /// No description provided for @webGridView.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid View'**
+  String get webGridView;
+
+  /// No description provided for @webListView.
+  ///
+  /// In en, this message translates to:
+  /// **'List View'**
+  String get webListView;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error'**
+  String get networkError;
+
+  /// No description provided for @webSearchFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Search files & folders...'**
+  String get webSearchFiles;
+
+  /// No description provided for @webUploadToFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Files to this Folder'**
+  String get webUploadToFolder;
+
+  /// No description provided for @webUploadCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload completed successfully!'**
+  String get webUploadCompleted;
+
+  /// No description provided for @webUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed'**
+  String get webUploadFailed;
+
+  /// No description provided for @webUploadSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload successful'**
+  String get webUploadSuccessful;
+
+  /// No description provided for @mediaCannotOpenDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open directory: {path}'**
+  String mediaCannotOpenDirectory(String path);
+
+  /// No description provided for @mediaCannotOpenRemoteDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open remote directory: {path}'**
+  String mediaCannotOpenRemoteDirectory(String path);
+
+  /// No description provided for @mediaWebdavConnectFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to connect to WebDAV: {status}'**
+  String mediaWebdavConnectFailed(String status);
+
+  /// No description provided for @vaultIncorrectPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect password or corrupted file'**
+  String get vaultIncorrectPassword;
+
+  /// No description provided for @vaultFileDoesNotExist.
+  ///
+  /// In en, this message translates to:
+  /// **'File does not exist: {path}'**
+  String vaultFileDoesNotExist(String path);
+
+  /// No description provided for @vaultDirectoryDoesNotExist.
+  ///
+  /// In en, this message translates to:
+  /// **'Directory does not exist: {path}'**
+  String vaultDirectoryDoesNotExist(String path);
+
+  /// No description provided for @vaultFailedToZip.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to zip directory contents'**
+  String get vaultFailedToZip;
+
+  /// No description provided for @rootExecutionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Execution failed: {error}'**
+  String rootExecutionFailed(String error);
+
+  /// No description provided for @customFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Folder'**
+  String get customFolder;
+
+  /// No description provided for @sdCardWithUsb.
+  ///
+  /// In en, this message translates to:
+  /// **'SD Card / USB'**
+  String get sdCardWithUsb;
+
+  /// No description provided for @failedToCreateDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create directory: {path}'**
+  String failedToCreateDirectory(String path);
+
+  /// No description provided for @failedToDeleteDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete directory: {path}'**
+  String failedToDeleteDirectory(String path);
+
+  /// No description provided for @fileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'File not found'**
+  String get fileNotFound;
+
+  /// No description provided for @ftpNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'FTP not connected'**
+  String get ftpNotConnected;
+
+  /// No description provided for @sftpNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'SFTP not connected'**
+  String get sftpNotConnected;
+
+  /// No description provided for @ftpConnectionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'FTP connection failed: could not connect to {host}:{port}'**
+  String ftpConnectionFailed(String host, String port);
+
+  /// No description provided for @localFileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Local file not found: {path}'**
+  String localFileNotFound(String path);
+
+  /// No description provided for @sourceDoesNotExist.
+  ///
+  /// In en, this message translates to:
+  /// **'Source file/folder does not exist: {path}'**
+  String sourceDoesNotExist(String path);
+
+  /// No description provided for @vaultFileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Scrambled vault file not found'**
+  String get vaultFileNotFound;
+
+  /// No description provided for @vaultFileNotFoundAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Scrambled vault file not found: {path}'**
+  String vaultFileNotFoundAt(String path);
+
+  /// No description provided for @sharingApksOfSelectedApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing APKs of selected apps'**
+  String get sharingApksOfSelectedApps;
+
+  /// No description provided for @sharingApkFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing APK for {name}'**
+  String sharingApkFor(String name);
+
+  /// No description provided for @establishingProxyTunnel.
+  ///
+  /// In en, this message translates to:
+  /// **'Establishing secure proxy tunnel...'**
+  String get establishingProxyTunnel;
+
+  /// No description provided for @remoteUploadFailedFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed for: {path}'**
+  String remoteUploadFailedFor(String path);
+
+  /// No description provided for @remoteDownloadFailedFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Download failed for: {path}'**
+  String remoteDownloadFailedFor(String path);
+
+  /// No description provided for @sdCardWithUsbNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'SD Card / USB ({name})'**
+  String sdCardWithUsbNamed(String name);
+
   /// No description provided for @processingItem.
   ///
   /// In en, this message translates to:

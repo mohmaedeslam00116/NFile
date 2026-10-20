@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:xml/xml.dart' as xml;
 import 'remote_client.dart';
+import '../../core/l10n/app_translation.dart';
 
 class WebDavRemoteClient implements RemoteClient {
   final String host;
@@ -64,7 +65,11 @@ class WebDavRemoteClient implements RemoteClient {
     }
     final response = await request.close();
     if (response.statusCode >= 400) {
-      throw Exception('Failed to connect to WebDAV: ${response.statusCode}');
+      throw Exception(
+        AppTranslation.label(
+          (l10n) => l10n.mediaWebdavConnectFailed('${response.statusCode}'),
+        ),
+      );
     }
     await response.drain();
   }
@@ -260,7 +265,11 @@ class WebDavRemoteClient implements RemoteClient {
     Function(double progress) onProgress,
   ) async {
     final localFile = File(localPath);
-    if (!localFile.existsSync()) throw Exception('Local file not found: $localPath');
+    if (!localFile.existsSync()) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.localFileNotFound(localPath)),
+      );
+    }
 
     final totalSize = await localFile.length();
 

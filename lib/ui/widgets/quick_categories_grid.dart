@@ -407,27 +407,41 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
   bool _isExpanded = false;
 
   List<String> _getDefaultPaths(String category) {
-    final l10n = AppLocalizations.of(context);
     switch (category) {
       case 'Images':
-        return [l10n.deviceGalleryAuto, '/storage/emulated/0/DCIM', '/storage/emulated/0/Pictures'];
+        return ['Device Gallery (Auto)', '/storage/emulated/0/DCIM', '/storage/emulated/0/Pictures'];
       case 'Videos':
-        return [l10n.deviceGalleryAuto, '/storage/emulated/0/DCIM', '/storage/emulated/0/Movies'];
+        return ['Device Gallery (Auto)', '/storage/emulated/0/DCIM', '/storage/emulated/0/Movies'];
       case 'Audio':
-        return [l10n.deviceAudioLibraryAuto, '/storage/emulated/0/Music'];
+        return ['Device Audio Library (Auto)', '/storage/emulated/0/Music'];
       case 'Documents':
-        return ['/storage/emulated/0/Documents', l10n.internalStorageAllFolders];
+        return ['/storage/emulated/0/Documents', 'Internal Storage (All Folders Scanned)'];
       case 'Archives':
-        return ['/storage/emulated/0/Download', l10n.internalStorageAllFolders];
+        return ['/storage/emulated/0/Download', 'Internal Storage (All Folders Scanned)'];
       case 'Downloads':
         return ['/storage/emulated/0/Download', '/storage/emulated/0/Downloads'];
       case 'APKs':
-        return ['/storage/emulated/0/Download', l10n.internalStorageAllFolders];
+        return ['/storage/emulated/0/Download', 'Internal Storage (All Folders Scanned)'];
       case 'Screenshots':
-        return [l10n.deviceGalleryScreenshots, '/storage/emulated/0/DCIM/Screenshots', '/storage/emulated/0/Pictures/Screenshots'];
+        return ['Device Gallery (Screenshots)', '/storage/emulated/0/DCIM/Screenshots', '/storage/emulated/0/Pictures/Screenshots'];
       default:
         return [];
     }
+  }
+
+  /// The name of a default path, in the language of the application.
+  ///
+  /// The name of a default path is an id: the program looks it up, and it
+  /// stores it. The name the user reads is asked for by name.
+  String _defaultPathLabel(String id) {
+    final l10n = AppLocalizations.of(context);
+    return switch (id) {
+      'Device Gallery (Auto)' => l10n.deviceGalleryAuto,
+      'Device Audio Library (Auto)' => l10n.deviceAudioLibraryAuto,
+      'Device Gallery (Screenshots)' => l10n.deviceGalleryScreenshots,
+      'Internal Storage (All Folders Scanned)' => l10n.internalStorageAllFolders,
+      _ => id,
+    };
   }
 
   @override
@@ -558,7 +572,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            path,
+                            path.startsWith('/') ? path : _defaultPathLabel(path),
                             style: TextStyle(
                               fontSize: 12,
                               color: isExcluded

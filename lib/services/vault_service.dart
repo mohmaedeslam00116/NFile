@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import '../core/l10n/app_translation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path/path.dart' as p;
@@ -165,7 +166,9 @@ class VaultService {
     bool isFolder = false,
   }) async {
     if (!await file.exists()) {
-      throw Exception('File does not exist: ${file.path}');
+      throw Exception(
+            AppTranslation.label((l10n) => l10n.vaultFileDoesNotExist(file.path)),
+          );
     }
 
     final originalPath = customPath ?? file.path;
@@ -239,7 +242,11 @@ class VaultService {
   }) async {
     final scrambledFile = File(record.scrambledPath);
     if (!await scrambledFile.exists()) {
-      throw Exception('Scrambled vault file not found: ${record.scrambledPath}');
+      throw Exception(
+        AppTranslation.label(
+          (l10n) => l10n.vaultFileNotFoundAt(record.scrambledPath),
+        ),
+      );
     }
 
     final bytes = await scrambledFile.readAsBytes();
@@ -248,7 +255,9 @@ class VaultService {
     // vault is not lost.
     final opened = await VaultFile.open(bytes, password);
     if (opened == null) {
-      throw Exception('Incorrect password or corrupted file');
+      throw Exception(
+          AppTranslation.label((l10n) => l10n.vaultIncorrectPassword),
+        );
     }
     final originalBytes = opened.content;
 
@@ -300,7 +309,11 @@ class VaultService {
     required bool inPlace,
   }) async {
     if (!await directory.exists()) {
-      throw Exception('Directory does not exist: ${directory.path}');
+      throw Exception(
+            AppTranslation.label(
+              (l10n) => l10n.vaultDirectoryDoesNotExist(directory.path),
+            ),
+          );
     }
 
     final originalPath = directory.path;
@@ -324,7 +337,9 @@ class VaultService {
     final zipEncoder = ZipEncoder();
     final zipBytes = zipEncoder.encode(archive);
     if (zipBytes == null) {
-      throw Exception('Failed to zip directory contents');
+      throw Exception(
+          AppTranslation.label((l10n) => l10n.vaultFailedToZip),
+        );
     }
 
     // Write zip to a temporary file
@@ -371,7 +386,9 @@ class VaultService {
   }) async {
     final scrambledFile = File(record.scrambledPath);
     if (!await scrambledFile.exists()) {
-      throw Exception('Scrambled vault file not found');
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.vaultFileNotFound),
+      );
     }
 
     final bytes = await scrambledFile.readAsBytes();
@@ -380,7 +397,9 @@ class VaultService {
     // vault is not lost.
     final opened = await VaultFile.open(bytes, password);
     if (opened == null) {
-      throw Exception('Incorrect password or corrupted file');
+      throw Exception(
+          AppTranslation.label((l10n) => l10n.vaultIncorrectPassword),
+        );
     }
     final originalBytes = opened.content;
 

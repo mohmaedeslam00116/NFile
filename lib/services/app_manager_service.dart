@@ -5,6 +5,7 @@ import 'package:archive/archive_io.dart';
 import 'package:path/path.dart' as p;
 import 'package:share_plus/share_plus.dart';
 import '../models/app_info_model.dart';
+import '../../core/l10n/app_translation.dart';
 
 class AppManagerService {
   static const MethodChannel _channel = MethodChannel('com.rubex.nfile/root_shizuku');
@@ -191,7 +192,7 @@ class AppManagerService {
       }
 
       if (filesToShare.isNotEmpty) {
-        await SharePlus.instance.share(ShareParams(files: filesToShare, text: 'Sharing APK for ${app.name}'));
+        await SharePlus.instance.share(ShareParams(files: filesToShare, text: AppTranslation.label((l10n) => l10n.sharingApkFor(app.name))));
       }
     } catch (e) {
       debugPrint('Error sharing app: $e');
@@ -216,7 +217,7 @@ class AppManagerService {
       }
 
       if (filesToShare.isNotEmpty) {
-        await SharePlus.instance.share(ShareParams(files: filesToShare, text: 'Sharing APKs of selected apps'));
+        await SharePlus.instance.share(ShareParams(files: filesToShare, text: AppTranslation.label((l10n) => l10n.sharingApksOfSelectedApps)));
       }
     } catch (e) {
       debugPrint('Error batch sharing apps: $e');

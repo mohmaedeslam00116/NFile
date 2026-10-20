@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../core/l10n/app_translation.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -1251,8 +1252,8 @@ class MediaProvider extends ChangeNotifier {
             '_id': 900000 + i,
             '_data': file.path,
             'title': p.basenameWithoutExtension(file.path),
-            'artist': 'Unknown Artist',
-            'album': 'Custom Folder',
+            'artist': AppTranslation.label((l10n) => l10n.unknownArtist),
+            'album': AppTranslation.label((l10n) => l10n.customFolder),
             'duration': 0,
             'size': stat.size,
             'display_name': p.basename(file.path),

@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../core/l10n/app_translation.dart';
 import 'package:flutter/services.dart';
 import '../models/file_item_model.dart';
 import 'package:path/path.dart' as p;
@@ -84,7 +85,9 @@ class RootShizukuService {
       });
       return res?.toString();
     } catch (e) {
-      throw Exception('Execution failed: $e');
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.rootExecutionFailed(e.toString())),
+      );
     }
   }
 

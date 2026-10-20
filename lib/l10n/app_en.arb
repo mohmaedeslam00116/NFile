@@ -566,6 +566,46 @@
   "vaultIsolatedMove": "🔒 Isolated Move (Sandbox)",
   "settingsBackupFileMissing": "Backup file does not exist",
   "settingsBackupInvalidFormat": "Invalid backup file format",
+  "webBrowser": "Web Browser",
+  "webBrowsingDirectories": "Browsing Directories",
+  "webCloseModal": "Close Modal",
+  "downloadFile": "Download File",
+  "webFailedToCopyLink": "Failed to copy link.",
+  "webLinkCopied": "Link copied to clipboard!",
+  "webGridView": "Grid View",
+  "webListView": "List View",
+  "networkError": "Network error",
+  "webSearchFiles": "Search files & folders...",
+  "webUploadToFolder": "Upload Files to this Folder",
+  "webUploadCompleted": "Upload completed successfully!",
+  "webUploadFailed": "Upload failed",
+  "webUploadSuccessful": "Upload successful",
+  "mediaCannotOpenDirectory": "Cannot open directory: {path}",
+  "mediaCannotOpenRemoteDirectory": "Cannot open remote directory: {path}",
+  "mediaWebdavConnectFailed": "Failed to connect to WebDAV: {status}",
+  "vaultIncorrectPassword": "Incorrect password or corrupted file",
+  "vaultFileDoesNotExist": "File does not exist: {path}",
+  "vaultDirectoryDoesNotExist": "Directory does not exist: {path}",
+  "vaultFailedToZip": "Failed to zip directory contents",
+  "rootExecutionFailed": "Execution failed: {error}",
+  "customFolder": "Custom Folder",
+  "sdCardWithUsb": "SD Card / USB",
+  "failedToCreateDirectory": "Failed to create directory: {path}",
+  "failedToDeleteDirectory": "Failed to delete directory: {path}",
+  "fileNotFound": "File not found",
+  "ftpNotConnected": "FTP not connected",
+  "sftpNotConnected": "SFTP not connected",
+  "ftpConnectionFailed": "FTP connection failed: could not connect to {host}:{port}",
+  "localFileNotFound": "Local file not found: {path}",
+  "sourceDoesNotExist": "Source file/folder does not exist: {path}",
+  "vaultFileNotFound": "Scrambled vault file not found",
+  "vaultFileNotFoundAt": "Scrambled vault file not found: {path}",
+  "sharingApksOfSelectedApps": "Sharing APKs of selected apps",
+  "sharingApkFor": "Sharing APK for {name}",
+  "establishingProxyTunnel": "Establishing secure proxy tunnel...",
+  "remoteUploadFailedFor": "Upload failed for: {path}",
+  "remoteDownloadFailedFor": "Download failed for: {path}",
+  "sdCardWithUsbNamed": "SD Card / USB ({name})",
   "processingItem": "Processing item {current} of {total}",
   "transferSpeed": "Transfer Speed",
   "estimatedTime": "Est. Time",
@@ -2430,6 +2470,121 @@
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "@mediaCannotOpenDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaCannotOpenRemoteDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaWebdavConnectFailed": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultFileDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultDirectoryDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@rootExecutionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@sdCardWithUsbNamed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToCreateDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToDeleteDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@ftpConnectionFailed": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      },
+      "port": {
+        "type": "String"
+      }
+    }
+  },
+  "@localFileNotFound": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@sourceDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultFileNotFoundAt": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteUploadFailedFor": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadFailedFor": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@sharingApkFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
       }
     }
   }

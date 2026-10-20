@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'remote_client.dart';
+import '../../core/l10n/app_translation.dart';
 
 class LanDiscoveredServer {
   final String host;
@@ -210,7 +211,9 @@ class LanClient implements RemoteClient {
   @override
   Future<void> downloadFile(String remotePath, String localPath, Function(double progress) onProgress) async {
     final item = _virtualItems.firstWhere((e) => e.path == remotePath, 
-      orElse: () => throw Exception('File not found')
+      orElse: () => throw Exception(
+              AppTranslation.label((l10n) => l10n.fileNotFound),
+            )
     );
     
     final localFile = File(localPath);
@@ -248,7 +251,11 @@ class LanClient implements RemoteClient {
     Function(double progress) onProgress,
   ) async {
     final localFile = File(localPath);
-    if (!localFile.existsSync()) throw Exception('Local file not found: $localPath');
+    if (!localFile.existsSync()) {
+      throw Exception(
+        AppTranslation.label((l10n) => l10n.localFileNotFound(localPath)),
+      );
+    }
 
     final size = await localFile.length();
     final name = remotePath.split('/').last;

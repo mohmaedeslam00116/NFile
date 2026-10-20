@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'support/label_scan.dart';
+
 /// A string the user reads that is written in the source.
 ///
 /// The application speaks two languages, and a string that is written in the
@@ -12,8 +14,8 @@ import 'package:flutter_test/flutter_test.dart';
 ///
 /// The ledger is the inventory of what is left. It holds two lists:
 ///
-/// - `allow`: the strings that are technical and will never be translated — a
-///   mime type, a path, a date format.
+/// - `allow`: the names that are technical and will never be translated — a
+///   mime type, a path, a date format, an id.
 /// - `todo`: the strings the user reads and that are still hardcoded.
 ///
 /// The source and the ledger must agree exactly: a string that is not in the
@@ -24,8 +26,8 @@ void main() {
 
   test('the source holds no string that is not in the ledger', () {
     final occurrences = _hardcodedStrings();
-    final allow = ledger['allow']!.toSet();
-    final found = occurrences.keys.toSet().difference(allow);
+    final known = technicalNames();
+    final found = occurrences.keys.toSet().difference(known);
     final expected = ledger['todo']!.toSet();
 
     final slippedIn = found.difference(expected).toList()..sort();
@@ -51,13 +53,13 @@ void main() {
   });
 
   test('the ledger keeps no name that means nothing', () {
-    final occurrences = _hardcodedStrings().keys.toSet();
-    final rotted = ledger['allow']!.toSet().difference(occurrences);
+    final occurrences = _literals().keys.toSet();
+    final rotted = technicalNames().difference(occurrences);
 
     expect(
       rotted,
       isEmpty,
-      reason: 'These strings are kept out of the translation, but they are '
+      reason: 'These names are kept out of the translation, but they are '
           'not written in the source any more.\n'
           '${rotted.join('\n')}',
     );
@@ -92,6 +94,7 @@ void main() {
 
     for (final file in Directory('lib').listSync(recursive: true)) {
       if (file is! File || !file.path.endsWith('.dart')) continue;
+
       final path = file.path.replaceAll('\\', '/');
       if (path.contains('lib/l10n/')) continue;
 
@@ -115,9 +118,14 @@ void main() {
 
 /// The strings of the source that the user reads, with the place they are
 /// written in.
-Map<String, List<String>> _hardcodedStrings() {
-  final found = <String, List<String>>{};
+Map<String, List<String>> _hardcodedStrings() => labelsInSource(_paths());
 
+/// Every string literal of the source, with the place it is written in.
+Map<String, List<String>> _literals() => literalsInSource(_paths());
+
+/// The files of the source, the translation apart.
+List<String> _paths() {
+  final paths = <String>[];
   for (final file in Directory('lib').listSync(recursive: true)) {
     if (file is! File || !file.path.endsWith('.dart')) continue;
 
@@ -126,74 +134,10 @@ Map<String, List<String>> _hardcodedStrings() {
     // strings on purpose.
     if (path.contains('lib/l10n/')) continue;
 
-    final lines = file.readAsLinesSync();
-    // A line that writes to the log is not read by the user.
-    final kept = lines
-        .where((line) => !line.contains('debugPrint'))
-        .map((line) => line.replaceAll(RegExp(r'(?<!:)//.*$'), ''))
-        .toList();
-    final text = kept.join('\n');
-
-    for (final match in _marker.allMatches(text)) {
-      final rest = text.substring(match.end);
-      final literal = _literal.firstMatch(rest);
-      if (literal == null) continue;
-
-      final raw = literal.group(0)!;
-      final value = raw.substring(1, raw.length - 1);
-      if (!_looksLikeProse(value)) continue;
-
-      final line = '\n'.allMatches(text.substring(0, match.end)).length;
-      found.putIfAbsent(value, () => <String>[]).add('$path:${line + 1}');
-    }
+    paths.add(path);
   }
-
-  return found;
+  return paths;
 }
-
-/// Whether a string is a sentence the user reads, and not a name, a path or a
-/// format.
-///
-/// The words inside an interpolation do not count: a string that holds
-/// nothing but a call for the translation is not a sentence the user reads,
-/// it is the sentence of the translation.
-bool _looksLikeProse(String value) {
-  final words = _withoutInterpolations(value)
-      .replaceAll(RegExp(r'\$[a-zA-Z_][a-zA-Z0-9_]*'), ' ');
-
-  return words.contains(' ') && RegExp('[A-Za-z]{3}').hasMatch(words);
-}
-
-/// The text of a string, without the interpolations.
-String _withoutInterpolations(String value) {
-  final buffer = StringBuffer();
-  var depth = 0;
-
-  for (var i = 0; i < value.length; i++) {
-    final char = value[i];
-    if (char == r'$' && i + 1 < value.length && value[i + 1] == '{') {
-      depth++;
-      i++;
-      continue;
-    }
-    if (char == '}' && depth > 0) {
-      depth--;
-      continue;
-    }
-    if (depth == 0) buffer.write(char);
-  }
-
-  return buffer.toString();
-}
-
-/// The places where a string is read by the user.
-final RegExp _marker = RegExp(
-  r'''\b(?:Text|title|label|tooltip|hintText|hint|subtitle|semanticLabel|contentText|labelText|helperText|placeholder|counterText|prefixText|suffixText|errorText|displayName|filterLabel|primaryLabel|secondaryLabel)\s*:\s*|\bText\s*\(\s*''',
-);
-
-/// The string literals of a line, with their quotes. The anchor matters: only
-/// the literal that follows the marker is the one the user reads.
-final RegExp _literal = RegExp(r'''^('([^'\\\n]|\\.)*'|"([^"\\\n]|\\.)*")''');
 
 /// The ledger of the hardcoded strings.
 Map<String, List<String>> _readLedger() {
