@@ -11,6 +11,7 @@ import '../widgets/file_item.dart';
 import '../widgets/folder_item.dart';
 import '../widgets/file_action_dialogs.dart';
 import '../widgets/batch_rename_dialog.dart';
+import '../../core/l10n/filter_labels.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import '../../services/folder_share_service.dart';
 import '../widgets/directory_tab_bar.dart';
@@ -336,7 +337,8 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
     final confirm = await FileActionDialogs.showConfirmDialog(
       context,
       title: AppLocalizations.of(context).deleteSelected,
-      content: 'Are you sure you want to delete ${_selectedPaths.length} selected item(s)? This cannot be undone.',
+      content: AppLocalizations.of(context)
+          .deleteSelectedItemsQuestion(_selectedPaths.length),
     );
 
     if (confirm) {
@@ -393,10 +395,10 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
           final currentName = p.basename(path);
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
-            title: 'Rename',
+            title: AppLocalizations.of(context).actionRename,
             hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
-            actionText: 'Rename',
+            actionText: AppLocalizations.of(context).actionRename,
           );
           if (newName != null && newName.isNotEmpty) {
             await provider.renameFile(path, newName);
@@ -413,8 +415,9 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
           context,
           title: isMulti ? AppLocalizations.of(context).deleteSelected : AppLocalizations.of(context).deleteFile,
           content: isMulti
-              ? 'Are you sure you want to delete ${_selectedPaths.length} selected item(s)? This cannot be undone.'
-              : 'Are you sure you want to delete this item? This cannot be undone.',
+              ? AppLocalizations.of(context)
+                  .deleteSelectedItemsQuestion(_selectedPaths.length)
+              : AppLocalizations.of(context).deleteItemQuestion,
         );
         if (confirm) {
           if (isMulti) {
@@ -470,7 +473,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 onChanged: _onSearchChanged,
                 style: theme.textTheme.titleMedium,
                 decoration: InputDecoration(
-                  hintText: isGlobal ? 'Search globally...' : 'Search in this folder...',
+                  hintText: isGlobal ? AppLocalizations.of(context).searchGloballyHint : AppLocalizations.of(context).searchInFolderHint,
                   hintStyle: TextStyle(color: theme.colorScheme.onSurface.withAlpha(102)),
                   border: InputBorder.none,
                   suffixIcon: _query.isNotEmpty
@@ -491,22 +494,22 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
             ? [
                 IconButton(
                   icon: const Icon(Broken.document_copy),
-                  tooltip: 'Copy',
+                  tooltip: AppLocalizations.of(context).actionCopy,
                   onPressed: _handleCopySelected,
                 ),
                 IconButton(
                   icon: const Icon(Broken.scissor),
-                  tooltip: 'Cut',
+                  tooltip: AppLocalizations.of(context).actionCut,
                   onPressed: _handleCutSelected,
                 ),
                 IconButton(
                   icon: const Icon(Broken.edit),
-                  tooltip: 'Rename',
+                  tooltip: AppLocalizations.of(context).actionRename,
                   onPressed: _handleRenameSelected,
                 ),
                 IconButton(
                   icon: const Icon(Broken.trash, color: Colors.red),
-                  tooltip: 'Delete',
+                  tooltip: AppLocalizations.of(context).actionDelete,
                   onPressed: _handleDeleteSelected,
                 ),
                 PopupMenuButton<String>(
@@ -541,23 +544,23 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                         ],
                       ),
                     ),
-                    const PopupMenuItem<String>(
+                    PopupMenuItem<String>(
                       value: 'share',
                       child: Row(
                         children: [
                           Icon(Icons.share_outlined, size: 20),
                           SizedBox(width: 12),
-                          Text('Share', style: TextStyle(fontWeight: FontWeight.w500)),
+                          Text(AppLocalizations.of(context).actionShare, style: TextStyle(fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
-                    const PopupMenuItem<String>(
+                    PopupMenuItem<String>(
                       value: 'properties',
                       child: Row(
                         children: [
                           Icon(Broken.info_circle, size: 20),
                           SizedBox(width: 12),
-                          Text('Properties', style: TextStyle(fontWeight: FontWeight.w500)),
+                          Text(AppLocalizations.of(context).actionProperties, style: TextStyle(fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -629,7 +632,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                             const SizedBox(width: 6),
                           ],
                           Text(
-                            filter,
+                            filterLabel(AppLocalizations.of(context), filter),
                             style: TextStyle(
                               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                               color: isSelected
@@ -662,17 +665,27 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 ? _buildEmptyState(
                     theme,
                     Broken.search_normal_1,
-                    isGlobal ? 'Search your storage' : 'Search this folder',
                     isGlobal
-                        ? 'Find any file, folder, document or media instantly across your device'
-                        : 'Search files and subfolders in: ${_searchFolderPath!.split("/").last}',
+                        ? AppLocalizations.of(context).searchYourStorage
+                        : AppLocalizations.of(context).searchThisFolder,
+                    isGlobal
+                        ? AppLocalizations.of(context).searchEverythingHint
+                        : AppLocalizations.of(context).searchInFolderNamed(
+                            _searchFolderPath!.split("/").last,
+                          ),
                   )
                 : _results.isEmpty && !_isSearching
                     ? _buildEmptyState(
                         theme,
                         Broken.document_filter,
-                        'No results found',
-                        'We could not find anything matching "$_query" under $_selectedFilter',
+                        AppLocalizations.of(context).noResultsFound,
+                        AppLocalizations.of(context).noMatchForQuery(
+                          _query,
+                          filterLabel(
+                            AppLocalizations.of(context),
+                            _selectedFilter,
+                          ),
+                        ),
                       )
                     : ListView.builder(
                         physics: const BouncingScrollPhysics(),

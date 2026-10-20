@@ -20,7 +20,7 @@ class QuickCategoriesGrid extends StatelessWidget {
     final mediaProvider = Provider.of<MediaProvider>(context, listen: false);
     final map = <String, Map<String, dynamic>>{
       'Images': {
-        'label': 'Images',
+        'label': AppLocalizations.of(context).categoryImages,
         'icon': Broken.image,
         'color': isDark ? Colors.purpleAccent : Colors.purple,
         'count': '${mediaProvider.getCategoryItemCount("Images")}',
@@ -28,7 +28,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.images, onNavigateTab: onNavigateTab))),
       },
       'Videos': {
-        'label': 'Videos',
+        'label': AppLocalizations.of(context).categoryVideos,
         'icon': Broken.video,
         'color': isDark ? Colors.redAccent : const Color(0xFFD32F2F),
         'count': '${mediaProvider.getCategoryItemCount("Videos")}',
@@ -36,7 +36,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.videos, onNavigateTab: onNavigateTab))),
       },
       'Audio': {
-        'label': 'Audio',
+        'label': AppLocalizations.of(context).categoryAudio,
         'icon': Broken.music,
         'color': isDark ? Colors.orangeAccent : const Color(0xFFE65100),
         'count': '${mediaProvider.getCategoryItemCount("Audio")}',
@@ -44,7 +44,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.audios, onNavigateTab: onNavigateTab))),
       },
       'Documents': {
-        'label': 'Documents',
+        'label': AppLocalizations.of(context).categoryDocuments,
         'icon': Broken.document,
         'color': isDark ? Colors.blueAccent : const Color(0xFF1976D2),
         'count': '${mediaProvider.getCategoryItemCount("Documents")}',
@@ -52,7 +52,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.documents, onNavigateTab: onNavigateTab))),
       },
       'Archives': {
-        'label': 'Archives',
+        'label': AppLocalizations.of(context).categoryArchives,
         'icon': Broken.archive,
         'color': isDark ? Colors.tealAccent : const Color(0xFF00796B),
         'count': '${mediaProvider.getCategoryItemCount("Archives")}',
@@ -60,7 +60,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.archives, onNavigateTab: onNavigateTab))),
       },
       'Downloads': {
-        'label': 'Downloads',
+        'label': AppLocalizations.of(context).categoryDownloads,
         'icon': Broken.document_download,
         'color': isDark ? Colors.greenAccent : const Color(0xFF2E7D32),
         'count': '${mediaProvider.getCategoryItemCount("Downloads")}',
@@ -68,7 +68,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.downloads, onNavigateTab: onNavigateTab))),
       },
       'APKs': {
-        'label': 'APKs',
+        'label': AppLocalizations.of(context).categoryApks,
         'icon': Broken.box,
         'color': isDark ? Colors.amber : const Color(0xFFF57C00),
         'count': '${mediaProvider.getCategoryItemCount("APKs")}',
@@ -76,7 +76,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.apks, onNavigateTab: onNavigateTab))),
       },
       'Screenshots': {
-        'label': 'Screenshots',
+        'label': AppLocalizations.of(context).categoryScreenshots,
         'icon': Broken.mobile,
         'color': isDark ? Colors.pinkAccent : const Color(0xFFC2185B),
         'count': '${mediaProvider.getCategoryItemCount("Screenshots")}',
@@ -84,10 +84,10 @@ class QuickCategoriesGrid extends StatelessWidget {
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => MediaCategoryScreen(mediaType: MediaType.screenshots, onNavigateTab: onNavigateTab))),
       },
       'Apps': {
-        'label': 'Apps',
+        'label': AppLocalizations.of(context).categoryApps,
         'icon': Broken.mobile,
         'color': isDark ? Colors.lightGreenAccent : const Color(0xFF4CAF50),
-        'count': 'Manager',
+        'count': AppLocalizations.of(context).categoryManager,
         'isCustom': false,
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AppManagerScreen())),
       },
@@ -95,15 +95,15 @@ class QuickCategoriesGrid extends StatelessWidget {
         'label': AppLocalizations.of(context).recycleBin,
         'icon': Broken.trash,
         'color': isDark ? Colors.redAccent : const Color(0xFFC62828),
-        'count': 'Bin',
+        'count': AppLocalizations.of(context).categoryBin,
         'isCustom': false,
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RecycleBinScreen())),
       },
       'Settings': {
-        'label': 'Settings',
+        'label': AppLocalizations.of(context).categorySettings,
         'icon': Broken.setting_2,
         'color': isDark ? Colors.blueGrey.shade300 : Colors.blueGrey,
-        'count': 'Configure',
+        'count': AppLocalizations.of(context).categoryConfigure,
         'isCustom': false,
         'action': () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsScreen())),
       },
@@ -114,7 +114,7 @@ class QuickCategoriesGrid extends StatelessWidget {
         'label': cs.label,
         'icon': cs.isDirectory ? Broken.folder : Broken.document,
         'color': isDark ? Colors.cyanAccent : Colors.cyan,
-        'count': cs.isDirectory ? 'Folder' : 'File',
+        'count': cs.isDirectory ? AppLocalizations.of(context).itemFolder : AppLocalizations.of(context).itemFile,
         'isCustom': true,
         'path': cs.path,
         'action': () {
@@ -184,7 +184,7 @@ class QuickCategoriesGrid extends StatelessWidget {
                       Icon(Broken.setting_2, size: 16, color: theme.colorScheme.primary),
                       const SizedBox(width: 4),
                       Text(
-                        'Customize',
+                        AppLocalizations.of(context).actionCustomize,
                         style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.primary, fontWeight: FontWeight.w600),
                       ),
                     ],
@@ -311,7 +311,7 @@ class _CustomizeCategoriesSheet extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(AppLocalizations.of(context).customizeShortcuts, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
-                      TextButton(onPressed: () => Navigator.pop(context), child: const Text('Done', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+                      TextButton(onPressed: () => Navigator.pop(context), child: Text(AppLocalizations.of(context).actionDone, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
                     ],
                   ),
                 ),
@@ -407,23 +407,24 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
   bool _isExpanded = false;
 
   List<String> _getDefaultPaths(String category) {
+    final l10n = AppLocalizations.of(context);
     switch (category) {
       case 'Images':
-        return ['Device Gallery (Auto)', '/storage/emulated/0/DCIM', '/storage/emulated/0/Pictures'];
+        return [l10n.deviceGalleryAuto, '/storage/emulated/0/DCIM', '/storage/emulated/0/Pictures'];
       case 'Videos':
-        return ['Device Gallery (Auto)', '/storage/emulated/0/DCIM', '/storage/emulated/0/Movies'];
+        return [l10n.deviceGalleryAuto, '/storage/emulated/0/DCIM', '/storage/emulated/0/Movies'];
       case 'Audio':
-        return ['Device Audio Library (Auto)', '/storage/emulated/0/Music'];
+        return [l10n.deviceAudioLibraryAuto, '/storage/emulated/0/Music'];
       case 'Documents':
-        return ['/storage/emulated/0/Documents', 'Internal Storage (All Folders Scanned)'];
+        return ['/storage/emulated/0/Documents', l10n.internalStorageAllFolders];
       case 'Archives':
-        return ['/storage/emulated/0/Download', 'Internal Storage (All Folders Scanned)'];
+        return ['/storage/emulated/0/Download', l10n.internalStorageAllFolders];
       case 'Downloads':
         return ['/storage/emulated/0/Download', '/storage/emulated/0/Downloads'];
       case 'APKs':
-        return ['/storage/emulated/0/Download', 'Internal Storage (All Folders Scanned)'];
+        return ['/storage/emulated/0/Download', l10n.internalStorageAllFolders];
       case 'Screenshots':
-        return ['Device Gallery (Screenshots)', '/storage/emulated/0/DCIM/Screenshots', '/storage/emulated/0/Pictures/Screenshots'];
+        return [l10n.deviceGalleryScreenshots, '/storage/emulated/0/DCIM/Screenshots', '/storage/emulated/0/Pictures/Screenshots'];
       default:
         return [];
     }

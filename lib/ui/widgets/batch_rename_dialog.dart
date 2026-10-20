@@ -375,7 +375,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                           Expanded(
                             flex: 6,
                             child: Text(
-                              previewName.isEmpty ? '(empty)' : previewName,
+                              previewName.isEmpty ? AppLocalizations.of(context).emptyLabel : previewName,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: previewName.isEmpty
@@ -488,7 +488,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                   child: TextField(
                     controller: _extensionController,
                     decoration: InputDecoration(
-                      labelText: 'Extension',
+                      labelText: AppLocalizations.of(context).propertyExtension,
                       hintText: 'txt',
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -516,7 +516,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             controller: _paddingController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: 'Padding',
+                              labelText: AppLocalizations.of(context).batchRenamePadding,
                               hintText: 'e.g. 3',
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -563,7 +563,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             controller: _replaceController,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context).replaceWith,
-                              hintText: 'Replacement',
+                              hintText: AppLocalizations.of(context).batchRenameReplacement,
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -602,7 +602,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             : Icons.keyboard_arrow_down_rounded,
                         size: 20,
                       ),
-                      label: Text(_isMoreExpanded ? 'Less Options' : 'More Options'),
+                      label: Text(_isMoreExpanded ? AppLocalizations.of(context).lessOptions : AppLocalizations.of(context).moreOptions),
                     ),
                   ],
                 ),
@@ -613,7 +613,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                     OutlinedButton.icon(
                       onPressed: _showFullPreviewSheet,
                       icon: const Icon(Broken.eye, size: 16),
-                      label: const Text('Preview'),
+                      label: Text(AppLocalizations.of(context).actionPreview),
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -624,7 +624,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                     const Spacer(),
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text('Cancel'),
+                      child: Text(AppLocalizations.of(context).actionCancel),
                     ),
                     const SizedBox(width: 4),
                     ElevatedButton(
@@ -635,7 +635,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text('OK'),
+                      child: Text(AppLocalizations.of(context).actionOk),
                     ),
                   ],
                 ),
@@ -766,7 +766,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
-                                      previewName.isEmpty ? '(empty)' : previewName,
+                                      previewName.isEmpty ? AppLocalizations.of(context).emptyLabel : previewName,
                                       style: theme.textTheme.titleMedium?.copyWith(
                                         fontWeight: FontWeight.bold,
                                         color: previewName.isEmpty

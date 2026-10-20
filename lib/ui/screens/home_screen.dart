@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      barrierLabel: 'Exit Confirmation',
+      barrierLabel: AppLocalizations.of(context).exitConfirmationLabel,
       barrierColor: Colors.black.withValues(alpha: 0.5),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, anim1, anim2) {
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     ),
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel', style: TextStyle(fontWeight: FontWeight.bold)),
+                    child: Text(AppLocalizations.of(context).actionCancel, style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                       elevation: 0,
                     ),
                     onPressed: () => SystemNavigator.pop(),
-                    child: const Text('Exit', style: TextStyle(fontWeight: FontWeight.bold)),
+                    child: Text(AppLocalizations.of(context).actionExit, style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
@@ -244,16 +244,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                   }
                   setState(() => _currentIndex = index);
                 },
-                destinations: const [
+                destinations: [
                   NavigationDestination(
                     icon: NfileIcon(Broken.home),
                     selectedIcon: NfileIcon(Broken.home_1),
-                    label: 'Home',
+                    label: AppLocalizations.of(context).actionHome,
                   ),
                   NavigationDestination(
                     icon: NfileIcon(Broken.folder),
                     selectedIcon: NfileIcon(Broken.folder_open),
-                    label: 'Browse',
+                    label: AppLocalizations.of(context).actionBrowse,
                   ),
                 ],
               )

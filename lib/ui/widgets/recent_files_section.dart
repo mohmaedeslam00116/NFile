@@ -13,16 +13,35 @@ class RecentFilesSection extends StatelessWidget {
   final Function(int)? onNavigateTab;
   const RecentFilesSection({super.key, this.onNavigateTab});
 
-  String _getRelativeTime(DateTime time) {
+  String _getRelativeTime(BuildContext context, DateTime time) {
+    final l10n = AppLocalizations.of(context);
     final now = DateTime.now();
     final diff = now.difference(time);
-    if (diff.inSeconds < 60) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    if (diff.inDays == 1) return 'Yesterday';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
-    final months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return '${time.day} ${months[time.month - 1]}';
+    if (diff.inSeconds < 60) return l10n.timeJustNow;
+    if (diff.inMinutes < 60) return l10n.timeMinutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l10n.timeHoursAgo(diff.inHours);
+    if (diff.inDays == 1) return l10n.timeYesterday;
+    if (diff.inDays < 7) return l10n.timeDaysAgo(diff.inDays);
+    return l10n.dateDayMonth(time.day, _monthName(context, time.month));
+  }
+
+  /// The name of a month, in the language of the application.
+  String _monthName(BuildContext context, int month) {
+    final l10n = AppLocalizations.of(context);
+    return switch (month) {
+      1 => l10n.monthJanuary,
+      2 => l10n.monthFebruary,
+      3 => l10n.monthMarch,
+      4 => l10n.monthApril,
+      5 => l10n.monthMay,
+      6 => l10n.monthJune,
+      7 => l10n.monthJuly,
+      8 => l10n.monthAugust,
+      9 => l10n.monthSeptember,
+      10 => l10n.monthOctober,
+      11 => l10n.monthNovember,
+      _ => l10n.monthDecember,
+    };
   }
 
   @override
@@ -211,11 +230,11 @@ class RecentFilesSection extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          isFolder ? 'Folder' : FileUtils.formatBytes(file.size, 1),
+                          isFolder ? AppLocalizations.of(context).itemFolder : FileUtils.formatBytes(file.size, 1),
                           style: theme.textTheme.bodySmall?.copyWith(fontSize: 10, color: theme.textTheme.bodySmall?.color?.withAlpha(153)),
                         ),
                         Text(
-                          _getRelativeTime(file.modified),
+                          _getRelativeTime(context, file.modified),
                           style: theme.textTheme.bodySmall?.copyWith(
                             fontSize: 10,
                             color: theme.colorScheme.primary.withAlpha(204),

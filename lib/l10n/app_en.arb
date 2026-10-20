@@ -117,7 +117,7 @@
   "cannotCopyFolderIntoItself": "Cannot copy a folder inside itself or same location",
   "copiedSuccessfully": "Copied {name} successfully",
   "failedToCopyItem": "Failed to copy item: {error}",
-  "sdCard": "sdCard",
+  "sdCard": "SD Card",
   "transferFailed": "Transfer failed: {error}",
   "movedItemsSuccessfully": "Moved items successfully",
   "copiedItemsSuccessfully": "Copied items successfully",
@@ -251,6 +251,84 @@
   "archivesOnlyHint": "ZIPs, 7Zs, RARs, and other compressed assets",
   "filterFilesByType": "Filter Files By Type",
   "filterFilesHint": "Select a category to display matching files only",
+  "filterAll": "All",
+  "filterFolders": "Folders",
+  "deleteSelectedItemsQuestion": "Are you sure you want to delete {count} selected item(s)? This cannot be undone.",
+  "deleteItemsQuestion": "Are you sure you want to delete {count} items? This cannot be undone.",
+  "deleteItemQuestion": "Are you sure you want to delete this item? This cannot be undone.",
+  "cannotCutPasteSameFolder": "Cannot cut and paste a file into the same folder.",
+  "shareAppMessage": "Check out NFile, a beautiful offline file manager and media hub: {url}",
+  "deviceGalleryAuto": "Device Gallery (Auto)",
+  "deviceAudioLibraryAuto": "Device Audio Library (Auto)",
+  "deviceGalleryScreenshots": "Device Gallery (Screenshots)",
+  "internalStorageAllFolders": "Internal Storage (All Folders Scanned)",
+  "searchYourStorage": "Search your storage",
+  "searchThisFolder": "Search this folder",
+  "searchEverythingHint": "Find any file, folder, document or media instantly across your device",
+  "searchInFolderNamed": "Search files and subfolders in: {folder}",
+  "noMatchForQuery": "We could not find anything matching \"{query}\" under {filter}",
+  "rootDirectory": "Root",
+  "copyFileSuffix": "(copy)",
+  "tarFormatsMemoryWarning": "TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.",
+  "actionApply": "Apply",
+  "actionCreate": "Create",
+  "actionMore": "More",
+  "actionOk": "OK",
+  "actionPinToTop": "Pin to Top",
+  "actionUnpinFromTop": "Unpin from Top",
+  "actionPreview": "Preview",
+  "actionReplace": "Replace",
+  "actionSkip": "Skip",
+  "chooseAnyDestination": "Choose any destination",
+  "customLocation": "Custom Location",
+  "selectCustomLocation": "Select Custom Location...",
+  "propertyContains": "Contains",
+  "propertyExtension": "Extension",
+  "propertyModified": "Modified",
+  "propertyName": "Name",
+  "propertyPath": "Path",
+  "propertyPermissions": "Permissions",
+  "permissionRead": "Read",
+  "permissionWrite": "Write",
+  "propertySize": "Size",
+  "propertyType": "Type",
+  "propertyFolderDirectory": "Folder / Directory",
+  "itemFiles": "Files",
+  "fileWithExtension": "File ({extension})",
+  "fileLongPressHint": "File (Long press to Open with)",
+  "compressionFast": "Fast",
+  "compressionMaximum": "Maximum",
+  "compressionNone": "None (Store)",
+  "compressionStandard": "Standard",
+  "batchRenamePadding": "Padding",
+  "batchRenameReplacement": "Replacement",
+  "lessOptions": "Less Options",
+  "conflictNewer": "Newer",
+  "sortNameAscending": "Name (A-Z)",
+  "sortNameDescending": "Name (Z-A)",
+  "sortNewest": "Newest",
+  "sortOldest": "Oldest",
+  "sortSizeLarge": "Size (Large)",
+  "sortSizeSmall": "Size (Small)",
+  "showFolders": "Show Folders",
+  "hideFolders": "Hide Folders",
+  "selectFilesAndFolders": "Select Files & Folders",
+  "selectAndPinFolders": "Select & Pin Folders",
+  "pinnedItemsToTop": "Pinned selected item(s) to top",
+  "unpinnedItems": "Unpinned selected item(s)",
+  "emptyLabel": "(empty)",
+  "runInBackground": "Background",
+  "processingFiles": "Processing...",
+  "copyingFiles": "Copying Files...",
+  "movingFiles": "Moving Files...",
+  "calculating": "calculating...",
+  "searchInThisDirectory": "Search files and subfolders in this directory",
+  "countItemsSelected": "{count, plural, =1{1 item selected} other{{count} items selected}}",
+  "sizeWithBytes": "{size} ({bytes} bytes)",
+  "containsFoldersAndFiles": "{folders, plural, =0{no subfolders} =1{1 subfolder} other{{folders} subfolders}}, {files, plural, =0{no files} =1{1 file} other{{files} files}}",
+  "processedOfTotal": "{processed} of {total}",
+  "speedMegabytesPerSecond": "{speed} MB/s",
+  "timeRemaining": "{time} remaining",
   "processingItem": "Processing item {current} of {total}",
   "transferSpeed": "Transfer Speed",
   "estimatedTime": "Est. Time",
@@ -705,6 +783,75 @@
   "noBackupsFound": "No backups found",
   "downloadingFile": "Downloading: {file}",
   "sentBytes": "Sent: {amount}",
+  "exitConfirmationLabel": "Exit Confirmation",
+  "actionCancel": "Cancel",
+  "actionExit": "Exit",
+  "actionHome": "Home",
+  "actionBrowse": "Browse",
+  "drawerNavigation": "Navigation",
+  "customizationAndSettings": "Customization & Settings",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "categoryImages": "Images",
+  "categoryVideos": "Videos",
+  "categoryAudio": "Audio",
+  "categoryDocuments": "Documents",
+  "categoryArchives": "Archives",
+  "categoryDownloads": "Downloads",
+  "categoryApks": "APKs",
+  "categoryScreenshots": "Screenshots",
+  "categoryApps": "Apps",
+  "categoryManager": "Manager",
+  "categoryBin": "Bin",
+  "categorySettings": "Settings",
+  "categoryConfigure": "Configure",
+  "itemFolder": "Folder",
+  "itemFile": "File",
+  "actionCustomize": "Customize",
+  "actionDone": "Done",
+  "actionRename": "Rename",
+  "searchGloballyHint": "Search globally...",
+  "searchInFolderHint": "Search in this folder...",
+  "actionCopy": "Copy",
+  "actionCut": "Cut",
+  "actionDelete": "Delete",
+  "actionShare": "Share",
+  "actionProperties": "Properties",
+  "allRecentFiles": "All Recent Files",
+  "actionRefresh": "Refresh",
+  "deleteItemLabel": "Delete Item",
+  "closeSearch": "Close Search",
+  "searchInPane": "Search in Pane",
+  "searchPlaceholder": "Search...",
+  "unpinTab": "Unpin Tab",
+  "pinTab": "Pin Tab",
+  "openWithAlways": "Always",
+  "actionArchive": "Archive",
+  "actionExtract": "Extract",
+  "timeJustNow": "Just now",
+  "timeYesterday": "Yesterday",
+  "timeMinutesAgo": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+  "timeHoursAgo": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "timeDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "appTagline": "NFile - Beautiful File Manager",
+  "localFolder": "Local Folder",
+  "unknownArtist": "Unknown Artist",
+  "sdCardOrUsb": "SD Card / USB",
+  "connecting": "Connecting...",
+  "starting": "Starting...",
+  "dateDayMonth": "{day} {month}",
+  "monthJanuary": "January",
+  "monthFebruary": "February",
+  "monthMarch": "March",
+  "monthApril": "April",
+  "monthMay": "May",
+  "monthJune": "June",
+  "monthJuly": "July",
+  "monthAugust": "August",
+  "monthSeptember": "September",
+  "monthOctober": "October",
+  "monthNovember": "November",
+  "monthDecember": "December",
   "@addSelected": {
     "placeholders": {
       "count": {
@@ -952,6 +1099,16 @@
   "@cutNameToClipboard": {
     "placeholders": {
       "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateDayMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "month": {
         "type": "String"
       }
     }
@@ -1741,6 +1898,102 @@
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "@deleteSelectedItemsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteItemsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@shareAppMessage": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "@searchInFolderNamed": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@noMatchForQuery": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileWithExtension": {
+    "placeholders": {
+      "extension": {
+        "type": "String"
+      }
+    }
+  },
+  "@countItemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@sizeWithBytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "bytes": {
+        "type": "int"
+      }
+    }
+  },
+  "@containsFoldersAndFiles": {
+    "placeholders": {
+      "folders": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      }
+    }
+  },
+  "@processedOfTotal": {
+    "placeholders": {
+      "processed": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@speedMegabytesPerSecond": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "@timeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
       }
     }
   }

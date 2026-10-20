@@ -42,7 +42,7 @@ class SelectionActionBar extends StatelessWidget {
           children: [
             _ActionButton(
               icon: Broken.document_copy,
-              label: 'Copy',
+              label: AppLocalizations.of(context).actionCopy,
               hideLabel: provider.hideActionText,
               onTap: () {
                 provider.copySelected();
@@ -53,7 +53,7 @@ class SelectionActionBar extends StatelessWidget {
             ),
             _ActionButton(
               icon: Broken.scissor,
-              label: 'Cut',
+              label: AppLocalizations.of(context).actionCut,
               hideLabel: provider.hideActionText,
               onTap: () {
                 provider.cutSelected();
@@ -64,14 +64,15 @@ class SelectionActionBar extends StatelessWidget {
             ),
             _ActionButton(
               icon: Broken.trash,
-              label: 'Delete',
+              label: AppLocalizations.of(context).actionDelete,
               color: Colors.redAccent,
               hideLabel: provider.hideActionText,
               onTap: () async {
                 final confirm = await FileActionDialogs.showConfirmDialog(
                   context,
                   title: AppLocalizations.of(context).deleteSelected,
-                  content: 'Are you sure you want to delete $selectedCount item(s)? This cannot be undone.',
+                  content: AppLocalizations.of(context)
+                      .deleteSelectedItemsQuestion(selectedCount),
                 );
                 if (confirm) {
                   await provider.deleteSelected();
@@ -80,7 +81,7 @@ class SelectionActionBar extends StatelessWidget {
             ),
             _ActionButton(
               icon: Broken.edit,
-              label: 'Rename',
+              label: AppLocalizations.of(context).actionRename,
               hideLabel: provider.hideActionText,
               onTap: () async {
                 if (selectedCount == 1) {
@@ -88,10 +89,10 @@ class SelectionActionBar extends StatelessWidget {
                   final currentName = p.basename(path);
                   final newName = await FileActionDialogs.showTextInputDialog(
                     context,
-                    title: 'Rename',
+                    title: AppLocalizations.of(context).actionRename,
                     hint: AppLocalizations.of(context).enterNewName,
                     initialValue: currentName,
-                    actionText: 'Rename',
+                    actionText: AppLocalizations.of(context).actionRename,
                   );
                   if (newName != null && newName.isNotEmpty) {
                     await provider.renameFile(path, newName);
@@ -104,7 +105,7 @@ class SelectionActionBar extends StatelessWidget {
             ),
             _ActionButton(
               icon: Broken.info_circle,
-              label: 'Properties',
+              label: AppLocalizations.of(context).actionProperties,
               hideLabel: provider.hideActionText,
               onTap: () => _showPropertiesModal(context, provider),
             ),
@@ -115,7 +116,7 @@ class SelectionActionBar extends StatelessWidget {
                   const Icon(Broken.more, size: 24),
                   if (!provider.hideActionText) ...[
                     const SizedBox(height: 4),
-                    const Text('More', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
+                    Text(AppLocalizations.of(context).actionMore, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
                   ],
                 ],
               ),
@@ -171,7 +172,7 @@ class SelectionActionBar extends StatelessWidget {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(allPinned ? 'Unpinned selected item(s)' : 'Pinned selected item(s) to top'),
+                        content: Text(allPinned ? AppLocalizations.of(context).unpinnedItems : AppLocalizations.of(context).pinnedItemsToTop),
                         behavior: SnackBarBehavior.floating,
                       ),
                     );
@@ -182,13 +183,13 @@ class SelectionActionBar extends StatelessWidget {
                 final selected = provider.selectedPaths.toList();
                 final allPinned = selected.isNotEmpty && selected.every((p) => PinService.isPinned(p));
                 return [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'archive',
                     child: Row(
                       children: [
                         Icon(Broken.box_add, size: 20),
                         SizedBox(width: 12),
-                        Text('Archive', style: TextStyle(fontWeight: FontWeight.w500)),
+                        Text(AppLocalizations.of(context).actionArchive, style: TextStyle(fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
@@ -203,13 +204,13 @@ class SelectionActionBar extends StatelessWidget {
                         ],
                       ),
                     ),
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'share',
                     child: Row(
                       children: [
                         Icon(Icons.share_outlined, size: 20),
                         SizedBox(width: 12),
-                        Text('Share', style: TextStyle(fontWeight: FontWeight.w500)),
+                        Text(AppLocalizations.of(context).actionShare, style: TextStyle(fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
@@ -233,7 +234,7 @@ class SelectionActionBar extends StatelessWidget {
                           color: allPinned ? Colors.orange : null,
                         ),
                         const SizedBox(width: 12),
-                        Text(allPinned ? 'Unpin from Top' : 'Pin to Top', style: const TextStyle(fontWeight: FontWeight.w500)),
+                        Text(allPinned ? AppLocalizations.of(context).actionUnpinFromTop : AppLocalizations.of(context).actionPinToTop, style: const TextStyle(fontWeight: FontWeight.w500)),
                       ],
                     ),
                   ),
@@ -275,6 +276,7 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
   DateTime? _lastModified;
   String _permissions = '';
   String _mimeType = '';
+  bool _isFolder = false;
 
   @override
   void initState() {
@@ -299,7 +301,12 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
             if (widget.selectedPaths.length == 1) {
               final stat = dir.statSync();
               _lastModified = stat.modified;
-              _permissions = '${(stat.mode & 0x100) != 0 ? "Read" : ""}${(stat.mode & 0x80) != 0 ? " / Write" : ""}';
+              _permissions = [
+                if ((stat.mode & 0x100) != 0)
+                  AppLocalizations.of(context).permissionRead,
+                if ((stat.mode & 0x80) != 0)
+                  AppLocalizations.of(context).permissionWrite,
+              ].join(' / ');
             }
             try {
               await for (final entity in dir.list(recursive: true, followLinks: false)) {
@@ -320,7 +327,12 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
             if (widget.selectedPaths.length == 1) {
               final stat = f.statSync();
               _lastModified = stat.modified;
-              _permissions = '${(stat.mode & 0x100) != 0 ? "Read" : ""}${(stat.mode & 0x80) != 0 ? " / Write" : ""}';
+              _permissions = [
+                if ((stat.mode & 0x100) != 0)
+                  AppLocalizations.of(context).permissionRead,
+                if ((stat.mode & 0x80) != 0)
+                  AppLocalizations.of(context).permissionWrite,
+              ].join(' / ');
             }
           }
         } else {
@@ -351,10 +363,14 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
     if (widget.selectedPaths.length == 1) {
       final pStr = widget.selectedPaths.first;
       final ext = pStr.contains('.') ? pStr.substring(pStr.lastIndexOf('.')).toLowerCase() : '';
+      final l10n = AppLocalizations.of(context);
       if (folders > 0) {
-        _mimeType = 'Folder / Directory';
+        _isFolder = true;
+        _mimeType = l10n.propertyFolderDirectory;
       } else {
-        _mimeType = ext.isNotEmpty ? 'File ($ext)' : 'File';
+        _mimeType = ext.isNotEmpty
+            ? l10n.fileWithExtension(ext)
+            : l10n.itemFile;
       }
     }
 
@@ -373,14 +389,16 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
     final theme = Theme.of(context);
     final count = widget.selectedPaths.length;
     final isSingle = count == 1;
-    final nameDisplay = isSingle ? p.basename(widget.selectedPaths.first) : '$count items selected';
+    final nameDisplay = isSingle
+        ? p.basename(widget.selectedPaths.first)
+        : AppLocalizations.of(context).countItemsSelected(count);
 
     return AlertDialog(
       title: Row(
         children: [
           Icon(Broken.info_circle, color: theme.colorScheme.primary, size: 28),
           const SizedBox(width: 12),
-          const Text('Properties', style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(AppLocalizations.of(context).actionProperties, style: TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -402,29 +420,38 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (isSingle) ...[
-                    _CopyablePropertyRow(label: 'Name', value: nameDisplay),
-                    _CopyablePropertyRow(label: 'Path', value: widget.selectedPaths.first),
+                    _CopyablePropertyRow(label: AppLocalizations.of(context).propertyName, value: nameDisplay),
+                    _CopyablePropertyRow(label: AppLocalizations.of(context).propertyPath, value: widget.selectedPaths.first),
                     _CopyablePropertyRow(
-                      label: 'Size',
-                      value: '${FileUtils.formatBytes(_totalBytes, 2)} ($_totalBytes bytes)',
+                      label: AppLocalizations.of(context).propertySize,
+                      value: AppLocalizations.of(context)
+                          .sizeWithBytes(
+                            FileUtils.formatBytes(_totalBytes, 2),
+                            _totalBytes,
+                          ),
                     ),
-                    if (_mimeType == 'Folder / Directory')
+                    if (_isFolder)
                       _CopyablePropertyRow(
-                        label: 'Contains',
-                        value: '${_folderCount - 1} subfolder(s), $_fileCount file(s)',
+                        label: AppLocalizations.of(context).propertyContains,
+                        value: AppLocalizations.of(context)
+                            .containsFoldersAndFiles(_folderCount - 1, _fileCount),
                       ),
                     if (_lastModified != null)
-                      _CopyablePropertyRow(label: 'Modified', value: FileUtils.formatDate(_lastModified!)),
-                    if (_mimeType.isNotEmpty) _CopyablePropertyRow(label: 'Type', value: _mimeType),
-                    if (_permissions.isNotEmpty) _CopyablePropertyRow(label: 'Permissions', value: _permissions),
+                      _CopyablePropertyRow(label: AppLocalizations.of(context).propertyModified, value: FileUtils.formatDate(_lastModified!)),
+                    if (_mimeType.isNotEmpty) _CopyablePropertyRow(label: AppLocalizations.of(context).propertyType, value: _mimeType),
+                    if (_permissions.isNotEmpty) _CopyablePropertyRow(label: AppLocalizations.of(context).propertyPermissions, value: _permissions),
                   ] else ...[
                     _CopyablePropertyRow(
                       label: AppLocalizations.of(context).itemsSelected,
-                      value: '$count items ($_folderCount folder(s), $_fileCount file(s))',
+                      value: '${AppLocalizations.of(context).countItems(count)} (${AppLocalizations.of(context).containsFoldersAndFiles(_folderCount, _fileCount)})',
                     ),
                     _CopyablePropertyRow(
                       label: AppLocalizations.of(context).totalSize,
-                      value: '${FileUtils.formatBytes(_totalBytes, 2)} ($_totalBytes bytes)',
+                      value: AppLocalizations.of(context)
+                          .sizeWithBytes(
+                            FileUtils.formatBytes(_totalBytes, 2),
+                            _totalBytes,
+                          ),
                     ),
                     const SizedBox(height: 12),
                     Text(AppLocalizations.of(context).selectedPaths, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
@@ -462,7 +489,7 @@ class PropertiesModalDialogState extends State<PropertiesModalDialog> {
         FilledButton(
           onPressed: () => Navigator.pop(context),
           style: FilledButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-          child: const Text('Done'),
+          child: Text(AppLocalizations.of(context).actionDone),
         ),
       ],
     );

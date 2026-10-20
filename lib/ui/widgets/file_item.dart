@@ -161,19 +161,19 @@ class FileItem extends StatelessWidget {
                           child: Row(children: [NfileIcon(Broken.folder_open, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).showInLocation, style: TextStyle(fontWeight: FontWeight.w500))]),
                         ),
                       if (showShowInLocationOption)
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: 'share',
-                          child: Row(children: [Icon(Icons.share_outlined, size: 20), SizedBox(width: 12), Text('Share', style: TextStyle(fontWeight: FontWeight.w500))]),
+                          child: Row(children: [Icon(Icons.share_outlined, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionShare, style: TextStyle(fontWeight: FontWeight.w500))]),
                         ),
                       if (isArchive)
-                        const PopupMenuItem(value: 'extract', child: Row(children: [NfileIcon(Broken.archive, size: 20), SizedBox(width: 12), Text('Extract', style: TextStyle(fontWeight: FontWeight.w500))])),
-                      const PopupMenuItem(value: 'archive', child: Row(children: [NfileIcon(Broken.box_add, size: 20), SizedBox(width: 12), Text('Archive', style: TextStyle(fontWeight: FontWeight.w500))])),
-                      const PopupMenuItem(value: 'copy', child: Row(children: [NfileIcon(Broken.document_copy, size: 20), SizedBox(width: 12), Text('Copy', style: TextStyle(fontWeight: FontWeight.w500))])),
-                      const PopupMenuItem(value: 'cut', child: Row(children: [NfileIcon(Broken.scissor, size: 20), SizedBox(width: 12), Text('Cut', style: TextStyle(fontWeight: FontWeight.w500))])),
-                      const PopupMenuItem(value: 'rename', child: Row(children: [NfileIcon(Broken.edit, size: 20), SizedBox(width: 12), Text('Rename', style: TextStyle(fontWeight: FontWeight.w500))])),
-                      const PopupMenuItem(
+                        PopupMenuItem(value: 'extract', child: Row(children: [NfileIcon(Broken.archive, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionExtract, style: TextStyle(fontWeight: FontWeight.w500))])),
+                      PopupMenuItem(value: 'archive', child: Row(children: [NfileIcon(Broken.box_add, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionArchive, style: TextStyle(fontWeight: FontWeight.w500))])),
+                      PopupMenuItem(value: 'copy', child: Row(children: [NfileIcon(Broken.document_copy, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionCopy, style: TextStyle(fontWeight: FontWeight.w500))])),
+                      PopupMenuItem(value: 'cut', child: Row(children: [NfileIcon(Broken.scissor, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionCut, style: TextStyle(fontWeight: FontWeight.w500))])),
+                      PopupMenuItem(value: 'rename', child: Row(children: [NfileIcon(Broken.edit, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).actionRename, style: TextStyle(fontWeight: FontWeight.w500))])),
+                      PopupMenuItem(
                         value: 'delete',
-                        child: Row(children: [NfileIcon(Broken.trash, size: 20, color: Colors.redAccent), SizedBox(width: 12), Text('Delete', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w500))]),
+                        child: Row(children: [NfileIcon(Broken.trash, size: 20, color: Colors.redAccent), SizedBox(width: 12), Text(AppLocalizations.of(context).actionDelete, style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w500))]),
                       ),
                     ];
                   },
@@ -498,7 +498,7 @@ class _TrailingInfoWidget extends StatelessWidget {
             final count = snapshot.data;
             String label = '...';
             if (count != null && count >= 0) {
-              label = count == 1 ? '1 item' : '$count items';
+              label = AppLocalizations.of(context).countItems(count);
             }
             return Padding(
               padding: const EdgeInsets.only(left: 8.0),

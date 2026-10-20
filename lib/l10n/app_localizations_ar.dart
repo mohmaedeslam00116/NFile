@@ -570,7 +570,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get noResultsFound => 'لم يُعثر على نتائج';
+  String get noResultsFound => 'لا توجد نتائج';
 
   @override
   String nothingMatchesSearch(String query, String filter) {
@@ -895,6 +895,290 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get filterFilesHint => 'اختر فئة لعرض الملفات المطابقة فقط';
+
+  @override
+  String get filterAll => 'الكل';
+
+  @override
+  String get filterFolders => 'المجلدات';
+
+  @override
+  String deleteSelectedItemsQuestion(int count) {
+    return 'هل تريد بالتأكيد حذف $count عنصرًا محددًا؟ لا يمكن التراجع عن هذا الإجراء.';
+  }
+
+  @override
+  String deleteItemsQuestion(int count) {
+    return 'هل تريد بالتأكيد حذف $count عنصرًا؟ لا يمكن التراجع عن هذا الإجراء.';
+  }
+
+  @override
+  String get deleteItemQuestion =>
+      'هل تريد بالتأكيد حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get cannotCutPasteSameFolder =>
+      'لا يمكن قص الملف ولصقه في المجلد نفسه.';
+
+  @override
+  String shareAppMessage(String url) {
+    return 'جرّب NFile، مدير ملفات ومركز وسائط جميل يعمل دون إنترنت: $url';
+  }
+
+  @override
+  String get deviceGalleryAuto => 'معرض الجهاز (تلقائي)';
+
+  @override
+  String get deviceAudioLibraryAuto => 'مكتبة صوت الجهاز (تلقائي)';
+
+  @override
+  String get deviceGalleryScreenshots => 'معرض الجهاز (لقطات الشاشة)';
+
+  @override
+  String get internalStorageAllFolders =>
+      'التخزين الداخلي (تم فحص كل المجلدات)';
+
+  @override
+  String get searchYourStorage => 'ابحث في وحدة التخزين';
+
+  @override
+  String get searchThisFolder => 'ابحث في هذا المجلد';
+
+  @override
+  String get searchEverythingHint =>
+      'اعثر على أي ملف أو مجلد أو مستند أو وسائط فورًا في جميع أنحاء جهازك';
+
+  @override
+  String searchInFolderNamed(String folder) {
+    return 'ابحث في الملفات والمجلدات الفرعية: $folder';
+  }
+
+  @override
+  String noMatchForQuery(String query, String filter) {
+    return 'لم نعثر على أي شيء يطابق \"$query\" في $filter';
+  }
+
+  @override
+  String get rootDirectory => 'الجذر';
+
+  @override
+  String get copyFileSuffix => '(نسخة)';
+
+  @override
+  String get tarFormatsMemoryWarning =>
+      'تسبب صيغتا TAR.ZSTD و TAR.LZ4 استهلاكًا كبيرًا للذاكرة، وهما محسّنتان للملفات الأصغر من 600 ميغابايت. يرجى استخدام صيغة ZIP أو TAR للملفات الأكبر.';
+
+  @override
+  String get actionApply => 'تطبيق';
+
+  @override
+  String get actionCreate => 'إنشاء';
+
+  @override
+  String get actionMore => 'المزيد';
+
+  @override
+  String get actionOk => 'موافق';
+
+  @override
+  String get actionPinToTop => 'تثبيت في الأعلى';
+
+  @override
+  String get actionUnpinFromTop => 'إلغاء التثبيت من الأعلى';
+
+  @override
+  String get actionPreview => 'معاينة';
+
+  @override
+  String get actionReplace => 'استبدال';
+
+  @override
+  String get actionSkip => 'تخطي';
+
+  @override
+  String get chooseAnyDestination => 'اختر أي وجهة';
+
+  @override
+  String get customLocation => 'موقع مخصص';
+
+  @override
+  String get selectCustomLocation => 'اختر موقعًا مخصصًا...';
+
+  @override
+  String get propertyContains => 'يحتوي على';
+
+  @override
+  String get propertyExtension => 'الامتداد';
+
+  @override
+  String get propertyModified => 'آخر تعديل';
+
+  @override
+  String get propertyName => 'الاسم';
+
+  @override
+  String get propertyPath => 'المسار';
+
+  @override
+  String get propertyPermissions => 'الأذونات';
+
+  @override
+  String get permissionRead => 'قراءة';
+
+  @override
+  String get permissionWrite => 'كتابة';
+
+  @override
+  String get propertySize => 'الحجم';
+
+  @override
+  String get propertyType => 'النوع';
+
+  @override
+  String get propertyFolderDirectory => 'مجلد / دليل';
+
+  @override
+  String get itemFiles => 'الملفات';
+
+  @override
+  String fileWithExtension(String extension) {
+    return 'ملف ($extension)';
+  }
+
+  @override
+  String get fileLongPressHint => 'ملف (اضغط مطولًا لفتحه بـ)';
+
+  @override
+  String get compressionFast => 'سريع';
+
+  @override
+  String get compressionMaximum => 'الأقصى';
+
+  @override
+  String get compressionNone => 'بلا (تخزين)';
+
+  @override
+  String get compressionStandard => 'عادي';
+
+  @override
+  String get batchRenamePadding => 'حشو';
+
+  @override
+  String get batchRenameReplacement => 'الاستبدال';
+
+  @override
+  String get lessOptions => 'خيارات أقل';
+
+  @override
+  String get conflictNewer => 'الأحدث';
+
+  @override
+  String get sortNameAscending => 'الاسم (أ-ي)';
+
+  @override
+  String get sortNameDescending => 'الاسم (ي-أ)';
+
+  @override
+  String get sortNewest => 'الأحدث';
+
+  @override
+  String get sortOldest => 'الأقدم';
+
+  @override
+  String get sortSizeLarge => 'الحجم (كبير)';
+
+  @override
+  String get sortSizeSmall => 'الحجم (صغير)';
+
+  @override
+  String get showFolders => 'إظهار المجلدات';
+
+  @override
+  String get hideFolders => 'إخفاء المجلدات';
+
+  @override
+  String get selectFilesAndFolders => 'اختر الملفات والمجلدات';
+
+  @override
+  String get selectAndPinFolders => 'اختر المجلدات وثبّتها';
+
+  @override
+  String get pinnedItemsToTop => 'تم تثبيت العناصر المحددة في الأعلى';
+
+  @override
+  String get unpinnedItems => 'تم إلغاء تثبيت العناصر المحددة';
+
+  @override
+  String get emptyLabel => '(فارغ)';
+
+  @override
+  String get runInBackground => 'في الخلفية';
+
+  @override
+  String get processingFiles => 'جارٍ المعالجة...';
+
+  @override
+  String get copyingFiles => 'جارٍ نسخ الملفات...';
+
+  @override
+  String get movingFiles => 'جارٍ نقل الملفات...';
+
+  @override
+  String get calculating => 'جارٍ الحساب...';
+
+  @override
+  String get searchInThisDirectory =>
+      'ابحث في الملفات والمجلدات الفرعية في هذا المجلد';
+
+  @override
+  String countItemsSelected(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count عناصر محددة',
+      one: 'عنصر واحد محدد',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String sizeWithBytes(String size, int bytes) {
+    return '$size ($bytes بايت)';
+  }
+
+  @override
+  String containsFoldersAndFiles(int folders, int files) {
+    String _temp0 = intl.Intl.pluralLogic(
+      folders,
+      locale: localeName,
+      other: '$folders مجلدات فرعية',
+      one: 'مجلد فرعي واحد',
+      zero: 'لا مجلدات فرعية',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      files,
+      locale: localeName,
+      other: '$files ملفات',
+      one: 'ملف واحد',
+      zero: 'لا ملفات',
+    );
+    return '$_temp0، $_temp1';
+  }
+
+  @override
+  String processedOfTotal(String processed, String total) {
+    return '$processed من $total';
+  }
+
+  @override
+  String speedMegabytesPerSecond(String speed) {
+    return '$speed م.ب/ث';
+  }
+
+  @override
+  String timeRemaining(String time) {
+    return 'يتبقى $time';
+  }
 
   @override
   String processingItem(int current, int total) {
@@ -2544,4 +2828,249 @@ class AppLocalizationsAr extends AppLocalizations {
   String sentBytes(String amount) {
     return 'أُرسل: $amount';
   }
+
+  @override
+  String get exitConfirmationLabel => 'تأكيد الخروج';
+
+  @override
+  String get actionCancel => 'إلغاء';
+
+  @override
+  String get actionExit => 'خروج';
+
+  @override
+  String get actionHome => 'الرئيسية';
+
+  @override
+  String get actionBrowse => 'تصفّح';
+
+  @override
+  String get drawerNavigation => 'التنقّل';
+
+  @override
+  String get customizationAndSettings => 'التخصيص والإعدادات';
+
+  @override
+  String get lightMode => 'الوضع الفاتح';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get categoryImages => 'الصور';
+
+  @override
+  String get categoryVideos => 'الفيديوهات';
+
+  @override
+  String get categoryAudio => 'الصوت';
+
+  @override
+  String get categoryDocuments => 'المستندات';
+
+  @override
+  String get categoryArchives => 'الأرشيفات';
+
+  @override
+  String get categoryDownloads => 'التنزيلات';
+
+  @override
+  String get categoryApks => 'ملفات APK';
+
+  @override
+  String get categoryScreenshots => 'لقطات الشاشة';
+
+  @override
+  String get categoryApps => 'التطبيقات';
+
+  @override
+  String get categoryManager => 'المدير';
+
+  @override
+  String get categoryBin => 'السلة';
+
+  @override
+  String get categorySettings => 'الإعدادات';
+
+  @override
+  String get categoryConfigure => 'إعداد';
+
+  @override
+  String get itemFolder => 'مجلد';
+
+  @override
+  String get itemFile => 'ملف';
+
+  @override
+  String get actionCustomize => 'تخصيص';
+
+  @override
+  String get actionDone => 'تم';
+
+  @override
+  String get actionRename => 'إعادة تسمية';
+
+  @override
+  String get searchGloballyHint => 'بحث شامل...';
+
+  @override
+  String get searchInFolderHint => 'بحث في هذا المجلد...';
+
+  @override
+  String get actionCopy => 'نسخ';
+
+  @override
+  String get actionCut => 'نقل';
+
+  @override
+  String get actionDelete => 'حذف';
+
+  @override
+  String get actionShare => 'مشاركة';
+
+  @override
+  String get actionProperties => 'الخصائص';
+
+  @override
+  String get allRecentFiles => 'كل الملفات الأخيرة';
+
+  @override
+  String get actionRefresh => 'تحديث';
+
+  @override
+  String get deleteItemLabel => 'حذف العنصر';
+
+  @override
+  String get closeSearch => 'إغلاق البحث';
+
+  @override
+  String get searchInPane => 'بحث في اللوحة';
+
+  @override
+  String get searchPlaceholder => 'بحث...';
+
+  @override
+  String get unpinTab => 'إلغاء تثبيت التبويب';
+
+  @override
+  String get pinTab => 'تثبيت التبويب';
+
+  @override
+  String get openWithAlways => 'دائمًا';
+
+  @override
+  String get actionArchive => 'أرشفة';
+
+  @override
+  String get actionExtract => 'استخراج';
+
+  @override
+  String get timeJustNow => 'الآن';
+
+  @override
+  String get timeYesterday => 'أمس';
+
+  @override
+  String timeMinutesAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قبل $count دقيقة',
+      many: 'قبل $count دقيقة',
+      few: 'قبل $count دقائق',
+      two: 'قبل دقيقتين',
+      one: 'قبل دقيقة',
+      zero: 'الآن',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String timeHoursAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قبل $count ساعة',
+      many: 'قبل $count ساعة',
+      few: 'قبل $count ساعات',
+      two: 'قبل ساعتين',
+      one: 'قبل ساعة',
+      zero: 'الآن',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String timeDaysAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'قبل $count يوم',
+      many: 'قبل $count يومًا',
+      few: 'قبل $count أيام',
+      two: 'قبل يومين',
+      one: 'قبل يوم',
+      zero: 'اليوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appTagline => 'NFile - مدير ملفات جميل';
+
+  @override
+  String get localFolder => 'مجلد محلي';
+
+  @override
+  String get unknownArtist => 'فنان غير معروف';
+
+  @override
+  String get sdCardOrUsb => 'بطاقة SD / USB';
+
+  @override
+  String get connecting => 'جارٍ الاتصال...';
+
+  @override
+  String get starting => 'جارٍ البدء...';
+
+  @override
+  String dateDayMonth(int day, String month) {
+    return '$day $month';
+  }
+
+  @override
+  String get monthJanuary => 'يناير';
+
+  @override
+  String get monthFebruary => 'فبراير';
+
+  @override
+  String get monthMarch => 'مارس';
+
+  @override
+  String get monthApril => 'أبريل';
+
+  @override
+  String get monthMay => 'مايو';
+
+  @override
+  String get monthJune => 'يونيو';
+
+  @override
+  String get monthJuly => 'يوليو';
+
+  @override
+  String get monthAugust => 'أغسطس';
+
+  @override
+  String get monthSeptember => 'سبتمبر';
+
+  @override
+  String get monthOctober => 'أكتوبر';
+
+  @override
+  String get monthNovember => 'نوفمبر';
+
+  @override
+  String get monthDecember => 'ديسمبر';
 }

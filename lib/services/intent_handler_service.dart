@@ -50,7 +50,7 @@ class IntentHandlerService {
       final provider = context.read<FileManagerProvider>();
 
       // Bypass "open-with" sheet/loop for incoming file intents by opening natively directly if supported
-      if (provider.hasNativeViewer(targetPath)) {
+      if (provider.hasNativeViewer(context, targetPath)) {
         await provider.openFileNatively(context, targetPath);
       } else {
         await provider.openFile(context, targetPath);

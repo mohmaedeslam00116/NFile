@@ -96,7 +96,9 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
     final provider = context.watch<FileManagerProvider>();
     final selectedCount = widget.sourcePaths.length;
     final isSingle = selectedCount == 1;
-    final itemName = isSingle ? p.basename(widget.sourcePaths.first) : '$selectedCount items';
+    final itemName = isSingle
+        ? p.basename(widget.sourcePaths.first)
+        : AppLocalizations.of(context).countItems(selectedCount);
     final currentDirName = p.basename(provider.currentPath);
     final targetDirName = p.basename(widget.initialTargetPath);
 
@@ -201,21 +203,21 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                   _buildDestinationCard(
                     theme: theme,
                     title: AppLocalizations.of(context).droppedFolder,
-                    subtitle: targetDirName.isEmpty ? 'Root' : targetDirName,
+                    subtitle: targetDirName.isEmpty ? AppLocalizations.of(context).rootDirectory : targetDirName,
                     pathValue: widget.initialTargetPath,
                     icon: Broken.folder_connection,
                   ),
                 _buildDestinationCard(
                   theme: theme,
                   title: AppLocalizations.of(context).currentFolder,
-                  subtitle: currentDirName.isEmpty ? 'Root' : currentDirName,
+                  subtitle: currentDirName.isEmpty ? AppLocalizations.of(context).rootDirectory : currentDirName,
                   pathValue: provider.currentPath,
                   icon: Broken.folder,
                 ),
                 _buildDestinationCard(
                   theme: theme,
-                  title: _customPath != null ? 'Custom Location' : 'Select Custom Location...',
-                  subtitle: _customPath != null ? p.basename(_customPath!) : 'Choose any destination',
+                  title: _customPath != null ? AppLocalizations.of(context).customLocation : AppLocalizations.of(context).selectCustomLocation,
+                  subtitle: _customPath != null ? p.basename(_customPath!) : AppLocalizations.of(context).chooseAnyDestination,
                   pathValue: _customPath ?? 'custom_action',
                   icon: Broken.folder_add,
                   onTapCustom: () {
@@ -308,7 +310,7 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       ),
                       child: Text(
-                        'Cancel',
+                        AppLocalizations.of(context).actionCancel,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
@@ -336,8 +338,8 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
                           padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
                         ),
                         onPressed: () => _executeAction(provider),
-                        child: const Text(
-                          'Apply',
+                        child: Text(
+                          AppLocalizations.of(context).actionApply,
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
                             fontSize: 14,
@@ -606,7 +608,8 @@ class _DragDropActionDialogState extends State<DragDropActionDialog> {
       provider.clearSelection();
     } else if (_selectedAction == 'archive') {
       final isSingle = widget.sourcePaths.length == 1;
-      final initialName = isSingle ? p.basename(widget.sourcePaths.first) : 'Archive';
+      final initialName =
+          isSingle ? p.basename(widget.sourcePaths.first) : AppLocalizations.of(context).actionArchive;
       if (!stableContext.mounted) return;
       final res = await CreateArchiveDialog.show(stableContext, initialName: initialName, isMultiSelection: !isSingle);
 

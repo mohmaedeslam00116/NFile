@@ -6,6 +6,7 @@ import '../../models/drag_payload.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import '../../core/utils.dart';
+import '../../l10n/app_localizations.dart';
 import 'drag_drop_action_dialog.dart';
 
 class DragDropHandler extends StatefulWidget {
@@ -111,7 +112,9 @@ class _DragDropHandlerState extends State<DragDropHandler> {
         : [widget.path];
 
     final isMultiDrag = dragPaths.length > 1;
-    final displayName = isMultiDrag ? '${dragPaths.length} items' : fileName;
+    final displayName = isMultiDrag
+      ? AppLocalizations.of(context).countItems(dragPaths.length)
+      : fileName;
 
     // Elevated, semi-transparent feedback widget shown while dragging
     final feedback = Material(

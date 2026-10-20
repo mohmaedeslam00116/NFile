@@ -1880,7 +1880,7 @@ class FileManagerProvider extends ChangeNotifier {
             await FileActionDialogs.showWarningDialog(
               context,
               title: AppLocalizations.of(context).operationCancelled,
-              content: 'Cannot cut and paste a file into the same folder.',
+              content: AppLocalizations.of(context).cannotCutPasteSameFolder,
             );
           }
           clearClipboard();
@@ -1896,7 +1896,7 @@ class FileManagerProvider extends ChangeNotifier {
           
           String destPath = p.join(currentPath, p.basename(srcPath));
           if (isSameFolder && !_isCut) {
-            destPath = _getCopyUniquePath(destPath, false);
+            destPath = _getCopyUniquePath(context, destPath, false);
           }
 
           itemsToProcess.add({
@@ -1910,7 +1910,7 @@ class FileManagerProvider extends ChangeNotifier {
           
           String topDestPath = p.join(currentPath, p.basename(srcPath));
           if (isSameFolder && !_isCut) {
-            topDestPath = _getCopyUniquePath(topDestPath, true);
+            topDestPath = _getCopyUniquePath(context, topDestPath, true);
           }
 
           itemsToProcess.add({
@@ -1956,7 +1956,7 @@ class FileManagerProvider extends ChangeNotifier {
       progressNotifier.value = FileOperationProgress(
         totalFiles: totalFiles,
         currentFileIndex: 1,
-        currentFileName: 'Starting...',
+        currentFileName: AppLocalizations.of(context).starting,
         percentage: 0.0,
         speedMBs: 0.0,
         eta: Duration.zero,
@@ -2262,7 +2262,7 @@ class FileManagerProvider extends ChangeNotifier {
       progressNotifier.value = FileOperationProgress(
         totalFiles: totalFiles,
         currentFileIndex: 1,
-        currentFileName: 'Connecting...',
+        currentFileName: AppLocalizations.of(context).connecting,
         percentage: 0.0,
         speedMBs: 0.0,
         eta: Duration.zero,
@@ -2399,11 +2399,12 @@ class FileManagerProvider extends ChangeNotifier {
     }
   }
 
-  String _getCopyUniquePath(String destPath, bool isDir) {
+  String _getCopyUniquePath(BuildContext context, String destPath, bool isDir) {
+    final l10n = AppLocalizations.of(context);
     String parent = p.dirname(destPath);
     if (isDir) {
       String base = p.basename(destPath);
-      String copyBase = '$base (copy)';
+      String copyBase = '$base ${l10n.copyFileSuffix}';
       if (!Directory(p.join(parent, copyBase)).existsSync()) {
         return p.join(parent, copyBase);
       }
@@ -2418,7 +2419,7 @@ class FileManagerProvider extends ChangeNotifier {
     } else {
       String ext = p.extension(destPath);
       String base = p.basenameWithoutExtension(destPath);
-      String copyBase = '$base (copy)';
+      String copyBase = '$base ${l10n.copyFileSuffix}';
       if (!File(p.join(parent, '$copyBase$ext')).existsSync()) {
         return p.join(parent, '$copyBase$ext');
       }
@@ -2649,7 +2650,7 @@ class FileManagerProvider extends ChangeNotifier {
           await FileActionDialogs.showWarningDialog(
             context,
             title: AppLocalizations.of(context).compressionLimitExceeded,
-            content: 'TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.',
+            content: AppLocalizations.of(context).tarFormatsMemoryWarning,
           );
         }
         selectedPaths.clear();
@@ -2729,7 +2730,7 @@ class FileManagerProvider extends ChangeNotifier {
     }
   }
 
-  bool hasNativeViewer(String path) {
+  bool hasNativeViewer(BuildContext context, String path) {
     final mimeType = lookupMimeType(path) ?? '';
     final ext = p.extension(path).toLowerCase();
     const docExts = ['.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.epub', '.odt'];
@@ -2797,8 +2798,8 @@ class FileManagerProvider extends ChangeNotifier {
             '_id': i,
             '_data': file.path,
             'title': p.basenameWithoutExtension(file.path),
-            'artist': 'Unknown Artist',
-            'album': 'Local Folder',
+            'artist': AppLocalizations.of(context).unknownArtist,
+            'album': AppLocalizations.of(context).localFolder,
             'duration': 0,
             'size': file.size,
             'display_name': p.basename(file.path),
@@ -2877,7 +2878,7 @@ class FileManagerProvider extends ChangeNotifier {
     }
 
     // Universal default action check
-    if (hasNativeViewer(targetPath)) {
+    if (hasNativeViewer(context, targetPath)) {
       final defaultAction = PreferencesService.getDefaultOpenAction(ext);
       if (defaultAction == 'native') {
         if (!context.mounted) return;
@@ -2889,7 +2890,7 @@ class FileManagerProvider extends ChangeNotifier {
       }
     }
 
-    if (showOpenWithPopup && !_skipOpenWithDialog && hasNativeViewer(targetPath)) {
+    if (showOpenWithPopup && !_skipOpenWithDialog && hasNativeViewer(context, targetPath)) {
       if (!context.mounted) return;
       
       final result = await showModalBottomSheet<String>(

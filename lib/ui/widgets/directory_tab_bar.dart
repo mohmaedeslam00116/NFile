@@ -41,7 +41,9 @@ class DirectoryTabBar extends StatelessWidget implements PreferredSizeWidget {
                 final tab = tabs[index];
                 final isSelected = index == activeIndex;
                 final isRoot = tab.currentPath == provider.rootPath;
-                final title = isRoot ? 'Home' : p.basename(tab.currentPath);
+                final title = isRoot
+                    ? AppLocalizations.of(context).actionHome
+                    : p.basename(tab.currentPath);
 
                 return Container(
                   margin: const EdgeInsets.only(right: 8),

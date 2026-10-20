@@ -9,6 +9,7 @@ import '../../models/drag_payload.dart';
 import '../../models/file_item_model.dart';
 import '../../services/root_shizuku_service.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../core/l10n/volume_labels.dart';
 import 'drag_drop_action_dialog.dart';
 import 'package:flutter/services.dart';
 
@@ -116,7 +117,12 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
     }
 
     if (matchedVol != null) {
-      list.add(BreadcrumbSegment(name: matchedVol.name, path: matchedVol.path));
+      list.add(
+        BreadcrumbSegment(
+          name: volumeLabel(AppLocalizations.of(context), matchedVol),
+          path: matchedVol.path,
+        ),
+      );
       final relative = path.substring(matchedVol.path.length);
       if (relative.isNotEmpty) {
         final parts = relative.split('/').where((e) => e.isNotEmpty).toList();
@@ -128,7 +134,12 @@ class _NFileAddressBarState extends State<NFileAddressBar> {
       }
     } else {
       // Fallback: Absolute path segments
-      list.add(BreadcrumbSegment(name: 'Root', path: '/'));
+      list.add(
+        BreadcrumbSegment(
+          name: AppLocalizations.of(context).rootDirectory,
+          path: '/',
+        ),
+      );
       final parts = path.split('/').where((e) => e.isNotEmpty).toList();
       String current = '';
       for (final part in parts) {

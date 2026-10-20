@@ -42,7 +42,9 @@ class SelectionContextBottomSheet extends StatelessWidget {
     final theme = Theme.of(context);
     final selectedCount = provider.selectedPaths.length;
     final isSingle = selectedCount == 1;
-    final displayTitle = isSingle ? p.basename(targetPath) : '$selectedCount items selected';
+    final displayTitle = isSingle
+        ? p.basename(targetPath)
+        : AppLocalizations.of(context).countItemsSelected(selectedCount);
     final isFolder = Directory(targetPath).existsSync() || 
         provider.activeListing.entries.firstWhere((e) => e.path == targetPath, orElse: () => provider.activeListing.entries.first).isDirectory;
 
@@ -121,7 +123,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
                           ),
                           if (isSingle)
                             Text(
-                              isFolder ? 'Folder' : 'File (Long press to Open with)',
+                              isFolder ? AppLocalizations.of(context).itemFolder : AppLocalizations.of(context).fileLongPressHint,
                               style: TextStyle(
                                 fontSize: 12,
                                 color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
@@ -169,16 +171,16 @@ class SelectionContextBottomSheet extends StatelessWidget {
               _buildMenuItem(
                 context: context,
                 icon: Broken.edit,
-                label: 'Rename',
+                label: AppLocalizations.of(context).actionRename,
                 onTap: () async {
                   Navigator.pop(context);
                   final currentName = p.basename(targetPath);
                   final newName = await FileActionDialogs.showTextInputDialog(
                     context,
-                    title: 'Rename',
+                    title: AppLocalizations.of(context).actionRename,
                     hint: AppLocalizations.of(context).enterNewName,
                     initialValue: currentName,
-                    actionText: 'Rename',
+                    actionText: AppLocalizations.of(context).actionRename,
                   );
                   if (newName != null && newName.isNotEmpty) {
                     await provider.renameFile(targetPath, newName);
@@ -190,7 +192,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
               _buildMenuItem(
                 context: context,
                 icon: Broken.edit,
-                label: 'Rename',
+                label: AppLocalizations.of(context).actionRename,
                 onTap: () async {
                   Navigator.pop(context);
                   await BatchRenameDialog.show(context, provider);
@@ -236,7 +238,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Icons.share_outlined,
-              label: 'Share',
+              label: AppLocalizations.of(context).actionShare,
               onTap: () async {
                 Navigator.pop(context);
                 final selectedPaths = provider.selectedPaths.toList();
@@ -269,7 +271,8 @@ class SelectionContextBottomSheet extends StatelessWidget {
                 final confirm = await FileActionDialogs.showConfirmDialog(
                   context,
                   title: AppLocalizations.of(context).deleteSelected,
-                  content: 'Are you sure you want to delete $selectedCount item(s)? This cannot be undone.',
+                  content: AppLocalizations.of(context)
+                      .deleteSelectedItemsQuestion(selectedCount),
                 );
                 if (confirm) {
                   await provider.deleteSelected();
