@@ -130,7 +130,7 @@ class _BackupListTabState extends State<BackupListTab> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            AppLocalizations.of(context).backupKindAndVersion(isApks ? 'Split Bundle' : 'Single APK', item['version']),
+                            AppLocalizations.of(context).backupKindAndVersion(isApks ? AppLocalizations.of(context).analyzerSplitBundle : AppLocalizations.of(context).analyzerSingleApk, item['version']),
                             style: TextStyle(
                               color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5),
                               fontSize: 12,
@@ -273,8 +273,9 @@ class _BackupListTabState extends State<BackupListTab> {
               const SizedBox(height: 4),
               Text(
                 widget.searchQuery.isNotEmpty
-                    ? 'We couldn\'t find any backups matching "${widget.searchQuery}"'
-                    : 'A list of your backed up APK and APKS files will show here.',
+                    ? AppLocalizations.of(context)
+                        .analyzerNoBackupsMatch(widget.searchQuery)
+                    : AppLocalizations.of(context).analyzerBackupsListHint,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.6),
@@ -346,7 +347,7 @@ class _BackupListTabState extends State<BackupListTab> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          AppLocalizations.of(context).backupKindAndVersionFull(isApks ? 'Split Bundle (APKS)' : 'Single APK', item['version']),
+                          AppLocalizations.of(context).backupKindAndVersionFull(isApks ? AppLocalizations.of(context).analyzerSplitBundleApks : AppLocalizations.of(context).analyzerSingleApk, item['version']),
                           style: TextStyle(
                             color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.55),
                             fontSize: 11,

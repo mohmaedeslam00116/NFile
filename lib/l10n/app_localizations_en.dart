@@ -1173,6 +1173,377 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get analyzerApplications => 'Applications';
+
+  @override
+  String get analyzerBreakdown => 'Breakdown';
+
+  @override
+  String get analyzerCalculatingAppsCapacity => 'Calculating Apps capacity...';
+
+  @override
+  String get analyzerInitializing => 'Initializing...';
+
+  @override
+  String get analyzerReadingSystemMemory => 'Reading system memory...';
+
+  @override
+  String get analyzerBackedUpApks => 'Backed Up APKs';
+
+  @override
+  String get analyzerInstalledUserApps => 'Installed User Apps';
+
+  @override
+  String get analyzerSystemPackages => 'System Packages';
+
+  @override
+  String get analyzerSearchBackups => 'Search backups...';
+
+  @override
+  String get analyzerSearchPackagesHint => 'Search packages or names...';
+
+  @override
+  String get analyzerSortByBackupDate => 'Sort by Backup Date';
+
+  @override
+  String get analyzerSortByInstallDate => 'Sort by Install Date';
+
+  @override
+  String get analyzerBackup => 'Backup';
+
+  @override
+  String get analyzerClear => 'Clear';
+
+  @override
+  String get analyzerUninstall => 'Uninstall';
+
+  @override
+  String get analyzerSingleApk => 'Single APK';
+
+  @override
+  String get analyzerSplitBundle => 'Split Bundle';
+
+  @override
+  String get analyzerSplitBundleApks => 'Split Bundle (APKS)';
+
+  @override
+  String get analyzerApkBackedUp =>
+      'APK backed up successfully to NFile/Backups/Apps/';
+
+  @override
+  String get analyzerApkBackupFailed => 'Failed to back up APK';
+
+  @override
+  String get analyzerBackupsListHint =>
+      'A list of your backed up APK and APKS files will show here.';
+
+  @override
+  String analyzerNoBackupsMatch(String query) {
+    return 'We couldn\'t find any backups matching \"$query\"';
+  }
+
+  @override
+  String get categoryAudios => 'Audios';
+
+  @override
+  String get actionEdit => 'Edit';
+
+  @override
+  String get actionInfo => 'Info';
+
+  @override
+  String get actionReload => 'Reload';
+
+  @override
+  String get actionRestore => 'Restore';
+
+  @override
+  String get actionSave => 'Save';
+
+  @override
+  String get actionUndo => 'Undo';
+
+  @override
+  String get actionRedo => 'Redo';
+
+  @override
+  String get editorFind => 'Find...';
+
+  @override
+  String get editorLockZoom => 'Lock Zoom';
+
+  @override
+  String get editorUnlockZoom => 'Unlock Zoom';
+
+  @override
+  String get editorWordWrapOn => 'Word Wrap: ON';
+
+  @override
+  String get editorWordWrapOff => 'Word Wrap: OFF';
+
+  @override
+  String get editorEditLockOn => 'Edit Lock: ON';
+
+  @override
+  String get editorEditLockOff => 'Edit Lock: OFF';
+
+  @override
+  String get editorShowLineNumbers => 'Show Line Numbers';
+
+  @override
+  String get editorHideLineNumbers => 'Hide Line Numbers';
+
+  @override
+  String get editorSaveFailed =>
+      'Failed to save changes back to external storage.';
+
+  @override
+  String get viewerEmptySlide => '(Empty Slide)';
+
+  @override
+  String get viewerEmptyFile => '(Empty file)';
+
+  @override
+  String get viewerContinuous => 'Continuous (Vertical scrolling list)';
+
+  @override
+  String get viewerSinglePage => 'Single Page (Instant page-by-page swipe)';
+
+  @override
+  String get viewerHorizontalSwipe => 'Horizontal (Left to right swipe)';
+
+  @override
+  String get viewerVerticalScroll => 'Vertical (Top to bottom scroll)';
+
+  @override
+  String get viewerHorizontal => 'Horizontal';
+
+  @override
+  String get viewerVertical => 'Vertical';
+
+  @override
+  String viewerSizeMegabytes(String size) {
+    return '$size MB';
+  }
+
+  @override
+  String viewerSizeKilobytes(String size) {
+    return '$size KB';
+  }
+
+  @override
+  String get databaseBrowseData => 'Browse Data';
+
+  @override
+  String get databaseSqlConsole => 'SQL Console';
+
+  @override
+  String get databaseTableSchema => 'Table Schema';
+
+  @override
+  String get databaseSelectHint => 'Execute a SELECT query to view results.';
+
+  @override
+  String get databaseQueryError => 'Error executing query.';
+
+  @override
+  String get audioLyrics => 'Lyrics';
+
+  @override
+  String get audioMute => 'Mute';
+
+  @override
+  String get audioUnmute => 'Unmute';
+
+  @override
+  String get audioPlayInBackground => 'Play in Background';
+
+  @override
+  String get audioBackgroundOn => 'Background: On';
+
+  @override
+  String get audioNotificationControlsHint =>
+      'Shows notification with controls';
+
+  @override
+  String get audioTapToStopHint => 'Tap to stop background playback';
+
+  @override
+  String get audioShuffleOn => 'Shuffle: On';
+
+  @override
+  String get audioShuffleOff => 'Shuffle: Off';
+
+  @override
+  String get audioRepeatAll => 'Repeat: All';
+
+  @override
+  String get audioRepeatOne => 'Repeat: One';
+
+  @override
+  String get audioRepeatOff => 'Repeat: Off';
+
+  @override
+  String get audioSingleTrack => 'Single Track';
+
+  @override
+  String get lyricsReadFailed => 'Failed to read the chosen LRC file.';
+
+  @override
+  String get lyricsNoValidLines =>
+      'No valid lyrics lines found in chosen LRC file.';
+
+  @override
+  String get lyricsSelectValidFile =>
+      'Please select a valid file ending with .lrc';
+
+  @override
+  String get videoBrightness => 'Brightness';
+
+  @override
+  String get videoVolume => 'Volume';
+
+  @override
+  String get videoFullScreen => 'Full Screen';
+
+  @override
+  String get videoExitFullScreen => 'Exit Full Screen';
+
+  @override
+  String get videoLabel => 'Video';
+
+  @override
+  String get imageLabel => 'Image';
+
+  @override
+  String get mediaInfoTitle => 'Media Info';
+
+  @override
+  String get mediaFileSize => 'File Size';
+
+  @override
+  String get mediaOriginalLocation => 'Original Location';
+
+  @override
+  String get mediaRecycledDate => 'Recycled Date';
+
+  @override
+  String get mediaDirectory => 'Directory';
+
+  @override
+  String get mediaUnknownDate => 'Unknown Date';
+
+  @override
+  String mediaCopiedToClipboard(int count) {
+    return 'Copied $count items to clipboard';
+  }
+
+  @override
+  String mediaCutToClipboard(int count) {
+    return 'Cut $count items to clipboard';
+  }
+
+  @override
+  String get markdownFileNotFound => '# File not found';
+
+  @override
+  String markdownLoadError(String error) {
+    return '# Error loading file\n\n`$error`';
+  }
+
+  @override
+  String get htmlFileNotFound => '<p>File not found.</p>';
+
+  @override
+  String htmlLoadError(String error) {
+    return '<p>Error loading HTML: $error</p>';
+  }
+
+  @override
+  String get archiveCreatedSuccessfully => 'Archive created successfully';
+
+  @override
+  String get archiveExtractedSuccessfully => 'Archive extracted successfully';
+
+  @override
+  String get archiveFileNotFound => 'Archive file not found';
+
+  @override
+  String archiveCompressionFailed(String error) {
+    return 'Compression failed: $error';
+  }
+
+  @override
+  String archiveExtractionFailed(String error) {
+    return 'Extraction failed: $error';
+  }
+
+  @override
+  String get archiveOperationFailed => 'Compression/extraction failed.';
+
+  @override
+  String get archiveNoFilesToCompress => 'No files found to compress';
+
+  @override
+  String get archiveScanningFiles => 'Scanning files...';
+
+  @override
+  String get archiveSavingToDisk => 'Saving archive to disk...';
+
+  @override
+  String get archiveEncodingStructure => 'Encoding archive structure...';
+
+  @override
+  String get archiveApplyingGzip => 'Applying GZIP compression...';
+
+  @override
+  String get archiveApplyingBzip2 => 'Applying BZIP2 compression...';
+
+  @override
+  String get archiveApplyingLz4 => 'Applying LZ4 compression...';
+
+  @override
+  String get archiveApplyingZstd => 'Applying ZSTD compression...';
+
+  @override
+  String get archiveOpeningZip => 'Opening zip...';
+
+  @override
+  String get archiveReading => 'Reading archive...';
+
+  @override
+  String get archiveExtractingTar => 'Extracting tar...';
+
+  @override
+  String get archiveOpeningTar => 'Opening tar...';
+
+  @override
+  String get archiveDecompressingGzip => 'Decompressing gzip...';
+
+  @override
+  String get archiveDecompressing => 'Decompressing archive...';
+
+  @override
+  String get archiveExtractingFiles => 'Extracting files...';
+
+  @override
+  String get archiveOpening => 'Opening archive...';
+
+  @override
+  String archiveProcessedSuccessfully(String name) {
+    return '$name processed successfully.';
+  }
+
+  @override
+  String get operationSuccessful => 'Successful';
+
+  @override
+  String get operationFailed => 'Operation Failed';
+
+  @override
+  String get archiveUnsupportedFormat => 'Unsupported format';
+
+  @override
   String processingItem(int current, int total) {
     return 'Processing item $current of $total';
   }

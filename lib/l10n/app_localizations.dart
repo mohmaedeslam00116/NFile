@@ -2078,6 +2078,696 @@ abstract class AppLocalizations {
   /// **'{time} remaining'**
   String timeRemaining(String time);
 
+  /// No description provided for @analyzerApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications'**
+  String get analyzerApplications;
+
+  /// No description provided for @analyzerBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get analyzerBreakdown;
+
+  /// No description provided for @analyzerCalculatingAppsCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculating Apps capacity...'**
+  String get analyzerCalculatingAppsCapacity;
+
+  /// No description provided for @analyzerInitializing.
+  ///
+  /// In en, this message translates to:
+  /// **'Initializing...'**
+  String get analyzerInitializing;
+
+  /// No description provided for @analyzerReadingSystemMemory.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading system memory...'**
+  String get analyzerReadingSystemMemory;
+
+  /// No description provided for @analyzerBackedUpApks.
+  ///
+  /// In en, this message translates to:
+  /// **'Backed Up APKs'**
+  String get analyzerBackedUpApks;
+
+  /// No description provided for @analyzerInstalledUserApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed User Apps'**
+  String get analyzerInstalledUserApps;
+
+  /// No description provided for @analyzerSystemPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'System Packages'**
+  String get analyzerSystemPackages;
+
+  /// No description provided for @analyzerSearchBackups.
+  ///
+  /// In en, this message translates to:
+  /// **'Search backups...'**
+  String get analyzerSearchBackups;
+
+  /// No description provided for @analyzerSearchPackagesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search packages or names...'**
+  String get analyzerSearchPackagesHint;
+
+  /// No description provided for @analyzerSortByBackupDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by Backup Date'**
+  String get analyzerSortByBackupDate;
+
+  /// No description provided for @analyzerSortByInstallDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by Install Date'**
+  String get analyzerSortByInstallDate;
+
+  /// No description provided for @analyzerBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup'**
+  String get analyzerBackup;
+
+  /// No description provided for @analyzerClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get analyzerClear;
+
+  /// No description provided for @analyzerUninstall.
+  ///
+  /// In en, this message translates to:
+  /// **'Uninstall'**
+  String get analyzerUninstall;
+
+  /// No description provided for @analyzerSingleApk.
+  ///
+  /// In en, this message translates to:
+  /// **'Single APK'**
+  String get analyzerSingleApk;
+
+  /// No description provided for @analyzerSplitBundle.
+  ///
+  /// In en, this message translates to:
+  /// **'Split Bundle'**
+  String get analyzerSplitBundle;
+
+  /// No description provided for @analyzerSplitBundleApks.
+  ///
+  /// In en, this message translates to:
+  /// **'Split Bundle (APKS)'**
+  String get analyzerSplitBundleApks;
+
+  /// No description provided for @analyzerApkBackedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'APK backed up successfully to NFile/Backups/Apps/'**
+  String get analyzerApkBackedUp;
+
+  /// No description provided for @analyzerApkBackupFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to back up APK'**
+  String get analyzerApkBackupFailed;
+
+  /// No description provided for @analyzerBackupsListHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A list of your backed up APK and APKS files will show here.'**
+  String get analyzerBackupsListHint;
+
+  /// No description provided for @analyzerNoBackupsMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find any backups matching \"{query}\"'**
+  String analyzerNoBackupsMatch(String query);
+
+  /// No description provided for @categoryAudios.
+  ///
+  /// In en, this message translates to:
+  /// **'Audios'**
+  String get categoryAudios;
+
+  /// No description provided for @actionEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get actionEdit;
+
+  /// No description provided for @actionInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get actionInfo;
+
+  /// No description provided for @actionReload.
+  ///
+  /// In en, this message translates to:
+  /// **'Reload'**
+  String get actionReload;
+
+  /// No description provided for @actionRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get actionRestore;
+
+  /// No description provided for @actionSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get actionSave;
+
+  /// No description provided for @actionUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get actionUndo;
+
+  /// No description provided for @actionRedo.
+  ///
+  /// In en, this message translates to:
+  /// **'Redo'**
+  String get actionRedo;
+
+  /// No description provided for @editorFind.
+  ///
+  /// In en, this message translates to:
+  /// **'Find...'**
+  String get editorFind;
+
+  /// No description provided for @editorLockZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Lock Zoom'**
+  String get editorLockZoom;
+
+  /// No description provided for @editorUnlockZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Zoom'**
+  String get editorUnlockZoom;
+
+  /// No description provided for @editorWordWrapOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Wrap: ON'**
+  String get editorWordWrapOn;
+
+  /// No description provided for @editorWordWrapOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Wrap: OFF'**
+  String get editorWordWrapOff;
+
+  /// No description provided for @editorEditLockOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Lock: ON'**
+  String get editorEditLockOn;
+
+  /// No description provided for @editorEditLockOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Lock: OFF'**
+  String get editorEditLockOff;
+
+  /// No description provided for @editorShowLineNumbers.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Line Numbers'**
+  String get editorShowLineNumbers;
+
+  /// No description provided for @editorHideLineNumbers.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Line Numbers'**
+  String get editorHideLineNumbers;
+
+  /// No description provided for @editorSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save changes back to external storage.'**
+  String get editorSaveFailed;
+
+  /// No description provided for @viewerEmptySlide.
+  ///
+  /// In en, this message translates to:
+  /// **'(Empty Slide)'**
+  String get viewerEmptySlide;
+
+  /// No description provided for @viewerEmptyFile.
+  ///
+  /// In en, this message translates to:
+  /// **'(Empty file)'**
+  String get viewerEmptyFile;
+
+  /// No description provided for @viewerContinuous.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuous (Vertical scrolling list)'**
+  String get viewerContinuous;
+
+  /// No description provided for @viewerSinglePage.
+  ///
+  /// In en, this message translates to:
+  /// **'Single Page (Instant page-by-page swipe)'**
+  String get viewerSinglePage;
+
+  /// No description provided for @viewerHorizontalSwipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal (Left to right swipe)'**
+  String get viewerHorizontalSwipe;
+
+  /// No description provided for @viewerVerticalScroll.
+  ///
+  /// In en, this message translates to:
+  /// **'Vertical (Top to bottom scroll)'**
+  String get viewerVerticalScroll;
+
+  /// No description provided for @viewerHorizontal.
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal'**
+  String get viewerHorizontal;
+
+  /// No description provided for @viewerVertical.
+  ///
+  /// In en, this message translates to:
+  /// **'Vertical'**
+  String get viewerVertical;
+
+  /// No description provided for @viewerSizeMegabytes.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} MB'**
+  String viewerSizeMegabytes(String size);
+
+  /// No description provided for @viewerSizeKilobytes.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} KB'**
+  String viewerSizeKilobytes(String size);
+
+  /// No description provided for @databaseBrowseData.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse Data'**
+  String get databaseBrowseData;
+
+  /// No description provided for @databaseSqlConsole.
+  ///
+  /// In en, this message translates to:
+  /// **'SQL Console'**
+  String get databaseSqlConsole;
+
+  /// No description provided for @databaseTableSchema.
+  ///
+  /// In en, this message translates to:
+  /// **'Table Schema'**
+  String get databaseTableSchema;
+
+  /// No description provided for @databaseSelectHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Execute a SELECT query to view results.'**
+  String get databaseSelectHint;
+
+  /// No description provided for @databaseQueryError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error executing query.'**
+  String get databaseQueryError;
+
+  /// No description provided for @audioLyrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Lyrics'**
+  String get audioLyrics;
+
+  /// No description provided for @audioMute.
+  ///
+  /// In en, this message translates to:
+  /// **'Mute'**
+  String get audioMute;
+
+  /// No description provided for @audioUnmute.
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute'**
+  String get audioUnmute;
+
+  /// No description provided for @audioPlayInBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Play in Background'**
+  String get audioPlayInBackground;
+
+  /// No description provided for @audioBackgroundOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Background: On'**
+  String get audioBackgroundOn;
+
+  /// No description provided for @audioNotificationControlsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows notification with controls'**
+  String get audioNotificationControlsHint;
+
+  /// No description provided for @audioTapToStopHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to stop background playback'**
+  String get audioTapToStopHint;
+
+  /// No description provided for @audioShuffleOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shuffle: On'**
+  String get audioShuffleOn;
+
+  /// No description provided for @audioShuffleOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Shuffle: Off'**
+  String get audioShuffleOff;
+
+  /// No description provided for @audioRepeatAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat: All'**
+  String get audioRepeatAll;
+
+  /// No description provided for @audioRepeatOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat: One'**
+  String get audioRepeatOne;
+
+  /// No description provided for @audioRepeatOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat: Off'**
+  String get audioRepeatOff;
+
+  /// No description provided for @audioSingleTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Single Track'**
+  String get audioSingleTrack;
+
+  /// No description provided for @lyricsReadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to read the chosen LRC file.'**
+  String get lyricsReadFailed;
+
+  /// No description provided for @lyricsNoValidLines.
+  ///
+  /// In en, this message translates to:
+  /// **'No valid lyrics lines found in chosen LRC file.'**
+  String get lyricsNoValidLines;
+
+  /// No description provided for @lyricsSelectValidFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a valid file ending with .lrc'**
+  String get lyricsSelectValidFile;
+
+  /// No description provided for @videoBrightness.
+  ///
+  /// In en, this message translates to:
+  /// **'Brightness'**
+  String get videoBrightness;
+
+  /// No description provided for @videoVolume.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume'**
+  String get videoVolume;
+
+  /// No description provided for @videoFullScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Screen'**
+  String get videoFullScreen;
+
+  /// No description provided for @videoExitFullScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Full Screen'**
+  String get videoExitFullScreen;
+
+  /// No description provided for @videoLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get videoLabel;
+
+  /// No description provided for @imageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get imageLabel;
+
+  /// No description provided for @mediaInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Media Info'**
+  String get mediaInfoTitle;
+
+  /// No description provided for @mediaFileSize.
+  ///
+  /// In en, this message translates to:
+  /// **'File Size'**
+  String get mediaFileSize;
+
+  /// No description provided for @mediaOriginalLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Location'**
+  String get mediaOriginalLocation;
+
+  /// No description provided for @mediaRecycledDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Recycled Date'**
+  String get mediaRecycledDate;
+
+  /// No description provided for @mediaDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Directory'**
+  String get mediaDirectory;
+
+  /// No description provided for @mediaUnknownDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Date'**
+  String get mediaUnknownDate;
+
+  /// No description provided for @mediaCopiedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied {count} items to clipboard'**
+  String mediaCopiedToClipboard(int count);
+
+  /// No description provided for @mediaCutToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Cut {count} items to clipboard'**
+  String mediaCutToClipboard(int count);
+
+  /// No description provided for @markdownFileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'# File not found'**
+  String get markdownFileNotFound;
+
+  /// No description provided for @markdownLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'# Error loading file\n\n`{error}`'**
+  String markdownLoadError(String error);
+
+  /// No description provided for @htmlFileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'<p>File not found.</p>'**
+  String get htmlFileNotFound;
+
+  /// No description provided for @htmlLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'<p>Error loading HTML: {error}</p>'**
+  String htmlLoadError(String error);
+
+  /// No description provided for @archiveCreatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive created successfully'**
+  String get archiveCreatedSuccessfully;
+
+  /// No description provided for @archiveExtractedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive extracted successfully'**
+  String get archiveExtractedSuccessfully;
+
+  /// No description provided for @archiveFileNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive file not found'**
+  String get archiveFileNotFound;
+
+  /// No description provided for @archiveCompressionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression failed: {error}'**
+  String archiveCompressionFailed(String error);
+
+  /// No description provided for @archiveExtractionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Extraction failed: {error}'**
+  String archiveExtractionFailed(String error);
+
+  /// No description provided for @archiveOperationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Compression/extraction failed.'**
+  String get archiveOperationFailed;
+
+  /// No description provided for @archiveNoFilesToCompress.
+  ///
+  /// In en, this message translates to:
+  /// **'No files found to compress'**
+  String get archiveNoFilesToCompress;
+
+  /// No description provided for @archiveScanningFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Scanning files...'**
+  String get archiveScanningFiles;
+
+  /// No description provided for @archiveSavingToDisk.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving archive to disk...'**
+  String get archiveSavingToDisk;
+
+  /// No description provided for @archiveEncodingStructure.
+  ///
+  /// In en, this message translates to:
+  /// **'Encoding archive structure...'**
+  String get archiveEncodingStructure;
+
+  /// No description provided for @archiveApplyingGzip.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying GZIP compression...'**
+  String get archiveApplyingGzip;
+
+  /// No description provided for @archiveApplyingBzip2.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying BZIP2 compression...'**
+  String get archiveApplyingBzip2;
+
+  /// No description provided for @archiveApplyingLz4.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying LZ4 compression...'**
+  String get archiveApplyingLz4;
+
+  /// No description provided for @archiveApplyingZstd.
+  ///
+  /// In en, this message translates to:
+  /// **'Applying ZSTD compression...'**
+  String get archiveApplyingZstd;
+
+  /// No description provided for @archiveOpeningZip.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening zip...'**
+  String get archiveOpeningZip;
+
+  /// No description provided for @archiveReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading archive...'**
+  String get archiveReading;
+
+  /// No description provided for @archiveExtractingTar.
+  ///
+  /// In en, this message translates to:
+  /// **'Extracting tar...'**
+  String get archiveExtractingTar;
+
+  /// No description provided for @archiveOpeningTar.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening tar...'**
+  String get archiveOpeningTar;
+
+  /// No description provided for @archiveDecompressingGzip.
+  ///
+  /// In en, this message translates to:
+  /// **'Decompressing gzip...'**
+  String get archiveDecompressingGzip;
+
+  /// No description provided for @archiveDecompressing.
+  ///
+  /// In en, this message translates to:
+  /// **'Decompressing archive...'**
+  String get archiveDecompressing;
+
+  /// No description provided for @archiveExtractingFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Extracting files...'**
+  String get archiveExtractingFiles;
+
+  /// No description provided for @archiveOpening.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening archive...'**
+  String get archiveOpening;
+
+  /// No description provided for @archiveProcessedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} processed successfully.'**
+  String archiveProcessedSuccessfully(String name);
+
+  /// No description provided for @operationSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Successful'**
+  String get operationSuccessful;
+
+  /// No description provided for @operationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation Failed'**
+  String get operationFailed;
+
+  /// No description provided for @archiveUnsupportedFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsupported format'**
+  String get archiveUnsupportedFormat;
+
   /// No description provided for @processingItem.
   ///
   /// In en, this message translates to:

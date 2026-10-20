@@ -94,23 +94,24 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
     if (widget.album != null) {
       return widget.album!.name;
     }
+    final l10n = AppLocalizations.of(context);
     switch (widget.mediaType) {
       case MediaType.images:
-        return 'Images';
+        return l10n.categoryImages;
       case MediaType.videos:
-        return 'Videos';
+        return l10n.categoryVideos;
       case MediaType.audios:
-        return 'Audios';
+        return l10n.categoryAudios;
       case MediaType.documents:
-        return 'Documents';
+        return l10n.categoryDocuments;
       case MediaType.archives:
-        return 'Archives';
+        return l10n.categoryArchives;
       case MediaType.downloads:
-        return 'Downloads';
+        return l10n.categoryDownloads;
       case MediaType.apks:
-        return 'APKs';
+        return l10n.categoryApks;
       case MediaType.screenshots:
-        return 'Screenshots';
+        return l10n.categoryScreenshots;
     }
   }
 
@@ -205,7 +206,15 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
     if (paths.isNotEmpty && mounted) {
       context.read<FileManagerProvider>().setClipboard(paths, isCut: isCut);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(isCut ? 'Cut ${paths.length} items to clipboard' : 'Copied ${paths.length} items to clipboard')),
+        SnackBar(
+          content: Text(
+            isCut
+                ? AppLocalizations.of(context)
+                    .mediaCutToClipboard(paths.length)
+                : AppLocalizations.of(context)
+                    .mediaCopiedToClipboard(paths.length),
+          ),
+        ),
       );
       _clearSelection();
     }
@@ -221,11 +230,11 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
         title: Text(AppLocalizations.of(context).confirmDeletion),
         content: Text(AppLocalizations.of(context).confirmPermanentDelete(count)),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(AppLocalizations.of(context).actionCancel)),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Delete'),
+            child: Text(AppLocalizations.of(context).actionDelete),
           ),
         ],
       ),
@@ -381,10 +390,10 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
         final currentName = path_helper.basename(filePath);
         final newName = await FileActionDialogs.showTextInputDialog(
           context,
-          title: 'Rename',
+          title: AppLocalizations.of(context).actionRename,
           hint: AppLocalizations.of(context).enterNewName,
           initialValue: currentName,
-          actionText: 'Rename',
+          actionText: AppLocalizations.of(context).actionRename,
         );
         if (newName != null && newName.isNotEmpty && mounted) {
           await context.read<FileManagerProvider>().renameFile(filePath, newName);
@@ -531,7 +540,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
           children: [
             Icon(Broken.info_circle, color: theme.colorScheme.primary),
             const SizedBox(width: 10),
-            const Text('Properties', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            Text(AppLocalizations.of(context).actionProperties, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           ],
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -541,22 +550,42 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (count == 1) ...[
-                _buildCopyableRow('Name', nameDisplay, ctx),
-                _buildCopyableRow('Path', fullPath, ctx),
-                _buildCopyableRow('Size', '${FileUtils.formatBytes(totalBytes, 2)} ($totalBytes bytes)', ctx),
-                if (lastMod != null) _buildCopyableRow('Modified', FileUtils.formatDate(lastMod), ctx),
-                if (mimeType.isNotEmpty && mimeType != 'file/') _buildCopyableRow('Type', mimeType, ctx),
-                if (dimensionsOrDuration.isNotEmpty) _buildCopyableRow('Media Info', dimensionsOrDuration, ctx),
-                if (permissionsStr.isNotEmpty) _buildCopyableRow('Permissions', permissionsStr, ctx),
+                _buildCopyableRow(AppLocalizations.of(context).propertyName, nameDisplay, ctx),
+                _buildCopyableRow(AppLocalizations.of(context).propertyPath, fullPath, ctx),
+                _buildCopyableRow(
+                  AppLocalizations.of(context).propertySize,
+                  AppLocalizations.of(context)
+                      .sizeWithBytes(
+                        FileUtils.formatBytes(totalBytes, 2),
+                        totalBytes,
+                      ),
+                  ctx,
+                ),
+                if (lastMod != null) _buildCopyableRow(AppLocalizations.of(context).propertyModified, FileUtils.formatDate(lastMod), ctx),
+                if (mimeType.isNotEmpty && mimeType != 'file/') _buildCopyableRow(AppLocalizations.of(context).propertyType, mimeType, ctx),
+                if (dimensionsOrDuration.isNotEmpty) _buildCopyableRow(AppLocalizations.of(context).mediaInfoTitle, dimensionsOrDuration, ctx),
+                if (permissionsStr.isNotEmpty) _buildCopyableRow(AppLocalizations.of(context).propertyPermissions, permissionsStr, ctx),
               ] else ...[
-                _buildCopyableRow('Items Selected', '$count items', ctx),
-                _buildCopyableRow('Total Size', '${FileUtils.formatBytes(totalBytes, 2)} ($totalBytes bytes)', ctx),
+                _buildCopyableRow(
+                  AppLocalizations.of(context).itemsSelected,
+                  AppLocalizations.of(context).countItems(count),
+                  ctx,
+                ),
+                _buildCopyableRow(
+                  AppLocalizations.of(context).totalSize,
+                  AppLocalizations.of(context)
+                      .sizeWithBytes(
+                        FileUtils.formatBytes(totalBytes, 2),
+                        totalBytes,
+                      ),
+                  ctx,
+                ),
               ],
             ],
           ),
         ),
         actions: [
-          FilledButton(onPressed: () => Navigator.pop(ctx), child: const Text('Done')),
+          FilledButton(onPressed: () => Navigator.pop(ctx), child: Text(AppLocalizations.of(context).actionDone)),
         ],
       ),
     );
@@ -611,7 +640,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               const Divider(height: 1),
               ListTile(
                 leading: Icon(Broken.document_copy, color: theme.colorScheme.primary),
-                title: const Text('Copy'),
+                title: Text(AppLocalizations.of(context).actionCopy),
                 onTap: () async {
                   Navigator.pop(ctx);
                   String? target = filePath;
@@ -632,7 +661,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               ),
               ListTile(
                 leading: Icon(Broken.scissor, color: theme.colorScheme.primary),
-                title: const Text('Cut'),
+                title: Text(AppLocalizations.of(context).actionCut),
                 onTap: () async {
                   Navigator.pop(ctx);
                   String? target = filePath;
@@ -653,7 +682,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               ),
               ListTile(
                 leading: const Icon(Broken.trash, color: Colors.red),
-                title: const Text('Delete', style: TextStyle(color: Colors.red)),
+                title: Text(AppLocalizations.of(context).actionDelete, style: TextStyle(color: Colors.red)),
                 onTap: () async {
                   Navigator.pop(ctx);
                   final confirm = await showDialog<bool>(
@@ -662,11 +691,11 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                       title: Text(AppLocalizations.of(context).confirmDeletion),
                       content: Text(AppLocalizations.of(context).permanentlyDeleteName(name)),
                       actions: [
-                        TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancel')),
+                        TextButton(onPressed: () => Navigator.pop(c, false), child: Text(AppLocalizations.of(context).actionCancel)),
                         FilledButton(
                           style: FilledButton.styleFrom(backgroundColor: Colors.red),
                           onPressed: () => Navigator.pop(c, true),
-                          child: const Text('Delete'),
+                          child: Text(AppLocalizations.of(context).actionDelete),
                         ),
                       ],
                     ),
@@ -704,7 +733,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               if (filePath != null && FileUtils.isArchive(filePath))
                 ListTile(
                   leading: Icon(Broken.archive, color: theme.colorScheme.primary),
-                  title: const Text('Extract'),
+                  title: Text(AppLocalizations.of(context).actionExtract),
                   onTap: () async {
                     Navigator.pop(ctx);
                     await context.read<FileManagerProvider>().extractArchiveDirectly(context, filePath);
@@ -713,16 +742,16 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               if (filePath != null)
                 ListTile(
                   leading: Icon(Broken.edit, color: theme.colorScheme.primary),
-                  title: const Text('Rename'),
+                  title: Text(AppLocalizations.of(context).actionRename),
                   onTap: () async {
                     Navigator.pop(ctx);
                     final currentName = path_helper.basename(filePath);
                     final newName = await FileActionDialogs.showTextInputDialog(
                       context,
-                      title: 'Rename',
+                      title: AppLocalizations.of(context).actionRename,
                       hint: AppLocalizations.of(context).enterNewName,
                       initialValue: currentName,
-                      actionText: 'Rename',
+                      actionText: AppLocalizations.of(context).actionRename,
                     );
                     if (newName != null && newName.isNotEmpty && mounted) {
                       await context.read<FileManagerProvider>().renameFile(filePath, newName);
@@ -741,7 +770,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                 ),
               ListTile(
                 leading: Icon(Broken.info_circle, color: theme.colorScheme.primary),
-                title: const Text('Properties'),
+                title: Text(AppLocalizations.of(context).actionProperties),
                 onTap: () {
                   Navigator.pop(ctx);
                   _showPropertiesDialog(singleFilePath: assetId == null ? filePath : null, singleAssetId: assetId, explicitName: name);
@@ -749,7 +778,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               ),
               ListTile(
                 leading: Icon(Icons.share_outlined, color: theme.colorScheme.primary),
-                title: const Text('Share'),
+                title: Text(AppLocalizations.of(context).actionShare),
                 onTap: () async {
                   Navigator.pop(ctx);
                   String? target = filePath;
@@ -894,7 +923,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                 return IconButton(
                   icon: const Icon(Icons.refresh),
                   onPressed: () => provider.loadMedia(forceRefresh: true),
-                  tooltip: 'Refresh',
+                  tooltip: AppLocalizations.of(context).actionRefresh,
                 );
               },
             ),
@@ -1026,12 +1055,12 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildActionItem(theme, icon: Broken.document_copy, label: 'Copy', onTap: () => _handleCopyCut(false)),
-              _buildActionItem(theme, icon: Broken.scissor, label: 'Cut', onTap: () => _handleCopyCut(true)),
-              _buildActionItem(theme, icon: Broken.edit, label: 'Rename', onTap: _handleBatchRename),
-              _buildActionItem(theme, icon: Broken.trash, label: 'Delete', color: Colors.red, onTap: _handleDelete),
-              _buildActionItem(theme, icon: Icons.share_outlined, label: 'Share', onTap: _handleShare),
-              _buildActionItem(theme, icon: Broken.info_circle, label: 'Info', onTap: () => _showPropertiesDialog()),
+              _buildActionItem(theme, icon: Broken.document_copy, label: AppLocalizations.of(context).actionCopy, onTap: () => _handleCopyCut(false)),
+              _buildActionItem(theme, icon: Broken.scissor, label: AppLocalizations.of(context).actionCut, onTap: () => _handleCopyCut(true)),
+              _buildActionItem(theme, icon: Broken.edit, label: AppLocalizations.of(context).actionRename, onTap: _handleBatchRename),
+              _buildActionItem(theme, icon: Broken.trash, label: AppLocalizations.of(context).actionDelete, color: Colors.red, onTap: _handleDelete),
+              _buildActionItem(theme, icon: Icons.share_outlined, label: AppLocalizations.of(context).actionShare, onTap: _handleShare),
+              _buildActionItem(theme, icon: Broken.info_circle, label: AppLocalizations.of(context).actionInfo, onTap: () => _showPropertiesDialog()),
             ],
           ),
         ),
@@ -1594,7 +1623,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               pageBuilder: (context, animation, secondaryAnimation) => AudioPlayerScreen(
                 audioPath: path,
                 title: audio.title,
-                artist: audio.artist ?? 'Unknown Artist',
+                artist: audio.artist ?? AppLocalizations.of(context).unknownArtist,
                 allSongs: audios,
                 initialIndex: index,
               ),
@@ -1638,8 +1667,8 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
       title: Text(audio.title, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
       subtitle: Text(
         showDate
-            ? '${audio.artist ?? "Unknown Artist"} • $dateStr'
-            : audio.artist ?? "Unknown Artist",
+            ? '${audio.artist ?? AppLocalizations.of(context).unknownArtist} • $dateStr'
+            : audio.artist ?? AppLocalizations.of(context).unknownArtist,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.55), fontSize: 11),
@@ -1668,7 +1697,9 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
           try {
             modified = File(path).statSync().modified;
           } catch (_) {}
-          final dateStr = modified != null ? FileUtils.formatDate(modified) : 'Unknown Date';
+          final dateStr = modified != null
+            ? FileUtils.formatDate(modified)
+            : AppLocalizations.of(context).mediaUnknownDate;
           final index = audios.indexOf(audio);
           return _buildAudioTile(audio, theme, isSelected, showDate, dateStr, index, audios);
         },
@@ -1685,7 +1716,9 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
         try {
           modified = File(path).statSync().modified;
         } catch (_) {}
-        final dateStr = modified != null ? FileUtils.formatDate(modified) : 'Unknown Date';
+        final dateStr = modified != null
+            ? FileUtils.formatDate(modified)
+            : AppLocalizations.of(context).mediaUnknownDate;
         return _buildAudioTile(audio, theme, isSelected, isDateWise, dateStr, index, audios);
       },
     );
@@ -1981,7 +2014,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    'Folders',
+                    AppLocalizations.of(context).filterFolders,
                     style: TextStyle(
                       color: _showFoldersMode ? theme.colorScheme.onPrimary : theme.colorScheme.onSurfaceVariant,
                       fontSize: 13,

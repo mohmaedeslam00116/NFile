@@ -398,10 +398,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       } else if (item is FileSystemEntity) {
         currentPath = item.path;
       } else if (item is AssetEntity) {
-        currentPath = item.title ?? 'Video';
+        currentPath = item.title ?? AppLocalizations.of(context).videoLabel;
       }
     } else if (widget.assetPlaylist != null && _currentIndex < widget.assetPlaylist!.length) {
-      currentPath = widget.assetPlaylist![_currentIndex].title ?? 'Video';
+      currentPath = widget.assetPlaylist![_currentIndex].title ?? AppLocalizations.of(context).videoLabel;
     }
     final name = currentPath.split('/').last.split('\\').last;
     return name.length > 40 ? '${name.substring(0, 37)}...' : name;
@@ -569,7 +569,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                       : _volume > 0.5
                           ? Broken.volume_high
                           : Broken.volume_low,
-                  label: 'Volume',
+                  label: AppLocalizations.of(context).videoVolume,
                 ),
               ),
             ),
@@ -582,7 +582,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                 child: VerticalSliderWidget(
                   value: _brightness,
                   icon: Broken.sun_1,
-                  label: 'Brightness',
+                  label: AppLocalizations.of(context).videoBrightness,
                 ),
               ),
             ),

@@ -117,12 +117,12 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.redAccent),
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete'),
+            child: Text(AppLocalizations.of(context).actionDelete),
           ),
         ],
       ),
@@ -175,7 +175,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.redAccent),
@@ -405,13 +405,13 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                         }
                                       },
                                       itemBuilder: (context) => [
-                                        const PopupMenuItem(
+                                        PopupMenuItem(
                                           value: 'restore',
                                           child: Row(
                                             children: [
                                               Icon(Icons.restore_rounded, size: 20),
                                               SizedBox(width: 12),
-                                              Text('Restore',
+                                              Text(AppLocalizations.of(context).actionRestore,
                                                   style: TextStyle(fontWeight: FontWeight.w500)),
                                             ],
                                           ),
@@ -465,7 +465,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                               ),
                               onPressed: _restoreSelected,
                               icon: const Icon(Icons.restore_rounded),
-                              label: const Text('Restore'),
+                              label: Text(AppLocalizations.of(context).actionRestore),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -480,7 +480,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                               ),
                               onPressed: _deleteSelectedPermanently,
                               icon: const Icon(Broken.trash),
-                              label: const Text('Delete'),
+                              label: Text(AppLocalizations.of(context).actionDelete),
                             ),
                           ),
                         ],
@@ -552,10 +552,10 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 16),
-              _buildDetailRow('Original Location', item.originalPath),
-              _buildDetailRow('Recycled Date', FileUtils.formatDate(item.deletedAt)),
-              _buildDetailRow('File Size', FileUtils.formatBytes(item.size, 2)),
-              _buildDetailRow('Type', item.isDirectory ? 'Directory' : 'File'),
+              _buildDetailRow(AppLocalizations.of(context).mediaOriginalLocation, item.originalPath),
+              _buildDetailRow(AppLocalizations.of(context).mediaRecycledDate, FileUtils.formatDate(item.deletedAt)),
+              _buildDetailRow(AppLocalizations.of(context).mediaFileSize, FileUtils.formatBytes(item.size, 2)),
+              _buildDetailRow(AppLocalizations.of(context).propertyType, item.isDirectory ? AppLocalizations.of(context).mediaDirectory : AppLocalizations.of(context).itemFile),
               const SizedBox(height: 24),
               Row(
                 children: [
@@ -571,7 +571,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                         _selectedIds.add(item.id);
                         await _restoreSelected();
                       },
-                      child: const Text('Restore'),
+                      child: Text(AppLocalizations.of(context).actionRestore),
                     ),
                   ),
                   const SizedBox(width: 16),

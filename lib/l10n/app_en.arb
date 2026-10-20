@@ -329,6 +329,121 @@
   "processedOfTotal": "{processed} of {total}",
   "speedMegabytesPerSecond": "{speed} MB/s",
   "timeRemaining": "{time} remaining",
+  "analyzerApplications": "Applications",
+  "analyzerBreakdown": "Breakdown",
+  "analyzerCalculatingAppsCapacity": "Calculating Apps capacity...",
+  "analyzerInitializing": "Initializing...",
+  "analyzerReadingSystemMemory": "Reading system memory...",
+  "analyzerBackedUpApks": "Backed Up APKs",
+  "analyzerInstalledUserApps": "Installed User Apps",
+  "analyzerSystemPackages": "System Packages",
+  "analyzerSearchBackups": "Search backups...",
+  "analyzerSearchPackagesHint": "Search packages or names...",
+  "analyzerSortByBackupDate": "Sort by Backup Date",
+  "analyzerSortByInstallDate": "Sort by Install Date",
+  "analyzerBackup": "Backup",
+  "analyzerClear": "Clear",
+  "analyzerUninstall": "Uninstall",
+  "analyzerSingleApk": "Single APK",
+  "analyzerSplitBundle": "Split Bundle",
+  "analyzerSplitBundleApks": "Split Bundle (APKS)",
+  "analyzerApkBackedUp": "APK backed up successfully to NFile/Backups/Apps/",
+  "analyzerApkBackupFailed": "Failed to back up APK",
+  "analyzerBackupsListHint": "A list of your backed up APK and APKS files will show here.",
+  "analyzerNoBackupsMatch": "We couldn't find any backups matching \"{query}\"",
+  "categoryAudios": "Audios",
+  "actionEdit": "Edit",
+  "actionInfo": "Info",
+  "actionReload": "Reload",
+  "actionRestore": "Restore",
+  "actionSave": "Save",
+  "actionUndo": "Undo",
+  "actionRedo": "Redo",
+  "editorFind": "Find...",
+  "editorLockZoom": "Lock Zoom",
+  "editorUnlockZoom": "Unlock Zoom",
+  "editorWordWrapOn": "Word Wrap: ON",
+  "editorWordWrapOff": "Word Wrap: OFF",
+  "editorEditLockOn": "Edit Lock: ON",
+  "editorEditLockOff": "Edit Lock: OFF",
+  "editorShowLineNumbers": "Show Line Numbers",
+  "editorHideLineNumbers": "Hide Line Numbers",
+  "editorSaveFailed": "Failed to save changes back to external storage.",
+  "viewerEmptySlide": "(Empty Slide)",
+  "viewerEmptyFile": "(Empty file)",
+  "viewerContinuous": "Continuous (Vertical scrolling list)",
+  "viewerSinglePage": "Single Page (Instant page-by-page swipe)",
+  "viewerHorizontalSwipe": "Horizontal (Left to right swipe)",
+  "viewerVerticalScroll": "Vertical (Top to bottom scroll)",
+  "viewerHorizontal": "Horizontal",
+  "viewerVertical": "Vertical",
+  "viewerSizeMegabytes": "{size} MB",
+  "viewerSizeKilobytes": "{size} KB",
+  "databaseBrowseData": "Browse Data",
+  "databaseSqlConsole": "SQL Console",
+  "databaseTableSchema": "Table Schema",
+  "databaseSelectHint": "Execute a SELECT query to view results.",
+  "databaseQueryError": "Error executing query.",
+  "audioLyrics": "Lyrics",
+  "audioMute": "Mute",
+  "audioUnmute": "Unmute",
+  "audioPlayInBackground": "Play in Background",
+  "audioBackgroundOn": "Background: On",
+  "audioNotificationControlsHint": "Shows notification with controls",
+  "audioTapToStopHint": "Tap to stop background playback",
+  "audioShuffleOn": "Shuffle: On",
+  "audioShuffleOff": "Shuffle: Off",
+  "audioRepeatAll": "Repeat: All",
+  "audioRepeatOne": "Repeat: One",
+  "audioRepeatOff": "Repeat: Off",
+  "audioSingleTrack": "Single Track",
+  "lyricsReadFailed": "Failed to read the chosen LRC file.",
+  "lyricsNoValidLines": "No valid lyrics lines found in chosen LRC file.",
+  "lyricsSelectValidFile": "Please select a valid file ending with .lrc",
+  "videoBrightness": "Brightness",
+  "videoVolume": "Volume",
+  "videoFullScreen": "Full Screen",
+  "videoExitFullScreen": "Exit Full Screen",
+  "videoLabel": "Video",
+  "imageLabel": "Image",
+  "mediaInfoTitle": "Media Info",
+  "mediaFileSize": "File Size",
+  "mediaOriginalLocation": "Original Location",
+  "mediaRecycledDate": "Recycled Date",
+  "mediaDirectory": "Directory",
+  "mediaUnknownDate": "Unknown Date",
+  "mediaCopiedToClipboard": "Copied {count} items to clipboard",
+  "mediaCutToClipboard": "Cut {count} items to clipboard",
+  "markdownFileNotFound": "# File not found",
+  "markdownLoadError": "# Error loading file\n\n`{error}`",
+  "htmlFileNotFound": "<p>File not found.</p>",
+  "htmlLoadError": "<p>Error loading HTML: {error}</p>",
+  "archiveCreatedSuccessfully": "Archive created successfully",
+  "archiveExtractedSuccessfully": "Archive extracted successfully",
+  "archiveFileNotFound": "Archive file not found",
+  "archiveCompressionFailed": "Compression failed: {error}",
+  "archiveExtractionFailed": "Extraction failed: {error}",
+  "archiveOperationFailed": "Compression/extraction failed.",
+  "archiveNoFilesToCompress": "No files found to compress",
+  "archiveScanningFiles": "Scanning files...",
+  "archiveSavingToDisk": "Saving archive to disk...",
+  "archiveEncodingStructure": "Encoding archive structure...",
+  "archiveApplyingGzip": "Applying GZIP compression...",
+  "archiveApplyingBzip2": "Applying BZIP2 compression...",
+  "archiveApplyingLz4": "Applying LZ4 compression...",
+  "archiveApplyingZstd": "Applying ZSTD compression...",
+  "archiveOpeningZip": "Opening zip...",
+  "archiveReading": "Reading archive...",
+  "archiveExtractingTar": "Extracting tar...",
+  "archiveOpeningTar": "Opening tar...",
+  "archiveDecompressingGzip": "Decompressing gzip...",
+  "archiveDecompressing": "Decompressing archive...",
+  "archiveExtractingFiles": "Extracting files...",
+  "archiveOpening": "Opening archive...",
+  "archiveProcessedSuccessfully": "{name} processed successfully.",
+  "operationSuccessful": "Successful",
+  "operationFailed": "Operation Failed",
+  "archiveUnsupportedFormat": "Unsupported format",
   "processingItem": "Processing item {current} of {total}",
   "transferSpeed": "Transfer Speed",
   "estimatedTime": "Est. Time",
@@ -1993,6 +2108,76 @@
   "@timeRemaining": {
     "placeholders": {
       "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@viewerSizeMegabytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@viewerSizeKilobytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaCopiedToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mediaCutToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@htmlLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveCompressionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveExtractionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveProcessedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@analyzerNoBackupsMatch": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@markdownLoadError": {
+    "placeholders": {
+      "error": {
         "type": "String"
       }
     }

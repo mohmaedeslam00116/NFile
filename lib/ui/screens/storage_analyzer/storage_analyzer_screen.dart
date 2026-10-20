@@ -20,7 +20,7 @@ class StorageAnalyzerScreen extends StatefulWidget {
 
 class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with SingleTickerProviderStateMixin {
   bool _isScanning = true;
-  String _currentScanningItem = 'Initializing...';
+  String _currentScanningItem = '';
   
   int _appsSize = 0;
   int _imagesSize = 0;
@@ -36,6 +36,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
   @override
   void initState() {
     super.initState();
+    _currentScanningItem = AppLocalizations.of(context).analyzerInitializing;
     _radialController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1200),
@@ -53,7 +54,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
     if (!mounted) return;
     setState(() {
       _isScanning = true;
-      _currentScanningItem = 'Reading system memory...';
+      _currentScanningItem = AppLocalizations.of(context).analyzerReadingSystemMemory;
     });
 
     final provider = context.read<FileManagerProvider>();
@@ -65,7 +66,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
 
     // 2. Fetch app sizes from App Manager Service
     setState(() {
-      _currentScanningItem = 'Calculating Apps capacity...';
+      _currentScanningItem = AppLocalizations.of(context).analyzerCalculatingAppsCapacity;
     });
     try {
       final userApps = await AppManagerService.getInstalledApps(includeSystem: false);
@@ -386,7 +387,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
             child: Row(
               children: [
                 Text(
-                  'Breakdown',
+                  AppLocalizations.of(context).analyzerBreakdown,
                   style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -396,7 +397,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           // Category items
           _buildCategoryCard(
             context: context,
-            title: 'Applications',
+            title: AppLocalizations.of(context).analyzerApplications,
             size: _appsSize,
             color: const Color(0xFFEC4899), // Pink
             icon: Broken.mobile,
@@ -410,7 +411,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           ),
           _buildCategoryCard(
             context: context,
-            title: 'Images',
+            title: AppLocalizations.of(context).categoryImages,
             size: _imagesSize,
             color: const Color(0xFF8B5CF6), // Violet
             icon: Broken.image,
@@ -426,7 +427,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           ),
           _buildCategoryCard(
             context: context,
-            title: 'Videos',
+            title: AppLocalizations.of(context).categoryVideos,
             size: _videosSize,
             color: const Color(0xFFEF4444), // Red
             icon: Broken.video,
@@ -442,7 +443,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           ),
           _buildCategoryCard(
             context: context,
-            title: 'Audio',
+            title: AppLocalizations.of(context).categoryAudio,
             size: _audioSize,
             color: const Color(0xFFF97316), // Orange
             icon: Broken.music,
@@ -458,7 +459,7 @@ class _StorageAnalyzerScreenState extends State<StorageAnalyzerScreen> with Sing
           ),
           _buildCategoryCard(
             context: context,
-            title: 'Documents',
+            title: AppLocalizations.of(context).categoryDocuments,
             size: _docsSize,
             color: const Color(0xFF3B82F6), // Blue
             icon: Broken.document,

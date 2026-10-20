@@ -1181,6 +1181,374 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get analyzerApplications => 'التطبيقات';
+
+  @override
+  String get analyzerBreakdown => 'التفصيل';
+
+  @override
+  String get analyzerCalculatingAppsCapacity => 'جارٍ حساب سعة التطبيقات...';
+
+  @override
+  String get analyzerInitializing => 'جارٍ التهيئة...';
+
+  @override
+  String get analyzerReadingSystemMemory => 'جارٍ قراءة ذاكرة النظام...';
+
+  @override
+  String get analyzerBackedUpApks => 'ملفات APK الاحتياطية';
+
+  @override
+  String get analyzerInstalledUserApps => 'تطبيقات المستخدم المثبتة';
+
+  @override
+  String get analyzerSystemPackages => 'حزم النظام';
+
+  @override
+  String get analyzerSearchBackups => 'ابحث في النسخ الاحتياطية...';
+
+  @override
+  String get analyzerSearchPackagesHint => 'ابحث في الحزم أو الأسماء...';
+
+  @override
+  String get analyzerSortByBackupDate => 'ترتيب حسب تاريخ النسخة الاحتياطية';
+
+  @override
+  String get analyzerSortByInstallDate => 'ترتيب حسب تاريخ التثبيت';
+
+  @override
+  String get analyzerBackup => 'نسخة احتياطية';
+
+  @override
+  String get analyzerClear => 'مسح';
+
+  @override
+  String get analyzerUninstall => 'إلغاء التثبيت';
+
+  @override
+  String get analyzerSingleApk => 'ملف APK مفرد';
+
+  @override
+  String get analyzerSplitBundle => 'حزمة مجزأة';
+
+  @override
+  String get analyzerSplitBundleApks => 'حزمة مجزأة (APKS)';
+
+  @override
+  String get analyzerApkBackedUp =>
+      'تم نسخ ملف APK احتياطيًا إلى NFile/Backups/Apps/';
+
+  @override
+  String get analyzerApkBackupFailed => 'فشل النسخ الاحتياطي لملف APK';
+
+  @override
+  String get analyzerBackupsListHint =>
+      'ستظهر هنا قائمة ملفات APK و APKS التي نسختها احتياطيًا.';
+
+  @override
+  String analyzerNoBackupsMatch(String query) {
+    return 'لم نعثر على أي نسخ احتياطية تطابق \"$query\"';
+  }
+
+  @override
+  String get categoryAudios => 'الصوتيات';
+
+  @override
+  String get actionEdit => 'تحرير';
+
+  @override
+  String get actionInfo => 'معلومات';
+
+  @override
+  String get actionReload => 'إعادة تحميل';
+
+  @override
+  String get actionRestore => 'استعادة';
+
+  @override
+  String get actionSave => 'حفظ';
+
+  @override
+  String get actionUndo => 'تراجع';
+
+  @override
+  String get actionRedo => 'إعادة';
+
+  @override
+  String get editorFind => 'بحث...';
+
+  @override
+  String get editorLockZoom => 'قفل التكبير';
+
+  @override
+  String get editorUnlockZoom => 'فتح قفل التكبير';
+
+  @override
+  String get editorWordWrapOn => 'التفاف النص: مفعّل';
+
+  @override
+  String get editorWordWrapOff => 'التفاف النص: معطّل';
+
+  @override
+  String get editorEditLockOn => 'قفل التحرير: مفعّل';
+
+  @override
+  String get editorEditLockOff => 'قفل التحرير: معطّل';
+
+  @override
+  String get editorShowLineNumbers => 'إظهار أرقام الأسطر';
+
+  @override
+  String get editorHideLineNumbers => 'إخفاء أرقام الأسطر';
+
+  @override
+  String get editorSaveFailed => 'تعذّر حفظ التغييرات في التخزين الخارجي.';
+
+  @override
+  String get viewerEmptySlide => '(شريحة فارغة)';
+
+  @override
+  String get viewerEmptyFile => '(ملف فارغ)';
+
+  @override
+  String get viewerContinuous => 'مستمر (قائمة تمرير عمودية)';
+
+  @override
+  String get viewerSinglePage => 'صفحة واحدة (تمرير فوري صفحة بصفحة)';
+
+  @override
+  String get viewerHorizontalSwipe => 'أفقي (تمرير من اليسار إلى اليمين)';
+
+  @override
+  String get viewerVerticalScroll => 'عمودي (تمرير من أعلى إلى أسفل)';
+
+  @override
+  String get viewerHorizontal => 'أفقي';
+
+  @override
+  String get viewerVertical => 'عمودي';
+
+  @override
+  String viewerSizeMegabytes(String size) {
+    return '$size م.ب';
+  }
+
+  @override
+  String viewerSizeKilobytes(String size) {
+    return '$size ك.ب';
+  }
+
+  @override
+  String get databaseBrowseData => 'تصفح البيانات';
+
+  @override
+  String get databaseSqlConsole => 'وحدة SQL';
+
+  @override
+  String get databaseTableSchema => 'مخطط الجدول';
+
+  @override
+  String get databaseSelectHint => 'نفّذ استعلام SELECT لعرض النتائج.';
+
+  @override
+  String get databaseQueryError => 'خطأ في تنفيذ الاستعلام.';
+
+  @override
+  String get audioLyrics => 'كلمات الأغنية';
+
+  @override
+  String get audioMute => 'كتم';
+
+  @override
+  String get audioUnmute => 'إلغاء الكتم';
+
+  @override
+  String get audioPlayInBackground => 'تشغيل في الخلفية';
+
+  @override
+  String get audioBackgroundOn => 'الخلفية: مفعّل';
+
+  @override
+  String get audioNotificationControlsHint => 'يظهر إشعار بأزرار التحكم';
+
+  @override
+  String get audioTapToStopHint => 'اضغط لإيقاف التشغيل في الخلفية';
+
+  @override
+  String get audioShuffleOn => 'العشوائي: مفعّل';
+
+  @override
+  String get audioShuffleOff => 'العشوائي: معطّل';
+
+  @override
+  String get audioRepeatAll => 'التكرار: الكل';
+
+  @override
+  String get audioRepeatOne => 'التكرار: واحد';
+
+  @override
+  String get audioRepeatOff => 'التكرار: متوقف';
+
+  @override
+  String get audioSingleTrack => 'مقطع واحد';
+
+  @override
+  String get lyricsReadFailed => 'تعذّرت قراءة ملف LRC المختار.';
+
+  @override
+  String get lyricsNoValidLines =>
+      'لم يُعثر على أسطر صالحة في ملف LRC المختار.';
+
+  @override
+  String get lyricsSelectValidFile => 'يرجى اختيار ملف صالح ينتهي بـ .lrc';
+
+  @override
+  String get videoBrightness => 'السطوع';
+
+  @override
+  String get videoVolume => 'مستوى الصوت';
+
+  @override
+  String get videoFullScreen => 'ملء الشاشة';
+
+  @override
+  String get videoExitFullScreen => 'الخروج من ملء الشاشة';
+
+  @override
+  String get videoLabel => 'فيديو';
+
+  @override
+  String get imageLabel => 'صورة';
+
+  @override
+  String get mediaInfoTitle => 'معلومات الوسائط';
+
+  @override
+  String get mediaFileSize => 'حجم الملف';
+
+  @override
+  String get mediaOriginalLocation => 'الموقع الأصلي';
+
+  @override
+  String get mediaRecycledDate => 'تاريخ النقل إلى سلة المحذوفات';
+
+  @override
+  String get mediaDirectory => 'مجلد';
+
+  @override
+  String get mediaUnknownDate => 'تاريخ غير معروف';
+
+  @override
+  String mediaCopiedToClipboard(int count) {
+    return 'تم نسخ $count عنصرًا إلى الحافظة';
+  }
+
+  @override
+  String mediaCutToClipboard(int count) {
+    return 'تم قص $count عنصرًا إلى الحافظة';
+  }
+
+  @override
+  String get markdownFileNotFound => '# الملف غير موجود';
+
+  @override
+  String markdownLoadError(String error) {
+    return '# خطأ في تحميل الملف\n\n`$error`';
+  }
+
+  @override
+  String get htmlFileNotFound => '<p>الملف غير موجود.</p>';
+
+  @override
+  String htmlLoadError(String error) {
+    return '<p>خطأ في تحميل HTML: $error</p>';
+  }
+
+  @override
+  String get archiveCreatedSuccessfully => 'تم إنشاء الأرشيف بنجاح';
+
+  @override
+  String get archiveExtractedSuccessfully => 'تم فك ضغط الأرشيف بنجاح';
+
+  @override
+  String get archiveFileNotFound => 'ملف الأرشيف غير موجود';
+
+  @override
+  String archiveCompressionFailed(String error) {
+    return 'فشل الضغط: $error';
+  }
+
+  @override
+  String archiveExtractionFailed(String error) {
+    return 'فشل فك الضغط: $error';
+  }
+
+  @override
+  String get archiveOperationFailed => 'فشل الضغط أو فك الضغط.';
+
+  @override
+  String get archiveNoFilesToCompress => 'لم يُعثر على ملفات لضغطها';
+
+  @override
+  String get archiveScanningFiles => 'جارٍ فحص الملفات...';
+
+  @override
+  String get archiveSavingToDisk => 'جارٍ حفظ الأرشيف على القرص...';
+
+  @override
+  String get archiveEncodingStructure => 'جارٍ ترميز بنية الأرشيف...';
+
+  @override
+  String get archiveApplyingGzip => 'جارٍ تطبيق ضغط GZIP...';
+
+  @override
+  String get archiveApplyingBzip2 => 'جارٍ تطبيق ضغط BZIP2...';
+
+  @override
+  String get archiveApplyingLz4 => 'جارٍ تطبيق ضغط LZ4...';
+
+  @override
+  String get archiveApplyingZstd => 'جارٍ تطبيق ضغط ZSTD...';
+
+  @override
+  String get archiveOpeningZip => 'جارٍ فتح ملف zip...';
+
+  @override
+  String get archiveReading => 'جارٍ قراءة الأرشيف...';
+
+  @override
+  String get archiveExtractingTar => 'جارٍ استخراج tar...';
+
+  @override
+  String get archiveOpeningTar => 'جارٍ فتح ملف tar...';
+
+  @override
+  String get archiveDecompressingGzip => 'جارٍ فك ضغط gzip...';
+
+  @override
+  String get archiveDecompressing => 'جارٍ فك ضغط الأرشيف...';
+
+  @override
+  String get archiveExtractingFiles => 'جارٍ استخراج الملفات...';
+
+  @override
+  String get archiveOpening => 'جارٍ فتح الأرشيف...';
+
+  @override
+  String archiveProcessedSuccessfully(String name) {
+    return 'تمت معالجة $name بنجاح.';
+  }
+
+  @override
+  String get operationSuccessful => 'تم بنجاح';
+
+  @override
+  String get operationFailed => 'فشلت العملية';
+
+  @override
+  String get archiveUnsupportedFormat => 'صيغة غير مدعومة';
+
+  @override
   String processingItem(int current, int total) {
     return 'يجري معالجة العنصر $current من $total';
   }
