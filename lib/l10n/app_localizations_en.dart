@@ -429,7 +429,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sdCard => 'sdCard';
+  String get sdCard => 'SD Card';
 
   @override
   String transferFailed(String error) {
@@ -887,6 +887,78 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get filterFilesHint =>
       'Select a category to display matching files only';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterFolders => 'Folders';
+
+  @override
+  String deleteSelectedItemsQuestion(int count) {
+    return 'Are you sure you want to delete $count selected item(s)? This cannot be undone.';
+  }
+
+  @override
+  String deleteItemsQuestion(int count) {
+    return 'Are you sure you want to delete $count items? This cannot be undone.';
+  }
+
+  @override
+  String get deleteItemQuestion =>
+      'Are you sure you want to delete this item? This cannot be undone.';
+
+  @override
+  String get cannotCutPasteSameFolder =>
+      'Cannot cut and paste a file into the same folder.';
+
+  @override
+  String shareAppMessage(String url) {
+    return 'Check out NFile, a beautiful offline file manager and media hub: $url';
+  }
+
+  @override
+  String get deviceGalleryAuto => 'Device Gallery (Auto)';
+
+  @override
+  String get deviceAudioLibraryAuto => 'Device Audio Library (Auto)';
+
+  @override
+  String get deviceGalleryScreenshots => 'Device Gallery (Screenshots)';
+
+  @override
+  String get internalStorageAllFolders =>
+      'Internal Storage (All Folders Scanned)';
+
+  @override
+  String get searchYourStorage => 'Search your storage';
+
+  @override
+  String get searchThisFolder => 'Search this folder';
+
+  @override
+  String get searchEverythingHint =>
+      'Find any file, folder, document or media instantly across your device';
+
+  @override
+  String searchInFolderNamed(String folder) {
+    return 'Search files and subfolders in: $folder';
+  }
+
+  @override
+  String noMatchForQuery(String query, String filter) {
+    return 'We could not find anything matching \"$query\" under $filter';
+  }
+
+  @override
+  String get rootDirectory => 'Root';
+
+  @override
+  String get copyFileSuffix => '(copy)';
+
+  @override
+  String get tarFormatsMemoryWarning =>
+      'TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.';
 
   @override
   String processingItem(int current, int total) {
@@ -2523,4 +2595,237 @@ class AppLocalizationsEn extends AppLocalizations {
   String sentBytes(String amount) {
     return 'Sent: $amount';
   }
+
+  @override
+  String get exitConfirmationLabel => 'Exit Confirmation';
+
+  @override
+  String get actionCancel => 'Cancel';
+
+  @override
+  String get actionExit => 'Exit';
+
+  @override
+  String get actionHome => 'Home';
+
+  @override
+  String get actionBrowse => 'Browse';
+
+  @override
+  String get drawerNavigation => 'Navigation';
+
+  @override
+  String get customizationAndSettings => 'Customization & Settings';
+
+  @override
+  String get lightMode => 'Light Mode';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get categoryImages => 'Images';
+
+  @override
+  String get categoryVideos => 'Videos';
+
+  @override
+  String get categoryAudio => 'Audio';
+
+  @override
+  String get categoryDocuments => 'Documents';
+
+  @override
+  String get categoryArchives => 'Archives';
+
+  @override
+  String get categoryDownloads => 'Downloads';
+
+  @override
+  String get categoryApks => 'APKs';
+
+  @override
+  String get categoryScreenshots => 'Screenshots';
+
+  @override
+  String get categoryApps => 'Apps';
+
+  @override
+  String get categoryManager => 'Manager';
+
+  @override
+  String get categoryBin => 'Bin';
+
+  @override
+  String get categorySettings => 'Settings';
+
+  @override
+  String get categoryConfigure => 'Configure';
+
+  @override
+  String get itemFolder => 'Folder';
+
+  @override
+  String get itemFile => 'File';
+
+  @override
+  String get actionCustomize => 'Customize';
+
+  @override
+  String get actionDone => 'Done';
+
+  @override
+  String get actionRename => 'Rename';
+
+  @override
+  String get searchGloballyHint => 'Search globally...';
+
+  @override
+  String get searchInFolderHint => 'Search in this folder...';
+
+  @override
+  String get actionCopy => 'Copy';
+
+  @override
+  String get actionCut => 'Cut';
+
+  @override
+  String get actionDelete => 'Delete';
+
+  @override
+  String get actionShare => 'Share';
+
+  @override
+  String get actionProperties => 'Properties';
+
+  @override
+  String get allRecentFiles => 'All Recent Files';
+
+  @override
+  String get actionRefresh => 'Refresh';
+
+  @override
+  String get deleteItemLabel => 'Delete Item';
+
+  @override
+  String get closeSearch => 'Close Search';
+
+  @override
+  String get searchInPane => 'Search in Pane';
+
+  @override
+  String get searchPlaceholder => 'Search...';
+
+  @override
+  String get unpinTab => 'Unpin Tab';
+
+  @override
+  String get pinTab => 'Pin Tab';
+
+  @override
+  String get openWithAlways => 'Always';
+
+  @override
+  String get actionArchive => 'Archive';
+
+  @override
+  String get actionExtract => 'Extract';
+
+  @override
+  String get timeJustNow => 'Just now';
+
+  @override
+  String get timeYesterday => 'Yesterday';
+
+  @override
+  String timeMinutesAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count minutes ago',
+      one: '1 minute ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String timeHoursAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count hours ago',
+      one: '1 hour ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String timeDaysAgo(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appTagline => 'NFile - Beautiful File Manager';
+
+  @override
+  String get localFolder => 'Local Folder';
+
+  @override
+  String get unknownArtist => 'Unknown Artist';
+
+  @override
+  String get sdCardOrUsb => 'SD Card / USB';
+
+  @override
+  String get connecting => 'Connecting...';
+
+  @override
+  String get starting => 'Starting...';
+
+  @override
+  String dateDayMonth(int day, String month) {
+    return '$day $month';
+  }
+
+  @override
+  String get monthJanuary => 'January';
+
+  @override
+  String get monthFebruary => 'February';
+
+  @override
+  String get monthMarch => 'March';
+
+  @override
+  String get monthApril => 'April';
+
+  @override
+  String get monthMay => 'May';
+
+  @override
+  String get monthJune => 'June';
+
+  @override
+  String get monthJuly => 'July';
+
+  @override
+  String get monthAugust => 'August';
+
+  @override
+  String get monthSeptember => 'September';
+
+  @override
+  String get monthOctober => 'October';
+
+  @override
+  String get monthNovember => 'November';
+
+  @override
+  String get monthDecember => 'December';
 }

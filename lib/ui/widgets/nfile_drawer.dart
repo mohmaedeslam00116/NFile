@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../core/l10n/volume_labels.dart';
 import '../../core/app_version.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
@@ -56,11 +57,11 @@ class NFileDrawer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSectionTitle(context, 'Navigation'),
+                    _buildSectionTitle(context, AppLocalizations.of(context).drawerNavigation),
                     _buildDrawerTile(
                       context,
                       icon: Broken.home,
-                      title: 'Home',
+                      title: AppLocalizations.of(context).actionHome,
                       onTap: () {
                         Navigator.pop(context); // Close drawer
                         onNavigateTab?.call(0);
@@ -70,7 +71,7 @@ class NFileDrawer extends StatelessWidget {
                       _buildDrawerTile(
                         context,
                         icon: vol.isInternal ? Broken.folder_open : Icons.sd_storage_rounded,
-                        title: _volumeLabel(context, vol),
+                        title: volumeLabel(AppLocalizations.of(context), vol),
                         isSelected: fileManager.rootPath == vol.path,
                         onTap: () {
                           Navigator.pop(context);
@@ -270,11 +271,11 @@ class NFileDrawer extends StatelessWidget {
                     ),
 
                     _buildDivider(context),
-                    _buildSectionTitle(context, 'Customization & Settings'),
+                    _buildSectionTitle(context, AppLocalizations.of(context).customizationAndSettings),
                     _buildDrawerTile(
                       context,
                       icon: isDark ? Broken.sun_1 : Broken.moon,
-                      title: isDark ? 'Light Mode' : 'Dark Mode',
+                      title: isDark ? AppLocalizations.of(context).lightMode : AppLocalizations.of(context).darkMode,
                       trailing: Transform.scale(
                         scale: 0.85,
                         child: Switch(
@@ -447,21 +448,6 @@ class NFileDrawer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
       child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), height: 1),
     );
-  }
-
-  /// The name of a storage volume, in the language of the application.
-  ///
-  /// The name of a volume is the name of the device, and the provider holds
-  /// it as it is. The two names the application knows are translated here.
-  String _volumeLabel(BuildContext context, StorageVolume volume) {
-    final l10n = AppLocalizations.of(context);
-    if (volume.isInternal) return l10n.internalStorage;
-
-    final named = RegExp(r'^SD Card \((.*)\)$').firstMatch(volume.name);
-    if (named != null) return '${l10n.sdCard} (${named.group(1)})';
-    if (volume.name.startsWith('SD Card')) return l10n.sdCard;
-
-    return volume.name;
   }
 
 }

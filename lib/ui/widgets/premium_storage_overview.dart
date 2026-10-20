@@ -126,11 +126,11 @@ class PremiumStorageOverview extends StatelessWidget {
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(color: Colors.white.withValues(alpha: 0.25), width: 1),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Browse',
+                              AppLocalizations.of(context).actionBrowse,
                               style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 11.5),
                             ),
                             SizedBox(width: 4),

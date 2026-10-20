@@ -240,7 +240,8 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
     final confirm = await FileActionDialogs.showConfirmDialog(
       context,
       title: AppLocalizations.of(context).deleteSelected,
-      content: 'Are you sure you want to delete ${_selectedPaths.length} selected item(s)? This cannot be undone.',
+      content: AppLocalizations.of(context)
+          .deleteSelectedItemsQuestion(_selectedPaths.length),
     );
 
     if (confirm) {
@@ -288,10 +289,10 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
         final currentName = p.basename(path);
         final newName = await FileActionDialogs.showTextInputDialog(
           context,
-          title: 'Rename',
+          title: AppLocalizations.of(context).actionRename,
           hint: AppLocalizations.of(context).enterNewName,
           initialValue: currentName,
-          actionText: 'Rename',
+          actionText: AppLocalizations.of(context).actionRename,
         );
         if (newName != null && newName.isNotEmpty) {
           await provider.renameFile(path, newName);
@@ -302,7 +303,7 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
           title: AppLocalizations.of(context).deleteFile,
-          content: 'Are you sure you want to delete this item? This cannot be undone.',
+          content: AppLocalizations.of(context).deleteItemQuestion,
         );
         if (confirm) {
           await provider.deleteFile(path);
@@ -329,29 +330,29 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
                 onPressed: () => Navigator.pop(context),
               ),
         title: Text(
-          _isSelectionMode ? '${_selectedPaths.length} Selected' : 'All Recent Files',
+          _isSelectionMode ? AppLocalizations.of(context).selectedCount(_selectedPaths.length) : AppLocalizations.of(context).allRecentFiles,
           style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         actions: _isSelectionMode
             ? [
                 IconButton(
                   icon: const Icon(Broken.document_copy),
-                  tooltip: 'Copy',
+                  tooltip: AppLocalizations.of(context).actionCopy,
                   onPressed: _handleCopySelected,
                 ),
                 IconButton(
                   icon: const Icon(Broken.scissor),
-                  tooltip: 'Cut',
+                  tooltip: AppLocalizations.of(context).actionCut,
                   onPressed: _handleCutSelected,
                 ),
                 IconButton(
                   icon: const Icon(Icons.share_outlined),
-                  tooltip: 'Share',
+                  tooltip: AppLocalizations.of(context).actionShare,
                   onPressed: _handleShareSelected,
                 ),
                 IconButton(
                   icon: const Icon(Broken.trash, color: Colors.red),
-                  tooltip: 'Delete',
+                  tooltip: AppLocalizations.of(context).actionDelete,
                   onPressed: _handleDeleteSelected,
                 ),
                 IconButton(
@@ -363,7 +364,7 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
             : [
                 IconButton(
                   icon: const Icon(Icons.refresh_rounded),
-                  tooltip: 'Refresh',
+                  tooltip: AppLocalizations.of(context).actionRefresh,
                   onPressed: () {
                     setState(() => _isLoading = true);
                     _loadRecentFiles();

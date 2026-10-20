@@ -12,6 +12,7 @@ import '../../models/file_item_model.dart';
 import '../../models/folder_tab_model.dart';
 import '../../models/drag_payload.dart';
 import '../../models/file_filter_type.dart';
+import '../../core/l10n/filter_labels.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import 'drag_drop_action_dialog.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -136,10 +137,10 @@ class _PaneBrowserState extends State<PaneBrowser> {
           final currentName = p.basename(path);
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
-            title: 'Rename',
+            title: AppLocalizations.of(context).actionRename,
             hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
-            actionText: 'Rename',
+            actionText: AppLocalizations.of(context).actionRename,
           );
           if (newName != null && newName.isNotEmpty) {
             await provider.renameFile(path, newName);
@@ -153,10 +154,10 @@ class _PaneBrowserState extends State<PaneBrowser> {
         final isMulti = provider.selectedPaths.isNotEmpty && provider.selectedPaths.contains(path);
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
-          title: isMulti ? AppLocalizations.of(context).deleteSelected : 'Delete Item',
+          title: isMulti ? AppLocalizations.of(context).deleteSelected : AppLocalizations.of(context).deleteItemLabel,
           content: isMulti
-              ? 'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.'
-              : 'Are you sure you want to delete this item? This cannot be undone.',
+              ? AppLocalizations.of(context).deleteItemsQuestion(provider.selectedPaths.length)
+              : AppLocalizations.of(context).deleteItemQuestion,
         );
         if (confirm) {
           if (isMulti) {
@@ -256,7 +257,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           constraints: const BoxConstraints(),
                           onPressed: () => provider.toggleSearchForTab(widget.tabIndex),
-                          tooltip: tab.isSearchActive ? 'Close Search' : 'Search in Pane',
+                          tooltip: tab.isSearchActive ? AppLocalizations.of(context).closeSearch : AppLocalizations.of(context).searchInPane,
                         ),
                         // UP button for parent directory
                         if (tab.currentPath != '/' && tab.currentPath != provider.rootPath)
@@ -318,7 +319,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                               autofocus: true,
                               style: theme.textTheme.bodyMedium,
                               decoration: InputDecoration(
-                                hintText: 'Search...',
+                                hintText: AppLocalizations.of(context).searchPlaceholder,
                                 hintStyle: TextStyle(color: theme.colorScheme.onSurface.withAlpha(102), fontSize: 13),
                                 border: InputBorder.none,
                                 isDense: true,
@@ -398,7 +399,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                                       const SizedBox(width: 4),
                                     ],
                                     Text(
-                                      filter,
+                                      filterLabel(AppLocalizations.of(context), filter),
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
@@ -795,7 +796,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
                               future: provider.getFolderItemCount(folder.path),
                               builder: (context, snapshot) {
                                 final count = snapshot.data ?? 0;
-                                final countStr = count == 1 ? '1 item' : '$count items';
+                                final countStr = AppLocalizations.of(context).countItems(count);
                                 if (provider.hideTimeAndDate) {
                                   return Text(
                                     countStr,
@@ -953,6 +954,7 @@ class _PaneBrowserState extends State<PaneBrowser> {
 
   Widget _buildActiveFilterBanner(BuildContext context, FileManagerProvider provider) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
     final filter = provider.filterType;
     String label = '';
     IconData icon = Broken.category;
@@ -962,27 +964,27 @@ class _PaneBrowserState extends State<PaneBrowser> {
       case FileFilterType.all:
         break;
       case FileFilterType.documents:
-        label = 'Documents only';
+        label = l10n.documentsOnly;
         icon = Broken.document;
         color = Colors.blueAccent;
         break;
       case FileFilterType.images:
-        label = 'Images only';
+        label = l10n.imagesOnly;
         icon = Broken.image;
         color = Colors.purpleAccent;
         break;
       case FileFilterType.audio:
-        label = 'Audio only';
+        label = l10n.audioOnly;
         icon = Broken.music;
         color = Colors.greenAccent;
         break;
       case FileFilterType.videos:
-        label = 'Videos only';
+        label = l10n.videosOnly;
         icon = Broken.video;
         color = Colors.redAccent;
         break;
       case FileFilterType.archives:
-        label = 'Archives only';
+        label = l10n.archivesOnly;
         icon = Broken.archive;
         color = Colors.brown;
         break;

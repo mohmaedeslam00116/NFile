@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../core/l10n/volume_labels.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/utils.dart';
@@ -241,7 +242,7 @@ class _SwipableStorageOverviewState extends State<SwipableStorageOverview> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        vol.name,
+                                        volumeLabel(AppLocalizations.of(context), vol),
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 16,
@@ -273,11 +274,11 @@ class _SwipableStorageOverviewState extends State<SwipableStorageOverview> {
                                 //     borderRadius: BorderRadius.circular(14),
                                 //     border: Border.all(color: Colors.white.withValues(alpha: 0.25), width: 1),
                                 //   ),
-                                //   child: const Row(
+                                //   child: Row(
                                 //     mainAxisSize: MainAxisSize.min,
                                 //     children: [
                                 //       Text(
-                                //         'Browse',
+                                //         AppLocalizations.of(context).actionBrowse,
                                 //         style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 11.5),
                                 //       ),
                                 //       SizedBox(width: 4),

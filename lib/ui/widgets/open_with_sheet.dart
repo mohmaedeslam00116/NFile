@@ -232,7 +232,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                       onPressed: () {
                         Navigator.pop(context, 'always_$_selectedType');
                       },
-                      child: const Text('Always'),
+                      child: Text(AppLocalizations.of(context).openWithAlways),
                     ),
                   ),
                 ],

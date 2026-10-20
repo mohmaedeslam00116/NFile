@@ -809,7 +809,7 @@ abstract class AppLocalizations {
   /// No description provided for @sdCard.
   ///
   /// In en, this message translates to:
-  /// **'sdCard'**
+  /// **'SD Card'**
   String get sdCard;
 
   /// No description provided for @transferFailed.
@@ -1609,6 +1609,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select a category to display matching files only'**
   String get filterFilesHint;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterFolders.
+  ///
+  /// In en, this message translates to:
+  /// **'Folders'**
+  String get filterFolders;
+
+  /// No description provided for @deleteSelectedItemsQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete {count} selected item(s)? This cannot be undone.'**
+  String deleteSelectedItemsQuestion(int count);
+
+  /// No description provided for @deleteItemsQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete {count} items? This cannot be undone.'**
+  String deleteItemsQuestion(int count);
+
+  /// No description provided for @deleteItemQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this item? This cannot be undone.'**
+  String get deleteItemQuestion;
+
+  /// No description provided for @cannotCutPasteSameFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot cut and paste a file into the same folder.'**
+  String get cannotCutPasteSameFolder;
+
+  /// No description provided for @shareAppMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Check out NFile, a beautiful offline file manager and media hub: {url}'**
+  String shareAppMessage(String url);
+
+  /// No description provided for @deviceGalleryAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Device Gallery (Auto)'**
+  String get deviceGalleryAuto;
+
+  /// No description provided for @deviceAudioLibraryAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Device Audio Library (Auto)'**
+  String get deviceAudioLibraryAuto;
+
+  /// No description provided for @deviceGalleryScreenshots.
+  ///
+  /// In en, this message translates to:
+  /// **'Device Gallery (Screenshots)'**
+  String get deviceGalleryScreenshots;
+
+  /// No description provided for @internalStorageAllFolders.
+  ///
+  /// In en, this message translates to:
+  /// **'Internal Storage (All Folders Scanned)'**
+  String get internalStorageAllFolders;
+
+  /// No description provided for @searchYourStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Search your storage'**
+  String get searchYourStorage;
+
+  /// No description provided for @searchThisFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search this folder'**
+  String get searchThisFolder;
+
+  /// No description provided for @searchEverythingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Find any file, folder, document or media instantly across your device'**
+  String get searchEverythingHint;
+
+  /// No description provided for @searchInFolderNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'Search files and subfolders in: {folder}'**
+  String searchInFolderNamed(String folder);
+
+  /// No description provided for @noMatchForQuery.
+  ///
+  /// In en, this message translates to:
+  /// **'We could not find anything matching \"{query}\" under {filter}'**
+  String noMatchForQuery(String query, String filter);
+
+  /// No description provided for @rootDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Root'**
+  String get rootDirectory;
+
+  /// No description provided for @copyFileSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'(copy)'**
+  String get copyFileSuffix;
+
+  /// No description provided for @tarFormatsMemoryWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.'**
+  String get tarFormatsMemoryWarning;
 
   /// No description provided for @processingItem.
   ///
@@ -4333,6 +4447,420 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sent: {amount}'**
   String sentBytes(String amount);
+
+  /// No description provided for @exitConfirmationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Confirmation'**
+  String get exitConfirmationLabel;
+
+  /// No description provided for @actionCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get actionCancel;
+
+  /// No description provided for @actionExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get actionExit;
+
+  /// No description provided for @actionHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get actionHome;
+
+  /// No description provided for @actionBrowse.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse'**
+  String get actionBrowse;
+
+  /// No description provided for @drawerNavigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigation'**
+  String get drawerNavigation;
+
+  /// No description provided for @customizationAndSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Customization & Settings'**
+  String get customizationAndSettings;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @categoryImages.
+  ///
+  /// In en, this message translates to:
+  /// **'Images'**
+  String get categoryImages;
+
+  /// No description provided for @categoryVideos.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get categoryVideos;
+
+  /// No description provided for @categoryAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get categoryAudio;
+
+  /// No description provided for @categoryDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get categoryDocuments;
+
+  /// No description provided for @categoryArchives.
+  ///
+  /// In en, this message translates to:
+  /// **'Archives'**
+  String get categoryArchives;
+
+  /// No description provided for @categoryDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads'**
+  String get categoryDownloads;
+
+  /// No description provided for @categoryApks.
+  ///
+  /// In en, this message translates to:
+  /// **'APKs'**
+  String get categoryApks;
+
+  /// No description provided for @categoryScreenshots.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshots'**
+  String get categoryScreenshots;
+
+  /// No description provided for @categoryApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps'**
+  String get categoryApps;
+
+  /// No description provided for @categoryManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get categoryManager;
+
+  /// No description provided for @categoryBin.
+  ///
+  /// In en, this message translates to:
+  /// **'Bin'**
+  String get categoryBin;
+
+  /// No description provided for @categorySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get categorySettings;
+
+  /// No description provided for @categoryConfigure.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure'**
+  String get categoryConfigure;
+
+  /// No description provided for @itemFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder'**
+  String get itemFolder;
+
+  /// No description provided for @itemFile.
+  ///
+  /// In en, this message translates to:
+  /// **'File'**
+  String get itemFile;
+
+  /// No description provided for @actionCustomize.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize'**
+  String get actionCustomize;
+
+  /// No description provided for @actionDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get actionDone;
+
+  /// No description provided for @actionRename.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get actionRename;
+
+  /// No description provided for @searchGloballyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search globally...'**
+  String get searchGloballyHint;
+
+  /// No description provided for @searchInFolderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search in this folder...'**
+  String get searchInFolderHint;
+
+  /// No description provided for @actionCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get actionCopy;
+
+  /// No description provided for @actionCut.
+  ///
+  /// In en, this message translates to:
+  /// **'Cut'**
+  String get actionCut;
+
+  /// No description provided for @actionDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get actionDelete;
+
+  /// No description provided for @actionShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get actionShare;
+
+  /// No description provided for @actionProperties.
+  ///
+  /// In en, this message translates to:
+  /// **'Properties'**
+  String get actionProperties;
+
+  /// No description provided for @allRecentFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'All Recent Files'**
+  String get allRecentFiles;
+
+  /// No description provided for @actionRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get actionRefresh;
+
+  /// No description provided for @deleteItemLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Item'**
+  String get deleteItemLabel;
+
+  /// No description provided for @closeSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Search'**
+  String get closeSearch;
+
+  /// No description provided for @searchInPane.
+  ///
+  /// In en, this message translates to:
+  /// **'Search in Pane'**
+  String get searchInPane;
+
+  /// No description provided for @searchPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search...'**
+  String get searchPlaceholder;
+
+  /// No description provided for @unpinTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpin Tab'**
+  String get unpinTab;
+
+  /// No description provided for @pinTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin Tab'**
+  String get pinTab;
+
+  /// No description provided for @openWithAlways.
+  ///
+  /// In en, this message translates to:
+  /// **'Always'**
+  String get openWithAlways;
+
+  /// No description provided for @actionArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive'**
+  String get actionArchive;
+
+  /// No description provided for @actionExtract.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract'**
+  String get actionExtract;
+
+  /// No description provided for @timeJustNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get timeJustNow;
+
+  /// No description provided for @timeYesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get timeYesterday;
+
+  /// No description provided for @timeMinutesAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 minute ago} other{{count} minutes ago}}'**
+  String timeMinutesAgo(num count);
+
+  /// No description provided for @timeHoursAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 hour ago} other{{count} hours ago}}'**
+  String timeHoursAgo(num count);
+
+  /// No description provided for @timeDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  String timeDaysAgo(num count);
+
+  /// No description provided for @appTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'NFile - Beautiful File Manager'**
+  String get appTagline;
+
+  /// No description provided for @localFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Local Folder'**
+  String get localFolder;
+
+  /// No description provided for @unknownArtist.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Artist'**
+  String get unknownArtist;
+
+  /// No description provided for @sdCardOrUsb.
+  ///
+  /// In en, this message translates to:
+  /// **'SD Card / USB'**
+  String get sdCardOrUsb;
+
+  /// No description provided for @connecting.
+  ///
+  /// In en, this message translates to:
+  /// **'Connecting...'**
+  String get connecting;
+
+  /// No description provided for @starting.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting...'**
+  String get starting;
+
+  /// No description provided for @dateDayMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'{day} {month}'**
+  String dateDayMonth(int day, String month);
+
+  /// No description provided for @monthJanuary.
+  ///
+  /// In en, this message translates to:
+  /// **'January'**
+  String get monthJanuary;
+
+  /// No description provided for @monthFebruary.
+  ///
+  /// In en, this message translates to:
+  /// **'February'**
+  String get monthFebruary;
+
+  /// No description provided for @monthMarch.
+  ///
+  /// In en, this message translates to:
+  /// **'March'**
+  String get monthMarch;
+
+  /// No description provided for @monthApril.
+  ///
+  /// In en, this message translates to:
+  /// **'April'**
+  String get monthApril;
+
+  /// No description provided for @monthMay.
+  ///
+  /// In en, this message translates to:
+  /// **'May'**
+  String get monthMay;
+
+  /// No description provided for @monthJune.
+  ///
+  /// In en, this message translates to:
+  /// **'June'**
+  String get monthJune;
+
+  /// No description provided for @monthJuly.
+  ///
+  /// In en, this message translates to:
+  /// **'July'**
+  String get monthJuly;
+
+  /// No description provided for @monthAugust.
+  ///
+  /// In en, this message translates to:
+  /// **'August'**
+  String get monthAugust;
+
+  /// No description provided for @monthSeptember.
+  ///
+  /// In en, this message translates to:
+  /// **'September'**
+  String get monthSeptember;
+
+  /// No description provided for @monthOctober.
+  ///
+  /// In en, this message translates to:
+  /// **'October'**
+  String get monthOctober;
+
+  /// No description provided for @monthNovember.
+  ///
+  /// In en, this message translates to:
+  /// **'November'**
+  String get monthNovember;
+
+  /// No description provided for @monthDecember.
+  ///
+  /// In en, this message translates to:
+  /// **'December'**
+  String get monthDecember;
 }
 
 class _AppLocalizationsDelegate

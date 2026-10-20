@@ -41,7 +41,9 @@ class TabOptionsSheet extends StatelessWidget {
 
     final tab = tabs[tabIndex];
     final isRoot = tab.currentPath == provider.rootPath;
-    final displayTitle = isRoot ? 'Home' : p.basename(tab.currentPath);
+    final displayTitle = isRoot
+        ? AppLocalizations.of(context).actionHome
+        : p.basename(tab.currentPath);
     final displayPath = tab.currentPath.isEmpty ? '/' : tab.currentPath;
 
     return Container(
@@ -133,7 +135,7 @@ class TabOptionsSheet extends StatelessWidget {
               context: context,
               icon: tab.isPinned ? Icons.push_pin_rounded : Icons.push_pin_outlined,
               iconColor: tab.isPinned ? Colors.orange : null,
-              label: tab.isPinned ? 'Unpin Tab' : 'Pin Tab',
+              label: tab.isPinned ? AppLocalizations.of(context).unpinTab : AppLocalizations.of(context).pinTab,
               onTap: () {
                 Navigator.pop(context);
                 provider.togglePinTab(tabIndex);
