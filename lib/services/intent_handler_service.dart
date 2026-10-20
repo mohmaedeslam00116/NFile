@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +39,7 @@ class IntentHandlerService {
         debugPrint('Error resolving content URI: $e');
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error reading shared file: $e')),
+            SnackBar(content: Text(AppLocalizations.of(context).errorReadingSharedFile(e.toString()))),
           );
         }
         return;

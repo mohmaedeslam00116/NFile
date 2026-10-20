@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:path/path.dart' as path_helper;
 import 'package:flutter/material.dart';
@@ -217,8 +218,8 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
     final confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Confirm Deletion'),
-        content: Text('Are you sure you want to permanently delete $count selected items?'),
+        title: Text(AppLocalizations.of(context).confirmDeletion),
+        content: Text(AppLocalizations.of(context).confirmPermanentDelete(count)),
         actions: [
           TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
           FilledButton(
@@ -248,7 +249,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
 
       await mediaProvider.deleteMediaItems(filePaths: filePaths, assetIds: assetIds);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Successfully deleted $count items')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).deletedItemsCount(count))));
         _clearSelection();
       }
     }
@@ -283,7 +284,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
     }
 
     fm.clearClipboard();
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Pasted $pastedCount items to $destDir')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).pastedItemsTo(pastedCount, destDir))));
     await context.read<MediaProvider>().loadMedia(forceRefresh: true);
   }
 
@@ -317,14 +318,14 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error sharing: $e')),
+            SnackBar(content: Text(AppLocalizations.of(context).errorSharing(e.toString()))),
           );
         }
       }
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No files available to share.')),
+          SnackBar(content: Text(AppLocalizations.of(context).noFilesToShare)),
         );
       }
     }
@@ -368,7 +369,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
     if (filePaths.isEmpty) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No physical files found to rename')),
+          SnackBar(content: Text(AppLocalizations.of(context).noFilesToRename)),
         );
       }
       return;
@@ -381,7 +382,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
         final newName = await FileActionDialogs.showTextInputDialog(
           context,
           title: 'Rename',
-          hint: 'Enter new name',
+          hint: AppLocalizations.of(context).enterNewName,
           initialValue: currentName,
           actionText: 'Rename',
         );
@@ -419,7 +420,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
       child: InkWell(
         onTap: () {
           Clipboard.setData(ClipboardData(text: value));
-          ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text('Copied $label to clipboard'), duration: const Duration(seconds: 1)));
+          ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).copiedLabelToClipboard(label)), duration: const Duration(seconds: 1)));
         },
         borderRadius: BorderRadius.circular(8),
         child: Padding(
@@ -599,7 +600,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                       if (filePath != null) ...[
                         const SizedBox(height: 4),
                         Text(
-                          'Long press to Open with...',
+                          AppLocalizations.of(context).longPressToOpenWith,
                           style: TextStyle(fontSize: 11, color: theme.colorScheme.onSurface.withValues(alpha: 0.4)),
                         ),
                       ],
@@ -625,7 +626,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                   }
                   if (target != null && mounted) {
                     context.read<FileManagerProvider>().setClipboard([target], isCut: false);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Copied $name to clipboard')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).copiedNameToClipboard(name))));
                   }
                 },
               ),
@@ -646,7 +647,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                   }
                   if (target != null && mounted) {
                     context.read<FileManagerProvider>().setClipboard([target], isCut: true);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Cut $name to clipboard')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).cutNameToClipboard(name))));
                   }
                 },
               ),
@@ -658,8 +659,8 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                   final confirm = await showDialog<bool>(
                     context: context,
                     builder: (c) => AlertDialog(
-                      title: const Text('Confirm Deletion'),
-                      content: Text('Permanently delete "$name"?'),
+                      title: Text(AppLocalizations.of(context).confirmDeletion),
+                      content: Text(AppLocalizations.of(context).permanentlyDeleteName(name)),
                       actions: [
                         TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancel')),
                         FilledButton(
@@ -684,7 +685,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                     }
                     await mediaProvider.deleteMediaItems(filePaths: files, assetIds: assetId != null ? [assetId] : []);
                     if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Deleted $name')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).deletedName(name))));
                     }
                   }
                 },
@@ -692,7 +693,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               if (filePath != null)
                 ListTile(
                   leading: Icon(Broken.folder_open, color: theme.colorScheme.primary),
-                  title: const Text('Show in location'),
+                  title: Text(AppLocalizations.of(context).showInLocation),
                   onTap: () {
                     context.read<FileManagerProvider>().showFileInLocation(filePath);
                     Navigator.pop(ctx);
@@ -719,7 +720,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                     final newName = await FileActionDialogs.showTextInputDialog(
                       context,
                       title: 'Rename',
-                      hint: 'Enter new name',
+                      hint: AppLocalizations.of(context).enterNewName,
                       initialValue: currentName,
                       actionText: 'Rename',
                     );
@@ -732,7 +733,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
               if (filePath != null)
                 ListTile(
                   leading: Icon(Broken.eye, color: theme.colorScheme.primary),
-                  title: const Text('Open with...'),
+                  title: Text(AppLocalizations.of(context).openWith),
                   onTap: () {
                     Navigator.pop(ctx);
                     context.read<FileManagerProvider>().openFile(context, filePath, forceOpenWith: true);
@@ -767,14 +768,14 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                     } catch (e) {
                       if (mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Error sharing: $e')),
+                          SnackBar(content: Text(AppLocalizations.of(context).errorSharing(e.toString()))),
                         );
                       }
                     }
                   } else {
                     if (mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('File not found or not shareable.')),
+                        SnackBar(content: Text(AppLocalizations.of(context).fileNotShareable)),
                       );
                     }
                   }
@@ -831,7 +832,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
             Consumer<MediaProvider>(
               builder: (context, provider, child) => IconButton(
                 icon: const Icon(Broken.task_square),
-                tooltip: 'Select All',
+                tooltip: AppLocalizations.of(context).selectAll,
                 onPressed: () => _selectAll(provider),
               ),
             )
@@ -839,50 +840,50 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
             if (canPaste)
               IconButton(
                 icon: const Icon(Broken.clipboard),
-                tooltip: 'Paste Here',
+                tooltip: AppLocalizations.of(context).pasteHere,
                 onPressed: _handlePaste,
               ),
             Consumer<MediaProvider>(
               builder: (context, provider, child) {
                 return PopupMenuButton<MediaSortOrder>(
                   icon: const Icon(Icons.sort),
-                  tooltip: 'Sort Options',
+                  tooltip: AppLocalizations.of(context).sortOptions,
                   onSelected: (order) => provider.setSortOrder(order),
                   itemBuilder: (context) => [
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.newest,
                       checked: provider.sortOrder == MediaSortOrder.newest,
-                      child: const Text('Newest First'),
+                      child: Text(AppLocalizations.of(context).sortNewestFirst),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.oldest,
                       checked: provider.sortOrder == MediaSortOrder.oldest,
-                      child: const Text('Oldest First'),
+                      child: Text(AppLocalizations.of(context).sortOldestFirst),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.dateWise,
                       checked: provider.sortOrder == MediaSortOrder.dateWise,
-                      child: const Text('Date Wise'),
+                      child: Text(AppLocalizations.of(context).sortDateWise),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.newestGrouped,
                       checked: provider.sortOrder == MediaSortOrder.newestGrouped,
-                      child: const Text('Newest First (Grouped per month)'),
+                      child: Text(AppLocalizations.of(context).sortNewestGrouped),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.oldestGrouped,
                       checked: provider.sortOrder == MediaSortOrder.oldestGrouped,
-                      child: const Text('Oldest First (Grouped per month)'),
+                      child: Text(AppLocalizations.of(context).sortOldestGrouped),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.sizeLargest,
                       checked: provider.sortOrder == MediaSortOrder.sizeLargest,
-                      child: const Text('Size (Large First)'),
+                      child: Text(AppLocalizations.of(context).sortSizeLargeFirst),
                     ),
                     CheckedPopupMenuItem(
                       value: MediaSortOrder.sizeSmallest,
                       checked: provider.sortOrder == MediaSortOrder.sizeSmallest,
-                      child: const Text('Size (Small First)'),
+                      child: Text(AppLocalizations.of(context).sortSizeSmallFirst),
                     ),
                   ],
                 );
@@ -1917,7 +1918,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
         children: [
           Icon(_emptyIcon, size: 72, color: theme.colorScheme.onSurface.withValues(alpha: 0.2)),
           const SizedBox(height: 16),
-          Text('No ${_title.toLowerCase()} found', style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 16)),
+          Text(AppLocalizations.of(context).noItemsOfKindFound(_title.toLowerCase()), style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 16)),
         ],
       ),
     );
@@ -1956,7 +1957,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    'All Items',
+                    AppLocalizations.of(context).allItems,
                     style: TextStyle(
                       color: !_showFoldersMode ? theme.colorScheme.onPrimary : theme.colorScheme.onSurfaceVariant,
                       fontSize: 13,
@@ -2341,7 +2342,7 @@ class _FolderGridItemState extends State<FolderGridItem> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '$_count items',
+                      AppLocalizations.of(context).countItems(_count),
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.75),
                         fontSize: 11,

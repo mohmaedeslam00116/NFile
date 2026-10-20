@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/icon_fonts/broken_icons.dart';
+import '../../../l10n/app_localizations.dart';
 
 class AudioControlsWidget extends StatelessWidget {
   final bool isPlaying;
@@ -196,7 +197,7 @@ class AudioControlsWidget extends StatelessWidget {
                       iconSize: 22,
                       constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
                       padding: EdgeInsets.zero,
-                      tooltip: 'Sound FX',
+                      tooltip: AppLocalizations.of(context).soundFx,
                       color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                       onPressed: onShowEqualizer,
                     ),
@@ -216,7 +217,7 @@ class AudioControlsWidget extends StatelessWidget {
                       iconSize: 22,
                       constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
                       padding: EdgeInsets.zero,
-                      tooltip: 'Sleep Timer',
+                      tooltip: AppLocalizations.of(context).sleepTimer,
                       color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                       onPressed: onShowSleepTimer,
                     ),
@@ -226,7 +227,7 @@ class AudioControlsWidget extends StatelessWidget {
                       iconSize: 22,
                       constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
                       padding: EdgeInsets.zero,
-                      tooltip: 'Playing Queue',
+                      tooltip: AppLocalizations.of(context).playingQueue,
                       color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                       onPressed: onShowQueue,
                     ),

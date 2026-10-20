@@ -269,7 +269,7 @@ abstract class AppLocalizations {
   /// No description provided for @noFilesToShare.
   ///
   /// In en, this message translates to:
-  /// **'No files available to share'**
+  /// **'No files available to share.'**
   String get noFilesToShare;
 
   /// No description provided for @deleteSelected.
@@ -2599,6 +2599,870 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Backup your settings to a JSON file or restore them'**
   String get backupAndRestoreHint;
+
+  /// No description provided for @compressingFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Compressing Files'**
+  String get compressingFiles;
+
+  /// No description provided for @extractingArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Extracting Archive'**
+  String get extractingArchive;
+
+  /// No description provided for @errorReadingSharedFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Error reading shared file: {error}'**
+  String errorReadingSharedFile(String error);
+
+  /// No description provided for @extractedTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Extracted {item} to {folder}'**
+  String extractedTo(String item, String folder);
+
+  /// No description provided for @itemsCopiedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item copied to clipboard ✓} other{{count} items copied to clipboard ✓}}'**
+  String itemsCopiedToClipboard(int count);
+
+  /// No description provided for @deleteSelectedItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Selected Items'**
+  String get deleteSelectedItems;
+
+  /// No description provided for @deleteItemsFromArchiveQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete precisely these {count} item(s) from the archive? This cannot be undone.'**
+  String deleteItemsFromArchiveQuestion(int count);
+
+  /// No description provided for @itemsDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Items deleted successfully ✓'**
+  String get itemsDeletedSuccessfully;
+
+  /// No description provided for @failedToDeleteItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete items'**
+  String get failedToDeleteItems;
+
+  /// No description provided for @addedToArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully added {count} item(s) into archive ✓'**
+  String addedToArchive(int count);
+
+  /// No description provided for @pastedIntoArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Pasted {count} item(s) into archive ✓'**
+  String pastedIntoArchive(int count);
+
+  /// No description provided for @selectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 Selected} other{{count} Selected}}'**
+  String selectedCount(int count);
+
+  /// No description provided for @couldNotReadArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read archive'**
+  String get couldNotReadArchive;
+
+  /// No description provided for @extractToCurrentFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Extract to Current Folder'**
+  String get extractToCurrentFolder;
+
+  /// No description provided for @pasteHereCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste Here ({count})'**
+  String pasteHereCount(int count);
+
+  /// No description provided for @addFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Add File'**
+  String get addFile;
+
+  /// No description provided for @losslessAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Lossless Audio'**
+  String get losslessAudio;
+
+  /// No description provided for @soundFx.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound FX'**
+  String get soundFx;
+
+  /// No description provided for @sleepTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep Timer'**
+  String get sleepTimer;
+
+  /// No description provided for @playingQueue.
+  ///
+  /// In en, this message translates to:
+  /// **'Playing Queue'**
+  String get playingQueue;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 minute} other{{count} minutes}}'**
+  String minutes(int count);
+
+  /// No description provided for @sleepTimerSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep timer set for {count} minutes.'**
+  String sleepTimerSet(int count);
+
+  /// No description provided for @soundAndSpeedFx.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound & Speed FX'**
+  String get soundAndSpeedFx;
+
+  /// No description provided for @playbackSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Playback Speed'**
+  String get playbackSpeed;
+
+  /// No description provided for @pitchAdjustment.
+  ///
+  /// In en, this message translates to:
+  /// **'Pitch Adjustment'**
+  String get pitchAdjustment;
+
+  /// No description provided for @resetToDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset to Default'**
+  String get resetToDefault;
+
+  /// No description provided for @backgroundPlaybackStopped.
+  ///
+  /// In en, this message translates to:
+  /// **'Background playback stopped'**
+  String get backgroundPlaybackStopped;
+
+  /// No description provided for @backgroundPlaybackEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Background playback enabled'**
+  String get backgroundPlaybackEnabled;
+
+  /// No description provided for @viewSynchronizedLyrics.
+  ///
+  /// In en, this message translates to:
+  /// **'View Synchronized Lyrics'**
+  String get viewSynchronizedLyrics;
+
+  /// No description provided for @soundFxAndEqualizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound FX & Equalizer'**
+  String get soundFxAndEqualizer;
+
+  /// No description provided for @setSleepTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Sleep Timer'**
+  String get setSleepTimer;
+
+  /// No description provided for @audioFileInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio File Info'**
+  String get audioFileInfo;
+
+  /// No description provided for @playingQueueCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Playing Queue ({count})'**
+  String playingQueueCount(int count);
+
+  /// No description provided for @lyricsLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Lyrics loaded successfully'**
+  String get lyricsLoaded;
+
+  /// No description provided for @noSynchronizedLyrics.
+  ///
+  /// In en, this message translates to:
+  /// **'No Synchronized Lyrics Found'**
+  String get noSynchronizedLyrics;
+
+  /// No description provided for @noSynchronizedLyricsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep a .lrc file with the exact same name next to your song, or select it manually below.'**
+  String get noSynchronizedLyricsHint;
+
+  /// No description provided for @loadLrcFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Load LRC File'**
+  String get loadLrcFile;
+
+  /// No description provided for @tapLineToSeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a line to seek playback'**
+  String get tapLineToSeek;
+
+  /// No description provided for @noDataToExport.
+  ///
+  /// In en, this message translates to:
+  /// **'No data to export.'**
+  String get noDataToExport;
+
+  /// No description provided for @exportedTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully exported to {file}'**
+  String exportedTo(String file);
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed: {error}'**
+  String exportFailed(String error);
+
+  /// No description provided for @sqliteReader.
+  ///
+  /// In en, this message translates to:
+  /// **'SQLite Database Reader'**
+  String get sqliteReader;
+
+  /// No description provided for @failedToOpenDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to open database'**
+  String get failedToOpenDatabase;
+
+  /// No description provided for @noTablesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No tables found in this database.'**
+  String get noTablesFound;
+
+  /// No description provided for @exportTableToCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Table to CSV'**
+  String get exportTableToCsv;
+
+  /// No description provided for @searchRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Search rows...'**
+  String get searchRows;
+
+  /// No description provided for @noRowsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No rows found'**
+  String get noRowsFound;
+
+  /// No description provided for @showingRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing {from} - {to}'**
+  String showingRange(int from, int to);
+
+  /// No description provided for @noSchemaLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'No schema details loaded.'**
+  String get noSchemaLoaded;
+
+  /// No description provided for @schemaType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type: {type}'**
+  String schemaType(String type);
+
+  /// No description provided for @schemaDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default: {value}'**
+  String schemaDefault(String value);
+
+  /// No description provided for @sqlEditor.
+  ///
+  /// In en, this message translates to:
+  /// **'SQL Editor'**
+  String get sqlEditor;
+
+  /// No description provided for @selectTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT template'**
+  String get selectTemplate;
+
+  /// No description provided for @enterSelectQuery.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter SELECT query here...'**
+  String get enterSelectQuery;
+
+  /// No description provided for @exportResultsToCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Results to CSV'**
+  String get exportResultsToCsv;
+
+  /// No description provided for @runQuery.
+  ///
+  /// In en, this message translates to:
+  /// **'Run Query'**
+  String get runQuery;
+
+  /// No description provided for @queryReturnedRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Query returned {count} rows'**
+  String queryReturnedRows(int count);
+
+  /// No description provided for @errorLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading: {error}'**
+  String errorLoading(String error);
+
+  /// No description provided for @savedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved successfully ✓'**
+  String get savedSuccessfully;
+
+  /// No description provided for @errorSaving.
+  ///
+  /// In en, this message translates to:
+  /// **'Error saving: {error}'**
+  String errorSaving(String error);
+
+  /// No description provided for @pdfDisplaySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF Display Settings'**
+  String get pdfDisplaySettings;
+
+  /// No description provided for @pdfDisplaySettingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optimize rendering performance for large, design-heavy, or scanned documents.'**
+  String get pdfDisplaySettingsHint;
+
+  /// No description provided for @quickPerformancePresets.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Performance Presets'**
+  String get quickPerformancePresets;
+
+  /// No description provided for @standardMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard Mode'**
+  String get standardMode;
+
+  /// No description provided for @standardModeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Best for text documents'**
+  String get standardModeHint;
+
+  /// No description provided for @lagFreeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Lag-Free Mode'**
+  String get lagFreeMode;
+
+  /// No description provided for @lagFreeModeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Best for brochures & photos'**
+  String get lagFreeModeHint;
+
+  /// No description provided for @detailedTuning.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Tuning Options'**
+  String get detailedTuning;
+
+  /// No description provided for @pageLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Page Layout'**
+  String get pageLayout;
+
+  /// No description provided for @singlePage.
+  ///
+  /// In en, this message translates to:
+  /// **'Single Page'**
+  String get singlePage;
+
+  /// No description provided for @scrollDirection.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll Direction'**
+  String get scrollDirection;
+
+  /// No description provided for @enableTextSelection.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Text Selection'**
+  String get enableTextSelection;
+
+  /// No description provided for @enableTextSelectionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Disable to significantly boost page rendering speed and eliminate scroll stutter.'**
+  String get enableTextSelectionHint;
+
+  /// No description provided for @displaySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Settings'**
+  String get displaySettings;
+
+  /// No description provided for @openWithLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Open with'**
+  String get openWithLabel;
+
+  /// No description provided for @emptySheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty Sheet'**
+  String get emptySheet;
+
+  /// No description provided for @slideNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'SLIDE {number}'**
+  String slideNumber(int number);
+
+  /// No description provided for @openWithApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Open with App'**
+  String get openWithApp;
+
+  /// No description provided for @shareComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Share coming soon'**
+  String get shareComingSoon;
+
+  /// No description provided for @htmlPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'HTML Preview'**
+  String get htmlPreview;
+
+  /// No description provided for @markdownPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Markdown Preview'**
+  String get markdownPreview;
+
+  /// No description provided for @imageIndexOfTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} of {total}'**
+  String imageIndexOfTotal(int current, int total);
+
+  /// No description provided for @failedToLoadImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load image'**
+  String get failedToLoadImage;
+
+  /// No description provided for @confirmDeletion.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deletion'**
+  String get confirmDeletion;
+
+  /// No description provided for @confirmPermanentDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete {count} selected items?'**
+  String confirmPermanentDelete(int count);
+
+  /// No description provided for @deletedItemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully deleted {count} items'**
+  String deletedItemsCount(int count);
+
+  /// No description provided for @pastedItemsTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Pasted {count} items to {folder}'**
+  String pastedItemsTo(int count, String folder);
+
+  /// No description provided for @noFilesToRename.
+  ///
+  /// In en, this message translates to:
+  /// **'No physical files found to rename'**
+  String get noFilesToRename;
+
+  /// No description provided for @longPressToOpenWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press to Open with...'**
+  String get longPressToOpenWith;
+
+  /// No description provided for @copiedNameToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied {name} to clipboard'**
+  String copiedNameToClipboard(String name);
+
+  /// No description provided for @cutNameToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Cut {name} to clipboard'**
+  String cutNameToClipboard(String name);
+
+  /// No description provided for @permanentlyDeleteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently delete \"{name}\"?'**
+  String permanentlyDeleteName(String name);
+
+  /// No description provided for @deletedName.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted {name}'**
+  String deletedName(String name);
+
+  /// No description provided for @fileNotShareable.
+  ///
+  /// In en, this message translates to:
+  /// **'File not found or not shareable.'**
+  String get fileNotShareable;
+
+  /// No description provided for @sortOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Options'**
+  String get sortOptions;
+
+  /// No description provided for @sortNewestFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest First'**
+  String get sortNewestFirst;
+
+  /// No description provided for @sortOldestFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Oldest First'**
+  String get sortOldestFirst;
+
+  /// No description provided for @sortDateWise.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Wise'**
+  String get sortDateWise;
+
+  /// No description provided for @sortNewestGrouped.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest First (Grouped per month)'**
+  String get sortNewestGrouped;
+
+  /// No description provided for @sortOldestGrouped.
+  ///
+  /// In en, this message translates to:
+  /// **'Oldest First (Grouped per month)'**
+  String get sortOldestGrouped;
+
+  /// No description provided for @sortSizeLargeFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Size (Large First)'**
+  String get sortSizeLargeFirst;
+
+  /// No description provided for @sortSizeSmallFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Size (Small First)'**
+  String get sortSizeSmallFirst;
+
+  /// No description provided for @noItemsOfKindFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No {kind} found'**
+  String noItemsOfKindFound(String kind);
+
+  /// No description provided for @allItems.
+  ///
+  /// In en, this message translates to:
+  /// **'All Items'**
+  String get allItems;
+
+  /// No description provided for @countItems.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item} other{{count} items}}'**
+  String countItems(int count);
+
+  /// No description provided for @restoredSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored {count} item(s) successfully'**
+  String restoredSuccessfully(int count);
+
+  /// No description provided for @errorRestoringItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Error restoring items: {error}'**
+  String errorRestoringItems(String error);
+
+  /// No description provided for @deletePermanentlyQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Permanently?'**
+  String get deletePermanentlyQuestion;
+
+  /// No description provided for @deletePermanentlyQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.'**
+  String deletePermanentlyQuestionHint(int count);
+
+  /// No description provided for @permanentlyDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently deleted {count} item(s)'**
+  String permanentlyDeleted(int count);
+
+  /// No description provided for @errorDeletingItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting items: {error}'**
+  String errorDeletingItems(String error);
+
+  /// No description provided for @emptyRecycleBinQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty Recycle Bin?'**
+  String get emptyRecycleBinQuestion;
+
+  /// No description provided for @emptyRecycleBinQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.'**
+  String get emptyRecycleBinQuestionHint;
+
+  /// No description provided for @emptyBin.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty Bin'**
+  String get emptyBin;
+
+  /// No description provided for @binEmptied.
+  ///
+  /// In en, this message translates to:
+  /// **'Recycle Bin emptied successfully'**
+  String get binEmptied;
+
+  /// No description provided for @errorEmptyingBin.
+  ///
+  /// In en, this message translates to:
+  /// **'Error emptying bin: {error}'**
+  String errorEmptyingBin(String error);
+
+  /// No description provided for @searchDeletedFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Search deleted files...'**
+  String get searchDeletedFiles;
+
+  /// No description provided for @emptyRecycleBinAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty Recycle Bin'**
+  String get emptyRecycleBinAction;
+
+  /// No description provided for @originalPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Path: {path}'**
+  String originalPath(String path);
+
+  /// No description provided for @deletedAtAndSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted: {date} • {size}'**
+  String deletedAtAndSize(String date, String size);
+
+  /// No description provided for @deletePermanently.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Permanently'**
+  String get deletePermanently;
+
+  /// No description provided for @recycleBinIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Recycle Bin is Empty'**
+  String get recycleBinIsEmpty;
+
+  /// No description provided for @recycleBinIsEmptyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.'**
+  String get recycleBinIsEmptyHint;
+
+  /// No description provided for @errorLoadingFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading file: {error}'**
+  String errorLoadingFile(String error);
+
+  /// No description provided for @fileSavedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'File saved successfully'**
+  String get fileSavedSuccessfully;
+
+  /// No description provided for @errorSavingFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Error saving file: {error}'**
+  String errorSavingFile(String error);
+
+  /// No description provided for @replacedOccurrences.
+  ///
+  /// In en, this message translates to:
+  /// **'Replaced {count} occurrences'**
+  String replacedOccurrences(int count);
+
+  /// No description provided for @selectSyntax.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Syntax'**
+  String get selectSyntax;
+
+  /// No description provided for @findAndReplace.
+  ///
+  /// In en, this message translates to:
+  /// **'Find / Replace'**
+  String get findAndReplace;
+
+  /// No description provided for @saveFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Save File'**
+  String get saveFile;
+
+  /// No description provided for @moreOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'More Options'**
+  String get moreOptions;
+
+  /// No description provided for @defaultZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Zoom ({size}pt)'**
+  String defaultZoom(int size);
+
+  /// No description provided for @syntaxOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Syntax ({language})'**
+  String syntaxOf(String language);
+
+  /// No description provided for @replaceWithDots.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace with...'**
+  String get replaceWithDots;
+
+  /// No description provided for @replaceAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace All'**
+  String get replaceAll;
+
+  /// No description provided for @slideToUnlock.
+  ///
+  /// In en, this message translates to:
+  /// **'Slide / Tap to Unlock'**
+  String get slideToUnlock;
+
+  /// No description provided for @lockControls.
+  ///
+  /// In en, this message translates to:
+  /// **'Lock Controls'**
+  String get lockControls;
+
+  /// No description provided for @repeatMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat Mode'**
+  String get repeatMode;
+
+  /// No description provided for @copyUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy URL'**
+  String get copyUrl;
+
+  /// No description provided for @mediaPathCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Media path copied to clipboard.'**
+  String get mediaPathCopied;
+
+  /// No description provided for @speedValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed {speed}x'**
+  String speedValue(double speed);
+
+  /// No description provided for @continuousLayout.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuous'**
+  String get continuousLayout;
+
+  /// No description provided for @editorLanguageAndLines.
+  ///
+  /// In en, this message translates to:
+  /// **'{language}  {count, plural, =1{1 line} other{{count} lines}}'**
+  String editorLanguageAndLines(String language, int count);
+
+  /// No description provided for @editorModified.
+  ///
+  /// In en, this message translates to:
+  /// **'editorModified'**
+  String get editorModified;
 }
 
 class _AppLocalizationsDelegate

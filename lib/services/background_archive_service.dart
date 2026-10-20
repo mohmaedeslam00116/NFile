@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:isolate';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class BackgroundArchiveService {
     final archiveName = p.basename(destinationPath);
     final operation = BackgroundOperation(
       id: 'compress_${DateTime.now().millisecondsSinceEpoch}',
-      title: 'Compressing Files',
+      title: AppLocalizations.of(context).compressingFiles,
       archiveName: archiveName,
       isCompression: true,
     );
@@ -124,7 +125,7 @@ class BackgroundArchiveService {
     final archiveName = p.basename(archivePath);
     final operation = BackgroundOperation(
       id: 'extract_${DateTime.now().millisecondsSinceEpoch}',
-      title: 'Extracting Archive',
+      title: AppLocalizations.of(context).extractingArchive,
       archiveName: archiveName,
       isCompression: false,
     );

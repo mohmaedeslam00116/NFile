@@ -1,3 +1,4 @@
+import '../../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -208,7 +209,7 @@ class _LyricsDialogState extends State<LyricsDialog> {
             WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToActive(animate: false));
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: const Text('Lyrics loaded successfully', style: TextStyle(color: Colors.white)),
+                content: Text(AppLocalizations.of(context).lyricsLoaded, style: TextStyle(color: Colors.white)),
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 behavior: SnackBarBehavior.floating,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -348,14 +349,14 @@ class _LyricsDialogState extends State<LyricsDialog> {
             child: Icon(Broken.music, size: 48, color: Colors.white.withValues(alpha: 0.3)),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'No Synchronized Lyrics Found',
+          Text(
+            AppLocalizations.of(context).noSynchronizedLyrics,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
           Text(
-            'Keep a .lrc file with the exact same name next to your song, or select it manually below.',
+            AppLocalizations.of(context).noSynchronizedLyricsHint,
             style: TextStyle(color: Colors.white.withValues(alpha: 0.55), fontSize: 13, height: 1.5),
             textAlign: TextAlign.center,
           ),
@@ -369,7 +370,7 @@ class _LyricsDialogState extends State<LyricsDialog> {
               elevation: 0,
             ),
             icon: const Icon(Broken.document_upload, size: 18),
-            label: const Text('Load LRC File', style: TextStyle(fontWeight: FontWeight.bold)),
+            label: Text(AppLocalizations.of(context).loadLrcFile, style: TextStyle(fontWeight: FontWeight.bold)),
             onPressed: _pickLrcManually,
           ),
         ],
@@ -434,7 +435,7 @@ class _LyricsDialogState extends State<LyricsDialog> {
               width: double.infinity,
               color: Colors.black26,
               child: Text(
-                'Tap a line to seek playback',
+                AppLocalizations.of(context).tapLineToSeek,
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.35),
                   fontSize: 11,

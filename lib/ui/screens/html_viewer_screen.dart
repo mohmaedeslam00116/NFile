@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -58,7 +59,7 @@ class _HtmlViewerScreenState extends State<HtmlViewerScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(p.basename(widget.filePath), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            Text('HTML Preview', style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.6))),
+            Text(AppLocalizations.of(context).htmlPreview, style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.6))),
           ],
         ),
         actions: [

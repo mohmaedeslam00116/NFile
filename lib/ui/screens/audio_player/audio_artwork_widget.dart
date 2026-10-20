@@ -1,3 +1,4 @@
+import '../../../l10n/app_localizations.dart';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -259,7 +260,7 @@ class _AudioArtworkWidgetState extends State<AudioArtworkWidget>
           Icon(Icons.music_note_rounded, size: size * 0.3, color: widget.accentColor.withValues(alpha: 0.8)),
           const SizedBox(height: 12),
           Text(
-            'Lossless Audio',
+            AppLocalizations.of(context).losslessAudio,
             style: TextStyle(
                color: widget.accentColor.withValues(alpha: 0.6),
               fontSize: 16,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/recycle_bin_service.dart';
 import '../../core/utils.dart';
 import '../../core/icon_fonts/broken_icons.dart';
@@ -85,7 +86,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Restored ${itemsToRestore.length} item(s) successfully'),
+          content: Text(AppLocalizations.of(context).restoredSuccessfully(itemsToRestore.length)),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -93,7 +94,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       if (mounted) Navigator.pop(context); // Dismiss loading
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error restoring items: $e'),
+          content: Text(AppLocalizations.of(context).errorRestoringItems(e.toString())),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -111,8 +112,8 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Delete Permanently?'),
-        content: Text('Are you sure you want to permanently delete these ${itemsToDelete.length} item(s)? This action cannot be undone.'),
+        title: Text(AppLocalizations.of(context).deletePermanentlyQuestion),
+        content: Text(AppLocalizations.of(context).deletePermanentlyQuestionHint(itemsToDelete.length)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -144,7 +145,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Permanently deleted ${itemsToDelete.length} item(s)'),
+          content: Text(AppLocalizations.of(context).permanentlyDeleted(itemsToDelete.length)),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -152,7 +153,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       if (mounted) Navigator.pop(context); // Dismiss loading
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error deleting items: $e'),
+          content: Text(AppLocalizations.of(context).errorDeletingItems(e.toString())),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -169,8 +170,8 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Empty Recycle Bin?'),
-        content: const Text('Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.'),
+        title: Text(AppLocalizations.of(context).emptyRecycleBinQuestion),
+        content: Text(AppLocalizations.of(context).emptyRecycleBinQuestionHint),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -179,7 +180,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.redAccent),
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Empty Bin'),
+            child: Text(AppLocalizations.of(context).emptyBin),
           ),
         ],
       ),
@@ -199,8 +200,8 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       if (mounted) Navigator.pop(context); // Dismiss loading
       
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Recycle Bin emptied successfully'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).binEmptied),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -208,7 +209,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       if (mounted) Navigator.pop(context); // Dismiss loading
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error emptying bin: $e'),
+          content: Text(AppLocalizations.of(context).errorEmptyingBin(e.toString())),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -226,13 +227,13 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: _isSelectionMode
-            ? Text('${_selectedIds.length} Selected')
+            ? Text(AppLocalizations.of(context).selectedCount(_selectedIds.length))
             : _isSearching
                 ? TextField(
                     controller: _searchController,
                     autofocus: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Search deleted files...',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context).searchDeletedFiles,
                       border: InputBorder.none,
                     ),
                     style: theme.textTheme.titleMedium,
@@ -243,7 +244,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                       });
                     },
                   )
-                : const Text('Recycle Bin'),
+                : Text(AppLocalizations.of(context).recycleBin),
         leading: _isSelectionMode
             ? IconButton(
                 icon: const Icon(Icons.close_rounded),
@@ -279,7 +280,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             IconButton(
               icon: const Icon(Broken.trash, color: Colors.redAccent),
               onPressed: _allItems.isEmpty ? null : _emptyRecycleBin,
-              tooltip: 'Empty Recycle Bin',
+              tooltip: AppLocalizations.of(context).emptyRecycleBinAction,
             ),
           ],
         ],
@@ -366,7 +367,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          'Original Path: ${item.originalPath}',
+                                          AppLocalizations.of(context).originalPath(item.originalPath),
                                           style: theme.textTheme.bodySmall?.copyWith(
                                             color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                                             fontSize: 11,
@@ -376,7 +377,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                         ),
                                         const SizedBox(height: 2),
                                         Text(
-                                          'Deleted: ${FileUtils.formatDate(item.deletedAt)} • ${FileUtils.formatBytes(item.size, 1)}',
+                                          AppLocalizations.of(context).deletedAtAndSize(FileUtils.formatDate(item.deletedAt), FileUtils.formatBytes(item.size, 1)),
                                           style: theme.textTheme.bodySmall?.copyWith(
                                             color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                                             fontSize: 11,
@@ -415,14 +416,14 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                             ],
                                           ),
                                         ),
-                                        const PopupMenuItem(
+                                        PopupMenuItem(
                                           value: 'delete',
                                           child: Row(
                                             children: [
                                               Icon(Broken.trash,
                                                   size: 20, color: Colors.redAccent),
                                               SizedBox(width: 12),
-                                              Text('Delete Permanently',
+                                              Text(AppLocalizations.of(context).deletePermanently,
                                                   style: TextStyle(
                                                       color: Colors.redAccent,
                                                       fontWeight: FontWeight.w500)),
@@ -512,7 +513,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             ),
             const SizedBox(height: 24),
             Text(
-              'Recycle Bin is Empty',
+              AppLocalizations.of(context).recycleBinIsEmpty,
               style: theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -520,7 +521,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.',
+              AppLocalizations.of(context).recycleBinIsEmptyHint,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
@@ -587,7 +588,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                         _selectedIds.add(item.id);
                         await _deleteSelectedPermanently();
                       },
-                      child: const Text('Delete Permanently'),
+                      child: Text(AppLocalizations.of(context).deletePermanently),
                     ),
                   ),
                 ],

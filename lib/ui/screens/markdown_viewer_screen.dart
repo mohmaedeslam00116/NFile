@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -58,7 +59,7 @@ class _MarkdownViewerScreenState extends State<MarkdownViewerScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(p.basename(widget.filePath), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            Text('Markdown Preview', style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.6))),
+            Text(AppLocalizations.of(context).markdownPreview, style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.6))),
           ],
         ),
         actions: [

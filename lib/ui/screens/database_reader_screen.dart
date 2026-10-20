@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
@@ -156,7 +157,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
     try {
       if (columns.isEmpty || rows.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No data to export.')),
+          SnackBar(content: Text(AppLocalizations.of(context).noDataToExport)),
         );
         return;
       }
@@ -188,13 +189,13 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Successfully exported to ${p.basename(exportFile.path)}'),
+          content: Text(AppLocalizations.of(context).exportedTo(p.basename(exportFile.path))),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Export failed: $e'), backgroundColor: Colors.redAccent),
+        SnackBar(content: Text(AppLocalizations.of(context).exportFailed(e.toString())), backgroundColor: Colors.redAccent),
       );
     }
   }
@@ -223,7 +224,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             Text(
-              'SQLite Database Reader',
+              AppLocalizations.of(context).sqliteReader,
               style: TextStyle(fontSize: 11.5, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
             ),
           ],
@@ -251,7 +252,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         Icon(Broken.danger, size: 48, color: theme.colorScheme.error),
                         const SizedBox(height: 16),
                         Text(
-                          'Failed to open database',
+                          AppLocalizations.of(context).failedToOpenDatabase,
                           style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 8),
@@ -278,7 +279,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
   Widget _buildBrowseTab(ThemeData theme) {
     if (_tables.isEmpty) {
       return Center(
-        child: Text('No tables found in this database.', style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
+        child: Text(AppLocalizations.of(context).noTablesFound, style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
       );
     }
 
@@ -346,7 +347,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                     ),
                     icon: const Icon(Broken.import, size: 20),
                     onPressed: () => _exportToCsv(_tableColumns, _tableRows, _selectedTable ?? 'table'),
-                    tooltip: 'Export Table to CSV',
+                    tooltip: AppLocalizations.of(context).exportTableToCsv,
                   ),
                 ],
               ),
@@ -364,7 +365,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         controller: _searchController,
                         style: const TextStyle(fontSize: 13.5),
                         decoration: InputDecoration(
-                          hintText: 'Search rows...',
+                          hintText: AppLocalizations.of(context).searchRows,
                           prefixIcon: const Icon(Broken.search_normal, size: 16),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(vertical: 12),
@@ -409,7 +410,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         children: [
                           Icon(Broken.info_circle, size: 36, color: theme.colorScheme.onSurface.withValues(alpha: 0.3)),
                           const SizedBox(height: 8),
-                          Text('No rows found', style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
+                          Text(AppLocalizations.of(context).noRowsFound, style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
                         ],
                       ),
                     )
@@ -467,7 +468,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Showing ${_offset + 1} - ${_offset + _tableRows.length}',
+                AppLocalizations.of(context).showingRange(_offset + 1, _offset + _tableRows.length),
                 style: TextStyle(fontSize: 12.5, color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontWeight: FontWeight.w600),
               ),
               Row(
@@ -507,7 +508,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
   Widget _buildSchemaTab(ThemeData theme) {
     if (_schemaColumns.isEmpty) {
       return Center(
-        child: Text('No schema details loaded.', style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
+        child: Text(AppLocalizations.of(context).noSchemaLoaded, style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
       );
     }
 
@@ -572,9 +573,9 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Type: $type', style: TextStyle(fontSize: 12.5, color: theme.colorScheme.onSurface.withValues(alpha: 0.7))),
+                  Text(AppLocalizations.of(context).schemaType(type), style: TextStyle(fontSize: 12.5, color: theme.colorScheme.onSurface.withValues(alpha: 0.7))),
                   if (dfltValue != null)
-                    Text('Default: $dfltValue', style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
+                    Text(AppLocalizations.of(context).schemaDefault(dfltValue), style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.5))),
                 ],
               ),
             ),
@@ -604,12 +605,12 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('SQL Editor', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: theme.colorScheme.primary)),
+                      Text(AppLocalizations.of(context).sqlEditor, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: theme.colorScheme.primary)),
                       Row(
                         children: [
                           TextButton(
                             style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
-                            child: const Text('SELECT template', style: TextStyle(fontSize: 12)),
+                            child: Text(AppLocalizations.of(context).selectTemplate, style: TextStyle(fontSize: 12)),
                             onPressed: () {
                               if (_selectedTable != null) {
                                 _sqlController.text = "SELECT * FROM '$_selectedTable' LIMIT 10;";
@@ -633,8 +634,8 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                       fontSize: 13.5,
                       fontWeight: FontWeight.w500,
                     ),
-                    decoration: const InputDecoration(
-                      hintText: 'Enter SELECT query here...',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context).enterSelectQuery,
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(vertical: 8),
                     ),
@@ -649,7 +650,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         IconButton(
                           icon: const Icon(Broken.import, size: 20),
                           onPressed: () => _exportToCsv(_sqlResultColumns, _sqlResultRows, 'query'),
-                          tooltip: 'Export Results to CSV',
+                          tooltip: AppLocalizations.of(context).exportResultsToCsv,
                         ),
                         const SizedBox(width: 8),
                       ],
@@ -661,7 +662,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         icon: _isSqlRunning
                             ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))
                             : const Icon(Broken.play, size: 16),
-                        label: const Text('Run Query', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: Text(AppLocalizations.of(context).runQuery, style: TextStyle(fontWeight: FontWeight.bold)),
                         onPressed: _isSqlRunning ? null : _runCustomSql,
                       ),
                     ],
@@ -715,7 +716,7 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                           child: Text(
-                            'Query returned ${_sqlResultRows.length} rows',
+                            AppLocalizations.of(context).queryReturnedRows(_sqlResultRows.length),
                             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
                           ),
                         ),

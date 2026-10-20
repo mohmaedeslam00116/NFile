@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -329,7 +330,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       _controller.addListener(_onTextChanged);
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error loading file: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).errorLoadingFile(e.toString()))));
       }
     } finally {
       if (mounted) {
@@ -373,11 +374,11 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
 
       if (mounted) {
         setState(() => _isModified = false);
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('File saved successfully')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).fileSavedSuccessfully)));
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error saving file: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).errorSavingFile(e.toString()))));
       }
     } finally {
       if (mounted) {
@@ -439,7 +440,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
     final count = query.allMatches(text).length;
     if (count > 0) {
       _controller.text = text.replaceAll(query, replacement);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Replaced $count occurrences')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).replacedOccurrences(count))));
     }
   }
 
@@ -468,7 +469,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text('Select Syntax', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+              child: Text(AppLocalizations.of(context).selectSyntax, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
             ),
             const Divider(height: 1),
             Expanded(
@@ -535,7 +536,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
               style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
-              '$_selectedLanguage • $lineCount lines${_isModified ? ' (Modified)' : ''}',
+              '${AppLocalizations.of(context).editorLanguageAndLines(_selectedLanguage, lineCount)}${_isModified ? AppLocalizations.of(context).editorModified : ''}',
               style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
             ),
           ],
@@ -543,7 +544,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
         actions: [
           IconButton(
             icon: Icon(_showFindReplace ? Broken.search_zoom_out : Broken.search_normal),
-            tooltip: 'Find / Replace',
+            tooltip: AppLocalizations.of(context).findAndReplace,
             onPressed: () => setState(() => _showFindReplace = !_showFindReplace),
           ),
           if (_isSaving)
@@ -558,12 +559,12 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
           else
             IconButton(
               icon: const Icon(Broken.save_2),
-              tooltip: 'Save File',
+              tooltip: AppLocalizations.of(context).saveFile,
               onPressed: _saveFile,
             ),
           PopupMenuButton<String>(
             icon: const Icon(Broken.more),
-            tooltip: 'More Options',
+            tooltip: AppLocalizations.of(context).moreOptions,
             onSelected: (value) async {
               if (value == 'html_preview') {
                 if (context.mounted) {
@@ -608,18 +609,18 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
             },
             itemBuilder: (context) => [
               if (isHtml)
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'html_preview',
-                  child: Row(children: [Icon(Broken.global, size: 18, color: Colors.blueAccent), SizedBox(width: 12), Text('HTML Preview', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueAccent))]),
+                  child: Row(children: [Icon(Broken.global, size: 18, color: Colors.blueAccent), SizedBox(width: 12), Text(AppLocalizations.of(context).htmlPreview, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueAccent))]),
                 ),
               if (isMd)
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'md_preview',
-                  child: Row(children: [Icon(Broken.document_text, size: 18, color: Colors.blueAccent), SizedBox(width: 12), Text('Markdown Preview', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueAccent))]),
+                  child: Row(children: [Icon(Broken.document_text, size: 18, color: Colors.blueAccent), SizedBox(width: 12), Text(AppLocalizations.of(context).markdownPreview, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueAccent))]),
                 ),
               PopupMenuItem(
                 value: 'reset_zoom',
-                child: Row(children: [const Icon(Broken.search_zoom_in_1, size: 18), const SizedBox(width: 12), Text('Default Zoom (${_fontSize.toInt()}pt)')]),
+                child: Row(children: [const Icon(Broken.search_zoom_in_1, size: 18), const SizedBox(width: 12), Text(AppLocalizations.of(context).defaultZoom(_fontSize.toInt()))]),
               ),
               PopupMenuItem(
                 value: 'lock_zoom',
@@ -639,7 +640,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
               ),
               PopupMenuItem(
                 value: 'syntax',
-                child: Row(children: [const Icon(Broken.code, size: 18), const SizedBox(width: 12), Text('Syntax ($_selectedLanguage)')]),
+                child: Row(children: [const Icon(Broken.code, size: 18), const SizedBox(width: 12), Text(AppLocalizations.of(context).syntaxOf(_selectedLanguage))]),
               ),
             ],
           ),
@@ -688,8 +689,8 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                                   height: 36,
                                   child: TextField(
                                     controller: _replaceController,
-                                    decoration: const InputDecoration(
-                                      hintText: 'Replace with...',
+                                    decoration: InputDecoration(
+                                      hintText: AppLocalizations.of(context).replaceWithDots,
                                       border: OutlineInputBorder(),
                                       contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                                     ),
@@ -699,7 +700,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                               const SizedBox(width: 8),
                               ElevatedButton(onPressed: _replace, child: const Text('Replace')),
                               const SizedBox(width: 6),
-                              ElevatedButton(onPressed: _replaceAll, child: const Text('Replace All')),
+                              ElevatedButton(onPressed: _replaceAll, child: Text(AppLocalizations.of(context).replaceAll)),
                             ],
                           ),
                         ],

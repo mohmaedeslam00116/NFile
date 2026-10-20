@@ -143,8 +143,38 @@ Map<String, List<String>> _hardcodedStrings() {
 
 /// Whether a string is a sentence the user reads, and not a name, a path or a
 /// format.
-bool _looksLikeProse(String value) =>
-    value.contains(' ') && RegExp('[A-Za-z]{3}').hasMatch(value);
+///
+/// The words inside an interpolation do not count: a string that holds
+/// nothing but a call for the translation is not a sentence the user reads,
+/// it is the sentence of the translation.
+bool _looksLikeProse(String value) {
+  final words = _withoutInterpolations(value)
+      .replaceAll(RegExp(r'\$[a-zA-Z_][a-zA-Z0-9_]*'), ' ');
+
+  return words.contains(' ') && RegExp('[A-Za-z]{3}').hasMatch(words);
+}
+
+/// The text of a string, without the interpolations.
+String _withoutInterpolations(String value) {
+  final buffer = StringBuffer();
+  var depth = 0;
+
+  for (var i = 0; i < value.length; i++) {
+    final char = value[i];
+    if (char == r'$' && i + 1 < value.length && value[i + 1] == '{') {
+      depth++;
+      i++;
+      continue;
+    }
+    if (char == '}' && depth > 0) {
+      depth--;
+      continue;
+    }
+    if (depth == 0) buffer.write(char);
+  }
+
+  return buffer.toString();
+}
 
 /// The places where a string is read by the user.
 final RegExp _marker = RegExp(
