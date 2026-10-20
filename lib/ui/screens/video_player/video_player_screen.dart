@@ -1,3 +1,4 @@
+import '../../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -544,8 +545,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
                     children: [
                       Icon(Broken.forward, color: Colors.deepPurpleAccent.shade100, size: 20),
                       const SizedBox(width: 8),
-                      const Text(
-                        'Speed 2.0x',
+                      Text(
+                        AppLocalizations.of(context).speedValue(2.0),
                         style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                     ],

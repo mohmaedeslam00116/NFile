@@ -56,11 +56,38 @@ void main() {
       'lib/services/settings_backup_service.dart',
       'lib/services/apk_installer_service.dart',
     ],
+    'the media and the viewers': [
+      'lib/ui/screens/media_category_screen.dart',
+      'lib/ui/screens/document_viewer_screen.dart',
+      'lib/ui/screens/archive_viewer_screen.dart',
+      'lib/ui/screens/text_editor_screen.dart',
+      'lib/ui/screens/database_reader_screen.dart',
+      'lib/ui/screens/audio_player/audio_player_screen.dart',
+      'lib/ui/screens/audio_player/lyrics_dialog.dart',
+      'lib/ui/screens/audio_player/audio_controls_widget.dart',
+      'lib/ui/screens/audio_player/audio_queue_sheet.dart',
+      'lib/ui/screens/audio_player/audio_artwork_widget.dart',
+      'lib/ui/screens/video_player/video_controls_overlay.dart',
+      'lib/ui/screens/video_player/video_seek_indicator.dart',
+      'lib/ui/screens/video_player/vertical_slider_widget.dart',
+      'lib/ui/screens/video_player/video_player_screen.dart',
+      'lib/ui/screens/image_viewer_screen.dart',
+      'lib/ui/screens/markdown_viewer_screen.dart',
+      'lib/ui/screens/html_viewer_screen.dart',
+      'lib/ui/screens/recycle_bin_screen.dart',
+      'lib/services/intent_handler_service.dart',
+      'lib/services/background_archive_service.dart',
+    ],
   };
 
   // The areas that speak Arabic. An area joins the list when its strings are
   // in the translation.
-  const migrated = <String>['the frame', 'the directory', 'the settings'];
+  const migrated = <String>[
+    'the frame',
+    'the directory',
+    'the settings',
+    'the media and the viewers',
+  ];
 
   for (final area in migrated) {
     test('$area speaks Arabic', () {
@@ -112,14 +139,47 @@ Map<String, List<String>> _stringsIn(List<String> paths) {
 
       final raw = literal.group(0)!;
       final value = raw.substring(1, raw.length - 1);
-      if (!value.contains(' ')) continue;
-      if (!RegExp('[A-Za-z]{3}').hasMatch(value)) continue;
+      if (!_looksLikeProse(value)) continue;
       final line = '\n'.allMatches(text.substring(0, match.end)).length;
       found.putIfAbsent(value, () => <String>[]).add('$path:${line + 1}');
     }
   }
 
   return found;
+}
+
+/// Whether a string is a sentence the user reads, and not a name, a path or a
+/// format.
+///
+/// The words inside an interpolation do not count: a string that holds
+/// nothing but a call for the translation is not a sentence the user reads.
+bool _looksLikeProse(String value) {
+  final words = _withoutInterpolations(value)
+      .replaceAll(RegExp(r'\$[a-zA-Z_][a-zA-Z0-9_]*'), ' ');
+
+  return words.contains(' ') && RegExp('[A-Za-z]{3}').hasMatch(words);
+}
+
+/// The text of a string, without the interpolations.
+String _withoutInterpolations(String value) {
+  final buffer = StringBuffer();
+  var depth = 0;
+
+  for (var i = 0; i < value.length; i++) {
+    final char = value[i];
+    if (char == r'$' && i + 1 < value.length && value[i + 1] == '{') {
+      depth++;
+      i++;
+      continue;
+    }
+    if (char == '}' && depth > 0) {
+      depth--;
+      continue;
+    }
+    if (depth == 0) buffer.write(char);
+  }
+
+  return buffer.toString();
 }
 
 /// The places where a string is read by the user.

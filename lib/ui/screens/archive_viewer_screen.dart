@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
@@ -191,7 +192,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
         }
       }
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Extracted ${item.name} to ${p.basename(destDir)}')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).extractedTo(item.name, p.basename(destDir)))));
       }
       await provider.loadDirectory(destDir, showLoading: false);
     } catch (e) {
@@ -248,7 +249,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
       });
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${physicalPaths.length} item(s) copied to clipboard ✓')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).itemsCopiedToClipboard(physicalPaths.length))));
       }
     } catch (e) {
       debugPrint('Error copying to clipboard: $e');
@@ -263,8 +264,8 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Delete Selected Items', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-        content: Text('Are you sure you want to delete precisely these ${_selectedInternalPaths.length} item(s) from the archive? This cannot be undone.'),
+        title: Text(AppLocalizations.of(context).deleteSelectedItems, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        content: Text(AppLocalizations.of(context).deleteItemsFromArchiveQuestion(_selectedInternalPaths.length)),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
           FilledButton(
@@ -288,9 +289,9 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
 
       if (mounted) {
         if (success) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Items deleted successfully ✓')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).itemsDeletedSuccessfully)));
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to delete items')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).failedToDeleteItems)));
         }
       }
     }
@@ -337,7 +338,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Successfully added $successCount item(s) into archive ✓'),
+          content: Text(AppLocalizations.of(context).addedToArchive(successCount)),
         ));
       }
     }
@@ -370,7 +371,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
     await _loadArchive();
 
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Pasted $count item(s) into archive ✓')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).pastedIntoArchive(count))));
     }
   }
 
@@ -399,7 +400,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                   icon: const Icon(Broken.close_square),
                   onPressed: () => setState(() => _selectedInternalPaths.clear()),
                 ),
-                title: Text('${_selectedInternalPaths.length} selected', style: TextStyle(color: theme.colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold, fontSize: 18)),
+                title: Text(AppLocalizations.of(context).selectedCount(_selectedInternalPaths.length), style: TextStyle(color: theme.colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold, fontSize: 18)),
                 actions: [
                   IconButton(
                     icon: const Icon(Broken.document_copy),
@@ -419,7 +420,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                   ),
                   IconButton(
                     icon: const Icon(Broken.task_square),
-                    tooltip: 'Select All',
+                    tooltip: AppLocalizations.of(context).selectAll,
                     onPressed: () {
                       setState(() {
                         for (final item in items) {
@@ -448,7 +449,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                   if (items.isNotEmpty)
                     IconButton(
                       icon: const Icon(Broken.task_square),
-                      tooltip: 'Select All',
+                      tooltip: AppLocalizations.of(context).selectAll,
                       onPressed: () {
                         setState(() {
                           for (final item in items) {
@@ -462,9 +463,9 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
         body: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : _archive == null
-                ? const Center(child: Text('Could not read archive'))
+                ? Center(child: Text(AppLocalizations.of(context).couldNotReadArchive))
                 : items.isEmpty
-                    ? const Center(child: Text('Folder is empty'))
+                    ? Center(child: Text(AppLocalizations.of(context).folderIsEmpty))
                     : ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -557,7 +558,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                                             children: [
                                               Icon(Broken.document_download, size: 20, color: theme.colorScheme.primary),
                                               const SizedBox(width: 12),
-                                              const Text('Extract to Current Folder', style: TextStyle(fontWeight: FontWeight.w500)),
+                                              Text(AppLocalizations.of(context).extractToCurrentFolder, style: TextStyle(fontWeight: FontWeight.w500)),
                                             ],
                                           ),
                                         ),
@@ -576,12 +577,12 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                 backgroundColor: theme.colorScheme.primaryContainer,
                 foregroundColor: theme.colorScheme.onPrimaryContainer,
                 icon: const Icon(Broken.document_download),
-                label: Text('Paste Here (${provider.clipboardPaths.length})'),
+                label: Text(AppLocalizations.of(context).pasteHereCount(provider.clipboardPaths.length)),
               )
             : FloatingActionButton.extended(
                 onPressed: _addNewFile,
                 icon: const Icon(Broken.add),
-                label: const Text('Add File'),
+                label: Text(AppLocalizations.of(context).addFile),
               ),
       ),
     );

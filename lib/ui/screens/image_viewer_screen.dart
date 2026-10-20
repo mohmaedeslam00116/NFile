@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -204,7 +205,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      '${_currentIndex + 1} of $totalCount',
+                      AppLocalizations.of(context).imageIndexOfTotal(_currentIndex + 1, totalCount),
                       style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 12, fontWeight: FontWeight.w500),
                     ),
                   ],
@@ -287,7 +288,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
                           Icon(Broken.image, size: 64, color: Colors.white.withValues(alpha: 0.5)),
                           const SizedBox(height: 16),
                           Text(
-                            'Failed to load image',
+                            AppLocalizations.of(context).failedToLoadImage,
                             style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 16, fontWeight: FontWeight.w600),
                           ),
                         ],

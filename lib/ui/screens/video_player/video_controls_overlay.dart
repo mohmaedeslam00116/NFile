@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nfile/core/icon_fonts/broken_icons.dart';
+import '../../../l10n/app_localizations.dart';
 
 class VideoControlsOverlay extends StatelessWidget {
   final String title;
@@ -99,8 +100,8 @@ class VideoControlsOverlay extends StatelessWidget {
                 children: [
                   Icon(Broken.lock, color: accentColor, size: 22),
                   const SizedBox(width: 8),
-                  const Text(
-                    'Slide / Tap to Unlock',
+                  Text(
+                    AppLocalizations.of(context).slideToUnlock,
                     style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -180,7 +181,7 @@ class VideoControlsOverlay extends StatelessWidget {
                   ),
                   // Speed Selector Dropdown Menu
                   PopupMenuButton<double>(
-                    tooltip: 'Playback Speed',
+                    tooltip: AppLocalizations.of(context).playbackSpeed,
                     icon: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
@@ -219,7 +220,7 @@ class VideoControlsOverlay extends StatelessWidget {
                   // Lock Toggle Button
                   IconButton(
                     icon: Icon(Broken.unlock, color: itemsColor, size: 24),
-                    tooltip: 'Lock Controls',
+                    tooltip: AppLocalizations.of(context).lockControls,
                     onPressed: onToggleLock,
                   ),
                 ],
@@ -371,7 +372,7 @@ class VideoControlsOverlay extends StatelessWidget {
                               color: repeatMode != 0 ? accentColor : itemsColor.withValues(alpha: 0.7),
                               size: 22,
                             ),
-                            tooltip: 'Repeat Mode',
+                            tooltip: AppLocalizations.of(context).repeatMode,
                             onPressed: () {
                               onInteract();
                               onToggleRepeat();
@@ -391,12 +392,12 @@ class VideoControlsOverlay extends StatelessWidget {
                           // Copy Link
                           IconButton(
                             icon: Icon(Icons.copy_rounded, color: itemsColor, size: 22),
-                            tooltip: 'Copy URL',
+                            tooltip: AppLocalizations.of(context).copyUrl,
                             onPressed: () {
                               onInteract();
                               onCopyUrl();
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: const Text('Media path copied to clipboard.'),
+                                content: Text(AppLocalizations.of(context).mediaPathCopied),
                                 backgroundColor: accentColor,
                               ));
                             },
