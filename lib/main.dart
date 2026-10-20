@@ -11,6 +11,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 
 import 'core/theme.dart';
 import 'core/icon_fonts/broken_icons.dart';
+import 'core/l10n/app_localization.dart';
+import 'l10n/app_localizations.dart';
 import 'providers/file_manager_provider.dart';
 import 'providers/media_provider.dart';
 import 'services/preferences_service.dart';
@@ -318,6 +320,10 @@ class _NFileAppState extends State<NFileApp> {
               navigatorKey: navigatorKey,
               title: 'NFile',
               debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalization.delegates,
+              supportedLocales: AppLocalization.supportedLocales,
+              localeListResolutionCallback: (systemLocales, supportedLocales) =>
+                  AppLocalization.resolve(systemLocales),
               theme: AppTheme.getAppTheme(light: true, seed: baseSeedColor, customScheme: activeLightScheme, fontFamily: fileManager.fontFamilyOption),
               darkTheme: AppTheme.getAppTheme(light: false, pitchBlack: fileManager.amoledMode, seed: baseSeedColor, customScheme: activeDarkScheme, fontFamily: fileManager.fontFamilyOption),
               themeMode: activeThemeMode,
@@ -418,7 +424,7 @@ class _IntentLoadingScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Opening shared document...',
+              AppLocalizations.of(context).openingSharedDocument,
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
@@ -426,7 +432,7 @@ class _IntentLoadingScreen extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              'Resolving secure content stream',
+              AppLocalizations.of(context).resolvingSecureContent,
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
               ),
@@ -460,12 +466,12 @@ class _StoragePermissionShield extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  'Storage Access Required',
+                  AppLocalizations.of(context).storageAccessRequired,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'NFile requires storage permission to manage, organize, and display your media files seamlessly.',
+                  AppLocalizations.of(context).storageAccessExplanation,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
                 ),
@@ -477,7 +483,10 @@ class _StoragePermissionShield extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
                   icon: const Icon(Broken.shield_tick),
-                  label: const Text('Grant Permission', style: TextStyle(fontWeight: FontWeight.bold)),
+                  label: Text(
+                    AppLocalizations.of(context).grantPermission,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

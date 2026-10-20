@@ -1,0 +1,9 @@
+{
+  "@@locale": "ar",
+  "appName": "NFile",
+  "openingSharedDocument": "جارٍ فتح المستند المشترك...",
+  "resolvingSecureContent": "جارٍ تحليل تدفّق المحتوى الآمن",
+  "storageAccessRequired": "مطلوب إذن الوصول إلى التخزين",
+  "storageAccessExplanation": "يحتاج تطبيق NFile إلى إذن التخزين ليُدِر ملفات الوسائط وينظّمها ويعرضها بسلاسة.",
+  "grantPermission": "منح الإذن"
+}
