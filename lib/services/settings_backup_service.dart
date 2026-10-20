@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -43,8 +44,8 @@ class SettingsBackupService {
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context).settingsBackedUp),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -53,7 +54,7 @@ class SettingsBackupService {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to backup settings: $e'),
+            content: Text(AppLocalizations.of(context).failedToBackupSettings(e.toString())),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
@@ -108,8 +109,8 @@ class SettingsBackupService {
         Provider.of<FileManagerProvider>(context, listen: false).reloadPreferences();
         Provider.of<MediaProvider>(context, listen: false).reloadPreferences();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Settings restored successfully!'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context).settingsRestored),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -118,7 +119,7 @@ class SettingsBackupService {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to restore settings: $e'),
+            content: Text(AppLocalizations.of(context).failedToRestoreSettings(e.toString())),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Theme.of(context).colorScheme.error,
           ),

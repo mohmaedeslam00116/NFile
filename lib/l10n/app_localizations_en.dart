@@ -936,4 +936,515 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get propertiesAndInfo => 'Properties & Info';
+
+  @override
+  String get extractingBundle =>
+      'Extracting package bundle for installation...';
+
+  @override
+  String get noInstallableApk => 'No installable APK found in package bundle';
+
+  @override
+  String get failedToTriggerInstaller =>
+      'Failed to trigger split APK installer';
+
+  @override
+  String failedToExtractBundle(String error) {
+    return 'Failed to extract package bundle: $error';
+  }
+
+  @override
+  String get settingsBackedUp =>
+      'Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json';
+
+  @override
+  String failedToBackupSettings(String error) {
+    return 'Failed to backup settings: $error';
+  }
+
+  @override
+  String get settingsRestored => 'Settings restored successfully!';
+
+  @override
+  String failedToRestoreSettings(String error) {
+    return 'Failed to restore settings: $error';
+  }
+
+  @override
+  String get backupAndRestore => 'Backup & Restore';
+
+  @override
+  String get backupSettings => 'Backup Settings';
+
+  @override
+  String get backupSettingsHint =>
+      'Save all your current settings to NFile/Backups/Settings/';
+
+  @override
+  String get restoreSettings => 'Restore Settings';
+
+  @override
+  String get restoreSettingsHint =>
+      'Select and restore settings from a JSON backup file';
+
+  @override
+  String get selectValidBackupFile =>
+      'Please select a valid .json settings backup file';
+
+  @override
+  String get settingsCategories => 'Settings Categories';
+
+  @override
+  String get generalAndBehavior => 'General & Behavior';
+
+  @override
+  String get generalAndBehaviorHint =>
+      'Default screen, navigation controls, and shortcuts';
+
+  @override
+  String get appearanceAndThemes => 'Appearance & Themes';
+
+  @override
+  String get appearanceAndThemesHint =>
+      'Themes, app icons, folder styles, and typography';
+
+  @override
+  String get fileExplorerOptions => 'File Explorer Options';
+
+  @override
+  String get fileExplorerOptionsHint =>
+      'Address bar, hidden files, tabs, and drag & drop';
+
+  @override
+  String get listAndLayoutStyling => 'List & Layout Styling';
+
+  @override
+  String get listAndLayoutStylingHint =>
+      'Folder sizes, counts, and time/date formats';
+
+  @override
+  String get mediaPreferences => 'Media Preferences';
+
+  @override
+  String get mediaPreferencesHint =>
+      'Default album view and thumbnail previews';
+
+  @override
+  String get fileActionsAndViewers => 'File Actions & Viewers';
+
+  @override
+  String get fileActionsAndViewersHint =>
+      'Open actions and default viewers configuration';
+
+  @override
+  String get recycleBinTrash => 'Recycle Bin (Trash)';
+
+  @override
+  String get recycleBinTrashHint =>
+      'Recycle bin toggles and auto-delete duration';
+
+  @override
+  String get noSettingsFound => 'No settings found';
+
+  @override
+  String get tryAnotherKeyword => 'Try searching for another keyword';
+
+  @override
+  String get defaultToBrowseScreen => 'Default to Browse Screen';
+
+  @override
+  String get defaultToBrowseScreenHint =>
+      'Directly launch into the Browse storage explorer on app start';
+
+  @override
+  String get rememberLastFolder => 'Remember Last Opened Folder';
+
+  @override
+  String get rememberLastFolderHint =>
+      'Open the last folder you browsed when launching the app';
+
+  @override
+  String get showHomeBrowseBottomBar => 'Show Home & Browse Bottom Bar';
+
+  @override
+  String get showHomeBrowseBottomBarHint =>
+      'Toggle bottom navigation bar visibility on the Home screen';
+
+  @override
+  String get hideBottomNavLabels => 'Hide Bottom Navigation Labels';
+
+  @override
+  String get hideBottomNavLabelsHint =>
+      'Hide text labels of the bottom bar (Home/Browse) for a cleaner and compact look';
+
+  @override
+  String get hideAndroidNavBar => 'Hide Android Navigation Bar';
+
+  @override
+  String get hideAndroidNavBarHint =>
+      'Hide bottom navigation bar to maximize screen real estate (swiping up displays it)';
+
+  @override
+  String get preventLeftBackGesture => 'Prevent Left Back Gesture for Drawer';
+
+  @override
+  String get preventLeftBackGestureHint =>
+      'Excludes the left edge of the screen from Android system back gestures, making it easier to swipe open the drawer. You can still swipe from the right edge to go back.';
+
+  @override
+  String get appExitBehavior => 'App Exit Behavior';
+
+  @override
+  String get showBottomNavBar => 'Show Bottom Navigation Bar';
+
+  @override
+  String get showBottomNavBarHint =>
+      'Enable bottom action bar on Browse screen';
+
+  @override
+  String get hideActionBarLabels => 'Hide Action Bar Text Labels';
+
+  @override
+  String get hideActionBarLabelsHint =>
+      'Show only icons in selection action bar at bottom of Browse & Media screens';
+
+  @override
+  String get customizeShortcutsHint =>
+      'Reorder and toggle visibility of quick category items';
+
+  @override
+  String get showRecentFiles => 'Show Recent Files';
+
+  @override
+  String get showRecentFilesHint =>
+      'Display the list of recently accessed files on the Home screen';
+
+  @override
+  String get accentColorDynamicTheme => 'Accent Color / Dynamic Theme';
+
+  @override
+  String get folderIconStyle => 'Folder Icon Style';
+
+  @override
+  String get drawerButtonStyle => 'App Drawer Button Style';
+
+  @override
+  String get amoledBlackMode => 'AMOLED Black Mode';
+
+  @override
+  String get amoledBlackModeHint =>
+      'Use pitch black background in Dark Mode for AMOLED screens';
+
+  @override
+  String get appIcon => 'App Icon';
+
+  @override
+  String get appTypographyFontFamily => 'App Typography / Font Family';
+
+  @override
+  String get useExpressiveIcons => 'Use Expressive Material Icons';
+
+  @override
+  String get useExpressiveIconsHint =>
+      'Replace custom Broken icons with standard Material Design icons';
+
+  @override
+  String get showAddressBar => 'Show Address Bar';
+
+  @override
+  String get showAddressBarHint =>
+      'Display an editable Windows-Explorer-style address bar at the top of file list';
+
+  @override
+  String get showFloatingAddButton => 'Show Floating \'+\' Button';
+
+  @override
+  String get showFloatingAddButtonHint =>
+      'Enable quick creation (+) button at bottom of Browse screen';
+
+  @override
+  String get showHiddenFilesHint =>
+      'Display system files and folders starting with a dot (.)';
+
+  @override
+  String get highlightExitedFolder => 'Highlight Exited Folder';
+
+  @override
+  String get highlightExitedFolderHint =>
+      'Briefly flash and scroll to the folder you just exited when going back';
+
+  @override
+  String get enableMultipleTabs => 'Enable Multiple Tabs';
+
+  @override
+  String get enableMultipleTabsHint =>
+      'Allow opening multiple folders in separate tabs for quick navigation';
+
+  @override
+  String get enableSplitScreen => 'Enable Split Screen';
+
+  @override
+  String get enableSplitScreenHint =>
+      'Browse two directories side by side and transfer files easily';
+
+  @override
+  String get enableDragAndDrop => 'Enable Drag & Drop';
+
+  @override
+  String get enableDragAndDropHint =>
+      'Long press and drag folders or files to move them into other folders';
+
+  @override
+  String get confirmDragAndDrop => 'Confirm Drag & Drop Actions';
+
+  @override
+  String get confirmDragAndDropHint =>
+      'Show options popup (Copy, Move, Archive) when dropping files';
+
+  @override
+  String get showCountHeader => 'Show Folder & File Count Header';
+
+  @override
+  String get showCountHeaderHint =>
+      'Display total folders and files count under storage title bar';
+
+  @override
+  String get showFolderContentCount => 'Show Folder Content Count';
+
+  @override
+  String get showFolderContentCountHint =>
+      'Calculate and display total files and folders inside directory listings';
+
+  @override
+  String get showFolderSize => 'Show Folder Size';
+
+  @override
+  String get showFolderSizeHint =>
+      'Calculate and display total size of all files inside directories (can affect listing performance)';
+
+  @override
+  String get use24HourTime => 'Use 24-Hour Time Format';
+
+  @override
+  String get use24HourTimeHint =>
+      'Toggle between 12-hour (AM/PM) and 24-hour time formatting across lists';
+
+  @override
+  String get hideTimeAndDate => 'Hide Time & Date from Lists';
+
+  @override
+  String get hideTimeAndDateHint =>
+      'Completely hide modification dates and times under files and folders';
+
+  @override
+  String get adaptiveMultiLineNames => 'Adaptive Multi-line Filenames';
+
+  @override
+  String get adaptiveMultiLineNamesHint =>
+      'Allow filenames to wrap 3 lines instead of truncating';
+
+  @override
+  String get hideThreeDotButtons => 'Hide 3-Dot Action Buttons';
+
+  @override
+  String get hideThreeDotButtonsHint =>
+      'Hide the three-dot option menu button next to folders and files';
+
+  @override
+  String get threeDotTrailingInfo => '3-Dot Disabled Trailing Info';
+
+  @override
+  String get defaultAlbumView => 'Default Album Preferred View';
+
+  @override
+  String get defaultAlbumViewHint =>
+      'Open Images/Videos quick categories directly in Folders (Albums) preferred view';
+
+  @override
+  String get showMediaPreviews => 'Show Media Previews';
+
+  @override
+  String get showMediaPreviewsHint =>
+      'Display actual image and video thumbnails instead of generic file icons';
+
+  @override
+  String get skipOpenWithDialog => 'Skip \"Open With\" Dialog';
+
+  @override
+  String get skipOpenWithDialogHint =>
+      'Bypass the application choice dialog and immediately open files with default viewers';
+
+  @override
+  String get resetDefaultViewers => 'Reset Default File Viewers';
+
+  @override
+  String get resetDefaultViewersHint =>
+      'Clear all remembered \"Open With\" associations for file viewers';
+
+  @override
+  String get viewersReset => 'All default viewer choices have been reset';
+
+  @override
+  String get enableRecycleBin => 'Enable Recycle Bin';
+
+  @override
+  String get enableRecycleBinHint =>
+      'Move deleted files and folders to a hidden Recycle Bin instead of deleting permanently';
+
+  @override
+  String get autoDeleteDuration => 'Auto-Delete Trash Duration';
+
+  @override
+  String get autoDeleteDurationHint =>
+      'Items in the Recycle Bin will be permanently deleted after this duration.';
+
+  @override
+  String get chooseTrailingInfoStyle => 'Choose Trailing Info Style';
+
+  @override
+  String get chooseTrailingInfoStyleHint =>
+      'Choose what is displayed on the right side of files and folders when the 3-dot action buttons are hidden.';
+
+  @override
+  String get chooseExitBehavior => 'Choose Exit Behavior';
+
+  @override
+  String get chooseAccentTheme => 'Choose Accent Theme';
+
+  @override
+  String get chooseFolderIconStyle => 'Choose Folder Icon Style';
+
+  @override
+  String get chooseDrawerButtonStyle => 'Choose Drawer Button Style';
+
+  @override
+  String get appLauncherIcon => 'App Launcher Icon';
+
+  @override
+  String get appLauncherIconHint =>
+      'Choose a custom logo for the application launcher icon. Note that some launchers may take a few seconds to update.';
+
+  @override
+  String get logo1 => 'Logo 1';
+
+  @override
+  String get logo2 => 'Logo 2';
+
+  @override
+  String get logo3 => 'Logo 3';
+
+  @override
+  String get logo4 => 'Logo 4';
+
+  @override
+  String appIconSwitched(String title) {
+    return 'App icon switched to $title successfully!';
+  }
+
+  @override
+  String get appTypography => 'App Typography';
+
+  @override
+  String get appTypographyHint =>
+      'Select a beautiful typeface to customize NFile\\\'s overall visual theme';
+
+  @override
+  String customFontApplied(String name) {
+    return 'Custom font \"$name\" applied successfully!';
+  }
+
+  @override
+  String get failedToLoadFont => 'Failed to load the selected font file.';
+
+  @override
+  String get invalidFileType => 'Invalid File Type';
+
+  @override
+  String get invalidFontFileHint =>
+      'Please select a valid OpenType (.otf) or TrueType (.ttf) font file.';
+
+  @override
+  String get removeCustomFont => 'Remove Custom Font';
+
+  @override
+  String get customFontRemoved => 'Custom font removed.';
+
+  @override
+  String get accentMaterialYou => 'Material You (Dynamic Wallpaper Colors)';
+
+  @override
+  String get accentVibrantOrange => 'Vibrant Orange';
+
+  @override
+  String get accentRoyalPurple => 'Royal Purple';
+
+  @override
+  String get accentEmeraldGreen => 'Emerald Green';
+
+  @override
+  String get accentCrimsonRed => 'Crimson Red';
+
+  @override
+  String get accentAmberGold => 'Amber Gold';
+
+  @override
+  String get accentCyberpunkPink => 'Cyberpunk Pink';
+
+  @override
+  String get accentSapphireBlue => 'Sapphire Blue';
+
+  @override
+  String get accentForestGreen => 'Forest Green';
+
+  @override
+  String get accentSunsetPeach => 'Sunset Peach';
+
+  @override
+  String get folderIconClassicSolid => 'Classic Solid (Material)';
+
+  @override
+  String get folderIconModernRounded => 'Modern Rounded (Material)';
+
+  @override
+  String get folderIconStarred => 'Starred Special (Material)';
+
+  @override
+  String get folderIconSnippet => 'Snippet Document (Material)';
+
+  @override
+  String get folderIconMinimalOutlined => 'Minimal Outlined (Material)';
+
+  @override
+  String get drawerStyleCategoryGrid => 'Category Grid / Vuesax Grid';
+
+  @override
+  String get drawerStyleHamburger => 'Hamburger / Classic Menu';
+
+  @override
+  String get defaultLogo => 'Default Logo';
+
+  @override
+  String get fontDotMatrix => 'Dot-Matrix & Sans';
+
+  @override
+  String get fontOutfit => 'Outfit Modern Sans';
+
+  @override
+  String get fontJetBrains => 'JetBrains Tech Mono';
+
+  @override
+  String get fontMontserrat => 'Montserrat Urban Sans';
+
+  @override
+  String get fontCustom => 'Custom Imported Font';
+
+  @override
+  String get trailingInfoDateTime => 'Date & Time';
+
+  @override
+  String get trailingInfoSizeCount => 'File Size / Item Count';
+
+  @override
+  String get backupAndRestoreHint =>
+      'Backup your settings to a JSON file or restore them';
 }

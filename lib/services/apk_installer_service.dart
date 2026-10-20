@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
@@ -26,12 +27,12 @@ class ApkInstallerService {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => const AlertDialog(
+      builder: (_) => AlertDialog(
         content: Row(
           children: [
             CircularProgressIndicator(),
             SizedBox(width: 20),
-            Expanded(child: Text("Extracting package bundle for installation...")),
+            Expanded(child: Text(AppLocalizations.of(context).extractingBundle)),
           ],
         ),
       ),
@@ -78,7 +79,7 @@ class ApkInstallerService {
         if (!context.mounted) return;
         Navigator.pop(context); // Close loading dialog
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No installable APK found in package bundle')),
+          SnackBar(content: Text(AppLocalizations.of(context).noInstallableApk)),
         );
         return;
       }
@@ -94,7 +95,7 @@ class ApkInstallerService {
         final success = await AppManagerService.installSplitApks(apkPaths);
         if (!success && context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Failed to trigger split APK installer')),
+            SnackBar(content: Text(AppLocalizations.of(context).failedToTriggerInstaller)),
           );
         }
       }
@@ -102,7 +103,7 @@ class ApkInstallerService {
       if (!context.mounted) return;
       Navigator.pop(context); // Close loading dialog
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to extract package bundle: $e')),
+        SnackBar(content: Text(AppLocalizations.of(context).failedToExtractBundle(e.toString()))),
       );
     }
   }

@@ -944,4 +944,512 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get propertiesAndInfo => 'الخصائص والمعلومات';
+
+  @override
+  String get extractingBundle => 'يجري استخراج حزمة التطبيق للتثبيت...';
+
+  @override
+  String get noInstallableApk => 'لم يُعثر على ملف APK قابل للتثبيت في الحزمة';
+
+  @override
+  String get failedToTriggerInstaller => 'فشل تشغيل مُثبّت الملفات المقسّمة';
+
+  @override
+  String failedToExtractBundle(String error) {
+    return 'فشل استخراج حزمة التطبيق: $error';
+  }
+
+  @override
+  String get settingsBackedUp =>
+      'نُسخت الإعدادات إلى NFile/Backups/Settings/nfile_settings_backup.json';
+
+  @override
+  String failedToBackupSettings(String error) {
+    return 'فشل نسخ الإعدادات: $error';
+  }
+
+  @override
+  String get settingsRestored => 'استُعيدت الإعدادات بنجاح!';
+
+  @override
+  String failedToRestoreSettings(String error) {
+    return 'فشل استعادة الإعدادات: $error';
+  }
+
+  @override
+  String get backupAndRestore => 'النسخ الاحتياطي والاستعادة';
+
+  @override
+  String get backupSettings => 'نسخ الإعدادات';
+
+  @override
+  String get backupSettingsHint =>
+      'احفظ كل إعداداتك الحالية في NFile/Backups/Settings/';
+
+  @override
+  String get restoreSettings => 'استعادة الإعدادات';
+
+  @override
+  String get restoreSettingsHint =>
+      'اختر ملف نسخة احتياطية بصيغة JSON واستعد منه الإعدادات';
+
+  @override
+  String get selectValidBackupFile =>
+      'الرجاء اختيار ملف نسخة احتياطية صالح بصيغة .json';
+
+  @override
+  String get settingsCategories => 'فئات الإعدادات';
+
+  @override
+  String get generalAndBehavior => 'عام والسلوك';
+
+  @override
+  String get generalAndBehaviorHint =>
+      'الشاشة الافتراضية، وأدوات التنقل، والاختصارات';
+
+  @override
+  String get appearanceAndThemes => 'المظهر والألوان';
+
+  @override
+  String get appearanceAndThemesHint =>
+      'الألوان، وأيقونات التطبيق، وأنماط المجلدات، والخطوط';
+
+  @override
+  String get fileExplorerOptions => 'خيارات مستكشف الملفات';
+
+  @override
+  String get fileExplorerOptionsHint =>
+      'شريط العنوان، والملفات المخفية، والتبويبات، والسحب والإفلات';
+
+  @override
+  String get listAndLayoutStyling => 'تنسيق القوائم والتخطيط';
+
+  @override
+  String get listAndLayoutStylingHint =>
+      'أحجام المجلدات، والأعداد، وصيغ الوقت والتاريخ';
+
+  @override
+  String get mediaPreferences => 'تفضيلات الوسائط';
+
+  @override
+  String get mediaPreferencesHint =>
+      'عرض الألبومات الافتراضي ومعاينات الصور المصغّرة';
+
+  @override
+  String get fileActionsAndViewers => 'إجراءات الملفات والعارضات';
+
+  @override
+  String get fileActionsAndViewersHint =>
+      'إجراءات الفتح وضبط العارضات الافتراضية';
+
+  @override
+  String get recycleBinTrash => 'سلة المحذوفات (المهملات)';
+
+  @override
+  String get recycleBinTrashHint => 'خيارات سلة المحذوفات ومدة الحذف التلقائي';
+
+  @override
+  String get noSettingsFound => 'لم يُعثر على إعدادات';
+
+  @override
+  String get tryAnotherKeyword => 'جرّب البحث عن كلمة أخرى';
+
+  @override
+  String get defaultToBrowseScreen => 'البدء بشاشة التصفّح';
+
+  @override
+  String get defaultToBrowseScreenHint =>
+      'افتح مستكشف التخزين مباشرة عند بدء التطبيق';
+
+  @override
+  String get rememberLastFolder => 'تذكّر آخر مجلد فُتح';
+
+  @override
+  String get rememberLastFolderHint =>
+      'افتح آخر مجلد تصفّحته عند تشغيل التطبيق';
+
+  @override
+  String get showHomeBrowseBottomBar =>
+      'إظهار الشريط السفلي في الرئيسية والتصفية';
+
+  @override
+  String get showHomeBrowseBottomBarHint =>
+      'تبديل ظهور شريط التنقل السفلي في الشاشة الرئيسية';
+
+  @override
+  String get hideBottomNavLabels => 'إخفاء تسميات الشريط السفلي';
+
+  @override
+  String get hideBottomNavLabelsHint =>
+      'إخفاء تسميات الشريط السفلي (الرئيسية/التصفية) لمظهر أنظف وأكثر اختصارًا';
+
+  @override
+  String get hideAndroidNavBar => 'إخفاء شريط تنقل أندرويد';
+
+  @override
+  String get hideAndroidNavBarHint =>
+      'إخفاء شريط التنقل السفلي لتوسيع مساحة الشاشة (يظهر عند السحب لأعلى)';
+
+  @override
+  String get preventLeftBackGesture => 'منع إيماءة الرجوع من اليسار';
+
+  @override
+  String get preventLeftBackGestureHint =>
+      'يستثني الحافة اليسرى من الشاشة من إيماءات الرجوع في أندرويد، فيصبح فتح القائمة بالتمرير أسهل. ما زال بإمكانك التمرير من الحافة اليمنى للرجوع.';
+
+  @override
+  String get appExitBehavior => 'سلوك خروج التطبيق';
+
+  @override
+  String get showBottomNavBar => 'إظهار الشريط السفلي';
+
+  @override
+  String get showBottomNavBarHint =>
+      'تفعيل شريط الإجراءات السفلي في شاشة التصفّح';
+
+  @override
+  String get hideActionBarLabels => 'إخفاء تسميات شريط الإجراءات';
+
+  @override
+  String get hideActionBarLabelsHint =>
+      'إظهار الأيقونات فقط في شريط التحديد أسفل شاشتي التصفّح والوسائط';
+
+  @override
+  String get customizeShortcutsHint =>
+      'أعد ترتيب عناصر الفئات السريعة وأظهرها أو أخفها';
+
+  @override
+  String get showRecentFiles => 'إظهار الملفات الأخيرة';
+
+  @override
+  String get showRecentFilesHint =>
+      'اعرض قائمة الملفات التي فُتحت مؤخرًا في الشاشة الرئيسية';
+
+  @override
+  String get accentColorDynamicTheme => 'اللون المميّز / السمة الديناميكية';
+
+  @override
+  String get folderIconStyle => 'نمط أيقونة المجلد';
+
+  @override
+  String get drawerButtonStyle => 'نمط زر قائمة التطبيق';
+
+  @override
+  String get amoledBlackMode => 'وضع الأسود لشاشات AMOLED';
+
+  @override
+  String get amoledBlackModeHint =>
+      'استخدم خلفية سوداء تمامًا في الوضع الداكن لشاشات AMOLED';
+
+  @override
+  String get appIcon => 'أيقونة التطبيق';
+
+  @override
+  String get appTypographyFontFamily => 'خط التطبيق / عائلة الخطوط';
+
+  @override
+  String get useExpressiveIcons => 'استخدام أيقونات Material التعبيرية';
+
+  @override
+  String get useExpressiveIconsHint =>
+      'استبدل أيقونات Broken المخصّصة بأيقونات Material Design القياسية';
+
+  @override
+  String get showAddressBar => 'إظهار شريط العنوان';
+
+  @override
+  String get showAddressBarHint =>
+      'اعرض شريط عنوان قابل للتعديل على طراز مستكشف ويندوز أعلى قائمة الملفات';
+
+  @override
+  String get showFloatingAddButton => 'إظهار زر «+» العائم';
+
+  @override
+  String get showFloatingAddButtonHint =>
+      'فعّل زر الإنشاء السريع (+) أسفل شاشة التصفّح';
+
+  @override
+  String get showHiddenFilesHint =>
+      'إظهار ملفات ومجلدات النظام التي تبدأ بنقطة (.)';
+
+  @override
+  String get highlightExitedFolder => 'إبراز المجلد الذي خرجت منه';
+
+  @override
+  String get highlightExitedFolderHint =>
+      'ومض المجلد الذي خرجت منه والتمرير إليه عند الرجوع';
+
+  @override
+  String get enableMultipleTabs => 'تفعيل التبويبات المتعددة';
+
+  @override
+  String get enableMultipleTabsHint =>
+      'اسمح بفتح عدة مجلدات في تبويبات منفصلة للتنقل السريع';
+
+  @override
+  String get enableSplitScreen => 'تفعيل الشاشة المقسّمة';
+
+  @override
+  String get enableSplitScreenHint =>
+      'تصفّح مجلدين جنبًا إلى جنب ونقل الملفات بسهولة';
+
+  @override
+  String get enableDragAndDrop => 'تفعيل السحب والإفلات';
+
+  @override
+  String get enableDragAndDropHint =>
+      'اضغط مطوّلًا واسحب المجلدات أو الملفات لنقلها إلى مجلدات أخرى';
+
+  @override
+  String get confirmDragAndDrop => 'تأكيد إجراءات السحب والإفلات';
+
+  @override
+  String get confirmDragAndDropHint =>
+      'اعرض قائمة الخيارات (نسخ، نقل، أرشفة) عند إفلات الملفات';
+
+  @override
+  String get showCountHeader => 'إظهار ترويسة عدد المجلدات والملفات';
+
+  @override
+  String get showCountHeaderHint =>
+      'اعرض إجمالي عدد المجلدات والملفات أسفل شريط عنوان التخزين';
+
+  @override
+  String get showFolderContentCount => 'إظهار عدد محتويات المجلد';
+
+  @override
+  String get showFolderContentCountHint =>
+      'احسب واعرض إجمالي الملفات والمجلدات داخل قوائم المجلدات';
+
+  @override
+  String get showFolderSize => 'إظهار حجم المجلد';
+
+  @override
+  String get showFolderSizeHint =>
+      'احسب واعرض الحجم الإجمالي لكل الملفات داخل المجلدات (قد يؤثر على سرعة عرض القوائم)';
+
+  @override
+  String get use24HourTime => 'استخدام نظام 24 ساعة';
+
+  @override
+  String get use24HourTimeHint =>
+      'بدّل بين صيغة 12 ساعة (ص/م) و24 ساعة في كل القوائم';
+
+  @override
+  String get hideTimeAndDate => 'إخفاء الوقت والتاريخ من القوائم';
+
+  @override
+  String get hideTimeAndDateHint =>
+      'أخفِ تمامًا تواريخ وأوقات التعديل أسفل الملفات والمجلدات';
+
+  @override
+  String get adaptiveMultiLineNames => 'أسماء ملفات متعدّدة الأسطر';
+
+  @override
+  String get adaptiveMultiLineNamesHint =>
+      'اسمح لأسماء الملفات بالالتفاف على ٣ أسطر بدلًا من بترها';
+
+  @override
+  String get hideThreeDotButtons => 'إخفاء أزرار النقاط الثلاث';
+
+  @override
+  String get hideThreeDotButtonsHint =>
+      'أخفِ زر قائمة النقاط الثلاث بجوار المجلدات والملفات';
+
+  @override
+  String get threeDotTrailingInfo => 'معلومات بديلة عند إخفاء أزرار النقاط';
+
+  @override
+  String get defaultAlbumView => 'عرض الألبومات المفضّل';
+
+  @override
+  String get defaultAlbumViewHint =>
+      'افتح فئتَي الصور والفيديوهات مباشرة في عرض المجلدات (الألبومات) المفضّل';
+
+  @override
+  String get showMediaPreviews => 'إظهار معاينات الوسائط';
+
+  @override
+  String get showMediaPreviewsHint =>
+      'اعرض صور الفيديو والصور المصغّرة الفعلية بدل أيقونات الملفات العامة';
+
+  @override
+  String get skipOpenWithDialog => 'تخطَّ نافذة «فتح بـ»';
+
+  @override
+  String get skipOpenWithDialogHint =>
+      'تجاوز نافذة اختيار التطبيق وافتح الملفات فورًا بالعارضات الافتراضية';
+
+  @override
+  String get resetDefaultViewers => 'إعادة ضبط عارضات الملفات الافتراضية';
+
+  @override
+  String get resetDefaultViewersHint =>
+      'امسح كل الارتباطات المحفوظة في «فتح بـ» لعارضات الملفات';
+
+  @override
+  String get viewersReset => 'أُعيد ضبط كل اختيارات العارضات الافتراضية';
+
+  @override
+  String get enableRecycleBin => 'تفعيل سلة المحذوفات';
+
+  @override
+  String get enableRecycleBinHint =>
+      'انقل الملفات والمجلدات المحذوفة إلى سلة محذوفات مخفية بدلًا من حذفها نهائيًا';
+
+  @override
+  String get autoDeleteDuration => 'مدة الحذف التلقائي من المهملات';
+
+  @override
+  String get autoDeleteDurationHint =>
+      'ستُحذف عناصر سلة المحذوفات نهائيًا بعد هذه المدة.';
+
+  @override
+  String get chooseTrailingInfoStyle => 'اختر نمط المعلومات البديلة';
+
+  @override
+  String get chooseTrailingInfoStyleHint =>
+      'اختر ما يظهر في الجانب الأيمن من الملفات والمجلدات عند إخفاء أزرار النقاط الثلاث.';
+
+  @override
+  String get chooseExitBehavior => 'اختر سلوك الخروج';
+
+  @override
+  String get chooseAccentTheme => 'اختر سمة اللون';
+
+  @override
+  String get chooseFolderIconStyle => 'اختر نمط أيقونة المجلد';
+
+  @override
+  String get chooseDrawerButtonStyle => 'اختر نمط زر القائمة';
+
+  @override
+  String get appLauncherIcon => 'أيقونة مشغّل التطبيق';
+
+  @override
+  String get appLauncherIconHint =>
+      'اختر شعارًا مخصّصًا لأيقونة التطبيق في المشغّل. لاحظ أن بعض المشغّلات قد تستغرق بضع ثوانٍ للتحديث.';
+
+  @override
+  String get logo1 => 'الشعار ١';
+
+  @override
+  String get logo2 => 'الشعار ٢';
+
+  @override
+  String get logo3 => 'الشعار ٣';
+
+  @override
+  String get logo4 => 'الشعار ٤';
+
+  @override
+  String appIconSwitched(String title) {
+    return 'تم تغيير أيقونة التطبيق إلى $title بنجاح!';
+  }
+
+  @override
+  String get appTypography => 'خط التطبيق';
+
+  @override
+  String get appTypographyHint =>
+      'اختر خطًا جميلًا لتخصيص المظهر العام لتطبيق NFile';
+
+  @override
+  String customFontApplied(String name) {
+    return 'طُبِّق الخط المخصّص «$name» بنجاح!';
+  }
+
+  @override
+  String get failedToLoadFont => 'فشل تحميل ملف الخط المختار.';
+
+  @override
+  String get invalidFileType => 'نوع ملف غير صالح';
+
+  @override
+  String get invalidFontFileHint =>
+      'الرجاء اختيار ملف خط صالح بصيغة OpenType (.otf) أو TrueType (.ttf).';
+
+  @override
+  String get removeCustomFont => 'إزالة الخط المخصّص';
+
+  @override
+  String get customFontRemoved => 'أُزيل الخط المخصّص.';
+
+  @override
+  String get accentMaterialYou => 'Material You (ألوان الخلفية الديناميكية)';
+
+  @override
+  String get accentVibrantOrange => 'برتقالي نابض';
+
+  @override
+  String get accentRoyalPurple => 'بنفسجي ملكي';
+
+  @override
+  String get accentEmeraldGreen => 'أخضر زمردي';
+
+  @override
+  String get accentCrimsonRed => 'أحمر قرمزي';
+
+  @override
+  String get accentAmberGold => 'ذهبي كهرماني';
+
+  @override
+  String get accentCyberpunkPink => 'وردي سايبربانك';
+
+  @override
+  String get accentSapphireBlue => 'أزرق ياقوتي';
+
+  @override
+  String get accentForestGreen => 'أخضر الغابة';
+
+  @override
+  String get accentSunsetPeach => 'خوخ الغروب';
+
+  @override
+  String get folderIconClassicSolid => 'كلاسيكي مصمت (Material)';
+
+  @override
+  String get folderIconModernRounded => 'حديث مستدير (Material)';
+
+  @override
+  String get folderIconStarred => 'نجمة خاصة (Material)';
+
+  @override
+  String get folderIconSnippet => 'مستند مقتطف (Material)';
+
+  @override
+  String get folderIconMinimalOutlined => 'بسيط محدَّد (Material)';
+
+  @override
+  String get drawerStyleCategoryGrid => 'شبكة الفئات / شبكة Vuesax';
+
+  @override
+  String get drawerStyleHamburger => 'هامبرغر / قائمة كلاسيكية';
+
+  @override
+  String get defaultLogo => 'الشعار الافتراضي';
+
+  @override
+  String get fontDotMatrix => 'نقطية وsans';
+
+  @override
+  String get fontOutfit => 'Outfit الحديث';
+
+  @override
+  String get fontJetBrains => 'JetBrains Tech Mono';
+
+  @override
+  String get fontMontserrat => 'Montserrat الحضري';
+
+  @override
+  String get fontCustom => 'خط مخصّص مستورد';
+
+  @override
+  String get trailingInfoDateTime => 'التاريخ والوقت';
+
+  @override
+  String get trailingInfoSizeCount => 'حجم الملف / عدد العناصر';
+
+  @override
+  String get backupAndRestoreHint => 'احفظ إعداداتك في ملف JSON أو استعدها';
 }

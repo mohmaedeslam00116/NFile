@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/settings_backup_service.dart';
 import 'internal_file_picker_screen.dart';
 
@@ -12,7 +13,7 @@ class BackupSettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Backup & Restore'),
+        title: Text(AppLocalizations.of(context).backupAndRestore),
         leading: IconButton(
           icon: const Icon(Broken.arrow_left),
           onPressed: () => Navigator.pop(context),
@@ -25,15 +26,15 @@ class BackupSettingsScreen extends StatelessWidget {
           children: [
             _BackupSettingsTile(
               icon: Broken.document_upload,
-              title: 'Backup Settings',
-              subtitle: 'Save all your current settings to NFile/Backups/Settings/',
+              title: AppLocalizations.of(context).backupSettings,
+              subtitle: AppLocalizations.of(context).backupSettingsHint,
               onTap: () => SettingsBackupService.backupSettings(context),
             ),
             const SizedBox(height: 8),
             _BackupSettingsTile(
               icon: Broken.document_download,
-              title: 'Restore Settings',
-              subtitle: 'Select and restore settings from a JSON backup file',
+              title: AppLocalizations.of(context).restoreSettings,
+              subtitle: AppLocalizations.of(context).restoreSettingsHint,
               onTap: () async {
                 final pickedPaths = await InternalFilePickerScreen.show(
                   context,
@@ -51,7 +52,7 @@ class BackupSettingsScreen extends StatelessWidget {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: const Text('Please select a valid .json settings backup file'),
+                          content: Text(AppLocalizations.of(context).selectValidBackupFile),
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: theme.colorScheme.error,
                         ),

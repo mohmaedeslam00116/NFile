@@ -266,10 +266,167 @@
   "cutSelected": "Cut Selected",
   "archiveCompress": "Archive (Compress)",
   "propertiesAndInfo": "Properties & Info",
+  "extractingBundle": "Extracting package bundle for installation...",
+  "noInstallableApk": "No installable APK found in package bundle",
+  "failedToTriggerInstaller": "Failed to trigger split APK installer",
+  "failedToExtractBundle": "Failed to extract package bundle: {error}",
+  "settingsBackedUp": "Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json",
+  "failedToBackupSettings": "Failed to backup settings: {error}",
+  "settingsRestored": "Settings restored successfully!",
+  "failedToRestoreSettings": "Failed to restore settings: {error}",
+  "backupAndRestore": "Backup & Restore",
+  "backupSettings": "Backup Settings",
+  "backupSettingsHint": "Save all your current settings to NFile/Backups/Settings/",
+  "restoreSettings": "Restore Settings",
+  "restoreSettingsHint": "Select and restore settings from a JSON backup file",
+  "selectValidBackupFile": "Please select a valid .json settings backup file",
+  "settingsCategories": "Settings Categories",
+  "generalAndBehavior": "General & Behavior",
+  "generalAndBehaviorHint": "Default screen, navigation controls, and shortcuts",
+  "appearanceAndThemes": "Appearance & Themes",
+  "appearanceAndThemesHint": "Themes, app icons, folder styles, and typography",
+  "fileExplorerOptions": "File Explorer Options",
+  "fileExplorerOptionsHint": "Address bar, hidden files, tabs, and drag & drop",
+  "listAndLayoutStyling": "List & Layout Styling",
+  "listAndLayoutStylingHint": "Folder sizes, counts, and time/date formats",
+  "mediaPreferences": "Media Preferences",
+  "mediaPreferencesHint": "Default album view and thumbnail previews",
+  "fileActionsAndViewers": "File Actions & Viewers",
+  "fileActionsAndViewersHint": "Open actions and default viewers configuration",
+  "recycleBinTrash": "Recycle Bin (Trash)",
+  "recycleBinTrashHint": "Recycle bin toggles and auto-delete duration",
+  "noSettingsFound": "No settings found",
+  "tryAnotherKeyword": "Try searching for another keyword",
+  "defaultToBrowseScreen": "Default to Browse Screen",
+  "defaultToBrowseScreenHint": "Directly launch into the Browse storage explorer on app start",
+  "rememberLastFolder": "Remember Last Opened Folder",
+  "rememberLastFolderHint": "Open the last folder you browsed when launching the app",
+  "showHomeBrowseBottomBar": "Show Home & Browse Bottom Bar",
+  "showHomeBrowseBottomBarHint": "Toggle bottom navigation bar visibility on the Home screen",
+  "hideBottomNavLabels": "Hide Bottom Navigation Labels",
+  "hideBottomNavLabelsHint": "Hide text labels of the bottom bar (Home/Browse) for a cleaner and compact look",
+  "hideAndroidNavBar": "Hide Android Navigation Bar",
+  "hideAndroidNavBarHint": "Hide bottom navigation bar to maximize screen real estate (swiping up displays it)",
+  "preventLeftBackGesture": "Prevent Left Back Gesture for Drawer",
+  "preventLeftBackGestureHint": "Excludes the left edge of the screen from Android system back gestures, making it easier to swipe open the drawer. You can still swipe from the right edge to go back.",
+  "appExitBehavior": "App Exit Behavior",
+  "showBottomNavBar": "Show Bottom Navigation Bar",
+  "showBottomNavBarHint": "Enable bottom action bar on Browse screen",
+  "hideActionBarLabels": "Hide Action Bar Text Labels",
+  "hideActionBarLabelsHint": "Show only icons in selection action bar at bottom of Browse & Media screens",
+  "customizeShortcutsHint": "Reorder and toggle visibility of quick category items",
+  "showRecentFiles": "Show Recent Files",
+  "showRecentFilesHint": "Display the list of recently accessed files on the Home screen",
+  "accentColorDynamicTheme": "Accent Color / Dynamic Theme",
+  "folderIconStyle": "Folder Icon Style",
+  "drawerButtonStyle": "App Drawer Button Style",
+  "amoledBlackMode": "AMOLED Black Mode",
+  "amoledBlackModeHint": "Use pitch black background in Dark Mode for AMOLED screens",
+  "appIcon": "App Icon",
+  "appTypographyFontFamily": "App Typography / Font Family",
+  "useExpressiveIcons": "Use Expressive Material Icons",
+  "useExpressiveIconsHint": "Replace custom Broken icons with standard Material Design icons",
+  "showAddressBar": "Show Address Bar",
+  "showAddressBarHint": "Display an editable Windows-Explorer-style address bar at the top of file list",
+  "showFloatingAddButton": "Show Floating '+' Button",
+  "showFloatingAddButtonHint": "Enable quick creation (+) button at bottom of Browse screen",
+  "showHiddenFilesHint": "Display system files and folders starting with a dot (.)",
+  "highlightExitedFolder": "Highlight Exited Folder",
+  "highlightExitedFolderHint": "Briefly flash and scroll to the folder you just exited when going back",
+  "enableMultipleTabs": "Enable Multiple Tabs",
+  "enableMultipleTabsHint": "Allow opening multiple folders in separate tabs for quick navigation",
+  "enableSplitScreen": "Enable Split Screen",
+  "enableSplitScreenHint": "Browse two directories side by side and transfer files easily",
+  "enableDragAndDrop": "Enable Drag & Drop",
+  "enableDragAndDropHint": "Long press and drag folders or files to move them into other folders",
+  "confirmDragAndDrop": "Confirm Drag & Drop Actions",
+  "confirmDragAndDropHint": "Show options popup (Copy, Move, Archive) when dropping files",
+  "showCountHeader": "Show Folder & File Count Header",
+  "showCountHeaderHint": "Display total folders and files count under storage title bar",
+  "showFolderContentCount": "Show Folder Content Count",
+  "showFolderContentCountHint": "Calculate and display total files and folders inside directory listings",
+  "showFolderSize": "Show Folder Size",
+  "showFolderSizeHint": "Calculate and display total size of all files inside directories (can affect listing performance)",
+  "use24HourTime": "Use 24-Hour Time Format",
+  "use24HourTimeHint": "Toggle between 12-hour (AM/PM) and 24-hour time formatting across lists",
+  "hideTimeAndDate": "Hide Time & Date from Lists",
+  "hideTimeAndDateHint": "Completely hide modification dates and times under files and folders",
+  "adaptiveMultiLineNames": "Adaptive Multi-line Filenames",
+  "adaptiveMultiLineNamesHint": "Allow filenames to wrap 3 lines instead of truncating",
+  "hideThreeDotButtons": "Hide 3-Dot Action Buttons",
+  "hideThreeDotButtonsHint": "Hide the three-dot option menu button next to folders and files",
+  "threeDotTrailingInfo": "3-Dot Disabled Trailing Info",
+  "defaultAlbumView": "Default Album Preferred View",
+  "defaultAlbumViewHint": "Open Images/Videos quick categories directly in Folders (Albums) preferred view",
+  "showMediaPreviews": "Show Media Previews",
+  "showMediaPreviewsHint": "Display actual image and video thumbnails instead of generic file icons",
+  "skipOpenWithDialog": "Skip \"Open With\" Dialog",
+  "skipOpenWithDialogHint": "Bypass the application choice dialog and immediately open files with default viewers",
+  "resetDefaultViewers": "Reset Default File Viewers",
+  "resetDefaultViewersHint": "Clear all remembered \"Open With\" associations for file viewers",
+  "viewersReset": "All default viewer choices have been reset",
+  "enableRecycleBin": "Enable Recycle Bin",
+  "enableRecycleBinHint": "Move deleted files and folders to a hidden Recycle Bin instead of deleting permanently",
+  "autoDeleteDuration": "Auto-Delete Trash Duration",
+  "autoDeleteDurationHint": "Items in the Recycle Bin will be permanently deleted after this duration.",
+  "chooseTrailingInfoStyle": "Choose Trailing Info Style",
+  "chooseTrailingInfoStyleHint": "Choose what is displayed on the right side of files and folders when the 3-dot action buttons are hidden.",
+  "chooseExitBehavior": "Choose Exit Behavior",
+  "chooseAccentTheme": "Choose Accent Theme",
+  "chooseFolderIconStyle": "Choose Folder Icon Style",
+  "chooseDrawerButtonStyle": "Choose Drawer Button Style",
+  "appLauncherIcon": "App Launcher Icon",
+  "appLauncherIconHint": "Choose a custom logo for the application launcher icon. Note that some launchers may take a few seconds to update.",
+  "logo1": "Logo 1",
+  "logo2": "Logo 2",
+  "logo3": "Logo 3",
+  "logo4": "Logo 4",
+  "appIconSwitched": "App icon switched to {title} successfully!",
+  "appTypography": "App Typography",
+  "appTypographyHint": "Select a beautiful typeface to customize NFile\\'s overall visual theme",
+  "customFontApplied": "Custom font \"{name}\" applied successfully!",
+  "failedToLoadFont": "Failed to load the selected font file.",
+  "invalidFileType": "Invalid File Type",
+  "invalidFontFileHint": "Please select a valid OpenType (.otf) or TrueType (.ttf) font file.",
+  "removeCustomFont": "Remove Custom Font",
+  "customFontRemoved": "Custom font removed.",
+  "accentMaterialYou": "Material You (Dynamic Wallpaper Colors)",
+  "accentVibrantOrange": "Vibrant Orange",
+  "accentRoyalPurple": "Royal Purple",
+  "accentEmeraldGreen": "Emerald Green",
+  "accentCrimsonRed": "Crimson Red",
+  "accentAmberGold": "Amber Gold",
+  "accentCyberpunkPink": "Cyberpunk Pink",
+  "accentSapphireBlue": "Sapphire Blue",
+  "accentForestGreen": "Forest Green",
+  "accentSunsetPeach": "Sunset Peach",
+  "folderIconClassicSolid": "Classic Solid (Material)",
+  "folderIconModernRounded": "Modern Rounded (Material)",
+  "folderIconStarred": "Starred Special (Material)",
+  "folderIconSnippet": "Snippet Document (Material)",
+  "folderIconMinimalOutlined": "Minimal Outlined (Material)",
+  "drawerStyleCategoryGrid": "Category Grid / Vuesax Grid",
+  "drawerStyleHamburger": "Hamburger / Classic Menu",
+  "defaultLogo": "Default Logo",
+  "fontDotMatrix": "Dot-Matrix & Sans",
+  "fontOutfit": "Outfit Modern Sans",
+  "fontJetBrains": "JetBrains Tech Mono",
+  "fontMontserrat": "Montserrat Urban Sans",
+  "fontCustom": "Custom Imported Font",
+  "trailingInfoDateTime": "Date & Time",
+  "trailingInfoSizeCount": "File Size / Item Count",
+  "backupAndRestoreHint": "Backup your settings to a JSON file or restore them",
   "@addSelected": {
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "@appIconSwitched": {
+    "placeholders": {
+      "title": {
+        "type": "String"
       }
     }
   },
@@ -379,6 +536,13 @@
       }
     }
   },
+  "@customFontApplied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@customPathsCount": {
     "placeholders": {
       "count": {
@@ -414,6 +578,13 @@
       }
     }
   },
+  "@failedToBackupSettings": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@failedToConnect": {
     "placeholders": {
       "error": {
@@ -435,7 +606,21 @@
       }
     }
   },
+  "@failedToExtractBundle": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@failedToMoveItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToRestoreSettings": {
     "placeholders": {
       "error": {
         "type": "String"
