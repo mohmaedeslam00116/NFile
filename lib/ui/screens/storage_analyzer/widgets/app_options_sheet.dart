@@ -136,8 +136,8 @@ class AppOptionsSheet extends StatelessWidget {
                     SnackBar(
                       content: Text(
                         success
-                            ? 'APK backed up successfully to NFile/Backups/Apps/'
-                            : 'Failed to back up APK',
+                            ? AppLocalizations.of(context).analyzerApkBackedUp
+                            : AppLocalizations.of(context).analyzerApkBackupFailed,
                       ),
                     ),
                   );

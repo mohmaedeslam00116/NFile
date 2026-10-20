@@ -92,10 +92,11 @@ class BackgroundArchiveService {
 
     _receivePort!.listen((message) {
       if (message is Map<String, dynamic>) {
+        final l10n = AppLocalizations.of(context);
         final status = message['status'] as String;
         if (status == 'progress') {
           final progress = message['progress'] as double;
-          final currentFile = message['currentFile'] as String;
+          final currentFile = _stepLabel(l10n, message['currentFile'] as String);
 
           operation.progress = progress;
           operation.currentFile = currentFile;
@@ -107,10 +108,19 @@ class BackgroundArchiveService {
             _updateNotification(operation);
           }
         } else if (status == 'completed') {
-          _onOperationComplete(context, operation, 'Archive created successfully');
+          _onOperationComplete(
+            context,
+            operation,
+            l10n.archiveCreatedSuccessfully,
+          );
         } else if (status == 'error') {
-          final error = message['error'] as String;
-          _onOperationComplete(context, operation, 'Compression failed: $error', isError: true);
+          final error = _stepLabel(l10n, message['error'] as String);
+          _onOperationComplete(
+            context,
+            operation,
+            l10n.archiveCompressionFailed(error),
+            isError: true,
+          );
         }
       }
     });
@@ -163,10 +173,22 @@ class BackgroundArchiveService {
             _updateNotification(operation);
           }
         } else if (status == 'completed') {
-          _onOperationComplete(context, operation, 'Archive extracted successfully');
+          _onOperationComplete(
+            context,
+            operation,
+            AppLocalizations.of(context).archiveExtractedSuccessfully,
+          );
         } else if (status == 'error') {
-          final error = message['error'] as String;
-          _onOperationComplete(context, operation, 'Extraction failed: $error', isError: true);
+          final error = _stepLabel(
+            AppLocalizations.of(context),
+            message['error'] as String,
+          );
+          _onOperationComplete(
+            context,
+            operation,
+            AppLocalizations.of(context).archiveExtractionFailed(error),
+            isError: true,
+          );
         }
       }
     });
@@ -238,8 +260,13 @@ class BackgroundArchiveService {
         final id = operation.id.hashCode;
         await _channel.invokeMethod('showProgressNotification', {
           'id': id,
-          'title': isError ? 'Operation Failed' : 'Successful',
-          'message': isError ? 'Compression/extraction failed.' : '${operation.archiveName} processed successfully.',
+          'title': isError
+              ? AppLocalizations.of(context).operationFailed
+              : AppLocalizations.of(context).operationSuccessful,
+          'message': isError
+              ? AppLocalizations.of(context).archiveOperationFailed
+              : AppLocalizations.of(context)
+                  .archiveProcessedSuccessfully(operation.archiveName),
           'progress': 100,
           'max': 100,
           'indeterminate': false,
@@ -618,3 +645,32 @@ class BackgroundArchiveService {
     }
   }
 }
+
+/// The name of a step of an operation, in the language of the application.
+///
+/// The work of the archive runs in an isolate, and an isolate holds no
+/// translation: the steps it names are the ids of a protocol. The name the
+/// user reads is asked for by name, here, where the step is read.
+String _stepLabel(AppLocalizations l10n, String step) => switch (step) {
+      'Scanning files...' => l10n.archiveScanningFiles,
+      'Encoding archive structure...' => l10n.archiveEncodingStructure,
+      'Applying GZIP compression...' => l10n.archiveApplyingGzip,
+      'Applying BZIP2 compression...' => l10n.archiveApplyingBzip2,
+      'Applying LZ4 compression...' => l10n.archiveApplyingLz4,
+      'Applying ZSTD compression...' => l10n.archiveApplyingZstd,
+      'Saving archive to disk...' => l10n.archiveSavingToDisk,
+      'Opening zip...' => l10n.archiveOpeningZip,
+      'Reading archive...' => l10n.archiveReading,
+      'Extracting tar...' => l10n.archiveExtractingTar,
+      'Opening tar...' => l10n.archiveOpeningTar,
+      'Decompressing gzip...' => l10n.archiveDecompressingGzip,
+      'Decompressing archive...' => l10n.archiveDecompressing,
+      'Extracting files...' => l10n.archiveExtractingFiles,
+      'Opening archive...' => l10n.archiveOpening,
+      'Archive created successfully' => l10n.archiveCreatedSuccessfully,
+      'Archive extracted successfully' => l10n.archiveExtractedSuccessfully,
+      'No files found to compress' => l10n.archiveNoFilesToCompress,
+      'Unsupported format' => l10n.archiveUnsupportedFormat,
+      'Archive file not found' => l10n.archiveFileNotFound,
+      _ => step,
+    };

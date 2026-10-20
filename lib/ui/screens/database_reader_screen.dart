@@ -233,10 +233,19 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
           controller: _tabController,
           indicatorWeight: 3,
           labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),
-          tabs: const [
-            Tab(text: 'Browse Data', icon: Icon(Broken.document, size: 20)),
-            Tab(text: 'Table Schema', icon: Icon(Broken.info_circle, size: 20)),
-            Tab(text: 'SQL Console', icon: Icon(Broken.code, size: 20)),
+          tabs: [
+            Tab(
+              text: AppLocalizations.of(context).databaseBrowseData,
+              icon: const Icon(Broken.document, size: 20),
+            ),
+            Tab(
+              text: AppLocalizations.of(context).databaseTableSchema,
+              icon: const Icon(Broken.info_circle, size: 20),
+            ),
+            Tab(
+              text: AppLocalizations.of(context).databaseSqlConsole,
+              icon: const Icon(Broken.code, size: 20),
+            ),
           ],
         ),
       ),
@@ -706,7 +715,9 @@ class _DatabaseReaderScreenState extends State<DatabaseReaderScreen> with Single
               : _sqlResultRows.isEmpty
                   ? Center(
                       child: Text(
-                        _sqlErrorMessage == null ? 'Execute a SELECT query to view results.' : 'Error executing query.',
+                        _sqlErrorMessage == null
+                            ? AppLocalizations.of(context).databaseSelectHint
+                            : AppLocalizations.of(context).databaseQueryError,
                         style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.4), fontSize: 13),
                       ),
                     )

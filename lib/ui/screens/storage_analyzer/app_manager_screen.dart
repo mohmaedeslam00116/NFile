@@ -197,10 +197,10 @@ class _AppManagerScreenState extends State<AppManagerScreen> with SingleTickerPr
           indicatorColor: theme.colorScheme.primary,
           labelColor: theme.colorScheme.primary,
           unselectedLabelColor: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.5),
-          tabs: const [
-            Tab(text: 'Installed User Apps'),
-            Tab(text: 'System Packages'),
-            Tab(text: 'Backed Up APKs'),
+          tabs: [
+            Tab(text: AppLocalizations.of(context).analyzerInstalledUserApps),
+            Tab(text: AppLocalizations.of(context).analyzerSystemPackages),
+            Tab(text: AppLocalizations.of(context).analyzerBackedUpApks),
           ],
         ),
       ),
@@ -237,8 +237,8 @@ class _AppManagerScreenState extends State<AppManagerScreen> with SingleTickerPr
                               style: const TextStyle(fontSize: 14.5),
                               decoration: InputDecoration(
                                 hintText: _tabController.index == 2
-                                    ? 'Search backups...'
-                                    : 'Search packages or names...',
+                                    ? AppLocalizations.of(context).analyzerSearchBackups
+                                    : AppLocalizations.of(context).analyzerSearchPackagesHint,
                                 hintStyle: TextStyle(
                                   color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.4),
                                 ),
@@ -281,7 +281,7 @@ class _AppManagerScreenState extends State<AppManagerScreen> with SingleTickerPr
                       CheckedPopupMenuItem(
                         value: 'date',
                         checked: _sortBy == 'date',
-                        child: Text(_tabController.index == 2 ? 'Sort by Backup Date' : 'Sort by Install Date'),
+                        child: Text(_tabController.index == 2 ? AppLocalizations.of(context).analyzerSortByBackupDate : AppLocalizations.of(context).analyzerSortByInstallDate),
                       ),
                     ],
                   ),

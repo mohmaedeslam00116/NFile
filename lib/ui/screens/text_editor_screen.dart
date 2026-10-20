@@ -368,7 +368,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       if (IntentHandlerService.isIncomingCacheFile(_normalizedPath)) {
         final success = await IntentHandlerService.saveContentUriFile(_normalizedPath, _controller.text);
         if (!success) {
-          throw Exception("Failed to save changes back to external storage.");
+          throw Exception(AppLocalizations.of(context).editorSaveFailed);
         }
       }
 
@@ -624,19 +624,19 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
               ),
               PopupMenuItem(
                 value: 'lock_zoom',
-                child: Row(children: [Icon(_zoomLocked ? Broken.lock_1 : Broken.unlock, size: 18), const SizedBox(width: 12), Text(_zoomLocked ? 'Unlock Zoom' : 'Lock Zoom')]),
+                child: Row(children: [Icon(_zoomLocked ? Broken.lock_1 : Broken.unlock, size: 18), const SizedBox(width: 12), Text(_zoomLocked ? AppLocalizations.of(context).editorUnlockZoom : AppLocalizations.of(context).editorLockZoom)]),
               ),
               PopupMenuItem(
                 value: 'word_wrap',
-                child: Row(children: [Icon(_wordWrap ? Broken.textalign_justifycenter : Broken.textalign_left, size: 18), const SizedBox(width: 12), Text(_wordWrap ? 'Word Wrap: ON' : 'Word Wrap: OFF')]),
+                child: Row(children: [Icon(_wordWrap ? Broken.textalign_justifycenter : Broken.textalign_left, size: 18), const SizedBox(width: 12), Text(_wordWrap ? AppLocalizations.of(context).editorWordWrapOn : AppLocalizations.of(context).editorWordWrapOff)]),
               ),
               PopupMenuItem(
                 value: 'read_only',
-                child: Row(children: [Icon(_readOnly ? Broken.lock_1 : Broken.edit, size: 18), const SizedBox(width: 12), Text(_readOnly ? 'Edit Lock: ON' : 'Edit Lock: OFF')]),
+                child: Row(children: [Icon(_readOnly ? Broken.lock_1 : Broken.edit, size: 18), const SizedBox(width: 12), Text(_readOnly ? AppLocalizations.of(context).editorEditLockOn : AppLocalizations.of(context).editorEditLockOff)]),
               ),
               PopupMenuItem(
                 value: 'toggle_line_numbers',
-                child: Row(children: [Icon(_showLineNumbers ? Broken.eye_slash : Broken.eye, size: 18), const SizedBox(width: 12), Text(_showLineNumbers ? 'Hide Line Numbers' : 'Show Line Numbers')]),
+                child: Row(children: [Icon(_showLineNumbers ? Broken.eye_slash : Broken.eye, size: 18), const SizedBox(width: 12), Text(_showLineNumbers ? AppLocalizations.of(context).editorHideLineNumbers : AppLocalizations.of(context).editorShowLineNumbers)]),
               ),
               PopupMenuItem(
                 value: 'syntax',
@@ -666,8 +666,8 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                                 height: 36,
                                 child: TextField(
                                   controller: _findController,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Find...',
+                                  decoration: InputDecoration(
+                                    hintText: AppLocalizations.of(context).editorFind,
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
                                   ),
@@ -698,7 +698,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              ElevatedButton(onPressed: _replace, child: const Text('Replace')),
+                              ElevatedButton(onPressed: _replace, child: Text(AppLocalizations.of(context).actionReplace)),
                               const SizedBox(width: 6),
                               ElevatedButton(onPressed: _replaceAll, child: Text(AppLocalizations.of(context).replaceAll)),
                             ],
@@ -781,12 +781,12 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
                       children: [
                         IconButton(
                           icon: const Icon(Broken.rotate_left, size: 18),
-                          tooltip: 'Undo',
+                          tooltip: AppLocalizations.of(context).actionUndo,
                           onPressed: _history.length > 1 ? _undo : null,
                         ),
                         IconButton(
                           icon: const Icon(Broken.rotate_right_1, size: 18),
-                          tooltip: 'Redo',
+                          tooltip: AppLocalizations.of(context).actionRedo,
                           onPressed: _redoHistory.isNotEmpty ? _redo : null,
                         ),
                         Container(width: 1, height: 24, color: theme.dividerColor.withValues(alpha: 0.2)),

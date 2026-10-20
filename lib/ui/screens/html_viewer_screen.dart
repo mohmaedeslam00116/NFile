@@ -36,10 +36,10 @@ class _HtmlViewerScreenState extends State<HtmlViewerScreen> {
       if (await file.exists()) {
         _htmlContent = await file.readAsString();
       } else {
-        _htmlContent = '<p>File not found.</p>';
+        _htmlContent = AppLocalizations.of(context).htmlFileNotFound;
       }
     } catch (e) {
-      _htmlContent = '<p>Error loading HTML: $e</p>';
+      _htmlContent = AppLocalizations.of(context).htmlLoadError(e.toString());
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -65,7 +65,7 @@ class _HtmlViewerScreenState extends State<HtmlViewerScreen> {
         actions: [
           IconButton(
             icon: const Icon(Broken.refresh_2),
-            tooltip: 'Reload',
+            tooltip: AppLocalizations.of(context).actionReload,
             onPressed: () {
               setState(() => _isLoading = true);
               _loadHtml();

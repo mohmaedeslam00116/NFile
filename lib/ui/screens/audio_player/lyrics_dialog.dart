@@ -216,13 +216,19 @@ class _LyricsDialogState extends State<LyricsDialog> {
               ),
             );
           } else {
-            _showErrorSnackBar('No valid lyrics lines found in chosen LRC file.');
+            _showErrorSnackBar(
+              AppLocalizations.of(context).lyricsNoValidLines,
+            );
           }
         } else {
-          _showErrorSnackBar('Failed to read the chosen LRC file.');
+          _showErrorSnackBar(
+            AppLocalizations.of(context).lyricsReadFailed,
+          );
         }
       } else {
-        _showErrorSnackBar('Please select a valid file ending with .lrc');
+        _showErrorSnackBar(
+          AppLocalizations.of(context).lyricsSelectValidFile,
+        );
       }
     }
   }

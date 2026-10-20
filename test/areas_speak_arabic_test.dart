@@ -101,6 +101,8 @@ void main() {
   const migrated = <String>[
     'the frame',
     'the directory',
+    'the media and the viewers',
+    'the storage analyzer',
   ];
 
   for (final area in migrated) {

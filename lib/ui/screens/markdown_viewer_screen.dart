@@ -36,10 +36,10 @@ class _MarkdownViewerScreenState extends State<MarkdownViewerScreen> {
       if (await file.exists()) {
         _markdownContent = await file.readAsString();
       } else {
-        _markdownContent = '# File not found';
+        _markdownContent = AppLocalizations.of(context).markdownFileNotFound;
       }
     } catch (e) {
-      _markdownContent = '# Error loading file\n\n`$e`';
+      _markdownContent = AppLocalizations.of(context).markdownLoadError(e.toString());
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -65,7 +65,7 @@ class _MarkdownViewerScreenState extends State<MarkdownViewerScreen> {
         actions: [
           IconButton(
             icon: const Icon(Broken.refresh_2),
-            tooltip: 'Reload',
+            tooltip: AppLocalizations.of(context).actionReload,
             onPressed: () {
               setState(() => _isLoading = true);
               _loadMarkdown();

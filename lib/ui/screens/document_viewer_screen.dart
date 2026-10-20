@@ -171,7 +171,9 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
             final doc = XmlDocument.parse(contentStr);
             final textNodes = doc.findAllElements('a:t');
             final slideText = textNodes.map((node) => node.innerText).where((t) => t.trim().isNotEmpty).join('\n');
-            slideMap[slideNum] = slideText.isEmpty ? '(Empty Slide)' : slideText;
+            slideMap[slideNum] = slideText.isEmpty
+                ? AppLocalizations.of(context).viewerEmptySlide
+                : slideText;
           }
         }
       }
@@ -374,8 +376,8 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
                         context: context,
                         title: AppLocalizations.of(context).pageLayout,
                         subtitle: _pdfLayoutMode == PdfPageLayoutMode.continuous
-                            ? 'Continuous (Vertical scrolling list)'
-                            : 'Single Page (Instant page-by-page swipe)',
+                            ? AppLocalizations.of(context).viewerContinuous
+                            : AppLocalizations.of(context).viewerSinglePage,
                         child: SegmentedButton<PdfPageLayoutMode>(
                           showSelectedIcon: false,
                           style: SegmentedButton.styleFrom(
@@ -415,24 +417,24 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
                         context: context,
                         title: AppLocalizations.of(context).scrollDirection,
                         subtitle: _pdfScrollDirection == PdfScrollDirection.vertical
-                            ? 'Vertical (Top to bottom scroll)'
-                            : 'Horizontal (Left to right swipe)',
+                            ? AppLocalizations.of(context).viewerVerticalScroll
+                            : AppLocalizations.of(context).viewerHorizontalSwipe,
                         child: SegmentedButton<PdfScrollDirection>(
                           showSelectedIcon: false,
                           style: SegmentedButton.styleFrom(
                             selectedBackgroundColor: theme.colorScheme.primary.withValues(alpha: 0.12),
                             selectedForegroundColor: theme.colorScheme.primary,
                           ),
-                          segments: const [
+                          segments: [
                             ButtonSegment<PdfScrollDirection>(
                               value: PdfScrollDirection.vertical,
                               icon: Icon(Icons.swap_vert_rounded, size: 18),
-                              label: Text('Vertical'),
+                              label: Text(AppLocalizations.of(context).viewerVertical),
                             ),
                             ButtonSegment<PdfScrollDirection>(
                               value: PdfScrollDirection.horizontal,
                               icon: Icon(Icons.swap_horiz_rounded, size: 18),
-                              label: Text('Horizontal'),
+                              label: Text(AppLocalizations.of(context).viewerHorizontal),
                             ),
                           ],
                           selected: {_pdfScrollDirection},
@@ -634,7 +636,7 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
                 IconButton(
                   icon: const Icon(Icons.save_rounded),
                   onPressed: _saveFile,
-                  tooltip: 'Save',
+                  tooltip: AppLocalizations.of(context).actionSave,
                 ),
               IconButton(
                 icon: const Icon(Icons.close),
@@ -644,13 +646,13 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
                     _textController.text = _textContent;
                   });
                 },
-                tooltip: 'Cancel',
+                tooltip: AppLocalizations.of(context).actionCancel,
               ),
             ] else
               IconButton(
                 icon: const Icon(Icons.edit_rounded),
                 onPressed: () => setState(() => _isEditing = true),
-                tooltip: 'Edit',
+                tooltip: AppLocalizations.of(context).actionEdit,
               ),
           ],
           if (_isPdf)
@@ -915,7 +917,9 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16),
         child: SelectableText(
-          _textController.text.isEmpty ? '(Empty file)' : _textController.text,
+          _textController.text.isEmpty
+              ? AppLocalizations.of(context).viewerEmptyFile
+              : _textController.text,
           style: TextStyle(
             fontFamily: 'monospace',
             fontSize: 13,
@@ -988,8 +992,14 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
                 final sizeStr = size < 1024
                     ? '$size B'
                     : size < 1024 * 1024
-                        ? '${(size / 1024).toStringAsFixed(1)} KB'
-                        : '${(size / 1024 / 1024).toStringAsFixed(1)} MB';
+                        ? AppLocalizations.of(context)
+                            .viewerSizeKilobytes(
+                              (size / 1024).toStringAsFixed(1),
+                            )
+                        : AppLocalizations.of(context)
+                            .viewerSizeMegabytes(
+                              (size / 1024 / 1024).toStringAsFixed(1),
+                            );
                 return Text(
                   sizeStr,
                   style: TextStyle(
@@ -1023,7 +1033,7 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
             width: double.infinity,
             child: OutlinedButton.icon(
               icon: Icon(Icons.share, color: fileColor),
-              label: Text('Share', style: TextStyle(color: fileColor)),
+              label: Text(AppLocalizations.of(context).actionShare, style: TextStyle(color: fileColor)),
               style: OutlinedButton.styleFrom(
                 side: BorderSide(color: fileColor.withValues(alpha: 0.5)),
                 padding: const EdgeInsets.symmetric(vertical: 14),

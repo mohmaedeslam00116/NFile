@@ -109,7 +109,7 @@ class AudioQueueSheet extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                    song.artist ?? 'Unknown Artist',
+                    song.artist ?? AppLocalizations.of(context).unknownArtist,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

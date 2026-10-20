@@ -267,11 +267,11 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
         title: Text(AppLocalizations.of(context).deleteSelectedItems, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         content: Text(AppLocalizations.of(context).deleteItemsFromArchiveQuestion(_selectedInternalPaths.length)),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(AppLocalizations.of(context).actionCancel)),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.redAccent),
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete'),
+            child: Text(AppLocalizations.of(context).actionDelete),
           ),
         ],
       ),
@@ -404,18 +404,18 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                 actions: [
                   IconButton(
                     icon: const Icon(Broken.document_copy),
-                    tooltip: 'Copy',
+                    tooltip: AppLocalizations.of(context).actionCopy,
                     onPressed: () => _copySelectedToClipboard(isCut: false),
                   ),
                   IconButton(
                     icon: const Icon(Broken.scissor),
-                    tooltip: 'Cut',
+                    tooltip: AppLocalizations.of(context).actionCut,
                     onPressed: () => _copySelectedToClipboard(isCut: true),
                   ),
                   IconButton(
                     icon: const Icon(Broken.trash),
                     color: Colors.redAccent,
-                    tooltip: 'Delete',
+                    tooltip: AppLocalizations.of(context).actionDelete,
                     onPressed: _deleteSelectedInternalItems,
                   ),
                   IconButton(
@@ -444,7 +444,7 @@ class _ArchiveViewerScreenState extends State<ArchiveViewerScreen> {
                   IconButton(
                     icon: const Icon(Broken.refresh),
                     onPressed: _loadArchive,
-                    tooltip: 'Refresh',
+                    tooltip: AppLocalizations.of(context).actionRefresh,
                   ),
                   if (items.isNotEmpty)
                     IconButton(

@@ -18,7 +18,7 @@ import 'lyrics_dialog.dart';
 class AudioPlayerScreen extends StatefulWidget {
   final String audioPath;
   final String title;
-  final String artist;
+  final String? artist;
   final List<SongModel>? allSongs;
   final int initialIndex;
 
@@ -26,7 +26,7 @@ class AudioPlayerScreen extends StatefulWidget {
     super.key,
     required this.audioPath,
     required this.title,
-    this.artist = 'Unknown Artist',
+    this.artist,
     this.allSongs,
     this.initialIndex = 0,
   });
@@ -50,7 +50,8 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
       _allSongs.isEmpty ? null : _allSongs[_currentIndex];
 
   String get _currentTitle => _currentSong?.title ?? widget.title;
-  String get _currentArtist => _currentSong?.artist ?? widget.artist;
+  String get _currentArtist =>
+      _currentSong?.artist ?? widget.artist ?? AppLocalizations.of(context).unknownArtist;
   int get _currentId => _currentSong?.id ?? 0;
   String get _currentPath => _currentSong?.data ?? widget.audioPath;
 
@@ -244,7 +245,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      barrierLabel: 'Lyrics',
+      barrierLabel: AppLocalizations.of(context).audioLyrics,
       barrierColor: Colors.black.withValues(alpha: 0.4),
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, anim1, anim2) {
@@ -378,7 +379,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Done', style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold, fontSize: 16)),
+                child: Text(AppLocalizations.of(context).actionDone, style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold, fontSize: 16)),
               ),
             ],
           );
@@ -402,7 +403,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     return MediaItem(
       id: song?.data ?? widget.audioPath,
       title: song?.title ?? widget.title,
-      artist: song?.artist ?? widget.artist,
+      artist: song?.artist ?? widget.artist ?? AppLocalizations.of(context).unknownArtist,
       album: song?.album ?? '',
       artUri: artUri,
       duration: songDuration,
@@ -527,7 +528,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   color: _isShuffled ? Colors.deepPurpleAccent : Colors.white,
                 ),
                 title: Text(
-                  _isShuffled ? 'Shuffle: On' : 'Shuffle: Off',
+                  _isShuffled ? AppLocalizations.of(context).audioShuffleOn : AppLocalizations.of(context).audioShuffleOff,
                   style: TextStyle(
                     color: _isShuffled ? Colors.deepPurpleAccent : Colors.white,
                     fontWeight: FontWeight.w600,
@@ -553,7 +554,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   color: _isBackgroundMode ? Colors.greenAccent : Colors.white,
                 ),
                 title: Text(
-                  _isBackgroundMode ? 'Background: On' : 'Play in Background',
+                  _isBackgroundMode ? AppLocalizations.of(context).audioBackgroundOn : AppLocalizations.of(context).audioPlayInBackground,
                   style: TextStyle(
                     color: _isBackgroundMode ? Colors.greenAccent : Colors.white,
                     fontWeight: FontWeight.w600,
@@ -561,8 +562,8 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                 ),
                 subtitle: Text(
                   _isBackgroundMode
-                      ? 'Tap to stop background playback'
-                      : 'Shows notification with controls',
+                      ? AppLocalizations.of(context).audioTapToStopHint
+                      : AppLocalizations.of(context).audioNotificationControlsHint,
                   style: const TextStyle(color: Colors.white54, fontSize: 12),
                 ),
                 onTap: () {
@@ -677,7 +678,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              _currentSong?.album ?? 'Single Track',
+                              _currentSong?.album ?? AppLocalizations.of(context).audioSingleTrack,
                               textAlign: TextAlign.center,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
