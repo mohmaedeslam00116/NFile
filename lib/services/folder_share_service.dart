@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
@@ -13,7 +14,7 @@ class FolderShareService {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (ctx) => const Center(
+      builder: (ctx) => Center(
         child: Card(
           child: Padding(
             padding: EdgeInsets.all(24.0),
@@ -23,12 +24,12 @@ class FolderShareService {
                 CircularProgressIndicator(),
                 SizedBox(height: 16),
                 Text(
-                  'Preparing folders for sharing...',
+                  AppLocalizations.of(context).preparingShare,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8),
                 Text(
-                  'Compressing contents, please wait',
+                  AppLocalizations.of(context).compressingContents,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
               ],
@@ -81,7 +82,7 @@ class FolderShareService {
       } else {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('No shareable items found.')),
+            SnackBar(content: Text(AppLocalizations.of(context).noShareableItems)),
           );
         }
       }
@@ -90,7 +91,7 @@ class FolderShareService {
       if (context.mounted) {
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error preparing files to share: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).errorPreparingShare(e.toString()))),
         );
       }
     } finally {

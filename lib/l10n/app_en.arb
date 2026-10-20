@@ -122,6 +122,157 @@
   "movedItemsSuccessfully": "Moved items successfully",
   "copiedItemsSuccessfully": "Copied items successfully",
   "releaseChannel": "releaseChannel",
+  "preparingShare": "Preparing folders for sharing...",
+  "compressingContents": "Compressing contents, please wait",
+  "noShareableItems": "No shareable items found.",
+  "errorPreparingShare": "Error preparing files to share: {error}",
+  "newFile": "New File",
+  "fileName": "File name",
+  "fileNameTaken": "\"{fileName}\" already exists. Created \"{createdName}\" instead.",
+  "newFolder": "New Folder",
+  "folderName": "Folder name",
+  "folderNameTaken": "\"{folderName}\" already exists. Created \"{createdName}\" instead.",
+  "createNewDirectory": "Create a new directory",
+  "createNewTextDocument": "Create a new empty text document",
+  "newArchive": "New Archive",
+  "compressFolderContents": "Compress current folder contents",
+  "viewAndSortOptions": "View & Sort Options",
+  "layoutMode": "Layout Mode",
+  "listView": "List View",
+  "gridView": "Grid View",
+  "sizeAndPaddingOptions": "Size & Padding Options",
+  "iconAndFolderSize": "Icon & Folder Size",
+  "itemPaddingAndSpacing": "Item Padding & Spacing",
+  "sortBy": "Sort By",
+  "showHiddenFiles": "Show Hidden Files",
+  "showHiddenHint": "Display system files and folders starting with a dot (.)",
+  "onlyThisFolder": "Only this folder",
+  "onlyThisFolderHint": "Enable custom sorting specific to this folder",
+  "storageVolumes": "Storage Volumes",
+  "networkConnections": "Network Connections",
+  "addNetworkConnection": "Add Network Connection",
+  "connectionTypeAndHost": "{type} • {host}",
+  "removeConnection": "Remove Connection",
+  "createNew": "Create New",
+  "foldersCount": "folders: {count}",
+  "filesCount": "files: {count}",
+  "noResultsFound": "No results found",
+  "nothingMatchesSearch": "We could not find anything matching \"{query}\" under {filter}",
+  "emptyFolderHint": "This directory does not contain any files or subfolders.",
+  "actionCancelled": "Action cancelled / Clipboard cleared",
+  "pastedHoldingClipboard": "Pasted (holding clipboard for multiple pastes)",
+  "pastedSuccessfully": "Pasted successfully",
+  "pasteHere": "Paste Here",
+  "selectMode": "Select Mode",
+  "storageVolumesAndSdCard": "Storage Volumes & SD Card",
+  "labelFilterActive": "{label} Filter Active",
+  "createFolder": "Create Folder",
+  "enterFolderName": "Enter folder name",
+  "errorCreatingFolder": "Error creating folder: {error}",
+  "selectStorageDrive": "Select Storage Drive",
+  "selectStorage": "Select Storage",
+  "clearSelection": "Clear Selection",
+  "folderIsEmpty": "Folder is empty",
+  "pinSelected": "Pin Selected ({count})",
+  "pinThisFolder": "Pin This Folder",
+  "addSelected": "Add Selected ({count})",
+  "overallProgress": "Overall Progress",
+  "renamingFiles": "Renaming files...",
+  "updatingFolderContent": "Please wait, updating folder content",
+  "batchRename": "Batch Rename",
+  "configuringItems": "Configuring {count} items",
+  "placeholderName": "% (Name)",
+  "placeholderNameHint": "Original name (%)",
+  "placeholderNum": "# (Num)",
+  "placeholderNumHint": "Sequential number (#)",
+  "placeholderTripleHint": "Triple sequential number (###)",
+  "placeholderBase": "{n} (Base)",
+  "placeholderBaseHint": "File name without extension ({n})",
+  "placeholderExtensionWithDot": "{de} (.ext)",
+  "placeholderExtensionWithDotHint": "Extension with dot ({de})",
+  "placeholderExtension": "{e} (ext)",
+  "placeholderExtensionHint": "Extension without dot ({e})",
+  "placeholderFull": "{N} (Full)",
+  "placeholderFullHint": "Full name with extension ({N})",
+  "namePattern": "Name Pattern",
+  "namePatternExample": "e.g. Image_#",
+  "startNumber": "Start Number",
+  "findText": "Find text",
+  "searchTerm": "Search term",
+  "replaceWith": "Replace with",
+  "renamePreview": "Rename Preview",
+  "reviewingItems": "Reviewing {count} items",
+  "backToEdit": "Back to Edit",
+  "applyChanges": "Apply Changes",
+  "fileAlreadyExists": "File Already Exists",
+  "fileConflictQuestion": "A file named \"{fileName}\" already exists in the destination folder. What would you like to do?",
+  "existingFile": "Existing File",
+  "applyToAllConflicts": "Apply to all remaining conflicts",
+  "cancelPaste": "Cancel Paste",
+  "keepBoth": "Keep Both",
+  "renameFile": "Rename File",
+  "newFilename": "New filename",
+  "createArchive": "Create Archive",
+  "archiveName": "Archive Name",
+  "archiveFormat": "Archive Format",
+  "compressionLevel": "Compression Level: {level}",
+  "passwordOptional": "Password (Optional)",
+  "splitVolumeSize": "Split Volume Size in MB (Optional)",
+  "splitVolumeSizeHint": "Leave empty for single archive",
+  "deleteSourceAfter": "Delete source files after completion",
+  "separateArchivePerFile": "Create separate archive for each file",
+  "dragAndDropOptions": "Drag & Drop Options",
+  "destinationLocation": "Destination Location",
+  "droppedFolder": "Dropped Folder",
+  "currentFolder": "Current Folder",
+  "chooseAction": "Choose Action",
+  "moveHere": "Move here",
+  "moveHereHint": "Cut & paste item into destination folder",
+  "copyHere": "Copy here",
+  "copyHereHint": "Leaves original file intact and duplicates here",
+  "archiveHere": "Archive here",
+  "archiveHereHint": "Compress item into a zip/tar archive here",
+  "archiveCreated": "Archive \"{name}\" created successfully!",
+  "failedToCreateArchive": "Failed to create archive: {error}",
+  "extractArchive": "Extract Archive",
+  "extractToFolder": "Extract to Folder",
+  "passwordIfEncrypted": "Password (if encrypted)",
+  "allFiles": "All Files",
+  "allFilesHint": "Show all files and folders in this directory",
+  "documentsOnly": "Documents only",
+  "documentsOnlyHint": "PDFs, Word docs, spreadsheets, texts, and e-books",
+  "imagesOnly": "Images only",
+  "imagesOnlyHint": "JPEGs, PNGs, WebPs, and raw photo formats",
+  "audioOnly": "Audio only",
+  "audioOnlyHint": "MP3s, WAVs, AACs, and high-fidelity audios",
+  "videosOnly": "Videos only",
+  "videosOnlyHint": "MP4s, MKVs, WebMs, and high-res video clips",
+  "archivesOnly": "Archives only",
+  "archivesOnlyHint": "ZIPs, 7Zs, RARs, and other compressed assets",
+  "filterFilesByType": "Filter Files By Type",
+  "filterFilesHint": "Select a category to display matching files only",
+  "processingItem": "Processing item {current} of {total}",
+  "transferSpeed": "Transfer Speed",
+  "estimatedTime": "Est. Time",
+  "dataProcessed": "Data Processed",
+  "cancelOperation": "Cancel Operation",
+  "pastedItemsSuccessfully": "Pasted items successfully",
+  "calculatingSizes": "Calculating sizes...",
+  "itemsSelected": "Items Selected",
+  "totalSize": "Total Size",
+  "selectedPaths": "Selected Paths:",
+  "copiedLabelToClipboard": "Copied {label} to clipboard",
+  "copySelected": "Copy Selected",
+  "cutSelected": "Cut Selected",
+  "archiveCompress": "Archive (Compress)",
+  "propertiesAndInfo": "Properties & Info",
+  "@addSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@appName": {
     "description": "The name of the application. It is the same in every language."
   },
@@ -142,10 +293,48 @@
       }
     }
   },
+  "@archiveCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@compressionLevel": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "@configuringItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@connectionTypeAndHost": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "host": {
+        "type": "String"
+      }
+    }
+  },
   "@copiedItemsToClipboard": {
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "@copiedLabelToClipboard": {
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
     }
   },
@@ -204,6 +393,20 @@
       }
     }
   },
+  "@errorCreatingFolder": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorPreparingShare": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@errorSharing": {
     "placeholders": {
       "error": {
@@ -225,6 +428,13 @@
       }
     }
   },
+  "@failedToCreateArchive": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "@failedToMoveItem": {
     "placeholders": {
       "error": {
@@ -239,6 +449,47 @@
       }
     }
   },
+  "@fileConflictQuestion": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileNameTaken": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "createdName": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@folderNameTaken": {
+    "placeholders": {
+      "folderName": {
+        "type": "String"
+      },
+      "createdName": {
+        "type": "String"
+      }
+    }
+  },
+  "@foldersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@grantPermission": {
     "description": "The button that asks for the permission of the storage."
   },
@@ -249,9 +500,26 @@
       }
     }
   },
+  "@labelFilterActive": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
   "@movedSuccessfully": {
     "placeholders": {
       "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@nothingMatchesSearch": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "filter": {
         "type": "String"
       }
     }
@@ -266,8 +534,88 @@
       }
     }
   },
+  "@pinSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@placeholderBase": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderBaseHint": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtension": {
+    "placeholders": {
+      "e": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionHint": {
+    "placeholders": {
+      "e": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionWithDot": {
+    "placeholders": {
+      "de": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionWithDotHint": {
+    "placeholders": {
+      "de": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderFull": {
+    "placeholders": {
+      "N": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderFullHint": {
+    "placeholders": {
+      "N": {
+        "type": "String"
+      }
+    }
+  },
+  "@processingItem": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "@resolvingSecureContent": {
     "description": "Shown under the message of the opening of a shared document."
+  },
+  "@reviewingItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "@selectedItemsWithSize": {
     "placeholders": {

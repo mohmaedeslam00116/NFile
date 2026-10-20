@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../services/background_archive_service.dart';
@@ -146,7 +147,7 @@ class BackgroundOperationProgressDialog extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Overall Progress',
+                                  AppLocalizations.of(context).overallProgress,
                                   style: theme.textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: theme.colorScheme.onSurface.withValues(alpha: 0.55),

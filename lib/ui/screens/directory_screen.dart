@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:path/path.dart' as p;
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../providers/media_provider.dart';
 import '../../models/file_filter_type.dart';
@@ -172,7 +173,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
           final newName = await FileActionDialogs.showTextInputDialog(
             context,
             title: 'Rename',
-            hint: 'Enter new name',
+            hint: AppLocalizations.of(context).enterNewName,
             initialValue: currentName,
             actionText: 'Rename',
           );
@@ -190,7 +191,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             provider.selectedPaths.contains(path);
         final confirm = await FileActionDialogs.showConfirmDialog(
           context,
-          title: isMulti ? 'Delete Selected' : 'Delete Item',
+          title: isMulti ? AppLocalizations.of(context).deleteSelected : 'Delete Item',
           content: isMulti
               ? 'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.'
               : 'Are you sure you want to delete this item? This cannot be undone.',
@@ -226,8 +227,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       case 'file':
         final fileName = await FileActionDialogs.showTextInputDialog(
           context,
-          title: 'New File',
-          hint: 'File name',
+          title: AppLocalizations.of(context).newFile,
+          hint: AppLocalizations.of(context).fileName,
           actionText: 'Create',
         );
         if (fileName != null && fileName.isNotEmpty) {
@@ -238,7 +239,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  '"$fileName" already exists. Created "$createdName" instead.',
+                  AppLocalizations.of(context).fileNameTaken(fileName, createdName),
                 ),
                 behavior: SnackBarBehavior.floating,
               ),
@@ -249,8 +250,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       case 'folder':
         final folderName = await FileActionDialogs.showTextInputDialog(
           context,
-          title: 'New Folder',
-          hint: 'Folder name',
+          title: AppLocalizations.of(context).newFolder,
+          hint: AppLocalizations.of(context).folderName,
           actionText: 'Create',
         );
         if (folderName != null && folderName.isNotEmpty) {
@@ -261,7 +262,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  '"$folderName" already exists. Created "$createdName" instead.',
+                  AppLocalizations.of(context).folderNameTaken(folderName, createdName),
                 ),
                 behavior: SnackBarBehavior.floating,
               ),
@@ -338,12 +339,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                     size: 24,
                   ),
                 ),
-                title: const Text(
-                  'New Folder',
+                title: Text(
+                  AppLocalizations.of(context).newFolder,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 subtitle: Text(
-                  'Create a new directory',
+                  AppLocalizations.of(context).createNewDirectory,
                   style: TextStyle(
                     fontSize: 12,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -371,12 +372,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                     size: 24,
                   ),
                 ),
-                title: const Text(
-                  'New File',
+                title: Text(
+                  AppLocalizations.of(context).newFile,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 subtitle: Text(
-                  'Create a new empty text document',
+                  AppLocalizations.of(context).createNewTextDocument,
                   style: TextStyle(
                     fontSize: 12,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -404,12 +405,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                     size: 24,
                   ),
                 ),
-                title: const Text(
-                  'New Archive',
+                title: Text(
+                  AppLocalizations.of(context).newArchive,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 subtitle: Text(
-                  'Compress current folder contents',
+                  AppLocalizations.of(context).compressFolderContents,
                   style: TextStyle(
                     fontSize: 12,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -455,7 +456,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'View & Sort Options',
+                            AppLocalizations.of(context).viewAndSortOptions,
                             style: theme.textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -468,7 +469,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Layout Mode',
+                        AppLocalizations.of(context).layoutMode,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -504,7 +505,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     ),
                                     const SizedBox(width: 8),
                                     Text(
-                                      'List View',
+                                      AppLocalizations.of(context).listView,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: !provider.isGridView
@@ -546,7 +547,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     ),
                                     const SizedBox(width: 8),
                                     Text(
-                                      'Grid View',
+                                      AppLocalizations.of(context).gridView,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: provider.isGridView
@@ -584,7 +585,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                               color: theme.colorScheme.primary,
                             ),
                             title: Text(
-                              'Size & Padding Options',
+                              AppLocalizations.of(context).sizeAndPaddingOptions,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                               ),
@@ -599,7 +600,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Icon & Folder Size',
+                                    AppLocalizations.of(context).iconAndFolderSize,
                                     style: theme.textTheme.bodyMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -630,7 +631,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Item Padding & Spacing',
+                                    AppLocalizations.of(context).itemPaddingAndSpacing,
                                     style: theme.textTheme.bodyMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -661,7 +662,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        'Sort By',
+                        AppLocalizations.of(context).sortBy,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -758,7 +759,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Show Hidden Files',
+                                    AppLocalizations.of(context).showHiddenFiles,
                                     style: theme.textTheme.titleMedium
                                         ?.copyWith(
                                           fontWeight: FontWeight.bold,
@@ -767,7 +768,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    'Display system files and folders starting with a dot (.)',
+                                    AppLocalizations.of(context).showHiddenHint,
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       color: theme.colorScheme.onSurface
                                           .withValues(alpha: 0.55),
@@ -831,7 +832,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Only this folder',
+                                    AppLocalizations.of(context).onlyThisFolder,
                                     style: theme.textTheme.titleMedium
                                         ?.copyWith(
                                           fontWeight: FontWeight.bold,
@@ -840,7 +841,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    'Enable custom sorting specific to this folder',
+                                    AppLocalizations.of(context).onlyThisFolderHint,
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       color: theme.colorScheme.onSurface
                                           .withValues(alpha: 0.55),
@@ -951,7 +952,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Storage Volumes',
+                            AppLocalizations.of(context).storageVolumes,
                             style: theme.textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -967,8 +968,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             ),
                           ),
                           icon: const Icon(Broken.folder_add, size: 18),
-                          label: const Text(
-                            'Add Shortcut',
+                          label: Text(
+                            AppLocalizations.of(context).addShortcut,
                             style: TextStyle(fontSize: 14),
                           ),
                           onPressed: () async {
@@ -1064,7 +1065,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       ),
                     ),
                     title: Text(
-                      'System Root',
+                      AppLocalizations.of(context).systemRoot,
                       style: TextStyle(
                         fontWeight: provider.rootPath == '/'
                             ? FontWeight.bold
@@ -1173,7 +1174,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Network Connections',
+                            AppLocalizations.of(context).networkConnections,
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: theme.colorScheme.primary,
@@ -1182,7 +1183,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                           ),
                           IconButton(
                             icon: const Icon(Icons.add_link_rounded, size: 20),
-                            tooltip: 'Add Network Connection',
+                            tooltip: AppLocalizations.of(context).addNetworkConnection,
                             onPressed: () async {
                               Navigator.pop(ctx);
                               final added = await Navigator.push(
@@ -1256,7 +1257,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                           ),
                         ),
                         subtitle: Text(
-                          '${conn.type} • ${conn.host}',
+                          AppLocalizations.of(context).connectionTypeAndHost(conn.type, conn.host),
                           style: TextStyle(
                             fontSize: 12,
                             color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -1268,7 +1269,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             size: 20,
                             color: Colors.redAccent,
                           ),
-                          tooltip: 'Remove Connection',
+                          tooltip: AppLocalizations.of(context).removeConnection,
                           onPressed: () async {
                             await NetworkConnectionsService.deleteConnection(
                               conn.id,
@@ -1446,7 +1447,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         ? [
                             IconButton(
                               icon: const Icon(Broken.tick_square),
-                              tooltip: 'Select All',
+                              tooltip: AppLocalizations.of(context).selectAll,
                               onPressed: () => provider.selectAll(),
                             ),
                           ]
@@ -1478,7 +1479,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       await FileActionDialogs.showTextInputDialog(
                                         context,
                                         title: 'Rename',
-                                        hint: 'Enter new name',
+                                        hint: AppLocalizations.of(context).enterNewName,
                                         initialValue: currentName,
                                         actionText: 'Rename',
                                       );
@@ -1499,12 +1500,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                 Broken.trash,
                                 color: Colors.redAccent,
                               ),
-                              tooltip: 'Delete Selected',
+                              tooltip: AppLocalizations.of(context).deleteSelected,
                               onPressed: () async {
                                 final confirm =
                                     await FileActionDialogs.showConfirmDialog(
                                       context,
-                                      title: 'Delete Selected',
+                                      title: AppLocalizations.of(context).deleteSelected,
                                       content:
                                           'Are you sure you want to delete ${provider.selectedPaths.length} items? This cannot be undone.',
                                     );
@@ -1515,7 +1516,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             ),
                             PopupMenuButton<String>(
                               icon: const Icon(Broken.more),
-                              tooltip: 'More Actions',
+                              tooltip: AppLocalizations.of(context).moreActions,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
@@ -1583,14 +1584,14 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                       (p) => PinService.isPinned(p),
                                     );
                                 return [
-                                  const PopupMenuItem<String>(
+                                  PopupMenuItem<String>(
                                     value: 'select_all',
                                     child: Row(
                                       children: [
                                         Icon(Broken.tick_square, size: 20),
                                         SizedBox(width: 12),
                                         Text(
-                                          'Select All',
+                                          AppLocalizations.of(context).selectAll,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1661,7 +1662,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                   ? [
                       PopupMenuButton<String>(
                         icon: const Icon(Broken.add_square, size: 26),
-                        tooltip: 'Create New',
+                        tooltip: AppLocalizations.of(context).createNew,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -1670,40 +1671,40 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         onSelected: (val) =>
                             _handleMenuAction(context, val, provider),
                         itemBuilder: (context) => [
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'file',
                             child: Row(
                               children: [
                                 Icon(Broken.document, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New File',
+                                  AppLocalizations.of(context).newFile,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'folder',
                             child: Row(
                               children: [
                                 Icon(Broken.folder, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New Folder',
+                                  AppLocalizations.of(context).newFolder,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'archive',
                             child: Row(
                               children: [
                                 Icon(Broken.archive, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New Archive',
+                                  AppLocalizations.of(context).newArchive,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
@@ -1723,12 +1724,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       ),
                       IconButton(
                         icon: const Icon(Broken.filter_edit),
-                        tooltip: 'View & Sort Options',
+                        tooltip: AppLocalizations.of(context).viewAndSortOptions,
                         onPressed: () => _showSortModal(context, provider),
                       ),
                       PopupMenuButton<String>(
                         icon: const Icon(Broken.add_square, size: 26),
-                        tooltip: 'Create New',
+                        tooltip: AppLocalizations.of(context).createNew,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -1737,40 +1738,40 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         onSelected: (val) =>
                             _handleMenuAction(context, val, provider),
                         itemBuilder: (context) => [
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'file',
                             child: Row(
                               children: [
                                 Icon(Broken.document, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New File',
+                                  AppLocalizations.of(context).newFile,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'folder',
                             child: Row(
                               children: [
                                 Icon(Broken.folder, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New Folder',
+                                  AppLocalizations.of(context).newFolder,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
                           ),
-                          const PopupMenuItem(
+                          PopupMenuItem(
                             value: 'archive',
                             child: Row(
                               children: [
                                 Icon(Broken.archive, size: 20),
                                 SizedBox(width: 12),
                                 Text(
-                                  'New Archive',
+                                  AppLocalizations.of(context).newArchive,
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
@@ -1922,7 +1923,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                             ),
                                             const SizedBox(width: 6),
                                             Text(
-                                              'folders: ${provider.activeListing.folderCount}',
+                                              AppLocalizations.of(context).foldersCount(provider.activeListing.folderCount),
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w600,
@@ -1943,7 +1944,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                             ),
                                             const SizedBox(width: 6),
                                             Text(
-                                              'files: ${provider.activeListing.fileCount}',
+                                              AppLocalizations.of(context).filesCount(provider.activeListing.fileCount),
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w600,
@@ -2110,7 +2111,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                             height: 24,
                                                           ),
                                                           Text(
-                                                            'No results found',
+                                                            AppLocalizations.of(context).noResultsFound,
                                                             style: Theme.of(context)
                                                                 .textTheme
                                                                 .titleLarge
@@ -2127,7 +2128,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                             height: 8,
                                                           ),
                                                           Text(
-                                                            'We could not find anything matching "${provider.activeTab.searchQuery}" under ${provider.activeTab.searchFilter}',
+                                                            AppLocalizations.of(context).nothingMatchesSearch(provider.activeTab.searchQuery, provider.activeTab.searchFilter),
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: Theme.of(context)
@@ -2169,7 +2170,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                     ),
                                                     const SizedBox(height: 24),
                                                     Text(
-                                                      'Empty Folder',
+                                                      AppLocalizations.of(context).emptyFolder,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .titleLarge
@@ -2186,7 +2187,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                                     ),
                                                     const SizedBox(height: 8),
                                                     Text(
-                                                      'This directory does not contain any files or subfolders.',
+                                                      AppLocalizations.of(context).emptyFolderHint,
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: Theme.of(context)
@@ -2522,8 +2523,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                     onLongPress: () {
                       provider.clearClipboard();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Action cancelled / Clipboard cleared'),
+                        SnackBar(
+                          content: Text(AppLocalizations.of(context).actionCancelled),
                           behavior: SnackBarBehavior.floating,
                         ),
                       );
@@ -2533,9 +2534,9 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       await provider.pasteFile(context, clearAfterPaste: false);
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              'Pasted (holding clipboard for multiple pastes)',
+                              AppLocalizations.of(context).pastedHoldingClipboard,
                             ),
                             behavior: SnackBarBehavior.floating,
                           ),
@@ -2551,15 +2552,15 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         );
                         if (context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Pasted successfully'),
+                            SnackBar(
+                              content: Text(AppLocalizations.of(context).pastedSuccessfully),
                               behavior: SnackBarBehavior.floating,
                             ),
                           );
                         }
                       },
                       icon: const Icon(Broken.clipboard),
-                      label: const Text('Paste Here'),
+                      label: Text(AppLocalizations.of(context).pasteHere),
                     ),
                   ),
                 );
@@ -2600,7 +2601,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       children: [
                         IconButton(
                           icon: const Icon(Broken.tick_square),
-                          tooltip: 'Select Mode',
+                          tooltip: AppLocalizations.of(context).selectMode,
                           onPressed: () {
                             if (provider.activeListing.entries.isNotEmpty) {
                               provider.toggleSelection(
@@ -2611,7 +2612,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         ),
                         IconButton(
                           icon: const Icon(Broken.search_normal),
-                          tooltip: 'Global Search',
+                          tooltip: AppLocalizations.of(context).globalSearch,
                           onPressed: () {
                             provider.toggleSearchForActiveTab();
                           },
@@ -2619,12 +2620,12 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                         const SizedBox(width: 48), // Center dock slot for FAB
                         IconButton(
                           icon: const Icon(Broken.filter_edit),
-                          tooltip: 'View & Sort Options',
+                          tooltip: AppLocalizations.of(context).viewAndSortOptions,
                           onPressed: () => _showSortModal(context, provider),
                         ),
                         IconButton(
                           icon: const Icon(Icons.sd_storage_rounded),
-                          tooltip: 'Storage Volumes & SD Card',
+                          tooltip: AppLocalizations.of(context).storageVolumesAndSdCard,
                           onPressed: () =>
                               _showStorageVolumeModal(context, provider),
                         ),
@@ -2651,27 +2652,27 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       case FileFilterType.all:
         break;
       case FileFilterType.documents:
-        label = 'Documents only';
+        label = AppLocalizations.of(context).documentsOnly;
         icon = Broken.document;
         color = Colors.blueAccent;
         break;
       case FileFilterType.images:
-        label = 'Images only';
+        label = AppLocalizations.of(context).imagesOnly;
         icon = Broken.image;
         color = Colors.purpleAccent;
         break;
       case FileFilterType.audio:
-        label = 'Audio only';
+        label = AppLocalizations.of(context).audioOnly;
         icon = Broken.music;
         color = Colors.greenAccent;
         break;
       case FileFilterType.videos:
-        label = 'Videos only';
+        label = AppLocalizations.of(context).videosOnly;
         icon = Broken.video;
         color = Colors.redAccent;
         break;
       case FileFilterType.archives:
-        label = 'Archives only';
+        label = AppLocalizations.of(context).archivesOnly;
         icon = Broken.archive;
         color = Colors.brown;
         break;
@@ -2692,7 +2693,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                '$label Filter Active',
+                AppLocalizations.of(context).labelFilterActive(label),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13.5,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 
 class ArchiveCreationResult {
   final String archiveName;
@@ -94,7 +95,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                   ),
                   const SizedBox(width: 16),
                   Text(
-                    'Create Archive',
+                    AppLocalizations.of(context).createArchive,
                     style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -106,7 +107,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
-                    labelText: 'Archive Name',
+                    labelText: AppLocalizations.of(context).archiveName,
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                     prefixIcon: const Icon(Broken.box),
                   ),
@@ -118,7 +119,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
               DropdownButtonFormField<String>(
                 initialValue: _format,
                 decoration: InputDecoration(
-                  labelText: 'Archive Format',
+                  labelText: AppLocalizations.of(context).archiveFormat,
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   prefixIcon: const Icon(Broken.document_code),
                 ),
@@ -145,7 +146,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
 
               // Compression Level
               Text(
-                'Compression Level: ${_getCompressionLabel(_compressionLevel)}',
+                AppLocalizations.of(context).compressionLevel(_getCompressionLabel(_compressionLevel)),
                 style: theme.textTheme.titleSmall,
               ),
               Slider(
@@ -168,7 +169,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                   controller: _passwordController,
                   obscureText: _obscurePassword,
                   decoration: InputDecoration(
-                    labelText: 'Password (Optional)',
+                    labelText: AppLocalizations.of(context).passwordOptional,
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                     prefixIcon: const Icon(Broken.lock),
                     suffixIcon: IconButton(
@@ -185,8 +186,8 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                 controller: _splitController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Split Volume Size in MB (Optional)',
-                  helperText: 'Leave empty for single archive',
+                  labelText: AppLocalizations.of(context).splitVolumeSize,
+                  helperText: AppLocalizations.of(context).splitVolumeSizeHint,
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   prefixIcon: const Icon(Broken.scissor),
                 ),
@@ -196,7 +197,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
               // Checkbox: Delete Source Files
               CheckboxListTile(
                 value: _deleteSource,
-                title: const Text('Delete source files after completion'),
+                title: Text(AppLocalizations.of(context).deleteSourceAfter),
                 controlAffinity: ListTileControlAffinity.leading,
                 contentPadding: EdgeInsets.zero,
                 onChanged: (val) {
@@ -210,7 +211,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
               if (widget.isMultiSelection)
                 CheckboxListTile(
                   value: _separateArchives,
-                  title: const Text('Create separate archive for each file'),
+                  title: Text(AppLocalizations.of(context).separateArchivePerFile),
                   controlAffinity: ListTileControlAffinity.leading,
                   contentPadding: EdgeInsets.zero,
                   onChanged: (val) {
@@ -250,7 +251,7 @@ class _CreateArchiveDialogState extends State<CreateArchiveDialog> {
                         ),
                       );
                     },
-                    child: const Text('Create Archive'),
+                    child: Text(AppLocalizations.of(context).createArchive),
                   ),
                 ],
               ),

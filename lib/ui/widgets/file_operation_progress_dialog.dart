@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../providers/file_manager_provider.dart';
@@ -102,7 +103,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    'Processing item ${progress.currentFileIndex} of ${progress.totalFiles}',
+                                    AppLocalizations.of(context).processingItem(progress.currentFileIndex, progress.totalFiles),
                                     style: theme.textTheme.bodyMedium?.copyWith(
                                       color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
                                       fontWeight: FontWeight.w500,
@@ -155,7 +156,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Overall Progress',
+                                  AppLocalizations.of(context).overallProgress,
                                   style: theme.textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
@@ -206,7 +207,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                             Expanded(
                               child: _buildStatTile(
                                 theme,
-                                label: 'Transfer Speed',
+                                label: AppLocalizations.of(context).transferSpeed,
                                 value: speedText,
                                 icon: Broken.chart_3,
                               ),
@@ -215,7 +216,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                             Expanded(
                               child: _buildStatTile(
                                 theme,
-                                label: 'Est. Time',
+                                label: AppLocalizations.of(context).estimatedTime,
                                 value: etaText,
                                 icon: Broken.clock,
                               ),
@@ -225,7 +226,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                         const SizedBox(height: 12),
                         _buildStatTile(
                           theme,
-                          label: 'Data Processed',
+                          label: AppLocalizations.of(context).dataProcessed,
                           value: '$processedSize of $totalSize',
                           icon: Broken.folder_open,
                           isRow: true,
@@ -238,7 +239,7 @@ class FileOperationProgressDialog extends StatelessWidget {
                             provider.cancelOperation();
                           },
                           icon: const Icon(Broken.close_square, size: 18),
-                          label: const Text('Cancel Operation', style: TextStyle(fontWeight: FontWeight.bold)),
+                          label: Text(AppLocalizations.of(context).cancelOperation, style: TextStyle(fontWeight: FontWeight.bold)),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: Colors.redAccent,
                             side: BorderSide(color: Colors.redAccent.withValues(alpha: 0.4)),

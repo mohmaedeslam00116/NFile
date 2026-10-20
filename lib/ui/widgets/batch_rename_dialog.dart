@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -251,14 +252,14 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
           ),
           const SizedBox(height: 24),
           Text(
-            'Renaming files...',
+            AppLocalizations.of(context).renamingFiles,
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            'Please wait, updating folder content',
+            AppLocalizations.of(context).updatingFolderContent,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
@@ -297,7 +298,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Batch Rename',
+                        AppLocalizations.of(context).batchRename,
                         style: theme.textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                           letterSpacing: -0.5,
@@ -305,7 +306,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        'Configuring ${widget.selectedPaths.length} items',
+                        AppLocalizations.of(context).configuringItems(widget.selectedPaths.length),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
                           fontWeight: FontWeight.w500,
@@ -402,50 +403,50 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                 children: [
                   _buildShortcutButton(
                     icon: Icons.copy_rounded,
-                    label: '% (Name)',
-                    tooltip: 'Original name (%)',
+                    label: AppLocalizations.of(context).placeholderName,
+                    tooltip: AppLocalizations.of(context).placeholderNameHint,
                     onTap: () => _insertPlaceholder('%'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.format_list_numbered_rounded,
-                    label: '# (Num)',
-                    tooltip: 'Sequential number (#)',
+                    label: AppLocalizations.of(context).placeholderNum,
+                    tooltip: AppLocalizations.of(context).placeholderNumHint,
                     onTap: () => _insertPlaceholder('#'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.numbers_rounded,
                     label: '### (001)',
-                    tooltip: 'Triple sequential number (###)',
+                    tooltip: AppLocalizations.of(context).placeholderTripleHint,
                     onTap: () => _insertPlaceholder('###'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.abc_rounded,
-                    label: '{n} (Base)',
-                    tooltip: 'File name without extension ({n})',
+                    label: AppLocalizations.of(context).placeholderBase('{n}'),
+                    tooltip: AppLocalizations.of(context).placeholderBaseHint('{n}'),
                     onTap: () => _insertPlaceholder('{n}'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.extension_rounded,
-                    label: '{de} (.ext)',
-                    tooltip: 'Extension with dot ({de})',
+                    label: AppLocalizations.of(context).placeholderExtensionWithDot('{de}'),
+                    tooltip: AppLocalizations.of(context).placeholderExtensionWithDotHint('{de}'),
                     onTap: () => _insertPlaceholder('{de}'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.extension_off_rounded,
-                    label: '{e} (ext)',
-                    tooltip: 'Extension without dot ({e})',
+                    label: AppLocalizations.of(context).placeholderExtension('{e}'),
+                    tooltip: AppLocalizations.of(context).placeholderExtensionHint('{e}'),
                     onTap: () => _insertPlaceholder('{e}'),
                     theme: theme,
                   ),
                   _buildShortcutButton(
                     icon: Icons.note_rounded,
-                    label: '{N} (Full)',
-                    tooltip: 'Full name with extension ({N})',
+                    label: AppLocalizations.of(context).placeholderFull('{N}'),
+                    tooltip: AppLocalizations.of(context).placeholderFullHint('{N}'),
                     onTap: () => _insertPlaceholder('{N}'),
                     theme: theme,
                   ),
@@ -463,8 +464,8 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                   child: TextField(
                     controller: _patternController,
                     decoration: InputDecoration(
-                      labelText: 'Name Pattern',
-                      hintText: 'e.g. Image_#',
+                      labelText: AppLocalizations.of(context).namePattern,
+                      hintText: AppLocalizations.of(context).namePatternExample,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -529,7 +530,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             controller: _startController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: 'Start Number',
+                              labelText: AppLocalizations.of(context).startNumber,
                               hintText: 'e.g. 1',
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -548,8 +549,8 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                           child: TextField(
                             controller: _findController,
                             decoration: InputDecoration(
-                              labelText: 'Find text',
-                              hintText: 'Search term',
+                              labelText: AppLocalizations.of(context).findText,
+                              hintText: AppLocalizations.of(context).searchTerm,
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -561,7 +562,7 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                           child: TextField(
                             controller: _replaceController,
                             decoration: InputDecoration(
-                              labelText: 'Replace with',
+                              labelText: AppLocalizations.of(context).replaceWith,
                               hintText: 'Replacement',
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -683,14 +684,14 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Rename Preview',
+                            AppLocalizations.of(context).renamePreview,
                             style: theme.textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            'Reviewing ${widget.selectedPaths.length} items',
+                            AppLocalizations.of(context).reviewingItems(widget.selectedPaths.length),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
                             ),
@@ -799,8 +800,8 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             ),
                           ),
                           onPressed: () => Navigator.pop(ctx),
-                          child: const Text(
-                            'Back to Edit',
+                          child: Text(
+                            AppLocalizations.of(context).backToEdit,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -821,8 +822,8 @@ class _BatchRenameDialogState extends State<BatchRenameDialog> {
                             Navigator.pop(ctx); // Close sheet
                             _executeRename(); // Execute
                           },
-                          child: const Text(
-                            'Apply Changes',
+                          child: Text(
+                            AppLocalizations.of(context).applyChanges,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),

@@ -9,6 +9,8 @@ import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app_test_harness.dart';
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -40,7 +42,7 @@ void main() {
         await tester.pumpWidget(
           ChangeNotifierProvider.value(
             value: provider,
-            child: MaterialApp(home: InternalFilePickerScreen(rootPath: dir.path)),
+            child: appUnderTest(home: InternalFilePickerScreen(rootPath: dir.path)),
           ),
         );
         await Future<void>.delayed(const Duration(milliseconds: 300));

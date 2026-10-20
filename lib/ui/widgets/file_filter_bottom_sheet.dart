@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/file_filter_type.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
@@ -29,43 +30,43 @@ class FileFilterBottomSheet extends StatelessWidget {
     final List<_FilterItem> items = [
       _FilterItem(
         type: FileFilterType.all,
-        label: 'All Files',
-        subtitle: 'Show all files and folders in this directory',
+        label: AppLocalizations.of(context).allFiles,
+        subtitle: AppLocalizations.of(context).allFilesHint,
         icon: Broken.category,
         color: theme.colorScheme.primary,
       ),
       _FilterItem(
         type: FileFilterType.documents,
-        label: 'Documents only',
-        subtitle: 'PDFs, Word docs, spreadsheets, texts, and e-books',
+        label: AppLocalizations.of(context).documentsOnly,
+        subtitle: AppLocalizations.of(context).documentsOnlyHint,
         icon: Broken.document,
         color: Colors.blueAccent,
       ),
       _FilterItem(
         type: FileFilterType.images,
-        label: 'Images only',
-        subtitle: 'JPEGs, PNGs, WebPs, and raw photo formats',
+        label: AppLocalizations.of(context).imagesOnly,
+        subtitle: AppLocalizations.of(context).imagesOnlyHint,
         icon: Broken.image,
         color: Colors.purpleAccent,
       ),
       _FilterItem(
         type: FileFilterType.audio,
-        label: 'Audio only',
-        subtitle: 'MP3s, WAVs, AACs, and high-fidelity audios',
+        label: AppLocalizations.of(context).audioOnly,
+        subtitle: AppLocalizations.of(context).audioOnlyHint,
         icon: Broken.music,
         color: Colors.greenAccent,
       ),
       _FilterItem(
         type: FileFilterType.videos,
-        label: 'Videos only',
-        subtitle: 'MP4s, MKVs, WebMs, and high-res video clips',
+        label: AppLocalizations.of(context).videosOnly,
+        subtitle: AppLocalizations.of(context).videosOnlyHint,
         icon: Broken.video,
         color: Colors.redAccent,
       ),
       _FilterItem(
         type: FileFilterType.archives,
-        label: 'Archives only',
-        subtitle: 'ZIPs, 7Zs, RARs, and other compressed assets',
+        label: AppLocalizations.of(context).archivesOnly,
+        subtitle: AppLocalizations.of(context).archivesOnlyHint,
         icon: Broken.archive,
         color: Colors.brown,
       ),
@@ -95,12 +96,12 @@ class FileFilterBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Filter Files By Type',
+                    AppLocalizations.of(context).filterFilesByType,
                     style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Select a category to display matching files only',
+                    AppLocalizations.of(context).filterFilesHint,
                     style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface.withValues(alpha: 0.55)),
                   ),
                 ],

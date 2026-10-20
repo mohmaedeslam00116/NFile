@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -143,7 +144,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.document_copy,
-              label: 'Copy Selected',
+              label: AppLocalizations.of(context).copySelected,
               onTap: () {
                 Navigator.pop(context);
                 provider.copySelected();
@@ -155,7 +156,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.scissor,
-              label: 'Cut Selected',
+              label: AppLocalizations.of(context).cutSelected,
               onTap: () {
                 Navigator.pop(context);
                 provider.cutSelected();
@@ -175,7 +176,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
                   final newName = await FileActionDialogs.showTextInputDialog(
                     context,
                     title: 'Rename',
-                    hint: 'Enter new name',
+                    hint: AppLocalizations.of(context).enterNewName,
                     initialValue: currentName,
                     actionText: 'Rename',
                   );
@@ -199,7 +200,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
               _buildMenuItem(
                 context: context,
                 icon: Broken.eye,
-                label: 'Open with...',
+                label: AppLocalizations.of(context).openWith,
                 onTap: () {
                   Navigator.pop(context);
                   provider.openFile(context, targetPath, forceOpenWith: true);
@@ -208,7 +209,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.box_add,
-              label: 'Archive (Compress)',
+              label: AppLocalizations.of(context).archiveCompress,
               onTap: () async {
                 Navigator.pop(context);
                 final res = await CreateArchiveDialog.show(
@@ -245,7 +246,7 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.info_circle,
-              label: 'Properties & Info',
+              label: AppLocalizations.of(context).propertiesAndInfo,
               onTap: () {
                 Navigator.pop(context);
                 showDialog(
@@ -261,13 +262,13 @@ class SelectionContextBottomSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.trash,
-              label: 'Delete Selected',
+              label: AppLocalizations.of(context).deleteSelected,
               color: Colors.redAccent,
               onTap: () async {
                 Navigator.pop(context);
                 final confirm = await FileActionDialogs.showConfirmDialog(
                   context,
-                  title: 'Delete Selected',
+                  title: AppLocalizations.of(context).deleteSelected,
                   content: 'Are you sure you want to delete $selectedCount item(s)? This cannot be undone.',
                 );
                 if (confirm) {

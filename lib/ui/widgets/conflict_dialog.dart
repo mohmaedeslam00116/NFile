@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../core/icon_fonts/broken_icons.dart';
@@ -97,9 +98,9 @@ class _ConflictDialogState extends State<ConflictDialog> {
         children: [
           Icon(Broken.warning_2, color: Colors.orange, size: 28),
           const SizedBox(width: 12),
-          const Expanded(
+          Expanded(
             child: Text(
-              'File Already Exists',
+              AppLocalizations.of(context).fileAlreadyExists,
               style: TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ),
@@ -114,7 +115,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'A file named "${widget.fileName}" already exists in the destination folder. What would you like to do?',
+              AppLocalizations.of(context).fileConflictQuestion(widget.fileName),
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
               ),
@@ -130,7 +131,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   Expanded(
                     child: _buildFileComparisonCard(
                       theme: theme,
-                      title: 'Existing File',
+                      title: AppLocalizations.of(context).existingFile,
                       size: _destStat.size,
                       modified: _destStat.modified,
                       isNewer: _destStat.modified.isAfter(_sourceStat.modified),
@@ -141,7 +142,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   Expanded(
                     child: _buildFileComparisonCard(
                       theme: theme,
-                      title: 'New File',
+                      title: AppLocalizations.of(context).newFile,
                       size: _sourceStat.size,
                       modified: _sourceStat.modified,
                       isNewer: _sourceStat.modified.isAfter(_destStat.modified),
@@ -178,7 +179,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        'Apply to all remaining conflicts',
+                        AppLocalizations.of(context).applyToAllConflicts,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                           color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
@@ -206,7 +207,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.redAccent,
                   ),
-                  child: const Text('Cancel Paste', style: TextStyle(fontWeight: FontWeight.bold)),
+                  child: Text(AppLocalizations.of(context).cancelPaste, style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
                 OutlinedButton(
                   onPressed: () async {
@@ -245,7 +246,7 @@ class _ConflictDialogState extends State<ConflictDialog> {
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text('Keep Both'),
+                  child: Text(AppLocalizations.of(context).keepBoth),
                 ),
                 FilledButton(
                   onPressed: () => Navigator.pop(
@@ -339,13 +340,13 @@ class _ConflictDialogState extends State<ConflictDialog> {
     return showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Rename File'),
+        title: Text(AppLocalizations.of(context).renameFile),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         content: TextField(
           controller: controller,
           autofocus: true,
-          decoration: const InputDecoration(
-            labelText: 'New filename',
+          decoration: InputDecoration(
+            labelText: AppLocalizations.of(context).newFilename,
             border: OutlineInputBorder(),
           ),
         ),
