@@ -1549,6 +1549,418 @@ class AppLocalizationsAr extends AppLocalizations {
   String get archiveUnsupportedFormat => 'صيغة غير مدعومة';
 
   @override
+  String get actionBack => 'رجوع';
+
+  @override
+  String get actionBackspace => 'مسافة للخلف';
+
+  @override
+  String get actionClose => 'إغلاق';
+
+  @override
+  String get actionDetails => 'التفاصيل';
+
+  @override
+  String get actionPaste => 'لصق';
+
+  @override
+  String get actionStart => 'ابدأ';
+
+  @override
+  String get actionStop => 'إيقاف';
+
+  @override
+  String get actionUpload => 'رفع';
+
+  @override
+  String get settingsAppIconPicker => 'منتقي أيقونة التطبيق';
+
+  @override
+  String get settingsLogo => 'الشعار';
+
+  @override
+  String get settingsFileExplorer => 'مستكشف الملفات والتنقل';
+
+  @override
+  String get settingsMediaActions => 'الوسائط والإجراءات الافتراضية';
+
+  @override
+  String get settingsExitConfirmation => 'مربع تأكيد الخروج';
+
+  @override
+  String get settingsExitConfirmationHint => 'اطلب تأكيدًا قبل الإغلاق';
+
+  @override
+  String get settingsDoublePressExit => 'اضغط مرتين للخروج';
+
+  @override
+  String get settingsDoublePressExitHint =>
+      'اضغط زر الرجوع مرتين في وقت قصير للخروج';
+
+  @override
+  String get settingsShowConfirmation => 'إظهار مربع التأكيد';
+
+  @override
+  String get settingsDoublePressBackHint => 'اضغط زر الرجوع مرتين للخروج';
+
+  @override
+  String get settingsExitBehaviourHint =>
+      'اختر بين مربع تأكيد الخروج أو الضغط مرتين على زر الرجوع للخروج';
+
+  @override
+  String get settingsTrailingInfoHint =>
+      'اختر ما يظهر على الجانب الأيمن للملفات والمجلدات عند إخفاء النقاط الثلاث';
+
+  @override
+  String get recycleBinDays7 => '7 أيام';
+
+  @override
+  String get recycleBinDays15 => '15 يومًا';
+
+  @override
+  String get recycleBinDays30 => '30 يومًا (موصى به)';
+
+  @override
+  String get recycleBinNeverManual => 'أبدًا (نظّف السلة يدويًا)';
+
+  @override
+  String get recycleBinNeverAuto => 'أبدًا (الحذف التلقائي معطّل)';
+
+  @override
+  String get recycleBinAfterOneDay => 'بعد يوم واحد';
+
+  @override
+  String recycleBinAfterDays(int days) {
+    return 'بعد $days يومًا';
+  }
+
+  @override
+  String get trailingInfoNone => 'لا شيء / إخفاء المعلومات';
+
+  @override
+  String get trailingInfoNoneHint => 'لا تعرض معلومات إضافية على الجانب الأيمن';
+
+  @override
+  String get trailingInfoDateHint => 'اعرض تاريخ ووقت آخر تعديل';
+
+  @override
+  String get trailingInfoSizeHint =>
+      'اعرض حجم الملف للملفات وعدد العناصر للمجلدات';
+
+  @override
+  String get themeSignatureDefault => 'الافتراضي (Lexend Deca)';
+
+  @override
+  String get themeOriginalDefault => 'الأصلي (أزرق التوقيع)';
+
+  @override
+  String get themeBrokenOutline => 'NFile المكسور (الافتراضي)';
+
+  @override
+  String get themeOriginalGeometric => 'مظهر NFile الأصلي الهندسي النظيف';
+
+  @override
+  String get themeNothingDotMatrix => 'لا شيء: Dot-Matrix و Sans';
+
+  @override
+  String get themeDotMatrixHint =>
+      'عناوين Dot-Matrix عالية التقنية بأسلوب ريترو + نص نظيف';
+
+  @override
+  String get themeMonospaceHint => 'مظهر أحادي المسافة نظيف ومستقبلي للمطورين';
+
+  @override
+  String get themeGeometricHint => 'مظهر هندسي أنيق وبسيط وفاخر';
+
+  @override
+  String get themeBoldHint => 'مقياس طباعي جريء وعصري وملفت';
+
+  @override
+  String get themeCustomFontHint => 'ملف الخط المخصص الذي حمّلته';
+
+  @override
+  String themeCustomFontName(String name) {
+    return 'خط مخصص ($name)';
+  }
+
+  @override
+  String get themeImportCustomFont => 'استيراد ملف خط مخصص (.ttf/.otf)';
+
+  @override
+  String get themeReplaceCustomFont => 'استبدال ملف الخط المخصص';
+
+  @override
+  String get connectionActive => 'نشط';
+
+  @override
+  String get connectionInactive => 'غير نشط';
+
+  @override
+  String get connectionConnected => 'متصل';
+
+  @override
+  String get connectionConnect => 'اتصال';
+
+  @override
+  String get connectionPort => 'المنفذ';
+
+  @override
+  String get connectionProtocol => 'البروتوكول';
+
+  @override
+  String get connectionName => 'اسم الاتصال';
+
+  @override
+  String get connectionServerAddress => 'عنوان الخادم / IP';
+
+  @override
+  String get connectionUsername => 'اسم المستخدم';
+
+  @override
+  String get connectionUsernameOptional => 'اسم المستخدم (اختياري)';
+
+  @override
+  String get connectionRemoteDirectory => 'المجلد البعيد';
+
+  @override
+  String get connectionAuthenticating => 'جارٍ التحقق من بيانات الاعتماد...';
+
+  @override
+  String get connectionCheckingPort => 'جارٍ التحقق من حالة المنفذ...';
+
+  @override
+  String get connectionResolvingHost => 'جارٍ حل عنوان المضيف...';
+
+  @override
+  String get connectionMounting => 'جارٍ تركيب وحدة التخزين...';
+
+  @override
+  String connectionTitle(String protocol) {
+    return 'اتصال $protocol';
+  }
+
+  @override
+  String get connectionServerAddressHint =>
+      'مثال: 192.168.1.100 أو 192.168.1.100/dav';
+
+  @override
+  String get connectionServerAddressHint2 => 'مثال: 192.168.1.100 أو nas.local';
+
+  @override
+  String get protocolAndroidSaf =>
+      'إطار الوصول إلى التخزين في أندرويد (بطاقة SD / خارجي)';
+
+  @override
+  String get protocolHttp => 'HTTP للنشر الموزع على الويب';
+
+  @override
+  String get protocolLan => 'شبكة محلية ومشاركة NAS عبر SMB';
+
+  @override
+  String get protocolSafFolder => 'مجلد SAF';
+
+  @override
+  String get protocolSsh => 'خادم نقل الملفات الآمن SSH';
+
+  @override
+  String get protocolFtp => 'بروتوكول نقل الملفات القياسي';
+
+  @override
+  String get ftpAnonymous => 'مجهول';
+
+  @override
+  String get webStartServer => 'تشغيل خادم الويب';
+
+  @override
+  String get webStopServer => 'إيقاف خادم الويب';
+
+  @override
+  String get webCloudShare => 'مشاركة سحابية';
+
+  @override
+  String get webLocalShare => 'مشاركة محلية';
+
+  @override
+  String get webActivateLink => 'تفعيل رابط المشاركة عبر الإنترنت';
+
+  @override
+  String get webDeactivateCloud => 'إلغاء تفعيل المشاركة السحابية';
+
+  @override
+  String get remoteMoveToDevice => 'نقل إلى الجهاز';
+
+  @override
+  String get remoteCopyToDevice => 'نسخ إلى الجهاز';
+
+  @override
+  String get remotePasteClipboard => 'لصق الحافظة البعيدة';
+
+  @override
+  String get remotePasteSameLocation => 'لا يمكن اللصق في الموقع نفسه';
+
+  @override
+  String get remoteClipboardEmpty =>
+      'الحافظة المحلية فارغة. انسخ الملفات من مدير الملفات أولًا.';
+
+  @override
+  String remoteTransferFailed(String error) {
+    return 'فشل النقل: $error';
+  }
+
+  @override
+  String get remoteTransferring => 'جارٍ إرسال البيانات...';
+
+  @override
+  String get remoteCopying => 'جارٍ النسخ...';
+
+  @override
+  String get remoteMoving => 'جارٍ النقل...';
+
+  @override
+  String get remoteDownloading => 'جارٍ التنزيل من الخادم...';
+
+  @override
+  String get remoteUploading => 'جارٍ الرفع إلى الخادم...';
+
+  @override
+  String remoteUploaded(int count) {
+    return 'تم رفع $count ملف بنجاح';
+  }
+
+  @override
+  String remoteUploadFailed(String name, String error) {
+    return 'فشل رفع \"$name\": $error';
+  }
+
+  @override
+  String remoteDownloadFailed(String error) {
+    return 'فشل التنزيل: $error';
+  }
+
+  @override
+  String remoteCreateFolderFailed(String error) {
+    return 'فشل إنشاء المجلد: $error';
+  }
+
+  @override
+  String remoteDeleteFailed(String error) {
+    return 'فشل الحذف: $error';
+  }
+
+  @override
+  String remoteCopiedToClipboard(String name) {
+    return 'تم نسخ \"$name\" إلى الحافظة';
+  }
+
+  @override
+  String remoteCutToClipboard(String name) {
+    return 'تم قص \"$name\" إلى الحافظة';
+  }
+
+  @override
+  String remoteDeleted(String name) {
+    return 'تم حذف \"$name\"';
+  }
+
+  @override
+  String remoteDownloadedToClipboard(String name) {
+    return 'تم تنزيل \"$name\" ← الحافظة المحلية جاهزة للصق';
+  }
+
+  @override
+  String remoteFilesReadyToUpload(int count) {
+    return '$count ملف محلي جاهز للرفع';
+  }
+
+  @override
+  String remoteItemsCut(int count) {
+    return '$count عنصر بعيد مقصوص';
+  }
+
+  @override
+  String remoteItemsCopied(int count) {
+    return '$count عنصر بعيد منسوخ';
+  }
+
+  @override
+  String get vaultEnterPin => 'أدخل رمز PIN لفتح الخزنة';
+
+  @override
+  String get vaultSetPin => 'اضبط رمز PIN من 4 أرقام للخزنة';
+
+  @override
+  String get vaultConfirmPin => 'أكّد رمز PIN من 4 أرقام';
+
+  @override
+  String get vaultIncorrectPin => 'رمز PIN غير صحيح. حاول مرة أخرى!';
+
+  @override
+  String get vaultPinsDoNotMatch => 'رمزا PIN غير متطابقين. حاول مرة أخرى!';
+
+  @override
+  String get vaultPinSet => 'تم ضبط الرمز بنجاح!';
+
+  @override
+  String get vaultEnterPassword => 'أدخل كلمة المرور لفتح الخزنة';
+
+  @override
+  String get vaultLockOption => 'خيار القفل';
+
+  @override
+  String vaultLockFailed(int count) {
+    return 'فشل قفل $count عنصرًا.';
+  }
+
+  @override
+  String get vaultNoMatchingFiles => 'لا ملفات مطابقة';
+
+  @override
+  String get vaultEmpty => 'خزنتك الآمنة فارغة';
+
+  @override
+  String get vaultSearchHint =>
+      'جرّب تعديل نص البحث للعثور على العناصر المخفية.';
+
+  @override
+  String vaultScrambleDescription(String action) {
+    return 'تمويه توقيع XOR يُبقي الملفات غير قابلة للفتح ومخفية عن قاعدة بيانات الماسح في النظام. اضغط $action أدناه لحمايتها.';
+  }
+
+  @override
+  String get vaultInPlace => 'في المكان نفسه';
+
+  @override
+  String get vaultSandbox => 'بيئة معزولة';
+
+  @override
+  String get vaultProtectionMode => 'وضع الحماية';
+
+  @override
+  String get vaultLockedAt => 'قفل في';
+
+  @override
+  String get vaultOriginalName => 'الاسم الأصلي';
+
+  @override
+  String get vaultOriginalPath => 'المسار الأصلي';
+
+  @override
+  String get vaultScrambledPath => 'المسار المشفّر';
+
+  @override
+  String get vaultInPlaceScrambling => '⚡ تشفير في المكان نفسه';
+
+  @override
+  String get vaultIsolatedMove => '🔒 نقل معزول (بيئة معزولة)';
+
+  @override
+  String get settingsBackupFileMissing => 'ملف النسخة الاحتياطية غير موجود';
+
+  @override
+  String get settingsBackupInvalidFormat =>
+      'صيغة ملف النسخة الاحتياطية غير صالحة';
+
+  @override
   String processingItem(int current, int total) {
     return 'يجري معالجة العنصر $current من $total';
   }

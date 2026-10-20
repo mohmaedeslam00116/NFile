@@ -123,7 +123,7 @@ class _MoreSettingsScreenState extends State<MoreSettingsScreen> {
     final mediaPreviewsVis = _shouldShow(AppLocalizations.of(context).showMediaPreviews, AppLocalizations.of(context).showMediaPreviewsHint);
     final adaptiveNamesVis = _shouldShow(AppLocalizations.of(context).adaptiveMultiLineNames, AppLocalizations.of(context).adaptiveMultiLineNamesHint);
     final hideActionButtonsVis = _shouldShow(AppLocalizations.of(context).hideThreeDotButtons, AppLocalizations.of(context).hideThreeDotButtonsHint);
-    final trailingInfoVis = fileManager.hideActionMenuButtons && _shouldShow(AppLocalizations.of(context).threeDotTrailingInfo, 'Choose what to show on the right side of files and folders when 3-dot is hidden');
+    final trailingInfoVis = fileManager.hideActionMenuButtons && _shouldShow(AppLocalizations.of(context).threeDotTrailingInfo, AppLocalizations.of(context).settingsTrailingInfoHint);
     final dragDropVis = _shouldShow(AppLocalizations.of(context).enableDragAndDrop, AppLocalizations.of(context).enableDragAndDropHint);
     final confirmDragVis = fileManager.enableDragDrop && _shouldShow(AppLocalizations.of(context).confirmDragAndDrop, AppLocalizations.of(context).confirmDragAndDropHint);
     final multipleTabsVis = _shouldShow(AppLocalizations.of(context).enableMultipleTabs, AppLocalizations.of(context).enableMultipleTabsHint);
@@ -131,7 +131,7 @@ class _MoreSettingsScreenState extends State<MoreSettingsScreen> {
     final disableLeftBackVis = _shouldShow(AppLocalizations.of(context).preventLeftBackGesture, AppLocalizations.of(context).preventLeftBackGestureHint);
     final rememberLastFolderVis = _shouldShow(AppLocalizations.of(context).rememberLastFolder, AppLocalizations.of(context).rememberLastFolderHint);
     final hideNavLabelsVis = _shouldShow(AppLocalizations.of(context).hideBottomNavLabels, AppLocalizations.of(context).hideBottomNavLabelsHint);
-    final exitOptionVis = _shouldShow(AppLocalizations.of(context).appExitBehavior, 'Choose between exit confirmation dialog or double-pressing back button to exit');
+    final exitOptionVis = _shouldShow(AppLocalizations.of(context).appExitBehavior, AppLocalizations.of(context).settingsExitBehaviourHint);
 
     final generalStartupList = [
       defaultBrowseVis,
@@ -497,8 +497,8 @@ class _MoreSettingsScreenState extends State<MoreSettingsScreen> {
                         icon: Icons.logout_rounded,
                         title: AppLocalizations.of(context).appExitBehavior,
                         subtitle: fileManager.exitOption == 'confirm'
-                            ? 'Show confirmation dialog'
-                            : 'Double-press back button to exit',
+                            ? AppLocalizations.of(context).settingsShowConfirmation
+                            : AppLocalizations.of(context).settingsDoublePressBackHint,
                         onTap: () => _showExitOptionPickerDialog(context, fileManager, theme),
                       ),
                     if (bottomActionBarVis)
@@ -610,7 +610,7 @@ class _MoreSettingsScreenState extends State<MoreSettingsScreen> {
                   ],
                   if (_shouldShowHeader(fileExplorerList)) ...[
                     const SizedBox(height: 24),
-                    _buildSectionHeader(theme, 'File Explorer & Navigation'),
+                    _buildSectionHeader(theme, AppLocalizations.of(context).settingsFileExplorer),
                     if (showAddressBarVis)
                       SettingsTile(
                         icon: Broken.edit,
@@ -853,7 +853,7 @@ class _MoreSettingsScreenState extends State<MoreSettingsScreen> {
                   ],
                   if (_shouldShowHeader(mediaActionsList)) ...[
                     const SizedBox(height: 24),
-                    _buildSectionHeader(theme, 'Media & Default Actions'),
+                    _buildSectionHeader(theme, AppLocalizations.of(context).settingsMediaActions),
                     if (preferFoldersVis)
                       SettingsTile(
                         icon: Broken.folder_2,
@@ -1244,8 +1244,8 @@ class GeneralSettingsScreen extends StatelessWidget {
               icon: Icons.logout_rounded,
               title: AppLocalizations.of(context).appExitBehavior,
               subtitle: fileManager.exitOption == 'confirm'
-                  ? 'Show confirmation dialog'
-                  : 'Double-press back button to exit',
+                  ? AppLocalizations.of(context).settingsShowConfirmation
+                  : AppLocalizations.of(context).settingsDoublePressBackHint,
               onTap: () => _showExitOptionPickerDialog(context, fileManager, theme),
             ),
           ],
@@ -1838,7 +1838,7 @@ String _getAccentColorLabel(BuildContext context, String option) {
     case 'peach': return AppLocalizations.of(context).accentSunsetPeach;
     case 'blue':
     default:
-      return 'Original Default (Signature Blue)';
+      return AppLocalizations.of(context).themeOriginalDefault;
   }
 }
 
@@ -1851,7 +1851,7 @@ String _getFolderIconLabel(BuildContext context, String option) {
     case 'outlined': return AppLocalizations.of(context).folderIconMinimalOutlined;
     case 'broken':
     default:
-      return 'NFile Broken Outline (Default)';
+      return AppLocalizations.of(context).themeBrokenOutline;
   }
 }
 
@@ -1885,14 +1885,14 @@ String _getFontFamilyLabel(BuildContext context, String option) {
     case 'custom': return AppLocalizations.of(context).fontCustom;
     case 'default':
     default:
-      return 'Signature Default (Lexend Deca)';
+      return AppLocalizations.of(context).themeSignatureDefault;
   }
 }
 
 String _getAutoDeleteDaysLabel(BuildContext context, int days) {
-  if (days <= 0) return 'Never (Auto-delete disabled)';
-  if (days == 1) return 'After 1 Day';
-  return 'After $days Days';
+  if (days <= 0) return AppLocalizations.of(context).recycleBinNeverAuto;
+  if (days == 1) return AppLocalizations.of(context).recycleBinAfterOneDay;
+  return AppLocalizations.of(context).recycleBinAfterDays(days);
 }
 
 String _getTrailingInfoTypeLabel(BuildContext context, String option) {
@@ -1901,7 +1901,7 @@ String _getTrailingInfoTypeLabel(BuildContext context, String option) {
     case 'sizeAndCount': return AppLocalizations.of(context).trailingInfoSizeCount;
     case 'none':
     default:
-      return 'None / Hide Info';
+      return AppLocalizations.of(context).trailingInfoNone;
   }
 }
 
@@ -1914,9 +1914,9 @@ void _showTrailingInfoTypePickerDialog(BuildContext context, FileManagerProvider
     builder: (ctx) {
       final current = fileManager.trailingInfoType;
       final options = [
-        {'key': 'none', 'name': 'None / Hide Info', 'desc': 'Do not display additional information on the right side'},
-        {'key': 'dateTime', 'name': AppLocalizations.of(context).trailingInfoDateTime, 'desc': 'Display the last modified date and time'},
-        {'key': 'sizeAndCount', 'name': AppLocalizations.of(context).trailingInfoSizeCount, 'desc': 'Display file size for files and item count for folders'},
+        {'key': 'none', 'name': AppLocalizations.of(context).trailingInfoNone, 'desc': AppLocalizations.of(context).trailingInfoNoneHint},
+        {'key': 'dateTime', 'name': AppLocalizations.of(context).trailingInfoDateTime, 'desc': AppLocalizations.of(context).trailingInfoDateHint},
+        {'key': 'sizeAndCount', 'name': AppLocalizations.of(context).trailingInfoSizeCount, 'desc': AppLocalizations.of(context).trailingInfoSizeHint},
       ];
 
       return SafeArea(
@@ -2011,8 +2011,8 @@ void _showExitOptionPickerDialog(BuildContext context, FileManagerProvider fileM
     builder: (ctx) {
       final current = fileManager.exitOption;
       final options = [
-        {'key': 'confirm', 'name': 'Confirmation Dialog', 'desc': 'Prompt for exit verification before closing'},
-        {'key': 'double_press', 'name': 'Double-Press to Exit', 'desc': 'Tap the back button twice within a short window to exit'},
+        {'key': 'confirm', 'name': AppLocalizations.of(context).settingsExitConfirmation, 'desc': AppLocalizations.of(context).settingsExitConfirmationHint},
+        {'key': 'double_press', 'name': AppLocalizations.of(context).settingsDoublePressExit, 'desc': AppLocalizations.of(context).settingsDoublePressExitHint},
       ];
 
       return SafeArea(
@@ -2080,7 +2080,7 @@ void _showThemePickerDialog(BuildContext context, FileManagerProvider fileManage
     builder: (ctx) {
       final current = fileManager.accentColorOption;
       final options = [
-        {'key': 'blue', 'name': 'Original Default (Signature Blue)', 'color': const Color(0xFF369FE7)},
+        {'key': 'blue', 'name': AppLocalizations.of(context).themeOriginalDefault, 'color': const Color(0xFF369FE7)},
         {'key': 'dynamic', 'name': AppLocalizations.of(context).accentMaterialYou, 'color': Colors.teal},
         {'key': 'orange', 'name': AppLocalizations.of(context).accentVibrantOrange, 'color': const Color(0xFFFF6D00)},
         {'key': 'purple', 'name': AppLocalizations.of(context).accentRoyalPurple, 'color': const Color(0xFF8E24AA)},
@@ -2166,7 +2166,7 @@ void _showFolderIconPickerDialog(BuildContext context, FileManagerProvider fileM
     builder: (ctx) {
       final current = fileManager.folderIconOption;
       final options = [
-        {'key': 'broken', 'name': 'NFile Broken Outline (Default)', 'icon': Broken.folder},
+        {'key': 'broken', 'name': AppLocalizations.of(context).themeBrokenOutline, 'icon': Broken.folder},
         {'key': 'rounded', 'name': AppLocalizations.of(context).folderIconModernRounded, 'icon': Icons.folder_rounded},
         {'key': 'solid', 'name': AppLocalizations.of(context).folderIconClassicSolid, 'icon': Icons.folder},
         {'key': 'special', 'name': AppLocalizations.of(context).folderIconStarred, 'icon': Icons.folder_special_rounded},
@@ -2315,7 +2315,7 @@ void _showAppIconPickerDialog(BuildContext context, FileManagerProvider fileMana
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
-    barrierLabel: 'App Icon Picker',
+    barrierLabel: AppLocalizations.of(context).settingsAppIconPicker,
     barrierColor: Colors.black.withValues(alpha: 0.55),
     transitionDuration: const Duration(milliseconds: 250),
     pageBuilder: (context, anim1, anim2) => const SizedBox.shrink(),
@@ -2359,7 +2359,7 @@ void _showAppIconPickerDialog(BuildContext context, FileManagerProvider fileMana
                             fileManager,
                             theme,
                             id: 'default',
-                            title: 'Logo',
+                            title: AppLocalizations.of(context).settingsLogo,
                             imagePath: 'assets/ic_launcher.webp',
                           ),
                           _buildIconOptionCard(
@@ -2404,7 +2404,7 @@ void _showAppIconPickerDialog(BuildContext context, FileManagerProvider fileMana
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: Text(AppLocalizations.of(context).actionClose),
               ),
             ],
           ),
@@ -2493,13 +2493,13 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
       final current = fileManager.fontFamilyOption;
       final hasCustomFont = fileManager.customFontPath != null;
       final options = [
-        {'key': 'default', 'name': 'Signature Default (Lexend Deca)', 'desc': 'Original NFile clean geometric look'},
-        {'key': 'nothing', 'name': 'Nothing Dot-Matrix & Sans', 'desc': 'High-tech retro dot matrix headings + clean body'},
-        {'key': 'outfit', 'name': AppLocalizations.of(context).fontOutfit, 'desc': 'Super sleek, minimal, and premium geometric aesthetic'},
-        {'key': 'jetbrains', 'name': AppLocalizations.of(context).fontJetBrains, 'desc': 'Clean and futuristic developer monospaced look'},
-        {'key': 'montserrat', 'name': AppLocalizations.of(context).fontMontserrat, 'desc': 'Bold, modern, and striking typographic scale'},
+        {'key': 'default', 'name': AppLocalizations.of(context).themeSignatureDefault, 'desc': AppLocalizations.of(context).themeOriginalGeometric},
+        {'key': 'nothing', 'name': AppLocalizations.of(context).themeNothingDotMatrix, 'desc': AppLocalizations.of(context).themeDotMatrixHint},
+        {'key': 'outfit', 'name': AppLocalizations.of(context).fontOutfit, 'desc': AppLocalizations.of(context).themeGeometricHint},
+        {'key': 'jetbrains', 'name': AppLocalizations.of(context).fontJetBrains, 'desc': AppLocalizations.of(context).themeMonospaceHint},
+        {'key': 'montserrat', 'name': AppLocalizations.of(context).fontMontserrat, 'desc': AppLocalizations.of(context).themeBoldHint},
         if (hasCustomFont)
-          {'key': 'custom', 'name': 'Custom Font (${p.basename(fileManager.customFontPath!)})', 'desc': 'Your custom loaded font file'},
+          {'key': 'custom', 'name': AppLocalizations.of(context).themeCustomFontName(p.basename(fileManager.customFontPath!)), 'desc': AppLocalizations.of(context).themeCustomFontHint},
       ];
 
       return SafeArea(
@@ -2565,7 +2565,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                   OutlinedButton.icon(
                     icon: const Icon(Broken.document_upload, size: 20),
                     label: Text(
-                      hasCustomFont ? 'Replace Custom Font File' : 'Import Custom Font File (.ttf/.otf)',
+                      hasCustomFont ? AppLocalizations.of(context).themeReplaceCustomFont : AppLocalizations.of(context).themeImportCustomFont,
                       style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
                     ),
                     style: OutlinedButton.styleFrom(
@@ -2609,7 +2609,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(context),
-                                    child: const Text('OK'),
+                                    child: Text(AppLocalizations.of(context).actionOk),
                                   ),
                                 ],
                               ),
@@ -2656,10 +2656,10 @@ void _showAutoDeleteDaysPickerDialog(BuildContext context, ThemeData theme, Void
     builder: (ctx) {
       final current = RecycleBinService.getAutoDeleteDays();
       final options = [
-        {'days': 7, 'label': '7 Days'},
-        {'days': 15, 'label': '15 Days'},
-        {'days': 30, 'label': '30 Days (Recommended)'},
-        {'days': 0, 'label': 'Never (Manually clean bin)'},
+        {'days': 7, 'label': AppLocalizations.of(context).recycleBinDays7},
+        {'days': 15, 'label': AppLocalizations.of(context).recycleBinDays15},
+        {'days': 30, 'label': AppLocalizations.of(context).recycleBinDays30},
+        {'days': 0, 'label': AppLocalizations.of(context).recycleBinNeverManual},
       ];
 
       return SafeArea(

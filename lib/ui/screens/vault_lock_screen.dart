@@ -24,7 +24,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
   
   // Input State
   String _inputBuffer = '';
-  String _message = 'Enter Password to Unlock';
+  String _message = '';
   bool _isError = false;
 
   late final AnimationController _shakeController;
@@ -32,6 +32,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
   @override
   void initState() {
     super.initState();
+    _message = AppLocalizations.of(context).vaultEnterPassword;
     _shakeController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 350),
@@ -51,7 +52,9 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
       setState(() {
         _isPasswordSet = isSet;
         _checkingPasswordStatus = false;
-        _message = isSet ? 'Enter PIN to Unlock Wallet' : 'Set your 4-digit Wallet PIN';
+        _message = isSet
+            ? AppLocalizations.of(context).vaultEnterPin
+            : AppLocalizations.of(context).vaultSetPin;
       });
     }
   }
@@ -71,7 +74,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
           _tempPassword = _inputBuffer;
           _inputBuffer = '';
           _isConfirmMode = true;
-          _message = 'Confirm your 4-digit PIN';
+          _message = AppLocalizations.of(context).vaultConfirmPin;
         });
       });
     } else if (_inputBuffer.length == 4 && !_isPasswordSet && _isConfirmMode) {
@@ -84,7 +87,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
             setState(() {
               _isPasswordSet = true;
               _isConfirmMode = false;
-              _message = 'PIN Set Successfully!';
+              _message = AppLocalizations.of(context).vaultPinSet;
             });
             _unlockWallet(_inputBuffer);
           }
@@ -94,7 +97,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
           setState(() {
             _inputBuffer = '';
             _isError = true;
-            _message = 'PINs do not match. Try again!';
+            _message = AppLocalizations.of(context).vaultPinsDoNotMatch;
           });
         }
       });
@@ -111,7 +114,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
           setState(() {
             _inputBuffer = '';
             _isError = true;
-            _message = 'Incorrect PIN. Try again!';
+            _message = AppLocalizations.of(context).vaultIncorrectPin;
           });
         }
       });
@@ -334,7 +337,7 @@ class _VaultLockScreenState extends State<VaultLockScreen> with SingleTickerProv
               _buildActionKeyButton(
                 icon: Icons.backspace_rounded,
                 onPressed: _onDelete,
-                tooltip: 'Backspace',
+                tooltip: AppLocalizations.of(context).actionBackspace,
               ),
             ],
           ),

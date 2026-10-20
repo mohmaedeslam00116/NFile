@@ -444,6 +444,128 @@
   "operationSuccessful": "Successful",
   "operationFailed": "Operation Failed",
   "archiveUnsupportedFormat": "Unsupported format",
+  "actionBack": "Back",
+  "actionBackspace": "Backspace",
+  "actionClose": "Close",
+  "actionDetails": "Details",
+  "actionPaste": "Paste",
+  "actionStart": "Start",
+  "actionStop": "Stop",
+  "actionUpload": "Upload",
+  "settingsAppIconPicker": "App Icon Picker",
+  "settingsLogo": "Logo",
+  "settingsFileExplorer": "File Explorer & Navigation",
+  "settingsMediaActions": "Media & Default Actions",
+  "settingsExitConfirmation": "Confirmation Dialog",
+  "settingsExitConfirmationHint": "Prompt for exit verification before closing",
+  "settingsDoublePressExit": "Double-Press to Exit",
+  "settingsDoublePressExitHint": "Tap the back button twice within a short window to exit",
+  "settingsShowConfirmation": "Show confirmation dialog",
+  "settingsDoublePressBackHint": "Double-press back button to exit",
+  "settingsExitBehaviourHint": "Choose between exit confirmation dialog or double-pressing back button to exit",
+  "settingsTrailingInfoHint": "Choose what to show on the right side of files and folders when 3-dot is hidden",
+  "recycleBinDays7": "7 Days",
+  "recycleBinDays15": "15 Days",
+  "recycleBinDays30": "30 Days (Recommended)",
+  "recycleBinNeverManual": "Never (Manually clean bin)",
+  "recycleBinNeverAuto": "Never (Auto-delete disabled)",
+  "recycleBinAfterOneDay": "After 1 Day",
+  "recycleBinAfterDays": "After {days} Days",
+  "trailingInfoNone": "None / Hide Info",
+  "trailingInfoNoneHint": "Do not display additional information on the right side",
+  "trailingInfoDateHint": "Display the last modified date and time",
+  "trailingInfoSizeHint": "Display file size for files and item count for folders",
+  "themeSignatureDefault": "Signature Default (Lexend Deca)",
+  "themeOriginalDefault": "Original Default (Signature Blue)",
+  "themeBrokenOutline": "NFile Broken Outline (Default)",
+  "themeOriginalGeometric": "Original NFile clean geometric look",
+  "themeNothingDotMatrix": "Nothing Dot-Matrix & Sans",
+  "themeDotMatrixHint": "High-tech retro dot matrix headings + clean body",
+  "themeMonospaceHint": "Clean and futuristic developer monospaced look",
+  "themeGeometricHint": "Super sleek, minimal, and premium geometric aesthetic",
+  "themeBoldHint": "Bold, modern, and striking typographic scale",
+  "themeCustomFontHint": "Your custom loaded font file",
+  "themeCustomFontName": "Custom Font ({name})",
+  "themeImportCustomFont": "Import Custom Font File (.ttf/.otf)",
+  "themeReplaceCustomFont": "Replace Custom Font File",
+  "connectionActive": "Active",
+  "connectionInactive": "Inactive",
+  "connectionConnected": "Connected",
+  "connectionConnect": "Connect",
+  "connectionPort": "Port",
+  "connectionProtocol": "Protocol",
+  "connectionName": "Connection Name",
+  "connectionServerAddress": "Server Address / IP",
+  "connectionUsername": "Username",
+  "connectionUsernameOptional": "Username (Optional)",
+  "connectionRemoteDirectory": "Remote Directory",
+  "connectionAuthenticating": "Authenticating credentials...",
+  "connectionCheckingPort": "Checking port status...",
+  "connectionResolvingHost": "Resolving host address...",
+  "connectionMounting": "Mounting storage volume...",
+  "connectionTitle": "{protocol} Connection",
+  "connectionServerAddressHint": "e.g., 192.168.1.100 or 192.168.1.100/dav",
+  "connectionServerAddressHint2": "e.g., 192.168.1.100 or nas.local",
+  "protocolAndroidSaf": "Android Storage Access Framework (SD Card / External)",
+  "protocolHttp": "HTTP Web Distributed Authoring",
+  "protocolLan": "Local Area Network & SMB NAS Share",
+  "protocolSafFolder": "SAF Folder",
+  "protocolSsh": "SSH Secure File Transfer Server",
+  "protocolFtp": "Standard File Transfer Protocol",
+  "ftpAnonymous": "Anonymous",
+  "webStartServer": "Start Web Server",
+  "webStopServer": "Stop Web Server",
+  "webCloudShare": "Cloud Share",
+  "webLocalShare": "Local Share",
+  "webActivateLink": "Activate Internet Share Link",
+  "webDeactivateCloud": "Deactivate Cloud Share",
+  "remoteMoveToDevice": "Move to Device",
+  "remoteCopyToDevice": "Copy to Device",
+  "remotePasteClipboard": "Paste remote clipboard",
+  "remotePasteSameLocation": "Cannot paste to the same location",
+  "remoteClipboardEmpty": "Local clipboard is empty. Copy files in the file manager first.",
+  "remoteTransferFailed": "Transfer failed: {error}",
+  "remoteTransferring": "Transferring...",
+  "remoteCopying": "Copying...",
+  "remoteMoving": "Moving...",
+  "remoteDownloading": "Downloading from server...",
+  "remoteUploading": "Uploading to server...",
+  "remoteUploaded": "Uploaded {count} file(s) successfully",
+  "remoteUploadFailed": "Upload failed for \"{name}\": {error}",
+  "remoteDownloadFailed": "Download failed: {error}",
+  "remoteCreateFolderFailed": "Failed to create folder: {error}",
+  "remoteDeleteFailed": "Failed to delete: {error}",
+  "remoteCopiedToClipboard": "Copied \"{name}\" to clipboard",
+  "remoteCutToClipboard": "Cut \"{name}\" to clipboard",
+  "remoteDeleted": "Deleted \"{name}\"",
+  "remoteDownloadedToClipboard": "\"{name}\" downloaded → local clipboard ready to paste",
+  "remoteFilesReadyToUpload": "{count} local file(s) ready to upload",
+  "remoteItemsCut": "{count} remote item(s) cut",
+  "remoteItemsCopied": "{count} remote item(s) copied",
+  "vaultEnterPin": "Enter PIN to Unlock Wallet",
+  "vaultSetPin": "Set your 4-digit Wallet PIN",
+  "vaultConfirmPin": "Confirm your 4-digit PIN",
+  "vaultIncorrectPin": "Incorrect PIN. Try again!",
+  "vaultPinsDoNotMatch": "PINs do not match. Try again!",
+  "vaultPinSet": "PIN Set Successfully!",
+  "vaultEnterPassword": "Enter Password to Unlock",
+  "vaultLockOption": "Lock Option",
+  "vaultLockFailed": "Failed to lock {count} items.",
+  "vaultNoMatchingFiles": "No Matching Files",
+  "vaultEmpty": "Your Secure Vault is Empty",
+  "vaultSearchHint": "Try modifying your search text to locate hidden items.",
+  "vaultScrambleDescription": "XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap {action} below to protect them.",
+  "vaultInPlace": "In-Place",
+  "vaultSandbox": "Sandbox",
+  "vaultProtectionMode": "Protection Mode",
+  "vaultLockedAt": "Locked At",
+  "vaultOriginalName": "Original Name",
+  "vaultOriginalPath": "Original Path",
+  "vaultScrambledPath": "Scrambled Path",
+  "vaultInPlaceScrambling": "⚡ In-Place Scrambling",
+  "vaultIsolatedMove": "🔒 Isolated Move (Sandbox)",
+  "settingsBackupFileMissing": "Backup file does not exist",
+  "settingsBackupInvalidFormat": "Invalid backup file format",
   "processingItem": "Processing item {current} of {total}",
   "transferSpeed": "Transfer Speed",
   "estimatedTime": "Est. Time",
@@ -2179,6 +2301,135 @@
     "placeholders": {
       "error": {
         "type": "String"
+      }
+    }
+  },
+  "@recycleBinAfterDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@themeCustomFontName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionTitle": {
+    "placeholders": {
+      "protocol": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteUploaded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteTransferFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCreateFolderFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCopiedToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCutToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadedToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteFilesReadyToUpload": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteItemsCut": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteItemsCopied": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultScrambleDescription": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultLockFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
     }
   }

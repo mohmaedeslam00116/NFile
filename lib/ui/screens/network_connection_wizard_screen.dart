@@ -35,12 +35,12 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
   // Testing steps states
   bool _isTesting = false;
   int _testStepIndex = 0;
-  final List<String> _testSteps = [
-    'Resolving host address...',
-    'Checking port status...',
-    'Authenticating credentials...',
-    'Mounting storage volume...',
-  ];
+  List<String> _testSteps(BuildContext context) => [
+        AppLocalizations.of(context).connectionResolvingHost,
+        AppLocalizations.of(context).connectionCheckingPort,
+        AppLocalizations.of(context).connectionAuthenticating,
+        AppLocalizations.of(context).connectionMounting,
+      ];
 
   @override
   void dispose() {
@@ -89,7 +89,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
     }
     setState(() {
       _selectedType = protocol;
-      _nameController.text = '$protocol Connection';
+      _nameController.text = AppLocalizations.of(context).connectionTitle(protocol);
 
       // Set default ports
       if (protocol == 'FTP') {
@@ -175,7 +175,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(ctx),
-                  child: const Text('OK', style: TextStyle(fontWeight: FontWeight.bold)),
+                  child: Text(AppLocalizations.of(context).actionOk, style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -399,11 +399,11 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
   // --- Step 1: Protocol Grid Selection ---
   Widget _buildProtocolSelectionStep(ThemeData theme) {
     final protocols = [
-      {'name': 'LAN/SMB', 'desc': 'Local Area Network & SMB NAS Share', 'color': const Color(0xFF5B21B6)},
-      {'name': 'FTP', 'desc': 'Standard File Transfer Protocol', 'color': const Color(0xFFF97316)},
-      {'name': 'SFTP', 'desc': 'SSH Secure File Transfer Server', 'color': const Color(0xFF0D9488)},
-      {'name': 'WebDav', 'desc': 'HTTP Web Distributed Authoring', 'color': const Color(0xFFE11D48)},
-      {'name': 'SAF Folder', 'desc': 'Android Storage Access Framework (SD Card / External)', 'color': const Color(0xFF0284C7)},
+      {'name': 'LAN/SMB', 'desc': AppLocalizations.of(context).protocolLan, 'color': const Color(0xFF5B21B6)},
+      {'name': 'FTP', 'desc': AppLocalizations.of(context).protocolFtp, 'color': const Color(0xFFF97316)},
+      {'name': 'SFTP', 'desc': AppLocalizations.of(context).protocolSsh, 'color': const Color(0xFF0D9488)},
+      {'name': 'WebDav', 'desc': AppLocalizations.of(context).protocolHttp, 'color': const Color(0xFFE11D48)},
+      {'name': 'SAF Folder', 'desc': AppLocalizations.of(context).protocolAndroidSaf, 'color': const Color(0xFF0284C7)},
     ];
 
     return ScrollConfiguration(
@@ -540,7 +540,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           const SizedBox(height: 28),
 
           // Connection Nickname
-          _buildInputLabel('Connection Name'),
+          _buildInputLabel(AppLocalizations.of(context).connectionName),
           _buildTextField(
             controller: _nameController,
             hint: AppLocalizations.of(context).connectionNameExample,
@@ -549,22 +549,22 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           const SizedBox(height: 18),
 
           if (_selectedType == 'WebDav') ...[
-            _buildInputLabel('Protocol'),
+            _buildInputLabel(AppLocalizations.of(context).connectionProtocol),
             _buildProtocolToggle(theme),
             const SizedBox(height: 18),
           ],
 
-          _buildInputLabel('Server Address / IP'),
+          _buildInputLabel(AppLocalizations.of(context).connectionServerAddress),
           _buildTextField(
             controller: _hostController,
             hint: _selectedType == 'WebDav'
-                ? 'e.g., 192.168.1.100 or 192.168.1.100/dav'
-                : 'e.g., 192.168.1.100 or nas.local',
+                ? AppLocalizations.of(context).connectionServerAddressHint
+                : AppLocalizations.of(context).connectionServerAddressHint2,
             icon: Broken.global,
           ),
           const SizedBox(height: 18),
 
-          _buildInputLabel('Port'),
+          _buildInputLabel(AppLocalizations.of(context).connectionPort),
           _buildTextField(
             controller: _portController,
             hint: _selectedType == 'WebDav' ? '80' : '21',
@@ -574,7 +574,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           const SizedBox(height: 18),
 
           if (_selectedType == 'WebDav') ...[
-            _buildInputLabel('Path'),
+            _buildInputLabel(AppLocalizations.of(context).propertyPath),
             _buildTextField(
               controller: _pathController,
               hint: AppLocalizations.of(context).connectionPathExample,
@@ -583,7 +583,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
             const SizedBox(height: 18),
           ],
 
-          _buildInputLabel('Username (Optional)'),
+          _buildInputLabel(AppLocalizations.of(context).connectionUsernameOptional),
           _buildTextField(
             controller: _usernameController,
             hint: AppLocalizations.of(context).connectionUserExample,
@@ -591,7 +591,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
           ),
           const SizedBox(height: 18),
 
-          _buildInputLabel('Password (Optional)'),
+          _buildInputLabel(AppLocalizations.of(context).passwordOptional),
           _buildTextField(
             controller: _passwordController,
             hint: '••••••••',
@@ -612,7 +612,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
                   onPressed: _prevStep,
-                  child: const Text('Back'),
+                  child: Text(AppLocalizations.of(context).actionBack),
                 ),
               ),
               const SizedBox(width: 14),
@@ -629,7 +629,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Connect'),
+                      Text(AppLocalizations.of(context).connectionConnect),
                       const SizedBox(width: 6),
                       Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white.withValues(alpha: 0.9)),
                     ],
@@ -713,7 +713,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
-                children: List.generate(_testSteps.length, (idx) {
+                children: List.generate(_testSteps(context).length, (idx) {
                   final active = idx == _testStepIndex;
                   final done = idx < _testStepIndex;
 
@@ -739,7 +739,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            _testSteps[idx],
+                            _testSteps(context)[idx],
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: active ? FontWeight.bold : FontWeight.normal,

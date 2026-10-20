@@ -124,7 +124,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).actionCancel),
             ),
             ElevatedButton(
               onPressed: () {
@@ -144,7 +144,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              child: const Text('Save'),
+              child: Text(AppLocalizations.of(context).actionSave),
             ),
           ],
         );
@@ -175,14 +175,14 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
           content: TextField(
             controller: controller,
             decoration: InputDecoration(
-              labelText: 'Username',
+              labelText: AppLocalizations.of(context).connectionUsername,
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).actionCancel),
             ),
             ElevatedButton(
               onPressed: () {
@@ -201,7 +201,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              child: const Text('Save'),
+              child: Text(AppLocalizations.of(context).actionSave),
             ),
           ],
         );
@@ -366,7 +366,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
-                                  isActive ? 'Active' : 'Inactive',
+                                  isActive ? AppLocalizations.of(context).connectionActive : AppLocalizations.of(context).connectionInactive,
                                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                 ),
                               ],
@@ -379,8 +379,8 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                                   AppLocalizations.of(context).networkStatus,
                                   style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontWeight: FontWeight.w500),
                                 ),
-                                const Text(
-                                  'Connected',
+                                Text(
+                                  AppLocalizations.of(context).connectionConnected,
                                   style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -440,7 +440,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                             ListTile(
                               title: Text(AppLocalizations.of(context).userName, style: TextStyle(fontWeight: FontWeight.w500)),
                               trailing: Text(
-                                _ftpService.anonymous ? 'Anonymous' : _ftpService.username,
+                                _ftpService.anonymous ? AppLocalizations.of(context).ftpAnonymous : _ftpService.username,
                                 style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontWeight: FontWeight.bold),
                               ),
                               onTap: _showUserDialog,
@@ -496,7 +496,7 @@ class _FtpServerScreenState extends State<FtpServerScreen> {
                     elevation: 2,
                   ),
                   child: Text(
-                    isActive ? 'Stop' : 'Start',
+                    isActive ? AppLocalizations.of(context).actionStop : AppLocalizations.of(context).actionStart,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, letterSpacing: 0.5),
                   ),
                 ),

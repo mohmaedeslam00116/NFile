@@ -2768,6 +2768,738 @@ abstract class AppLocalizations {
   /// **'Unsupported format'**
   String get archiveUnsupportedFormat;
 
+  /// No description provided for @actionBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get actionBack;
+
+  /// No description provided for @actionBackspace.
+  ///
+  /// In en, this message translates to:
+  /// **'Backspace'**
+  String get actionBackspace;
+
+  /// No description provided for @actionClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get actionClose;
+
+  /// No description provided for @actionDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get actionDetails;
+
+  /// No description provided for @actionPaste.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste'**
+  String get actionPaste;
+
+  /// No description provided for @actionStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get actionStart;
+
+  /// No description provided for @actionStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get actionStop;
+
+  /// No description provided for @actionUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get actionUpload;
+
+  /// No description provided for @settingsAppIconPicker.
+  ///
+  /// In en, this message translates to:
+  /// **'App Icon Picker'**
+  String get settingsAppIconPicker;
+
+  /// No description provided for @settingsLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo'**
+  String get settingsLogo;
+
+  /// No description provided for @settingsFileExplorer.
+  ///
+  /// In en, this message translates to:
+  /// **'File Explorer & Navigation'**
+  String get settingsFileExplorer;
+
+  /// No description provided for @settingsMediaActions.
+  ///
+  /// In en, this message translates to:
+  /// **'Media & Default Actions'**
+  String get settingsMediaActions;
+
+  /// No description provided for @settingsExitConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation Dialog'**
+  String get settingsExitConfirmation;
+
+  /// No description provided for @settingsExitConfirmationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Prompt for exit verification before closing'**
+  String get settingsExitConfirmationHint;
+
+  /// No description provided for @settingsDoublePressExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Double-Press to Exit'**
+  String get settingsDoublePressExit;
+
+  /// No description provided for @settingsDoublePressExitHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the back button twice within a short window to exit'**
+  String get settingsDoublePressExitHint;
+
+  /// No description provided for @settingsShowConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Show confirmation dialog'**
+  String get settingsShowConfirmation;
+
+  /// No description provided for @settingsDoublePressBackHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Double-press back button to exit'**
+  String get settingsDoublePressBackHint;
+
+  /// No description provided for @settingsExitBehaviourHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose between exit confirmation dialog or double-pressing back button to exit'**
+  String get settingsExitBehaviourHint;
+
+  /// No description provided for @settingsTrailingInfoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what to show on the right side of files and folders when 3-dot is hidden'**
+  String get settingsTrailingInfoHint;
+
+  /// No description provided for @recycleBinDays7.
+  ///
+  /// In en, this message translates to:
+  /// **'7 Days'**
+  String get recycleBinDays7;
+
+  /// No description provided for @recycleBinDays15.
+  ///
+  /// In en, this message translates to:
+  /// **'15 Days'**
+  String get recycleBinDays15;
+
+  /// No description provided for @recycleBinDays30.
+  ///
+  /// In en, this message translates to:
+  /// **'30 Days (Recommended)'**
+  String get recycleBinDays30;
+
+  /// No description provided for @recycleBinNeverManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Never (Manually clean bin)'**
+  String get recycleBinNeverManual;
+
+  /// No description provided for @recycleBinNeverAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Never (Auto-delete disabled)'**
+  String get recycleBinNeverAuto;
+
+  /// No description provided for @recycleBinAfterOneDay.
+  ///
+  /// In en, this message translates to:
+  /// **'After 1 Day'**
+  String get recycleBinAfterOneDay;
+
+  /// No description provided for @recycleBinAfterDays.
+  ///
+  /// In en, this message translates to:
+  /// **'After {days} Days'**
+  String recycleBinAfterDays(int days);
+
+  /// No description provided for @trailingInfoNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None / Hide Info'**
+  String get trailingInfoNone;
+
+  /// No description provided for @trailingInfoNoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not display additional information on the right side'**
+  String get trailingInfoNoneHint;
+
+  /// No description provided for @trailingInfoDateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display the last modified date and time'**
+  String get trailingInfoDateHint;
+
+  /// No description provided for @trailingInfoSizeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Display file size for files and item count for folders'**
+  String get trailingInfoSizeHint;
+
+  /// No description provided for @themeSignatureDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Signature Default (Lexend Deca)'**
+  String get themeSignatureDefault;
+
+  /// No description provided for @themeOriginalDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Default (Signature Blue)'**
+  String get themeOriginalDefault;
+
+  /// No description provided for @themeBrokenOutline.
+  ///
+  /// In en, this message translates to:
+  /// **'NFile Broken Outline (Default)'**
+  String get themeBrokenOutline;
+
+  /// No description provided for @themeOriginalGeometric.
+  ///
+  /// In en, this message translates to:
+  /// **'Original NFile clean geometric look'**
+  String get themeOriginalGeometric;
+
+  /// No description provided for @themeNothingDotMatrix.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing Dot-Matrix & Sans'**
+  String get themeNothingDotMatrix;
+
+  /// No description provided for @themeDotMatrixHint.
+  ///
+  /// In en, this message translates to:
+  /// **'High-tech retro dot matrix headings + clean body'**
+  String get themeDotMatrixHint;
+
+  /// No description provided for @themeMonospaceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean and futuristic developer monospaced look'**
+  String get themeMonospaceHint;
+
+  /// No description provided for @themeGeometricHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Super sleek, minimal, and premium geometric aesthetic'**
+  String get themeGeometricHint;
+
+  /// No description provided for @themeBoldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bold, modern, and striking typographic scale'**
+  String get themeBoldHint;
+
+  /// No description provided for @themeCustomFontHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your custom loaded font file'**
+  String get themeCustomFontHint;
+
+  /// No description provided for @themeCustomFontName.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Font ({name})'**
+  String themeCustomFontName(String name);
+
+  /// No description provided for @themeImportCustomFont.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Custom Font File (.ttf/.otf)'**
+  String get themeImportCustomFont;
+
+  /// No description provided for @themeReplaceCustomFont.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace Custom Font File'**
+  String get themeReplaceCustomFont;
+
+  /// No description provided for @connectionActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get connectionActive;
+
+  /// No description provided for @connectionInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get connectionInactive;
+
+  /// No description provided for @connectionConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected'**
+  String get connectionConnected;
+
+  /// No description provided for @connectionConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get connectionConnect;
+
+  /// No description provided for @connectionPort.
+  ///
+  /// In en, this message translates to:
+  /// **'Port'**
+  String get connectionPort;
+
+  /// No description provided for @connectionProtocol.
+  ///
+  /// In en, this message translates to:
+  /// **'Protocol'**
+  String get connectionProtocol;
+
+  /// No description provided for @connectionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Name'**
+  String get connectionName;
+
+  /// No description provided for @connectionServerAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Server Address / IP'**
+  String get connectionServerAddress;
+
+  /// No description provided for @connectionUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get connectionUsername;
+
+  /// No description provided for @connectionUsernameOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Username (Optional)'**
+  String get connectionUsernameOptional;
+
+  /// No description provided for @connectionRemoteDirectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Remote Directory'**
+  String get connectionRemoteDirectory;
+
+  /// No description provided for @connectionAuthenticating.
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticating credentials...'**
+  String get connectionAuthenticating;
+
+  /// No description provided for @connectionCheckingPort.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking port status...'**
+  String get connectionCheckingPort;
+
+  /// No description provided for @connectionResolvingHost.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolving host address...'**
+  String get connectionResolvingHost;
+
+  /// No description provided for @connectionMounting.
+  ///
+  /// In en, this message translates to:
+  /// **'Mounting storage volume...'**
+  String get connectionMounting;
+
+  /// No description provided for @connectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{protocol} Connection'**
+  String connectionTitle(String protocol);
+
+  /// No description provided for @connectionServerAddressHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 192.168.1.100 or 192.168.1.100/dav'**
+  String get connectionServerAddressHint;
+
+  /// No description provided for @connectionServerAddressHint2.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 192.168.1.100 or nas.local'**
+  String get connectionServerAddressHint2;
+
+  /// No description provided for @protocolAndroidSaf.
+  ///
+  /// In en, this message translates to:
+  /// **'Android Storage Access Framework (SD Card / External)'**
+  String get protocolAndroidSaf;
+
+  /// No description provided for @protocolHttp.
+  ///
+  /// In en, this message translates to:
+  /// **'HTTP Web Distributed Authoring'**
+  String get protocolHttp;
+
+  /// No description provided for @protocolLan.
+  ///
+  /// In en, this message translates to:
+  /// **'Local Area Network & SMB NAS Share'**
+  String get protocolLan;
+
+  /// No description provided for @protocolSafFolder.
+  ///
+  /// In en, this message translates to:
+  /// **'SAF Folder'**
+  String get protocolSafFolder;
+
+  /// No description provided for @protocolSsh.
+  ///
+  /// In en, this message translates to:
+  /// **'SSH Secure File Transfer Server'**
+  String get protocolSsh;
+
+  /// No description provided for @protocolFtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard File Transfer Protocol'**
+  String get protocolFtp;
+
+  /// No description provided for @ftpAnonymous.
+  ///
+  /// In en, this message translates to:
+  /// **'Anonymous'**
+  String get ftpAnonymous;
+
+  /// No description provided for @webStartServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Web Server'**
+  String get webStartServer;
+
+  /// No description provided for @webStopServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop Web Server'**
+  String get webStopServer;
+
+  /// No description provided for @webCloudShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Share'**
+  String get webCloudShare;
+
+  /// No description provided for @webLocalShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Local Share'**
+  String get webLocalShare;
+
+  /// No description provided for @webActivateLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate Internet Share Link'**
+  String get webActivateLink;
+
+  /// No description provided for @webDeactivateCloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate Cloud Share'**
+  String get webDeactivateCloud;
+
+  /// No description provided for @remoteMoveToDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to Device'**
+  String get remoteMoveToDevice;
+
+  /// No description provided for @remoteCopyToDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy to Device'**
+  String get remoteCopyToDevice;
+
+  /// No description provided for @remotePasteClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste remote clipboard'**
+  String get remotePasteClipboard;
+
+  /// No description provided for @remotePasteSameLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot paste to the same location'**
+  String get remotePasteSameLocation;
+
+  /// No description provided for @remoteClipboardEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Local clipboard is empty. Copy files in the file manager first.'**
+  String get remoteClipboardEmpty;
+
+  /// No description provided for @remoteTransferFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer failed: {error}'**
+  String remoteTransferFailed(String error);
+
+  /// No description provided for @remoteTransferring.
+  ///
+  /// In en, this message translates to:
+  /// **'Transferring...'**
+  String get remoteTransferring;
+
+  /// No description provided for @remoteCopying.
+  ///
+  /// In en, this message translates to:
+  /// **'Copying...'**
+  String get remoteCopying;
+
+  /// No description provided for @remoteMoving.
+  ///
+  /// In en, this message translates to:
+  /// **'Moving...'**
+  String get remoteMoving;
+
+  /// No description provided for @remoteDownloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading from server...'**
+  String get remoteDownloading;
+
+  /// No description provided for @remoteUploading.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading to server...'**
+  String get remoteUploading;
+
+  /// No description provided for @remoteUploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded {count} file(s) successfully'**
+  String remoteUploaded(int count);
+
+  /// No description provided for @remoteUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed for \"{name}\": {error}'**
+  String remoteUploadFailed(String name, String error);
+
+  /// No description provided for @remoteDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Download failed: {error}'**
+  String remoteDownloadFailed(String error);
+
+  /// No description provided for @remoteCreateFolderFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create folder: {error}'**
+  String remoteCreateFolderFailed(String error);
+
+  /// No description provided for @remoteDeleteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete: {error}'**
+  String remoteDeleteFailed(String error);
+
+  /// No description provided for @remoteCopiedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied \"{name}\" to clipboard'**
+  String remoteCopiedToClipboard(String name);
+
+  /// No description provided for @remoteCutToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Cut \"{name}\" to clipboard'**
+  String remoteCutToClipboard(String name);
+
+  /// No description provided for @remoteDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted \"{name}\"'**
+  String remoteDeleted(String name);
+
+  /// No description provided for @remoteDownloadedToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{name}\" downloaded → local clipboard ready to paste'**
+  String remoteDownloadedToClipboard(String name);
+
+  /// No description provided for @remoteFilesReadyToUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} local file(s) ready to upload'**
+  String remoteFilesReadyToUpload(int count);
+
+  /// No description provided for @remoteItemsCut.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} remote item(s) cut'**
+  String remoteItemsCut(int count);
+
+  /// No description provided for @remoteItemsCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} remote item(s) copied'**
+  String remoteItemsCopied(int count);
+
+  /// No description provided for @vaultEnterPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter PIN to Unlock Wallet'**
+  String get vaultEnterPin;
+
+  /// No description provided for @vaultSetPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your 4-digit Wallet PIN'**
+  String get vaultSetPin;
+
+  /// No description provided for @vaultConfirmPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your 4-digit PIN'**
+  String get vaultConfirmPin;
+
+  /// No description provided for @vaultIncorrectPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect PIN. Try again!'**
+  String get vaultIncorrectPin;
+
+  /// No description provided for @vaultPinsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'PINs do not match. Try again!'**
+  String get vaultPinsDoNotMatch;
+
+  /// No description provided for @vaultPinSet.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN Set Successfully!'**
+  String get vaultPinSet;
+
+  /// No description provided for @vaultEnterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Password to Unlock'**
+  String get vaultEnterPassword;
+
+  /// No description provided for @vaultLockOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Lock Option'**
+  String get vaultLockOption;
+
+  /// No description provided for @vaultLockFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to lock {count} items.'**
+  String vaultLockFailed(int count);
+
+  /// No description provided for @vaultNoMatchingFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'No Matching Files'**
+  String get vaultNoMatchingFiles;
+
+  /// No description provided for @vaultEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Secure Vault is Empty'**
+  String get vaultEmpty;
+
+  /// No description provided for @vaultSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Try modifying your search text to locate hidden items.'**
+  String get vaultSearchHint;
+
+  /// No description provided for @vaultScrambleDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap {action} below to protect them.'**
+  String vaultScrambleDescription(String action);
+
+  /// No description provided for @vaultInPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'In-Place'**
+  String get vaultInPlace;
+
+  /// No description provided for @vaultSandbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Sandbox'**
+  String get vaultSandbox;
+
+  /// No description provided for @vaultProtectionMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Protection Mode'**
+  String get vaultProtectionMode;
+
+  /// No description provided for @vaultLockedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Locked At'**
+  String get vaultLockedAt;
+
+  /// No description provided for @vaultOriginalName.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Name'**
+  String get vaultOriginalName;
+
+  /// No description provided for @vaultOriginalPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Path'**
+  String get vaultOriginalPath;
+
+  /// No description provided for @vaultScrambledPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Scrambled Path'**
+  String get vaultScrambledPath;
+
+  /// No description provided for @vaultInPlaceScrambling.
+  ///
+  /// In en, this message translates to:
+  /// **'⚡ In-Place Scrambling'**
+  String get vaultInPlaceScrambling;
+
+  /// No description provided for @vaultIsolatedMove.
+  ///
+  /// In en, this message translates to:
+  /// **'🔒 Isolated Move (Sandbox)'**
+  String get vaultIsolatedMove;
+
+  /// No description provided for @settingsBackupFileMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup file does not exist'**
+  String get settingsBackupFileMissing;
+
+  /// No description provided for @settingsBackupInvalidFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid backup file format'**
+  String get settingsBackupInvalidFormat;
+
   /// No description provided for @processingItem.
   ///
   /// In en, this message translates to:

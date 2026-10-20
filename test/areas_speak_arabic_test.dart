@@ -103,6 +103,8 @@ void main() {
     'the directory',
     'the media and the viewers',
     'the storage analyzer',
+    'the settings',
+    'the connections and the vault',
   ];
 
   for (final area in migrated) {
