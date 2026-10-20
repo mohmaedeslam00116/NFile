@@ -125,7 +125,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get noFilesToShare => 'لا توجد ملفات للمشاركة.';
+  String get noFilesToShare => 'لا توجد ملفات للمشاركة';
 
   @override
   String get deleteSelected => 'حذف المحدَّد';
@@ -1454,579 +1454,386 @@ class AppLocalizationsAr extends AppLocalizations {
   String get backupAndRestoreHint => 'احفظ إعداداتك في ملف JSON أو استعدها';
 
   @override
-  String get compressingFiles => 'يجري ضغط الملفات';
+  String get ftpServerStopped => 'أُوقف خادم FTP بنجاح';
 
   @override
-  String get extractingArchive => 'يجري استخراج الأرشيف';
-
-  @override
-  String errorReadingSharedFile(String error) {
-    return 'خطأ في قراءة الملف 공유ًا: $error';
+  String ftpServerStartedAt(String address) {
+    return 'بدأ خادم FTP على $address';
   }
 
   @override
-  String extractedTo(String item, String folder) {
-    return 'استُخرج $item إلى $folder';
+  String errorStartingFtpServer(String error) {
+    return 'خطأ في بدء خادم FTP: $error';
   }
 
   @override
-  String itemsCopiedToClipboard(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'نُسخت $count عنصر إلى الحافظة ✓',
-      many: 'نُسخت $count عنصرًا إلى الحافظة ✓',
-      few: 'نُسخت $count عناصر إلى الحافظة ✓',
-      two: 'نُسخ عنصران إلى الحافظة ✓',
-      one: 'نُسخ عنصر واحد إلى الحافظة ✓',
-      zero: 'نُسخ 0 عناصر إلى الحافظة ✓',
-    );
-    return '$_temp0';
+  String get stopServerBeforeChanging => 'أوقف الخادم قبل تغيير الإعدادات';
+
+  @override
+  String get changePort => 'تغيير المنفذ';
+
+  @override
+  String get portNumber => 'رقم المنفذ';
+
+  @override
+  String get invalidPortNumber => 'رقم المنفذ غير صالح';
+
+  @override
+  String get setUsername => 'تعيين اسم المستخدم';
+
+  @override
+  String get usernameNotEmpty => 'لا يمكن ترك اسم المستخدم فارغًا';
+
+  @override
+  String get stopServerBeforeEditing => 'أوقف الخادم قبل تعديل الإعدادات';
+
+  @override
+  String get ftpShortcutAdded => 'أُضيف اختصار خادم FTP إلى الشاشة الرئيسية!';
+
+  @override
+  String get changeDirectory => 'تغيير المجلد';
+
+  @override
+  String get changePortLower => 'تغيير المنفذ';
+
+  @override
+  String get setUser => 'تعيين المستخدم';
+
+  @override
+  String get anonymousAccess => 'وصول مجهول';
+
+  @override
+  String get createShortcut => 'إنشاء اختصار';
+
+  @override
+  String get networkStatus => 'حالة الشبكة';
+
+  @override
+  String get serverAddress => 'عنوان الخادم';
+
+  @override
+  String get homeDirectory => 'المجلد الرئيسي';
+
+  @override
+  String get userName => 'اسم المستخدم';
+
+  @override
+  String get showHiddenFilesLower => 'إظهار الملفات المخفية';
+
+  @override
+  String get secureFtpHint => 'اتصال FTP آمن عبر TLS صريح';
+
+  @override
+  String connectionAdded(String name) {
+    return 'أُضيف «$name» بنجاح!';
   }
 
   @override
-  String get deleteSelectedItems => 'حذف العناصر المحدَّدة';
+  String get systemAppDisabled => 'تطبيق النظام معطّل';
 
   @override
-  String deleteItemsFromArchiveQuestion(int count) {
-    return 'هل تريد بالتأكيد حذف هذه $count عناصر من الأرشيف؟ لا يمكن التراجع عن ذلك.';
+  String get noDocumentsApp =>
+      'لا يوجد في جهازك تطبيق افتراضي لملفات النظام/المستندات (DocumentsUI) مفعّل، وهو مطلوب من أندرويد لاختيار المجلدات وتثبيتها.\n\nتأكّد من أن تطبيق النظام \"الملفات\" أو \"المستندات\" معطّل في إعدادات جهازك، أو فعّله لاستخدام ميزات مجلدات SAF.';
+
+  @override
+  String failedToRequestSafFolder(String error) {
+    return 'فشل طلب مجلد SAF: $error';
   }
 
   @override
-  String get itemsDeletedSuccessfully => 'حُذفت العناصر بنجاح ✓';
+  String get enterConnectionName => 'الرجاء إدخال اسم الاتصال';
 
   @override
-  String get failedToDeleteItems => 'فشل حذف العناصر';
+  String get enterServerAddress => 'الرجاء إدخال عنوان الخادم أو اسم المضيف';
 
   @override
-  String addedToArchive(int count) {
-    return 'أُضيف $count عنصر إلى الأرشيف بنجاح ✓';
+  String connectedSuccessfully(String name) {
+    return 'اتصل «$name» بنجاح!';
   }
 
   @override
-  String pastedIntoArchive(int count) {
-    return 'لُصق $count عنصر في الأرشيف ✓';
+  String connectionFailed(String error) {
+    return 'فشل الاتصال: $error';
   }
 
   @override
-  String selectedCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'محدَّد $count',
-      many: 'محدَّد $count',
-      few: 'محدَّد $count',
-      two: 'محدَّدان',
-      one: 'محدَّد واحد',
-      zero: 'لا محدَّد',
-    );
-    return '$_temp0';
+  String get remoteConnections => 'الاتصالات البعيدة';
+
+  @override
+  String stepOf(int current, int total) {
+    return 'الخطوة $current من $total';
   }
 
   @override
-  String get couldNotReadArchive => 'تعذّرت قراءة الأرشيف';
+  String get selectNetworkService => 'اختر خدمة الشبكة';
 
   @override
-  String get extractToCurrentFolder => 'استخراج إلى المجلد الحالي';
+  String get selectNetworkServiceHint =>
+      'ثبّت خادمًا بعيدًا أو مشاركة NAS كقرص ديناميكي ضمن قوائم تخزين NFile.';
 
   @override
-  String pasteHereCount(int count) {
-    return 'ألصق هنا ($count)';
+  String selectedTypeSettings(String type) {
+    return 'إعدادات $type';
   }
 
   @override
-  String get addFile => 'إضافة ملف';
+  String get enterConnectionDetails =>
+      'أدخل بيانات الاتصال لربط وحدة التخزين هذه.';
 
   @override
-  String get losslessAudio => 'صوت بلا فقد';
+  String get connectionNameExample => 'مثال: NAS المكتب، مشاركة المنزل';
 
   @override
-  String get soundFx => 'مؤثرات صوتية';
+  String get connectionPathExample => 'مثال: /dav أو /';
 
   @override
-  String get sleepTimer => 'مؤقّت النوم';
+  String get connectionUserExample => 'مثال: anonymous أو admin';
 
   @override
-  String get playingQueue => 'قائمة التشغيل';
+  String get creatingMountPoint => 'يجري إنشاء نقطة التثبيت...';
 
   @override
-  String minutes(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count دقيقة',
-      many: '$count دقيقة',
-      few: '$count دقائق',
-      two: 'دقيقتان',
-      one: 'دقيقة واحدة',
-      zero: '0 دقيقة',
-    );
-    return '$_temp0';
+  String establishingPathway(String type) {
+    return 'انتظر من فضلك بينما نُنشئ مسارًا موثوقًا إلى خادم $type.';
   }
 
   @override
-  String sleepTimerSet(int count) {
-    return 'ضُبط مؤقّت النوم على $count دقيقة.';
+  String get httpsSecure => 'HTTPS (آمن)';
+
+  @override
+  String get deleteItem => 'حذف العنصر';
+
+  @override
+  String deleteRemoteItemQuestion(String name) {
+    return 'حذف «$name» نهائيًا من الخادم؟';
   }
 
   @override
-  String get soundAndSpeedFx => 'مؤثرات الصوت والسرعة';
+  String get newRemoteFolder => 'مجلد بعيد جديد';
 
   @override
-  String get playbackSpeed => 'سرعة التشغيل';
+  String get copyToLocalDevice => 'نسخ إلى الجهاز';
 
   @override
-  String get pitchAdjustment => 'ضبط النغمة';
+  String get copyToLocalDeviceHint => 'يُنزّل الملف إلى حافظة الجهاز';
 
   @override
-  String get resetToDefault => 'إعادة الضبط الافتراضي';
+  String get moveToLocalDevice => 'نقل إلى الجهاز';
 
   @override
-  String get backgroundPlaybackStopped => 'أُوقف التشغيل في الخلفية';
+  String get moveToLocalDeviceHint => 'يُنزّل الملف ويحذفه من الخادم';
 
   @override
-  String get backgroundPlaybackEnabled => 'فُعّل التشغيل في الخلفية';
-
-  @override
-  String get viewSynchronizedLyrics => 'عرض الكلمات المتزامنة';
-
-  @override
-  String get soundFxAndEqualizer => 'مؤثرات الصوت والمساواة';
-
-  @override
-  String get setSleepTimer => 'ضبط مؤقّت النوم';
-
-  @override
-  String get audioFileInfo => 'معلومات الملف الصوتي';
-
-  @override
-  String playingQueueCount(int count) {
-    return 'قائمة التشغيل ($count)';
+  String connectionTypeServer(String type) {
+    return 'خادم $type';
   }
 
   @override
-  String get lyricsLoaded => 'حُمّلت الكلمات بنجاح';
+  String get uploadClipboardToServer => 'رفع حافظة الجهاز إلى الخادم';
 
   @override
-  String get noSynchronizedLyrics => 'لم يُعثر على كلمات متزامنة';
+  String get connectionLost => 'انقطع الاتصال';
 
   @override
-  String get noSynchronizedLyricsHint =>
-      'ضع ملف .lrc بنفس اسم الأغنية بجوارها، أو اختره يدويًا أدناه.';
+  String get retryConnection => 'إعادة الاتصال';
 
   @override
-  String get loadLrcFile => 'تحميل ملف LRC';
+  String get emptyDirectory => 'مجلد فارغ';
 
   @override
-  String get tapLineToSeek => 'اضغط سطرًا للانتقال في التشغيل';
+  String get uploadClipboardHere => 'ارفع الحافظة هنا';
 
   @override
-  String get noDataToExport => 'لا توجد بيانات للتصدير.';
-
-  @override
-  String exportedTo(String file) {
-    return 'صُدِّر بنجاح إلى $file';
+  String errorLoadingVault(String error) {
+    return 'خطأ في تحميل الخزنة: $error';
   }
 
   @override
-  String exportFailed(String error) {
-    return 'فشل التصدير: $error';
+  String get chooseProtectionMode => 'اختر نمط الحماية';
+
+  @override
+  String get chooseProtectionModeHint =>
+      'اختر كيف تريد حماية ملفاتك المحدَّدة. تُشفَّر الملفات المحمية فورًا.';
+
+  @override
+  String get secureImportSandbox => 'استيراد آمن (صندوق عزل)';
+
+  @override
+  String get inPlaceScramble => 'تشويش في المكان (سريع)';
+
+  @override
+  String get scramblingProtecting => 'يجري التشويش والحماية...';
+
+  @override
+  String protectedItems(int count, String failed) {
+    return 'حُمي $count عنصرًا بنجاح.$failed';
   }
 
   @override
-  String get sqliteReader => 'قارئ قواعد بيانات SQLite';
-
-  @override
-  String get failedToOpenDatabase => 'فشل فتح قاعدة البيانات';
-
-  @override
-  String get noTablesFound => 'لم يُعثر على جداول في قاعدة البيانات هذه.';
-
-  @override
-  String get exportTableToCsv => 'تصدير الجدول إلى CSV';
-
-  @override
-  String get searchRows => 'ابحث في الصفوف...';
-
-  @override
-  String get noRowsFound => 'لم يُعثر على صفوف';
-
-  @override
-  String showingRange(int from, int to) {
-    return 'عرض $from - $to';
+  String restoredToOriginal(String name) {
+    return 'استُعيد «$name» إلى مكانه الأصلي.';
   }
 
   @override
-  String get noSchemaLoaded => 'لم تُحمَّل تفاصيل المخطط.';
-
-  @override
-  String schemaType(String type) {
-    return 'النوع: $type';
-  }
-
-  @override
-  String schemaDefault(String value) {
-    return 'القيمة الافتراضية: $value';
-  }
-
-  @override
-  String get sqlEditor => 'محرّر SQL';
-
-  @override
-  String get selectTemplate => 'قالب SELECT';
-
-  @override
-  String get enterSelectQuery => 'أدخل استعلام SELECT هنا...';
-
-  @override
-  String get exportResultsToCsv => 'تصدير النتائج إلى CSV';
-
-  @override
-  String get runQuery => 'تشغيل الاستعلام';
-
-  @override
-  String queryReturnedRows(int count) {
-    return 'أعاد الاستعلام $count صفًا';
-  }
-
-  @override
-  String errorLoading(String error) {
-    return 'خطأ في التحميل: $error';
-  }
-
-  @override
-  String get savedSuccessfully => 'حُفظ بنجاح ✓';
-
-  @override
-  String errorSaving(String error) {
-    return 'خطأ في الحفظ: $error';
-  }
-
-  @override
-  String get pdfDisplaySettings => 'إعدادات عرض PDF';
-
-  @override
-  String get pdfDisplaySettingsHint =>
-      'حسّن أداء العرض للمستندات الكبيرة أو الغنية بالتصميم أو الممسوحة ضوئيًا.';
-
-  @override
-  String get quickPerformancePresets => 'إعدادات أداء سريعة';
-
-  @override
-  String get standardMode => 'الوضع العادي';
-
-  @override
-  String get standardModeHint => 'الأفضل للمستندات النصية';
-
-  @override
-  String get lagFreeMode => 'وضع بلا تأخّر';
-
-  @override
-  String get lagFreeModeHint => 'الأفضل للمطابقات والصور';
-
-  @override
-  String get detailedTuning => 'خيارات ضبط تفصيلية';
-
-  @override
-  String get pageLayout => 'تخطيط الصفحة';
-
-  @override
-  String get singlePage => 'صفحة واحدة';
-
-  @override
-  String get scrollDirection => 'اتجاه التمرير';
-
-  @override
-  String get enableTextSelection => 'تفعيل تحديد النص';
-
-  @override
-  String get enableTextSelectionHint =>
-      'عطّله لزيادة سرعة عرض الصفحات بدرجة كبيرة وإزالة تقطّع التمرير.';
-
-  @override
-  String get displaySettings => 'إعدادات العرض';
-
-  @override
-  String get openWithLabel => 'فتح بـ';
-
-  @override
-  String get emptySheet => 'ورقة فارغة';
-
-  @override
-  String slideNumber(int number) {
-    return 'الشريحة $number';
-  }
-
-  @override
-  String get openWithApp => 'فتح بتطبيق';
-
-  @override
-  String get shareComingSoon => 'المشاركة قريبًا';
-
-  @override
-  String get htmlPreview => 'معاينة HTML';
-
-  @override
-  String get markdownPreview => 'معاينة Markdown';
-
-  @override
-  String imageIndexOfTotal(int current, int total) {
-    return '$current من $total';
-  }
-
-  @override
-  String get failedToLoadImage => 'فشل تحميل الصورة';
-
-  @override
-  String get confirmDeletion => 'تأكيد الحذف';
-
-  @override
-  String confirmPermanentDelete(int count) {
-    return 'هل تريد بالتأكيد حذف $count عنصرًا محدَّدًا نهائيًا؟';
-  }
-
-  @override
-  String deletedItemsCount(int count) {
-    return 'حُذف $count عنصرًا بنجاح';
-  }
-
-  @override
-  String pastedItemsTo(int count, String folder) {
-    return 'لُصق $count عنصر في $folder';
-  }
-
-  @override
-  String get noFilesToRename => 'لم يُعثر على ملفات فعلية لإعادة تسميتها';
-
-  @override
-  String get longPressToOpenWith => 'اضغط مطوّلًا للفتح بـ...';
-
-  @override
-  String copiedNameToClipboard(String name) {
-    return 'نُسخ $name إلى الحافظة';
-  }
-
-  @override
-  String cutNameToClipboard(String name) {
-    return 'نُقل $name إلى الحافظة';
-  }
-
-  @override
-  String permanentlyDeleteName(String name) {
-    return 'حذف «$name» نهائيًا؟';
-  }
-
-  @override
-  String deletedName(String name) {
-    return 'حُذف $name';
-  }
-
-  @override
-  String get fileNotShareable => 'الملف غير موجود أو لا يمكن مشاركته.';
-
-  @override
-  String get sortOptions => 'خيارات الترتيب';
-
-  @override
-  String get sortNewestFirst => 'الأحدث أولًا';
-
-  @override
-  String get sortOldestFirst => 'الأقدم أولًا';
-
-  @override
-  String get sortDateWise => 'حسب التاريخ';
-
-  @override
-  String get sortNewestGrouped => 'الأحدث أولًا (مجموعًا حسب الشهر)';
-
-  @override
-  String get sortOldestGrouped => 'الأقدم أولًا (مجموعًا حسب الشهر)';
-
-  @override
-  String get sortSizeLargeFirst => 'الحجم (الكبير أولًا)';
-
-  @override
-  String get sortSizeSmallFirst => 'الحجم (الصغير أولًا)';
-
-  @override
-  String noItemsOfKindFound(String kind) {
-    return 'لم يُعثر على $kind';
-  }
-
-  @override
-  String get allItems => 'كل العناصر';
-
-  @override
-  String countItems(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count عنصر',
-      many: '$count عنصرًا',
-      few: '$count عناصر',
-      two: 'عنصران',
-      one: 'عنصر واحد',
-      zero: '0 عناصر',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String restoredSuccessfully(int count) {
-    return 'استُعيد $count عنصر بنجاح';
-  }
-
-  @override
-  String errorRestoringItems(String error) {
-    return 'خطأ في استعادة العناصر: $error';
+  String failedToRestoreFile(String error) {
+    return 'فشل استعادة الملف: $error';
   }
 
   @override
   String get deletePermanentlyQuestion => 'حذف نهائي؟';
 
   @override
-  String deletePermanentlyQuestionHint(int count) {
-    return 'هل تريد بالتأكيد حذف هذه $count عناصر نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  String deletePermanentlyQuestionHint(String name) {
+    return 'هل تريد بالتأكيد حذف «$name» نهائيًا؟ لا يمكن التراجع عن ذلك.';
   }
 
   @override
-  String permanentlyDeleted(int count) {
-    return 'حُذف $count عنصرًا نهائيًا';
+  String get fileDeletedPermanently => 'حُذف الملف نهائيًا.';
+
+  @override
+  String failedToDeleteFile(String error) {
+    return 'فشل حذف الملف: $error';
   }
 
   @override
-  String errorDeletingItems(String error) {
-    return 'خطأ في حذف العناصر: $error';
+  String get decryptingSecurely => 'يجري فك التشفير بأمان...';
+
+  @override
+  String failedToDecryptItem(String error) {
+    return 'فشل فك تشفير العنصر وفتحه: $error';
   }
 
   @override
-  String get emptyRecycleBinQuestion => 'إفراغ سلة المحذوفات؟';
+  String get securityDetails => 'تفاصيل الأمان';
 
   @override
-  String get emptyRecycleBinQuestionHint =>
-      'هل تريد بالتأكيد حذف كل عناصر سلة المحذوفات نهائيًا؟ لا يمكن التراجع عن ذلك.';
+  String get searchScrambledFiles => 'ابحث في الملفات المشوّشة...';
 
   @override
-  String get emptyBin => 'إفراغ السلة';
+  String get hideFiles => 'إخفاء الملفات';
 
   @override
-  String get binEmptied => 'أُفرغت سلة المحذوفات بنجاح';
+  String get securityStorage => 'تخزين آمن';
 
   @override
-  String errorEmptyingBin(String error) {
-    return 'خطأ في إفراغ السلة: $error';
-  }
+  String get totalSpaceSecured => 'إجمالي المساحة المؤمَّنة';
 
   @override
-  String get searchDeletedFiles => 'ابحث في الملفات المحذوفة...';
+  String get hiddenFiles => 'الملفات المخفية';
 
   @override
-  String get emptyRecycleBinAction => 'إفراغ سلة المحذوفات';
-
-  @override
-  String originalPath(String path) {
-    return 'المسار الأصلي: $path';
-  }
-
-  @override
-  String deletedAtAndSize(String date, String size) {
-    return 'حُذف: $date • $size';
-  }
+  String get restoreUnhide => 'استعادة (إظهار)';
 
   @override
   String get deletePermanently => 'حذف نهائي';
 
   @override
-  String get recycleBinIsEmpty => 'سلة المحذوفات فارغة';
+  String get clearAll => 'مسح الكل';
 
   @override
-  String get recycleBinIsEmptyHint =>
-      'العناصر التي تحذفها عند تفعيل سلة المحذوفات تظهر هنا. يمكنك استعادتها أو حذفها نهائيًا.';
+  String get httpServerStopped => 'أُوقف خادم المشاركة المحلي عبر HTTP.';
 
   @override
-  String errorLoadingFile(String error) {
-    return 'خطأ في تحميل الملف: $error';
+  String httpServerStarted(String url) {
+    return 'بدأ خادم المشاركة المحلي عبر HTTP! الرابط: $url';
   }
 
   @override
-  String get fileSavedSuccessfully => 'حُفظ الملف بنجاح';
-
-  @override
-  String errorSavingFile(String error) {
-    return 'خطأ في حفظ الملف: $error';
+  String errorStartingHttpServer(String error) {
+    return 'خطأ في بدء خادم HTTP: $error';
   }
 
   @override
-  String replacedOccurrences(int count) {
-    return 'استُبدل $count موضعًا';
+  String get tunnelDeactivated => 'أُوقف نفق المشاركة عبر الإنترنت.';
+
+  @override
+  String get establishingRelay => 'يجري إنشاء وسيط آمن...';
+
+  @override
+  String get tunnelOnline => 'نفق الإنترنت السحابي متاح! الرابط المؤقت نشط.';
+
+  @override
+  String failedToStartCloudShare(String error) {
+    return 'فشل بدء المشاركة السحابية: $error';
   }
 
   @override
-  String get selectSyntax => 'اختر الصياغة';
+  String get linkCopied => 'نُسخ الرابط إلى الحافظة!';
 
   @override
-  String get findAndReplace => 'بحث / استبدال';
+  String get scanQrCode => 'امسح رمز QR';
 
   @override
-  String get saveFile => 'حفظ الملف';
-
-  @override
-  String get moreOptions => 'خيارات أخرى';
-
-  @override
-  String defaultZoom(int size) {
-    return 'التكبير الافتراضي ($size نقطة)';
+  String scanToOpen(String type) {
+    return 'امسح الرمز بجهاز آخر لفتح $type فورًا.';
   }
 
   @override
-  String syntaxOf(String language) {
-    return 'الصياغة ($language)';
-  }
+  String get webSharingHub => 'مركز المشاركة عبر الويب';
 
   @override
-  String get replaceWithDots => 'استبدل بـ...';
+  String get localWebShare => 'المشاركة المحلية عبر الويب';
 
   @override
-  String get replaceAll => 'استبدال الكل';
+  String get internetShareLink => 'رابط المشاركة عبر الإنترنت';
 
   @override
-  String get slideToUnlock => 'اسحب / اضغط لفتح القفل';
+  String get httpLocalShareServer => 'خادم المشاركة المحلي عبر HTTP';
 
   @override
-  String get lockControls => 'قفل أدوات التحكم';
+  String get httpLocalShareServerHint =>
+      'يسمح للأجهزة الأخرى على شبكة Wi-Fi نفسها بالوصول إلى ملفاتك وعرضها وبثها في متصفحها.';
 
   @override
-  String get repeatMode => 'وضع التكرار';
+  String get serverOnlineStreaming => 'الخادم متاح ويبثّ';
+
+  @override
+  String get directBrowserUrl => 'رابط المتصفح المباشر:';
 
   @override
   String get copyUrl => 'نسخ الرابط';
 
   @override
-  String get mediaPathCopied => 'نُسخ مسار الوسائط إلى الحافظة.';
+  String get qrCode => 'رمز QR';
 
   @override
-  String speedValue(double speed) {
-    return 'السرعة $speed×';
+  String sharingDirectory(String folder) {
+    return 'المجلد المُشارَك: $folder';
   }
 
   @override
-  String get continuousLayout => 'مستمر';
+  String get serverIdle => 'الخادم خامل';
 
   @override
-  String editorLanguageAndLines(String language, int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count سطر',
-      many: '$count سطرًا',
-      few: '$count أسطر',
-      two: 'سطران',
-      one: 'سطر واحد',
-      zero: '0 سطر',
-    );
-    return '$language  $_temp0';
-  }
+  String get serverIdleHint =>
+      'تأكّد أن الأجهزة الأخرى على شبكة Wi-Fi نفسها التي عليها هذا الجهاز، ثم ابدأ الخادم.';
 
   @override
-  String get editorModified => ' (معدَّل)';
+  String get internetShareTunnel => 'نفق المشاركة عبر الإنترنت';
+
+  @override
+  String get internetShareTunnelHint =>
+      'ينشئ رابط نفق عام مؤقتًا وآمنًا. شارك هذا الرابط مع أي شخص في أي مكان على الإنترنت ليُنزّل الملفات بسرعة عالية مهما كان حجمها.';
+
+  @override
+  String get cloudTunnelActive => 'نفق السحابة نشط';
+
+  @override
+  String get temporaryShareLink => 'رابط المشاركة المؤقت (نشط ٢٤ ساعة):';
+
+  @override
+  String get copyLink => 'نسخ الرابط';
+
+  @override
+  String get connectedClients => 'المتصفحات المتصلة';
+
+  @override
+  String get waitingForDownloads => 'في انتظار التنزيلات من الإنترنت...';
+
+  @override
+  String get internetSharingInactive => 'المشاركة عبر الإنترنت معطّلة';
+
+  @override
+  String get internetSharingInactiveHint =>
+      'فعّل النفق لإنشاء رابط آمن يعمل خارج شبكة Wi-Fi المحلية.';
 }

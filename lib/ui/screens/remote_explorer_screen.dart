@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -397,14 +398,14 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          title: const Text(
-            'Delete Item',
+          title: Text(
+            AppLocalizations.of(context).deleteItem,
             style: TextStyle(
               fontFamily: 'LexendDeca',
               fontWeight: FontWeight.bold,
             ),
           ),
-          content: Text('Delete "${item.name}" permanently from the server?'),
+          content: Text(AppLocalizations.of(context).deleteRemoteItemQuestion(item.name)),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx, false),
@@ -450,8 +451,8 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text(
-            'New Remote Folder',
+          title: Text(
+            AppLocalizations.of(context).newRemoteFolder,
             style: TextStyle(
               fontFamily: 'LexendDeca',
               fontSize: 18,
@@ -463,7 +464,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
             autofocus: true,
             style: const TextStyle(fontSize: 14),
             decoration: InputDecoration(
-              hintText: 'Folder name',
+              hintText: AppLocalizations.of(context).folderName,
               hintStyle: TextStyle(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.35),
               ),
@@ -636,8 +637,8 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                 _buildActionTile(
                   ctx,
                   icon: Icons.download_for_offline_rounded,
-                  label: 'Copy to Local Device',
-                  subtitle: 'Downloads file → local clipboard',
+                  label: AppLocalizations.of(context).copyToLocalDevice,
+                  subtitle: AppLocalizations.of(context).copyToLocalDeviceHint,
                   color: const Color(0xFF0D9488),
                   onTap: () {
                     Navigator.pop(ctx);
@@ -650,8 +651,8 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                 _buildActionTile(
                   ctx,
                   icon: Icons.drive_file_move_rtl_rounded,
-                  label: 'Move to Local Device',
-                  subtitle: 'Downloads and deletes from server',
+                  label: AppLocalizations.of(context).moveToLocalDevice,
+                  subtitle: AppLocalizations.of(context).moveToLocalDeviceHint,
                   color: const Color(0xFF7C3AED),
                   onTap: () {
                     Navigator.pop(ctx);
@@ -834,7 +835,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                 ),
               ),
               Text(
-                '${widget.connection.type} Server',
+                AppLocalizations.of(context).connectionTypeServer(widget.connection.type),
                 style: TextStyle(
                   fontSize: 11.5,
                   color: theme.colorScheme.primary,
@@ -870,7 +871,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                           ),
                         ],
                       ),
-                      tooltip: 'Upload local clipboard to server',
+                      tooltip: AppLocalizations.of(context).uploadClipboardToServer,
                       onPressed: _uploadFromLocalClipboard,
                     ),
                   // Paste remote clipboard
@@ -907,7 +908,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                     ),
                   IconButton(
                     icon: const Icon(Broken.folder_add, size: 20),
-                    tooltip: 'New Folder',
+                    tooltip: AppLocalizations.of(context).newFolder,
                     onPressed: _showAddFolderDialog,
                   ),
                 ]
@@ -932,7 +933,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Connection Lost',
+                        AppLocalizations.of(context).connectionLost,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -966,7 +967,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                           _initClient();
                         },
                         icon: const Icon(Icons.refresh_rounded),
-                        label: const Text('Retry Connection'),
+                        label: Text(AppLocalizations.of(context).retryConnection),
                       ),
                     ],
                   ),
@@ -1064,7 +1065,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                 ),
                                 const SizedBox(height: 14),
                                 Text(
-                                  'Empty Directory',
+                                  AppLocalizations.of(context).emptyDirectory,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -1080,7 +1081,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                                       Icons.upload_rounded,
                                       size: 16,
                                     ),
-                                    label: const Text('Upload Clipboard Here'),
+                                    label: Text(AppLocalizations.of(context).uploadClipboardHere),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor:
                                           theme.colorScheme.primary,

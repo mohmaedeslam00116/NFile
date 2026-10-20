@@ -269,7 +269,7 @@ abstract class AppLocalizations {
   /// No description provided for @noFilesToShare.
   ///
   /// In en, this message translates to:
-  /// **'No files available to share.'**
+  /// **'No files available to share'**
   String get noFilesToShare;
 
   /// No description provided for @deleteSelected.
@@ -2600,647 +2600,389 @@ abstract class AppLocalizations {
   /// **'Backup your settings to a JSON file or restore them'**
   String get backupAndRestoreHint;
 
-  /// No description provided for @compressingFiles.
+  /// No description provided for @ftpServerStopped.
   ///
   /// In en, this message translates to:
-  /// **'Compressing Files'**
-  String get compressingFiles;
+  /// **'FTP Server stopped successfully'**
+  String get ftpServerStopped;
 
-  /// No description provided for @extractingArchive.
+  /// No description provided for @ftpServerStartedAt.
   ///
   /// In en, this message translates to:
-  /// **'Extracting Archive'**
-  String get extractingArchive;
+  /// **'FTP Server started at {address}'**
+  String ftpServerStartedAt(String address);
 
-  /// No description provided for @errorReadingSharedFile.
+  /// No description provided for @errorStartingFtpServer.
   ///
   /// In en, this message translates to:
-  /// **'Error reading shared file: {error}'**
-  String errorReadingSharedFile(String error);
+  /// **'Error starting FTP Server: {error}'**
+  String errorStartingFtpServer(String error);
 
-  /// No description provided for @extractedTo.
+  /// No description provided for @stopServerBeforeChanging.
   ///
   /// In en, this message translates to:
-  /// **'Extracted {item} to {folder}'**
-  String extractedTo(String item, String folder);
+  /// **'Please stop the server before changing configuration'**
+  String get stopServerBeforeChanging;
 
-  /// No description provided for @itemsCopiedToClipboard.
+  /// No description provided for @changePort.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 item copied to clipboard ✓} other{{count} items copied to clipboard ✓}}'**
-  String itemsCopiedToClipboard(int count);
+  /// **'Change Port'**
+  String get changePort;
 
-  /// No description provided for @deleteSelectedItems.
+  /// No description provided for @portNumber.
   ///
   /// In en, this message translates to:
-  /// **'Delete Selected Items'**
-  String get deleteSelectedItems;
+  /// **'Port Number'**
+  String get portNumber;
 
-  /// No description provided for @deleteItemsFromArchiveQuestion.
+  /// No description provided for @invalidPortNumber.
   ///
   /// In en, this message translates to:
-  /// **'Are you sure you want to delete precisely these {count} item(s) from the archive? This cannot be undone.'**
-  String deleteItemsFromArchiveQuestion(int count);
+  /// **'Invalid port number'**
+  String get invalidPortNumber;
 
-  /// No description provided for @itemsDeletedSuccessfully.
+  /// No description provided for @setUsername.
   ///
   /// In en, this message translates to:
-  /// **'Items deleted successfully ✓'**
-  String get itemsDeletedSuccessfully;
+  /// **'Set Username'**
+  String get setUsername;
 
-  /// No description provided for @failedToDeleteItems.
+  /// No description provided for @usernameNotEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Failed to delete items'**
-  String get failedToDeleteItems;
+  /// **'Username cannot be empty'**
+  String get usernameNotEmpty;
 
-  /// No description provided for @addedToArchive.
+  /// No description provided for @stopServerBeforeEditing.
   ///
   /// In en, this message translates to:
-  /// **'Successfully added {count} item(s) into archive ✓'**
-  String addedToArchive(int count);
+  /// **'Stop the server before editing settings'**
+  String get stopServerBeforeEditing;
 
-  /// No description provided for @pastedIntoArchive.
+  /// No description provided for @ftpShortcutAdded.
   ///
   /// In en, this message translates to:
-  /// **'Pasted {count} item(s) into archive ✓'**
-  String pastedIntoArchive(int count);
+  /// **'FTP Server shortcut added to home screen!'**
+  String get ftpShortcutAdded;
 
-  /// No description provided for @selectedCount.
+  /// No description provided for @changeDirectory.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 Selected} other{{count} Selected}}'**
-  String selectedCount(int count);
+  /// **'Change directory'**
+  String get changeDirectory;
 
-  /// No description provided for @couldNotReadArchive.
+  /// No description provided for @changePortLower.
   ///
   /// In en, this message translates to:
-  /// **'Could not read archive'**
-  String get couldNotReadArchive;
+  /// **'Change port'**
+  String get changePortLower;
 
-  /// No description provided for @extractToCurrentFolder.
+  /// No description provided for @setUser.
   ///
   /// In en, this message translates to:
-  /// **'Extract to Current Folder'**
-  String get extractToCurrentFolder;
+  /// **'Set user'**
+  String get setUser;
 
-  /// No description provided for @pasteHereCount.
+  /// No description provided for @anonymousAccess.
   ///
   /// In en, this message translates to:
-  /// **'Paste Here ({count})'**
-  String pasteHereCount(int count);
+  /// **'Anonymous access'**
+  String get anonymousAccess;
 
-  /// No description provided for @addFile.
+  /// No description provided for @createShortcut.
   ///
   /// In en, this message translates to:
-  /// **'Add File'**
-  String get addFile;
+  /// **'Create shortcut'**
+  String get createShortcut;
 
-  /// No description provided for @losslessAudio.
+  /// No description provided for @networkStatus.
   ///
   /// In en, this message translates to:
-  /// **'Lossless Audio'**
-  String get losslessAudio;
+  /// **'Network status'**
+  String get networkStatus;
 
-  /// No description provided for @soundFx.
+  /// No description provided for @serverAddress.
   ///
   /// In en, this message translates to:
-  /// **'Sound FX'**
-  String get soundFx;
+  /// **'Server address'**
+  String get serverAddress;
 
-  /// No description provided for @sleepTimer.
+  /// No description provided for @homeDirectory.
   ///
   /// In en, this message translates to:
-  /// **'Sleep Timer'**
-  String get sleepTimer;
+  /// **'Home directory'**
+  String get homeDirectory;
 
-  /// No description provided for @playingQueue.
+  /// No description provided for @userName.
   ///
   /// In en, this message translates to:
-  /// **'Playing Queue'**
-  String get playingQueue;
+  /// **'User name'**
+  String get userName;
 
-  /// No description provided for @minutes.
+  /// No description provided for @showHiddenFilesLower.
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 minute} other{{count} minutes}}'**
-  String minutes(int count);
+  /// **'Show hidden files'**
+  String get showHiddenFilesLower;
 
-  /// No description provided for @sleepTimerSet.
+  /// No description provided for @secureFtpHint.
   ///
   /// In en, this message translates to:
-  /// **'Sleep timer set for {count} minutes.'**
-  String sleepTimerSet(int count);
+  /// **'Secure FTP connection over explicit TLS'**
+  String get secureFtpHint;
 
-  /// No description provided for @soundAndSpeedFx.
+  /// No description provided for @connectionAdded.
   ///
   /// In en, this message translates to:
-  /// **'Sound & Speed FX'**
-  String get soundAndSpeedFx;
+  /// **'\"{name}\" added successfully!'**
+  String connectionAdded(String name);
 
-  /// No description provided for @playbackSpeed.
+  /// No description provided for @systemAppDisabled.
   ///
   /// In en, this message translates to:
-  /// **'Playback Speed'**
-  String get playbackSpeed;
+  /// **'System App Disabled'**
+  String get systemAppDisabled;
 
-  /// No description provided for @pitchAdjustment.
+  /// No description provided for @noDocumentsApp.
   ///
   /// In en, this message translates to:
-  /// **'Pitch Adjustment'**
-  String get pitchAdjustment;
+  /// **'Your device does not have a default System Files/Documents app (DocumentsUI) enabled, which is required by Android to select and mount directories.\n\nPlease check if the \"Files\" or \"Documents\" system app is disabled in your device Settings, or enable it to use SAF directory features.'**
+  String get noDocumentsApp;
 
-  /// No description provided for @resetToDefault.
+  /// No description provided for @failedToRequestSafFolder.
   ///
   /// In en, this message translates to:
-  /// **'Reset to Default'**
-  String get resetToDefault;
+  /// **'Failed to request SAF folder: {error}'**
+  String failedToRequestSafFolder(String error);
 
-  /// No description provided for @backgroundPlaybackStopped.
+  /// No description provided for @enterConnectionName.
   ///
   /// In en, this message translates to:
-  /// **'Background playback stopped'**
-  String get backgroundPlaybackStopped;
+  /// **'Please enter a connection name'**
+  String get enterConnectionName;
 
-  /// No description provided for @backgroundPlaybackEnabled.
+  /// No description provided for @enterServerAddress.
   ///
   /// In en, this message translates to:
-  /// **'Background playback enabled'**
-  String get backgroundPlaybackEnabled;
+  /// **'Please enter server address / hostname'**
+  String get enterServerAddress;
 
-  /// No description provided for @viewSynchronizedLyrics.
+  /// No description provided for @connectedSuccessfully.
   ///
   /// In en, this message translates to:
-  /// **'View Synchronized Lyrics'**
-  String get viewSynchronizedLyrics;
+  /// **'\"{name}\" connected successfully!'**
+  String connectedSuccessfully(String name);
 
-  /// No description provided for @soundFxAndEqualizer.
+  /// No description provided for @connectionFailed.
   ///
   /// In en, this message translates to:
-  /// **'Sound FX & Equalizer'**
-  String get soundFxAndEqualizer;
+  /// **'Connection failed: {error}'**
+  String connectionFailed(String error);
 
-  /// No description provided for @setSleepTimer.
+  /// No description provided for @remoteConnections.
   ///
   /// In en, this message translates to:
-  /// **'Set Sleep Timer'**
-  String get setSleepTimer;
+  /// **'Remote Connections'**
+  String get remoteConnections;
 
-  /// No description provided for @audioFileInfo.
+  /// No description provided for @stepOf.
   ///
   /// In en, this message translates to:
-  /// **'Audio File Info'**
-  String get audioFileInfo;
+  /// **'Step {current} of {total}'**
+  String stepOf(int current, int total);
 
-  /// No description provided for @playingQueueCount.
+  /// No description provided for @selectNetworkService.
   ///
   /// In en, this message translates to:
-  /// **'Playing Queue ({count})'**
-  String playingQueueCount(int count);
+  /// **'Select Network Service'**
+  String get selectNetworkService;
 
-  /// No description provided for @lyricsLoaded.
+  /// No description provided for @selectNetworkServiceHint.
   ///
   /// In en, this message translates to:
-  /// **'Lyrics loaded successfully'**
-  String get lyricsLoaded;
+  /// **'Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.'**
+  String get selectNetworkServiceHint;
 
-  /// No description provided for @noSynchronizedLyrics.
+  /// No description provided for @selectedTypeSettings.
   ///
   /// In en, this message translates to:
-  /// **'No Synchronized Lyrics Found'**
-  String get noSynchronizedLyrics;
+  /// **'{type} Settings'**
+  String selectedTypeSettings(String type);
 
-  /// No description provided for @noSynchronizedLyricsHint.
+  /// No description provided for @enterConnectionDetails.
   ///
   /// In en, this message translates to:
-  /// **'Keep a .lrc file with the exact same name next to your song, or select it manually below.'**
-  String get noSynchronizedLyricsHint;
+  /// **'Enter connection details to link this network volume.'**
+  String get enterConnectionDetails;
 
-  /// No description provided for @loadLrcFile.
+  /// No description provided for @connectionNameExample.
   ///
   /// In en, this message translates to:
-  /// **'Load LRC File'**
-  String get loadLrcFile;
+  /// **'e.g., Office NAS, Home Share'**
+  String get connectionNameExample;
 
-  /// No description provided for @tapLineToSeek.
+  /// No description provided for @connectionPathExample.
   ///
   /// In en, this message translates to:
-  /// **'Tap a line to seek playback'**
-  String get tapLineToSeek;
+  /// **'e.g., /dav or /'**
+  String get connectionPathExample;
 
-  /// No description provided for @noDataToExport.
+  /// No description provided for @connectionUserExample.
   ///
   /// In en, this message translates to:
-  /// **'No data to export.'**
-  String get noDataToExport;
+  /// **'e.g., anonymous or admin'**
+  String get connectionUserExample;
 
-  /// No description provided for @exportedTo.
+  /// No description provided for @creatingMountPoint.
   ///
   /// In en, this message translates to:
-  /// **'Successfully exported to {file}'**
-  String exportedTo(String file);
+  /// **'Creating Mount Point...'**
+  String get creatingMountPoint;
 
-  /// No description provided for @exportFailed.
+  /// No description provided for @establishingPathway.
   ///
   /// In en, this message translates to:
-  /// **'Export failed: {error}'**
-  String exportFailed(String error);
+  /// **'Please wait while we establish a reliable pathway to the {type} server.'**
+  String establishingPathway(String type);
 
-  /// No description provided for @sqliteReader.
+  /// No description provided for @httpsSecure.
   ///
   /// In en, this message translates to:
-  /// **'SQLite Database Reader'**
-  String get sqliteReader;
+  /// **'HTTPS (Secure)'**
+  String get httpsSecure;
 
-  /// No description provided for @failedToOpenDatabase.
+  /// No description provided for @deleteItem.
   ///
   /// In en, this message translates to:
-  /// **'Failed to open database'**
-  String get failedToOpenDatabase;
+  /// **'Delete Item'**
+  String get deleteItem;
 
-  /// No description provided for @noTablesFound.
+  /// No description provided for @deleteRemoteItemQuestion.
   ///
   /// In en, this message translates to:
-  /// **'No tables found in this database.'**
-  String get noTablesFound;
+  /// **'Delete \"{name}\" permanently from the server?'**
+  String deleteRemoteItemQuestion(String name);
 
-  /// No description provided for @exportTableToCsv.
+  /// No description provided for @newRemoteFolder.
   ///
   /// In en, this message translates to:
-  /// **'Export Table to CSV'**
-  String get exportTableToCsv;
+  /// **'New Remote Folder'**
+  String get newRemoteFolder;
 
-  /// No description provided for @searchRows.
+  /// No description provided for @copyToLocalDevice.
   ///
   /// In en, this message translates to:
-  /// **'Search rows...'**
-  String get searchRows;
+  /// **'Copy to Local Device'**
+  String get copyToLocalDevice;
 
-  /// No description provided for @noRowsFound.
+  /// No description provided for @copyToLocalDeviceHint.
   ///
   /// In en, this message translates to:
-  /// **'No rows found'**
-  String get noRowsFound;
+  /// **'Downloads file → local clipboard'**
+  String get copyToLocalDeviceHint;
 
-  /// No description provided for @showingRange.
+  /// No description provided for @moveToLocalDevice.
   ///
   /// In en, this message translates to:
-  /// **'Showing {from} - {to}'**
-  String showingRange(int from, int to);
+  /// **'Move to Local Device'**
+  String get moveToLocalDevice;
 
-  /// No description provided for @noSchemaLoaded.
+  /// No description provided for @moveToLocalDeviceHint.
   ///
   /// In en, this message translates to:
-  /// **'No schema details loaded.'**
-  String get noSchemaLoaded;
+  /// **'Downloads and deletes from server'**
+  String get moveToLocalDeviceHint;
 
-  /// No description provided for @schemaType.
+  /// No description provided for @connectionTypeServer.
   ///
   /// In en, this message translates to:
-  /// **'Type: {type}'**
-  String schemaType(String type);
+  /// **'{type} Server'**
+  String connectionTypeServer(String type);
 
-  /// No description provided for @schemaDefault.
+  /// No description provided for @uploadClipboardToServer.
   ///
   /// In en, this message translates to:
-  /// **'Default: {value}'**
-  String schemaDefault(String value);
+  /// **'Upload local clipboard to server'**
+  String get uploadClipboardToServer;
 
-  /// No description provided for @sqlEditor.
+  /// No description provided for @connectionLost.
   ///
   /// In en, this message translates to:
-  /// **'SQL Editor'**
-  String get sqlEditor;
+  /// **'Connection Lost'**
+  String get connectionLost;
 
-  /// No description provided for @selectTemplate.
+  /// No description provided for @retryConnection.
   ///
   /// In en, this message translates to:
-  /// **'SELECT template'**
-  String get selectTemplate;
+  /// **'Retry Connection'**
+  String get retryConnection;
 
-  /// No description provided for @enterSelectQuery.
+  /// No description provided for @emptyDirectory.
   ///
   /// In en, this message translates to:
-  /// **'Enter SELECT query here...'**
-  String get enterSelectQuery;
+  /// **'Empty Directory'**
+  String get emptyDirectory;
 
-  /// No description provided for @exportResultsToCsv.
+  /// No description provided for @uploadClipboardHere.
   ///
   /// In en, this message translates to:
-  /// **'Export Results to CSV'**
-  String get exportResultsToCsv;
+  /// **'Upload Clipboard Here'**
+  String get uploadClipboardHere;
 
-  /// No description provided for @runQuery.
+  /// No description provided for @errorLoadingVault.
   ///
   /// In en, this message translates to:
-  /// **'Run Query'**
-  String get runQuery;
+  /// **'Error loading vault: {error}'**
+  String errorLoadingVault(String error);
 
-  /// No description provided for @queryReturnedRows.
+  /// No description provided for @chooseProtectionMode.
   ///
   /// In en, this message translates to:
-  /// **'Query returned {count} rows'**
-  String queryReturnedRows(int count);
+  /// **'Choose Protection Mode'**
+  String get chooseProtectionMode;
 
-  /// No description provided for @errorLoading.
+  /// No description provided for @chooseProtectionModeHint.
   ///
   /// In en, this message translates to:
-  /// **'Error loading: {error}'**
-  String errorLoading(String error);
+  /// **'Choose how you want to protect your selected files. Secured files are encrypted instantly.'**
+  String get chooseProtectionModeHint;
 
-  /// No description provided for @savedSuccessfully.
+  /// No description provided for @secureImportSandbox.
   ///
   /// In en, this message translates to:
-  /// **'Saved successfully ✓'**
-  String get savedSuccessfully;
+  /// **'Secure Import (Sandbox)'**
+  String get secureImportSandbox;
 
-  /// No description provided for @errorSaving.
+  /// No description provided for @inPlaceScramble.
   ///
   /// In en, this message translates to:
-  /// **'Error saving: {error}'**
-  String errorSaving(String error);
+  /// **'In-Place Scramble (Fast)'**
+  String get inPlaceScramble;
 
-  /// No description provided for @pdfDisplaySettings.
+  /// No description provided for @scramblingProtecting.
   ///
   /// In en, this message translates to:
-  /// **'PDF Display Settings'**
-  String get pdfDisplaySettings;
+  /// **'Scrambling & Protecting...'**
+  String get scramblingProtecting;
 
-  /// No description provided for @pdfDisplaySettingsHint.
+  /// No description provided for @protectedItems.
   ///
   /// In en, this message translates to:
-  /// **'Optimize rendering performance for large, design-heavy, or scanned documents.'**
-  String get pdfDisplaySettingsHint;
+  /// **'Protected {count} items successfully.{failed}'**
+  String protectedItems(int count, String failed);
 
-  /// No description provided for @quickPerformancePresets.
+  /// No description provided for @restoredToOriginal.
   ///
   /// In en, this message translates to:
-  /// **'Quick Performance Presets'**
-  String get quickPerformancePresets;
+  /// **'Restored \"{name}\" to its original location.'**
+  String restoredToOriginal(String name);
 
-  /// No description provided for @standardMode.
+  /// No description provided for @failedToRestoreFile.
   ///
   /// In en, this message translates to:
-  /// **'Standard Mode'**
-  String get standardMode;
-
-  /// No description provided for @standardModeHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Best for text documents'**
-  String get standardModeHint;
-
-  /// No description provided for @lagFreeMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Lag-Free Mode'**
-  String get lagFreeMode;
-
-  /// No description provided for @lagFreeModeHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Best for brochures & photos'**
-  String get lagFreeModeHint;
-
-  /// No description provided for @detailedTuning.
-  ///
-  /// In en, this message translates to:
-  /// **'Detailed Tuning Options'**
-  String get detailedTuning;
-
-  /// No description provided for @pageLayout.
-  ///
-  /// In en, this message translates to:
-  /// **'Page Layout'**
-  String get pageLayout;
-
-  /// No description provided for @singlePage.
-  ///
-  /// In en, this message translates to:
-  /// **'Single Page'**
-  String get singlePage;
-
-  /// No description provided for @scrollDirection.
-  ///
-  /// In en, this message translates to:
-  /// **'Scroll Direction'**
-  String get scrollDirection;
-
-  /// No description provided for @enableTextSelection.
-  ///
-  /// In en, this message translates to:
-  /// **'Enable Text Selection'**
-  String get enableTextSelection;
-
-  /// No description provided for @enableTextSelectionHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Disable to significantly boost page rendering speed and eliminate scroll stutter.'**
-  String get enableTextSelectionHint;
-
-  /// No description provided for @displaySettings.
-  ///
-  /// In en, this message translates to:
-  /// **'Display Settings'**
-  String get displaySettings;
-
-  /// No description provided for @openWithLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Open with'**
-  String get openWithLabel;
-
-  /// No description provided for @emptySheet.
-  ///
-  /// In en, this message translates to:
-  /// **'Empty Sheet'**
-  String get emptySheet;
-
-  /// No description provided for @slideNumber.
-  ///
-  /// In en, this message translates to:
-  /// **'SLIDE {number}'**
-  String slideNumber(int number);
-
-  /// No description provided for @openWithApp.
-  ///
-  /// In en, this message translates to:
-  /// **'Open with App'**
-  String get openWithApp;
-
-  /// No description provided for @shareComingSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Share coming soon'**
-  String get shareComingSoon;
-
-  /// No description provided for @htmlPreview.
-  ///
-  /// In en, this message translates to:
-  /// **'HTML Preview'**
-  String get htmlPreview;
-
-  /// No description provided for @markdownPreview.
-  ///
-  /// In en, this message translates to:
-  /// **'Markdown Preview'**
-  String get markdownPreview;
-
-  /// No description provided for @imageIndexOfTotal.
-  ///
-  /// In en, this message translates to:
-  /// **'{current} of {total}'**
-  String imageIndexOfTotal(int current, int total);
-
-  /// No description provided for @failedToLoadImage.
-  ///
-  /// In en, this message translates to:
-  /// **'Failed to load image'**
-  String get failedToLoadImage;
-
-  /// No description provided for @confirmDeletion.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm Deletion'**
-  String get confirmDeletion;
-
-  /// No description provided for @confirmPermanentDelete.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to permanently delete {count} selected items?'**
-  String confirmPermanentDelete(int count);
-
-  /// No description provided for @deletedItemsCount.
-  ///
-  /// In en, this message translates to:
-  /// **'Successfully deleted {count} items'**
-  String deletedItemsCount(int count);
-
-  /// No description provided for @pastedItemsTo.
-  ///
-  /// In en, this message translates to:
-  /// **'Pasted {count} items to {folder}'**
-  String pastedItemsTo(int count, String folder);
-
-  /// No description provided for @noFilesToRename.
-  ///
-  /// In en, this message translates to:
-  /// **'No physical files found to rename'**
-  String get noFilesToRename;
-
-  /// No description provided for @longPressToOpenWith.
-  ///
-  /// In en, this message translates to:
-  /// **'Long press to Open with...'**
-  String get longPressToOpenWith;
-
-  /// No description provided for @copiedNameToClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Copied {name} to clipboard'**
-  String copiedNameToClipboard(String name);
-
-  /// No description provided for @cutNameToClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Cut {name} to clipboard'**
-  String cutNameToClipboard(String name);
-
-  /// No description provided for @permanentlyDeleteName.
-  ///
-  /// In en, this message translates to:
-  /// **'Permanently delete \"{name}\"?'**
-  String permanentlyDeleteName(String name);
-
-  /// No description provided for @deletedName.
-  ///
-  /// In en, this message translates to:
-  /// **'Deleted {name}'**
-  String deletedName(String name);
-
-  /// No description provided for @fileNotShareable.
-  ///
-  /// In en, this message translates to:
-  /// **'File not found or not shareable.'**
-  String get fileNotShareable;
-
-  /// No description provided for @sortOptions.
-  ///
-  /// In en, this message translates to:
-  /// **'Sort Options'**
-  String get sortOptions;
-
-  /// No description provided for @sortNewestFirst.
-  ///
-  /// In en, this message translates to:
-  /// **'Newest First'**
-  String get sortNewestFirst;
-
-  /// No description provided for @sortOldestFirst.
-  ///
-  /// In en, this message translates to:
-  /// **'Oldest First'**
-  String get sortOldestFirst;
-
-  /// No description provided for @sortDateWise.
-  ///
-  /// In en, this message translates to:
-  /// **'Date Wise'**
-  String get sortDateWise;
-
-  /// No description provided for @sortNewestGrouped.
-  ///
-  /// In en, this message translates to:
-  /// **'Newest First (Grouped per month)'**
-  String get sortNewestGrouped;
-
-  /// No description provided for @sortOldestGrouped.
-  ///
-  /// In en, this message translates to:
-  /// **'Oldest First (Grouped per month)'**
-  String get sortOldestGrouped;
-
-  /// No description provided for @sortSizeLargeFirst.
-  ///
-  /// In en, this message translates to:
-  /// **'Size (Large First)'**
-  String get sortSizeLargeFirst;
-
-  /// No description provided for @sortSizeSmallFirst.
-  ///
-  /// In en, this message translates to:
-  /// **'Size (Small First)'**
-  String get sortSizeSmallFirst;
-
-  /// No description provided for @noItemsOfKindFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No {kind} found'**
-  String noItemsOfKindFound(String kind);
-
-  /// No description provided for @allItems.
-  ///
-  /// In en, this message translates to:
-  /// **'All Items'**
-  String get allItems;
-
-  /// No description provided for @countItems.
-  ///
-  /// In en, this message translates to:
-  /// **'{count, plural, =1{1 item} other{{count} items}}'**
-  String countItems(int count);
-
-  /// No description provided for @restoredSuccessfully.
-  ///
-  /// In en, this message translates to:
-  /// **'Restored {count} item(s) successfully'**
-  String restoredSuccessfully(int count);
-
-  /// No description provided for @errorRestoringItems.
-  ///
-  /// In en, this message translates to:
-  /// **'Error restoring items: {error}'**
-  String errorRestoringItems(String error);
+  /// **'Failed to restore file: {error}'**
+  String failedToRestoreFile(String error);
 
   /// No description provided for @deletePermanentlyQuestion.
   ///
@@ -3251,74 +2993,74 @@ abstract class AppLocalizations {
   /// No description provided for @deletePermanentlyQuestionHint.
   ///
   /// In en, this message translates to:
-  /// **'Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.'**
-  String deletePermanentlyQuestionHint(int count);
+  /// **'Are you sure you want to permanently delete \"{name}\"? This action CANNOT be undone.'**
+  String deletePermanentlyQuestionHint(String name);
 
-  /// No description provided for @permanentlyDeleted.
+  /// No description provided for @fileDeletedPermanently.
   ///
   /// In en, this message translates to:
-  /// **'Permanently deleted {count} item(s)'**
-  String permanentlyDeleted(int count);
+  /// **'File deleted permanently.'**
+  String get fileDeletedPermanently;
 
-  /// No description provided for @errorDeletingItems.
+  /// No description provided for @failedToDeleteFile.
   ///
   /// In en, this message translates to:
-  /// **'Error deleting items: {error}'**
-  String errorDeletingItems(String error);
+  /// **'Failed to delete file: {error}'**
+  String failedToDeleteFile(String error);
 
-  /// No description provided for @emptyRecycleBinQuestion.
+  /// No description provided for @decryptingSecurely.
   ///
   /// In en, this message translates to:
-  /// **'Empty Recycle Bin?'**
-  String get emptyRecycleBinQuestion;
+  /// **'Decrypting securely...'**
+  String get decryptingSecurely;
 
-  /// No description provided for @emptyRecycleBinQuestionHint.
+  /// No description provided for @failedToDecryptItem.
   ///
   /// In en, this message translates to:
-  /// **'Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.'**
-  String get emptyRecycleBinQuestionHint;
+  /// **'Failed to decrypt and open item: {error}'**
+  String failedToDecryptItem(String error);
 
-  /// No description provided for @emptyBin.
+  /// No description provided for @securityDetails.
   ///
   /// In en, this message translates to:
-  /// **'Empty Bin'**
-  String get emptyBin;
+  /// **'Security Details'**
+  String get securityDetails;
 
-  /// No description provided for @binEmptied.
+  /// No description provided for @searchScrambledFiles.
   ///
   /// In en, this message translates to:
-  /// **'Recycle Bin emptied successfully'**
-  String get binEmptied;
+  /// **'Search scrambled files...'**
+  String get searchScrambledFiles;
 
-  /// No description provided for @errorEmptyingBin.
+  /// No description provided for @hideFiles.
   ///
   /// In en, this message translates to:
-  /// **'Error emptying bin: {error}'**
-  String errorEmptyingBin(String error);
+  /// **'Hide Files'**
+  String get hideFiles;
 
-  /// No description provided for @searchDeletedFiles.
+  /// No description provided for @securityStorage.
   ///
   /// In en, this message translates to:
-  /// **'Search deleted files...'**
-  String get searchDeletedFiles;
+  /// **'SECURITY STORAGE'**
+  String get securityStorage;
 
-  /// No description provided for @emptyRecycleBinAction.
+  /// No description provided for @totalSpaceSecured.
   ///
   /// In en, this message translates to:
-  /// **'Empty Recycle Bin'**
-  String get emptyRecycleBinAction;
+  /// **'Total Space Secured'**
+  String get totalSpaceSecured;
 
-  /// No description provided for @originalPath.
+  /// No description provided for @hiddenFiles.
   ///
   /// In en, this message translates to:
-  /// **'Original Path: {path}'**
-  String originalPath(String path);
+  /// **'Hidden Files'**
+  String get hiddenFiles;
 
-  /// No description provided for @deletedAtAndSize.
+  /// No description provided for @restoreUnhide.
   ///
   /// In en, this message translates to:
-  /// **'Deleted: {date} • {size}'**
-  String deletedAtAndSize(String date, String size);
+  /// **'Restore (Unhide)'**
+  String get restoreUnhide;
 
   /// No description provided for @deletePermanently.
   ///
@@ -3326,107 +3068,113 @@ abstract class AppLocalizations {
   /// **'Delete Permanently'**
   String get deletePermanently;
 
-  /// No description provided for @recycleBinIsEmpty.
+  /// No description provided for @clearAll.
   ///
   /// In en, this message translates to:
-  /// **'Recycle Bin is Empty'**
-  String get recycleBinIsEmpty;
+  /// **'Clear All'**
+  String get clearAll;
 
-  /// No description provided for @recycleBinIsEmptyHint.
+  /// No description provided for @httpServerStopped.
   ///
   /// In en, this message translates to:
-  /// **'Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.'**
-  String get recycleBinIsEmptyHint;
+  /// **'Local HTTP Sharing Server stopped.'**
+  String get httpServerStopped;
 
-  /// No description provided for @errorLoadingFile.
+  /// No description provided for @httpServerStarted.
   ///
   /// In en, this message translates to:
-  /// **'Error loading file: {error}'**
-  String errorLoadingFile(String error);
+  /// **'Local HTTP Sharing Server started! URL: {url}'**
+  String httpServerStarted(String url);
 
-  /// No description provided for @fileSavedSuccessfully.
+  /// No description provided for @errorStartingHttpServer.
   ///
   /// In en, this message translates to:
-  /// **'File saved successfully'**
-  String get fileSavedSuccessfully;
+  /// **'Error starting HTTP Server: {error}'**
+  String errorStartingHttpServer(String error);
 
-  /// No description provided for @errorSavingFile.
+  /// No description provided for @tunnelDeactivated.
   ///
   /// In en, this message translates to:
-  /// **'Error saving file: {error}'**
-  String errorSavingFile(String error);
+  /// **'Internet Share Tunnel deactivated.'**
+  String get tunnelDeactivated;
 
-  /// No description provided for @replacedOccurrences.
+  /// No description provided for @establishingRelay.
   ///
   /// In en, this message translates to:
-  /// **'Replaced {count} occurrences'**
-  String replacedOccurrences(int count);
+  /// **'Establishing secure proxy relay...'**
+  String get establishingRelay;
 
-  /// No description provided for @selectSyntax.
+  /// No description provided for @tunnelOnline.
   ///
   /// In en, this message translates to:
-  /// **'Select Syntax'**
-  String get selectSyntax;
+  /// **'Internet cloud tunnel online! Temporary link active.'**
+  String get tunnelOnline;
 
-  /// No description provided for @findAndReplace.
+  /// No description provided for @failedToStartCloudShare.
   ///
   /// In en, this message translates to:
-  /// **'Find / Replace'**
-  String get findAndReplace;
+  /// **'Failed to start Cloud Share: {error}'**
+  String failedToStartCloudShare(String error);
 
-  /// No description provided for @saveFile.
+  /// No description provided for @linkCopied.
   ///
   /// In en, this message translates to:
-  /// **'Save File'**
-  String get saveFile;
+  /// **'Link copied to clipboard!'**
+  String get linkCopied;
 
-  /// No description provided for @moreOptions.
+  /// No description provided for @scanQrCode.
   ///
   /// In en, this message translates to:
-  /// **'More Options'**
-  String get moreOptions;
+  /// **'Scan QR Code'**
+  String get scanQrCode;
 
-  /// No description provided for @defaultZoom.
+  /// No description provided for @scanToOpen.
   ///
   /// In en, this message translates to:
-  /// **'Default Zoom ({size}pt)'**
-  String defaultZoom(int size);
+  /// **'Scan with another device to open {type} immediately.'**
+  String scanToOpen(String type);
 
-  /// No description provided for @syntaxOf.
+  /// No description provided for @webSharingHub.
   ///
   /// In en, this message translates to:
-  /// **'Syntax ({language})'**
-  String syntaxOf(String language);
+  /// **'Web Sharing Hub'**
+  String get webSharingHub;
 
-  /// No description provided for @replaceWithDots.
+  /// No description provided for @localWebShare.
   ///
   /// In en, this message translates to:
-  /// **'Replace with...'**
-  String get replaceWithDots;
+  /// **'Local Web Share'**
+  String get localWebShare;
 
-  /// No description provided for @replaceAll.
+  /// No description provided for @internetShareLink.
   ///
   /// In en, this message translates to:
-  /// **'Replace All'**
-  String get replaceAll;
+  /// **'Internet Share Link'**
+  String get internetShareLink;
 
-  /// No description provided for @slideToUnlock.
+  /// No description provided for @httpLocalShareServer.
   ///
   /// In en, this message translates to:
-  /// **'Slide / Tap to Unlock'**
-  String get slideToUnlock;
+  /// **'HTTP Local Share Server'**
+  String get httpLocalShareServer;
 
-  /// No description provided for @lockControls.
+  /// No description provided for @httpLocalShareServerHint.
   ///
   /// In en, this message translates to:
-  /// **'Lock Controls'**
-  String get lockControls;
+  /// **'Allows other devices on the same Wi-Fi to access, view, and stream your files in their web browser.'**
+  String get httpLocalShareServerHint;
 
-  /// No description provided for @repeatMode.
+  /// No description provided for @serverOnlineStreaming.
   ///
   /// In en, this message translates to:
-  /// **'Repeat Mode'**
-  String get repeatMode;
+  /// **'Server Online & Streaming'**
+  String get serverOnlineStreaming;
+
+  /// No description provided for @directBrowserUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct Browser URL:'**
+  String get directBrowserUrl;
 
   /// No description provided for @copyUrl.
   ///
@@ -3434,35 +3182,83 @@ abstract class AppLocalizations {
   /// **'Copy URL'**
   String get copyUrl;
 
-  /// No description provided for @mediaPathCopied.
+  /// No description provided for @qrCode.
   ///
   /// In en, this message translates to:
-  /// **'Media path copied to clipboard.'**
-  String get mediaPathCopied;
+  /// **'QR Code'**
+  String get qrCode;
 
-  /// No description provided for @speedValue.
+  /// No description provided for @sharingDirectory.
   ///
   /// In en, this message translates to:
-  /// **'Speed {speed}x'**
-  String speedValue(double speed);
+  /// **'Sharing Directory: {folder}'**
+  String sharingDirectory(String folder);
 
-  /// No description provided for @continuousLayout.
+  /// No description provided for @serverIdle.
   ///
   /// In en, this message translates to:
-  /// **'Continuous'**
-  String get continuousLayout;
+  /// **'Server is Idle'**
+  String get serverIdle;
 
-  /// No description provided for @editorLanguageAndLines.
+  /// No description provided for @serverIdleHint.
   ///
   /// In en, this message translates to:
-  /// **'{language}  {count, plural, =1{1 line} other{{count} lines}}'**
-  String editorLanguageAndLines(String language, int count);
+  /// **'Make sure other devices are on the same Wi-Fi network as this device, then start the server.'**
+  String get serverIdleHint;
 
-  /// No description provided for @editorModified.
+  /// No description provided for @internetShareTunnel.
   ///
   /// In en, this message translates to:
-  /// **'editorModified'**
-  String get editorModified;
+  /// **'Internet Share Tunnel'**
+  String get internetShareTunnel;
+
+  /// No description provided for @internetShareTunnelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Generates a secure temporary public tunnel link. Share this link with anyone anywhere on the internet to let them download files high-speed, no matter the file size.'**
+  String get internetShareTunnelHint;
+
+  /// No description provided for @cloudTunnelActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud Tunnel Active'**
+  String get cloudTunnelActive;
+
+  /// No description provided for @temporaryShareLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Temporary Share Link (Active 24h):'**
+  String get temporaryShareLink;
+
+  /// No description provided for @copyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Link'**
+  String get copyLink;
+
+  /// No description provided for @connectedClients.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected Browser Clients'**
+  String get connectedClients;
+
+  /// No description provided for @waitingForDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for incoming internet downloads...'**
+  String get waitingForDownloads;
+
+  /// No description provided for @internetSharingInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet Sharing Inactive'**
+  String get internetSharingInactive;
+
+  /// No description provided for @internetSharingInactiveHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate the tunnel to establish a secure link that works beyond local Wi-Fi.'**
+  String get internetSharingInactiveHint;
 }
 
 class _AppLocalizationsDelegate
