@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' as p;
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 
@@ -141,7 +142,7 @@ class TabOptionsSheet extends StatelessWidget {
             _buildMenuItem(
               context: context,
               icon: Broken.copy,
-              label: 'Duplicate Tab',
+              label: AppLocalizations.of(context).duplicateTab,
               onTap: () {
                 Navigator.pop(context);
                 provider.duplicateTab(tabIndex);
@@ -152,7 +153,7 @@ class TabOptionsSheet extends StatelessWidget {
               _buildMenuItem(
                 context: context,
                 icon: Broken.trash,
-                label: 'Close Tab',
+                label: AppLocalizations.of(context).closeTab,
                 color: Colors.redAccent,
                 onTap: () {
                   Navigator.pop(context);

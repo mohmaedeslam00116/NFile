@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/file_item_model.dart';
 import '../../models/file_filter_type.dart';
 import 'package:provider/provider.dart';
@@ -159,7 +160,7 @@ class FolderItem extends StatelessWidget {
                               final count = snapshot.data ?? 0;
                               final name = provider.getFilterTypeName(activeFilter, count);
                               return Text(
-                                '$count $name',
+                                AppLocalizations.of(context).countAndName(count, name),
                                 style: theme.textTheme.bodySmall?.copyWith(
                                   color: theme.colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -233,9 +234,9 @@ class FolderItem extends StatelessWidget {
                   itemBuilder: (context) {
                     return [
                       if (showShowInLocationOption)
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: 'show_in_location',
-                          child: Row(children: [NfileIcon(Broken.folder_open, size: 20), SizedBox(width: 12), Text('Show in location', style: TextStyle(fontWeight: FontWeight.w500))]),
+                          child: Row(children: [NfileIcon(Broken.folder_open, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).showInLocation, style: TextStyle(fontWeight: FontWeight.w500))]),
                         ),
                       if (showShowInLocationOption)
                         const PopupMenuItem(

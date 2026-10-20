@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/utils.dart';
 
@@ -92,8 +93,8 @@ class PremiumStorageOverview extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Internal Storage',
+                            Text(
+                              AppLocalizations.of(context).internalStorage,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -105,7 +106,7 @@ class PremiumStorageOverview extends StatelessWidget {
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              'Browse device files',
+                              AppLocalizations.of(context).browseDeviceFiles,
                               style: TextStyle(
                                 color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 11.5,
@@ -154,11 +155,11 @@ class PremiumStorageOverview extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '$usedStorageStr used',
+                        AppLocalizations.of(context).storageUsed(usedStorageStr),
                         style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 12),
                       ),
                       Text(
-                        '$totalStorageStr total',
+                        AppLocalizations.of(context).storageTotal(totalStorageStr),
                         style: TextStyle(color: Colors.white.withValues(alpha: 0.72), fontWeight: FontWeight.w500, fontSize: 12),
                       ),
                     ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 
 class OpenWithSheet extends StatefulWidget {
   final String fileName;
@@ -42,7 +43,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Open with...',
+                AppLocalizations.of(context).openWith,
                 style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -105,7 +106,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Built-in NFile Viewer',
+                              AppLocalizations.of(context).builtInViewer,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: _selectedType == 'native'
@@ -115,7 +116,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              "NFile's custom native experience",
+                              AppLocalizations.of(context).builtInViewerDescription,
                               style: TextStyle(
                                 fontSize: 12,
                                 color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -177,7 +178,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'System External App',
+                              AppLocalizations.of(context).systemExternalApp,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: _selectedType == 'external'
@@ -187,7 +188,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              "Open with third party apps on device",
+                              AppLocalizations.of(context).externalAppDescription,
                               style: TextStyle(
                                 fontSize: 12,
                                 color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
@@ -216,7 +217,7 @@ class _OpenWithSheetState extends State<OpenWithSheet> {
                       onPressed: () {
                         Navigator.pop(context, 'just_once_$_selectedType');
                       },
-                      child: const Text('Just once'),
+                      child: Text(AppLocalizations.of(context).justOnce),
                     ),
                   ),
                   const SizedBox(width: 12),

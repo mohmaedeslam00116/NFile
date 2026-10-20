@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/utils.dart';
 import '../screens/storage_analyzer/storage_analyzer_screen.dart';
@@ -301,11 +302,11 @@ class _SwipableStorageOverviewState extends State<SwipableStorageOverview> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '$freeStorageStr free',
+                                  AppLocalizations.of(context).storageFree(freeStorageStr),
                                   style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 12.5),
                                 ),
                                 Text(
-                                  '$totalStorageStr total',
+                                  AppLocalizations.of(context).storageTotal(totalStorageStr),
                                   style: TextStyle(color: Colors.white.withValues(alpha: 0.82), fontWeight: FontWeight.w500, fontSize: 12.5),
                                 ),
                               ],

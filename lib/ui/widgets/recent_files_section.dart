@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import '../../core/utils.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../providers/media_provider.dart';
 import '../../models/file_item_model.dart';
@@ -52,7 +53,7 @@ class RecentFilesSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Recent Files',
+                  AppLocalizations.of(context).recentFiles,
                   style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 InkWell(
@@ -66,7 +67,7 @@ class RecentFilesSection extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: Text(
-                      'View All',
+                      AppLocalizations.of(context).viewAll,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.primary,
                         fontWeight: FontWeight.bold,

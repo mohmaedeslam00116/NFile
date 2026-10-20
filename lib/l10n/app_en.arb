@@ -1,27 +1,323 @@
 {
-  "@@locale": "en",
   "appName": "NFile",
+  "openingSharedDocument": "Opening shared document...",
+  "resolvingSecureContent": "Resolving secure content stream",
+  "storageAccessRequired": "Storage Access Required",
+  "storageAccessExplanation": "NFile requires storage permission to manage, organize, and display your media files seamlessly.",
+  "grantPermission": "Grant Permission",
+  "couldNotOpenLink": "Could not open link: {url}",
+  "aboutNFile": "About NFile",
+  "appVersionWithChannel": "v{version} ({channel})",
+  "aboutDescription": "NFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.",
+  "coreHighlights": "Core Highlights",
+  "extremeSpeed": "Extreme Speed",
+  "statelessCaching": "Stateless caching & async scans",
+  "vaultSecure": "Vault Secure",
+  "encryptedWorkspace": "Encrypted safe workspace",
+  "serversHub": "Servers Hub",
+  "richUi": "Rich UI",
+  "amoledBlack": "AMOLED Black & beautiful seeds",
+  "connectAndShare": "Connect & Share",
+  "starOnRepository": "Star on Repository",
+  "joinTelegramChannel": "Join Telegram Channel",
+  "shareAppWithFriends": "Share App with Friends",
+  "exploreSourceCode": "Explore GitHub Source Code",
+  "madeWithLove": "Made with ❤️ by Rubex",
+  "copyrightNotice": "Copyright © 2026 NFile. All rights reserved.",
+  "copiedItemsToClipboard": "{count, plural, =1{Copied 1 item to clipboard} other{Copied {count} items to clipboard}}",
+  "cutItemsToClipboard": "{count, plural, =1{Cut 1 item to clipboard} other{Cut {count} items to clipboard}}",
+  "errorSharing": "Error sharing: {error}",
+  "noFilesToShare": "No files available to share",
+  "deleteSelected": "Delete Selected",
+  "successfullyDeletedItems": "Successfully deleted items",
+  "copiedToClipboard": "Copied to clipboard",
+  "cutToClipboard": "Cut to clipboard",
+  "enterNewName": "Enter new name",
+  "deleteFile": "Delete File",
+  "selectAll": "Select All",
+  "noRecentFiles": "No recent files",
+  "noRecentFilesHint": "Newly created or downloaded files will show up here.",
+  "selectedItemsWithSize": "{count} Selected ({size})",
+  "moreActions": "More Actions",
+  "dashboardRefreshed": "Dashboard refreshed successfully",
+  "exitApplication": "Exit Application",
+  "confirmExitMessage": "Are you sure you want to exit? Press back again or tap Exit to close the app.",
+  "pressBackAgainToExit": "Press back again to exit",
+  "myFiles": "My Files",
+  "refreshDashboard": "Refresh Dashboard",
+  "newTab": "New Tab",
+  "duplicateTab": "Duplicate Tab",
+  "closeOtherTabs": "Close Other Tabs",
+  "closeTab": "Close Tab",
+  "showInLocation": "Show in location",
+  "countAndName": "{count} {name}",
+  "countAndDate": "{count} • {date}",
+  "labelActive": "{label} Active",
+  "noMatchesFound": "No matching directories or files found",
+  "pathNotFound": "Path not found: {path}",
+  "enterAbsolutePath": "Enter absolute path...",
+  "copiedPath": "Copied: {path}",
+  "systemRoot": "System Root",
+  "globalSearch": "Global Search",
+  "recycleBin": "Recycle Bin",
+  "serversAndTools": "Servers & Tools",
+  "privateWallet": "Private Wallet",
+  "ftpServer": "FTP Server",
+  "webSharing": "Web Sharing",
+  "addRemoteConnection": "Add Remote Connection",
+  "quickCategories": "Quick Categories",
+  "addShortcut": "Add Shortcut",
+  "moreSettings": "More Settings",
+  "appVersion": "NFile v{version}",
+  "beautifulMediaSuite": "Beautiful Media Suite",
+  "openWith": "Open with...",
+  "builtInViewer": "Built-in NFile Viewer",
+  "builtInViewerDescription": "NFile's custom native experience",
+  "systemExternalApp": "System External App",
+  "externalAppDescription": "Open with third party apps on device",
+  "justOnce": "Just once",
+  "goToParentDirectory": "Go to Parent Directory",
+  "searchInTab": "Search in tab",
+  "noResults": "No results",
+  "emptyFolder": "Empty Folder",
+  "internalStorage": "Internal Storage",
+  "browseDeviceFiles": "Browse device files",
+  "storageUsed": "{size} used",
+  "storageTotal": "{size} total",
+  "storageUsedPercent": "{percent}% Used",
+  "storageFree": "{size} free",
+  "noShortcutsPinned": "No shortcuts pinned. Tap Customize to add.",
+  "customizeShortcuts": "Customize Shortcuts",
+  "dragToReorderHint": "Drag items by the handle (=) to reorder icons on the Home Screen.",
+  "addFolderFileShortcut": "Add Folder / File Shortcut",
+  "customPaths": "Custom Paths",
+  "customPathsCount": "{count} custom path(s)",
+  "deleteShortcut": "Delete Shortcut",
+  "defaultScanLocations": "Default Scan Locations:",
+  "restoreLocation": "Restore Location",
+  "excludeLocation": "Exclude Location",
+  "customScanLocations": "Custom Scan Locations:",
+  "noCustomPaths": "No custom paths added.",
+  "addCustomPath": "Add Custom Path",
+  "recentFiles": "Recent Files",
+  "viewAll": "View All",
+  "restrictedSystemFolder": "Restricted System Folder",
+  "restrictedFolderExplanation": "Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, NFile requires advanced permissions.",
+  "useRootAccess": "Use Root Access (Superuser)",
+  "grantShizukuAccess": "Grant Shizuku Access (No Root)",
+  "howToSetupShizuku": "How to setup Shizuku?",
+  "searchSettings": "Search settings...",
+  "failedToTransfer": "Failed to transfer: {error}",
+  "operationCancelled": "Operation Cancelled",
+  "failedToConnect": "Failed to connect to remote server: {error}",
+  "compressionLimitExceeded": "Compression Limit Exceeded",
+  "cannotMoveFolderIntoItself": "Cannot move a folder inside itself or same location",
+  "movedSuccessfully": "Moved {name} successfully",
+  "failedToMoveItem": "Failed to move item: {error}",
+  "cannotCopyFolderIntoItself": "Cannot copy a folder inside itself or same location",
+  "copiedSuccessfully": "Copied {name} successfully",
+  "failedToCopyItem": "Failed to copy item: {error}",
+  "sdCard": "sdCard",
+  "transferFailed": "Transfer failed: {error}",
+  "movedItemsSuccessfully": "Moved items successfully",
+  "copiedItemsSuccessfully": "Copied items successfully",
+  "releaseChannel": "releaseChannel",
   "@appName": {
     "description": "The name of the application. It is the same in every language."
   },
-  "openingSharedDocument": "Opening shared document...",
+  "@appVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@appVersionWithChannel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedItemsToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@copiedPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@couldNotOpenLink": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "@countAndDate": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@countAndName": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@customPathsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@cutItemsToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@errorSharing": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToConnect": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToCopyItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToMoveItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToTransfer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@grantPermission": {
+    "description": "The button that asks for the permission of the storage."
+  },
+  "@labelActive": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@movedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@openingSharedDocument": {
     "description": "Shown while a document that was shared with the application is opened."
   },
-  "resolvingSecureContent": "Resolving secure content stream",
+  "@pathNotFound": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
   "@resolvingSecureContent": {
     "description": "Shown under the message of the opening of a shared document."
   },
-  "storageAccessRequired": "Storage Access Required",
-  "@storageAccessRequired": {
-    "description": "The title of the screen that asks for the permission of the storage."
+  "@selectedItemsWithSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
   },
-  "storageAccessExplanation": "NFile requires storage permission to manage, organize, and display your media files seamlessly.",
   "@storageAccessExplanation": {
     "description": "The explanation under the title of the screen that asks for the permission of the storage."
   },
-  "grantPermission": "Grant Permission",
-  "@grantPermission": {
-    "description": "The button that asks for the permission of the storage."
+  "@storageAccessRequired": {
+    "description": "The title of the screen that asks for the permission of the storage."
+  },
+  "@storageFree": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageTotal": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageUsed": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageUsedPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "@transferFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   }
 }

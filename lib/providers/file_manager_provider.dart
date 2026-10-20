@@ -1,3 +1,4 @@
+import '../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
@@ -1839,7 +1840,7 @@ class FileManagerProvider extends ChangeNotifier {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(_isCut ? 'Moved items successfully' : 'Copied items successfully'),
+              content: Text(_isCut ? AppLocalizations.of(context).movedItemsSuccessfully : AppLocalizations.of(context).copiedItemsSuccessfully),
               behavior: SnackBarBehavior.floating,
             ),
           );
@@ -1849,7 +1850,7 @@ class FileManagerProvider extends ChangeNotifier {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Failed to transfer: $e'),
+              content: Text(AppLocalizations.of(context).failedToTransfer(e.toString())),
               backgroundColor: Colors.redAccent,
               behavior: SnackBarBehavior.floating,
             ),
@@ -1878,7 +1879,7 @@ class FileManagerProvider extends ChangeNotifier {
           if (context.mounted) {
             await FileActionDialogs.showWarningDialog(
               context,
-              title: 'Operation Cancelled',
+              title: AppLocalizations.of(context).operationCancelled,
               content: 'Cannot cut and paste a file into the same folder.',
             );
           }
@@ -2245,7 +2246,7 @@ class FileManagerProvider extends ChangeNotifier {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to connect to remote server: $e'),
+            content: Text(AppLocalizations.of(context).failedToConnect(e.toString())),
             backgroundColor: Colors.redAccent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -2319,7 +2320,7 @@ class FileManagerProvider extends ChangeNotifier {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(_isCut ? 'Moved items successfully' : 'Copied items successfully'),
+            content: Text(_isCut ? AppLocalizations.of(context).movedItemsSuccessfully : AppLocalizations.of(context).copiedItemsSuccessfully),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -2329,7 +2330,7 @@ class FileManagerProvider extends ChangeNotifier {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(e.toString().contains('Cancelled') ? 'Operation Cancelled' : 'Transfer failed: $e'),
+            content: Text(e.toString().contains('Cancelled') ? AppLocalizations.of(context).operationCancelled : AppLocalizations.of(context).transferFailed(e.toString())),
             backgroundColor: e.toString().contains('Cancelled') ? null : Colors.redAccent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -2647,7 +2648,7 @@ class FileManagerProvider extends ChangeNotifier {
         if (context != null && context.mounted) {
           await FileActionDialogs.showWarningDialog(
             context,
-            title: 'Compression Limit Exceeded',
+            title: AppLocalizations.of(context).compressionLimitExceeded,
             content: 'TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.',
           );
         }
@@ -2936,7 +2937,7 @@ class FileManagerProvider extends ChangeNotifier {
 
     if (sourcePath == destPath || destFolderPath.startsWith(sourcePath + p.separator)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cannot move a folder inside itself or same location')),
+        SnackBar(content: Text(AppLocalizations.of(context).cannotMoveFolderIntoItself)),
       );
       return;
     }
@@ -2988,14 +2989,14 @@ class FileManagerProvider extends ChangeNotifier {
 
       if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Moved $name successfully')),
+          SnackBar(content: Text(AppLocalizations.of(context).movedSuccessfully(name))),
         );
       }
     } catch (e) {
       debugPrint('Error moving item: $e');
       if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to move item: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToMoveItem(e.toString()))),
         );
       }
     }
@@ -3021,7 +3022,7 @@ class FileManagerProvider extends ChangeNotifier {
 
     if (sourcePath == destPath || destFolderPath.startsWith(sourcePath + p.separator)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cannot copy a folder inside itself or same location')),
+        SnackBar(content: Text(AppLocalizations.of(context).cannotCopyFolderIntoItself)),
       );
       return;
     }
@@ -3059,14 +3060,14 @@ class FileManagerProvider extends ChangeNotifier {
       
       if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Copied $name successfully')),
+          SnackBar(content: Text(AppLocalizations.of(context).copiedSuccessfully(name))),
         );
       }
     } catch (e) {
       debugPrint('Error copying item: $e');
       if (showToast && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to copy item: $e')),
+          SnackBar(content: Text(AppLocalizations.of(context).failedToCopyItem(e.toString()))),
         );
       }
     }

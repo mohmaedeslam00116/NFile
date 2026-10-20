@@ -1,3 +1,4 @@
+import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -155,9 +156,9 @@ class FileItem extends StatelessWidget {
                   itemBuilder: (context) {
                     return [
                       if (showShowInLocationOption)
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: 'show_in_location',
-                          child: Row(children: [NfileIcon(Broken.folder_open, size: 20), SizedBox(width: 12), Text('Show in location', style: TextStyle(fontWeight: FontWeight.w500))]),
+                          child: Row(children: [NfileIcon(Broken.folder_open, size: 20), SizedBox(width: 12), Text(AppLocalizations.of(context).showInLocation, style: TextStyle(fontWeight: FontWeight.w500))]),
                         ),
                       if (showShowInLocationOption)
                         const PopupMenuItem(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import 'tab_options_sheet.dart';
@@ -119,7 +120,7 @@ class DirectoryTabBar extends StatelessWidget implements PreferredSizeWidget {
             constraints: const BoxConstraints(),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             icon: const Icon(Broken.add, size: 20),
-            tooltip: 'New Tab',
+            tooltip: AppLocalizations.of(context).newTab,
             onPressed: () {
               provider.addTab(provider.rootPath);
             },
@@ -138,23 +139,23 @@ class DirectoryTabBar extends StatelessWidget implements PreferredSizeWidget {
               }
             },
             itemBuilder: (context) => [
-              const PopupMenuItem(
+              PopupMenuItem(
                 value: 'duplicate',
                 child: Row(
                   children: [
                     Icon(Broken.copy, size: 18),
                     SizedBox(width: 10),
-                    Text('Duplicate Tab', style: TextStyle(fontWeight: FontWeight.w500)),
+                    Text(AppLocalizations.of(context).duplicateTab, style: TextStyle(fontWeight: FontWeight.w500)),
                   ],
                 ),
               ),
-              const PopupMenuItem(
+              PopupMenuItem(
                 value: 'close_others',
                 child: Row(
                   children: [
                     Icon(Broken.close_circle, size: 18),
                     SizedBox(width: 10),
-                    Text('Close Other Tabs', style: TextStyle(fontWeight: FontWeight.w500)),
+                    Text(AppLocalizations.of(context).closeOtherTabs, style: TextStyle(fontWeight: FontWeight.w500)),
                   ],
                 ),
               ),

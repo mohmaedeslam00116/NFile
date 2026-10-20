@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
+import '../../core/app_version.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../screens/more_settings_screen.dart';
 import '../screens/vault_lock_screen.dart';
@@ -68,7 +70,7 @@ class NFileDrawer extends StatelessWidget {
                       _buildDrawerTile(
                         context,
                         icon: vol.isInternal ? Broken.folder_open : Icons.sd_storage_rounded,
-                        title: vol.name,
+                        title: _volumeLabel(context, vol),
                         isSelected: fileManager.rootPath == vol.path,
                         onTap: () {
                           Navigator.pop(context);
@@ -80,7 +82,7 @@ class NFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.cpu,
-                      title: 'System Root',
+                      title: AppLocalizations.of(context).systemRoot,
                       isSelected: fileManager.rootPath == '/',
                       onTap: () {
                         Navigator.pop(context);
@@ -92,7 +94,7 @@ class NFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.search_normal,
-                      title: 'Global Search',
+                      title: AppLocalizations.of(context).globalSearch,
                       onTap: () {
                         Navigator.pop(context);
                         onNavigateTab?.call(1);
@@ -112,7 +114,7 @@ class NFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.trash,
-                      title: 'Recycle Bin',
+                      title: AppLocalizations.of(context).recycleBin,
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.push(context, MaterialPageRoute(builder: (_) => const RecycleBinScreen()));
@@ -127,7 +129,7 @@ class NFileDrawer extends StatelessWidget {
                         child: ExpansionTile(
                           leading: NfileIcon(Broken.wifi_square, size: 22, color: theme.colorScheme.onSurface.withValues(alpha: 0.8)),
                           title: Text(
-                            'Servers & Tools',
+                            AppLocalizations.of(context).serversAndTools,
                             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface.withValues(alpha: 0.9)),
                           ),
                           iconColor: theme.colorScheme.primary,
@@ -138,7 +140,7 @@ class NFileDrawer extends StatelessWidget {
                             _buildDrawerTile(
                               context,
                               icon: Broken.lock,
-                              title: 'Private Wallet',
+                              title: AppLocalizations.of(context).privateWallet,
                               onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const VaultLockScreen()));
@@ -147,7 +149,7 @@ class NFileDrawer extends StatelessWidget {
                             _buildDrawerTile(
                               context,
                               icon: Broken.wifi,
-                              title: 'FTP Server',
+                              title: AppLocalizations.of(context).ftpServer,
                               onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const FtpServerScreen()));
@@ -156,7 +158,7 @@ class NFileDrawer extends StatelessWidget {
                             _buildDrawerTile(
                               context,
                               icon: Icons.language_rounded,
-                              title: 'Web Sharing',
+                              title: AppLocalizations.of(context).webSharing,
                               onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const WebSharingScreen()));
@@ -198,7 +200,7 @@ class NFileDrawer extends StatelessWidget {
                             _buildDrawerTile(
                               context,
                               icon: Icons.add_link_rounded,
-                              title: 'Add Remote Connection',
+                              title: AppLocalizations.of(context).addRemoteConnection,
                               onTap: () {
                                 Navigator.pop(context);
                                 Navigator.push(
@@ -221,7 +223,7 @@ class NFileDrawer extends StatelessWidget {
                         child: ExpansionTile(
                           leading: NfileIcon(Icons.category_rounded, size: 22, color: theme.colorScheme.onSurface.withValues(alpha: 0.8)),
                           title: Text(
-                            'Quick Categories',
+                            AppLocalizations.of(context).quickCategories,
                             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: theme.colorScheme.onSurface.withValues(alpha: 0.9)),
                           ),
                           iconColor: theme.colorScheme.primary,
@@ -247,7 +249,7 @@ class NFileDrawer extends StatelessWidget {
                             _buildDrawerTile(
                               context,
                               icon: Icons.add_rounded,
-                              title: 'Add Shortcut',
+                              title: AppLocalizations.of(context).addShortcut,
                               onTap: () async {
                                 final fileManager = context.read<FileManagerProvider>();
                                 final mediaProvider = context.read<MediaProvider>();
@@ -287,7 +289,7 @@ class NFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.setting_2,
-                      title: 'More Settings',
+                      title: AppLocalizations.of(context).moreSettings,
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsScreen()));
@@ -296,7 +298,7 @@ class NFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.info_circle,
-                      title: 'About NFile',
+                      title: AppLocalizations.of(context).aboutNFile,
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.push(
@@ -315,7 +317,7 @@ class NFileDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Text(
-                'NFile v1.0.42',
+                AppLocalizations.of(context).appVersion(AppVersion.current),
                 style: TextStyle(fontSize: 11.5, color: theme.colorScheme.onSurface.withValues(alpha: 0.4), fontWeight: FontWeight.w600),
               ),
             ),
@@ -371,7 +373,7 @@ class NFileDrawer extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Beautiful Media Suite',
+                  AppLocalizations.of(context).beautifulMediaSuite,
                   style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 12.5, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -445,6 +447,21 @@ class NFileDrawer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
       child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), height: 1),
     );
+  }
+
+  /// The name of a storage volume, in the language of the application.
+  ///
+  /// The name of a volume is the name of the device, and the provider holds
+  /// it as it is. The two names the application knows are translated here.
+  String _volumeLabel(BuildContext context, StorageVolume volume) {
+    final l10n = AppLocalizations.of(context);
+    if (volume.isInternal) return l10n.internalStorage;
+
+    final named = RegExp(r'^SD Card \((.*)\)$').firstMatch(volume.name);
+    if (named != null) return '${l10n.sdCard} (${named.group(1)})';
+    if (volume.name.startsWith('SD Card')) return l10n.sdCard;
+
+    return volume.name;
   }
 
 }

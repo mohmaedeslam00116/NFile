@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/file_item_model.dart';
 import '../../models/file_filter_type.dart';
 import 'package:provider/provider.dart';
@@ -159,7 +160,7 @@ class FolderGridItem extends StatelessWidget {
                                 final count = snapshot.data ?? 0;
                                 final name = provider.getFilterTypeName(activeFilter, count);
                                 return Text(
-                                  '$count $name',
+                                  AppLocalizations.of(context).countAndName(count, name),
                                   style: theme.textTheme.bodySmall?.copyWith(
                                     fontSize: 10 * (1 + (iconScale - 1) * 0.2),
                                     color: theme.colorScheme.primary,
