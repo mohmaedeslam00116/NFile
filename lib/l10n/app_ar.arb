@@ -23,7 +23,7 @@
   "shareAppWithFriends": "شارك التطبيق مع الأصدقاء",
   "exploreSourceCode": "استكشف شيفرة المصدر على GitHub",
   "madeWithLove": "صُنع بـ ❤️ بواسطة Rubex",
-  "copyrightNotice": "© 2026 NFile. جميع الحقوق محفوظة.",
+  "copyrightNotice": "NFile — رخصة GPL-3.0. الشفرة: github.com/mohmaedeslam00116/NFile",
   "copiedItemsToClipboard": "{count, plural, zero{نُسخت 0 عناصر إلى الحافظة} one{نُسخ عنصر واحد إلى الحافظة} two{نُسخ عنصران إلى الحافظة} few{نُسخت {count} عناصر إلى الحافظة} many{نُسخت {count} عنصرًا إلى الحافظة} other{نُسخت {count} عنصر إلى الحافظة}}",
   "cutItemsToClipboard": "{count, plural, zero{نُقل 0 عناصر إلى الحافظة} one{نُقل عنصر واحد إلى الحافظة} two{نُقل عنصران إلى الحافظة} few{نُقل {count} عناصر إلى الحافظة} many{نُقل {count} عنصرًا إلى الحافظة} other{نُقل {count} عنصر إلى الحافظة}}",
   "errorSharing": "خطأ في المشاركة: {error}",

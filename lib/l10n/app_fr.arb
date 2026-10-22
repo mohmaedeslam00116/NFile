@@ -23,7 +23,7 @@
   "shareAppWithFriends": "Share App with Friends",
   "exploreSourceCode": "Explore GitHub Source Code",
   "madeWithLove": "Made with ❤️ by Rubex",
-  "copyrightNotice": "Copyright © 2026 NFile. All rights reserved.",
+  "copyrightNotice": "NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile",
   "copiedItemsToClipboard": "{count, plural, =1{Copied 1 item to clipboard} other{Copied {count} items to clipboard}}",
   "cutItemsToClipboard": "{count, plural, =1{Cut 1 item to clipboard} other{Cut {count} items to clipboard}}",
   "errorSharing": "Error sharing: {error}",

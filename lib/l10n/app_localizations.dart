@@ -247,7 +247,7 @@ abstract class AppLocalizations {
   /// No description provided for @copyrightNotice.
   ///
   /// In en, this message translates to:
-  /// **'Copyright © 2026 NFile. All rights reserved.'**
+  /// **'NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile'**
   String get copyrightNotice;
 
   /// No description provided for @copiedItemsToClipboard.
