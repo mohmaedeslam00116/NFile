@@ -87,7 +87,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get madeWithLove => 'Made with ❤️ by Rubex';
 
   @override
-  String get copyrightNotice => 'Copyright © 2026 NFile. All rights reserved.';
+  String get copyrightNotice =>
+      'NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile';
 
   @override
   String copiedItemsToClipboard(int count) {

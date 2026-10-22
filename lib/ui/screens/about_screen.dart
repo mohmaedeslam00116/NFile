@@ -277,7 +277,7 @@ class AboutNFileScreen extends StatelessWidget {
                     context,
                     icon: Broken.magic_star,
                     label: AppLocalizations.of(context).starOnRepository,
-                    onTap: () => _launchUrl(context, 'https://github.com/Senzme/NFile'),
+                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/NFile'),
                   ),
                   const SizedBox(height: 10),
                   _buildSocialAction(
@@ -294,7 +294,7 @@ class AboutNFileScreen extends StatelessWidget {
                     onTap: () {
                       SharePlus.instance.share(ShareParams(
                         text: AppLocalizations.of(context).shareAppMessage(
-                          'https://github.com/Senzme/NFile/releases',
+                          'https://github.com/mohmaedeslam00116/NFile/releases',
                         ),
                         subject: AppLocalizations.of(context).appTagline,
                       ));
@@ -305,7 +305,7 @@ class AboutNFileScreen extends StatelessWidget {
                     context,
                     icon: Icons.code_rounded,
                     label: AppLocalizations.of(context).exploreSourceCode,
-                    onTap: () => _launchUrl(context, 'https://github.com/Senzme/NFile'),
+                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/NFile'),
                   ),
 
                   const SizedBox(height: 48),
