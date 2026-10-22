@@ -464,7 +464,9 @@
     "writeContentUri",
     "x-3ds",
     "x-file-name",
-    "{de}"
+    "{de}",
+    "chmod $mode \"$path\"",
+    "chown $owner \"$path\""
   ],
   "todo": []
 }
