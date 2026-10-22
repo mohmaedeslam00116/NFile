@@ -30,6 +30,8 @@
   "noFilesToShare": "لا توجد ملفات للمشاركة.",
   "deleteSelected": "حذف المحدَّد",
   "successfullyDeletedItems": "تم حذف العناصر بنجاح",
+  "deleteFailedItems": "فشل حذف {count} عنصر",
+  "pasteFailedItems": "فشل لصق {count} عنصر",
   "copiedToClipboard": "نُسخ إلى الحافظة",
   "cutToClipboard": "نُقل إلى الحافظة",
   "enterNewName": "أدخل اسمًا جديدًا",

@@ -30,6 +30,8 @@
   "noFilesToShare": "No files available to share.",
   "deleteSelected": "Delete Selected",
   "successfullyDeletedItems": "Successfully deleted items",
+  "deleteFailedItems": "Failed to delete {count} item(s)",
+  "pasteFailedItems": "Failed to paste {count} item(s)",
   "copiedToClipboard": "Copied to clipboard",
   "cutToClipboard": "Cut to clipboard",
   "enterNewName": "Enter new name",

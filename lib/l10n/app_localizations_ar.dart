@@ -134,6 +134,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successfullyDeletedItems => 'تم حذف العناصر بنجاح';
 
   @override
+  String deleteFailedItems(Object count) {
+    return 'فشل حذف $count عنصر';
+  }
+
+  @override
+  String pasteFailedItems(Object count) {
+    return 'فشل لصق $count عنصر';
+  }
+
+  @override
   String get copiedToClipboard => 'نُسخ إلى الحافظة';
 
   @override

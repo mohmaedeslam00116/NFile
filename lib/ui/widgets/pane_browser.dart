@@ -161,7 +161,16 @@ class _PaneBrowserState extends State<PaneBrowser> {
         );
         if (confirm) {
           if (isMulti) {
-            await provider.deleteSelected();
+            final failures = await provider.deleteSelected();
+            if (failures > 0 && context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(AppLocalizations.of(context).deleteFailedItems(failures)),
+                  backgroundColor: Colors.redAccent,
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+            }
           } else {
             await provider.deleteFile(path);
           }
