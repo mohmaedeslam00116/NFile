@@ -1774,19 +1774,26 @@ class FileManagerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteSelected() async {
-    if (selectedPaths.isEmpty) return;
+  Future<int> deleteSelected() async {
+    if (selectedPaths.isEmpty) return 0;
 
     activeTab.isLoading = true;
     notifyListeners();
 
-    try {
-      if (RecycleBinService.isEnabled()) {
-        for (final path in selectedPaths) {
+    int failures = 0;
+
+    if (RecycleBinService.isEnabled()) {
+      for (final path in selectedPaths) {
+        try {
           await RecycleBinService.moveToTrash(path, useRoot: useRootMode);
+        } catch (e) {
+          debugPrint('Error deleting selected file $path: $e');
+          failures++;
         }
-      } else {
-        for (final path in selectedPaths) {
+      }
+    } else {
+      for (final path in selectedPaths) {
+        try {
           if (isRestrictedPath(path)) {
             await RootShizukuService.deleteItem(path, useRoot: useRootMode);
           } else {
@@ -1799,23 +1806,25 @@ class FileManagerProvider extends ChangeNotifier {
           }
           // The per-path facts end with the path.
           await _deletePathFacts(path);
+        } catch (e) {
+          debugPrint('Error deleting selected file $path: $e');
+          failures++;
         }
       }
-    } catch (e) {
-      debugPrint('Error deleting selected files: $e');
     }
 
     selectedPaths.clear();
     activeTab.isLoading = false;
     await loadDirectory(currentPath, showLoading: false, clearCache: true);
+    return failures;
   }
 
-  Future<void> pasteFile(BuildContext context, {bool clearAfterPaste = true}) async {
-    if (_clipboardPaths.isEmpty && !_isRemoteClipboard) return;
+  Future<int> pasteFile(BuildContext context, {bool clearAfterPaste = true}) async {
+    if (_clipboardPaths.isEmpty && !_isRemoteClipboard) return 0;
 
     if (_isRemoteClipboard) {
       await _pasteFromRemoteToLocal(context, clearAfterPaste);
-      return;
+      return 0;
     }
 
     _isOperationCancelled = false;
@@ -1824,8 +1833,9 @@ class FileManagerProvider extends ChangeNotifier {
 
     final useRootMode = activeTab.useRootMode;
     if (isRestrictedPath(currentPath) || _clipboardPaths.any((p) => isRestrictedPath(p))) {
-      try {
-        for (final srcPath in _clipboardPaths) {
+      int failures = 0;
+      for (final srcPath in _clipboardPaths) {
+        try {
           final name = p.basename(srcPath);
           final destPath = p.join(currentPath, name);
           if (_isCut) {
@@ -1835,23 +1845,25 @@ class FileManagerProvider extends ChangeNotifier {
           } else {
             await RootShizukuService.copyItem(srcPath, destPath, useRoot: useRootMode);
           }
+        } catch (e) {
+          debugPrint('Error pasting inside restricted directory: $e');
+          failures++;
         }
-        
-        if (context.mounted) {
+      }
+
+      if (context.mounted) {
+        if (failures > 0) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(_isCut ? AppLocalizations.of(context).movedItemsSuccessfully : AppLocalizations.of(context).copiedItemsSuccessfully),
+              content: Text(AppLocalizations.of(context).pasteFailedItems(failures)),
+              backgroundColor: Colors.redAccent,
               behavior: SnackBarBehavior.floating,
             ),
           );
-        }
-      } catch (e) {
-        debugPrint('Error pasting inside restricted directory: $e');
-        if (context.mounted) {
+        } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(AppLocalizations.of(context).failedToTransfer(e.toString())),
-              backgroundColor: Colors.redAccent,
+              content: Text(_isCut ? AppLocalizations.of(context).movedItemsSuccessfully : AppLocalizations.of(context).copiedItemsSuccessfully),
               behavior: SnackBarBehavior.floating,
             ),
           );
@@ -1863,9 +1875,10 @@ class FileManagerProvider extends ChangeNotifier {
       activeTab.isLoading = false;
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
       notifyListeners();
-      return;
+      return failures;
     }
 
+    int failures = 0;
     try {
       // 1. Calculate total size and gather all files
       int totalBytes = 0;
@@ -1886,7 +1899,7 @@ class FileManagerProvider extends ChangeNotifier {
           clearClipboard();
           activeTab.isLoading = false;
           notifyListeners();
-          return;
+          return 0;
         }
 
         if (type == FileSystemEntityType.file) {
@@ -1974,6 +1987,7 @@ class FileManagerProvider extends ChangeNotifier {
           throw Exception('Cancelled');
         }
 
+        try {
         final item = itemsToProcess[i];
         final source = item['source'];
         String destPath = item['destPath'];
@@ -2151,7 +2165,22 @@ class FileManagerProvider extends ChangeNotifier {
               },
             );
           }
+          }
+        } catch (e) {
+          if (e.toString().contains('Cancelled')) rethrow;
+          debugPrint('Error pasting file item: $e');
+          failures++;
         }
+      }
+
+      if (failures > 0 && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context).pasteFailedItems(failures)),
+            backgroundColor: Colors.redAccent,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
       }
 
       if (_isCut) {
@@ -2196,13 +2225,16 @@ class FileManagerProvider extends ChangeNotifier {
       });
 
     } catch (e) {
-      debugPrint('Error pasting file: $e');
+      if (!e.toString().contains('Cancelled')) {
+        debugPrint('Error pasting file: $e');
+      }
     } finally {
       progressNotifier.value = null;
       activeTab.isLoading = false;
       await loadDirectory(currentPath, showLoading: false, clearCache: true);
       notifyListeners();
     }
+    return failures;
   }
 
   Future<void> _pasteFromRemoteToLocal(BuildContext context, bool clearAfterPaste) async {

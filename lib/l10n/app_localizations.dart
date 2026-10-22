@@ -284,6 +284,18 @@ abstract class AppLocalizations {
   /// **'Successfully deleted items'**
   String get successfullyDeletedItems;
 
+  /// No description provided for @deleteFailedItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete {count} item(s)'**
+  String deleteFailedItems(Object count);
+
+  /// No description provided for @pasteFailedItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to paste {count} item(s)'**
+  String pasteFailedItems(Object count);
+
   /// No description provided for @copiedToClipboard.
   ///
   /// In en, this message translates to:

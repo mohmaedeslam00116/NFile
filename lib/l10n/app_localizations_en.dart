@@ -126,6 +126,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successfullyDeletedItems => 'Successfully deleted items';
 
   @override
+  String deleteFailedItems(Object count) {
+    return 'Failed to delete $count item(s)';
+  }
+
+  @override
+  String pasteFailedItems(Object count) {
+    return 'Failed to paste $count item(s)';
+  }
+
+  @override
   String get copiedToClipboard => 'Copied to clipboard';
 
   @override
