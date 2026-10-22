@@ -14,6 +14,7 @@ import '../widgets/batch_rename_dialog.dart';
 import '../../core/l10n/filter_labels.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import '../../services/folder_share_service.dart';
+import '../../services/duplicate_finder_service.dart';
 import '../widgets/directory_tab_bar.dart';
 import '../../core/utils.dart';
 import '../widgets/selection_action_bar.dart';
@@ -113,6 +114,60 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
       _selectedFilter = filter;
     });
     _executeSearch();
+  }
+
+  Future<void> _findDuplicates() async {
+    final folder = _searchFolderPath;
+    if (folder == null || folder.isEmpty) return;
+    if (!mounted) return;
+    // Show a simple progress dialog.
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const Center(child: CircularProgressIndicator()),
+    );
+    Map<String, List<String>> groups = {};
+    try {
+      groups = await DuplicateFinderService.findDuplicates(folder);
+    } finally {
+      if (mounted) Navigator.of(context).pop();
+    }
+    if (!mounted) return;
+    if (groups.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context).noDuplicatesFound),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+      return;
+    }
+    // Show groups in a dialog.
+    if (!mounted) return;
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(AppLocalizations.of(ctx).findDuplicates),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView(
+            shrinkWrap: true,
+            children: groups.values.map((paths) {
+              return ListTile(
+                title: Text(AppLocalizations.of(ctx).duplicateGroupFiles(paths.length)),
+                subtitle: Text(paths.map((p) => p.split(RegExp(r'[\\/]')).last).join(', ')),
+              );
+            }).toList(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(AppLocalizations.of(ctx).actionClose),
+          ),
+        ],
+      ),
+    );
   }
 
   void _executeSearch() {
@@ -490,8 +545,14 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
         bottom: (_isSelectionMode || !fileProvider.enableMultipleTabs)
             ? null
             : DirectoryTabBar(provider: fileProvider),
-        actions: _isSelectionMode
-            ? [
+        actions: [
+          IconButton(
+            icon: const Icon(Broken.document),
+            tooltip: AppLocalizations.of(context).findDuplicates,
+            onPressed: _findDuplicates,
+          ),
+          ...(_isSelectionMode
+              ? [
                 IconButton(
                   icon: const Icon(Broken.document_copy),
                   tooltip: AppLocalizations.of(context).actionCopy,
@@ -567,7 +628,8 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                   ],
                 ),
               ]
-            : null,
+            : []),
+        ],
       ),
       body: GestureDetector(
         onHorizontalDragEnd: (details) {

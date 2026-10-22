@@ -126,6 +126,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successfullyDeletedItems => 'Successfully deleted items';
 
   @override
+  String duplicateGroupFiles(Object count) {
+    return '$count files';
+  }
+
+  @override
+  String get findDuplicates => 'Find duplicates';
+
+  @override
+  String get noDuplicatesFound => 'No duplicate files found.';
+
+  @override
   String deleteFailedItems(Object count) {
     return 'Failed to delete $count item(s)';
   }
