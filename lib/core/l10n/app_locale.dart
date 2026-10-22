@@ -3,8 +3,8 @@ import 'dart:ui';
 /// The language the application speaks.
 ///
 /// The application has no switch for the language: the language of the system
-/// is the language of the application. Only English and Arabic are supported
-/// for now, and a system that speaks anything else falls back to English.
+/// is the language of the application. English, Arabic, and French
+/// are supported, and a system that speaks anything else falls back to English.
 class AppLocale {
   const AppLocale._();
 
@@ -14,8 +14,11 @@ class AppLocale {
   /// The language of the application when the system speaks Arabic.
   static const Locale arabic = Locale('ar');
 
+  /// The language of the application when the system speaks French.
+  static const Locale french = Locale('fr');
+
   /// The languages the application speaks.
-  static const List<Locale> supported = [english, arabic];
+  static const List<Locale> supported = [english, arabic, french];
 
   /// The language the application speaks, given the languages of the system.
   ///
@@ -38,6 +41,11 @@ class AppLocale {
   /// The language of the application for a locale it speaks: the country of the
   /// system is dropped, so that Arabic of Egypt and Arabic of Saudi Arabia
   /// are the same language here.
-  static Locale _canonical(Locale locale) =>
-      locale.languageCode == arabic.languageCode ? arabic : english;
+  static Locale _canonical(Locale locale) {
+    if (locale.languageCode == arabic.languageCode) return arabic;
+    if (locale.languageCode == french.languageCode) return french;
+    return english;
+  }
 }
+
+

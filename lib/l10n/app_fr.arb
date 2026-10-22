@@ -1,0 +1,2596 @@
+{
+  "appName": "NFile",
+  "openingSharedDocument": "Opening shared document...",
+  "resolvingSecureContent": "Resolving secure content stream",
+  "storageAccessRequired": "Storage Access Required",
+  "storageAccessExplanation": "NFile requires storage permission to manage, organize, and display your media files seamlessly.",
+  "grantPermission": "Grant Permission",
+  "couldNotOpenLink": "Could not open link: {url}",
+  "aboutNFile": "About NFile",
+  "appVersionWithChannel": "v{version} ({channel})",
+  "aboutDescription": "NFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.",
+  "coreHighlights": "Core Highlights",
+  "extremeSpeed": "Extreme Speed",
+  "statelessCaching": "Stateless caching & async scans",
+  "vaultSecure": "Vault Secure",
+  "encryptedWorkspace": "Encrypted safe workspace",
+  "serversHub": "Servers Hub",
+  "richUi": "Rich UI",
+  "amoledBlack": "AMOLED Black & beautiful seeds",
+  "connectAndShare": "Connect & Share",
+  "starOnRepository": "Star on Repository",
+  "joinTelegramChannel": "Join Telegram Channel",
+  "shareAppWithFriends": "Share App with Friends",
+  "exploreSourceCode": "Explore GitHub Source Code",
+  "madeWithLove": "Made with ❤️ by Rubex",
+  "copyrightNotice": "Copyright © 2026 NFile. All rights reserved.",
+  "copiedItemsToClipboard": "{count, plural, =1{Copied 1 item to clipboard} other{Copied {count} items to clipboard}}",
+  "cutItemsToClipboard": "{count, plural, =1{Cut 1 item to clipboard} other{Cut {count} items to clipboard}}",
+  "errorSharing": "Error sharing: {error}",
+  "noFilesToShare": "No files available to share.",
+  "deleteSelected": "Delete Selected",
+  "successfullyDeletedItems": "Successfully deleted items",
+  "duplicateGroupFiles": "{count} files",
+  "findDuplicates": "Find duplicates",
+  "noDuplicatesFound": "No duplicate files found.",
+  "deleteFailedItems": "Failed to delete {count} item(s)",
+  "pasteFailedItems": "Failed to paste {count} item(s)",
+  "copiedToClipboard": "Copied to clipboard",
+  "cutToClipboard": "Cut to clipboard",
+  "enterNewName": "Enter new name",
+  "deleteFile": "Delete File",
+  "selectAll": "Select All",
+  "noRecentFiles": "No recent files",
+  "noRecentFilesHint": "Newly created or downloaded files will show up here.",
+  "selectedItemsWithSize": "{count} Selected ({size})",
+  "moreActions": "More Actions",
+  "dashboardRefreshed": "Dashboard refreshed successfully",
+  "exitApplication": "Exit Application",
+  "confirmExitMessage": "Are you sure you want to exit? Press back again or tap Exit to close the app.",
+  "pressBackAgainToExit": "Press back again to exit",
+  "myFiles": "My Files",
+  "refreshDashboard": "Refresh Dashboard",
+  "newTab": "New Tab",
+  "duplicateTab": "Duplicate Tab",
+  "closeOtherTabs": "Close Other Tabs",
+  "closeTab": "Close Tab",
+  "showInLocation": "Show in location",
+  "countAndName": "{count} {name}",
+  "countAndDate": "{count} • {date}",
+  "labelActive": "{label} Active",
+  "noMatchesFound": "No matching directories or files found",
+  "pathNotFound": "Path not found: {path}",
+  "enterAbsolutePath": "Enter absolute path...",
+  "copiedPath": "Copied: {path}",
+  "systemRoot": "System Root",
+  "globalSearch": "Global Search",
+  "recycleBin": "Recycle Bin",
+  "serversAndTools": "Servers & Tools",
+  "privateWallet": "Private Wallet",
+  "ftpServer": "FTP Server",
+  "webSharing": "Web Sharing",
+  "addRemoteConnection": "Add Remote Connection",
+  "quickCategories": "Quick Categories",
+  "addShortcut": "Add Shortcut",
+  "moreSettings": "More Settings",
+  "appVersion": "NFile v{version}",
+  "beautifulMediaSuite": "Beautiful Media Suite",
+  "openWith": "Open with...",
+  "builtInViewer": "Built-in NFile Viewer",
+  "builtInViewerDescription": "NFile's custom native experience",
+  "systemExternalApp": "System External App",
+  "externalAppDescription": "Open with third party apps on device",
+  "justOnce": "Just once",
+  "goToParentDirectory": "Go to Parent Directory",
+  "searchInTab": "Search in tab",
+  "noResults": "No results",
+  "emptyFolder": "Empty Folder",
+  "internalStorage": "Internal Storage",
+  "browseDeviceFiles": "Browse device files",
+  "storageUsed": "{size} used",
+  "storageTotal": "{size} total",
+  "storageUsedPercent": "{percent}% Used",
+  "storageFree": "{size} free",
+  "noShortcutsPinned": "No shortcuts pinned. Tap Customize to add.",
+  "customizeShortcuts": "Customize Shortcuts",
+  "dragToReorderHint": "Drag items by the handle (=) to reorder icons on the Home Screen.",
+  "addFolderFileShortcut": "Add Folder / File Shortcut",
+  "customPaths": "Custom Paths",
+  "customPathsCount": "{count} custom path(s)",
+  "deleteShortcut": "Delete Shortcut",
+  "defaultScanLocations": "Default Scan Locations:",
+  "restoreLocation": "Restore Location",
+  "excludeLocation": "Exclude Location",
+  "customScanLocations": "Custom Scan Locations:",
+  "noCustomPaths": "No custom paths added.",
+  "addCustomPath": "Add Custom Path",
+  "recentFiles": "Recent Files",
+  "viewAll": "View All",
+  "restrictedSystemFolder": "Restricted System Folder",
+  "restrictedFolderExplanation": "Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, NFile requires advanced permissions.",
+  "useRootAccess": "Use Root Access (Superuser)",
+  "grantShizukuAccess": "Grant Shizuku Access (No Root)",
+  "howToSetupShizuku": "How to setup Shizuku?",
+  "searchSettings": "Search settings...",
+  "failedToTransfer": "Failed to transfer: {error}",
+  "operationCancelled": "Operation Cancelled",
+  "failedToConnect": "Failed to connect to remote server: {error}",
+  "compressionLimitExceeded": "Compression Limit Exceeded",
+  "cannotMoveFolderIntoItself": "Cannot move a folder inside itself or same location",
+  "movedSuccessfully": "Moved {name} successfully",
+  "failedToMoveItem": "Failed to move item: {error}",
+  "cannotCopyFolderIntoItself": "Cannot copy a folder inside itself or same location",
+  "copiedSuccessfully": "Copied {name} successfully",
+  "failedToCopyItem": "Failed to copy item: {error}",
+  "sdCard": "SD Card",
+  "transferFailed": "Transfer failed: {error}",
+  "movedItemsSuccessfully": "Moved items successfully",
+  "copiedItemsSuccessfully": "Copied items successfully",
+  "releaseChannel": "releaseChannel",
+  "preparingShare": "Preparing folders for sharing...",
+  "compressingContents": "Compressing contents, please wait",
+  "noShareableItems": "No shareable items found.",
+  "errorPreparingShare": "Error preparing files to share: {error}",
+  "newFile": "New File",
+  "fileName": "File name",
+  "fileNameTaken": "\"{fileName}\" already exists. Created \"{createdName}\" instead.",
+  "newFolder": "New Folder",
+  "folderName": "Folder name",
+  "folderNameTaken": "\"{folderName}\" already exists. Created \"{createdName}\" instead.",
+  "createNewDirectory": "Create a new directory",
+  "createNewTextDocument": "Create a new empty text document",
+  "newArchive": "New Archive",
+  "compressFolderContents": "Compress current folder contents",
+  "viewAndSortOptions": "View & Sort Options",
+  "layoutMode": "Layout Mode",
+  "listView": "List View",
+  "gridView": "Grid View",
+  "sizeAndPaddingOptions": "Size & Padding Options",
+  "iconAndFolderSize": "Icon & Folder Size",
+  "itemPaddingAndSpacing": "Item Padding & Spacing",
+  "sortBy": "Sort By",
+  "showHiddenFiles": "Show Hidden Files",
+  "showHiddenHint": "Display system files and folders starting with a dot (.)",
+  "onlyThisFolder": "Only this folder",
+  "onlyThisFolderHint": "Enable custom sorting specific to this folder",
+  "storageVolumes": "Storage Volumes",
+  "networkConnections": "Network Connections",
+  "addNetworkConnection": "Add Network Connection",
+  "connectionTypeAndHost": "{type} • {host}",
+  "removeConnection": "Remove Connection",
+  "createNew": "Create New",
+  "foldersCount": "folders: {count}",
+  "filesCount": "files: {count}",
+  "noResultsFound": "No results found",
+  "nothingMatchesSearch": "We could not find anything matching \"{query}\" under {filter}",
+  "emptyFolderHint": "This directory does not contain any files or subfolders.",
+  "actionCancelled": "Action cancelled / Clipboard cleared",
+  "pastedHoldingClipboard": "Pasted (holding clipboard for multiple pastes)",
+  "pastedSuccessfully": "Pasted successfully",
+  "pasteHere": "Paste Here",
+  "selectMode": "Select Mode",
+  "storageVolumesAndSdCard": "Storage Volumes & SD Card",
+  "labelFilterActive": "{label} Filter Active",
+  "createFolder": "Create Folder",
+  "enterFolderName": "Enter folder name",
+  "errorCreatingFolder": "Error creating folder: {error}",
+  "selectStorageDrive": "Select Storage Drive",
+  "selectStorage": "Select Storage",
+  "clearSelection": "Clear Selection",
+  "folderIsEmpty": "Folder is empty",
+  "pinSelected": "Pin Selected ({count})",
+  "pinThisFolder": "Pin This Folder",
+  "addSelected": "Add Selected ({count})",
+  "overallProgress": "Overall Progress",
+  "renamingFiles": "Renaming files...",
+  "updatingFolderContent": "Please wait, updating folder content",
+  "batchRename": "Batch Rename",
+  "configuringItems": "Configuring {count} items",
+  "placeholderName": "% (Name)",
+  "placeholderNameHint": "Original name (%)",
+  "placeholderNum": "# (Num)",
+  "placeholderNumHint": "Sequential number (#)",
+  "placeholderTripleHint": "Triple sequential number (###)",
+  "placeholderBase": "{n} (Base)",
+  "placeholderBaseHint": "File name without extension ({n})",
+  "placeholderExtensionWithDot": "{de} (.ext)",
+  "placeholderExtensionWithDotHint": "Extension with dot ({de})",
+  "placeholderExtension": "{e} (ext)",
+  "placeholderExtensionHint": "Extension without dot ({e})",
+  "placeholderFull": "{N} (Full)",
+  "placeholderFullHint": "Full name with extension ({N})",
+  "namePattern": "Name Pattern",
+  "namePatternExample": "e.g. Image_#",
+  "startNumber": "Start Number",
+  "findText": "Find text",
+  "searchTerm": "Search term",
+  "replaceWith": "Replace with",
+  "renamePreview": "Rename Preview",
+  "reviewingItems": "Reviewing {count} items",
+  "backToEdit": "Back to Edit",
+  "applyChanges": "Apply Changes",
+  "fileAlreadyExists": "File Already Exists",
+  "fileConflictQuestion": "A file named \"{fileName}\" already exists in the destination folder. What would you like to do?",
+  "existingFile": "Existing File",
+  "applyToAllConflicts": "Apply to all remaining conflicts",
+  "cancelPaste": "Cancel Paste",
+  "keepBoth": "Keep Both",
+  "renameFile": "Rename File",
+  "newFilename": "New filename",
+  "createArchive": "Create Archive",
+  "archiveName": "Archive Name",
+  "archiveFormat": "Archive Format",
+  "compressionLevel": "Compression Level: {level}",
+  "passwordOptional": "Password (Optional)",
+  "splitVolumeSize": "Split Volume Size in MB (Optional)",
+  "splitVolumeSizeHint": "Leave empty for single archive",
+  "deleteSourceAfter": "Delete source files after completion",
+  "separateArchivePerFile": "Create separate archive for each file",
+  "dragAndDropOptions": "Drag & Drop Options",
+  "destinationLocation": "Destination Location",
+  "droppedFolder": "Dropped Folder",
+  "currentFolder": "Current Folder",
+  "chooseAction": "Choose Action",
+  "moveHere": "Move here",
+  "moveHereHint": "Cut & paste item into destination folder",
+  "copyHere": "Copy here",
+  "copyHereHint": "Leaves original file intact and duplicates here",
+  "archiveHere": "Archive here",
+  "archiveHereHint": "Compress item into a zip/tar archive here",
+  "archiveCreated": "Archive \"{name}\" created successfully!",
+  "failedToCreateArchive": "Failed to create archive: {error}",
+  "extractArchive": "Extract Archive",
+  "extractToFolder": "Extract to Folder",
+  "passwordIfEncrypted": "Password (if encrypted)",
+  "allFiles": "All Files",
+  "allFilesHint": "Show all files and folders in this directory",
+  "documentsOnly": "Documents only",
+  "documentsOnlyHint": "PDFs, Word docs, spreadsheets, texts, and e-books",
+  "imagesOnly": "Images only",
+  "imagesOnlyHint": "JPEGs, PNGs, WebPs, and raw photo formats",
+  "audioOnly": "Audio only",
+  "audioOnlyHint": "MP3s, WAVs, AACs, and high-fidelity audios",
+  "videosOnly": "Videos only",
+  "videosOnlyHint": "MP4s, MKVs, WebMs, and high-res video clips",
+  "archivesOnly": "Archives only",
+  "archivesOnlyHint": "ZIPs, 7Zs, RARs, and other compressed assets",
+  "filterFilesByType": "Filter Files By Type",
+  "filterFilesHint": "Select a category to display matching files only",
+  "filterAll": "All",
+  "filterFolders": "Folders",
+  "deleteSelectedItemsQuestion": "Are you sure you want to delete {count} selected item(s)? This cannot be undone.",
+  "deleteItemsQuestion": "Are you sure you want to delete {count} items? This cannot be undone.",
+  "deleteItemQuestion": "Are you sure you want to delete this item? This cannot be undone.",
+  "cannotCutPasteSameFolder": "Cannot cut and paste a file into the same folder.",
+  "shareAppMessage": "Check out NFile, a beautiful offline file manager and media hub: {url}",
+  "deviceGalleryAuto": "Device Gallery (Auto)",
+  "deviceAudioLibraryAuto": "Device Audio Library (Auto)",
+  "deviceGalleryScreenshots": "Device Gallery (Screenshots)",
+  "internalStorageAllFolders": "Internal Storage (All Folders Scanned)",
+  "searchYourStorage": "Search your storage",
+  "searchThisFolder": "Search this folder",
+  "searchEverythingHint": "Find any file, folder, document or media instantly across your device",
+  "searchInFolderNamed": "Search files and subfolders in: {folder}",
+  "noMatchForQuery": "We could not find anything matching \"{query}\" under {filter}",
+  "rootDirectory": "Root",
+  "copyFileSuffix": "(copy)",
+  "tarFormatsMemoryWarning": "TAR.ZSTD and TAR.LZ4 formats are highly memory-intensive and optimized for files under 600MB. Please use the ZIP or TAR format for larger files.",
+  "actionApply": "Apply",
+  "actionCreate": "Create",
+  "actionMore": "More",
+  "actionOk": "OK",
+  "actionPinToTop": "Pin to Top",
+  "actionUnpinFromTop": "Unpin from Top",
+  "actionPreview": "Preview",
+  "actionReplace": "Replace",
+  "actionSkip": "Skip",
+  "chooseAnyDestination": "Choose any destination",
+  "customLocation": "Custom Location",
+  "selectCustomLocation": "Select Custom Location...",
+  "propertyContains": "Contains",
+  "propertyExtension": "Extension",
+  "propertyModified": "Modified",
+  "propertyName": "Name",
+  "propertyPath": "Path",
+  "propertyPermissions": "Permissions",
+  "permissionRead": "Read",
+  "permissionWrite": "Write",
+  "propertySize": "Size",
+  "propertyType": "Type",
+  "propertyFolderDirectory": "Folder / Directory",
+  "itemFiles": "Files",
+  "fileWithExtension": "File ({extension})",
+  "fileLongPressHint": "File (Long press to Open with)",
+  "compressionFast": "Fast",
+  "compressionMaximum": "Maximum",
+  "compressionNone": "None (Store)",
+  "compressionStandard": "Standard",
+  "batchRenamePadding": "Padding",
+  "batchRenameReplacement": "Replacement",
+  "lessOptions": "Less Options",
+  "conflictNewer": "Newer",
+  "sortNameAscending": "Name (A-Z)",
+  "sortNameDescending": "Name (Z-A)",
+  "sortNewest": "Newest",
+  "sortOldest": "Oldest",
+  "sortSizeLarge": "Size (Large)",
+  "sortSizeSmall": "Size (Small)",
+  "showFolders": "Show Folders",
+  "hideFolders": "Hide Folders",
+  "selectFilesAndFolders": "Select Files & Folders",
+  "selectAndPinFolders": "Select & Pin Folders",
+  "pinnedItemsToTop": "Pinned selected item(s) to top",
+  "unpinnedItems": "Unpinned selected item(s)",
+  "emptyLabel": "(empty)",
+  "runInBackground": "Background",
+  "processingFiles": "Processing...",
+  "copyingFiles": "Copying Files...",
+  "movingFiles": "Moving Files...",
+  "calculating": "calculating...",
+  "searchInThisDirectory": "Search files and subfolders in this directory",
+  "countItemsSelected": "{count, plural, =1{1 item selected} other{{count} items selected}}",
+  "sizeWithBytes": "{size} ({bytes} bytes)",
+  "containsFoldersAndFiles": "{folders, plural, =0{no subfolders} =1{1 subfolder} other{{folders} subfolders}}, {files, plural, =0{no files} =1{1 file} other{{files} files}}",
+  "processedOfTotal": "{processed} of {total}",
+  "speedMegabytesPerSecond": "{speed} MB/s",
+  "timeRemaining": "{time} remaining",
+  "analyzerApplications": "Applications",
+  "analyzerBreakdown": "Breakdown",
+  "analyzerCalculatingAppsCapacity": "Calculating Apps capacity...",
+  "analyzerInitializing": "Initializing...",
+  "analyzerReadingSystemMemory": "Reading system memory...",
+  "analyzerBackedUpApks": "Backed Up APKs",
+  "analyzerInstalledUserApps": "Installed User Apps",
+  "analyzerSystemPackages": "System Packages",
+  "analyzerSearchBackups": "Search backups...",
+  "analyzerSearchPackagesHint": "Search packages or names...",
+  "analyzerSortByBackupDate": "Sort by Backup Date",
+  "analyzerSortByInstallDate": "Sort by Install Date",
+  "analyzerBackup": "Backup",
+  "analyzerClear": "Clear",
+  "analyzerUninstall": "Uninstall",
+  "analyzerSingleApk": "Single APK",
+  "analyzerSplitBundle": "Split Bundle",
+  "analyzerSplitBundleApks": "Split Bundle (APKS)",
+  "analyzerApkBackedUp": "APK backed up successfully to NFile/Backups/Apps/",
+  "analyzerApkBackupFailed": "Failed to back up APK",
+  "analyzerBackupsListHint": "A list of your backed up APK and APKS files will show here.",
+  "analyzerNoBackupsMatch": "We couldn't find any backups matching \"{query}\"",
+  "categoryAudios": "Audios",
+  "actionEdit": "Edit",
+  "actionInfo": "Info",
+  "actionReload": "Reload",
+  "actionRestore": "Restore",
+  "actionSave": "Save",
+  "actionUndo": "Undo",
+  "actionRedo": "Redo",
+  "editorFind": "Find...",
+  "editorLockZoom": "Lock Zoom",
+  "editorUnlockZoom": "Unlock Zoom",
+  "editorWordWrapOn": "Word Wrap: ON",
+  "editorWordWrapOff": "Word Wrap: OFF",
+  "editorEditLockOn": "Edit Lock: ON",
+  "editorEditLockOff": "Edit Lock: OFF",
+  "editorShowLineNumbers": "Show Line Numbers",
+  "editorHideLineNumbers": "Hide Line Numbers",
+  "editorSaveFailed": "Failed to save changes back to external storage.",
+  "viewerEmptySlide": "(Empty Slide)",
+  "viewerEmptyFile": "(Empty file)",
+  "viewerContinuous": "Continuous (Vertical scrolling list)",
+  "viewerSinglePage": "Single Page (Instant page-by-page swipe)",
+  "viewerHorizontalSwipe": "Horizontal (Left to right swipe)",
+  "viewerVerticalScroll": "Vertical (Top to bottom scroll)",
+  "viewerHorizontal": "Horizontal",
+  "viewerVertical": "Vertical",
+  "viewerSizeMegabytes": "{size} MB",
+  "viewerSizeKilobytes": "{size} KB",
+  "databaseBrowseData": "Browse Data",
+  "databaseSqlConsole": "SQL Console",
+  "databaseTableSchema": "Table Schema",
+  "databaseSelectHint": "Execute a SELECT query to view results.",
+  "databaseQueryError": "Error executing query.",
+  "audioLyrics": "Lyrics",
+  "audioMute": "Mute",
+  "audioUnmute": "Unmute",
+  "audioPlayInBackground": "Play in Background",
+  "audioBackgroundOn": "Background: On",
+  "audioNotificationControlsHint": "Shows notification with controls",
+  "audioTapToStopHint": "Tap to stop background playback",
+  "audioShuffleOn": "Shuffle: On",
+  "audioShuffleOff": "Shuffle: Off",
+  "audioRepeatAll": "Repeat: All",
+  "audioRepeatOne": "Repeat: One",
+  "audioRepeatOff": "Repeat: Off",
+  "audioSingleTrack": "Single Track",
+  "lyricsReadFailed": "Failed to read the chosen LRC file.",
+  "lyricsNoValidLines": "No valid lyrics lines found in chosen LRC file.",
+  "lyricsSelectValidFile": "Please select a valid file ending with .lrc",
+  "videoBrightness": "Brightness",
+  "videoVolume": "Volume",
+  "videoFullScreen": "Full Screen",
+  "videoExitFullScreen": "Exit Full Screen",
+  "videoLabel": "Video",
+  "imageLabel": "Image",
+  "mediaInfoTitle": "Media Info",
+  "mediaFileSize": "File Size",
+  "mediaOriginalLocation": "Original Location",
+  "mediaRecycledDate": "Recycled Date",
+  "mediaDirectory": "Directory",
+  "mediaUnknownDate": "Unknown Date",
+  "mediaCopiedToClipboard": "Copied {count} items to clipboard",
+  "mediaCutToClipboard": "Cut {count} items to clipboard",
+  "markdownFileNotFound": "# File not found",
+  "markdownLoadError": "# Error loading file\n\n`{error}`",
+  "htmlFileNotFound": "<p>File not found.</p>",
+  "htmlLoadError": "<p>Error loading HTML: {error}</p>",
+  "archiveCreatedSuccessfully": "Archive created successfully",
+  "archiveExtractedSuccessfully": "Archive extracted successfully",
+  "archiveFileNotFound": "Archive file not found",
+  "archiveCompressionFailed": "Compression failed: {error}",
+  "archiveExtractionFailed": "Extraction failed: {error}",
+  "archiveOperationFailed": "Compression/extraction failed.",
+  "archiveNoFilesToCompress": "No files found to compress",
+  "archiveScanningFiles": "Scanning files...",
+  "archiveSavingToDisk": "Saving archive to disk...",
+  "archiveEncodingStructure": "Encoding archive structure...",
+  "archiveApplyingGzip": "Applying GZIP compression...",
+  "archiveApplyingBzip2": "Applying BZIP2 compression...",
+  "archiveApplyingLz4": "Applying LZ4 compression...",
+  "archiveApplyingZstd": "Applying ZSTD compression...",
+  "archiveOpeningZip": "Opening zip...",
+  "archiveReading": "Reading archive...",
+  "archiveExtractingTar": "Extracting tar...",
+  "archiveOpeningTar": "Opening tar...",
+  "archiveDecompressingGzip": "Decompressing gzip...",
+  "archiveDecompressing": "Decompressing archive...",
+  "archiveExtractingFiles": "Extracting files...",
+  "archiveOpening": "Opening archive...",
+  "archiveProcessedSuccessfully": "{name} processed successfully.",
+  "operationSuccessful": "Successful",
+  "operationFailed": "Operation Failed",
+  "archiveUnsupportedFormat": "Unsupported format",
+  "actionBack": "Back",
+  "actionBackspace": "Backspace",
+  "actionClose": "Close",
+  "actionDetails": "Details",
+  "actionPaste": "Paste",
+  "actionStart": "Start",
+  "actionStop": "Stop",
+  "actionUpload": "Upload",
+  "settingsAppIconPicker": "App Icon Picker",
+  "settingsLogo": "Logo",
+  "settingsFileExplorer": "File Explorer & Navigation",
+  "settingsMediaActions": "Media & Default Actions",
+  "settingsExitConfirmation": "Confirmation Dialog",
+  "settingsExitConfirmationHint": "Prompt for exit verification before closing",
+  "settingsDoublePressExit": "Double-Press to Exit",
+  "settingsDoublePressExitHint": "Tap the back button twice within a short window to exit",
+  "settingsShowConfirmation": "Show confirmation dialog",
+  "settingsDoublePressBackHint": "Double-press back button to exit",
+  "settingsExitBehaviourHint": "Choose between exit confirmation dialog or double-pressing back button to exit",
+  "settingsTrailingInfoHint": "Choose what to show on the right side of files and folders when 3-dot is hidden",
+  "recycleBinDays7": "7 Days",
+  "recycleBinDays15": "15 Days",
+  "recycleBinDays30": "30 Days (Recommended)",
+  "recycleBinNeverManual": "Never (Manually clean bin)",
+  "recycleBinNeverAuto": "Never (Auto-delete disabled)",
+  "recycleBinAfterOneDay": "After 1 Day",
+  "recycleBinAfterDays": "After {days} Days",
+  "trailingInfoNone": "None / Hide Info",
+  "trailingInfoNoneHint": "Do not display additional information on the right side",
+  "trailingInfoDateHint": "Display the last modified date and time",
+  "trailingInfoSizeHint": "Display file size for files and item count for folders",
+  "themeSignatureDefault": "Signature Default (Lexend Deca)",
+  "themeOriginalDefault": "Original Default (Signature Blue)",
+  "themeBrokenOutline": "NFile Broken Outline (Default)",
+  "themeOriginalGeometric": "Original NFile clean geometric look",
+  "themeNothingDotMatrix": "Nothing Dot-Matrix & Sans",
+  "themeDotMatrixHint": "High-tech retro dot matrix headings + clean body",
+  "themeMonospaceHint": "Clean and futuristic developer monospaced look",
+  "themeGeometricHint": "Super sleek, minimal, and premium geometric aesthetic",
+  "themeBoldHint": "Bold, modern, and striking typographic scale",
+  "themeCustomFontHint": "Your custom loaded font file",
+  "themeCustomFontName": "Custom Font ({name})",
+  "themeImportCustomFont": "Import Custom Font File (.ttf/.otf)",
+  "themeReplaceCustomFont": "Replace Custom Font File",
+  "connectionActive": "Active",
+  "connectionInactive": "Inactive",
+  "connectionConnected": "Connected",
+  "connectionConnect": "Connect",
+  "connectionPort": "Port",
+  "connectionProtocol": "Protocol",
+  "connectionName": "Connection Name",
+  "connectionServerAddress": "Server Address / IP",
+  "connectionUsername": "Username",
+  "connectionUsernameOptional": "Username (Optional)",
+  "connectionRemoteDirectory": "Remote Directory",
+  "connectionAuthenticating": "Authenticating credentials...",
+  "connectionCheckingPort": "Checking port status...",
+  "connectionResolvingHost": "Resolving host address...",
+  "connectionMounting": "Mounting storage volume...",
+  "connectionTitle": "{protocol} Connection",
+  "connectionServerAddressHint": "e.g., 192.168.1.100 or 192.168.1.100/dav",
+  "connectionServerAddressHint2": "e.g., 192.168.1.100 or nas.local",
+  "protocolAndroidSaf": "Android Storage Access Framework (SD Card / External)",
+  "protocolHttp": "HTTP Web Distributed Authoring",
+  "protocolLan": "Local Area Network & SMB NAS Share",
+  "protocolSafFolder": "SAF Folder",
+  "protocolSsh": "SSH Secure File Transfer Server",
+  "protocolFtp": "Standard File Transfer Protocol",
+  "ftpAnonymous": "Anonymous",
+  "webStartServer": "Start Web Server",
+  "webStopServer": "Stop Web Server",
+  "webCloudShare": "Cloud Share",
+  "webLocalShare": "Local Share",
+  "webActivateLink": "Activate Internet Share Link",
+  "webDeactivateCloud": "Deactivate Cloud Share",
+  "remoteMoveToDevice": "Move to Device",
+  "remoteCopyToDevice": "Copy to Device",
+  "remotePasteClipboard": "Paste remote clipboard",
+  "remotePasteSameLocation": "Cannot paste to the same location",
+  "remoteClipboardEmpty": "Local clipboard is empty. Copy files in the file manager first.",
+  "remoteTransferFailed": "Transfer failed: {error}",
+  "remoteTransferring": "Transferring...",
+  "remoteCopying": "Copying...",
+  "remoteMoving": "Moving...",
+  "remoteDownloading": "Downloading from server...",
+  "remoteUploading": "Uploading to server...",
+  "remoteUploaded": "Uploaded {count} file(s) successfully",
+  "remoteUploadFailed": "Upload failed for \"{name}\": {error}",
+  "remoteDownloadFailed": "Download failed: {error}",
+  "remoteCreateFolderFailed": "Failed to create folder: {error}",
+  "remoteDeleteFailed": "Failed to delete: {error}",
+  "remoteCopiedToClipboard": "Copied \"{name}\" to clipboard",
+  "remoteCutToClipboard": "Cut \"{name}\" to clipboard",
+  "remoteDeleted": "Deleted \"{name}\"",
+  "remoteDownloadedToClipboard": "\"{name}\" downloaded → local clipboard ready to paste",
+  "remoteFilesReadyToUpload": "{count} local file(s) ready to upload",
+  "remoteItemsCut": "{count} remote item(s) cut",
+  "remoteItemsCopied": "{count} remote item(s) copied",
+  "vaultEnterPin": "Enter PIN to Unlock Wallet",
+  "vaultSetPin": "Set your 4-digit Wallet PIN",
+  "vaultConfirmPin": "Confirm your 4-digit PIN",
+  "vaultIncorrectPin": "Incorrect PIN. Try again!",
+  "vaultPinsDoNotMatch": "PINs do not match. Try again!",
+  "vaultPinSet": "PIN Set Successfully!",
+  "vaultEnterPassword": "Enter Password to Unlock",
+  "vaultLockOption": "Lock Option",
+  "vaultLockFailed": "Failed to lock {count} items.",
+  "vaultNoMatchingFiles": "No Matching Files",
+  "vaultEmpty": "Your Secure Vault is Empty",
+  "vaultSearchHint": "Try modifying your search text to locate hidden items.",
+  "vaultScrambleDescription": "XOR scrambled signature obfuscation keeps files completely unopenable and hidden from system scanner database. Tap {action} below to protect them.",
+  "vaultInPlace": "In-Place",
+  "vaultSandbox": "Sandbox",
+  "vaultProtectionMode": "Protection Mode",
+  "vaultLockedAt": "Locked At",
+  "vaultOriginalName": "Original Name",
+  "vaultOriginalPath": "Original Path",
+  "vaultScrambledPath": "Scrambled Path",
+  "vaultInPlaceScrambling": "⚡ In-Place Scrambling",
+  "vaultIsolatedMove": "🔒 Isolated Move (Sandbox)",
+  "settingsBackupFileMissing": "Backup file does not exist",
+  "settingsBackupInvalidFormat": "Invalid backup file format",
+  "webBrowser": "Web Browser",
+  "webBrowsingDirectories": "Browsing Directories",
+  "webCloseModal": "Close Modal",
+  "downloadFile": "Download File",
+  "webFailedToCopyLink": "Failed to copy link.",
+  "webLinkCopied": "Link copied to clipboard!",
+  "webGridView": "Grid View",
+  "webListView": "List View",
+  "networkError": "Network error",
+  "webSearchFiles": "Search files & folders...",
+  "webUploadToFolder": "Upload Files to this Folder",
+  "webUploadCompleted": "Upload completed successfully!",
+  "webUploadFailed": "Upload failed",
+  "webUploadSuccessful": "Upload successful",
+  "mediaCannotOpenDirectory": "Cannot open directory: {path}",
+  "mediaCannotOpenRemoteDirectory": "Cannot open remote directory: {path}",
+  "mediaWebdavConnectFailed": "Failed to connect to WebDAV: {status}",
+  "vaultIncorrectPassword": "Incorrect password or corrupted file",
+  "vaultFileDoesNotExist": "File does not exist: {path}",
+  "vaultDirectoryDoesNotExist": "Directory does not exist: {path}",
+  "vaultFailedToZip": "Failed to zip directory contents",
+  "rootExecutionFailed": "Execution failed: {error}",
+  "customFolder": "Custom Folder",
+  "sdCardWithUsb": "SD Card / USB",
+  "failedToCreateDirectory": "Failed to create directory: {path}",
+  "failedToDeleteDirectory": "Failed to delete directory: {path}",
+  "fileNotFound": "File not found",
+  "ftpNotConnected": "FTP not connected",
+  "sftpNotConnected": "SFTP not connected",
+  "ftpConnectionFailed": "FTP connection failed: could not connect to {host}:{port}",
+  "localFileNotFound": "Local file not found: {path}",
+  "sourceDoesNotExist": "Source file/folder does not exist: {path}",
+  "vaultFileNotFound": "Scrambled vault file not found",
+  "vaultFileNotFoundAt": "Scrambled vault file not found: {path}",
+  "sharingApksOfSelectedApps": "Sharing APKs of selected apps",
+  "sharingApkFor": "Sharing APK for {name}",
+  "establishingProxyTunnel": "Establishing secure proxy tunnel...",
+  "remoteUploadFailedFor": "Upload failed for: {path}",
+  "remoteDownloadFailedFor": "Download failed for: {path}",
+  "sdCardWithUsbNamed": "SD Card / USB ({name})",
+  "processingItem": "Processing item {current} of {total}",
+  "transferSpeed": "Transfer Speed",
+  "estimatedTime": "Est. Time",
+  "dataProcessed": "Data Processed",
+  "cancelOperation": "Cancel Operation",
+  "pastedItemsSuccessfully": "Pasted items successfully",
+  "calculatingSizes": "Calculating sizes...",
+  "itemsSelected": "Items Selected",
+  "totalSize": "Total Size",
+  "selectedPaths": "Selected Paths:",
+  "copiedLabelToClipboard": "Copied {label} to clipboard",
+  "copySelected": "Copy Selected",
+  "cutSelected": "Cut Selected",
+  "archiveCompress": "Archive (Compress)",
+  "propertiesAndInfo": "Properties & Info",
+  "extractingBundle": "Extracting package bundle for installation...",
+  "noInstallableApk": "No installable APK found in package bundle",
+  "failedToTriggerInstaller": "Failed to trigger split APK installer",
+  "failedToExtractBundle": "Failed to extract package bundle: {error}",
+  "settingsBackedUp": "Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json",
+  "failedToBackupSettings": "Failed to backup settings: {error}",
+  "settingsRestored": "Settings restored successfully!",
+  "failedToRestoreSettings": "Failed to restore settings: {error}",
+  "backupAndRestore": "Backup & Restore",
+  "backupSettings": "Backup Settings",
+  "backupSettingsHint": "Save all your current settings to NFile/Backups/Settings/",
+  "restoreSettings": "Restore Settings",
+  "restoreSettingsHint": "Select and restore settings from a JSON backup file",
+  "selectValidBackupFile": "Please select a valid .json settings backup file",
+  "settingsCategories": "Settings Categories",
+  "generalAndBehavior": "General & Behavior",
+  "generalAndBehaviorHint": "Default screen, navigation controls, and shortcuts",
+  "appearanceAndThemes": "Appearance & Themes",
+  "appearanceAndThemesHint": "Themes, app icons, folder styles, and typography",
+  "fileExplorerOptions": "File Explorer Options",
+  "fileExplorerOptionsHint": "Address bar, hidden files, tabs, and drag & drop",
+  "listAndLayoutStyling": "List & Layout Styling",
+  "listAndLayoutStylingHint": "Folder sizes, counts, and time/date formats",
+  "mediaPreferences": "Media Preferences",
+  "mediaPreferencesHint": "Default album view and thumbnail previews",
+  "fileActionsAndViewers": "File Actions & Viewers",
+  "fileActionsAndViewersHint": "Open actions and default viewers configuration",
+  "recycleBinTrash": "Recycle Bin (Trash)",
+  "recycleBinTrashHint": "Recycle bin toggles and auto-delete duration",
+  "noSettingsFound": "No settings found",
+  "tryAnotherKeyword": "Try searching for another keyword",
+  "defaultToBrowseScreen": "Default to Browse Screen",
+  "defaultToBrowseScreenHint": "Directly launch into the Browse storage explorer on app start",
+  "rememberLastFolder": "Remember Last Opened Folder",
+  "rememberLastFolderHint": "Open the last folder you browsed when launching the app",
+  "showHomeBrowseBottomBar": "Show Home & Browse Bottom Bar",
+  "showHomeBrowseBottomBarHint": "Toggle bottom navigation bar visibility on the Home screen",
+  "hideBottomNavLabels": "Hide Bottom Navigation Labels",
+  "hideBottomNavLabelsHint": "Hide text labels of the bottom bar (Home/Browse) for a cleaner and compact look",
+  "hideAndroidNavBar": "Hide Android Navigation Bar",
+  "hideAndroidNavBarHint": "Hide bottom navigation bar to maximize screen real estate (swiping up displays it)",
+  "preventLeftBackGesture": "Prevent Left Back Gesture for Drawer",
+  "preventLeftBackGestureHint": "Excludes the left edge of the screen from Android system back gestures, making it easier to swipe open the drawer. You can still swipe from the right edge to go back.",
+  "appExitBehavior": "App Exit Behavior",
+  "showBottomNavBar": "Show Bottom Navigation Bar",
+  "showBottomNavBarHint": "Enable bottom action bar on Browse screen",
+  "hideActionBarLabels": "Hide Action Bar Text Labels",
+  "hideActionBarLabelsHint": "Show only icons in selection action bar at bottom of Browse & Media screens",
+  "customizeShortcutsHint": "Reorder and toggle visibility of quick category items",
+  "showRecentFiles": "Show Recent Files",
+  "showRecentFilesHint": "Display the list of recently accessed files on the Home screen",
+  "accentColorDynamicTheme": "Accent Color / Dynamic Theme",
+  "folderIconStyle": "Folder Icon Style",
+  "drawerButtonStyle": "App Drawer Button Style",
+  "amoledBlackMode": "AMOLED Black Mode",
+  "amoledBlackModeHint": "Use pitch black background in Dark Mode for AMOLED screens",
+  "appIcon": "App Icon",
+  "appTypographyFontFamily": "App Typography / Font Family",
+  "useExpressiveIcons": "Use Expressive Material Icons",
+  "useExpressiveIconsHint": "Replace custom Broken icons with standard Material Design icons",
+  "showAddressBar": "Show Address Bar",
+  "showAddressBarHint": "Display an editable Windows-Explorer-style address bar at the top of file list",
+  "showFloatingAddButton": "Show Floating '+' Button",
+  "showFloatingAddButtonHint": "Enable quick creation (+) button at bottom of Browse screen",
+  "showHiddenFilesHint": "Display system files and folders starting with a dot (.)",
+  "highlightExitedFolder": "Highlight Exited Folder",
+  "highlightExitedFolderHint": "Briefly flash and scroll to the folder you just exited when going back",
+  "enableMultipleTabs": "Enable Multiple Tabs",
+  "enableMultipleTabsHint": "Allow opening multiple folders in separate tabs for quick navigation",
+  "enableSplitScreen": "Enable Split Screen",
+  "enableSplitScreenHint": "Browse two directories side by side and transfer files easily",
+  "enableDragAndDrop": "Enable Drag & Drop",
+  "enableDragAndDropHint": "Long press and drag folders or files to move them into other folders",
+  "confirmDragAndDrop": "Confirm Drag & Drop Actions",
+  "confirmDragAndDropHint": "Show options popup (Copy, Move, Archive) when dropping files",
+  "showCountHeader": "Show Folder & File Count Header",
+  "showCountHeaderHint": "Display total folders and files count under storage title bar",
+  "showFolderContentCount": "Show Folder Content Count",
+  "showFolderContentCountHint": "Calculate and display total files and folders inside directory listings",
+  "showFolderSize": "Show Folder Size",
+  "showFolderSizeHint": "Calculate and display total size of all files inside directories (can affect listing performance)",
+  "use24HourTime": "Use 24-Hour Time Format",
+  "use24HourTimeHint": "Toggle between 12-hour (AM/PM) and 24-hour time formatting across lists",
+  "hideTimeAndDate": "Hide Time & Date from Lists",
+  "hideTimeAndDateHint": "Completely hide modification dates and times under files and folders",
+  "adaptiveMultiLineNames": "Adaptive Multi-line Filenames",
+  "adaptiveMultiLineNamesHint": "Allow filenames to wrap 3 lines instead of truncating",
+  "hideThreeDotButtons": "Hide 3-Dot Action Buttons",
+  "hideThreeDotButtonsHint": "Hide the three-dot option menu button next to folders and files",
+  "threeDotTrailingInfo": "3-Dot Disabled Trailing Info",
+  "defaultAlbumView": "Default Album Preferred View",
+  "defaultAlbumViewHint": "Open Images/Videos quick categories directly in Folders (Albums) preferred view",
+  "showMediaPreviews": "Show Media Previews",
+  "showMediaPreviewsHint": "Display actual image and video thumbnails instead of generic file icons",
+  "skipOpenWithDialog": "Skip \"Open With\" Dialog",
+  "skipOpenWithDialogHint": "Bypass the application choice dialog and immediately open files with default viewers",
+  "resetDefaultViewers": "Reset Default File Viewers",
+  "resetDefaultViewersHint": "Clear all remembered \"Open With\" associations for file viewers",
+  "viewersReset": "All default viewer choices have been reset",
+  "enableRecycleBin": "Enable Recycle Bin",
+  "enableRecycleBinHint": "Move deleted files and folders to a hidden Recycle Bin instead of deleting permanently",
+  "autoDeleteDuration": "Auto-Delete Trash Duration",
+  "autoDeleteDurationHint": "Items in the Recycle Bin will be permanently deleted after this duration.",
+  "chooseTrailingInfoStyle": "Choose Trailing Info Style",
+  "chooseTrailingInfoStyleHint": "Choose what is displayed on the right side of files and folders when the 3-dot action buttons are hidden.",
+  "chooseExitBehavior": "Choose Exit Behavior",
+  "chooseAccentTheme": "Choose Accent Theme",
+  "chooseFolderIconStyle": "Choose Folder Icon Style",
+  "chooseDrawerButtonStyle": "Choose Drawer Button Style",
+  "appLauncherIcon": "App Launcher Icon",
+  "appLauncherIconHint": "Choose a custom logo for the application launcher icon. Note that some launchers may take a few seconds to update.",
+  "logo1": "Logo 1",
+  "logo2": "Logo 2",
+  "logo3": "Logo 3",
+  "logo4": "Logo 4",
+  "appIconSwitched": "App icon switched to {title} successfully!",
+  "appTypography": "App Typography",
+  "appTypographyHint": "Select a beautiful typeface to customize NFile\\'s overall visual theme",
+  "customFontApplied": "Custom font \"{name}\" applied successfully!",
+  "failedToLoadFont": "Failed to load the selected font file.",
+  "invalidFileType": "Invalid File Type",
+  "invalidFontFileHint": "Please select a valid OpenType (.otf) or TrueType (.ttf) font file.",
+  "removeCustomFont": "Remove Custom Font",
+  "customFontRemoved": "Custom font removed.",
+  "accentMaterialYou": "Material You (Dynamic Wallpaper Colors)",
+  "accentVibrantOrange": "Vibrant Orange",
+  "accentRoyalPurple": "Royal Purple",
+  "accentEmeraldGreen": "Emerald Green",
+  "accentCrimsonRed": "Crimson Red",
+  "accentAmberGold": "Amber Gold",
+  "accentCyberpunkPink": "Cyberpunk Pink",
+  "accentSapphireBlue": "Sapphire Blue",
+  "accentForestGreen": "Forest Green",
+  "accentSunsetPeach": "Sunset Peach",
+  "folderIconClassicSolid": "Classic Solid (Material)",
+  "folderIconModernRounded": "Modern Rounded (Material)",
+  "folderIconStarred": "Starred Special (Material)",
+  "folderIconSnippet": "Snippet Document (Material)",
+  "folderIconMinimalOutlined": "Minimal Outlined (Material)",
+  "drawerStyleCategoryGrid": "Category Grid / Vuesax Grid",
+  "drawerStyleHamburger": "Hamburger / Classic Menu",
+  "defaultLogo": "Default Logo",
+  "fontDotMatrix": "Dot-Matrix & Sans",
+  "fontOutfit": "Outfit Modern Sans",
+  "fontJetBrains": "JetBrains Tech Mono",
+  "fontMontserrat": "Montserrat Urban Sans",
+  "fontCustom": "Custom Imported Font",
+  "trailingInfoDateTime": "Date & Time",
+  "trailingInfoSizeCount": "File Size / Item Count",
+  "backupAndRestoreHint": "Backup your settings to a JSON file or restore them",
+  "ftpServerStopped": "FTP Server stopped successfully",
+  "ftpServerStartedAt": "FTP Server started at {address}",
+  "errorStartingFtpServer": "Error starting FTP Server: {error}",
+  "stopServerBeforeChanging": "Please stop the server before changing configuration",
+  "changePort": "Change Port",
+  "portNumber": "Port Number",
+  "invalidPortNumber": "Invalid port number",
+  "setUsername": "Set Username",
+  "usernameNotEmpty": "Username cannot be empty",
+  "stopServerBeforeEditing": "Stop the server before editing settings",
+  "ftpShortcutAdded": "FTP Server shortcut added to home screen!",
+  "changeDirectory": "Change directory",
+  "changePortLower": "Change port",
+  "setUser": "Set user",
+  "anonymousAccess": "Anonymous access",
+  "createShortcut": "Create shortcut",
+  "networkStatus": "Network status",
+  "serverAddress": "Server address",
+  "homeDirectory": "Home directory",
+  "userName": "User name",
+  "showHiddenFilesLower": "Show hidden files",
+  "secureFtpHint": "Secure FTP connection over explicit TLS",
+  "connectionAdded": "\"{name}\" added successfully!",
+  "systemAppDisabled": "System App Disabled",
+  "noDocumentsApp": "Your device does not have a default System Files/Documents app (DocumentsUI) enabled, which is required by Android to select and mount directories.\n\nPlease check if the \"Files\" or \"Documents\" system app is disabled in your device Settings, or enable it to use SAF directory features.",
+  "failedToRequestSafFolder": "Failed to request SAF folder: {error}",
+  "enterConnectionName": "Please enter a connection name",
+  "enterServerAddress": "Please enter server address / hostname",
+  "connectedSuccessfully": "\"{name}\" connected successfully!",
+  "connectionFailed": "Connection failed: {error}",
+  "remoteConnections": "Remote Connections",
+  "stepOf": "Step {current} of {total}",
+  "selectNetworkService": "Select Network Service",
+  "selectNetworkServiceHint": "Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.",
+  "selectedTypeSettings": "{type} Settings",
+  "enterConnectionDetails": "Enter connection details to link this network volume.",
+  "connectionNameExample": "e.g., Office NAS, Home Share",
+  "connectionPathExample": "e.g., /dav or /",
+  "connectionUserExample": "e.g., anonymous or admin",
+  "creatingMountPoint": "Creating Mount Point...",
+  "establishingPathway": "Please wait while we establish a reliable pathway to the {type} server.",
+  "httpsSecure": "HTTPS (Secure)",
+  "deleteItem": "Delete Item",
+  "deleteRemoteItemQuestion": "Delete \"{name}\" permanently from the server?",
+  "newRemoteFolder": "New Remote Folder",
+  "copyToLocalDevice": "Copy to Local Device",
+  "copyToLocalDeviceHint": "Downloads file → local clipboard",
+  "moveToLocalDevice": "Move to Local Device",
+  "moveToLocalDeviceHint": "Downloads and deletes from server",
+  "connectionTypeServer": "{type} Server",
+  "uploadClipboardToServer": "Upload local clipboard to server",
+  "connectionLost": "Connection Lost",
+  "retryConnection": "Retry Connection",
+  "emptyDirectory": "Empty Directory",
+  "uploadClipboardHere": "Upload Clipboard Here",
+  "errorLoadingVault": "Error loading vault: {error}",
+  "chooseProtectionMode": "Choose Protection Mode",
+  "chooseProtectionModeHint": "Choose how you want to protect your selected files. Secured files are encrypted instantly.",
+  "secureImportSandbox": "Secure Import (Sandbox)",
+  "inPlaceScramble": "In-Place Scramble (Fast)",
+  "scramblingProtecting": "Scrambling & Protecting...",
+  "protectedItems": "Protected {count} items successfully.{failed}",
+  "restoredToOriginal": "Restored \"{name}\" to its original location.",
+  "failedToRestoreFile": "Failed to restore file: {error}",
+  "deletePermanentlyQuestion": "Delete Permanently?",
+  "deletePermanentlyQuestionHint": "Are you sure you want to permanently delete these {count} item(s)? This action cannot be undone.",
+  "fileDeletedPermanently": "File deleted permanently.",
+  "failedToDeleteFile": "Failed to delete file: {error}",
+  "decryptingSecurely": "Decrypting securely...",
+  "failedToDecryptItem": "Failed to decrypt and open item: {error}",
+  "securityDetails": "Security Details",
+  "searchScrambledFiles": "Search scrambled files...",
+  "hideFiles": "Hide Files",
+  "securityStorage": "SECURITY STORAGE",
+  "totalSpaceSecured": "Total Space Secured",
+  "hiddenFiles": "Hidden Files",
+  "restoreUnhide": "Restore (Unhide)",
+  "deletePermanently": "Delete Permanently",
+  "clearAll": "Clear All",
+  "httpServerStopped": "Local HTTP Sharing Server stopped.",
+  "httpServerStarted": "Local HTTP Sharing Server started! URL: {url}",
+  "errorStartingHttpServer": "Error starting HTTP Server: {error}",
+  "tunnelDeactivated": "Internet Share Tunnel deactivated.",
+  "establishingRelay": "Establishing secure proxy relay...",
+  "tunnelOnline": "Internet cloud tunnel online! Temporary link active.",
+  "failedToStartCloudShare": "Failed to start Cloud Share: {error}",
+  "linkCopied": "Link copied to clipboard!",
+  "scanQrCode": "Scan QR Code",
+  "scanToOpen": "Scan with another device to open {type} immediately.",
+  "webSharingHub": "Web Sharing Hub",
+  "localWebShare": "Local Web Share",
+  "internetShareLink": "Internet Share Link",
+  "httpLocalShareServer": "HTTP Local Share Server",
+  "httpLocalShareServerHint": "Allows other devices on the same Wi-Fi to access, view, and stream your files in their web browser.",
+  "serverOnlineStreaming": "Server Online & Streaming",
+  "directBrowserUrl": "Direct Browser URL:",
+  "copyUrl": "Copy URL",
+  "qrCode": "QR Code",
+  "sharingDirectory": "Sharing Directory: {folder}",
+  "serverIdle": "Server is Idle",
+  "serverIdleHint": "Make sure other devices are on the same Wi-Fi network as this device, then start the server.",
+  "internetShareTunnel": "Internet Share Tunnel",
+  "internetShareTunnelHint": "Generates a secure temporary public tunnel link. Share this link with anyone anywhere on the internet to let them download files high-speed, no matter the file size.",
+  "cloudTunnelActive": "Cloud Tunnel Active",
+  "temporaryShareLink": "Temporary Share Link (Active 24h):",
+  "copyLink": "Copy Link",
+  "connectedClients": "Connected Browser Clients",
+  "waitingForDownloads": "Waiting for incoming internet downloads...",
+  "internetSharingInactive": "Internet Sharing Inactive",
+  "internetSharingInactiveHint": "Activate the tunnel to establish a secure link that works beyond local Wi-Fi.",
+  "compressingFiles": "Compressing Files",
+  "extractingArchive": "Extracting Archive",
+  "errorReadingSharedFile": "Error reading shared file: {error}",
+  "extractedTo": "Extracted {item} to {folder}",
+  "itemsCopiedToClipboard": "{count, plural, =1{1 item copied to clipboard ✓} other{{count} items copied to clipboard ✓}}",
+  "deleteSelectedItems": "Delete Selected Items",
+  "deleteItemsFromArchiveQuestion": "Are you sure you want to delete precisely these {count} item(s) from the archive? This cannot be undone.",
+  "itemsDeletedSuccessfully": "Items deleted successfully ✓",
+  "failedToDeleteItems": "Failed to delete items",
+  "addedToArchive": "Successfully added {count} item(s) into archive ✓",
+  "pastedIntoArchive": "Pasted {count} item(s) into archive ✓",
+  "selectedCount": "{count, plural, =1{1 Selected} other{{count} Selected}}",
+  "couldNotReadArchive": "Could not read archive",
+  "extractToCurrentFolder": "Extract to Current Folder",
+  "pasteHereCount": "Paste Here ({count})",
+  "addFile": "Add File",
+  "losslessAudio": "Lossless Audio",
+  "soundFx": "Sound FX",
+  "sleepTimer": "Sleep Timer",
+  "playingQueue": "Playing Queue",
+  "minutes": "{count, plural, =1{1 minute} other{{count} minutes}}",
+  "sleepTimerSet": "Sleep timer set for {count} minutes.",
+  "soundAndSpeedFx": "Sound & Speed FX",
+  "playbackSpeed": "Playback Speed",
+  "pitchAdjustment": "Pitch Adjustment",
+  "resetToDefault": "Reset to Default",
+  "backgroundPlaybackStopped": "Background playback stopped",
+  "backgroundPlaybackEnabled": "Background playback enabled",
+  "viewSynchronizedLyrics": "View Synchronized Lyrics",
+  "soundFxAndEqualizer": "Sound FX & Equalizer",
+  "setSleepTimer": "Set Sleep Timer",
+  "audioFileInfo": "Audio File Info",
+  "playingQueueCount": "Playing Queue ({count})",
+  "lyricsLoaded": "Lyrics loaded successfully",
+  "noSynchronizedLyrics": "No Synchronized Lyrics Found",
+  "noSynchronizedLyricsHint": "Keep a .lrc file with the exact same name next to your song, or select it manually below.",
+  "loadLrcFile": "Load LRC File",
+  "tapLineToSeek": "Tap a line to seek playback",
+  "noDataToExport": "No data to export.",
+  "exportedTo": "Successfully exported to {file}",
+  "exportFailed": "Export failed: {error}",
+  "sqliteReader": "SQLite Database Reader",
+  "failedToOpenDatabase": "Failed to open database",
+  "noTablesFound": "No tables found in this database.",
+  "exportTableToCsv": "Export Table to CSV",
+  "searchRows": "Search rows...",
+  "noRowsFound": "No rows found",
+  "showingRange": "Showing {from} - {to}",
+  "noSchemaLoaded": "No schema details loaded.",
+  "schemaType": "Type: {type}",
+  "schemaDefault": "Default: {value}",
+  "sqlEditor": "SQL Editor",
+  "selectTemplate": "SELECT template",
+  "enterSelectQuery": "Enter SELECT query here...",
+  "exportResultsToCsv": "Export Results to CSV",
+  "runQuery": "Run Query",
+  "queryReturnedRows": "Query returned {count} rows",
+  "errorLoading": "Error loading: {error}",
+  "savedSuccessfully": "Saved successfully ✓",
+  "errorSaving": "Error saving: {error}",
+  "pdfDisplaySettings": "PDF Display Settings",
+  "pdfDisplaySettingsHint": "Optimize rendering performance for large, design-heavy, or scanned documents.",
+  "quickPerformancePresets": "Quick Performance Presets",
+  "standardMode": "Standard Mode",
+  "standardModeHint": "Best for text documents",
+  "lagFreeMode": "Lag-Free Mode",
+  "lagFreeModeHint": "Best for brochures & photos",
+  "detailedTuning": "Detailed Tuning Options",
+  "pageLayout": "Page Layout",
+  "singlePage": "Single Page",
+  "scrollDirection": "Scroll Direction",
+  "enableTextSelection": "Enable Text Selection",
+  "enableTextSelectionHint": "Disable to significantly boost page rendering speed and eliminate scroll stutter.",
+  "displaySettings": "Display Settings",
+  "openWithLabel": "Open with",
+  "emptySheet": "Empty Sheet",
+  "slideNumber": "SLIDE {number}",
+  "openWithApp": "Open with App",
+  "shareComingSoon": "Share coming soon",
+  "htmlPreview": "HTML Preview",
+  "markdownPreview": "Markdown Preview",
+  "imageIndexOfTotal": "{current} of {total}",
+  "failedToLoadImage": "Failed to load image",
+  "confirmDeletion": "Confirm Deletion",
+  "confirmPermanentDelete": "Are you sure you want to permanently delete {count} selected items?",
+  "deletedItemsCount": "Successfully deleted {count} items",
+  "pastedItemsTo": "Pasted {count} items to {folder}",
+  "noFilesToRename": "No physical files found to rename",
+  "longPressToOpenWith": "Long press to Open with...",
+  "copiedNameToClipboard": "Copied {name} to clipboard",
+  "cutNameToClipboard": "Cut {name} to clipboard",
+  "permanentlyDeleteName": "Permanently delete \"{name}\"?",
+  "deletedName": "Deleted {name}",
+  "fileNotShareable": "File not found or not shareable.",
+  "sortOptions": "Sort Options",
+  "sortNewestFirst": "Newest First",
+  "sortOldestFirst": "Oldest First",
+  "sortDateWise": "Date Wise",
+  "sortNewestGrouped": "Newest First (Grouped per month)",
+  "sortOldestGrouped": "Oldest First (Grouped per month)",
+  "sortSizeLargeFirst": "Size (Large First)",
+  "sortSizeSmallFirst": "Size (Small First)",
+  "noItemsOfKindFound": "No {kind} found",
+  "allItems": "All Items",
+  "countItems": "{count, plural, =1{1 item} other{{count} items}}",
+  "restoredSuccessfully": "Restored {count} item(s) successfully",
+  "errorRestoringItems": "Error restoring items: {error}",
+  "permanentlyDeleted": "Permanently deleted {count} item(s)",
+  "errorDeletingItems": "Error deleting items: {error}",
+  "emptyRecycleBinQuestion": "Empty Recycle Bin?",
+  "emptyRecycleBinQuestionHint": "Are you sure you want to permanently delete all items in the Recycle Bin? This action is irreversible.",
+  "emptyBin": "Empty Bin",
+  "binEmptied": "Recycle Bin emptied successfully",
+  "errorEmptyingBin": "Error emptying bin: {error}",
+  "searchDeletedFiles": "Search deleted files...",
+  "emptyRecycleBinAction": "Empty Recycle Bin",
+  "originalPath": "Original Path: {path}",
+  "deletedAtAndSize": "Deleted: {date} • {size}",
+  "recycleBinIsEmpty": "Recycle Bin is Empty",
+  "recycleBinIsEmptyHint": "Items you delete when Recycle Bin is enabled will appear here. You can restore them or permanently delete them.",
+  "errorLoadingFile": "Error loading file: {error}",
+  "fileSavedSuccessfully": "File saved successfully",
+  "errorSavingFile": "Error saving file: {error}",
+  "replacedOccurrences": "Replaced {count} occurrences",
+  "selectSyntax": "Select Syntax",
+  "findAndReplace": "Find / Replace",
+  "saveFile": "Save File",
+  "moreOptions": "More Options",
+  "defaultZoom": "Default Zoom ({size}pt)",
+  "syntaxOf": "Syntax ({language})",
+  "replaceWithDots": "Replace with...",
+  "replaceAll": "Replace All",
+  "slideToUnlock": "Slide / Tap to Unlock",
+  "lockControls": "Lock Controls",
+  "repeatMode": "Repeat Mode",
+  "mediaPathCopied": "Media path copied to clipboard.",
+  "speedValue": "Speed {speed}x",
+  "continuousLayout": "Continuous",
+  "editorLanguageAndLines": "{language}  {count, plural, =1{1 line} other{{count} lines}}",
+  "editorModified": "editorModified",
+  "deleteVaultFileQuestionHint": "Are you sure you want to permanently delete \"{name}\"? This action CANNOT be undone.",
+  "appManager": "App Manager",
+  "refreshList": "Refresh List",
+  "sortBySize": "Sort by Size",
+  "sortAlphabetically": "Sort Alphabetically",
+  "exactStorageCalculation": "Exact Storage Calculation",
+  "exactStorageCalculationHint": "To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.",
+  "grantUsageAccess": "Grant Usage Access Permission",
+  "storageAnalytics": "Storage Analytics",
+  "rescanStorage": "Rescan Storage",
+  "scanningDeviceStorage": "Scanning Device Storage",
+  "analyzingStorage": "Analyzing files, categorizing assets, and reading installed apps space...",
+  "totalStorage": "Total Storage",
+  "storageUsedWithPercent": "{size} used ({percent}%)",
+  "systemAndOther": "System / Other",
+  "percentOfTotalStorage": "{percent}% of total storage",
+  "uninstallApps": "Uninstall Apps",
+  "uninstallAppsQuestion": "Are you sure you want to uninstall {count} selected app(s)?",
+  "backingUpApps": "Backing up selected applications...",
+  "backedUpApps": "Successfully backed up {count} app(s) to NFile/Backups/Apps/",
+  "failedToBackUpApps": "Failed to back up some apps: {error}",
+  "noApplicationsFound": "No applications found",
+  "packageAndVersion": "{package} • v{version}",
+  "appSizeAndInstalled": "Size: {size} • Installed: {date}",
+  "launchApplication": "Launch Application",
+  "systemSettingsDetails": "System Settings / Details",
+  "backUpApk": "Back Up APK",
+  "backingUpApk": "Backing up APK...",
+  "shareApkFile": "Share APK File",
+  "uninstallApplication": "Uninstall Application",
+  "backupKindAndVersion": "{kind} • v{version}",
+  "backupKindAndVersionFull": "{kind} • v{version}",
+  "backupSizeAndDate": "Size: {size} • Backup Date: {date}",
+  "restoreOrInstallApp": "Restore / Install App",
+  "shareBackupFile": "Share Backup File",
+  "deleteBackupFile": "Delete Backup File",
+  "noBackupsFound": "No backups found",
+  "downloadingFile": "Downloading: {file}",
+  "sentBytes": "Sent: {amount}",
+  "exitConfirmationLabel": "Exit Confirmation",
+  "actionCancel": "Cancel",
+  "actionExit": "Exit",
+  "actionHome": "Home",
+  "actionBrowse": "Browse",
+  "drawerNavigation": "Navigation",
+  "customizationAndSettings": "Customization & Settings",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "categoryImages": "Images",
+  "categoryVideos": "Videos",
+  "categoryAudio": "Audio",
+  "categoryDocuments": "Documents",
+  "categoryArchives": "Archives",
+  "categoryDownloads": "Downloads",
+  "categoryApks": "APKs",
+  "categoryScreenshots": "Screenshots",
+  "categoryApps": "Apps",
+  "categoryManager": "Manager",
+  "categoryBin": "Bin",
+  "categorySettings": "Settings",
+  "categoryConfigure": "Configure",
+  "itemFolder": "Folder",
+  "itemFile": "File",
+  "actionCustomize": "Customize",
+  "actionDone": "Done",
+  "actionRename": "Rename",
+  "searchGloballyHint": "Search globally...",
+  "searchInFolderHint": "Search in this folder...",
+  "actionCopy": "Copy",
+  "actionCut": "Cut",
+  "actionDelete": "Delete",
+  "actionShare": "Share",
+  "actionProperties": "Properties",
+  "allRecentFiles": "All Recent Files",
+  "actionRefresh": "Refresh",
+  "deleteItemLabel": "Delete Item",
+  "closeSearch": "Close Search",
+  "searchInPane": "Search in Pane",
+  "searchPlaceholder": "Search...",
+  "unpinTab": "Unpin Tab",
+  "pinTab": "Pin Tab",
+  "openWithAlways": "Always",
+  "actionArchive": "Archive",
+  "actionExtract": "Extract",
+  "timeJustNow": "Just now",
+  "timeYesterday": "Yesterday",
+  "timeMinutesAgo": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+  "timeHoursAgo": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "timeDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "appTagline": "NFile - Beautiful File Manager",
+  "localFolder": "Local Folder",
+  "unknownArtist": "Unknown Artist",
+  "sdCardOrUsb": "SD Card / USB",
+  "connecting": "Connecting...",
+  "starting": "Starting...",
+  "dateDayMonth": "{day} {month}",
+  "monthJanuary": "January",
+  "monthFebruary": "February",
+  "monthMarch": "March",
+  "monthApril": "April",
+  "monthMay": "May",
+  "monthJune": "June",
+  "monthJuly": "July",
+  "monthAugust": "August",
+  "monthSeptember": "September",
+  "monthOctober": "October",
+  "monthNovember": "November",
+  "monthDecember": "December",
+  "@addSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@addedToArchive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@appIconSwitched": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "@appName": {
+    "description": "The name of the application. It is the same in every language."
+  },
+  "@appSizeAndInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@appVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@appVersionWithChannel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@backedUpApps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@backupKindAndVersion": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupKindAndVersionFull": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@backupSizeAndDate": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@compressionLevel": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "@configuringItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@confirmPermanentDelete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@connectedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionAdded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionTypeAndHost": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionTypeServer": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedItemsToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@copiedLabelToClipboard": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedNameToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@copiedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@couldNotOpenLink": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "@countAndDate": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@countAndName": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@countItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@customFontApplied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@customPathsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@cutItemsToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@cutNameToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@dateDayMonth": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "@defaultZoom": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteItemsFromArchiveQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletePermanentlyQuestionHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteRemoteItemQuestion": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deleteVaultFileQuestionHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deletedAtAndSize": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@deletedItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deletedName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@downloadingFile": {
+    "placeholders": {
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "@editorLanguageAndLines": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@errorCreatingFolder": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorDeletingItems": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorEmptyingBin": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorLoading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorLoadingFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorLoadingVault": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorPreparingShare": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorReadingSharedFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorRestoringItems": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorSaving": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorSavingFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorSharing": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorStartingFtpServer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@errorStartingHttpServer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@establishingPathway": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@exportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@exportedTo": {
+    "placeholders": {
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "@extractedTo": {
+    "placeholders": {
+      "item": {
+        "type": "String"
+      },
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToBackUpApps": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToBackupSettings": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToConnect": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToCopyItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToCreateArchive": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToDecryptItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToDeleteFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToExtractBundle": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToMoveItem": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToRequestSafFolder": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToRestoreFile": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToRestoreSettings": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToStartCloudShare": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToTransfer": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileConflictQuestion": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileNameTaken": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "createdName": {
+        "type": "String"
+      }
+    }
+  },
+  "@filesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@folderNameTaken": {
+    "placeholders": {
+      "folderName": {
+        "type": "String"
+      },
+      "createdName": {
+        "type": "String"
+      }
+    }
+  },
+  "@foldersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@ftpServerStartedAt": {
+    "placeholders": {
+      "address": {
+        "type": "String"
+      }
+    }
+  },
+  "@grantPermission": {
+    "description": "The button that asks for the permission of the storage."
+  },
+  "@httpServerStarted": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "@imageIndexOfTotal": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@itemsCopiedToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@labelActive": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@labelFilterActive": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@minutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@movedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@noItemsOfKindFound": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "@nothingMatchesSearch": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "@openingSharedDocument": {
+    "description": "Shown while a document that was shared with the application is opened."
+  },
+  "@originalPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@packageAndVersion": {
+    "placeholders": {
+      "package": {
+        "type": "String"
+      },
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@pasteHereCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pastedIntoArchive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pastedItemsTo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@pathNotFound": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@percentOfTotalStorage": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@permanentlyDeleteName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@permanentlyDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@pinSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@placeholderBase": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderBaseHint": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtension": {
+    "placeholders": {
+      "e": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionHint": {
+    "placeholders": {
+      "e": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionWithDot": {
+    "placeholders": {
+      "de": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderExtensionWithDotHint": {
+    "placeholders": {
+      "de": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderFull": {
+    "placeholders": {
+      "N": {
+        "type": "String"
+      }
+    }
+  },
+  "@placeholderFullHint": {
+    "placeholders": {
+      "N": {
+        "type": "String"
+      }
+    }
+  },
+  "@playingQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@processingItem": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@protectedItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "String"
+      }
+    }
+  },
+  "@queryReturnedRows": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@replacedOccurrences": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@resolvingSecureContent": {
+    "description": "Shown under the message of the opening of a shared document."
+  },
+  "@restoredSuccessfully": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@restoredToOriginal": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@reviewingItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@scanToOpen": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@schemaDefault": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@schemaType": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@selectedItemsWithSize": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@selectedTypeSettings": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@sentBytes": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@sharingDirectory": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@showingRange": {
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
+  },
+  "@sleepTimerSet": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@slideNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "@speedValue": {
+    "placeholders": {
+      "speed": {
+        "type": "double"
+      }
+    }
+  },
+  "@stepOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@storageAccessExplanation": {
+    "description": "The explanation under the title of the screen that asks for the permission of the storage."
+  },
+  "@storageAccessRequired": {
+    "description": "The title of the screen that asks for the permission of the storage."
+  },
+  "@storageFree": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageTotal": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageUsed": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@storageUsedPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "@storageUsedWithPercent": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@syntaxOf": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "@transferFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@uninstallAppsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteSelectedItemsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@deleteItemsQuestion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@shareAppMessage": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "@searchInFolderNamed": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "@noMatchForQuery": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "@fileWithExtension": {
+    "placeholders": {
+      "extension": {
+        "type": "String"
+      }
+    }
+  },
+  "@countItemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@sizeWithBytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "bytes": {
+        "type": "int"
+      }
+    }
+  },
+  "@containsFoldersAndFiles": {
+    "placeholders": {
+      "folders": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      }
+    }
+  },
+  "@processedOfTotal": {
+    "placeholders": {
+      "processed": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "@speedMegabytesPerSecond": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "@timeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@viewerSizeMegabytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@viewerSizeKilobytes": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaCopiedToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mediaCutToClipboard": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@htmlLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveCompressionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveExtractionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@archiveProcessedSuccessfully": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@analyzerNoBackupsMatch": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "@markdownLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@recycleBinAfterDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@themeCustomFontName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@connectionTitle": {
+    "placeholders": {
+      "protocol": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteUploaded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteUploadFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteTransferFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCreateFolderFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCopiedToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteCutToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadedToClipboard": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteFilesReadyToUpload": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteItemsCut": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@remoteItemsCopied": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultScrambleDescription": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultLockFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mediaCannotOpenDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaCannotOpenRemoteDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@mediaWebdavConnectFailed": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultFileDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultDirectoryDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@rootExecutionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@sdCardWithUsbNamed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToCreateDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@failedToDeleteDirectory": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@ftpConnectionFailed": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      },
+      "port": {
+        "type": "String"
+      }
+    }
+  },
+  "@localFileNotFound": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@sourceDoesNotExist": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@vaultFileNotFoundAt": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteUploadFailedFor": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@remoteDownloadFailedFor": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@sharingApkFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}
