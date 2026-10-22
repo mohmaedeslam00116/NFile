@@ -134,6 +134,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get successfullyDeletedItems => 'تم حذف العناصر بنجاح';
 
   @override
+  String duplicateGroupFiles(Object count) {
+    return '$count ملف';
+  }
+
+  @override
+  String get findDuplicates => 'البحث عن الملفات المكررة';
+
+  @override
+  String get noDuplicatesFound => 'لم يتم العثور على ملفات مكررة.';
+
+  @override
   String deleteFailedItems(Object count) {
     return 'فشل حذف $count عنصر';
   }

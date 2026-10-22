@@ -284,6 +284,24 @@ abstract class AppLocalizations {
   /// **'Successfully deleted items'**
   String get successfullyDeletedItems;
 
+  /// No description provided for @duplicateGroupFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} files'**
+  String duplicateGroupFiles(Object count);
+
+  /// No description provided for @findDuplicates.
+  ///
+  /// In en, this message translates to:
+  /// **'Find duplicates'**
+  String get findDuplicates;
+
+  /// No description provided for @noDuplicatesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No duplicate files found.'**
+  String get noDuplicatesFound;
+
   /// No description provided for @deleteFailedItems.
   ///
   /// In en, this message translates to:
