@@ -4,6 +4,7 @@ import 'package:path/path.dart' as p;
 import 'package:archive/archive_io.dart';
 import 'package:dart_lz4/dart_lz4.dart';
 import 'package:just_zstd/just_zstd.dart';
+import 'package:rar/rar.dart';
 
 class ArchiveService {
   /// Creates an archive or multiple separate archives.
@@ -134,6 +135,21 @@ class ArchiveService {
     required String destinationDir,
     String? password,
   }) async {
+    final lower = archivePath.toLowerCase();
+    if (lower.endsWith('.rar')) {
+      final result = await Rar.extractRarFile(
+        rarFilePath: archivePath,
+        destinationPath: destinationDir,
+        password: password,
+      );
+      if (result['success'] != true) {
+        throw Exception(result['message'] ?? 'RAR extraction failed');
+      }
+      return;
+    }
+    if (lower.endsWith('.7z')) {
+      throw UnsupportedError('7z extraction requires libarchive (native). Not available in this build.');
+    }
     return compute(_decodeArchiveTask, {
       'archivePath': archivePath,
       'destinationDir': destinationDir,
@@ -334,6 +350,23 @@ class ArchiveService {
   }
 
   static Future<Archive?> readArchive(String archivePath, {String? password}) async {
+    final lower = archivePath.toLowerCase();
+    if (lower.endsWith('.rar')) {
+      try {
+        final result = await Rar.listRarContents(rarFilePath: archivePath, password: password);
+        final archive = Archive();
+        if (result['success'] == true) {
+          final files = (result['files'] as List?)?.cast<String>() ?? const <String>[];
+          for (final name in files) {
+            archive.addFile(ArchiveFile(name, 0, <int>[]));
+          }
+        }
+        return archive;
+      } catch (e) {
+        debugPrint('Error reading RAR archive: $e');
+        return Archive();
+      }
+    }
     return compute(_readArchiveTask, {'archivePath': archivePath, 'password': password});
   }
 
