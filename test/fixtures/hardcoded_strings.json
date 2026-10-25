@@ -468,7 +468,19 @@
     "chmod $mode \"$path\"",
     "chown $owner \"$path\"",
     "7z extraction requires libarchive (native). Not available in this build.",
-    "RAR extraction failed"
+    "RAR extraction failed",
+    "Bash / Shell",
+    "Go",
+    "INI / Config",
+    "Kotlin",
+    "PHP",
+    "Ruby",
+    "Rust",
+    "SQL",
+    "Swift",
+    "TOML",
+    "TypeScript",
+    "YAML"
   ],
   "todo": []
 }

@@ -238,6 +238,49 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       case '.md':
         _selectedLanguage = 'markdown';
         break;
+      case '.sh':
+      case '.bash':
+      case '.zsh':
+        _selectedLanguage = 'bash';
+        break;
+      case '.yaml':
+      case '.yml':
+        _selectedLanguage = 'yaml';
+        break;
+      case '.sql':
+        _selectedLanguage = 'sql';
+        break;
+      case '.go':
+        _selectedLanguage = 'go';
+        break;
+      case '.rs':
+        _selectedLanguage = 'rust';
+        break;
+      case '.kt':
+      case '.kts':
+        _selectedLanguage = 'kotlin';
+        break;
+      case '.swift':
+        _selectedLanguage = 'swift';
+        break;
+      case '.php':
+        _selectedLanguage = 'php';
+        break;
+      case '.rb':
+        _selectedLanguage = 'ruby';
+        break;
+      case '.toml':
+        _selectedLanguage = 'toml';
+        break;
+      case '.ini':
+      case '.cfg':
+      case '.conf':
+        _selectedLanguage = 'ini';
+        break;
+      case '.scss':
+      case '.less':
+        _selectedLanguage = 'css';
+        break;
       default:
         _selectedLanguage = 'plain';
         break;
@@ -458,6 +501,18 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       {'key': 'css', 'name': 'CSS'},
       {'key': 'smali', 'name': 'Smali'},
       {'key': 'markdown', 'name': 'Markdown'},
+      {'key': 'bash', 'name': 'Bash / Shell'},
+      {'key': 'yaml', 'name': 'YAML'},
+      {'key': 'sql', 'name': 'SQL'},
+      {'key': 'go', 'name': 'Go'},
+      {'key': 'rust', 'name': 'Rust'},
+      {'key': 'kotlin', 'name': 'Kotlin'},
+      {'key': 'swift', 'name': 'Swift'},
+      {'key': 'php', 'name': 'PHP'},
+      {'key': 'ruby', 'name': 'Ruby'},
+      {'key': 'toml', 'name': 'TOML'},
+      {'key': 'ini', 'name': 'INI / Config'},
+      {'key': 'typescript', 'name': 'TypeScript'},
     ];
 
     showModalBottomSheet(
