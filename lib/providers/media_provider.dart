@@ -1030,6 +1030,44 @@ class MediaProvider extends ChangeNotifier {
         uriType: UriType.EXTERNAL,
         ignoreCase: true,
       );
+
+      // Supplement the MediaStore query with a filesystem scan: audio files that
+      // are present on disk but not indexed by MediaStore (newly added files,
+      // files in folders MediaStore skips) would otherwise be invisible in the
+      // Audio category. Issue #102.
+      const audioExts = {'.mp3', '.wav', '.m4a', '.ogg', '.flac', '.aac', '.wma', '.opus'};
+      final searchDirs = await _getUserSearchDirs();
+      final existingPaths = _audios.map((s) => s.data).toSet();
+      final excluded = _excludedDefaultPaths['Audio'] ?? [];
+      int idx = 900000;
+      for (final dirPath in searchDirs) {
+        if (_isPathExcluded(dirPath, excluded)) continue;
+        await _scanDirectoryRecursively(
+          dirPath,
+          (ext) => audioExts.contains(ext),
+          (file) {
+            if (existingPaths.contains(file.path)) return;
+            if (_isPathExcluded(file.path, excluded)) return;
+            existingPaths.add(file.path);
+            try {
+              final stat = file.statSync();
+              final songMap = {
+                '_id': idx++,
+                '_data': file.path,
+                'title': p.basenameWithoutExtension(file.path),
+                'artist': AppTranslation.label((l10n) => l10n.unknownArtist),
+                'album': AppTranslation.label((l10n) => l10n.customFolder),
+                'duration': 0,
+                'size': stat.size,
+                'display_name': p.basename(file.path),
+                'display_name_wo_ext': p.basenameWithoutExtension(file.path),
+                'is_music': true,
+              };
+              _audios.add(SongModel(songMap));
+            } catch (_) {}
+          },
+        );
+      }
     } catch (_) {
       _audios = [];
     }
