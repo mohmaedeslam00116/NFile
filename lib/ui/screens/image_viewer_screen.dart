@@ -1,6 +1,7 @@
 import '../../l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -8,6 +9,8 @@ import 'package:mime/mime.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:flutter_avif/flutter_avif.dart';
 import '../../providers/media_provider.dart';
+import '../../providers/file_manager_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 
 final Uint8List _kTransparentImage = Uint8List.fromList([
@@ -177,6 +180,38 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         extendBodyBehindAppBar: true,
+        bottomNavigationBar: _showUI
+            ? Container(
+                color: Colors.black.withValues(alpha: 0.55),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: SafeArea(
+                  top: false,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.share_outlined, color: Colors.white),
+                        tooltip: 'Share',
+                        onPressed: () async {
+                          final path = _imageList.isNotEmpty ? _imageList[_currentIndex] : widget.imagePath;
+                          await SharePlus.instance.share(ShareParams(files: [XFile(path)]));
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete_outline, color: Colors.white),
+                        tooltip: 'Delete',
+                        onPressed: () async {
+                          final path = _imageList.isNotEmpty ? _imageList[_currentIndex] : widget.imagePath;
+                          final provider = context.read<FileManagerProvider>();
+                          await provider.deleteFile(path);
+                          if (mounted) Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : null,
         appBar: _showUI 
             ? AppBar(
                 backgroundColor: Colors.black.withValues(alpha: 0.55),

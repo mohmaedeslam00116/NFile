@@ -481,7 +481,9 @@
     "TOML",
     "TypeScript",
     "YAML",
-    "Other"
+    "Other",
+    "Delete",
+    "Share"
   ],
   "todo": []
 }
