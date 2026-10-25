@@ -22,6 +22,13 @@ class WebSharingService extends ChangeNotifier {
   String _localIpAddress = '';
   final int _port = 8080;
 
+  // Upload (phone receives from browser) progress
+  double _uploadProgress = 0.0;
+  String _uploadFileName = '';
+  bool get uploadInProgress => _uploadFileName.isNotEmpty;
+  double get uploadProgress => _uploadProgress;
+  String get uploadFileName => _uploadFileName;
+
   bool _isInternetActive = false;
   String _internetShareLink = '';
 
@@ -164,7 +171,29 @@ class WebSharingService extends ChangeNotifier {
 
           final file = File(uploadDestination);
           final sink = file.openWrite();
-          await request.cast<List<int>>().pipe(sink);
+          final total = request.contentLength > 0 ? request.contentLength : 0;
+          _uploadFileName = decodedFileName;
+          _uploadProgress = 0.0;
+          notifyListeners();
+          int received = 0;
+          await for (final chunk in request) {
+            sink.add(chunk);
+            received += chunk.length;
+            if (total > 0) {
+              _uploadProgress = (received / total).clamp(0.0, 1.0);
+            }
+            notifyListeners();
+          }
+          await sink.close();
+
+          _uploadProgress = 1.0;
+          notifyListeners();
+          // Reset shortly after completion
+          Future.delayed(const Duration(seconds: 2), () {
+            _uploadFileName = '';
+            _uploadProgress = 0.0;
+            notifyListeners();
+          });
 
           response.statusCode = HttpStatus.ok;
           response.write(AppTranslation.label((l10n) => l10n.webUploadSuccessful));
