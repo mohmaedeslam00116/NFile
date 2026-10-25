@@ -480,7 +480,8 @@
     "Swift",
     "TOML",
     "TypeScript",
-    "YAML"
+    "YAML",
+    "Other"
   ],
   "todo": []
 }
