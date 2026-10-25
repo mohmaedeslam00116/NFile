@@ -1088,6 +1088,16 @@ class MediaProvider extends ChangeNotifier {
     '.odp',
     '.rtf',
     '.epub',
+    '.mobi',
+    '.azw',
+    '.azw3',
+    '.fb2',
+    '.djvu',
+    '.xps',
+    '.oxps',
+    '.pages',
+    '.numbers',
+    '.key',
   ];
 
   Future<List<String>> _getUserSearchDirs() async {
