@@ -156,8 +156,8 @@ class _SwipableStorageOverviewState extends State<SwipableStorageOverview> {
               if (vol.isInternal) {
                 gradientColors = isDark
                     ? [
-                        Color.alphaBlend(theme.colorScheme.primary.withValues(alpha: 0.15), const Color(0xFF181818)),
-                        Color.alphaBlend(theme.colorScheme.primary.withValues(alpha: 0.05), const Color(0xFF0C0C0C)),
+                        Color.alphaBlend(theme.colorScheme.primary.withValues(alpha: 0.30), const Color(0xFF181818)),
+                        Color.alphaBlend(theme.colorScheme.primary.withValues(alpha: 0.12), const Color(0xFF0C0C0C)),
                       ]
                     : [theme.colorScheme.primary, theme.colorScheme.primary.withValues(alpha: 0.82)];
                 iconData = Broken.folder_2;
