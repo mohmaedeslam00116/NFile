@@ -12,6 +12,7 @@ import '../../services/pin_service.dart';
 import '../../services/app_manager_service.dart';
 import '../../providers/media_provider.dart';
 import '../../providers/file_manager_provider.dart';
+import '../../services/preferences_service.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class FileItem extends StatelessWidget {
@@ -65,7 +66,14 @@ class FileItem extends StatelessWidget {
       ),
       child: InkWell(
         onTap: onTap,
-        onLongPress: onLongPress,
+        onLongPress: () {
+          final provider = context.read<FileManagerProvider>();
+          if (PreferencesService.getLongPressOpenWith() && !file.isDirectory) {
+            provider.openFile(context, file.path, showOpenWithPopup: true);
+          } else {
+            onLongPress?.call();
+          }
+        },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: EdgeInsets.all((12.0 * itemPaddingMultiplier).clamp(4.0, 24.0)),
