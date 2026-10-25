@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/recycle_bin_service.dart';
@@ -17,6 +19,7 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
   final Set<String> _selectedIds = {};
   bool _isSelectionMode = false;
   String _searchQuery = "";
+  String _selectedCategory = 'All';
   final TextEditingController _searchController = TextEditingController();
   bool _isSearching = false;
 
@@ -33,15 +36,27 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
     });
   }
 
+  String _categoryOf(RecycleBinItem item) {
+    if (item.isDirectory) return 'Folders';
+    final ext = p.extension(item.name).toLowerCase();
+    if (FileUtils.isImage(item.name)) return 'Images';
+    if (FileUtils.isVideo(item.name)) return 'Videos';
+    if (FileUtils.isAudio(item.name)) return 'Audio';
+    if (const {'.zip', '.tar', '.gz', '.bz2', '.rar', '.7z'}.contains(ext)) return 'Archives';
+    if (const {'.pdf', '.doc', '.docx', '.txt', '.md', '.json', '.csv', '.rtf', '.epub'}.contains(ext)) return 'Documents';
+    return 'Other';
+  }
+
   void _filterItems() {
-    if (_searchQuery.trim().isEmpty) {
-      _filteredItems = List.from(_allItems);
-    } else {
-      _filteredItems = _allItems
-          .where((item) =>
-              item.name.toLowerCase().contains(_searchQuery.toLowerCase()))
-          .toList();
+    Iterable<RecycleBinItem> base = _allItems;
+    if (_selectedCategory != 'All') {
+      base = base.where((item) => _categoryOf(item) == _selectedCategory);
     }
+    if (_searchQuery.trim().isNotEmpty) {
+      base = base.where((item) =>
+          item.name.toLowerCase().contains(_searchQuery.toLowerCase()));
+    }
+    _filteredItems = base.toList();
   }
 
   void _toggleSelection(String id) {
@@ -290,6 +305,30 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
             ? _buildEmptyState(theme)
             : Column(
                 children: [
+                  // Quick category filter chips
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      children: ['All', 'Images', 'Videos', 'Audio', 'Documents', 'Archives', 'Folders', 'Other']
+                          .map((cat) {
+                        final selected = _selectedCategory == cat;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: FilterChip(
+                            label: Text(cat),
+                            selected: selected,
+                            onSelected: (_) {
+                              setState(() {
+                                _selectedCategory = cat;
+                                _filterItems();
+                              });
+                            },
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
                   Expanded(
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
@@ -348,7 +387,18 @@ class _RecycleBinScreenState extends State<RecycleBinScreen> {
                                     child: isSelected
                                         ? Icon(Broken.tick_circle,
                                             color: theme.colorScheme.onPrimary, size: 24)
-                                        : Icon(icon, color: iconColor, size: 24),
+                                        : (FileUtils.isImage(item.name)
+                                            ? ClipRRect(
+                                                borderRadius: BorderRadius.circular(12),
+                                                child: Image.file(
+                                                  File('${RecycleBinService.trashDirectoryPath}/${item.id}'),
+                                                  fit: BoxFit.cover,
+                                                  width: 48,
+                                                  height: 48,
+                                                  errorBuilder: (context, error, stackTrace) => Icon(icon, color: iconColor, size: 24),
+                                                ),
+                                              )
+                                            : Icon(icon, color: iconColor, size: 24)),
                                   ),
                                   const SizedBox(width: 16),
                                   // Metadata details
