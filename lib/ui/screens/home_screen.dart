@@ -229,44 +229,51 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
             ),
           ],
         ),
+        extendBody: true,
         bottomNavigationBar: provider.showHomeBrowseNav
-            ? NavigationBar(
-                height: provider.hideNavLabels ? 58.0 : null,
-                labelBehavior: provider.hideNavLabels
-                    ? NavigationDestinationLabelBehavior.alwaysHide
-                    : null,
-                selectedIndex: _currentIndex,
-                onDestinationSelected: (index) {
-                  if (index == 1) {
-                    final now = DateTime.now();
-                    if (_currentIndex == 1 && _lastBrowseTapTime != null && now.difference(_lastBrowseTapTime!) < const Duration(milliseconds: 800)) {
-                      provider.loadDirectory(provider.rootPath);
-                    }
-                    _lastBrowseTapTime = now;
-                  } else if (index == 0) {
-                    context.read<MediaProvider>().refreshMediaBackground();
-                  } else if (index == 2) {
-                    // Recent tab: nothing extra; AllRecentFilesScreen loads on init.
-                  }
-                  setState(() => _currentIndex = index);
-                },
-                destinations: [
-                  NavigationDestination(
-                    icon: NfileIcon(Broken.home),
-                    selectedIcon: NfileIcon(Broken.home_1),
-                    label: AppLocalizations.of(context).actionHome,
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(28),
+                  child: NavigationBar(
+                    height: provider.hideNavLabels ? 58.0 : null,
+                    labelBehavior: provider.hideNavLabels
+                        ? NavigationDestinationLabelBehavior.alwaysHide
+                        : null,
+                    selectedIndex: _currentIndex,
+                    onDestinationSelected: (index) {
+                      if (index == 1) {
+                        final now = DateTime.now();
+                        if (_currentIndex == 1 && _lastBrowseTapTime != null && now.difference(_lastBrowseTapTime!) < const Duration(milliseconds: 800)) {
+                          provider.loadDirectory(provider.rootPath);
+                        }
+                        _lastBrowseTapTime = now;
+                      } else if (index == 0) {
+                        context.read<MediaProvider>().refreshMediaBackground();
+                      } else if (index == 2) {
+                        // Recent tab: nothing extra; AllRecentFilesScreen loads on init.
+                      }
+                      setState(() => _currentIndex = index);
+                    },
+                    destinations: [
+                      NavigationDestination(
+                        icon: NfileIcon(Broken.home),
+                        selectedIcon: NfileIcon(Broken.home_1),
+                        label: AppLocalizations.of(context).actionHome,
+                      ),
+                      NavigationDestination(
+                        icon: NfileIcon(Broken.folder),
+                        selectedIcon: NfileIcon(Broken.folder_open),
+                        label: AppLocalizations.of(context).actionBrowse,
+                      ),
+                      NavigationDestination(
+                        icon: NfileIcon(Broken.timer_1),
+                        selectedIcon: NfileIcon(Broken.timer),
+                        label: AppLocalizations.of(context).allRecentFiles,
+                      ),
+                    ],
                   ),
-                  NavigationDestination(
-                    icon: NfileIcon(Broken.folder),
-                    selectedIcon: NfileIcon(Broken.folder_open),
-                    label: AppLocalizations.of(context).actionBrowse,
-                  ),
-                  NavigationDestination(
-                    icon: NfileIcon(Broken.timer_1),
-                    selectedIcon: NfileIcon(Broken.timer),
-                    label: AppLocalizations.of(context).allRecentFiles,
-                  ),
-                ],
+                ),
               )
             : null,
       ),
