@@ -341,6 +341,7 @@ class PreferencesService {
   static const String _keyHideNavigationBar = 'hide_navigation_bar';
   static const String _keyDefaultOpenActionPrefix = 'default_open_action_';
   static const String _keySkipOpenWithDialog = 'skip_open_with_dialog';
+  static const String _keyLongPressOpenWith = 'long_press_open_with';
 
   static bool getPreferFoldersInMedia() {
     return _prefs?.getBool(_keyPreferFoldersInMedia) ?? false;
@@ -364,6 +365,15 @@ class PreferencesService {
 
   static Future<void> saveSkipOpenWithDialog(bool val) async {
     await _prefs?.setBool(_keySkipOpenWithDialog, val);
+  }
+
+  // --- Long Press Opens Open-With ---
+  static bool getLongPressOpenWith() {
+    return _prefs?.getBool(_keyLongPressOpenWith) ?? false;
+  }
+
+  static Future<void> saveLongPressOpenWith(bool val) async {
+    await _prefs?.setBool(_keyLongPressOpenWith, val);
   }
 
   static String? getDefaultOpenAction(String ext) {
