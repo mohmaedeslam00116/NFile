@@ -11,6 +11,7 @@ import '../widgets/recent_files_section.dart';
 import '../widgets/nfile_drawer.dart';
 import '../widgets/nfile_icon.dart';
 import 'directory_screen.dart';
+import 'all_recent_files_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback toggleTheme;
@@ -223,6 +224,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
               toggleTheme: widget.toggleTheme,
               onNavigateTab: (index) => setState(() => _currentIndex = index),
             ),
+            AllRecentFilesScreen(
+              onNavigateTab: (index) => setState(() => _currentIndex = index),
+            ),
           ],
         ),
         bottomNavigationBar: provider.showHomeBrowseNav
@@ -241,6 +245,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                     _lastBrowseTapTime = now;
                   } else if (index == 0) {
                     context.read<MediaProvider>().refreshMediaBackground();
+                  } else if (index == 2) {
+                    // Recent tab: nothing extra; AllRecentFilesScreen loads on init.
                   }
                   setState(() => _currentIndex = index);
                 },
@@ -254,6 +260,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                     icon: NfileIcon(Broken.folder),
                     selectedIcon: NfileIcon(Broken.folder_open),
                     label: AppLocalizations.of(context).actionBrowse,
+                  ),
+                  NavigationDestination(
+                    icon: NfileIcon(Broken.timer_1),
+                    selectedIcon: NfileIcon(Broken.timer),
+                    label: AppLocalizations.of(context).allRecentFiles,
                   ),
                 ],
               )
