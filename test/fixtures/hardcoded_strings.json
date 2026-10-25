@@ -466,7 +466,9 @@
     "x-file-name",
     "{de}",
     "chmod $mode \"$path\"",
-    "chown $owner \"$path\""
+    "chown $owner \"$path\"",
+    "7z extraction requires libarchive (native). Not available in this build.",
+    "RAR extraction failed"
   ],
   "todo": []
 }
