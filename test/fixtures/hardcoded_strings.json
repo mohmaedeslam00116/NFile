@@ -35,7 +35,6 @@
     "200 Type set to $arg",
     "200 UTF8 Option Enabled",
     "215 UNIX Type: L8",
-    "220 NFile FTP Server ready.",
     "221 Goodbye.",
     "226 Transfer complete.",
     "227 Entering Passive Mode (${ipParts.join(\",\")},$p1,$p2)",
@@ -156,8 +155,6 @@
     "NFILE_VAULT_V1",
     "NFILE_VAULT_V2",
     "NFile",
-    "NFile Audio Player",
-    "NFile_Remote",
     "NOT NULL",
     "NType82",
     "NULL",
@@ -484,7 +481,10 @@
     "Delete",
     "Share",
     "OpenFile",
-    "Inter"
+    "Inter",
+    "220 OpenFile FTP Server ready.",
+    "OpenFile Audio Player",
+    "OpenFile_Remote"
   ],
   "todo": []
 }

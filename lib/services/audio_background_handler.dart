@@ -8,11 +8,11 @@ import 'package:flutter/foundation.dart';
 import '../ui/screens/audio_player/audio_artwork_widget.dart';
 
 /// Global singleton handler instance
-NFileAudioHandler? _audioHandlerInstance;
+OpenFileAudioHandler? _audioHandlerInstance;
 
 /// Returns the global audio handler, creating it lazily if needed.
-NFileAudioHandler getAudioHandler() {
-  _audioHandlerInstance ??= NFileAudioHandler._();
+OpenFileAudioHandler getAudioHandler() {
+  _audioHandlerInstance ??= OpenFileAudioHandler._();
   return _audioHandlerInstance!;
 }
 
@@ -32,16 +32,16 @@ Future<Uri?> getArtworkUri(int audioId) async {
       return file.uri;
     }
   } catch (e) {
-    debugPrint('[NFile] Error getting artwork URI: $e');
+    debugPrint('[OpenFile] Error getting artwork URI: $e');
   }
   return null;
 }
 
 /// Bridges media_kit [Player] to [audio_service] so the OS shows a proper
 /// media notification with play / pause / skip controls.
-class NFileAudioHandler extends BaseAudioHandler
+class OpenFileAudioHandler extends BaseAudioHandler
     with QueueHandler, SeekHandler {
-  NFileAudioHandler._();
+  OpenFileAudioHandler._();
 
   Player? _player;
   final List<StreamSubscription<dynamic>> _subs = [];
@@ -61,7 +61,7 @@ class NFileAudioHandler extends BaseAudioHandler
         try {
           await oldPlayer.dispose();
         } catch (e) {
-          debugPrint('[NFile] Error disposing old player: $e');
+          debugPrint('[OpenFile] Error disposing old player: $e');
         }
       });
     }
@@ -134,7 +134,7 @@ class NFileAudioHandler extends BaseAudioHandler
       try {
         await playerToDispose.dispose();
       } catch (e) {
-        debugPrint('[NFile] Error disposing player on stop: $e');
+        debugPrint('[OpenFile] Error disposing player on stop: $e');
       }
     }
 

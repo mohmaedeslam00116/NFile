@@ -103,7 +103,7 @@ abstract class AppLocalizations {
   /// The name of the application. It is the same in every language.
   ///
   /// In en, this message translates to:
-  /// **'NFile'**
+  /// **'OpenFile'**
   String get appName;
 
   /// Shown while a document that was shared with the application is opened.
@@ -127,7 +127,7 @@ abstract class AppLocalizations {
   /// The explanation under the title of the screen that asks for the permission of the storage.
   ///
   /// In en, this message translates to:
-  /// **'NFile requires storage permission to manage, organize, and display your media files seamlessly.'**
+  /// **'OpenFile requires storage permission to manage, organize, and display your media files seamlessly.'**
   String get storageAccessExplanation;
 
   /// The button that asks for the permission of the storage.
@@ -145,7 +145,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutNFile.
   ///
   /// In en, this message translates to:
-  /// **'About NFile'**
+  /// **'About OpenFile'**
   String get aboutNFile;
 
   /// No description provided for @appVersionWithChannel.
@@ -157,7 +157,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutDescription.
   ///
   /// In en, this message translates to:
-  /// **'NFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.'**
+  /// **'OpenFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.'**
   String get aboutDescription;
 
   /// No description provided for @coreHighlights.
@@ -547,7 +547,7 @@ abstract class AppLocalizations {
   /// No description provided for @appVersion.
   ///
   /// In en, this message translates to:
-  /// **'NFile v{version}'**
+  /// **'OpenFile v{version}'**
   String appVersion(String version);
 
   /// No description provided for @beautifulMediaSuite.
@@ -565,13 +565,13 @@ abstract class AppLocalizations {
   /// No description provided for @builtInViewer.
   ///
   /// In en, this message translates to:
-  /// **'Built-in NFile Viewer'**
+  /// **'Built-in OpenFile Viewer'**
   String get builtInViewer;
 
   /// No description provided for @builtInViewerDescription.
   ///
   /// In en, this message translates to:
-  /// **'NFile\'s custom native experience'**
+  /// **'OpenFile\'s custom native experience'**
   String get builtInViewerDescription;
 
   /// No description provided for @systemExternalApp.
@@ -751,7 +751,7 @@ abstract class AppLocalizations {
   /// No description provided for @restrictedFolderExplanation.
   ///
   /// In en, this message translates to:
-  /// **'Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, NFile requires advanced permissions.'**
+  /// **'Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, OpenFile requires advanced permissions.'**
   String get restrictedFolderExplanation;
 
   /// No description provided for @useRootAccess.
@@ -1681,7 +1681,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareAppMessage.
   ///
   /// In en, this message translates to:
-  /// **'Check out NFile, a beautiful offline file manager and media hub: {url}'**
+  /// **'Check out OpenFile, a beautiful offline file manager and media hub: {url}'**
   String shareAppMessage(String url);
 
   /// No description provided for @deviceGalleryAuto.
@@ -3001,13 +3001,13 @@ abstract class AppLocalizations {
   /// No description provided for @themeBrokenOutline.
   ///
   /// In en, this message translates to:
-  /// **'NFile Broken Outline (Default)'**
+  /// **'OpenFile Broken Outline (Default)'**
   String get themeBrokenOutline;
 
   /// No description provided for @themeOriginalGeometric.
   ///
   /// In en, this message translates to:
-  /// **'Original NFile clean geometric look'**
+  /// **'Original OpenFile clean geometric look'**
   String get themeOriginalGeometric;
 
   /// No description provided for @themeNothingDotMatrix.
@@ -4567,7 +4567,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTypographyHint.
   ///
   /// In en, this message translates to:
-  /// **'Select a beautiful typeface to customize NFile\\\'s overall visual theme'**
+  /// **'Select a beautiful typeface to customize OpenFile\\\'s overall visual theme'**
   String get appTypographyHint;
 
   /// No description provided for @customFontApplied.
@@ -4963,7 +4963,7 @@ abstract class AppLocalizations {
   /// No description provided for @selectNetworkServiceHint.
   ///
   /// In en, this message translates to:
-  /// **'Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.'**
+  /// **'Mount a remote server or NAS share as a dynamic drive within your OpenFile storage lists.'**
   String get selectNetworkServiceHint;
 
   /// No description provided for @selectedTypeSettings.
@@ -6301,7 +6301,7 @@ abstract class AppLocalizations {
   /// No description provided for @exactStorageCalculationHint.
   ///
   /// In en, this message translates to:
-  /// **'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.'**
+  /// **'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for OpenFile in System Settings.'**
   String get exactStorageCalculationHint;
 
   /// No description provided for @grantUsageAccess.
@@ -6799,7 +6799,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTagline.
   ///
   /// In en, this message translates to:
-  /// **'NFile - Beautiful File Manager'**
+  /// **'OpenFile - Beautiful File Manager'**
   String get appTagline;
 
   /// No description provided for @localFolder.

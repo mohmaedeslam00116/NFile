@@ -136,7 +136,7 @@ class FtpSession {
   FtpSession(this.server, this.controlSocket);
 
   void start() {
-    sendResponse('220 NFile FTP Server ready.');
+    sendResponse('220 OpenFile FTP Server ready.');
     
     controlSocket.listen(
       (bytes) {

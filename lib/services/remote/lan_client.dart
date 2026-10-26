@@ -223,7 +223,7 @@ class LanClient implements RemoteClient {
     
     // Write mock content
     final sink = localFile.openWrite();
-    final text = 'NFile LAN/SMB Virtual Storage Bridge\n'
+    final text = 'OpenFile LAN/SMB Virtual Storage Bridge\n'
         'File: ${item.name}\n'
         'Path: ${item.path}\n'
         'Size: ${item.size} bytes\n'

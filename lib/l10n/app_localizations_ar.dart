@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'NFile';
+  String get appName => 'OpenFile';
 
   @override
   String get openingSharedDocument => 'جارٍ فتح المستند المشترك...';
@@ -22,7 +22,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get storageAccessExplanation =>
-      'يحتاج تطبيق NFile إلى إذن التخزين ليُدِر ملفات الوسائط وينظّمها ويعرضها بسلاسة.';
+      'يحتاج تطبيق OpenFile إلى إذن التخزين ليُدِر ملفات الوسائط وينظّمها ويعرضها بسلاسة.';
 
   @override
   String get grantPermission => 'منح الإذن';
@@ -33,7 +33,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get aboutNFile => 'عن NFile';
+  String get aboutNFile => 'عن OpenFile';
 
   @override
   String appVersionWithChannel(String version, String channel) {
@@ -42,7 +42,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get aboutDescription =>
-      'تطبيق NFile مدير ملفات جميل وسلس ومفتوح المصدر، ومركز وسائط يعمل دون إنترنت، مبني بـ Flutter. صُمّم لأداء فائق، ولمظهر زجاجي نقي، وتجربة مستخدم متصلة.';
+      'تطبيق OpenFile مدير ملفات جميل وسلس ومفتوح المصدر، ومركز وسائط يعمل دون إنترنت، مبني بـ Flutter. صُمّم لأداء فائق، ولمظهر زجاجي نقي، وتجربة مستخدم متصلة.';
 
   @override
   String get coreHighlights => 'أبرز المزايا';
@@ -285,7 +285,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String appVersion(String version) {
-    return 'NFile الإصدار $version';
+    return 'OpenFile الإصدار $version';
   }
 
   @override
@@ -295,10 +295,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get openWith => 'فتح بـ...';
 
   @override
-  String get builtInViewer => 'عارض NFile المدمج';
+  String get builtInViewer => 'عارض OpenFile المدمج';
 
   @override
-  String get builtInViewerDescription => 'تجربة NFile المدمجة الأصلية';
+  String get builtInViewerDescription => 'تجربة OpenFile المدمجة الأصلية';
 
   @override
   String get systemExternalApp => 'تطبيق خارجي من النظام';
@@ -402,7 +402,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get restrictedFolderExplanation =>
-      'يقيّد أندرويد 11 وما فوق الوصول المعتاد إلى مجلدَي Android/data وAndroid/obb لحماية بيانات التطبيقات. ولعرض هذه الملفات وتعديلها يحتاج NFile إلى أذونات متقدمة.';
+      'يقيّد أندرويد 11 وما فوق الوصول المعتاد إلى مجلدَي Android/data وAndroid/obb لحماية بيانات التطبيقات. ولعرض هذه الملفات وتعديلها يحتاج OpenFile إلى أذونات متقدمة.';
 
   @override
   String get useRootAccess => 'استخدام صلاحيات Root (Superuser)';
@@ -944,7 +944,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String shareAppMessage(String url) {
-    return 'جرّب NFile، مدير ملفات ومركز وسائط جميل يعمل دون إنترنت: $url';
+    return 'جرّب OpenFile، مدير ملفات ومركز وسائط جميل يعمل دون إنترنت: $url';
   }
 
   @override
@@ -1676,10 +1676,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get themeOriginalDefault => 'الأصلي (أزرق التوقيع)';
 
   @override
-  String get themeBrokenOutline => 'NFile المكسور (الافتراضي)';
+  String get themeBrokenOutline => 'OpenFile المكسور (الافتراضي)';
 
   @override
-  String get themeOriginalGeometric => 'مظهر NFile الأصلي الهندسي النظيف';
+  String get themeOriginalGeometric => 'مظهر OpenFile الأصلي الهندسي النظيف';
 
   @override
   String get themeNothingDotMatrix => 'لا شيء: Dot-Matrix و Sans';
@@ -2590,7 +2590,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appTypographyHint =>
-      'اختر خطًا جميلًا لتخصيص المظهر العام لتطبيق NFile';
+      'اختر خطًا جميلًا لتخصيص المظهر العام لتطبيق OpenFile';
 
   @override
   String customFontApplied(String name) {
@@ -2807,7 +2807,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectNetworkServiceHint =>
-      'ثبّت خادمًا بعيدًا أو مشاركة NAS كقرص ديناميكي ضمن قوائم تخزين NFile.';
+      'ثبّت خادمًا بعيدًا أو مشاركة NAS كقرص ديناميكي ضمن قوائم تخزين OpenFile.';
 
   @override
   String selectedTypeSettings(String type) {
@@ -3660,7 +3660,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get exactStorageCalculationHint =>
-      'لرؤية أحجام التطبيقات الدقيقة (APK والبيانات والتخزين المؤقت) بدل حجم ملف التثبيت وحده، فعّل إذن الوصول إلى بيانات الاستخدام لتطبيق NFile في إعدادات النظام.';
+      'لرؤية أحجام التطبيقات الدقيقة (APK والبيانات والتخزين المؤقت) بدل حجم ملف التثبيت وحده، فعّل إذن الوصول إلى بيانات الاستخدام لتطبيق OpenFile في إعدادات النظام.';
 
   @override
   String get grantUsageAccess => 'منح إذن الوصول إلى الاستخدام';
@@ -3970,7 +3970,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get appTagline => 'NFile - مدير ملفات جميل';
+  String get appTagline => 'OpenFile - مدير ملفات جميل';
 
   @override
   String get localFolder => 'مجلد محلي';

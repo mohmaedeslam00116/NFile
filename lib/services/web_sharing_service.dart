@@ -468,7 +468,7 @@ class WebSharingService extends ChangeNotifier {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NFile Shared Portal - $title</title>
+  <title>OpenFile Shared Portal - $title</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -1519,7 +1519,7 @@ class WebSharingService extends ChangeNotifier {
     <div class="header-content">
       <div class="brand-section">
         <div class="logo-container">N</div>
-        <h1>NFile Portal</h1>
+        <h1>OpenFile Portal</h1>
       </div>
       $badgeHtml
     </div>
@@ -1613,7 +1613,7 @@ class WebSharingService extends ChangeNotifier {
   </div>
 
   <footer>
-    Securely sharing and streaming files via NFile Server
+    Securely sharing and streaming files via OpenFile Server
   </footer>
 
   <script>

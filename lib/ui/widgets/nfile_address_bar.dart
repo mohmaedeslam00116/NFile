@@ -19,14 +19,14 @@ class BreadcrumbSegment {
   BreadcrumbSegment({required this.name, required this.path});
 }
 
-class NFileAddressBar extends StatefulWidget {
-  const NFileAddressBar({super.key});
+class OpenFileAddressBar extends StatefulWidget {
+  const OpenFileAddressBar({super.key});
 
   @override
-  State<NFileAddressBar> createState() => _NFileAddressBarState();
+  State<OpenFileAddressBar> createState() => _OpenFileAddressBarState();
 }
 
-class _NFileAddressBarState extends State<NFileAddressBar> {
+class _OpenFileAddressBarState extends State<OpenFileAddressBar> {
   final FocusNode _focusNode = FocusNode();
   final TextEditingController _controller = TextEditingController();
   final LayerLink _layerLink = LayerLink();

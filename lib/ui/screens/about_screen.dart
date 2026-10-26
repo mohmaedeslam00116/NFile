@@ -284,7 +284,7 @@ class AboutOpenFileScreen extends StatelessWidget {
                     context,
                     icon: Icons.send_rounded,
                     label: AppLocalizations.of(context).joinTelegramChannel,
-                    onTap: () => _launchUrl(context, 'https://t.me/NFiley'),
+                    onTap: () => _launchUrl(context, 'https://t.me/OpenFiley'),
                   ),
                   const SizedBox(height: 10),
                   _buildSocialAction(

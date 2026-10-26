@@ -1367,7 +1367,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             }
           },
           child: Scaffold(
-            drawer: NFileDrawer(
+            drawer: OpenFileDrawer(
               toggleTheme: widget.toggleTheme,
               onNavigateTab: widget.onNavigateTab,
             ),
@@ -1796,7 +1796,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
             ),
             body: Column(
               children: [
-                if (provider.showAddressBar) const NFileAddressBar(),
+                if (provider.showAddressBar) const OpenFileAddressBar(),
                 if (provider.filterType != FileFilterType.all)
                   _buildActiveFilterBanner(context, provider),
                 if (provider.activeTab.isSearchActive)

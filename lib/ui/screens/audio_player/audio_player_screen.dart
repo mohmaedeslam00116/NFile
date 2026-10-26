@@ -424,7 +424,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
           getAudioHandler().updateCurrentItem(updatedItem);
         }
       } catch (e) {
-        debugPrint('[NFile] Failed to load background artwork: $e');
+        debugPrint('[OpenFile] Failed to load background artwork: $e');
       }
     }
   }
@@ -483,7 +483,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     try {
       await Permission.notification.request();
     } catch (e) {
-      debugPrint('[NFile] Error requesting notification permission: $e');
+      debugPrint('[OpenFile] Error requesting notification permission: $e');
     }
 
     // Stop notification first to clear any blocked native service state!

@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
         }
       },
       child: Scaffold(
-        drawer: NFileDrawer(
+        drawer: OpenFileDrawer(
           toggleTheme: widget.toggleTheme,
           onNavigateTab: (index) => setState(() => _currentIndex = index),
         ),

@@ -19,11 +19,11 @@ import 'nfile_icon.dart';
 import '../screens/internal_file_picker_screen.dart';
 import '../screens/recycle_bin_screen.dart';
 
-class NFileDrawer extends StatelessWidget {
+class OpenFileDrawer extends StatelessWidget {
   final VoidCallback toggleTheme;
   final Function(int)? onNavigateTab;
 
-  const NFileDrawer({super.key, required this.toggleTheme, this.onNavigateTab});
+  const OpenFileDrawer({super.key, required this.toggleTheme, this.onNavigateTab});
 
   @override
   Widget build(BuildContext context) {
