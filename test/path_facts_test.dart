@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/listing/path_facts.dart';
-import 'package:nfile/core/listing/sort_rule.dart';
+import 'package:openfile/core/listing/path_facts.dart';
+import 'package:openfile/core/listing/sort_rule.dart';
 import 'package:path/path.dart' as p;
 
 void main() {

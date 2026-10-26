@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nfile/core/icon_fonts/broken_icons.dart';
+import 'package:openfile/core/icon_fonts/broken_icons.dart';
 import '../../../l10n/app_localizations.dart';
 
 class VideoControlsOverlay extends StatelessWidget {

@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/l10n/app_locale.dart';
-import 'package:nfile/core/l10n/app_localization.dart';
-import 'package:nfile/l10n/app_localizations.dart';
+import 'package:openfile/core/l10n/app_locale.dart';
+import 'package:openfile/core/l10n/app_localization.dart';
+import 'package:openfile/l10n/app_localizations.dart';
 
 /// The translation of the application.
 ///

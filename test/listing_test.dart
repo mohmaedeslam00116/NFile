@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/listing/listing.dart';
-import 'package:nfile/core/listing/listing_builder.dart';
-import 'package:nfile/core/listing/listing_inputs.dart';
-import 'package:nfile/core/listing/listing_scope.dart';
-import 'package:nfile/core/listing/sort_rule.dart';
-import 'package:nfile/models/file_filter_type.dart';
-import 'package:nfile/models/file_item_model.dart';
+import 'package:openfile/core/listing/listing.dart';
+import 'package:openfile/core/listing/listing_builder.dart';
+import 'package:openfile/core/listing/listing_inputs.dart';
+import 'package:openfile/core/listing/listing_scope.dart';
+import 'package:openfile/core/listing/sort_rule.dart';
+import 'package:openfile/models/file_filter_type.dart';
+import 'package:openfile/models/file_item_model.dart';
 import 'package:path/path.dart' as p;
 
 /// An Entry built without touching the filesystem. The name is computed here rather

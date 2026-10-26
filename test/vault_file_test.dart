@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/vault/vault_file.dart';
+import 'package:openfile/core/vault/vault_file.dart';
 
 /// A locked file holds the metadata and the content, sealed with a password.
 ///

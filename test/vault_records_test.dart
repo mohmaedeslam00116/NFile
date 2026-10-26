@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/services/vault_service.dart';
+import 'package:openfile/services/vault_service.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 /// The records of the vault say what the locked files were: their names, where

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/l10n/app_locale.dart';
+import 'package:openfile/core/l10n/app_locale.dart';
 
 /// The language the application speaks.
 ///

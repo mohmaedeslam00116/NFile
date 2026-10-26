@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/kind.dart';
-import 'package:nfile/core/listing/filter_rule.dart';
-import 'package:nfile/models/file_filter_type.dart';
-import 'package:nfile/providers/file_manager_provider.dart';
+import 'package:openfile/core/kind.dart';
+import 'package:openfile/core/listing/filter_rule.dart';
+import 'package:openfile/models/file_filter_type.dart';
+import 'package:openfile/providers/file_manager_provider.dart';
 
 void main() {
   group('Kind', () {

@@ -7,7 +7,7 @@ WebSite: https://github.com/mohmaedeslam00116/NFile
 SourceCode: https://github.com/mohmaedeslam00116/NFile
 IssueTracker: https://github.com/mohmaedeslam00116/NFile/issues
 
-AutoName: NFile
+AutoName: OpenFile
 
 RepoType: git
 Repo: https://github.com/mohmaedeslam00116/NFile.git
@@ -21,7 +21,7 @@ Builds:
       - flutter@stable
     prebuild:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter config --no-analytics
@@ -29,18 +29,18 @@ Builds:
       - JFILE=$(find .pub-cache -name FlutterAvifPlugin.java | head -1)
       - test -z "$JFILE" || echo "// cleared" > "$JFILE"
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
     scandelete:
       - .pub-cache
     build:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter build apk --release --split-per-abi --target-platform
         android-arm
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
 
   - versionName: 1.0.44
     versionCode: 442
@@ -50,7 +50,7 @@ Builds:
       - flutter@stable
     prebuild:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter config --no-analytics
@@ -58,18 +58,18 @@ Builds:
       - JFILE=$(find .pub-cache -name FlutterAvifPlugin.java | head -1)
       - test -z "$JFILE" || echo "// cleared" > "$JFILE"
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
     scandelete:
       - .pub-cache
     build:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter build apk --release --split-per-abi --target-platform
         android-arm64
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
 
   - versionName: 1.0.44
     versionCode: 443
@@ -79,7 +79,7 @@ Builds:
       - flutter@stable
     prebuild:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter config --no-analytics
@@ -87,18 +87,18 @@ Builds:
       - JFILE=$(find .pub-cache -name FlutterAvifPlugin.java | head -1)
       - test -z "$JFILE" || echo "// cleared" > "$JFILE"
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
     scandelete:
       - .pub-cache
     build:
       - cd ..
-      - mv com.rubex.nfile /tmp/build
+      - mv com.rubex.openfile /tmp/build
       - pushd /tmp/build
       - export PUB_CACHE=$(pwd)/.pub-cache
       - $$flutter$$/bin/flutter build apk --release --split-per-abi --target-platform
         android-x64
       - popd
-      - mv /tmp/build com.rubex.nfile
+      - mv /tmp/build com.rubex.openfile
 
 AllowedAPKSigningKeys: f6e86eca9b0d00c51a7758611b26c3c075d1e9e788265c5b115640114994c2ca
 

@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/providers/file_manager_provider.dart';
-import 'package:nfile/services/preferences_service.dart';
-import 'package:nfile/ui/screens/internal_file_picker_screen.dart';
+import 'package:openfile/providers/file_manager_provider.dart';
+import 'package:openfile/services/preferences_service.dart';
+import 'package:openfile/ui/screens/internal_file_picker_screen.dart';
 import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
