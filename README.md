@@ -1,9 +1,9 @@
-# NFile
+# OpenFile
 
 A beautiful File Manager application built with Flutter.
 
 ## Overview
-NFile is designed to provide a highly aesthetic file management experience on Android. It features a stunning interface with an exclusive "Broken" icon pack, dynamic AMOLED-friendly dark mode, and a fluid user experience. 
+OpenFile is designed to provide a highly aesthetic file management experience on Android. It features a stunning interface with an exclusive "Broken" icon pack, dynamic AMOLED-friendly dark mode, and a fluid user experience. 
 
 With the latest update, NFile transitions from a simple file explorer to a comprehensive media hub with built-in high-performance players and viewers.
 
