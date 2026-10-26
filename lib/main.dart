@@ -58,7 +58,7 @@ void main() async {
     await AudioService.init(
       builder: () => getAudioHandler(),
       config: const AudioServiceConfig(
-        androidNotificationChannelId: 'com.rubex.nfile.audio',
+        androidNotificationChannelId: 'com.rubex.openfile.audio',
         androidNotificationChannelName: 'NFile Audio Player',
         androidNotificationIcon: 'mipmap/ic_launcher',
         androidShowNotificationBadge: true,
@@ -68,7 +68,7 @@ void main() async {
     );
   } catch (e) {
     // audio_service init failed – background playback unavailable but app continues
-    debugPrint('[NFile] AudioService.init failed: $e');
+    debugPrint('[OpenFile] AudioService.init failed: $e');
   }
 
   runApp(
@@ -319,7 +319,7 @@ class _OpenFileAppState extends State<OpenFileApp> {
 
             return MaterialApp(
               navigatorKey: navigatorKey,
-              title: 'NFile',
+              title: 'OpenFile',
               debugShowCheckedModeBanner: false,
               localizationsDelegates: AppLocalization.delegates,
               supportedLocales: AppLocalization.supportedLocales,
@@ -379,7 +379,7 @@ class _OpenFileAppState extends State<OpenFileApp> {
               home: _isResolvingIntent
                   ? const _IntentLoadingScreen()
                   : (_hasPermission == null
-                      ? const Scaffold()
+                      ? const _SplashScreen()
                       : (_hasPermission == true
                           ? HomeScreen(toggleTheme: _toggleTheme)
                           : _StoragePermissionShield(onRequestPermission: _requestStoragePermission))),
@@ -387,6 +387,45 @@ class _OpenFileAppState extends State<OpenFileApp> {
           },
         );
       },
+    );
+  }
+}
+
+class _SplashScreen extends StatelessWidget {
+  const _SplashScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    return Scaffold(
+      backgroundColor: isDark ? Colors.black : Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/ic_launcher.webp', width: 96, height: 96),
+            const SizedBox(height: 20),
+            Text(
+              'OpenFile',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : Colors.black,
+              ),
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: 32,
+              child: LinearProgressIndicator(
+                minHeight: 2,
+                backgroundColor: isDark ? Colors.white24 : Colors.black12,
+                color: isDark ? Colors.white : Colors.black,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
