@@ -1,4 +1,4 @@
-import 'package:nfile/services/root_shizuku_service.dart';
+import 'package:openfile/services/root_shizuku_service.dart';
 
 class PermissionsService {
   /// Changes the mode of [path] using the root/Shizuku backend.

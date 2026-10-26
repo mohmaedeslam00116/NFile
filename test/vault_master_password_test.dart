@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/services/vault_service.dart';
+import 'package:openfile/services/vault_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// The master password of the vault is kept behind a verifier.

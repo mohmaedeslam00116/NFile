@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/services/duplicate_finder_service.dart';
+import 'package:openfile/services/duplicate_finder_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

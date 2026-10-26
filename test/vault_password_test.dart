@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/vault/vault_password.dart';
+import 'package:openfile/core/vault/vault_password.dart';
 
 /// The verifier of the master password of the vault.
 ///

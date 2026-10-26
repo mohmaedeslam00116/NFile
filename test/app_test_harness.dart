@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nfile/core/l10n/app_localization.dart';
+import 'package:openfile/core/l10n/app_localization.dart';
 
 /// The application, with the localizations it has in the real one.
 ///

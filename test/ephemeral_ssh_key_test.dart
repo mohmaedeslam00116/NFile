@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dartssh2/dartssh2.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/ssh/ephemeral_ssh_key.dart';
+import 'package:openfile/core/ssh/ephemeral_ssh_key.dart';
 
 /// The identity of the SSH client that opens the tunnel to the sharing
 /// service.

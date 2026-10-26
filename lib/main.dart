@@ -77,7 +77,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => FileManagerProvider()),
         ChangeNotifierProvider(create: (_) => MediaProvider()),
       ],
-      child: const NFileApp(),
+      child: const OpenFileApp(),
     ),
   );
 }
@@ -113,14 +113,14 @@ Future<void> _updateSystemGestureExclusion(bool disableLeftBack, double width, d
   }
 }
 
-class NFileApp extends StatefulWidget {
-  const NFileApp({super.key});
+class OpenFileApp extends StatefulWidget {
+  const OpenFileApp({super.key});
 
   @override
-  State<NFileApp> createState() => _NFileAppState();
+  State<OpenFileApp> createState() => _OpenFileAppState();
 }
 
-class _NFileAppState extends State<NFileApp> {
+class _OpenFileAppState extends State<OpenFileApp> {
   bool? _hasPermission;
   bool _sharingObserverSetup = false;
   bool _isResolvingIntent = false;

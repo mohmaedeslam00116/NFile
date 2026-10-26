@@ -6,14 +6,14 @@ import 'package:flutter/services.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:nfile/core/icon_fonts/broken_icons.dart';
-import 'package:nfile/services/preferences_service.dart';
+import 'package:openfile/core/icon_fonts/broken_icons.dart';
+import 'package:openfile/services/preferences_service.dart';
 import 'video_loading_indicator.dart';
 import 'video_seek_indicator.dart';
 import 'video_controls_overlay.dart';
 import 'vertical_slider_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:nfile/providers/file_manager_provider.dart';
+import 'package:openfile/providers/file_manager_provider.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
   final String videoPath;

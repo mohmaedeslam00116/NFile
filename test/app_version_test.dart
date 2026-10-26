@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfile/core/app_version.dart';
+import 'package:openfile/core/app_version.dart';
 
 /// The version of the application.
 ///
