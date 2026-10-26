@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const Color seedColor = Color(0xFF369FE7);
+  static const Color seedColor = Color(0xFF6B7280);
   
   static ThemeData getAppTheme({
     required bool light,
@@ -84,9 +84,11 @@ class AppTheme {
       case 'custom':
         effectiveFontFamily = 'CustomFont';
         break;
+      case 'inter':
       case 'default':
       default:
-        effectiveFontFamily = 'LexendDeca';
+        effectiveFontFamily = 'Inter';
+        textTheme = GoogleFonts.interTextTheme(baseTextTheme);
         break;
     }
 

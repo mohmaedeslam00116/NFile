@@ -404,7 +404,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           title: Text(
             AppLocalizations.of(context).deleteItem,
             style: TextStyle(
-              fontFamily: 'LexendDeca',
+              fontFamily: 'Inter',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -457,7 +457,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
           title: Text(
             AppLocalizations.of(context).newRemoteFolder,
             style: TextStyle(
-              fontFamily: 'LexendDeca',
+              fontFamily: 'Inter',
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -588,7 +588,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'LexendDeca',
+                            fontFamily: 'Inter',
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -1418,7 +1418,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.9),
-                    fontFamily: 'LexendDeca',
+                    fontFamily: 'Inter',
                   ),
                 ),
                 const SizedBox(height: 4),

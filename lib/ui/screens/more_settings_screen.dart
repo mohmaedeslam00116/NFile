@@ -2521,12 +2521,12 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                   const SizedBox(height: 16),
                   Text(
                     AppLocalizations.of(context).appTypography,
-                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     AppLocalizations.of(context).appTypographyHint,
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: 13, fontFamily: 'LexendDeca'),
+                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: 13, fontFamily: 'Inter'),
                   ),
                   const SizedBox(height: 16),
                   ...options.map((opt) {
@@ -2539,7 +2539,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                         style: TextStyle(
                           fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
                           color: isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurface,
-                          fontFamily: 'LexendDeca',
+                          fontFamily: 'Inter',
                         ),
                       ),
                       subtitle: Text(
@@ -2547,7 +2547,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                         style: TextStyle(
                           fontSize: 12,
                           color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                          fontFamily: 'LexendDeca',
+                          fontFamily: 'Inter',
                         ),
                       ),
                       trailing: isSelected
@@ -2566,7 +2566,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                     icon: const Icon(Broken.document_upload, size: 20),
                     label: Text(
                       hasCustomFont ? AppLocalizations.of(context).themeReplaceCustomFont : AppLocalizations.of(context).themeImportCustomFont,
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                     ),
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(46),
@@ -2623,7 +2623,7 @@ void _showFontFamilyPickerDialog(BuildContext context, FileManagerProvider fileM
                     const SizedBox(height: 8),
                     TextButton.icon(
                       icon: const Icon(Broken.trash, size: 18, color: Colors.redAccent),
-                      label: Text(AppLocalizations.of(context).removeCustomFont, style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca')),
+                      label: Text(AppLocalizations.of(context).removeCustomFont, style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold, fontFamily: 'Inter')),
                       onPressed: () async {
                         Navigator.pop(ctx);
                         await fileManager.setCustomFontPath(null);

@@ -1189,7 +1189,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: theme.colorScheme.primary,
-                              fontFamily: 'LexendDeca',
+                              fontFamily: 'Inter',
                             ),
                           ),
                           IconButton(
