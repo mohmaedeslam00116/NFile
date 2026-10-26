@@ -33,7 +33,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get aboutOpenFile => 'About NFile';
+  String get aboutNFile => 'About OpenFile';
 
   @override
   String appVersionWithChannel(String version, String channel) {
@@ -88,7 +88,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get copyrightNotice =>
-      'OpenFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/OpenFile';
+      'NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile';
 
   @override
   String copiedItemsToClipboard(int count) {
@@ -1250,7 +1250,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get analyzerApkBackedUp =>
-      'APK backed up successfully to OpenFile/Backups/Apps/';
+      'APK backed up successfully to NFile/Backups/Apps/';
 
   @override
   String get analyzerApkBackupFailed => 'Failed to back up APK';
@@ -2199,7 +2199,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsBackedUp =>
-      'Settings backed up to OpenFile/Backups/Settings/nfile_settings_backup.json';
+      'Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json';
 
   @override
   String failedToBackupSettings(String error) {
@@ -2222,7 +2222,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get backupSettingsHint =>
-      'Save all your current settings to OpenFile/Backups/Settings/';
+      'Save all your current settings to NFile/Backups/Settings/';
 
   @override
   String get restoreSettings => 'Restore Settings';
@@ -3692,7 +3692,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String backedUpApps(int count) {
-    return 'Successfully backed up $count app(s) to OpenFile/Backups/Apps/';
+    return 'Successfully backed up $count app(s) to NFile/Backups/Apps/';
   }
 
   @override

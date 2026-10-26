@@ -142,11 +142,11 @@ abstract class AppLocalizations {
   /// **'Could not open link: {url}'**
   String couldNotOpenLink(String url);
 
-  /// No description provided for @aboutOpenFile.
+  /// No description provided for @aboutNFile.
   ///
   /// In en, this message translates to:
-  /// **'About NFile'**
-  String get aboutOpenFile;
+  /// **'About OpenFile'**
+  String get aboutNFile;
 
   /// No description provided for @appVersionWithChannel.
   ///
@@ -247,7 +247,7 @@ abstract class AppLocalizations {
   /// No description provided for @copyrightNotice.
   ///
   /// In en, this message translates to:
-  /// **'OpenFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/OpenFile'**
+  /// **'NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile'**
   String get copyrightNotice;
 
   /// No description provided for @copiedItemsToClipboard.
@@ -2221,7 +2221,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyzerApkBackedUp.
   ///
   /// In en, this message translates to:
-  /// **'APK backed up successfully to OpenFile/Backups/Apps/'**
+  /// **'APK backed up successfully to NFile/Backups/Apps/'**
   String get analyzerApkBackedUp;
 
   /// No description provided for @analyzerApkBackupFailed.
@@ -3889,7 +3889,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsBackedUp.
   ///
   /// In en, this message translates to:
-  /// **'Settings backed up to OpenFile/Backups/Settings/nfile_settings_backup.json'**
+  /// **'Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json'**
   String get settingsBackedUp;
 
   /// No description provided for @failedToBackupSettings.
@@ -3925,7 +3925,7 @@ abstract class AppLocalizations {
   /// No description provided for @backupSettingsHint.
   ///
   /// In en, this message translates to:
-  /// **'Save all your current settings to OpenFile/Backups/Settings/'**
+  /// **'Save all your current settings to NFile/Backups/Settings/'**
   String get backupSettingsHint;
 
   /// No description provided for @restoreSettings.
@@ -6379,7 +6379,7 @@ abstract class AppLocalizations {
   /// No description provided for @backedUpApps.
   ///
   /// In en, this message translates to:
-  /// **'Successfully backed up {count} app(s) to OpenFile/Backups/Apps/'**
+  /// **'Successfully backed up {count} app(s) to NFile/Backups/Apps/'**
   String backedUpApps(int count);
 
   /// No description provided for @failedToBackUpApps.

@@ -299,7 +299,7 @@ class OpenFileDrawer extends StatelessWidget {
                     _buildDrawerTile(
                       context,
                       icon: Broken.info_circle,
-                      title: AppLocalizations.of(context).aboutOpenFile,
+                      title: AppLocalizations.of(context).aboutNFile,
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.push(

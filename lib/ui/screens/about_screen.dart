@@ -53,7 +53,7 @@ class AboutOpenFileScreen extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: Text(
-                AppLocalizations.of(context).aboutOpenFile,
+                AppLocalizations.of(context).aboutNFile,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
