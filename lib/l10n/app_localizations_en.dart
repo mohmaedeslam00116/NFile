@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appName => 'NFile';
+  String get appName => 'OpenFile';
 
   @override
   String get openingSharedDocument => 'Opening shared document...';
@@ -22,7 +22,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storageAccessExplanation =>
-      'NFile requires storage permission to manage, organize, and display your media files seamlessly.';
+      'OpenFile requires storage permission to manage, organize, and display your media files seamlessly.';
 
   @override
   String get grantPermission => 'Grant Permission';
@@ -33,7 +33,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get aboutNFile => 'About NFile';
+  String get aboutOpenFile => 'About NFile';
 
   @override
   String appVersionWithChannel(String version, String channel) {
@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutDescription =>
-      'NFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.';
+      'OpenFile is a beautiful, fluid, and open-source file manager and offline media hub built with Flutter. Designed for extreme performance, clean glassmorphic aesthetics, and seamless user experiences.';
 
   @override
   String get coreHighlights => 'Core Highlights';
@@ -88,7 +88,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get copyrightNotice =>
-      'NFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/NFile';
+      'OpenFile — licensed under GPL-3.0. Source: github.com/mohmaedeslam00116/OpenFile';
 
   @override
   String copiedItemsToClipboard(int count) {
@@ -277,7 +277,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String appVersion(String version) {
-    return 'NFile v$version';
+    return 'OpenFile v$version';
   }
 
   @override
@@ -287,10 +287,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get openWith => 'Open with...';
 
   @override
-  String get builtInViewer => 'Built-in NFile Viewer';
+  String get builtInViewer => 'Built-in OpenFile Viewer';
 
   @override
-  String get builtInViewerDescription => 'NFile\'s custom native experience';
+  String get builtInViewerDescription => 'OpenFile\'s custom native experience';
 
   @override
   String get systemExternalApp => 'System External App';
@@ -392,7 +392,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get restrictedFolderExplanation =>
-      'Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, NFile requires advanced permissions.';
+      'Android 11+ restricts standard access to Android/data and Android/obb folders to protect app data. To view and modify these files, OpenFile requires advanced permissions.';
 
   @override
   String get useRootAccess => 'Use Root Access (Superuser)';
@@ -936,7 +936,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String shareAppMessage(String url) {
-    return 'Check out NFile, a beautiful offline file manager and media hub: $url';
+    return 'Check out OpenFile, a beautiful offline file manager and media hub: $url';
   }
 
   @override
@@ -1250,7 +1250,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analyzerApkBackedUp =>
-      'APK backed up successfully to NFile/Backups/Apps/';
+      'APK backed up successfully to OpenFile/Backups/Apps/';
 
   @override
   String get analyzerApkBackupFailed => 'Failed to back up APK';
@@ -1673,10 +1673,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeOriginalDefault => 'Original Default (Signature Blue)';
 
   @override
-  String get themeBrokenOutline => 'NFile Broken Outline (Default)';
+  String get themeBrokenOutline => 'OpenFile Broken Outline (Default)';
 
   @override
-  String get themeOriginalGeometric => 'Original NFile clean geometric look';
+  String get themeOriginalGeometric => 'Original OpenFile clean geometric look';
 
   @override
   String get themeNothingDotMatrix => 'Nothing Dot-Matrix & Sans';
@@ -2199,7 +2199,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsBackedUp =>
-      'Settings backed up to NFile/Backups/Settings/nfile_settings_backup.json';
+      'Settings backed up to OpenFile/Backups/Settings/nfile_settings_backup.json';
 
   @override
   String failedToBackupSettings(String error) {
@@ -2222,7 +2222,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backupSettingsHint =>
-      'Save all your current settings to NFile/Backups/Settings/';
+      'Save all your current settings to OpenFile/Backups/Settings/';
 
   @override
   String get restoreSettings => 'Restore Settings';
@@ -2590,7 +2590,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appTypographyHint =>
-      'Select a beautiful typeface to customize NFile\\\'s overall visual theme';
+      'Select a beautiful typeface to customize OpenFile\\\'s overall visual theme';
 
   @override
   String customFontApplied(String name) {
@@ -2810,7 +2810,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectNetworkServiceHint =>
-      'Mount a remote server or NAS share as a dynamic drive within your NFile storage lists.';
+      'Mount a remote server or NAS share as a dynamic drive within your OpenFile storage lists.';
 
   @override
   String selectedTypeSettings(String type) {
@@ -3645,7 +3645,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get exactStorageCalculationHint =>
-      'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for NFile in System Settings.';
+      'To see exact app storage sizes (APK + data + cache) instead of just the raw installer size, please enable the Usage Access permission for OpenFile in System Settings.';
 
   @override
   String get grantUsageAccess => 'Grant Usage Access Permission';
@@ -3692,7 +3692,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String backedUpApps(int count) {
-    return 'Successfully backed up $count app(s) to NFile/Backups/Apps/';
+    return 'Successfully backed up $count app(s) to OpenFile/Backups/Apps/';
   }
 
   @override
@@ -3943,7 +3943,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get appTagline => 'NFile - Beautiful File Manager';
+  String get appTagline => 'OpenFile - Beautiful File Manager';
 
   @override
   String get localFolder => 'Local Folder';

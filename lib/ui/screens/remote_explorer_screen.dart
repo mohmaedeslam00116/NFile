@@ -360,7 +360,7 @@ class _RemoteExplorerScreenState extends State<RemoteExplorerScreen> {
       }
       downloadDir ??= await getApplicationDocumentsDirectory();
 
-      final nfileDir = Directory(p.join(downloadDir.path, 'NFile_Remote'));
+      final nfileDir = Directory(p.join(downloadDir.path, 'OpenFile_Remote'));
       if (!nfileDir.existsSync()) nfileDir.createSync(recursive: true);
 
       final localPath = p.join(nfileDir.path, item.name);

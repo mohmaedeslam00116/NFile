@@ -95,7 +95,7 @@ class _VaultExplorerScreenState extends State<VaultExplorerScreen> {
     final fileManager = context.read<FileManagerProvider>();
     final rootPath = fileManager.rootPath.isNotEmpty ? fileManager.rootPath : '/storage/emulated/0';
     
-    // Launch NFile's custom internal picker
+    // Launch OpenFile's custom internal picker
     final selectedPaths = await InternalFilePickerScreen.show(context, rootPath: rootPath);
     if (selectedPaths == null || selectedPaths.isEmpty) return;
 

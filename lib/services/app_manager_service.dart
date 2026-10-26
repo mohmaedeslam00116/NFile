@@ -117,7 +117,7 @@ class AppManagerService {
 
   static Future<bool> backupApp(AppInfoModel app) async {
     try {
-      final backupDir = Directory('/storage/emulated/0/NFile/Backups/Apps');
+      final backupDir = Directory('/storage/emulated/0/OpenFile/Backups/Apps');
       if (!backupDir.existsSync()) {
         backupDir.createSync(recursive: true);
       }
@@ -227,7 +227,7 @@ class AppManagerService {
   static Future<List<Map<String, dynamic>>> listBackups() async {
     final List<Map<String, dynamic>> backups = [];
     try {
-      final backupDir = Directory('/storage/emulated/0/NFile/Backups/Apps');
+      final backupDir = Directory('/storage/emulated/0/OpenFile/Backups/Apps');
       if (!backupDir.existsSync()) return [];
 
       final List<FileSystemEntity> entities = backupDir.listSync();

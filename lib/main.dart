@@ -59,7 +59,7 @@ void main() async {
       builder: () => getAudioHandler(),
       config: const AudioServiceConfig(
         androidNotificationChannelId: 'com.rubex.openfile.audio',
-        androidNotificationChannelName: 'NFile Audio Player',
+        androidNotificationChannelName: 'OpenFile Audio Player',
         androidNotificationIcon: 'mipmap/ic_launcher',
         androidShowNotificationBadge: true,
         androidStopForegroundOnPause: true,

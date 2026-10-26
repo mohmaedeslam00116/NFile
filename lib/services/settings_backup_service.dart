@@ -8,7 +8,7 @@ import '../providers/file_manager_provider.dart';
 import '../providers/media_provider.dart';
 
 class SettingsBackupService {
-  static const String _backupDir = '/storage/emulated/0/NFile/Backups/Settings';
+  static const String _backupDir = '/storage/emulated/0/OpenFile/Backups/Settings';
   static const String _defaultBackupFileName = 'nfile_settings_backup.json';
 
   static Future<void> backupSettings(BuildContext context) async {
