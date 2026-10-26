@@ -483,7 +483,8 @@
     "YAML",
     "Other",
     "Delete",
-    "Share"
+    "Share",
+    "OpenFile"
   ],
   "todo": []
 }
