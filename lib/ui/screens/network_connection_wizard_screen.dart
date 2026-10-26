@@ -165,7 +165,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                 children: [
                   Icon(Icons.warning_amber_rounded, color: Colors.orange),
                   SizedBox(width: 8),
-                  Text(AppLocalizations.of(context).systemAppDisabled, style: TextStyle(fontFamily: 'LexendDeca', fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context).systemAppDisabled, style: TextStyle(fontFamily: 'Inter', fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
               ),
               content: Text(
@@ -413,7 +413,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
         children: [
           Text(
             AppLocalizations.of(context).selectNetworkService,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
           ),
           const SizedBox(height: 6),
           Text(
@@ -476,7 +476,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                           style: const TextStyle(
                             fontSize: 14.5,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'LexendDeca',
+                            fontFamily: 'Inter',
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -522,7 +522,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'LexendDeca',
+                        fontFamily: 'Inter',
                       ),
                     ),
                     Text(
@@ -687,7 +687,7 @@ class _NetworkConnectionWizardScreenState extends State<NetworkConnectionWizardS
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: theme.colorScheme.onSurface.withValues(alpha: 0.9),
-              fontFamily: 'LexendDeca',
+              fontFamily: 'Inter',
             ),
           ),
           const SizedBox(height: 8),

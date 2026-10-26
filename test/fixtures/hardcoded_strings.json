@@ -144,7 +144,6 @@
     "Jul",
     "Jun",
     "KB",
-    "LexendDeca",
     "Linux",
     "MB",
     "MKCOL",
@@ -484,7 +483,8 @@
     "Other",
     "Delete",
     "Share",
-    "OpenFile"
+    "OpenFile",
+    "Inter"
   ],
   "todo": []
 }

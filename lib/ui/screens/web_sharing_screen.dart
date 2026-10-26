@@ -111,7 +111,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
                 Expanded(
                   child: Text(
                     AppLocalizations.of(context).establishingRelay,
-                    style: TextStyle(fontFamily: 'LexendDeca', fontSize: 14),
+                    style: TextStyle(fontFamily: 'Inter', fontSize: 14),
                   ),
                 ),
               ],
@@ -175,7 +175,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
                 Text(
                   AppLocalizations.of(context).scanQrCode,
                   style: TextStyle(
-                    fontFamily: 'LexendDeca',
+                    fontFamily: 'Inter',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: theme.colorScheme.primary,
@@ -409,7 +409,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
       children: [
         Text(
           AppLocalizations.of(context).httpLocalShareServer,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
         ),
         const SizedBox(height: 4),
         Text(
@@ -462,7 +462,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: theme.colorScheme.primary,
-                      fontFamily: 'LexendDeca',
+                      fontFamily: 'Inter',
                     ),
                   ),
                   const SizedBox(height: 18),
@@ -582,7 +582,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
       children: [
         Text(
           AppLocalizations.of(context).internetShareTunnel,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
         ),
         const SizedBox(height: 4),
         Text(
@@ -635,7 +635,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
                       fontSize: 15.5,
                       fontWeight: FontWeight.bold,
                       color: theme.colorScheme.primary,
-                      fontFamily: 'LexendDeca',
+                      fontFamily: 'Inter',
                     ),
                   ),
                   const SizedBox(height: 18),
@@ -680,7 +680,7 @@ class _WebSharingScreenState extends State<WebSharingScreen> with SingleTickerPr
           // Dynamic Active Speedometer Counter Clients
           Text(
             AppLocalizations.of(context).connectedClients,
-            style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.bold, fontFamily: 'LexendDeca'),
+            style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
           ),
           const SizedBox(height: 8),
 
