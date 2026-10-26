@@ -1,4 +1,4 @@
-package com.rubex.nfile
+package com.rubex.openfile
 
 import android.database.Cursor
 import android.database.MatrixCursor
@@ -10,7 +10,7 @@ import android.webkit.MimeTypeMap
 import java.io.File
 import java.io.FileNotFoundException
 
-class NFileDocumentsProvider : DocumentsProvider() {
+class OpenFileDocumentsProvider : DocumentsProvider() {
 
     private val DEFAULT_ROOT_PROJECTION = arrayOf(
         DocumentsContract.Root.COLUMN_ROOT_ID,
