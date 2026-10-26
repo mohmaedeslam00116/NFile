@@ -304,7 +304,7 @@ class NFileDrawer extends StatelessWidget {
                         Navigator.pop(context);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => const AboutNFileScreen()),
+                          MaterialPageRoute(builder: (_) => const AboutOpenFileScreen()),
                         );
                       },
                     ),

@@ -5,8 +5,8 @@ import '../../core/app_version.dart';
 import '../../core/icon_fonts/broken_icons.dart';
 import '../../l10n/app_localizations.dart';
 
-class AboutNFileScreen extends StatelessWidget {
-  const AboutNFileScreen({super.key});
+class AboutOpenFileScreen extends StatelessWidget {
+  const AboutOpenFileScreen({super.key});
 
   Future<void> _launchUrl(BuildContext context, String urlString) async {
     final Uri url = Uri.parse(urlString);
@@ -149,7 +149,7 @@ class AboutNFileScreen extends StatelessWidget {
 
                   // ── App Title & Dynamic Badges ──
                   Text(
-                    'NFile',
+                    'OpenFile',
                     style: theme.textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.8,
@@ -277,7 +277,7 @@ class AboutNFileScreen extends StatelessWidget {
                     context,
                     icon: Broken.magic_star,
                     label: AppLocalizations.of(context).starOnRepository,
-                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/NFile'),
+                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/OpenFile'),
                   ),
                   const SizedBox(height: 10),
                   _buildSocialAction(
@@ -294,7 +294,7 @@ class AboutNFileScreen extends StatelessWidget {
                     onTap: () {
                       SharePlus.instance.share(ShareParams(
                         text: AppLocalizations.of(context).shareAppMessage(
-                          'https://github.com/mohmaedeslam00116/NFile/releases',
+                          'https://github.com/mohmaedeslam00116/OpenFile/releases',
                         ),
                         subject: AppLocalizations.of(context).appTagline,
                       ));
@@ -305,7 +305,7 @@ class AboutNFileScreen extends StatelessWidget {
                     context,
                     icon: Icons.code_rounded,
                     label: AppLocalizations.of(context).exploreSourceCode,
-                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/NFile'),
+                    onTap: () => _launchUrl(context, 'https://github.com/mohmaedeslam00116/OpenFile'),
                   ),
 
                   const SizedBox(height: 48),
