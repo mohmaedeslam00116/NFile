@@ -20,6 +20,7 @@ import '../../core/icon_fonts/broken_icons.dart';
 import 'package:share_plus/share_plus.dart';
 import '../widgets/file_action_dialogs.dart';
 import '../widgets/batch_rename_dialog.dart';
+import '../widgets/file_name_text.dart';
 
 enum MediaType { images, videos, audios, documents, archives, downloads, apks, screenshots }
 
@@ -1767,7 +1768,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
             ),
         ],
       ),
-      title: Text(name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: FileNameText(name, maxLines: 1, style: const TextStyle(fontWeight: FontWeight.w500)),
       subtitle: Text(
         showDate
             ? '${FileUtils.formatBytes(size, 1)} • ${FileUtils.formatDate(modified)}'
@@ -1867,7 +1868,7 @@ class _MediaCategoryScreenState extends State<MediaCategoryScreen>
             ),
         ],
       ),
-      title: Text(name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: FileNameText(name, maxLines: 1, style: const TextStyle(fontWeight: FontWeight.w500)),
       subtitle: Text(
         showDate
             ? '${FileUtils.formatBytes(size, 1)} • ${FileUtils.formatDate(modified)}'

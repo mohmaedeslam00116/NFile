@@ -5,13 +5,14 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/file_manager_provider.dart';
 import '../../providers/media_provider.dart';
 import '../../core/icon_fonts/broken_icons.dart';
-import '../widgets/swipable_storage_overview.dart';
+import '../widgets/storage_overview_grid.dart';
 import '../widgets/quick_categories_grid.dart';
 import '../widgets/recent_files_section.dart';
 import '../widgets/nfile_drawer.dart';
 import '../widgets/nfile_icon.dart';
 import 'directory_screen.dart';
 import 'all_recent_files_screen.dart';
+import 'storage_analyzer/storage_analyzer_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback toggleTheme;
@@ -282,6 +283,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
 
   Widget _buildHomeTab() {
     final theme = Theme.of(context);
+    final provider = context.watch<FileManagerProvider>();
     return SafeArea(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -322,11 +324,22 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
                 ],
               ),
             ),
-            SwipableStorageOverview(
+            StorageOverviewGrid(
+              volumes: provider.storageVolumes,
               onBrowseVolume: (path) {
-                final provider = context.read<FileManagerProvider>();
                 provider.loadDirectory(path);
                 setState(() => _currentIndex = 1);
+              },
+              onAnalyzeVolume: (volume) {
+                if (!volume.isInternal) return;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => StorageAnalyzerScreen(
+                      initialVolumePath: volume.path,
+                    ),
+                  ),
+                );
               },
             ),
             const SizedBox(height: 8),
@@ -337,7 +350,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Si
             RecentFilesSection(
               onNavigateTab: (index) => setState(() => _currentIndex = index),
             ),
-            const SizedBox(height: 24),
+            // The floating navigation bar hangs over the list: leave room for
+            // it so the last row is never hidden (upstream #107).
+            const SizedBox(height: 112),
           ],
         ),
       ),

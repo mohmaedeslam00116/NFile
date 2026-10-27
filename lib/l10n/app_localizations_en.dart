@@ -340,6 +340,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get storageFreeLabel => 'free';
+
+  @override
+  String get storageTotalLabel => 'total';
+
+  @override
   String get noShortcutsPinned => 'No shortcuts pinned. Tap Customize to add.';
 
   @override

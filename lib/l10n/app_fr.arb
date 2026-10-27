@@ -91,6 +91,8 @@
   "storageTotal": "{size} total",
   "storageUsedPercent": "{percent}% Used",
   "storageFree": "{size} free",
+  "storageFreeLabel": "libre",
+  "storageTotalLabel": "total",
   "noShortcutsPinned": "No shortcuts pinned. Tap Customize to add.",
   "customizeShortcuts": "Customize Shortcuts",
   "dragToReorderHint": "Drag items by the handle (=) to reorder icons on the Home Screen.",

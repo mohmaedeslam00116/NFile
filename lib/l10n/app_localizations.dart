@@ -652,6 +652,18 @@ abstract class AppLocalizations {
   /// **'{size} free'**
   String storageFree(String size);
 
+  /// No description provided for @storageFreeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'free'**
+  String get storageFreeLabel;
+
+  /// No description provided for @storageTotalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'total'**
+  String get storageTotalLabel;
+
   /// No description provided for @noShortcutsPinned.
   ///
   /// In en, this message translates to:
