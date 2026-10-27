@@ -2226,7 +2226,9 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                                   else
                                     SliverPadding(
                                       padding: EdgeInsets.only(
-                                        bottom: 80,
+                                        // The floating navigation bar hangs
+                                        // over the list (upstream #107).
+                                        bottom: 112,
                                         left: provider.isGridView ? 16 : 0,
                                         right: provider.isGridView ? 16 : 0,
                                         top: 8,

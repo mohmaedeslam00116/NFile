@@ -400,7 +400,9 @@ class _AllRecentFilesScreenState extends State<AllRecentFilesScreen> {
                 )
               : ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(top: 8, bottom: 24),
+                  // The floating navigation bar hangs over the list (upstream
+                  // #107): leave room so the last recent file stays reachable.
+                  padding: const EdgeInsets.only(top: 8, bottom: 112),
                   itemCount: _recentFiles.length,
                   itemBuilder: (context, index) {
                     final item = _recentFiles[index];

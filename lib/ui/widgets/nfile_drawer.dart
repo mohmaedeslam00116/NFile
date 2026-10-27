@@ -82,18 +82,6 @@ class OpenFileDrawer extends StatelessWidget {
                       ),
                     _buildDrawerTile(
                       context,
-                      icon: Broken.cpu,
-                      title: AppLocalizations.of(context).systemRoot,
-                      isSelected: fileManager.rootPath == '/',
-                      onTap: () {
-                        Navigator.pop(context);
-                        fileManager.setRootPath('/');
-                        fileManager.loadDirectory('/');
-                        onNavigateTab?.call(1);
-                      },
-                    ),
-                    _buildDrawerTile(
-                      context,
                       icon: Broken.search_normal,
                       title: AppLocalizations.of(context).globalSearch,
                       onTap: () {
@@ -368,9 +356,9 @@ class OpenFileDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'NFile',
-                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 0.5),
+                Text(
+                  AppLocalizations.of(context).appName,
+                  style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 0.5),
                 ),
                 const SizedBox(height: 2),
                 Text(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_avif/flutter_avif.dart';
 import 'nfile_icon.dart';
+import 'file_name_text.dart';
 import '../../models/file_item_model.dart';
 import '../../core/utils.dart';
 import '../../core/icon_fonts/broken_icons.dart';
@@ -115,14 +116,13 @@ class FileItem extends StatelessWidget {
                           const SizedBox(width: 6),
                         ],
                         Expanded(
-                          child: Text(
+                          child: FileNameText(
                             file.name,
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w600,
                               fontSize: 15 * (1 + (iconScale - 1) * 0.3),
                             ),
                             maxLines: context.select<FileManagerProvider, bool>((p) => p.adaptiveMultiLineNames) ? 3 : 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -143,6 +143,7 @@ class FileItem extends StatelessWidget {
                             ],
                             Text(
                               FileUtils.formatBytes(file.size, 2),
+                              textDirection: TextDirection.ltr,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.6),
                               ),

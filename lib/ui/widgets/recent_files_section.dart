@@ -8,6 +8,7 @@ import '../../providers/media_provider.dart';
 import '../../models/file_item_model.dart';
 import '../screens/all_recent_files_screen.dart';
 import 'file_item.dart';
+import 'file_name_text.dart';
 
 class RecentFilesSection extends StatelessWidget {
   final Function(int)? onNavigateTab;
@@ -219,11 +220,10 @@ class RecentFilesSection extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    FileNameText(
                       file.name,
                       style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 13),
                       maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),
                     Row(
@@ -231,6 +231,7 @@ class RecentFilesSection extends StatelessWidget {
                       children: [
                         Text(
                           isFolder ? AppLocalizations.of(context).itemFolder : FileUtils.formatBytes(file.size, 1),
+                          textDirection: isFolder ? null : TextDirection.ltr,
                           style: theme.textTheme.bodySmall?.copyWith(fontSize: 10, color: theme.textTheme.bodySmall?.color?.withAlpha(153)),
                         ),
                         Text(

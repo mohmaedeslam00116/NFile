@@ -349,6 +349,12 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get storageFreeLabel => 'متاحة';
+
+  @override
+  String get storageTotalLabel => 'الإجمالي';
+
+  @override
   String get noShortcutsPinned =>
       'لا توجد اختصارات مثبّتة. اضغط «تخصيص الاختصارات» لإضافتها.';
 

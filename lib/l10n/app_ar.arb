@@ -91,6 +91,8 @@
   "storageTotal": "{size} إجمالًا",
   "storageUsedPercent": "{percent}% مُستخدَمة",
   "storageFree": "{size} متاحة",
+  "storageFreeLabel": "متاحة",
+  "storageTotalLabel": "الإجمالي",
   "noShortcutsPinned": "لا توجد اختصارات مثبّتة. اضغط «تخصيص الاختصارات» لإضافتها.",
   "customizeShortcuts": "تخصيص الاختصارات",
   "dragToReorderHint": "اسحب العناصر من المقبض (=) لإعادة ترتيب الأيقونات في الشاشة الرئيسية.",
