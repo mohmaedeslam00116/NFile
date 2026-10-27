@@ -8,7 +8,7 @@ class AppVersion {
   const AppVersion._();
 
   /// The version of the application, without the number of the build.
-  static const String current = '1.0.45';
+  static const String current = '1.0.46';
 
   /// The channel of the release.
   static const String channel = 'Stable';

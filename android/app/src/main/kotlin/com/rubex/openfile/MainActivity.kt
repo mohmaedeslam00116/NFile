@@ -1,4 +1,4 @@
-package com.rubex.nfile
+package com.rubex.openfile
 
 import android.content.pm.PackageManager
 import android.content.pm.ApplicationInfo
@@ -403,15 +403,15 @@ class MainActivity : AudioServiceFragmentActivity() {
                     }
                 }
                 "changeAppIcon" -> {
-                    val iconAlias = call.argument<String>("alias") ?: "com.rubex.nfile.MainActivityDefault"
+                    val iconAlias = call.argument<String>("alias") ?: "com.rubex.openfile.MainActivityDefault"
                     executor.execute {
                         try {
                             val aliases = listOf(
-                                "com.rubex.nfile.MainActivityDefault",
-                                "com.rubex.nfile.MainActivityLogo1",
-                                "com.rubex.nfile.MainActivityLogo2",
-                                "com.rubex.nfile.MainActivityLogo3",
-                                "com.rubex.nfile.MainActivityLogo4"
+                                "com.rubex.openfile.MainActivityDefault",
+                                "com.rubex.openfile.MainActivityLogo1",
+                                "com.rubex.openfile.MainActivityLogo2",
+                                "com.rubex.openfile.MainActivityLogo3",
+                                "com.rubex.openfile.MainActivityLogo4"
                             )
 
                             for (alias in aliases) {
@@ -710,7 +710,7 @@ class MainActivity : AudioServiceFragmentActivity() {
         notificationsChannel?.setMethodCallHandler { call, result ->
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val channelId = "nfile_archive_channel"
-            val channelName = "NFile Archive Operations"
+            val channelName = "OpenFile Archive Operations"
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW).apply {

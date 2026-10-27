@@ -261,15 +261,15 @@ class FileManagerProvider extends ChangeNotifier {
     _activeAppIcon = val;
     await PreferencesService.saveActiveAppIcon(val);
 
-    String alias = 'com.rubex.nfile.MainActivityDefault';
+    String alias = 'com.rubex.openfile.MainActivityDefault';
     if (val == 'logo1') {
-      alias = 'com.rubex.nfile.MainActivityLogo1';
+      alias = 'com.rubex.openfile.MainActivityLogo1';
     } else if (val == 'logo2') {
-      alias = 'com.rubex.nfile.MainActivityLogo2';
+      alias = 'com.rubex.openfile.MainActivityLogo2';
     } else if (val == 'logo3') {
-      alias = 'com.rubex.nfile.MainActivityLogo3';
+      alias = 'com.rubex.openfile.MainActivityLogo3';
     } else if (val == 'logo4') {
-      alias = 'com.rubex.nfile.MainActivityLogo4';
+      alias = 'com.rubex.openfile.MainActivityLogo4';
     }
 
     await AppManagerService.changeAppIcon(alias);
